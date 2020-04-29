@@ -5,7 +5,7 @@ interface ImageProps {
   title: string
   caption?: string
   shoutout?: string
-  hover?: JSX.Element[]
+  hover?: JSX.Element
   url?: string
 }
 

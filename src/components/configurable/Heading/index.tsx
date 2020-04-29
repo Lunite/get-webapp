@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from "react"
 
 interface HeadingProps {
+  className?: string
   subheading?: string
   underlined?: boolean
   level?: number
 }
 
 export const Heading: FunctionComponent<HeadingProps> = ({
+  className,
   subheading,
   underlined,
   level = 2,
@@ -16,7 +18,9 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   return (
     <>
       <HeaderTag
-        className={`heading ${underlined ? "heading--underlined" : ""}`}
+        className={`heading ${
+          underlined ? "heading--underlined" : ""
+        } ${className}`}
       >
         {children}
       </HeaderTag>

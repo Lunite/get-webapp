@@ -28,7 +28,16 @@ module.exports = {
       },
     },
     "gatsby-plugin-sass",
-    // In your gatsby-config.js
+    "gatsby-plugin-typescript",
+    {
+      resolve: "gatsby-plugin-alias-imports",
+      options: {
+        alias: {
+          "~": "src",
+        },
+        extensions: ["tsx", "ts", "svg", "jpg"],
+      },
+    },
     {
       resolve: "gatsby-source-wordpress",
       options: {

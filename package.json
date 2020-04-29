@@ -8,12 +8,14 @@
     "@svgr/webpack": "5.3.1",
     "gatsby": "2.20.36",
     "gatsby-image": "2.3.5",
+    "gatsby-plugin-alias-imports": "1.0.5",
     "gatsby-plugin-manifest": "2.3.7",
     "gatsby-plugin-offline": "3.1.5",
     "gatsby-plugin-react-helmet": "3.2.5",
     "gatsby-plugin-sass": "2.3.0",
     "gatsby-plugin-sharp": "2.5.7",
     "gatsby-plugin-svgr": "2.0.2",
+    "gatsby-plugin-typescript": "2.4.0",
     "gatsby-source-filesystem": "2.2.5",
     "gatsby-source-wordpress": "3.3.0",
     "gatsby-transformer-sharp": "2.4.7",
@@ -41,12 +43,5 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
