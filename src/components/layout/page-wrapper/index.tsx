@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
-import { Footer } from "../footer"
-import { Navigation } from "../navigation"
-import { SEO } from "../../util/SEO"
+import { Footer } from "~/components/layout/footer"
+import { Navigation } from "~/components/layout/navigation"
+import { SEO } from "~/components/util/SEO"
 
 interface PageWrapperProps {
   context: any

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
-import { Heading } from "../Heading"
-import { BlockCTA } from "../BlockCTA"
+import { Heading } from "~/components/configurable/Heading"
+import { BlockCTA } from "~/components/configurable/BlockCTA"
 
 export const Quote: FunctionComponent = () => {
   const formState = {}

@@ -9,7 +9,7 @@ export const Vector = ({ src }: VectorProps) => {
 
   useEffect(() => {
     ;(async () => {
-      await import(`../../../images/${src}`)
+      await import(`~/images/${src}`)
         .then(svg => {
           SVG = svg.ReactComponent
         })

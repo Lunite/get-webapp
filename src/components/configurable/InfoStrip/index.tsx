@@ -1,6 +1,6 @@
 import React from "react"
-import { BlockCTA } from "../BlockCTA"
-import { Vector } from "../Vector"
+import { BlockCTA } from "~/components/configurable/BlockCTA"
+import { Vector } from "~/components/configurable/Vector"
 
 interface InfoStripProps {
   location?: string

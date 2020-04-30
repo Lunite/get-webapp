@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import { Vector } from "../Vector"
+import { Vector } from "~/components/configurable/Vector"
 
 interface BlockCTAProps {
   url?: string

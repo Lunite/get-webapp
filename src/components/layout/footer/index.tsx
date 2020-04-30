@@ -1,8 +1,8 @@
 import React from "react"
-import { BlockCTA } from "../../configurable/BlockCTA"
-import { Vector } from "../../configurable/Vector"
-import { Col3 } from "../../grid"
-import { Heading } from "../../configurable/Heading"
+import { BlockCTA } from "~/components/configurable/BlockCTA"
+import { Vector } from "~/components/configurable/Vector"
+import { Col3 } from "~/components/grid"
+import { Heading } from "~/components/configurable/Heading"
 
 export const Footer = () => {
   return (
