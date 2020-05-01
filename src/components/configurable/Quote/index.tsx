@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react"
-import { Heading } from "~/components/configurable/Heading"
-import { BlockCTA } from "~/components/configurable/BlockCTA"
+import Heading from "~/components/configurable/Heading"
+import BlockCTA from "~/components/configurable/BlockCTA"
 
-export const Quote: FunctionComponent = () => {
+const Quote: FunctionComponent = () => {
   const formState = {}
 
   const handleInputChange = event => {
@@ -41,3 +41,5 @@ export const Quote: FunctionComponent = () => {
     </div>
   )
 }
+
+export default Quote

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
-import { Vector } from "~/components/configurable/Vector"
+import Vector from "~/components/configurable/Vector"
 
-export const Navigation: FunctionComponent = () => {
+const Navigation: FunctionComponent = () => {
   return (
     <header className="navigation">
       <div className="navigation__top">
@@ -44,3 +44,5 @@ export const Navigation: FunctionComponent = () => {
     </header>
   )
 }
+
+export default Navigation

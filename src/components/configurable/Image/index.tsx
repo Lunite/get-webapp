@@ -9,14 +9,7 @@ interface ImageProps {
   url?: string
 }
 
-export const Image = ({
-  src,
-  title,
-  caption,
-  shoutout,
-  hover,
-  url,
-}: ImageProps) => {
+const Image = ({ src, title, caption, shoutout, hover, url }: ImageProps) => {
   const image = <img className="image" src={src} alt={title} title={title} />
 
   const getHoverContent = () => {
@@ -63,3 +56,5 @@ export const Image = ({
     </>
   )
 }
+
+export default Image

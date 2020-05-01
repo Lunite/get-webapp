@@ -6,7 +6,7 @@ interface HeroProps {
   overlapBlock?: JSX.Element[]
 }
 
-export const Hero: FunctionComponent<HeroProps> = ({
+const Hero: FunctionComponent<HeroProps> = ({
   image,
   compact,
   overlapBlock,
@@ -26,3 +26,5 @@ export const Hero: FunctionComponent<HeroProps> = ({
     </div>
   )
 }
+
+export default Hero

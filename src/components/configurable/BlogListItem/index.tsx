@@ -4,8 +4,10 @@ interface BlogListItemProps {
   blogItem: any
 }
 
-export const BlogListItem = ({ blogItem }: BlogListItemProps) => {
+const BlogListItem = ({ blogItem }: BlogListItemProps) => {
   if (!blogItem) {
     return <></>
   }
 }
+
+export default BlogListItem

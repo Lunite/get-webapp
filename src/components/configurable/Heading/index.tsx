@@ -7,7 +7,7 @@ interface HeadingProps {
   level?: number
 }
 
-export const Heading: FunctionComponent<HeadingProps> = ({
+const Heading: FunctionComponent<HeadingProps> = ({
   className,
   subheading,
   underlined,
@@ -28,3 +28,5 @@ export const Heading: FunctionComponent<HeadingProps> = ({
     </>
   )
 }
+
+export default Heading

@@ -1,10 +1,10 @@
 import React from "react"
-import { BlockCTA } from "~/components/configurable/BlockCTA"
-import { Vector } from "~/components/configurable/Vector"
-import { Col3 } from "~/components/grid"
-import { Heading } from "~/components/configurable/Heading"
+import BlockCTA from "~/components/configurable/BlockCTA"
+import Vector from "~/components/configurable/Vector"
+import Col3 from "~/components/grid/Col3"
+import Heading from "~/components/configurable/Heading"
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__top">
@@ -67,3 +67,5 @@ export const Footer = () => {
     </footer>
   )
 }
+
+export default Footer

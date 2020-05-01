@@ -1,6 +1,6 @@
 import React from "react"
-import { BlockCTA } from "~/components/configurable/BlockCTA"
-import { Vector } from "~/components/configurable/Vector"
+import BlockCTA from "~/components/configurable/BlockCTA"
+import Vector from "~/components/configurable/Vector"
 
 interface InfoStripProps {
   location?: string
@@ -14,7 +14,7 @@ interface InfoStripProps {
   mapUrl?: string
 }
 
-export const InfoStrip = ({
+const InfoStrip = ({
   location,
   dcPeak,
   developer,
@@ -54,3 +54,5 @@ export const InfoStrip = ({
     </div>
   )
 }
+
+export default InfoStrip

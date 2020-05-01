@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import { Vector } from "~/components/configurable/Vector"
+import Vector from "~/components/configurable/Vector"
 
 interface BlockCTAProps {
   url?: string
@@ -10,7 +10,7 @@ interface BlockCTAProps {
   arrow?: "left" | "right"
 }
 
-export const BlockCTA: FunctionComponent<BlockCTAProps> = ({
+const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   url,
   submit,
   secondary,
@@ -57,3 +57,5 @@ export const BlockCTA: FunctionComponent<BlockCTAProps> = ({
     </a>
   )
 }
+
+export default BlockCTA

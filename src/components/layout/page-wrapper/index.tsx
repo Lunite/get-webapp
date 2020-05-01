@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react"
-import { Footer } from "~/components/layout/footer"
-import { Navigation } from "~/components/layout/navigation"
-import { SEO } from "~/components/util/SEO"
+import Footer from "~/components/layout/footer"
+import Navigation from "~/components/layout/navigation"
+import SEO from "~/components/util/SEO"
 
 interface PageWrapperProps {
   context: any
 }
 
-export const PageWrapper: FunctionComponent<PageWrapperProps> = ({
+const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
@@ -20,3 +20,5 @@ export const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     </>
   )
 }
+
+export default PageWrapper

@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react"
-
+import Col5 from "~/components/grid/Col5"
+import Col7 from "~/components/grid/Col7"
 interface FeatureBlockProps {
   image: JSX.Element
 }
 
-export const FeatureBlock: FunctionComponent<FeatureBlockProps> = ({
+const FeatureBlock: FunctionComponent<FeatureBlockProps> = ({
   image,
   children,
 }) => {
@@ -19,3 +20,5 @@ export const FeatureBlock: FunctionComponent<FeatureBlockProps> = ({
     </div>
   )
 }
+
+export default FeatureBlock

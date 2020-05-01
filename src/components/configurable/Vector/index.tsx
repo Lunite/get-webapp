@@ -1,21 +1,24 @@
-import React, { useEffect } from "react"
+import React, { useEffect, FunctionComponent } from "react"
 
 interface VectorProps {
   src: string
 }
 
-export const Vector = ({ src }: VectorProps) => {
+const Vector: FunctionComponent<VectorProps> = ({ src }) => {
   let SVG
 
   useEffect(() => {
     ;(async () => {
       await import(`~/images/${src}`)
         .then(svg => {
+          debugger
           SVG = svg.ReactComponent
         })
         .catch(e => {})
     })()
   }, [])
 
-  return <SVG />
+  return <>{SVG && <SVG />}</>
 }
+
+export default Vector

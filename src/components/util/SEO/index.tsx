@@ -8,7 +8,7 @@ interface SEOProps {
   image?: string
 }
 
-export const SEO: FunctionComponent<SEOProps> = ({
+const SEO: FunctionComponent<SEOProps> = ({
   title,
   alias,
   description,
@@ -46,3 +46,5 @@ export const SEO: FunctionComponent<SEOProps> = ({
     </Helmet>
   )
 }
+
+export default SEO

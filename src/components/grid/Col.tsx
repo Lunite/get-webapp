@@ -5,14 +5,12 @@ interface ColProps {
   indent?: boolean
 }
 
-export const Col: FunctionComponent<ColProps> = ({
-  columns,
-  indent,
-  children,
-}) => {
+const Col: FunctionComponent<ColProps> = ({ columns, indent, children }) => {
   return (
     <div className={`col-${columns} ${indent ? "u-layout--indent" : ""}`}>
       {children}
     </div>
   )
 }
+
+export default Col

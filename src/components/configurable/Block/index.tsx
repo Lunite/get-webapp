@@ -5,7 +5,7 @@ interface BlockProps {
   highlightColour?: "blue" | "green"
 }
 
-export const Block: FunctionComponent<BlockProps> = ({
+const Block: FunctionComponent<BlockProps> = ({
   className,
   highlightColour,
   children,
@@ -20,3 +20,5 @@ export const Block: FunctionComponent<BlockProps> = ({
     </div>
   )
 }
+
+export default Block
