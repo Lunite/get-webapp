@@ -22,63 +22,61 @@ exports.createPages = async ({ graphql, actions }) => {
   // queries against the local Gatsby GraphQL schema. Think of
   // it like the site has a built-in database constructed
   // from the fetched data that you can run queries against.
-  const result = await graphql(`
-    {
-      allWordpressPage {
-        edges {
-          node {
-            id
-            path
-            status
-            template
-          }
-        }
-      }
-      allWordpressPost {
-        edges {
-          node {
-            id
-            path
-            status
-            template
-            format
-          }
-        }
-      }
-    }
-  `)
 
-  // Check for any errors
-  if (result.errors) {
-    throw new Error(result.errors)
+  const getPostsFromCategory = category => {
+    const postsQuery = `query getAllWordpressPosts($category: String) {
+      allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: $category}}}}) {
+        nodes {
+          id
+          content
+          path
+          slug
+          title
+          acf {
+            description
+            related_products
+            image {
+              source_url
+              caption
+              alt_text
+            }
+            information {
+              dc_peak
+              developer
+              inverters
+              location
+              map_url
+              modules
+            }
+          }
+        }
+      }
+    }`
+
+    return graphql(postsQuery, { category }).then(results => {
+      if (!results.data.allWordpressPost.nodes.length) {
+        return Promise.resolve()
+      }
+
+      const template = path.resolve(`./src/templates/${category}/index.tsx`)
+
+      results.data.allWordpressPost.nodes.forEach(node => {
+        createPage({
+          path: `${category}/${node.slug}`,
+          component: slash(template),
+          context: {
+            content: node.context,
+            title: node.title,
+            slug: node.slug,
+            acf: node.acf,
+          },
+        })
+      })
+    })
   }
 
-  // Access query results via object destructuring
-  const { allWordpressPost } = result.data
-
-  // Create Page pages.
-  const projectTemplate = path.resolve(`./src/templates/project/index.tsx`)
-  // We want to create a detailed page for each page node.
-  // The path field contains the relative original WordPress link
-  // and we use it for the slug to preserve url structure.
-  // The Page ID is prefixed with 'PAGE_'
-  allWordpressPost.edges.forEach(edge => {
-    // Gatsby uses Redux to manage its internal state.
-    // Plugins and sites can use functions like "createPage"
-    // to interact with Gatsby.
-
-    console.log(edge)
-
-    createPage({
-      // Each page is required to have a `path` as well
-      // as a template component. The `context` is
-      // optional but is often necessary so the template
-      // can query data specific to each page.
-      path: edge.node.path,
-      component: slash(projectTemplate),
-      context: {
-        id: edge.node.id,
-      },
-    })
-  })
+  return Promise.all([
+    getPostsFromCategory("project"),
+    getPostsFromCategory("service"),
+  ])
 }

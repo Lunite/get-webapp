@@ -7,48 +7,44 @@ import Col6 from "~/components/grid/Col6"
 import Image from "~/components/configurable/Image"
 import InfoStrip from "~/components/configurable/InfoStrip"
 
-interface ProjectProps {
-  context: any
-}
+const Project: FunctionComponent<any> = context => {
+  const { title, acf, slug } = context.pageContext
 
-const Project: FunctionComponent<ProjectProps> = ({ context }) => {
   return (
-    <PageWrapper context={context}>
-      <Hero image="project-image-large.jpg" compact>
-        <Heading subheading="Commercial Installation">
-          Title Title Title
-        </Heading>
+    <PageWrapper context={{ title, acf, slug }}>
+      <Hero image={acf.image.source_url} compact>
+        <Heading subheading="Commercial Installation">{title}</Heading>
       </Hero>
       <Block>
         <Col6 indent>
-          <p>
-            Description Description Description Description Description
-            Description Description Description
-          </p>
+          <p>{acf.description}</p>
         </Col6>
         <Col6 indent>
-          <Image src="project-image-small.jpg" title="Title Title Title" />
+          <Image src={acf.image.source_url} title={title} />
         </Col6>
       </Block>
       <Block className="project__details-strip">
         <InfoStrip
-          location="Location"
-          dcPeak="DC Peak"
-          developer="Developer"
-          inverters="Inverters"
-          modules="Modules"
+          location={acf.information.location}
+          dcPeak={acf.information.dc_peak}
+          developer={acf.information.developer}
+          inverters={acf.information.inverters}
+          modules={acf.information.modules}
+          mapUrl={acf.information.map_url}
         />
       </Block>
-      <Block>
-        <Heading>Similar use cases:</Heading>
-        <Image
-          src="related-product-image.jpg"
-          title="Related Product Title"
-          hover={<p>related product info</p>}
-        />
-        TODO
-        {/** Loop through related projects */}
-      </Block>
+      {acf.related_products && (
+        <Block>
+          <Heading>Similar use cases:</Heading>
+          <Image
+            src="related-product-image.jpg"
+            title="Related Product Title"
+            hover={<p>related product info</p>}
+          />
+          TODO
+          {/** Loop through related projects */}
+        </Block>
+      )}
     </PageWrapper>
   )
 }
