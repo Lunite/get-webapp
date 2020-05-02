@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react"
 
+import "./styles.scss"
+
 interface HeadingProps {
   className?: string
   subheading?: string
@@ -18,7 +20,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
   return (
     <>
       <HeaderTag
-        className={`heading ${
+        className={`heading heading--${level} ${
           underlined ? "heading--underlined" : ""
         } ${className}`}
       >

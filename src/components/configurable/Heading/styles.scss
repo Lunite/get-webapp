@@ -1,2 +1,7 @@
+@import "~/styles/_variables.scss";
+
 .heading {
+  &--1 {
+    @extend %h1;
+  }
 }
