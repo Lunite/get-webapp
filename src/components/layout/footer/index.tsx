@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Vector from "~/components/configurable/Vector"
@@ -9,7 +8,28 @@ import Heading from "~/components/configurable/Heading"
 import { useSitemap } from "~/hooks/useSitemap"
 
 const Footer = () => {
-  const data = useSitemap()
+  const sitemap = useSitemap()
+
+  const getColumnItems = () => {
+    const columns = []
+
+    sitemap.forEach(sItem => {
+      if (sItem.title) {
+        columns.push(
+          <Col3 key={sItem.slug}>
+            <Heading className="footer__column-heading">{sItem.title}</Heading>
+            {sItem.children?.forEach(childItem => (
+              <a className="footer__item" href={childItem.path}>
+                {childItem.title}
+              </a>
+            ))}
+          </Col3>
+        )
+      }
+    })
+
+    return columns
+  }
 
   return (
     <footer className="footer">
@@ -37,29 +57,7 @@ const Footer = () => {
                 </span>
               </div>
             </Col3>
-            <Col3>
-              <Heading className="footer__column-heading">Services</Heading>
-              <a className="footer__item" href="">
-                Industrial &amp; Commercial
-              </a>
-              TODO
-              {/* Loop through service pages */}
-            </Col3>
-            <Col3>
-              <Heading className="footer__column-heading">Use Cases</Heading>
-              <a className="footer__item" href="">
-                All Use Cases
-              </a>
-              TODO
-              {/* Loop through projects */}
-            </Col3>
-            <Col3>
-              <Heading className="footer__column-heading">Company</Heading>
-              <a className="footer__item" href="">
-                About
-              </a>
-              TODO
-            </Col3>
+            {getColumnItems()}
           </div>
         </div>
       </div>
