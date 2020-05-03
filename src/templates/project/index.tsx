@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react"
-import PageWrapper from "~/components/layout/page-wrapper"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
@@ -11,9 +10,11 @@ const Project: FunctionComponent<any> = context => {
   const { title, acf, slug } = context.pageContext
 
   return (
-    <PageWrapper context={{ title, acf, slug }}>
+    <>
       <Hero image={acf.image.source_url} compact>
-        <Heading subheading="Commercial Installation">{title}</Heading>
+        <Heading level={1} subheading={acf.subheading}>
+          {title}
+        </Heading>
       </Hero>
       <Block>
         <Col6 indent>
@@ -45,7 +46,7 @@ const Project: FunctionComponent<any> = context => {
           {/** Loop through related projects */}
         </Block>
       )}
-    </PageWrapper>
+    </>
   )
 }
 

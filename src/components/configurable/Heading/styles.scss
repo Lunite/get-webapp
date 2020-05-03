@@ -2,6 +2,17 @@
 
 .heading {
   &--1 {
-    // @extend %h1;
+    color: $dark-blue;
+    @extend %h1;
+  }
+
+  &--2 {
+    color: $dark-blue;
+    @extend %h2;
+  }
+
+  &--3 {
+    color: $light-blue;
+    @extend %h3;
   }
 }

@@ -1,10 +1,16 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Vector from "~/components/configurable/Vector"
 import Col3 from "~/components/grid/Col3"
 import Heading from "~/components/configurable/Heading"
 
+import { useSitemap } from "~/hooks/useSitemap"
+
 const Footer = () => {
+  const data = useSitemap()
+
   return (
     <footer className="footer">
       <div className="footer__top">

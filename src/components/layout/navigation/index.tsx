@@ -1,7 +1,10 @@
 import React, { FunctionComponent } from "react"
 import Vector from "~/components/configurable/Vector"
+import { useSitemap } from "~/hooks/useSitemap"
 
 const Navigation: FunctionComponent = () => {
+  const sitemap = useSitemap()
+
   return (
     <header className="navigation">
       <div className="navigation__top">

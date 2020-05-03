@@ -1,5 +1,5 @@
 $dark-blue: #051c3f;
-$light-view: #3c96c5;
+$light-blue: #3c96c5;
 $green: #70b33b;
 $black-paragraph: #333333;
 $black-paragraph-light: #4f4f4f;
@@ -17,42 +17,42 @@ $space-m: 44px;
 $space-l: 62px;
 $space-xl: 96px;
 
-#h1 {
+%h1 {
   font-size: 48px;
   font-family: "gothambold";
 }
 
-#h2 {
+%h2 {
   font-size: 40px;
   font-family: "gothambold";
 }
 
-.h3 {
+%h3 {
   font-size: 32px;
   font-family: "gothambold";
 }
 
-.p {
+%p {
   font-size: 18px;
   font-family: "gothambook";
 }
 
-.p-large {
+%p-large {
   font-size: 20px;
   font-family: "gothambook";
 }
 
-.p-display {
+%p-display {
   font-size: 24px;
   font-family: "gothambook";
 }
 
-.p-small {
+%p-small {
   font-size: 16px;
   font-family: "gothamblack";
 }
 
-.p-little {
+%p-little {
   font-size: 14px;
   font-family: "gothamlight";
 }
