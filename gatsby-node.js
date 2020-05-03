@@ -9,6 +9,8 @@
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
 
+const sitemap = []
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -41,7 +43,45 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }`
 
-  createPages = category => {
+  const addToSitemap = (path, node) => {
+    const pathParts = path.split("/")
+
+    if (pathParts.length === 1) {
+      // root post (page)
+      sitemap[node.slug] = {
+        title: node.title,
+        slug: node.slug,
+        children: [],
+      }
+
+      return
+    }
+
+    if (pathParts.length === 2) {
+      // post is within a category
+
+      if (!sitemap[pathParts[1]]) {
+        // add category as it isn't in sitemap
+        sitemap[pathParts[1]] = {
+          children: [
+            {
+              title: node.title,
+              slug: node.slug,
+            },
+          ],
+        }
+
+        return
+      }
+
+      sitemap[pathParts[1]].children.push({
+        title: node.title,
+        slug: node.slug,
+      })
+    }
+  }
+
+  const createPages = category => {
     return graphql(postsQuery, { category }).then(results => {
       if (!results.data.allWordpressPost.nodes.length) {
         return Promise.resolve()
@@ -50,8 +90,12 @@ exports.createPages = async ({ graphql, actions }) => {
       const template = path.resolve(`./src/templates/${category}/index.tsx`)
 
       results.data.allWordpressPost.nodes.forEach(node => {
+        const path = `${category !== "page" ? `${category}/` : ""}${node.slug}`
+
+        addToSitemap(path, node)
+
         createPage({
-          path: `${category !== "page" ? `${category}/` : ""}${node.slug}`,
+          path,
           component: slash(template),
           context: {
             content: node.content,

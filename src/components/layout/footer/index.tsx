@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="footer__bottom">
         <div className="container">
           <span className="u-font--xsmall u-font--muted right">
-            &copy; &bull; Green Energy Together &bull; &copy;
+            &copy; &bull; Green Energy Together &bull; 2020
           </span>
         </div>
       </div>
