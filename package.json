@@ -16,6 +16,7 @@
     "gatsby-plugin-svgr": "2.0.2",
     "gatsby-plugin-typescript": "2.4.0",
     "gatsby-source-filesystem": "2.2.5",
+    "gatsby-source-graphql": "^2.5.0",
     "gatsby-source-wordpress": "3.3.0",
     "gatsby-transformer-sharp": "2.4.7",
     "graphql-hooks": "^4.4.4",

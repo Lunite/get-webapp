@@ -38,6 +38,14 @@ module.exports = {
         extensions: ["tsx", "ts", "svg", "jpg"],
       },
     },
+    // {
+    //   resolve: "gatsby-source-graphql",
+    //   options: {
+    //     typeName: "WPGraphQL",
+    //     fieldName: "wpgraphql",
+    //     url: "http://api-v1.get-uk.com/graphql",
+    //   },
+    // },
     {
       resolve: "gatsby-source-wordpress",
       options: {

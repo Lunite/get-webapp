@@ -21,12 +21,14 @@ export const useSitemap = () => {
       allSitePage {
         nodes {
           path
+          context {
+            title
+            slug
+          }
         }
       }
     }
   `)?.allSitePage?.nodes as AllSitePageNode[]
-
-  console.log(sitemap)
 
   if (!sitemap) {
     return []
