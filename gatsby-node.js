@@ -13,7 +13,6 @@ exports.createPages = async ({ graphql, actions }) => {
         slug
         title
         acf {
-          description
           related_products
           image {
             source_url
@@ -42,8 +41,18 @@ exports.createPages = async ({ graphql, actions }) => {
       const template = path.resolve(`./src/templates/${category}/index.tsx`)
 
       results.data.allWordpressPost.nodes.forEach(node => {
+        const path = (() => {
+          console.log(node)
+
+          if (node.slug === "homepage") {
+            return "/"
+          }
+
+          return `${category !== "page" ? `${category}/` : ""}${node.slug}`
+        })()
+
         createPage({
-          path: `${category !== "page" ? `${category}/` : ""}${node.slug}`,
+          path,
           component: slash(template),
           context: {
             content: node.content,
