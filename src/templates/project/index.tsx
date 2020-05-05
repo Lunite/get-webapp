@@ -7,34 +7,38 @@ import Image from "~/components/configurable/Image"
 import InfoStrip from "~/components/configurable/InfoStrip"
 
 const Project: FunctionComponent<any> = context => {
-  const { title, acf, slug } = context.pageContext
+  const { title, acf } = context.pageContext
+
+  console.log(context.pageContext)
+
+  const { project } = acf
 
   return (
     <>
-      <Hero image={acf.image.source_url} compact>
-        <Heading level={1} subheading={acf.subheading}>
+      <Hero image={project.image.source_url} compact>
+        <Heading level={1} subheading={project.subheading}>
           {title}
         </Heading>
       </Hero>
       <Block>
         <Col6 indent>
-          <p>{acf.description}</p>
+          <p>{project.description}</p>
         </Col6>
         <Col6 indent>
-          <Image src={acf.image.source_url} title={title} />
+          <Image src={project.image.source_url} title={title} />
         </Col6>
       </Block>
       <Block className="project__details-strip">
         <InfoStrip
-          location={acf.information.location}
-          dcPeak={acf.information.dc_peak}
-          developer={acf.information.developer}
-          inverters={acf.information.inverters}
-          modules={acf.information.modules}
-          mapUrl={acf.information.map_url}
+          location={project.information.location}
+          dcPeak={project.information.dc_peak}
+          developer={project.information.developer}
+          inverters={project.information.inverters}
+          modules={project.information.modules}
+          mapUrl={project.information.map_url}
         />
       </Block>
-      {acf.related_products && (
+      {project.related_products && (
         <Block>
           <Heading>Similar use cases:</Heading>
           <Image

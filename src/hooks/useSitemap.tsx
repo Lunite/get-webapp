@@ -39,6 +39,11 @@ export const useSitemap = () => {
   sitemap.forEach(sItem => {
     const [, parent, post] = sItem.path.split("/")
 
+    if (!sItem.context || !sItem.context.title) {
+      // for some reason the item doesn't have a title
+      return
+    }
+
     const item: SitemapItem = {
       title: sItem.context.title,
       slug: sItem.context.slug,
