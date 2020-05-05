@@ -9,6 +9,10 @@ import InfoStrip from "~/components/configurable/InfoStrip"
 const Service: FunctionComponent<any> = context => {
   const { title, acf, slug } = context.pageContext
 
+  const { service } = acf
+
+  console.log(service)
+
   return <></>
 }
 

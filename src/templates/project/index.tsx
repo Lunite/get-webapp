@@ -28,16 +28,18 @@ const Project: FunctionComponent<any> = context => {
           <Image src={project.image.source_url} title={title} />
         </Col6>
       </Block>
-      <Block className="project__details-strip">
-        <InfoStrip
-          location={project.information.location}
-          dcPeak={project.information.dc_peak}
-          developer={project.information.developer}
-          inverters={project.information.inverters}
-          modules={project.information.modules}
-          mapUrl={project.information.map_url}
-        />
-      </Block>
+      {project.information && (
+        <Block className="project__details-strip">
+          <InfoStrip
+            location={project.information.location}
+            dcPeak={project.information.dc_peak}
+            developer={project.information.developer}
+            inverters={project.information.inverters}
+            modules={project.information.modules}
+            mapUrl={project.information.map_url}
+          />
+        </Block>
+      )}
       {project.related_products && (
         <Block>
           <Heading>Similar use cases:</Heading>
