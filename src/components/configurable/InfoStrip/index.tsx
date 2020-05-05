@@ -50,7 +50,11 @@ const InfoStrip = ({
         {whereToFindUs &&
           getInfoItem("whereToFindUs", "Where to find us", whereToFindUs)}
       </div>
-      {mapUrl && <BlockCTA url={mapUrl}>Check on Map</BlockCTA>}
+      {mapUrl && (
+        <BlockCTA url={mapUrl} external>
+          Check on Map
+        </BlockCTA>
+      )}
     </div>
   )
 }

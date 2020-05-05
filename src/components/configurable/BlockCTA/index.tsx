@@ -8,6 +8,7 @@ interface BlockCTAProps {
   left?: boolean
   right?: boolean
   arrow?: "left" | "right"
+  external?: boolean
 }
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
@@ -18,6 +19,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   right,
   arrow,
   children,
+  external,
 }) => {
   if (!url && !submit) {
     return
@@ -50,7 +52,11 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   }
 
   return (
-    <a className={`block-cta ${extraClasses()}`} href={url}>
+    <a
+      className={`block-cta ${extraClasses()}`}
+      href={url}
+      target={external ? "_blank" : "_self"}
+    >
       {arrow === "left" && <Vector src="arrow-left" />}
       {children}
       {arrow === "right" && <Vector src="arrow-right" />}

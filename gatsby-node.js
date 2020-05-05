@@ -38,6 +38,12 @@ exports.createPages = async ({ graphql, actions }) => {
               source_url
               title
             }
+            info_location
+            info_dc_peak
+            info_developer
+            info_inverters
+            info_modules
+            info_map_url
             related_projects
           }
         }
