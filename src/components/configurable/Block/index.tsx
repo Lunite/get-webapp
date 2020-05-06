@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react"
 
+import "./styles.scss"
+
 interface BlockProps {
   className?: string
   highlightColour?: "blue" | "green"

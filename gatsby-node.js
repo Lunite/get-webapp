@@ -114,31 +114,36 @@ exports.createPages = async ({ graphql, actions }) => {
   }`
 
   const createPages = (query, category) => {
-    return graphql(query, { category }).then(results => {
-      if (!results.data.allWordpressPost.nodes.length) {
-        return Promise.resolve()
-      }
-      const template = path.resolve(`./src/templates/${category}/index.tsx`)
-      results.data.allWordpressPost.nodes.forEach(node => {
-        const path = (() => {
-          if (node.slug === "homepage") {
-            return "/"
-          }
-          return `${category !== "page" ? `${category}/` : ""}${node.slug}`
-        })()
+    try {
+      return graphql(query, { category }).then(results => {
+        if (!results.data.allWordpressPost.nodes.length) {
+          return Promise.resolve()
+        }
 
-        createPage({
-          path,
-          component: slash(template),
-          context: {
-            content: node.content,
-            title: node.title,
-            slug: node.slug,
-            acf: node.acf,
-          },
+        const template = path.resolve(`./src/templates/${category}/index.tsx`)
+        results.data.allWordpressPost.nodes.forEach(node => {
+          const path = (() => {
+            if (node.slug === "homepage") {
+              return "/"
+            }
+            return `${category !== "page" ? `${category}/` : ""}${node.slug}`
+          })()
+
+          createPage({
+            path,
+            component: slash(template),
+            context: {
+              content: node.content,
+              title: node.title,
+              slug: node.slug,
+              acf: node.acf,
+            },
+          })
         })
       })
-    })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return Promise.all([

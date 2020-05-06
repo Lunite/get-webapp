@@ -14,7 +14,7 @@ const Navigation: FunctionComponent = () => {
             <a className="customer-switcher__link">For your Business</a>
           </div>
           <div className="navigation__contact-details right">
-            <a href="/contact">
+            <a href="/contact-us">
               <Vector src="at" />
               Contact us
             </a>
