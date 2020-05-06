@@ -44,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
             info_inverters
             info_modules
             info_map_url
-            related_projects
           }
         }
         title
@@ -61,6 +60,10 @@ exports.createPages = async ({ graphql, actions }) => {
         id
         acf {
           service {
+            hero_image {
+              source_url
+              title
+            }
             block_1_description
             block_1_heading
             block_1_highlight_1
@@ -118,7 +121,6 @@ exports.createPages = async ({ graphql, actions }) => {
       const template = path.resolve(`./src/templates/${category}/index.tsx`)
       results.data.allWordpressPost.nodes.forEach(node => {
         const path = (() => {
-          console.log(node)
           if (node.slug === "homepage") {
             return "/"
           }

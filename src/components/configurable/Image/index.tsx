@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
 interface ImageProps {
   src: string
@@ -9,7 +9,14 @@ interface ImageProps {
   url?: string
 }
 
-const Image = ({ src, title, caption, shoutout, hover, url }: ImageProps) => {
+const Image: FunctionComponent<ImageProps> = ({
+  src,
+  title,
+  caption,
+  shoutout,
+  hover,
+  url,
+}) => {
   const image = <img className="image" src={src} alt={title} title={title} />
 
   const getHoverContent = () => {

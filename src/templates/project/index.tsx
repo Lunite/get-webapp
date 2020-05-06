@@ -38,18 +38,20 @@ const Project: FunctionComponent<any> = context => {
           mapUrl={project.info_map_url}
         />
       </Block>
-      {project.related_products && (
-        <Block>
-          <Heading>Similar use cases:</Heading>
-          <Image
-            src="related-product-image.jpg"
-            title="Related Product Title"
-            hover={<p>related product info</p>}
-          />
-          TODO
-          {/** Loop through related projects */}
-        </Block>
-      )}
+      {
+        // project.related_products && (
+        // <Block>
+        //   <Heading>Similar use cases:</Heading>
+        //   <Image
+        //     src="related-product-image.jpg"
+        //     title="Related Product Title"
+        //     hover={<p>related product info</p>}
+        //   />
+        //   TODO
+        //   {/** Loop through related projects */}
+        // </Block>
+        //)
+      }
     </>
   )
 }
