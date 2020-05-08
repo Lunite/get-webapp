@@ -6,7 +6,9 @@ import Col6 from "~/components/grid/Col6"
 import Image from "~/components/configurable/Image"
 import InfoStrip from "~/components/configurable/InfoStrip"
 
+// gatsby-node passes in data as context variable
 const Project: FunctionComponent<any> = context => {
+  // this asigns two variables title and acf e.g. context.pageContext.title
   const { title, acf } = context.pageContext
 
   console.log(context.pageContext)

@@ -9,6 +9,8 @@ import Col6 from "~/components/grid/Col6"
 import Image from "~/components/configurable/Image"
 import Vector from "~/components/configurable/Vector"
 
+import "./styles.scss"
+
 const Service: FunctionComponent<any> = context => {
   const { title, acf } = context.pageContext
 
