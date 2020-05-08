@@ -1,15 +1,17 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Vector from "~/components/configurable/Vector"
 import Col3 from "~/components/grid/Col3"
 import Heading from "~/components/configurable/Heading"
 
-import { useSitemap } from "~/hooks/useSitemap"
+import { SitemapItem } from "~/hooks/useSitemap"
 
-const Footer = () => {
-  const sitemap = useSitemap()
+interface FooterProps {
+  sitemap: SitemapItem[]
+}
 
+const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
   const getColumnItems = () => {
     const columns = []
 

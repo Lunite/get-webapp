@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
       nodes {
         id
         acf {
+          post_type
           page {
             description
             in_sitemap
@@ -27,6 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
       nodes {
         id
         acf {
+          post_type
           project {
             description
             hero_image {
@@ -59,6 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
       nodes {
         id
         acf {
+          post_type
           service {
             hero_image {
               source_url
