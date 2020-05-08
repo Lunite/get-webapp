@@ -1,3 +1,6 @@
+@import "./breakpoints.scss";
+
+/* Colours */
 $dark-blue: #051c3f;
 $light-blue: #3c96c5;
 $green: #70b33b;
@@ -11,48 +14,52 @@ $gradient-light-blue: linear-gradient(180deg, #3c96c5 0%, #4db9af 100%);
 $lighter-grey: #fafafa;
 $white: #fff;
 
+/* Spacings */
 $space-s: 10px;
 $space: 32px;
 $space-m: 44px;
 $space-l: 62px;
 $space-xl: 96px;
 
+/* Font stuff */
+$bold-family: "gothambold", sans-serif;
+
 %h1 {
   font-size: 48px;
-  font-family: "gothambold";
+  font-family: "gothambold", sans-serif;
 }
 
 %h2 {
   font-size: 40px;
-  font-family: "gothambold";
+  font-family: "gothambold", sans-serif;
 }
 
 %h3 {
   font-size: 32px;
-  font-family: "gothambold";
+  font-family: "gothambold", sans-serif;
 }
 
 %p {
   font-size: 18px;
-  font-family: "gothambook";
+  font-family: "gothambook", sans-serif;
 }
 
 %p-large {
   font-size: 20px;
-  font-family: "gothambook";
+  font-family: "gothambook", sans-serif;
 }
 
 %p-display {
   font-size: 24px;
-  font-family: "gothambook";
+  font-family: "gothambook", sans-serif;
 }
 
 %p-small {
   font-size: 16px;
-  font-family: "gothamblack";
+  font-family: "gothamblack", sans-serif;
 }
 
 %p-little {
   font-size: 14px;
-  font-family: "gothamlight";
+  font-family: "gothamlight", sans-serif;
 }

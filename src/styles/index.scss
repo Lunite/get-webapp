@@ -1,1 +1,6 @@
-@import "./normalize.scss", "./simple-grid.scss", "./fonts.scss";
+@import "./variables", "./normalize.scss", "./simple-grid.scss", "./fonts.scss";
+
+html,
+body {
+  @extend %p;
+}

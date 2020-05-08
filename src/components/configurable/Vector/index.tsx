@@ -1,15 +1,11 @@
-import React, { useEffect, FunctionComponent } from "react"
+import React, { useEffect } from "react"
 
-interface VectorProps {
-  src: string
-}
-
-const Vector: FunctionComponent<VectorProps> = ({ src }) => {
+const Vector = props => {
   let SVG
 
   useEffect(() => {
     ;(async () => {
-      await import(`~/vectors/${src}`)
+      await import(`~/vectors/${props.src}`)
         .then(svg => {
           debugger
           SVG = svg.ReactComponent
@@ -18,7 +14,7 @@ const Vector: FunctionComponent<VectorProps> = ({ src }) => {
     })()
   }, [])
 
-  return <>{SVG && <SVG />}</>
+  return <>{SVG && <SVG {...props} />}</>
 }
 
 export default Vector

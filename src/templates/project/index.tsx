@@ -22,7 +22,7 @@ const Project: FunctionComponent<any> = context => {
       </Hero>
       <Block>
         <Col6 indent>
-          <p>{project.description}</p>
+          <div dangerouslySetInnerHTML={{ __html: project.description }} />
         </Col6>
         <Col6 indent>
           <Image src={project.image.source_url} title={title} />

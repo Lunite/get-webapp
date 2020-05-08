@@ -16,7 +16,7 @@ interface AllSitePageNode {
   }
 }
 
-export const useSitemap = () => {
+export const useSitemap = (): SitemapItem[] => {
   const sitemapNodes =
     (useStaticQuery(graphql`
       query MySitemapQuery {

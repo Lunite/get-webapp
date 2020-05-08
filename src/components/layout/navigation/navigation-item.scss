@@ -1,0 +1,26 @@
+@import "~/styles/_variables.scss";
+
+.navigation-item {
+  display: inline-flex;
+  height: 100%;
+  padding: 0 20px;
+
+  &__link {
+    align-self: center;
+    padding: 20px;
+
+    &:focus,
+    &:active {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__children {
+    display: none;
+  }
+
+  &--shout {
+    background-color: $green;
+  }
+}

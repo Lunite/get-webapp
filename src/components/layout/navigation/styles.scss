@@ -1,0 +1,50 @@
+@import "~/styles/_variables";
+
+.navigation {
+  position: sticky;
+  top: 0;
+  background-color: $dark-blue;
+  color: $white;
+
+  &__top {
+    display: none;
+
+    @media ($phablet) {
+      display: block;
+      font-size: 16px;
+      font-family: $bold-family;
+      border-bottom: 1px solid $white;
+
+      .container {
+        display: flex;
+        align-items: center;
+        height: 40px;
+      }
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: auto;
+    grid-template-rows: 100%;
+    grid-template-areas: "a b c";
+
+    @media ($phablet) {
+      height: 120px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: flex-end;
+    grid-area: c;
+  }
+
+  &__logo {
+    grid-area: a;
+  }
+}
+
+.customer-switcher {
+}
