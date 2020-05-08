@@ -32,13 +32,19 @@ export const useSitemap = () => {
       }
     `)?.allSitePage?.nodes as AllSitePageNode[]) || []
 
+  const parentTitleMap = {
+    service: "Services",
+    project: "Use Cases",
+    company: "Company",
+  }
+
   const restructureSitemap = (sitemap: AllSitePageNode[]): SitemapItem[] => {
     let restructuredSitemap: SitemapItem[] = []
 
     sitemap.forEach(sItem => {
-      const [, parent, post] = sItem.path.split("/")
+      let [, parent, post] = sItem.path.split("/")
 
-      if (!sItem.context || !sItem.context.title) {
+      if (!parent || !sItem.context || !sItem.context.title) {
         // for some reason the item doesn't have a title
         return
       }
@@ -51,31 +57,29 @@ export const useSitemap = () => {
       }
 
       if (!post) {
-        // post is a page so add it as a root page
-        restructuredSitemap.push(item)
+        // add post as a child of Company
+        post = parent
+        parent = "company"
+      }
+
+      // get the index (location) of the parent item in the restructured sitemap
+      const parentIndex = restructuredSitemap.findIndex(
+        item => item.slug === parent
+      )
+
+      if (parentIndex < 0) {
+        // root page doesn't exist yet so add it
+
+        restructuredSitemap.push({
+          title: parentTitleMap[parent] || undefined,
+          slug: parent, // we only know the slug of the parent
+          children: [item],
+        })
 
         return
       }
 
-      if (parent && post) {
-        // get the index (location) of the parent item in the restructured sitemap
-        const parentIndex = sitemap.findIndex(
-          item => item?.context?.slug === parent
-        )
-
-        if (parentIndex < 0) {
-          // root page doesn't exist yet so add it
-
-          restructuredSitemap.push({
-            slug: parent, // we only know the slug of the parent
-            children: [item],
-          })
-
-          return
-        }
-
-        restructuredSitemap[parentIndex].children.push(item)
-      }
+      restructuredSitemap[parentIndex].children.push(item)
     })
 
     return restructuredSitemap

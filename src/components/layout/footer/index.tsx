@@ -12,25 +12,34 @@ interface FooterProps {
 }
 
 const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
-  const getColumnItems = () => {
-    const columns = []
+  const buildColumn = (parentSlug: string) => {
+    if (!sitemap?.length) {
+      return
+    }
 
-    sitemap.forEach(sItem => {
-      if (sItem.title) {
-        columns.push(
-          <Col3 key={sItem.slug}>
-            <Heading className="footer__column-heading">{sItem.title}</Heading>
-            {sItem.children?.forEach(childItem => (
-              <a className="footer__item" href={childItem.path}>
-                {childItem.title}
-              </a>
-            ))}
-          </Col3>
-        )
-      }
+    const parentItem = sitemap.find(parent => parent.slug === parentSlug)
+
+    if (!parentItem.title || !parentItem.children?.length) {
+      // if no title or children, do not show
+      return
+    }
+
+    const childNodes = []
+
+    parentItem.children.forEach(cItem => {
+      childNodes.push(
+        <a key={cItem.slug} className="footer__item" href={cItem.path}>
+          {cItem.title}
+        </a>
+      )
     })
 
-    return columns
+    return (
+      <Col3>
+        <Heading className="footer__column-heading">{parentItem.title}</Heading>
+        {childNodes}
+      </Col3>
+    )
   }
 
   return (
@@ -59,7 +68,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                 </span>
               </div>
             </Col3>
-            {getColumnItems()}
+            {buildColumn("service")}
+            {buildColumn("project")}
+            {buildColumn("company")}
           </div>
         </div>
       </div>

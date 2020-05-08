@@ -8,10 +8,8 @@ import InfoStrip from "~/components/configurable/InfoStrip"
 
 // gatsby-node passes in data as context variable
 const Project: FunctionComponent<any> = context => {
-  // this asigns two variables title and acf e.g. context.pageContext.title
+  // this asigns two variables title and acf e.g. context.pageContext.title and context.pageContext.acf
   const { title, acf } = context.pageContext
-
-  console.log(context.pageContext)
 
   const { project } = acf
 
