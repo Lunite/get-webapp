@@ -60,7 +60,7 @@ export const useSitemap = () => {
       if (parent && post) {
         // get the index (location) of the parent item in the restructured sitemap
         const parentIndex = sitemap.findIndex(
-          item => item.context.slug === parent
+          item => item?.context?.slug === parent
         )
 
         if (parentIndex < 0) {
