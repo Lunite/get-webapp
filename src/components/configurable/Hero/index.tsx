@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react"
 
+import "./styles.scss"
+
 interface HeroProps {
   image: string
   compact?: boolean
@@ -17,7 +19,7 @@ const Hero: FunctionComponent<HeroProps> = ({
       className={`hero hero--${compact ? "compact" : "large"}`}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="container">
+      <div className="container u-layout--indent">
         {children}
         {overlapBlock && (
           <div className="hero__overlap-block">{overlapBlock}</div>

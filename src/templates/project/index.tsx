@@ -15,18 +15,20 @@ const Project: FunctionComponent<any> = context => {
 
   return (
     <>
-      <Hero image={project.image.source_url} compact>
-        <Heading level={1} subheading={project.subheading}>
+      <Hero image={project.hero_image?.source_url} compact>
+        <Heading level={1} subheading={project.subheading} underlined>
           {title}
         </Heading>
       </Hero>
       <Block>
-        <Col6 indent>
-          <div dangerouslySetInnerHTML={{ __html: project.description }} />
-        </Col6>
-        <Col6 indent>
-          <Image src={project.image.source_url} title={title} />
-        </Col6>
+        <div className="container">
+          <Col6 indent>
+            <div dangerouslySetInnerHTML={{ __html: project.description }} />
+          </Col6>
+          <Col6 indent>
+            <Image src={project.image.source_url} title={title} />
+          </Col6>
+        </div>
       </Block>
       <Block className="project__details-strip">
         <InfoStrip

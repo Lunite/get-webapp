@@ -1,3 +1,9 @@
+@import "~/styles/_variables.scss";
+
 .block {
   max-width: 1440px;
+
+  @media ($phablet) {
+    padding: $space-xl 0;
+  }
 }

@@ -10,7 +10,7 @@ interface HeadingProps {
 }
 
 const Heading: FunctionComponent<HeadingProps> = ({
-  className,
+  className = "",
   subheading,
   underlined,
   level = 2,

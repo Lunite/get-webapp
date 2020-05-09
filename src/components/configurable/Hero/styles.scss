@@ -1,0 +1,20 @@
+@import "~/styles/_variables.scss";
+
+.hero {
+  display: flex;
+  position: relative;
+  align-items: center;
+  color: $white;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    background: linear-gradient(90deg, #051b3f 0%, rgba(196, 196, 196, 0) 100%);
+  }
+
+  &--compact {
+    @media ($phablet) {
+      height: 224px;
+    }
+  }
+}

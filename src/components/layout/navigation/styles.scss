@@ -1,10 +1,10 @@
 @import "~/styles/_variables";
 
 .navigation {
-  position: sticky;
-  top: 0;
+  position: relative;
   background-color: $dark-blue;
   color: $white;
+  z-index: 100;
 
   &__top {
     display: none;

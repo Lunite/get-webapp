@@ -1,0 +1,10 @@
+.u-layout {
+  &--indent {
+    padding-left: 116px;
+  }
+
+  &--sticky-top {
+    position: sticky;
+    top: 0;
+  }
+}

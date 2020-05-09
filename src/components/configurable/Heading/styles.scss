@@ -2,17 +2,30 @@
 
 .heading {
   &--1 {
-    color: $dark-blue;
     @extend %h1;
   }
 
   &--2 {
-    color: $dark-blue;
     @extend %h2;
   }
 
   &--3 {
-    color: $light-blue;
     @extend %h3;
+  }
+
+  &--underlined {
+    position: relative;
+    padding-bottom: 16px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      left: 0;
+      bottom: 20px;
+      width: 120px;
+      height: 8px;
+      background-color: $light-blue;
+    }
   }
 }

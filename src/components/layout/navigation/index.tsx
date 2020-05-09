@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, Fragment } from "react"
 import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
 
@@ -47,6 +47,8 @@ interface NavigationProps {
 const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
   const switchCustomerType = () => {}
 
+  const navitem = `<NavItem slug="service" />`
+
   return (
     <header className="navigation">
       <div className="navigation__top">
@@ -78,7 +80,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
         <div className="navigation__main">
           <Vector className="navigation__logo logo" src="logo" />
           <div className="navigation__items right">
-            <NavItem slug="service" />
+            <Fragment>{navitem}</Fragment>
             <NavItem slug="project" />
             <NavItem slug="company" />
             <div className="navigation-item">
