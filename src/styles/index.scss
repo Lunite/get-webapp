@@ -7,3 +7,8 @@ body {
   line-height: 1.78;
   overflow-x: hidden;
 }
+
+body {
+  max-width: $max-width;
+  margin: 0 auto;
+}

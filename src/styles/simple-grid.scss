@@ -40,7 +40,7 @@ $gutter: 36px;
 
   @media ($laptop) {
     width: calc(100vw - 128px);
-    max-width: calc(1440px - 128px);
+    max-width: calc(#{$max-width} - 128px);
   }
 }
 
@@ -76,6 +76,8 @@ $gutter: 36px;
   width: 100%;
   display: inline-flex;
   align-self: flex-start;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 @media ($phablet) {
