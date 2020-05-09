@@ -37,8 +37,8 @@ const SEO: FunctionComponent<SEOProps> = ({
       <meta property="og:site_name" content={siteName} />
       {image && <meta property="og:image" content={image} />}
       {image && <meta property="og:image:secure_url" content={image} />}
-      {image && <meta property="og:image:width" content="600" />}
-      {image && <meta property="og:image:height" content="600" />}
+      {image && <meta property="og:image:width" content="300" />}
+      {image && <meta property="og:image:height" content="300" />}
       {image && <meta name="twitter:card" content={image} />}
       {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:title" content={`${siteName} | ${title}`} />

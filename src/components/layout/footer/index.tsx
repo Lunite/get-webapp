@@ -19,25 +19,19 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
 
     const parentItem = sitemap.find(parent => parent.slug === parentSlug)
 
-    if (!parentItem.title || !parentItem.children?.length) {
+    if (!parentItem?.title || !parentItem?.children?.length) {
       // if no title or children, do not show
       return
     }
 
-    const childNodes = []
-
-    parentItem.children.forEach(cItem => {
-      childNodes.push(
-        <a key={cItem.slug} className="footer__item" href={cItem.path}>
-          {cItem.title}
-        </a>
-      )
-    })
-
     return (
       <Col3>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>
-        {childNodes}
+        {parentItem.children.map(cItem => (
+          <a key={cItem.slug} className="footer__item" href={cItem.path}>
+            {cItem.title}
+          </a>
+        ))}
       </Col3>
     )
   }

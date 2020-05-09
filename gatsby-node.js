@@ -4,15 +4,17 @@ const { slash } = require(`gatsby-core-utils`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pagesQuery = `query getAllWordpressPosts {
-    allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: "page"}}}}) {
+  const pagesQuery = `query getAllWordpressPages {
+    allWordpressPage {
       nodes {
         id
         acf {
-          post_type
-          page {
+          seo {
+            keywords
             description
-            in_sitemap
+            image {
+              source_url
+            }
           }
         }
         title
@@ -116,21 +118,26 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }`
 
-  const createPages = (query, category) => {
+  const createPages = (query, category, queryName = "allWordpressPost") => {
     try {
       return graphql(query, { category }).then(results => {
-        if (!results.data.allWordpressPost.nodes.length) {
+        if (!results.data[queryName].nodes.length) {
           return Promise.resolve()
         }
 
         const template = path.resolve(`./src/templates/${category}/index.tsx`)
-        results.data.allWordpressPost.nodes.forEach(node => {
+
+        results.data[queryName].nodes.forEach(node => {
           const path = (() => {
             if (node.slug === "homepage") {
               return "/"
             }
             return `${category !== "page" ? `${category}/` : ""}${node.slug}`
           })()
+
+          if (category === "page") {
+            console.log(node)
+          }
 
           createPage({
             path,
@@ -150,7 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   return Promise.all([
-    createPages(pagesQuery, "page"),
+    createPages(pagesQuery, "page", "allWordpressPage"),
     createPages(projectsQuery, "project"),
     createPages(servicesQuery, "service"),
   ])

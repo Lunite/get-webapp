@@ -17,29 +17,20 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
    * This method returns the required SEO data that is then passed to the SEO component below
    */
   const seoData = (() => {
-    let title, slug, description, keywords, image
+    let title, slug, image
 
     // title and slug always come from the context
     title = context.title || ""
     slug = context.slug || ""
 
-    if (!context?.acf?.post_type) {
-      // the type of post is unknown so the other bits of data aren't available
+    if (!context?.acf?.seo) {
+      // there is no extra SEO information available
       return { title, slug }
     }
 
-    // this line is instead of needed if else if else blah blah
-    const ptAlias = context.acf.post_type.toLowerCase()
+    const { description, keywords } = context.acf.seo
 
-    // ptAlias is put here instead of doing context.acf.project.description as an example
-    description = context.acf[ptAlias]?.description
-    keywords = context.acf[ptAlias]?.keywords
-    image = context.acf[ptAlias]?.image?.source_url
-
-    if (ptAlias === "service") {
-      // in this scenario, the image comes from a different place
-      image = context.acf?.service?.block_1_image_1?.source_url
-    }
+    image = context.acf.seo?.image?.source_url
 
     return {
       title,
