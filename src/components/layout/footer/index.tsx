@@ -6,6 +6,7 @@ import Col3 from "~/components/grid/Col3"
 import Heading from "~/components/configurable/Heading"
 
 import { SitemapItem } from "~/hooks/useSitemap"
+import { Link } from "gatsby"
 
 interface FooterProps {
   sitemap: SitemapItem[]
@@ -28,9 +29,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       <Col3>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>
         {parentItem.children.map(cItem => (
-          <a key={cItem.slug} className="footer__item" href={cItem.path}>
+          <Link key={cItem.slug} className="footer__item" to={cItem.path}>
             {cItem.title}
-          </a>
+          </Link>
         ))}
       </Col3>
     )

@@ -1,4 +1,5 @@
-import React, { FunctionComponent, Fragment } from "react"
+import React, { FunctionComponent } from "react"
+import { Link } from "gatsby"
 import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
 
@@ -20,19 +21,19 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug }) => {
 
   return (
     <div className="navigation-item navigation-item--has-children">
-      <a className="navigation-item__link" href={item.path}>
+      <Link className="navigation-item__link" to={item.path}>
         {item.title}
-      </a>
+      </Link>
       {item.children?.length && (
         <div className="navigation-item__children">
           {item.children?.map(child => (
-            <a
+            <Link
               key={child.slug}
               className="navigation-item__link"
-              href={child.path}
+              to={child.path}
             >
               {child.title}
-            </a>
+            </Link>
           ))}
         </div>
       )}
@@ -44,25 +45,18 @@ interface NavigationProps {
   sitemap: SitemapItem[]
 }
 
-const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
-  const switchCustomerType = () => {}
-
-  const navitem = `<NavItem slug="service" />`
-
+const Navigation: FunctionComponent<NavigationProps> = () => {
   return (
     <header className="navigation">
       <div className="navigation__top">
         <div className="container">
           <div className="navigation__customer-switcher customer-switcher">
-            <a
-              className="customer-switcher__link link--active"
-              onClick={switchCustomerType}
-            >
+            <Link className="customer-switcher__link" to="/">
               For your Home
-            </a>
-            <a className="customer-switcher__link" onClick={switchCustomerType}>
+            </Link>
+            <Link className="customer-switcher__link" to="/homepage-b2b">
               For your Business
-            </a>
+            </Link>
           </div>
           <div className="navigation__contact-details right">
             <a href="/contact-us">
@@ -80,18 +74,18 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
         <div className="navigation__main">
           <Vector className="navigation__logo logo" src="logo" />
           <div className="navigation__items right">
-            <Fragment>{navitem}</Fragment>
+            <NavItem slug="service" />
             <NavItem slug="project" />
             <NavItem slug="company" />
             <div className="navigation-item">
-              <a className="navigation-item__link" href="/blog">
+              <Link className="navigation-item__link" to="/blog">
                 Blog
-              </a>
+              </Link>
             </div>
             <div className="navigation-item navigation-item--shout">
-              <a className="navigation-item__link" href="/quote">
+              <Link className="navigation-item__link" to="/quote">
                 Get a Quote
-              </a>
+              </Link>
             </div>
           </div>
         </div>
