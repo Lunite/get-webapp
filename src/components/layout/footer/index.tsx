@@ -8,6 +8,8 @@ import Heading from "~/components/configurable/Heading"
 import { SitemapItem } from "~/hooks/useSitemap"
 import { Link } from "gatsby"
 
+import "./styles.scss"
+
 interface FooterProps {
   sitemap: SitemapItem[]
 }
@@ -41,7 +43,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
     <footer className="footer">
       <div className="footer__top">
         <div className="container">
-          <Vector src="logo" />
+          <div className="footer__logo">
+            <Vector src="logo" />
+          </div>
           <BlockCTA url="/quote" right>
             Get a Quote Today
           </BlockCTA>
@@ -70,9 +74,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
         </div>
       </div>
       <div className="footer__bottom">
-        <div className="container">
-          <span className="u-font--xsmall u-font--muted right">
-            &copy; &bull; Green Energy Together &bull; 2020
+        <div className="container right">
+          <span className="u-font--xsmall u-font--muted">
+            &copy;GET - Green Energy Together - 2020
           </span>
         </div>
       </div>

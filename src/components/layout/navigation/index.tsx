@@ -71,7 +71,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
             <Link className="customer-switcher__link" to="/">
               For your Home
             </Link>
-            <Link className="customer-switcher__link" to="/homepage-b2b">
+            <Link className="customer-switcher__link" to="/for-your-business">
               For your Business
             </Link>
           </div>

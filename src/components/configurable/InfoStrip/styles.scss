@@ -1,0 +1,42 @@
+@import "~/styles/_variables.scss";
+
+.info-strip {
+  background-color: $green;
+  padding: $space-l 0;
+
+  .container {
+    justify-content: space-between;
+  }
+
+  &__items {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__map-button {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    height: 74px;
+  }
+}
+
+.info-item {
+  width: 20%;
+  text-align: center;
+
+  &__icon {
+    display: inline-block;
+    width: 74px;
+    height: 74px;
+    background-color: $light-blue;
+    border-radius: 50%;
+  }
+
+  &__label {
+    font-family: "gotham", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: $white;
+  }
+}

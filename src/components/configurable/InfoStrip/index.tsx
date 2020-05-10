@@ -2,6 +2,8 @@ import React from "react"
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Vector from "~/components/configurable/Vector"
 
+import "./styles.scss"
+
 interface InfoStripProps {
   location?: string
   dcPeak?: string
@@ -39,22 +41,27 @@ const InfoStrip = ({
 
   return (
     <div className="info-strip">
-      <div className="info-strip__items">
-        {location && getInfoItem("location", "Location", location)}
-        {dcPeak && getInfoItem("dcPeak", "DC Peak", dcPeak)}
-        {developer && getInfoItem("developer", "Developer", developer)}
-        {inverters && getInfoItem("inverters", "Inverters", inverters)}
-        {modules && getInfoItem("modules", "Modules", modules)}
-        {email && getInfoItem("email", "Email", email)}
-        {phoneNumber && getInfoItem("phoneNumber", "Phone Number", phoneNumber)}
-        {whereToFindUs &&
-          getInfoItem("whereToFindUs", "Where to find us", whereToFindUs)}
+      <div className="container">
+        <div className="info-strip__items">
+          {location && getInfoItem("location", "Location", location)}
+          {dcPeak && getInfoItem("dcPeak", "DC Peak", dcPeak)}
+          {developer && getInfoItem("developer", "Developer", developer)}
+          {inverters && getInfoItem("inverters", "Inverters", inverters)}
+          {modules && getInfoItem("modules", "Modules", modules)}
+          {email && getInfoItem("email", "Email", email)}
+          {phoneNumber &&
+            getInfoItem("phoneNumber", "Phone Number", phoneNumber)}
+          {whereToFindUs &&
+            getInfoItem("whereToFindUs", "Where to find us", whereToFindUs)}
+        </div>
+        {mapUrl && (
+          <div className="info-strip__map-button">
+            <BlockCTA url={mapUrl} secondary external>
+              Check on Map
+            </BlockCTA>
+          </div>
+        )}
       </div>
-      {mapUrl && (
-        <BlockCTA url={mapUrl} external>
-          Check on Map
-        </BlockCTA>
-      )}
     </div>
   )
 }

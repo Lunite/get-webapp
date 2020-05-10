@@ -1,5 +1,8 @@
 import React, { FunctionComponent } from "react"
 import Vector from "~/components/configurable/Vector"
+import { Link } from "gatsby"
+
+import "./styles.scss"
 
 interface BlockCTAProps {
   url?: string
@@ -52,15 +55,20 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   }
 
   return (
-    <a
-      className={`block-cta ${extraClasses()}`}
-      href={url}
-      target={external ? "_blank" : "_self"}
-    >
-      {arrow === "left" && <Vector src="arrow-left" />}
-      {children}
-      {arrow === "right" && <Vector src="arrow-right" />}
-    </a>
+    <>
+      {!external && (
+        <Link to={url} className={`block-cta ${extraClasses()}`}>
+          {arrow === "left" && <Vector src="arrow-left" />}
+          {children}
+          {arrow === "right" && <Vector src="arrow-right" />}
+        </Link>
+      )}
+      {external && (
+        <a className={`block-cta ${extraClasses()}`} href={url} target="_blank">
+          {children}
+        </a>
+      )}
+    </>
   )
 }
 

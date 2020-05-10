@@ -5,7 +5,8 @@ import "./styles.scss"
 interface HeroProps {
   image: string
   compact?: boolean
-  overlapBlock?: JSX.Element[]
+  overlapBlock?: JSX.Element
+  className?: string
 }
 
 const Hero: FunctionComponent<HeroProps> = ({
@@ -13,10 +14,11 @@ const Hero: FunctionComponent<HeroProps> = ({
   compact,
   overlapBlock,
   children,
+  className,
 }) => {
   return (
     <div
-      className={`hero hero--${compact ? "compact" : "large"}`}
+      className={`hero hero--${compact ? "compact" : "large"} ${className}`}
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="container u-layout--indent">

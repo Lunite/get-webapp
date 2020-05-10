@@ -30,16 +30,14 @@ const Project: FunctionComponent<any> = context => {
           </Col6>
         </div>
       </Block>
-      <Block className="project__details-strip">
-        <InfoStrip
-          location={project.info_location}
-          dcPeak={project.info_dc_peak}
-          developer={project.info_developer}
-          inverters={project.info_inverters}
-          modules={project.info_modules}
-          mapUrl={project.info_map_url}
-        />
-      </Block>
+      <InfoStrip
+        location={project.info_location}
+        dcPeak={project.info_dc_peak}
+        developer={project.info_developer}
+        inverters={project.info_inverters}
+        modules={project.info_modules}
+        mapUrl={project.info_map_url}
+      />
       {
         // project.related_products && (
         // <Block>

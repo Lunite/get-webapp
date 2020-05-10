@@ -201,6 +201,7 @@ exports.createPages = async ({ graphql, actions }) => {
         description: "",
       },
       { slug: "quote", title: "Get a Quote", keywords: "", description: "" },
+      { slug: "404", title: "Page not found", keywords: "", description: "" },
     ]),
   ])
 }
