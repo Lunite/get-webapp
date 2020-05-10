@@ -8,9 +8,10 @@ import "./navigation-item.scss"
 
 interface NavItemProps {
   slug: string
+  path?: string
 }
 
-const NavItem: FunctionComponent<NavItemProps> = ({ slug }) => {
+const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
   const sitemap = useSitemap()
 
   const item = sitemap.find(sItem => sItem.slug === slug)
@@ -20,13 +21,29 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug }) => {
   }
 
   return (
-    <div className="navigation-item navigation-item--has-children">
-      <Link className="navigation-item__link" to={item.path}>
-        {item.title}
-      </Link>
+    <div
+      className={`navigation-item ${
+        item.children?.length ? "navigation-item--has-children" : ""
+      }`}
+    >
+      {item.path || path ? (
+        <Link className="navigation-item__link" to={item.path || path}>
+          {item.title}
+          {item.children?.length && (
+            <Vector className="navigation-item__arrow" src="arrow-down-icon" />
+          )}
+        </Link>
+      ) : (
+        <div className="navigation-item__link">
+          {item.title}
+          {item.children?.length && (
+            <Vector className="navigation-item__arrow" src="arrow-down-icon" />
+          )}
+        </div>
+      )}
       {item.children?.length && (
         <div className="navigation-item__children">
-          {item.children?.map(child => (
+          {item.children.map(child => (
             <Link
               key={child.slug}
               className="navigation-item__link"
@@ -75,13 +92,13 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           <Vector className="navigation__logo logo" src="logo" />
           <div className="navigation__items right">
             <NavItem slug="service" />
-            <NavItem slug="project" />
+            <NavItem slug="project" path="/projects" />
             <NavItem slug="company" />
-            <div className="navigation-item">
+            {/* <div className="navigation-item">
               <Link className="navigation-item__link" to="/blog">
                 Blog
               </Link>
-            </div>
+            </div> */}
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote

@@ -156,9 +156,51 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }
 
+  const createStaticPages = pages => {
+    pages.forEach(page => {
+      const template = path.resolve(`./src/components/pages/${page.slug}.tsx`)
+
+      createPage({
+        path: `/${page.slug === "index" ? "" : page.slug}`,
+        component: slash(template),
+        context: {
+          title: page.title,
+          slug: page.slug,
+          acf: {
+            seo: ({ keywords, description } = page),
+          },
+        },
+      })
+    })
+  }
+
   return Promise.all([
-    createPages(pagesQuery, "page", "allWordpressPage"),
+    // createPages(pagesQuery, "page", "allWordpressPage"),
     createPages(projectsQuery, "project"),
     createPages(servicesQuery, "service"),
+    createStaticPages([
+      {
+        slug: "contact-us",
+        title: "Contact Us",
+        keywords: "",
+        description: "",
+      },
+      { slug: "faq", title: "Support & FAQ", keywords: "", description: "" },
+      {
+        slug: "for-your-business",
+        title: "For Your Business",
+        keywords: "",
+        description: "",
+      },
+      { slug: "index", title: "For Your Home", keywords: "", description: "" },
+      { slug: "products", title: "Products", keywords: "", description: "" },
+      {
+        slug: "projects",
+        title: "Case Studies",
+        keywords: "",
+        description: "",
+      },
+      { slug: "quote", title: "Get a Quote", keywords: "", description: "" },
+    ]),
   ])
 }

@@ -10,7 +10,9 @@ const Vector = props => {
           debugger
           SVG = svg.ReactComponent
         })
-        .catch(e => {})
+        .catch(e => {
+          console.log(e)
+        })
     })()
   }, [])
 
