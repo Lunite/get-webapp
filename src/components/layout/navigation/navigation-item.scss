@@ -11,12 +11,6 @@
     align-self: center;
     padding: 20px;
 
-    &:focus,
-    &:active {
-      outline: none;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
     &::before {
       content: attr(data-title);
       display: block;
@@ -42,7 +36,8 @@
     background-color: $green;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     .navigation-item__link::before {
       opacity: 1;
       pointer-events: none;

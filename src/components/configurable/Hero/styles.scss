@@ -9,6 +9,10 @@
 
   &:before {
     content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg, #051b3f 0%, rgba(196, 196, 196, 0) 100%);
   }
 
