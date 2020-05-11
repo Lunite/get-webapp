@@ -5,6 +5,8 @@ import Vector from "~/components/configurable/Vector"
 import Col3 from "~/components/grid/Col3"
 import Heading from "~/components/configurable/Heading"
 
+import Logo from "~/vectors/logo.inline.svg"
+
 import { SitemapItem } from "~/hooks/useSitemap"
 import { Link } from "gatsby"
 
@@ -44,7 +46,8 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       <div className="footer__top">
         <div className="container">
           <div className="footer__logo">
-            <Vector src="logo" />
+            <Logo />
+            {/* <Vector src="logo" /> */}
           </div>
           <BlockCTA url="/quote" right>
             Get a Quote Today

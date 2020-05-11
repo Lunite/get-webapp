@@ -4,10 +4,26 @@
   background-color: $dark-blue;
   color: $white;
 
+  &__logo {
+    width: 130px;
+    height: 49px;
+    overflow: hidden;
+
+    svg {
+      width: 130px;
+      height: 89px;
+    }
+
+    .logo__words {
+      display: none;
+    }
+  }
+
   &__top {
     .container {
       padding: $space 0;
       justify-content: space-between;
+      align-items: center;
     }
   }
 

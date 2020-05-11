@@ -5,7 +5,7 @@ const Vector = props => {
 
   useEffect(() => {
     ;(async () => {
-      await import(`~/vectors/${props.src}`)
+      await import(`~/vectors/${props.src}.inline.svg`)
         .then(svg => {
           debugger
           SVG = svg.ReactComponent

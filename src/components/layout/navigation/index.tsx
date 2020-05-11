@@ -1,7 +1,9 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, Fragment } from "react"
 import { Link } from "gatsby"
 import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
+
+import Logo from "~/vectors/logo.inline.svg"
 
 import "./styles.scss"
 import "./navigation-item.scss"
@@ -89,7 +91,8 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
       </div>
       <div className="container">
         <div className="navigation__main">
-          <Vector className="navigation__logo logo" src="logo" />
+          <Logo />
+          {/* <Vector className="navigation__logo logo" src="logo" /> */}
           <div className="navigation__items right">
             <NavItem slug="service" />
             <NavItem slug="project" path="/projects" />
