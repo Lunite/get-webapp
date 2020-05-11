@@ -34,7 +34,7 @@ export const useSitemap = (): SitemapItem[] => {
 
   const parentTitleMap = {
     service: "Services",
-    project: "Use Cases",
+    project: "Case Studies",
     company: "Company",
   }
 
