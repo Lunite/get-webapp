@@ -4,8 +4,10 @@
   display: inline-flex;
   height: 100%;
   padding: 0 20px;
+  cursor: default;
 
   &__link {
+    position: relative;
     align-self: center;
     padding: 20px;
 
@@ -14,13 +16,36 @@
       outline: none;
       background-color: rgba(255, 255, 255, 0.2);
     }
+
+    &::before {
+      content: attr(data-title);
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: calc(50% - 1px);
+      white-space: nowrap;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity #{$transition};
+      color: $green;
+      font-family: $bold-family;
+      background-color: $dark-blue;
+    }
   }
 
-  &__children {
-    display: none;
+  &--has-children {
+    cursor: pointer;
   }
 
   &--shout {
     background-color: $green;
+  }
+
+  &:hover {
+    .navigation-item__link::before {
+      opacity: 1;
+      pointer-events: none;
+    }
   }
 }

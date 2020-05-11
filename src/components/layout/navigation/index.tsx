@@ -29,14 +29,18 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
       }`}
     >
       {item.path || path ? (
-        <Link className="navigation-item__link" to={item.path || path}>
+        <Link
+          className="navigation-item__link"
+          to={item.path || path}
+          data-title={item.title}
+        >
           {item.title}
           {item.children?.length && (
             <Vector className="navigation-item__arrow" src="arrow-down-icon" />
           )}
         </Link>
       ) : (
-        <div className="navigation-item__link">
+        <div className="navigation-item__link" data-title={item.title}>
           {item.title}
           {item.children?.length && (
             <Vector className="navigation-item__arrow" src="arrow-down-icon" />
@@ -48,11 +52,10 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
           {item.children.map(child => (
             <Link
               key={child.slug}
-              className="navigation-item__link"
+              className="navigation-item__child-link"
               to={child.path}
-            >
-              {child.title}
-            </Link>
+              dangerouslySetInnerHTML={{ __html: child.title }}
+            />
           ))}
         </div>
       )}
@@ -70,28 +73,32 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
       <div className="navigation__top">
         <div className="container">
           <div className="navigation__customer-switcher customer-switcher">
-            <Link className="customer-switcher__link" to="/">
+            <Link className="customer-switcher__link link--active" to="/">
               For your Home
             </Link>
+            <span className="customer-switcher__link-separator" />
             <Link className="customer-switcher__link" to="/for-your-business">
               For your Business
             </Link>
           </div>
-          <div className="navigation__contact-details right">
-            <a href="/contact-us">
+          <div className="navigation__contact-details contact-details">
+            <Link className="contact-details__link" to="/contact-us">
               <Vector src="at-icon" />
               Contact us
-            </a>
-            <a href="tel:02039954422">
+            </Link>
+            <a className="contact-details__link" href="tel:02039954422">
               <Vector src="phone" />
               020 3995 4422
             </a>
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="navigation__main">
-          <Logo />
+
+      <div className="navigation__main">
+        <div className="container">
+          <Link className="logo__anchor" to="/">
+            <Logo />
+          </Link>
           {/* <Vector className="navigation__logo logo" src="logo" /> */}
           <div className="navigation__items right">
             <NavItem slug="service" />
