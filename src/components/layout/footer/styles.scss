@@ -32,6 +32,35 @@
       padding: $space-m 0;
       border: 0 solid rgba(255, 255, 255, 0.3);
       border-width: 1px 0;
+
+      *[class^="col-"] {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__item {
+    font-family: $light-family;
+    font-size: 18px;
+    font-weight: 300;
+
+    span {
+      display: block;
+    }
+  }
+
+  a.footer__item:hover {
+    text-decoration: underline;
+  }
+
+  &__column-heading {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__bottom {
+    .container {
+      justify-content: flex-end;
     }
   }
 }
