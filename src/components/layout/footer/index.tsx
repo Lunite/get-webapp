@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Vector from "~/components/configurable/Vector"
-import Col3 from "~/components/grid/Col3"
+import Col4 from "~/components/grid/Col4"
 import Heading from "~/components/configurable/Heading"
 
 import Logo from "~/vectors/logo.inline.svg"
@@ -30,14 +30,14 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
     }
 
     return (
-      <Col3>
+      <Col4>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>
         {parentItem.children.map(cItem => (
           <Link key={cItem.slug} className="footer__item" to={cItem.path}>
             {cItem.title}
           </Link>
         ))}
-      </Col3>
+      </Col4>
     )
   }
 
@@ -57,7 +57,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       <div className="footer__middle">
         <div className="container">
           <div className="row">
-            <Col3>
+            <Col4>
               <Heading className="footer__column-heading">GET UK</Heading>
               <div className="footer__item">
                 Green Energy Together
@@ -69,7 +69,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                   +34 020 3995 4422
                 </span>
               </div>
-            </Col3>
+            </Col4>
             {buildColumn("service")}
             {buildColumn("project")}
             {buildColumn("company")}

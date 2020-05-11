@@ -18,15 +18,18 @@ const Hero: FunctionComponent<HeroProps> = ({
 }) => {
   return (
     <div
-      className={`hero hero--${compact ? "compact" : "large"} ${className}`}
+      className={`hero hero--${compact ? "compact" : "large"} ${
+        overlapBlock ? "hero--has-overlap" : ""
+      } ${className}`}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="container u-layout--indent">
-        {children}
-        {overlapBlock && (
-          <div className="hero__overlap-block">{overlapBlock}</div>
-        )}
-      </div>
+      <div className="container u-layout--indent">{children}</div>
+
+      {overlapBlock && (
+        <div className="hero-overlap-block__container container">
+          <div className="hero-overlap-block">{overlapBlock}</div>
+        </div>
+      )}
     </div>
   )
 }

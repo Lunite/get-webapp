@@ -1,0 +1,10 @@
+@import "~/styles/_variables.scss";
+
+.quote {
+  width: 100%;
+  background-color: $light-blue;
+  border-top-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  color: $white;
+  padding: $space-m $space-l;
+}

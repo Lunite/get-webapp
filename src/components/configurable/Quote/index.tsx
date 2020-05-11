@@ -2,6 +2,8 @@ import React, { FunctionComponent } from "react"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
 
+import "./styles.scss"
+
 const Quote: FunctionComponent = () => {
   const formState = {}
 
@@ -14,7 +16,10 @@ const Quote: FunctionComponent = () => {
   return (
     <div className="quote">
       <Heading>Get a Free Quote today.</Heading>
-      <p>TODO</p>
+      <p>
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui
+        blanditiis praesentium voluptatum deleniti atque corrupti.
+      </p>
       <form className="form form--horizontal" onSubmit={handleSubmit}>
         <input
           type="text"

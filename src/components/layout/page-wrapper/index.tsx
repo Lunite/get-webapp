@@ -3,6 +3,7 @@ import Footer from "~/components/layout/footer"
 import Navigation from "~/components/layout/navigation"
 import SEO from "~/components/util/SEO"
 import { useSitemap } from "~/hooks/useSitemap"
+import Certificates from "~/components/standalone/Certificates"
 
 interface PageWrapperProps {
   context: any
@@ -22,6 +23,8 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     // title and slug always come from the context
     title = context.title || ""
     slug = context.slug || ""
+
+    console.log(context)
 
     if (!context?.acf?.seo) {
       // there is no extra SEO information available
@@ -45,7 +48,10 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     <>
       <SEO {...seoData} />
       <Navigation sitemap={useSitemap()} />
-      <main>{children}</main>
+      <main>
+        {children}
+        <Certificates />
+      </main>
       <Footer sitemap={useSitemap()} />
     </>
   )
