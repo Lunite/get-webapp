@@ -24,8 +24,6 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     title = context.title || ""
     slug = context.slug || ""
 
-    console.log(context)
-
     if (!context?.acf?.seo) {
       // there is no extra SEO information available
       return { title, slug }

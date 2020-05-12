@@ -30,6 +30,14 @@
     font-size: 18px;
   }
 
+  &--left {
+    float: left;
+  }
+
+  &--right {
+    float: right;
+  }
+
   &:hover {
     transform: scale(1.04);
 

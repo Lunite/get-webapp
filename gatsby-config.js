@@ -35,7 +35,7 @@ module.exports = {
         alias: {
           "~": "src",
         },
-        extensions: ["tsx", "ts", "svg", "jpg"],
+        extensions: ["tsx", "ts", "svg", "jpg", "png"],
       },
     },
     // {

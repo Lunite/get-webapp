@@ -18,9 +18,9 @@ const Hero: FunctionComponent<HeroProps> = ({
 }) => {
   return (
     <div
-      className={`hero hero--${compact ? "compact" : "large"} ${
-        overlapBlock ? "hero--has-overlap" : ""
-      } ${className}`}
+      className={`hero hero--${compact ? "compact" : "large"}${
+        overlapBlock ? " hero--has-overlap" : ""
+      } ${className || ""}`}
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="container u-layout--indent">{children}</div>

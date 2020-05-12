@@ -1,0 +1,38 @@
+@import "~/styles/_variables.scss";
+.tick-list {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.6;
+  color: $dark-blue;
+
+  li {
+    position: relative;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-left: 50px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 36px;
+      width: 36px;
+      background-image: url("/vectors/check-green.svg");
+      background-size: 100% 100%;
+      left: 0;
+      transform: translateY(-2px);
+    }
+
+    & + li {
+      border-top: 1px solid $low-grey-faded;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

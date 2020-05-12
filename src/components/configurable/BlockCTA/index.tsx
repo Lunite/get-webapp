@@ -27,7 +27,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   inline,
 }) => {
   if (!url && !submit) {
-    return
+    return null
   }
 
   const extraClasses = () => {
@@ -44,9 +44,9 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
     }
 
     if (left) {
-      classes += " left"
+      classes += " block-cta--left"
     } else if (right) {
-      classes += " right"
+      classes += " block-cta--right"
     }
 
     return classes

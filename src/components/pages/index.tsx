@@ -2,18 +2,18 @@ import React from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import StatsBlock from "~/components/standalone/StatsBlock"
-import { Link } from "gatsby"
 import Block from "../configurable/Block"
 import Vector from "../configurable/Vector"
 import Col8 from "../grid/Col8"
 import Col6 from "../grid/Col6"
 import Expandable from "../configurable/Expandable"
 import BlockCTA from "../configurable/BlockCTA"
-
-import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import Quote from "../configurable/Quote"
 
-const Homepage = ({ context }) => {
+import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
+import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlock"
+
+const Homepage = () => {
   return (
     <div className="homepage">
       <Hero
@@ -74,6 +74,11 @@ const Homepage = ({ context }) => {
       <div className="container">
         <Quote />
       </div>
+      <Block>
+        <div className="container">
+          <ProductsAndWarrantiesBlock />
+        </div>
+      </Block>
     </div>
   )
 }

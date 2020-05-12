@@ -149,10 +149,6 @@ exports.createPages = async ({ graphql, actions }) => {
             return `${category !== "page" ? `${category}/` : ""}${node.slug}`
           })()
 
-          if (category === "page") {
-            console.log(node)
-          }
-
           createPage({
             path,
             component: slash(template),

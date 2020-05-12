@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
 
@@ -8,11 +9,13 @@ const Quote: FunctionComponent = () => {
   const formState = {}
 
   const handleInputChange = event => {
-    formState[event.target.name] = formState[event.target.value]
+    formState[event.target.name] = event.target.value
   }
 
   const handleSubmit = () => {
-    console.log(formState)
+    navigate("/quote", {
+      state: formState,
+    })
   }
 
   return (
