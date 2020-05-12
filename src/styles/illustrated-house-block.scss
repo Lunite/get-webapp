@@ -1,8 +1,12 @@
 @import "~/styles/_variables.scss";
 
-.homepage {
+.illustrated-house-block {
   .house-illustration {
     margin-top: $space;
     margin-bottom: $space-m;
+  }
+
+  h3 {
+    color: $light-blue;
   }
 }

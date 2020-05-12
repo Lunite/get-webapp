@@ -1,5 +1,7 @@
 @import "./variables", "./normalize.scss", "./simple-grid.scss", "./fonts.scss",
-  "./layout.scss";
+  "./layout.scss", "./form.scss";
+
+@import "./illustrated-house-block.scss";
 
 html {
   background-color: $light-grey;
@@ -18,4 +20,8 @@ body {
 
 main {
   background-color: $white;
+}
+
+p + * {
+  margin-top: 24px;
 }

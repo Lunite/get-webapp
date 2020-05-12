@@ -10,8 +10,6 @@ import Col6 from "../grid/Col6"
 import Expandable from "../configurable/Expandable"
 import BlockCTA from "../configurable/BlockCTA"
 
-import "./index.scss"
-
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import Quote from "../configurable/Quote"
 
@@ -28,7 +26,7 @@ const Homepage = ({ context }) => {
         <BlockCTA url="/projects">Find Out More</BlockCTA>
       </Hero>
       <Block>
-        <div className="container container--column">
+        <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
             agerjj aergiaej rgie hjahi a djth aih aeh ae haeh. ehra g. aerg aer

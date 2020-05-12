@@ -11,37 +11,46 @@ const Quote: FunctionComponent = () => {
     formState[event.target.name] = formState[event.target.value]
   }
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    console.log(formState)
+  }
 
   return (
     <div className="quote">
-      <Heading>Get a Free Quote today.</Heading>
+      <Heading level={3}>Get a Free Quote today.</Heading>
       <p>
         At vero eos et accusamus et iusto odio dignissimos ducimus qui
         blanditiis praesentium voluptatum deleniti atque corrupti.
       </p>
       <form className="form form--horizontal" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Phone"
-          name="phone"
-          onChange={handleInputChange}
-        />
-        <BlockCTA submit secondary>
-          Request Quote
-        </BlockCTA>
+        <div className="form__fields">
+          <input
+            className="form__text-input"
+            type="text"
+            placeholder="Name"
+            name="name"
+            onChange={handleInputChange}
+          />
+          <input
+            className="form__text-input"
+            type="email"
+            placeholder="Email"
+            name="email"
+            onChange={handleInputChange}
+          />
+          <input
+            className="form__text-input"
+            type="tel"
+            placeholder="Phone"
+            name="phone"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form__actions">
+          <BlockCTA submit inline>
+            Request Quote
+          </BlockCTA>
+        </div>
       </form>
     </div>
   )
