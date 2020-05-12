@@ -47,17 +47,26 @@ const Homepage = ({ context }) => {
                 fit on the property. This ensures our designs are truly cost
                 effective, bringing the best returns on your investment.
               </p>
-              <Col6 className="centered">
-                <Vector src="solar-house" />
-                <Expandable
-                  readmore={<p>some extra content for your reading pleasure</p>}
-                >
-                  <p>
-                    not how many solar panels you can fit on the property. This
-                    ensures our
-                  </p>
-                </Expandable>
-              </Col6>
+              <Expandable
+                readmore={
+                  <div className="row">
+                    <Col6 className="u-layout--centered">
+                      <Vector src="solar-house" />
+                      <p>
+                        not how many solar panels you can fit on the property.
+                        This ensures our
+                      </p>
+                    </Col6>
+                    <Col6 className="u-layout--centered">
+                      <Vector src="solar-house" />
+                      <p>
+                        not how many solar panels you can fit on the property.
+                        This ensures our
+                      </p>
+                    </Col6>
+                  </div>
+                }
+              />
             </Col8>
           </div>
         </div>

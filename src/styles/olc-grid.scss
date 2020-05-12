@@ -36,8 +36,7 @@ $gutter: 36px;
   width: 100%;
   display: inline-block;
   align-self: flex-start;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex-shrink: 0;
 
   @media ($phablet) {
     margin-left: $gutter / 2;
