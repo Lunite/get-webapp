@@ -150,5 +150,15 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-source-gravityforms",
+      options: {
+        baseUrl: "http://api-v1.get-uk.com",
+        api: {
+          key: "ck_ef5290f109450ada7fbc5c9f34a2c92af149b694",
+          secret: "cs_730c0e58198af85b92ebc2cd1d10ce9387f7eeb6",
+        },
+      },
+    },
   ],
 }
