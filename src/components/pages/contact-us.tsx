@@ -1,8 +1,92 @@
 import React from "react"
 import Hero from "~/components/configurable/Hero"
+import FormInput from "../olc-framework/FormInput"
+import BlockCTA from "../configurable/BlockCTA"
+import Heading from "../configurable/Heading"
+import Block from "../configurable/Block"
+import FormTextarea from "../olc-framework/FormTextarea"
+import Col3 from "../grid/Col3"
+import Col6 from "../grid/Col6"
+import Col9 from "../grid/Col9"
 
-const ContactUsPage = () => {
-  return <></>
+const ContactUsPage = ({ location }) => {
+  const { state = {} } = location
+
+  return (
+    <div className="contact-us-page">
+      <Hero image="/images/contact-banner.jpg" compact>
+        <Heading level={1} underlined>
+          Contact
+        </Heading>
+      </Hero>
+      <Block>
+        <div className="container u-layout--indent container--column">
+          <div className="row">
+            <Col9>
+              <form
+                className="form form--full-width"
+                action="https://formspree.io/xwkrpynw"
+                method="POST"
+                // data-netlify="true" -- to use netlify forms
+              >
+                <div className="row">
+                  <Col6>
+                    <FormInput
+                      name="full-name"
+                      label="Full name"
+                      placeholder="Type your full name"
+                      value={state?.name}
+                      required
+                    />
+                  </Col6>
+                  <Col6>
+                    <FormInput
+                      name="email"
+                      label="Email"
+                      type="email"
+                      placeholder="Type your email"
+                      value={state?.email}
+                      required
+                    />
+                  </Col6>
+                </div>
+                <div className="row">
+                  <Col6>
+                    <FormInput
+                      name="phone-number"
+                      label="Phone number (optional)"
+                      type="tel"
+                      placeholder="Type your phone number"
+                      value={state?.phone}
+                    />
+                  </Col6>
+                  <Col6>
+                    <FormInput
+                      name="subject"
+                      label="Subject"
+                      placeholder="Type the subject"
+                    />
+                  </Col6>
+                </div>
+                <FormTextarea
+                  name="message"
+                  label="Message"
+                  placeholder="Type your message"
+                  required
+                />
+                <div className="form__actions">
+                  <BlockCTA fullWidth large submit>
+                    Request Quote
+                  </BlockCTA>
+                </div>
+              </form>
+            </Col9>
+            <Col3></Col3>
+          </div>
+        </div>
+      </Block>
+    </div>
+  )
 }
 
 export default ContactUsPage

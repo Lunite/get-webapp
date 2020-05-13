@@ -8,6 +8,7 @@ $black-paragraph: #333333;
 $black-paragraph-light: #4f4f4f;
 $medium-grey: #9d9d9d;
 $light-grey: #f3f3f3;
+$bg-grey: #e5e5e5;
 $low-grey: #d1d1d1;
 $low-grey-faded: rgba(209, 209, 209, 0.3);
 $gradient-green: linear-gradient(180deg, #70b33b 0%, #4db9af 100%);
@@ -69,4 +70,31 @@ $light-family: "gothamlight", sans-serif;
 %p-little {
   font-size: 14px;
   font-family: "gothamlight", sans-serif;
+}
+
+%form-field {
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  font-family: $light-family;
+  color: #000;
+  background-color: $light-grey;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 3px solid $dark-blue;
+  padding: 18px 26px;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: $green;
+  }
+}
+
+%form-label {
+  display: block;
+  font-size: 16px;
+  font-family: $bold-family;
+  line-height: 1;
+  margin-bottom: 12px;
+  color: $dark-blue;
 }

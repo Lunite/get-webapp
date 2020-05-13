@@ -23,7 +23,7 @@ const Homepage = () => {
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
         <p>Solar energy should not be a luxury</p>
-        <BlockCTA url="/projects">Find Out More</BlockCTA>
+        {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>
         <div className="container container--column illustrated-house-block">

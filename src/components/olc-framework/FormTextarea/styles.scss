@@ -1,14 +1,12 @@
 @import "~/styles/_variables.scss";
 
-.form-select {
+.form-textarea {
   &__field {
     @extend %form-field;
 
-    appearance: none;
-
-    option {
-      padding: 18px 26px;
-    }
+    height: 200px;
+    overflow-y: auto;
+    resize: none;
   }
 
   &__label {

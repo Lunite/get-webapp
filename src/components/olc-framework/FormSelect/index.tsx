@@ -9,6 +9,7 @@ interface FormSelectProps {
   className?: string
   placeholder?: string
   value?: string
+  required?: boolean
 }
 
 const FormSelect: FunctionComponent<FormSelectProps> = ({
@@ -18,12 +19,18 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
   className = "",
   placeholder = "Please select",
   value = "",
+  required = false,
   children,
 }) => {
   return (
     <div className={`form-select ${className}`}>
       <label className="form-select__label">{label}</label>
-      <select name={name} className="form-select__field" defaultValue={value}>
+      <select
+        name={name}
+        className="form-select__field"
+        defaultValue={value}
+        required={required}
+      >
         <option value="" disabled hidden>
           {placeholder}
         </option>

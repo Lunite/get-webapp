@@ -23,6 +23,27 @@
     //-- now in FormInput --//
   }
 
+  &:not(.form--full-width):not(.form--horizontal) {
+    input,
+    select,
+    textarea {
+      @media ($phablet) {
+        width: 80%;
+        max-width: 416px;
+      }
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+    }
+  }
+
   &:not(.form--horizontal) > * {
     & + * {
       margin-top: $space-m;
@@ -41,12 +62,14 @@
       }
 
       &__text-input,
-      .form-field {
+      .form-input,
+      .form-select {
         margin: 18px;
         flex-grow: 1;
 
         & + .form__text-input,
-        & + .form-field {
+        & + .form-input,
+        & + .form-select {
           margin-left: $space;
         }
       }

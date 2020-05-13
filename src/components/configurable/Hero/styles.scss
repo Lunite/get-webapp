@@ -48,7 +48,7 @@
       margin-top: 15px;
     }
 
-    .block-cta {
+    .heading ~ .block-cta {
       font-family: "gotham";
       font-size: 16px;
       margin-top: $space-m;
@@ -73,13 +73,16 @@
 
 .hero-overlap-block {
   overflow: hidden;
-  border-top-right-radius: 24px;
-  border-bottom-left-radius: 24px;
 
   &__container {
     position: absolute;
     bottom: -74px;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .quote {
+    background-color: $dark-blue;
+    padding: $space;
   }
 }
