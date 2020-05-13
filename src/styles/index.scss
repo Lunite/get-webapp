@@ -22,6 +22,10 @@ main {
   background-color: $white;
 }
 
+svg {
+  max-width: 100%;
+}
+
 p + * {
   margin-top: 24px;
 }

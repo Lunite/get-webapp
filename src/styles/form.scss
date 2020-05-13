@@ -12,6 +12,8 @@
     border-radius: 2px;
     border-bottom: 3px solid $dark-blue;
     padding: 18px 26px;
+    max-width: 340px;
+    min-width: 260px;
 
     &:focus {
       outline: none;
@@ -22,21 +24,26 @@
   &--horizontal {
     vertical-align: row;
 
-    .form__fields {
-      display: flex;
-      flex-grow: 1;
-    }
-
-    .form__text-input {
-      flex-grow: 1;
-
-      & + .form__text-input {
-        margin-left: $space;
+    .form {
+      &__fields {
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        margin: -18px;
       }
-    }
 
-    .form__actions {
-      margin-left: $space-m;
+      &__text-input {
+        margin: 18px;
+        flex-grow: 1;
+
+        & + .form__text-input {
+          margin-left: $space;
+        }
+      }
+
+      &__actions {
+        margin-left: $space-m;
+      }
     }
   }
 }

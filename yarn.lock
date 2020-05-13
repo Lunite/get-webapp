@@ -5532,9 +5532,10 @@ gatsby-source-graphql@2.5.0:
     node-fetch "^1.7.3"
     uuid "^3.4.0"
 
-gatsby-source-gravityforms@^1.0.15:
+gatsby-source-gravityforms@1.0.15:
   version "1.0.15"
   resolved "https://registry.yarnpkg.com/gatsby-source-gravityforms/-/gatsby-source-gravityforms-1.0.15.tgz#c271b42d8072e704d1795eaaf01327e745d9dcbb"
+  integrity sha512-mdBRXstvQl+Fy/+f94Q5LFDxSwdcZ+Jdfb7hMFlYOhw/+db8cGUwhtEDzqAdttLTf/TNqHdpAiZPyJ29topLKQ==
   dependencies:
     "@babel/runtime" "^7.4.5"
     axios ">=0.19.0"
