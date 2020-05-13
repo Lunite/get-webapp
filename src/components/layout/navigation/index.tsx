@@ -49,14 +49,20 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
       )}
       {item.children?.length && (
         <div className="navigation-item__children">
-          {item.children.map(child => (
-            <Link
-              key={child.slug}
-              className="navigation-item__child-link"
-              to={child.path}
-              dangerouslySetInnerHTML={{ __html: child.title }}
-            />
-          ))}
+          {item.children.map(child => {
+            if (child.slug === "404") {
+              return null
+            }
+
+            return (
+              <Link
+                key={child.slug}
+                className="navigation-item__child-link"
+                to={child.path}
+                dangerouslySetInnerHTML={{ __html: child.title }}
+              />
+            )
+          })}
         </div>
       )}
     </div>

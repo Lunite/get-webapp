@@ -38,6 +38,14 @@
     float: right;
   }
 
+  &--large {
+    font-size: 18px;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
   &:hover {
     transform: scale(1.04);
 

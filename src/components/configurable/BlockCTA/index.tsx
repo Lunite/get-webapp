@@ -13,6 +13,8 @@ interface BlockCTAProps {
   arrow?: "left" | "right"
   external?: boolean
   inline?: boolean
+  large?: boolean
+  fullWidth?: boolean
 }
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
@@ -25,6 +27,8 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   children,
   external,
   inline,
+  large,
+  fullWidth,
 }) => {
   if (!url && !submit) {
     return null
@@ -47,6 +51,14 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
       classes += " block-cta--left"
     } else if (right) {
       classes += " block-cta--right"
+    }
+
+    if (large) {
+      classes += " block-cta--large"
+    }
+
+    if (fullWidth) {
+      classes += " block-cta--full-width"
     }
 
     return classes

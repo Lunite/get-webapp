@@ -12,7 +12,9 @@ const Quote: FunctionComponent = () => {
     formState[event.target.name] = event.target.value
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = event => {
+    event.preventDefault()
+
     navigate("/quote", {
       state: formState,
     })

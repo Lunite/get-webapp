@@ -1,8 +1,9 @@
 .form {
   display: flex;
-  vertical-align: column;
+  flex-direction: column;
 
   &__text-input {
+    //-- now in FormInput --//
     font-size: 16px;
     line-height: 1;
     font-family: $light-family;
@@ -19,10 +20,17 @@
       outline: none;
       border-bottom-color: $green;
     }
+    //-- now in FormInput --//
+  }
+
+  &:not(.form--horizontal) > * {
+    & + * {
+      margin-top: $space-m;
+    }
   }
 
   &--horizontal {
-    vertical-align: row;
+    flex-direction: row;
 
     .form {
       &__fields {
@@ -32,11 +40,13 @@
         margin: -18px;
       }
 
-      &__text-input {
+      &__text-input,
+      .form-field {
         margin: 18px;
         flex-grow: 1;
 
-        & + .form__text-input {
+        & + .form__text-input,
+        & + .form-field {
           margin-left: $space;
         }
       }

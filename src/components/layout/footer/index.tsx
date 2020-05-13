@@ -32,11 +32,17 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
     return (
       <Col4>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>
-        {parentItem.children.map(cItem => (
-          <Link key={cItem.slug} className="footer__item" to={cItem.path}>
-            {cItem.title}
-          </Link>
-        ))}
+        {parentItem.children.map(cItem => {
+          if (cItem.slug === "404") {
+            return null
+          }
+
+          return (
+            <Link key={cItem.slug} className="footer__item" to={cItem.path}>
+              {cItem.title}
+            </Link>
+          )
+        })}
       </Col4>
     )
   }
