@@ -192,7 +192,12 @@ exports.createPages = async ({ graphql, actions }) => {
         keywords: "",
         description: "",
       },
-      { slug: "index", title: "For Your Home", keywords: "", description: "" },
+      {
+        slug: "index",
+        title: "For Your Home",
+        keywords: "test, keywords, homepage, solar",
+        description: "Hey. This is a test description. Is everything okay?",
+      },
       { slug: "products", title: "Products", keywords: "", description: "" },
       {
         slug: "projects",
