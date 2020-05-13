@@ -1,29 +1,27 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import Vector from "../Vector"
+
+import "./styles.scss"
 
 interface ExpandableProps {
   readmore: JSX.Element
 }
 
-const Expandable: FunctionComponent<ExpandableProps> = ({
-  readmore,
-  children,
-}) => {
-  let collapsed = true
+const Expandable: FunctionComponent<ExpandableProps> = ({ readmore }) => {
+  const [collapsed, setCollapsed] = useState(true)
 
   const toggle = () => {
-    collapsed = !collapsed
+    setCollapsed(!collapsed)
   }
 
   return (
     <div className="expandable">
-      {children}
       {!collapsed && <>{readmore}</>}
       <a className="expandable__toggle" onClick={toggle}>
         {collapsed && (
           <>
-            Expand
-            <Vector src="thin-arrow-down-icon" />
+            Expand for more information
+            <Vector src="thin-arrow-right-icon" />
           </>
         )}
         {!collapsed && (

@@ -3,7 +3,7 @@ import React from "react"
 import "./styles.scss"
 
 const StatsBlock = () => {
-  return <div className="stats"></div>
+  return <img src="/images/stats-block.png" />
 }
 
 export default StatsBlock

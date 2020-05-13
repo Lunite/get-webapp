@@ -3,6 +3,7 @@ import Footer from "~/components/layout/footer"
 import Navigation from "~/components/layout/navigation"
 import SEO from "~/components/util/SEO"
 import { useSitemap } from "~/hooks/useSitemap"
+import Certificates from "~/components/standalone/Certificates"
 
 interface PageWrapperProps {
   context: any
@@ -45,7 +46,10 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     <>
       <SEO {...seoData} />
       <Navigation sitemap={useSitemap()} />
-      <main>{children}</main>
+      <main>
+        {children}
+        <Certificates />
+      </main>
       <Footer sitemap={useSitemap()} />
     </>
   )

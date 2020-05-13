@@ -49,6 +49,13 @@ exports.createPages = async ({ graphql, actions }) => {
             info_modules
             info_map_url
           }
+          seo {
+            description
+            keywords
+            image {
+              source_url
+            }
+          }
         }
         title
         path
@@ -64,6 +71,13 @@ exports.createPages = async ({ graphql, actions }) => {
         id
         acf {
           post_type
+          seo {
+            description
+            keywords
+            image {
+              source_url
+            }
+          }
           service {
             hero_image {
               source_url
@@ -135,10 +149,6 @@ exports.createPages = async ({ graphql, actions }) => {
             return `${category !== "page" ? `${category}/` : ""}${node.slug}`
           })()
 
-          if (category === "page") {
-            console.log(node)
-          }
-
           createPage({
             path,
             component: slash(template),
@@ -177,7 +187,7 @@ exports.createPages = async ({ graphql, actions }) => {
   return Promise.all([
     // createPages(pagesQuery, "page", "allWordpressPage"),
     createPages(projectsQuery, "project"),
-    createPages(servicesQuery, "service"),
+    // createPages(servicesQuery, "service"),
     createStaticPages([
       {
         slug: "contact-us",

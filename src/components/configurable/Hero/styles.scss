@@ -6,6 +6,8 @@
   align-items: center;
   color: $white;
   z-index: 1;
+  background-size: cover;
+  background-position: center;
 
   &:before {
     content: "";
@@ -16,9 +18,68 @@
     background: linear-gradient(90deg, #051b3f 0%, rgba(196, 196, 196, 0) 100%);
   }
 
+  & > .container:first-child {
+    flex-direction: column;
+
+    & > * {
+      max-width: 545px;
+    }
+  }
+
   &--compact {
     @media ($phablet) {
       height: 224px;
     }
+  }
+
+  &--large {
+    color: $dark-blue;
+    line-height: 1.17;
+
+    &:before {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(196, 196, 196, 0) 100%
+      );
+    }
+
+    .heading + p {
+      margin-top: 15px;
+    }
+
+    .block-cta {
+      font-family: "gotham";
+      font-size: 16px;
+      margin-top: $space-m;
+      padding: 14px 30px;
+    }
+
+    @media ($phablet) {
+      height: 565px;
+    }
+  }
+
+  &--has-overlap {
+    @media ($phablet) {
+      margin-bottom: 74px;
+
+      & > .container {
+        margin-top: -148px;
+      }
+    }
+  }
+}
+
+.hero-overlap-block {
+  overflow: hidden;
+  border-top-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+
+  &__container {
+    position: absolute;
+    bottom: -74px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

@@ -1,14 +1,27 @@
 @import "./variables", "./normalize.scss", "./olc-grid.scss", "./fonts.scss",
-  "./layout.scss";
+  "./layout.scss", "./form.scss";
+
+@import "./illustrated-house-block.scss";
+
+html {
+  background-color: $light-grey;
+}
 
 html,
 body {
   @extend %p;
   line-height: 1.78;
-  overflow-x: hidden;
 }
 
 body {
   max-width: $max-width;
   margin: 0 auto;
+}
+
+main {
+  background-color: $white;
+}
+
+p + * {
+  margin-top: 24px;
 }

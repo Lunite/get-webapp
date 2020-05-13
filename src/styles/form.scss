@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  vertical-align: column;
+
+  &__text-input {
+    font-size: 16px;
+    line-height: 1;
+    font-family: $light-family;
+    color: #000;
+    background-color: $light-grey;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 3px solid $dark-blue;
+    padding: 18px 26px;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: $green;
+    }
+  }
+
+  &--horizontal {
+    vertical-align: row;
+
+    .form__fields {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .form__text-input {
+      flex-grow: 1;
+
+      & + .form__text-input {
+        margin-left: $space;
+      }
+    }
+
+    .form__actions {
+      margin-left: $space-m;
+    }
+  }
+}

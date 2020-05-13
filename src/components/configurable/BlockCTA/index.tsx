@@ -12,6 +12,7 @@ interface BlockCTAProps {
   right?: boolean
   arrow?: "left" | "right"
   external?: boolean
+  inline?: boolean
 }
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
@@ -23,9 +24,10 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   arrow,
   children,
   external,
+  inline,
 }) => {
   if (!url && !submit) {
-    return
+    return null
   }
 
   const extraClasses = () => {
@@ -37,10 +39,14 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
       classes += " block-cta--primary"
     }
 
+    if (inline) {
+      classes += " block-cta--inline"
+    }
+
     if (left) {
-      classes += " left"
+      classes += " block-cta--left"
     } else if (right) {
-      classes += " right"
+      classes += " block-cta--right"
     }
 
     return classes

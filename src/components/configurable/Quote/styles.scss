@@ -1,0 +1,24 @@
+@import "~/styles/_variables.scss";
+
+.quote {
+  width: 100%;
+  background-color: $light-blue;
+  border-top-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  color: $white;
+  padding: $space-m $space-l 56px;
+
+  h3 {
+    line-height: 1;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 1.33;
+    margin-top: 16px;
+  }
+
+  .form {
+    margin-top: 32px;
+  }
+}

@@ -36,6 +36,20 @@
     background-color: $green;
   }
 
+  &--coming-soon {
+    text-align: center;
+
+    span {
+      display: block;
+      font-size: 80%;
+      white-space: nowrap;
+      opacity: 0.6;
+      font-family: $light-family;
+      font-style: italic;
+      line-height: 1;
+    }
+  }
+
   &:hover,
   &:focus {
     .navigation-item__link::before {
