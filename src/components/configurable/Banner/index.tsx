@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "React"
+import React, { FunctionComponent } from "react"
 
 import "./styles.scss"
 
