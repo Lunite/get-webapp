@@ -28,6 +28,12 @@ body {
   }
 }
 
+@media ($phablet) {
+  .visible-xs {
+    display: none !important;
+  }
+}
+
 // grid
 
 $gutter: 36px;
@@ -97,6 +103,7 @@ $gutter: 36px;
   margin-right: auto;
   align-items: flex-start;
   z-index: 1;
+  flex-wrap: wrap;
 
   @media ($phablet) {
     width: calc(100vw - 64px);
@@ -126,6 +133,7 @@ $gutter: 36px;
   display: flex;
   position: relative;
   width: 100%;
+  flex-wrap: wrap;
 
   &::after {
     content: "";

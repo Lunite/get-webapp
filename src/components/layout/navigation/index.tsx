@@ -4,9 +4,11 @@ import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
 
 import Logo from "~/vectors/logo.inline.svg"
+import LogoSmall from "~/vectors/logo-small.inline.svg"
 
 import "./styles.scss"
 import "./navigation-item.scss"
+import BurgerMenu from "~/components/configurable/BurgerMenu"
 
 interface NavItemProps {
   slug: string
@@ -100,14 +102,14 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
         </div>
       </div>
 
-      <div className="navigation__main">
+      <div className="navigation__main hidden-xs">
         <div className="container">
           <Link className="logo__anchor" to="/">
-            <Logo />
+            <Logo className="hidden-xs" />
           </Link>
           {/* <Vector className="navigation__logo logo" src="logo" /> */}
           <div className="navigation__items right">
-            <NavItem slug="service" />
+            {/* <NavItem slug="service" /> */}
             <NavItem slug="project" path="/projects" />
             <NavItem slug="company" />
             <div className="navigation-item navigation-item--coming-soon">
@@ -121,6 +123,35 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
                 Get a Quote
               </Link>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="navigation__main visible-xs">
+        <div className="container">
+          <BurgerMenu className="navigation__burger-menu">
+            {/* <NavItem slug="service" /> */}
+            <NavItem slug="project" />
+            <NavItem slug="company" />
+            <div className="navigation-item navigation-item--coming-soon">
+              <div className="navigation-item__link">
+                Blog
+                <span>coming soon</span>
+              </div>
+            </div>
+            <div className="navigation-item navigation-item--shout">
+              <Link className="navigation-item__link" to="/quote">
+                Get a Quote
+              </Link>
+            </div>
+          </BurgerMenu>
+          <Link className="logo__anchor" to="/">
+            <LogoSmall />
+          </Link>
+          <div className="navigation__mobile-contact">
+            <a className="mobile-contact" href="tel:02039954422">
+              call
+            </a>
           </div>
         </div>
       </div>
