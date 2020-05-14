@@ -2,16 +2,15 @@ import React, { FunctionComponent, Fragment } from "react"
 import { Link } from "gatsby"
 import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
+import BurgerMenu from "~/components/configurable/BurgerMenu"
 
 import Logo from "~/vectors/logo.inline.svg"
 import LogoSmall from "~/vectors/logo-small.inline.svg"
-import Burger from "~/vectors/burger.inline.svg"
-import BurgerClose from "~/vectors/close.inline.svg"
 import Phone from "~/vectors/phone.inline.svg"
 
 import "./styles.scss"
 import "./navigation-item.scss"
-import BurgerMenu from "~/components/configurable/BurgerMenu"
+import { useCustomerType } from "~/hooks/useCustomerType"
 
 interface NavItemProps {
   slug: string
@@ -79,16 +78,34 @@ interface NavigationProps {
 }
 
 const Navigation: FunctionComponent<NavigationProps> = () => {
+  const { type, changeCustomerType } = useCustomerType()
+
   return (
     <header className="navigation">
       <div className="navigation__top">
         <div className="container">
           <div className="navigation__customer-switcher customer-switcher">
-            <Link className="customer-switcher__link link--active" to="/">
+            <Link
+              className={`customer-switcher__link${
+                type === "customer" ? " link--active" : ""
+              }`}
+              to="/"
+              onClick={() => {
+                changeCustomerType("customer")
+              }}
+            >
               For your Home
             </Link>
             <span className="customer-switcher__link-separator" />
-            <Link className="customer-switcher__link" to="/for-your-business">
+            <Link
+              className={`customer-switcher__link${
+                type === "business" ? " link--active" : ""
+              }`}
+              to="/for-your-business"
+              onClick={() => {
+                changeCustomerType("business")
+              }}
+            >
               For your Business
             </Link>
           </div>

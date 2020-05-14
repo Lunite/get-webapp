@@ -42,16 +42,28 @@ $light-family: "gothamlight", sans-serif;
 
 %h3 {
   font-size: 32px;
+
+  @media ($mobile) {
+    font-size: 24px;
+  }
 }
 
 %h4 {
   font-size: 24px;
+
+  @media ($mobile) {
+    font-size: 18px;
+  }
 }
 
 %p {
   font-size: 18px;
   font-weight: 300;
   font-family: "gotham", sans-serif;
+
+  @media ($mobile) {
+    font-size: 16px;
+  }
 }
 
 %p-large {

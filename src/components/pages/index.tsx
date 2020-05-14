@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { Link } from "gatsby"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import StatsBlock from "~/components/standalone/StatsBlock"
@@ -7,15 +8,25 @@ import Vector from "../configurable/Vector"
 import Col8 from "../grid/Col8"
 import Col6 from "../grid/Col6"
 import Expandable from "../configurable/Expandable"
-import BlockCTA from "../configurable/BlockCTA"
 import Quote from "../configurable/Quote"
-
-import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
+import Banner from "../configurable/Banner"
 import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlock"
 
+import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
+import { useCustomerType } from "~/hooks/useCustomerType"
+
 const Homepage = () => {
+  const { changeCustomerType } = useCustomerType()
+
+  useEffect(() => {
+    changeCustomerType("customer")
+  }, [])
+
   return (
     <div className="homepage">
+      <Banner className="visible-xs">
+        <Link to="/for-your-business">Go to Business Site</Link>
+      </Banner>
       <Hero
         className="homepage__hero"
         image="/images/b2c-hero.jpg"

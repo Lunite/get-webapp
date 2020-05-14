@@ -1,0 +1,27 @@
+@import "~/styles/_variables.scss";
+
+.form-checkbox {
+  &__box {
+    appearance: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 26px;
+    border: 2px solid $dark-blue;
+    border-radius: 3px;
+
+    &:checked {
+      border-width: 10px;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__item + .form-checkbox__item {
+    margin-top: 32px;
+  }
+}

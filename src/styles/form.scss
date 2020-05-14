@@ -13,8 +13,11 @@
     border-radius: 2px;
     border-bottom: 3px solid $dark-blue;
     padding: 18px 26px;
-    max-width: 340px;
-    min-width: 260px;
+
+    @media ($phablet) {
+      max-width: 340px;
+      min-width: 260px;
+    }
 
     &:focus {
       outline: none;
@@ -24,7 +27,7 @@
   }
 
   &:not(.form--full-width):not(.form--horizontal) {
-    input,
+    input:not([type="checkbox"]),
     select,
     textarea {
       @media ($phablet) {
@@ -37,7 +40,7 @@
   &--full-width {
     width: 100%;
 
-    input,
+    input:not([type="checkbox"]),
     select,
     textarea {
       width: 100%;
@@ -67,16 +70,34 @@
         margin: 18px;
         flex-grow: 1;
 
-        & + .form__text-input,
-        & + .form-input,
-        & + .form-select {
-          margin-left: $space;
+        @media ($phablet) {
+          & + .form__text-input,
+          & + .form-input,
+          & + .form-select {
+            margin-left: $space;
+          }
         }
       }
 
       &__actions {
-        margin-left: $space-m;
+        @media ($phablet) {
+          margin-left: $space-m;
+        }
+
+        @media ($mobile) {
+          width: 100%;
+          margin-top: $space-m;
+
+          .block-cta {
+            width: 100%;
+            padding: 15px;
+          }
+        }
       }
+    }
+
+    @media ($mobile) {
+      flex-direction: column;
     }
   }
 }

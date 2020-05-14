@@ -74,11 +74,13 @@
 .hero-overlap-block {
   overflow: hidden;
 
-  &__container {
-    position: absolute;
-    bottom: -74px;
-    left: 50%;
-    transform: translateX(-50%);
+  @media ($phablet) {
+    &__container {
+      position: absolute;
+      bottom: -74px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   .quote {

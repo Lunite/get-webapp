@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "../configurable/Block"
@@ -11,8 +11,15 @@ import Col2 from "../grid/Col2"
 import Image from "../configurable/Image"
 import Shoutout from "../configurable/Shoutout"
 import StatsBlock from "../standalone/StatsBlock"
+import { useCustomerType } from "~/hooks/useCustomerType"
 
 const HomepageB2b = () => {
+  const { changeCustomerType } = useCustomerType()
+
+  useEffect(() => {
+    changeCustomerType("business")
+  }, [])
+
   return (
     <div className="homepage-b2b">
       <Hero

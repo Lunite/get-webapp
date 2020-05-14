@@ -21,4 +21,8 @@
   .form {
     margin-top: 32px;
   }
+
+  @media ($mobile) {
+    padding: 30px 24px 48px;
+  }
 }

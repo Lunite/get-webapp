@@ -5,6 +5,7 @@ import Block from "~/components/configurable/Block"
 import Heading from "~/components/configurable/Heading"
 import FormSelect from "~/components/olc-framework/FormSelect"
 import BlockCTA from "~/components/configurable/BlockCTA"
+import FormCheckbox from "../olc-framework/FormCheckbox"
 
 const QuotePage = ({ location }) => {
   const { state = {} } = location
@@ -80,6 +81,16 @@ const QuotePage = ({ location }) => {
               name="beds"
               label="Number of beds"
               options={["1", "2", "3", "4"]}
+            />
+            <FormCheckbox
+              name="own"
+              label="And if you own:"
+              options={[
+                "Electric Car",
+                "Air Source Eating",
+                "Swimming Pool",
+                "Electric storage heating",
+              ]}
             />
             <div className="form__actions">
               <BlockCTA fullWidth large submit>

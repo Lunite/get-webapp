@@ -3,7 +3,7 @@
   "private": true,
   "description": "Green Energy Together",
   "version": "0.1.0",
-  "author": "George Richards",
+  "author": "OLC",
   "dependencies": {
     "@svgr/webpack": "5.3.1",
     "gatsby": "2.20.36",

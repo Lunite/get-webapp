@@ -1,0 +1,12 @@
+@import "~/styles/_variables.scss";
+
+.banner {
+  width: 100%;
+  font-size: 12px;
+  color: $white;
+  background-color: $light-blue;
+  line-height: 1;
+  padding: 9px;
+  text-align: center;
+  text-decoration: underline;
+}
