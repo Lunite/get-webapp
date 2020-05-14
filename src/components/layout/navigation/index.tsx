@@ -5,6 +5,9 @@ import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
 
 import Logo from "~/vectors/logo.inline.svg"
 import LogoSmall from "~/vectors/logo-small.inline.svg"
+import Burger from "~/vectors/burger.inline.svg"
+import BurgerClose from "~/vectors/close.inline.svg"
+import Phone from "~/vectors/phone.inline.svg"
 
 import "./styles.scss"
 import "./navigation-item.scss"
@@ -149,8 +152,8 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
             <LogoSmall />
           </Link>
           <div className="navigation__mobile-contact">
-            <a className="mobile-contact" href="tel:02039954422">
-              call
+            <a href="tel:02039954422">
+              <Phone />
             </a>
           </div>
         </div>

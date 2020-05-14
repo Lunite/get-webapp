@@ -4,6 +4,9 @@ import React from "react"
 
 import "./styles.scss"
 
+import Burger from "~/vectors/burger.inline.svg"
+import Close from "~/vectors/close.inline.svg"
+
 interface BurgerMenuProps {
   className: string
 }
@@ -23,7 +26,8 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
       className={`burger-menu ${className} ${open ? "burger-menu--open" : ""}`}
     >
       <div className="burger-menu__toggle" onClick={toggleOpen}>
-        T
+        {open && <Close />}
+        {!open && <Burger />}
       </div>
       <div className="burger-menu__items">{children}</div>
     </div>
