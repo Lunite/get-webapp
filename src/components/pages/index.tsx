@@ -30,7 +30,7 @@ const Homepage = () => {
       </Banner>
       <Hero
         className="homepage__hero"
-        image="/images/b2c-hero.jpg"
+        image="/images/homepage-video.jpg"
         video="https://vimeo.com/418983793"
         overlapBlock={<StatsBlock device="desktop" />}
       >

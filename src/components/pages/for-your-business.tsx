@@ -26,7 +26,7 @@ const HomepageB2b = () => {
     <div className="homepage-b2b">
       <Hero
         className="homepage__hero"
-        image="/images/b2b-hero.jpg"
+        image="/images/b2b-video.jpg"
         video="https://vimeo.com/418982748"
         overlapBlock={
           <div className="hidden-xs">
@@ -43,13 +43,15 @@ const HomepageB2b = () => {
           <Quote />
         </Section>
         <Section>
-          <Heading underlined>We bring energy to the World</Heading>
+          <Heading underlined>A Strong Foundation</Heading>
           <p>
-            Using solar panels to generate your own solar power at home is just
-            the start. By adding a battery you can store the energy you product
-            during the day to use at night. And with our E.ON care solar team
-            there to support you should anything go wrong, you can relax and
-            enjoy the energy you generate.
+            For more than a decade, Green Energy Together has designed,
+            engineered, installed and maintained commercial solar power systems
+            across the UK. Our experience covers landfill, brownfield,
+            greenfield, commercial and industrial rooftops. No matter the
+            challenge, our in-house Operation &amp; Maintenance, Technical
+            Design and Asset Management teams place us well to deliver your
+            project efficiently in all aspects.
           </p>
         </Section>
         <div className="divider" />
@@ -91,8 +93,8 @@ const HomepageB2b = () => {
             <Col2>
               <Image
                 src="/images/no-idea.jpg"
-                title="Commercial Installation at no idea, Somewhere"
-                caption="no idea, Somewhere"
+                title="Commercial Installation at Kelly Solar Farm"
+                caption="Kelly Solar Farm"
               />
             </Col2>
             <Col10>

@@ -34,7 +34,9 @@ const Hero: FunctionComponent<HeroProps> = ({
           <div className="hero-overlap-block">{overlapBlock}</div>
         </div>
       )}
-      <div className="hero__video">{video && <Video url={video} />}</div>
+      <div className="hero__video">
+        {video && <Video url={video} image={image} />}
+      </div>
     </div>
   )
 }
