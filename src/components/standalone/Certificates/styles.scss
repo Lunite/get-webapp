@@ -5,12 +5,9 @@
     flex-direction: column;
   }
 
-  .heading {
-    margin-bottom: $space-m !important;
-  }
-
   img {
     width: 1047px;
     margin: 0 auto;
+    margin-top: $space-m;
   }
 }
