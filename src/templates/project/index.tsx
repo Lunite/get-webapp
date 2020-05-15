@@ -26,7 +26,7 @@ const Project: FunctionComponent<any> = context => {
             <div dangerouslySetInnerHTML={{ __html: project.description }} />
           </Col6>
           <Col6 indent>
-            <Image src={project.image.source_url} title={title} />
+            <Image src={project.image?.source_url} title={title} />
           </Col6>
         </div>
       </Block>
