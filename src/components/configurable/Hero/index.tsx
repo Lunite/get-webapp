@@ -42,8 +42,13 @@ const Hero: FunctionComponent<HeroProps> = ({
             playsinline
             controls={false}
             loop
-            width="auto"
+            width="1920px"
             height="auto"
+            config={{
+              vimeo: {
+                background: true,
+              },
+            }}
           />
         )}
       </div>

@@ -35,9 +35,10 @@
     height: 100%;
     overflow: hidden;
 
-    & > div {
-      min-width: 100%;
-      min-height: 100%;
+    div,
+    iframe {
+      width: 1440px !important;
+      height: 810px !important;
     }
   }
 
