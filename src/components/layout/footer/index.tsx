@@ -38,9 +38,12 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
           }
 
           return (
-            <Link key={cItem.slug} className="footer__item" to={cItem.path}>
-              {cItem.title}
-            </Link>
+            <Link
+              key={cItem.slug}
+              className="footer__item"
+              to={cItem.path}
+              dangerouslySetInnerHTML={{ __html: cItem.title }}
+            />
           )
         })}
       </Col4>
@@ -69,10 +72,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
             <Col4>
               <Heading className="footer__column-heading">GET UK</Heading>
               <div className="footer__item">
-                Green Energy Together
-                <span>
-                  <Vector src="pin" />8 Peerglow Center, Marsh Lane Ware TODO
-                </span>
+                <span>Green Energy Together</span>
+                <span>8 Peerglow Center,</span>
+                <span>Marsh Lane Ware</span>
                 <span>
                   <Vector src="phone" />
                   +34 020 3995 4422
@@ -88,7 +90,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       <div className="footer__bottom">
         <div className="container right">
           <span className="u-font--xsmall u-font--muted">
-            &copy;GET - Green Energy Together - 2020
+            &copy; GET - Green Energy Together - 2020
           </span>
         </div>
       </div>
