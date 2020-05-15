@@ -77,7 +77,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                 <span>Marsh Lane Ware</span>
                 <span>
                   <Vector src="phone" />
-                  +34 020 3995 4422
+                  020 3995 4422
                 </span>
               </div>
             </Col4>

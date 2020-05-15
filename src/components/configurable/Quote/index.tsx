@@ -24,8 +24,8 @@ const Quote: FunctionComponent = () => {
     <div className="quote">
       <Heading level={3}>Get a Free Quote today.</Heading>
       <p>
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui
-        blanditiis praesentium voluptatum deleniti atque corrupti.
+        It only takes 2 minutes to request a no-obligation quote, customized to
+        your needs.
       </p>
       <form className="form form--horizontal" onSubmit={handleSubmit}>
         <div className="form__fields">
