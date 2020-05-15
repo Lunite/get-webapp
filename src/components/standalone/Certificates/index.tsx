@@ -11,6 +11,15 @@ const Certificates = () => {
         <Heading level={2} underlined>
           We are Certified
         </Heading>
+        <p>
+          To further our commitment to our customers, Green Energy Together has
+          had its Quality Management System certified against a number of
+          national and international quality standards. To attain and maintain
+          these certifications, our business undertakes a vigorous program to
+          ensure the ongoing quality and improvement of our Management Systems.
+          Review is undertaken by regular internal audits and external audits,
+          conducted by our third-party certification auditors.
+        </p>
         <img className="hidden-xs" src="/images/certificates.png" />
         <img
           className="visible-xs"

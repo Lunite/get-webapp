@@ -18,24 +18,24 @@ const ProductsAndWarrantiesBlock = () => {
         <Col7>
           <Heading underlined>Products &amp; Warranties</Heading>
           <p>
-            At Green Energy Together, we are technical consultants - our team
-            will only recommend the system that works best for you based on
-            accurate predictions of your return on investment.
+            We believe sustainable options should be available and affordable
+            for everyone — affordability shouldn't cost your peace of mind.
           </p>
           <TickList>
             <li>
-              Maximise power output and investment return and ensure ongoing
-              system safety.
+              As one of the largest installers in the country, we deal directly
+              with manufacturers, letting us offer prices usually found in
+              industrial and commercial settings.
             </li>
             <li>
-              Ensuring savings for power plant owners through a combination of
-              preventive maintenance and high-quality data analysis from the
-              latest software.
+              Our in-house Design, Installation and Commissioning &amp;
+              Maintenance teams let us offer unique warranties and service
+              guarantees.
             </li>
           </TickList>
-          <BlockCTA secondary right arrow="right" url="/products">
+          {/* <BlockCTA secondary right arrow="right" url="/products">
             Find out more
-          </BlockCTA>
+          </BlockCTA> */}
         </Col7>
       </div>
     </div>
