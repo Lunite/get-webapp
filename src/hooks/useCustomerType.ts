@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export const useCustomerType = () => {
-  const [type, setType] = useState("customer")
+  const [type, setType] = useState("residential")
 
   const changeCustomerType = type => {
     setType(type)

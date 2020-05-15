@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from "react"
+import ReactPlayer from "react-player"
 
 import "./styles.scss"
 
 interface HeroProps {
   image: string
+  video: string
   compact?: boolean
   overlapBlock?: JSX.Element
   className?: string
@@ -11,6 +13,7 @@ interface HeroProps {
 
 const Hero: FunctionComponent<HeroProps> = ({
   image,
+  video,
   compact,
   overlapBlock,
   children,
@@ -21,7 +24,7 @@ const Hero: FunctionComponent<HeroProps> = ({
       className={`hero hero--${compact ? "compact" : "large"}${
         overlapBlock ? " hero--has-overlap" : ""
       } ${className || ""}`}
-      style={{ backgroundImage: `url(${image})` }}
+      style={{ backgroundImage: image && !video ? `url(${image})` : "" }}
     >
       <div className="container u-layout--indent">{children}</div>
 
@@ -30,6 +33,20 @@ const Hero: FunctionComponent<HeroProps> = ({
           <div className="hero-overlap-block">{overlapBlock}</div>
         </div>
       )}
+      <div className="hero__video">
+        {video && (
+          <ReactPlayer
+            url={video}
+            playing
+            muted
+            playsinline
+            controls={false}
+            loop
+            width="auto"
+            height="auto"
+          />
+        )}
+      </div>
     </div>
   )
 }

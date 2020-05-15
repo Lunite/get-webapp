@@ -19,7 +19,7 @@ const HomepageB2b = () => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
-    changeCustomerType("business")
+    changeCustomerType("commercial")
   }, [])
 
   return (
@@ -27,6 +27,7 @@ const HomepageB2b = () => {
       <Hero
         className="homepage__hero"
         image="/images/b2b-hero.jpg"
+        video="https://vimeo.com/418982748"
         overlapBlock={
           <div className="hidden-xs">
             <Quote />

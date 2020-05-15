@@ -28,6 +28,19 @@
     }
   }
 
+  &__video {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    & > div {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+
   &--compact {
     @media ($phablet) {
       height: 224px;

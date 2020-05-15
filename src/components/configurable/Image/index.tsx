@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 interface ImageProps {
   src: string
   title: string
+  className?: string
   caption?: string
   shoutout?: string
   hover?: JSX.Element
@@ -19,6 +20,7 @@ const Image: FunctionComponent<ImageProps> = ({
   shoutout,
   hover,
   url,
+  className,
 }) => {
   const fixedQuery = graphql`
     query($imagePath: string, $width: string) {
@@ -44,7 +46,9 @@ const Image: FunctionComponent<ImageProps> = ({
     }
   `
 
-  const image = <img className="image" src={src} alt={title} title={title} />
+  const image = (
+    <img className={`image ${className}`} src={src} alt={title} title={title} />
+  )
 
   const getHoverContent = () => {
     if (!hover) {

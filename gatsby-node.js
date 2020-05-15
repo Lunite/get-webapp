@@ -33,6 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
           post_type
           project {
             description
+            subtitle
             hero_image {
               source_url
             }
@@ -48,6 +49,8 @@ exports.createPages = async ({ graphql, actions }) => {
             info_inverters
             info_modules
             info_map_url
+            info_output
+            info_system
           }
           seo {
             description

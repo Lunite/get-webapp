@@ -1,21 +1,22 @@
 import React, { useEffect } from "react"
 
 const Vector = props => {
-  let SVG
+  // let SVG
 
-  useEffect(() => {
-    ;(async () => {
-      await import(`~/vectors/${props.src}.inline.svg`)
-        .then(svg => {
-          SVG = svg.ReactComponent
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     await import(`~/vectors/${props.src}.inline.svg`)
+  //       .then(svg => {
+  //         SVG = svg.ReactComponent
+  //       })
+  //       .catch(e => {
+  //         console.log(e)
+  //       })
+  //   })()
+  // }, [])
 
-  return <>{SVG && <SVG {...props} />}</>
+  // return <>{SVG && <SVG {...props} />}</>
+  return null
 }
 
 export default Vector

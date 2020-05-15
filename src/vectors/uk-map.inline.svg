@@ -15,8 +15,10 @@
     <circle className="dot" cx="330.943" cy="299.022" r="6.94231" fill="#051C3F"/>
     <circle className="dot" cx="147.839" cy="499.482" r="6.94231" fill="#051C3F"/>
     <circle className="dot" cx="59.3246" cy="528.119" r="6.94231" fill="#051C3F"/>
+    <!-- Selected dot state
     <circle className="dot" cx="415.986" cy="589.732" r="17.3558" fill="#051B3F" fill-opacity="0.5"/>
     <path d="M429.002 589.731C429.002 596.92 423.175 602.748 415.986 602.748C408.797 602.748 402.969 596.92 402.969 589.731C402.969 582.542 408.797 576.715 415.986 576.715C423.175 576.715 429.002 582.542 429.002 589.731Z" fill="#051B3F" fill-opacity="0.5"/>
+    -->
     <circle className="dot" cx="415.986" cy="589.732" r="6.94231" fill="#051C3F"/>
     <circle className="dot" cx="217.263" cy="180.135" r="6.94231" fill="#051C3F"/>
     <circle className="dot" cx="287.553" cy="482.994" r="6.94231" fill="#051C3F"/>

@@ -87,11 +87,11 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           <div className="navigation__customer-switcher customer-switcher">
             <Link
               className={`customer-switcher__link${
-                type === "customer" ? " link--active" : ""
+                type === "residential" ? " link--active" : ""
               }`}
               to="/"
               onClick={() => {
-                changeCustomerType("customer")
+                changeCustomerType("residential")
               }}
             >
               For your Home
@@ -99,11 +99,11 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
             <span className="customer-switcher__link-separator" />
             <Link
               className={`customer-switcher__link${
-                type === "business" ? " link--active" : ""
+                type === "commercial" ? " link--active" : ""
               }`}
               to="/for-your-business"
               onClick={() => {
-                changeCustomerType("business")
+                changeCustomerType("commercial")
               }}
             >
               For your Business

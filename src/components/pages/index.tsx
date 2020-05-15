@@ -14,12 +14,13 @@ import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlo
 
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import { useCustomerType } from "~/hooks/useCustomerType"
+import CaseStudiesMap from "../configurable/CaseStudiesMap"
 
 const Homepage = () => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
-    changeCustomerType("customer")
+    changeCustomerType("residential")
   }, [])
 
   return (
@@ -30,6 +31,7 @@ const Homepage = () => {
       <Hero
         className="homepage__hero"
         image="/images/b2c-hero.jpg"
+        video="https://vimeo.com/418983793"
         overlapBlock={<StatsBlock device="desktop" />}
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
@@ -89,6 +91,17 @@ const Homepage = () => {
       <Block>
         <div className="container">
           <ProductsAndWarrantiesBlock />
+        </div>
+      </Block>
+      <Block>
+        <div className="container">
+          <Heading underlined>Case Studies and testimonials</Heading>
+          <p>
+            At Green Energy Together, we are technical consultants - our team
+            will only recommend the system that works best for you based on
+            accurate predictions of your return on investment.
+          </p>
+          <CaseStudiesMap />
         </div>
       </Block>
     </div>
