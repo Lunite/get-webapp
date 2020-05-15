@@ -10,4 +10,14 @@
   &:last-child {
     padding-bottom: 0;
   }
+
+  .block-cta {
+    margin-top: 32px;
+  }
+
+  @media ($mobile) {
+    .block-cta {
+      width: 100%;
+    }
+  }
 }

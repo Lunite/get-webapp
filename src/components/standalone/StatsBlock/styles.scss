@@ -1,5 +1,10 @@
+@import "~/styles/_variables.scss";
+
 .stats {
   overflow: hidden;
-  border-top-right-radius: 24px;
-  border-bottom-left-radius: 24px;
+
+  @media ($mobile) {
+    max-width: 325px;
+    margin: 0 auto 65px;
+  }
 }

@@ -13,6 +13,8 @@ import Shoutout from "../configurable/Shoutout"
 import StatsBlock from "../standalone/StatsBlock"
 import { useCustomerType } from "~/hooks/useCustomerType"
 
+import "./for-your-business.scss"
+
 const HomepageB2b = () => {
   const { changeCustomerType } = useCustomerType()
 
@@ -25,13 +27,20 @@ const HomepageB2b = () => {
       <Hero
         className="homepage__hero"
         image="/images/b2b-hero.jpg"
-        overlapBlock={<Quote />}
+        overlapBlock={
+          <div className="hidden-xs">
+            <Quote />
+          </div>
+        }
       >
         <Heading level={1}>We are here to help grow your business.</Heading>
         <p>Providing all the solutions to move to Solar Energy</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>
+        <Section className="visible-xs">
+          <Quote />
+        </Section>
         <Section>
           <Heading underlined>We bring energy to the World</Heading>
           <p>

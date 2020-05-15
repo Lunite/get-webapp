@@ -112,7 +112,8 @@ $gutter: 36px;
   flex-wrap: wrap;
 
   @media ($phablet) {
-    width: calc(100vw - 64px);
+    width: calc(100vw - 128px);
+    max-width: calc(#{$max-width} - 128px);
 
     & > *[class^="col-"] {
       &:first-child {
@@ -124,11 +125,6 @@ $gutter: 36px;
       }
     }
   }
-
-  // @media ($laptop) {
-  //   width: calc(100vw - 128px);
-  //   max-width: calc(#{$max-width} - 128px);
-  // }
 
   &--column {
     flex-direction: column;

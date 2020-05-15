@@ -21,8 +21,10 @@
   & > .container:first-child {
     flex-direction: column;
 
-    & > * {
-      max-width: 545px;
+    @media ($phablet) {
+      & > * {
+        max-width: 545px;
+      }
     }
   }
 
@@ -72,6 +74,16 @@
 
   @media ($mobile) {
     height: 144px;
+
+    .container {
+      padding: 0 22px;
+      width: auto;
+      margin-left: 0;
+    }
+
+    &--large {
+      height: 300px;
+    }
   }
 }
 

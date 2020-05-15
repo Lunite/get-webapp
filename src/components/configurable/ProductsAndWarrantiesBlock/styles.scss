@@ -4,4 +4,10 @@
   .block-cta {
     margin-top: $space-m;
   }
+
+  @media ($mobile) {
+    .block-cta {
+      width: 100%;
+    }
+  }
 }

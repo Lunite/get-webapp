@@ -11,8 +11,14 @@
     border: 2px solid $dark-blue;
     border-radius: 3px;
 
-    &:checked {
+    &:checked,
+    &:checked:focus {
       border-width: 10px;
+    }
+
+    &:focus {
+      outline: none;
+      border-width: 4px;
     }
   }
 

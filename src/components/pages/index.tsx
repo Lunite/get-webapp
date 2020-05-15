@@ -30,13 +30,14 @@ const Homepage = () => {
       <Hero
         className="homepage__hero"
         image="/images/b2c-hero.jpg"
-        overlapBlock={<StatsBlock />}
+        overlapBlock={<StatsBlock device="desktop" />}
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
         <p>Solar energy should not be a luxury</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>
+        <StatsBlock device="mobile" />
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
