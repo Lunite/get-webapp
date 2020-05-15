@@ -35,7 +35,7 @@ const Homepage = () => {
         overlapBlock={<StatsBlock device="desktop" />}
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
-        <p>Solar energy should not be a luxury</p>
+        <p>Welcome to the future of energy</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>

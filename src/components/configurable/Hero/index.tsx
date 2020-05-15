@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import ReactPlayer from "react-player"
 
 import "./styles.scss"
+import Video from "~/components/olc-framework/Video"
 
 interface HeroProps {
   image: string
@@ -33,25 +34,7 @@ const Hero: FunctionComponent<HeroProps> = ({
           <div className="hero-overlap-block">{overlapBlock}</div>
         </div>
       )}
-      <div className="hero__video">
-        {video && (
-          <ReactPlayer
-            url={video}
-            playing
-            muted
-            playsinline
-            controls={false}
-            loop
-            width="1920px"
-            height="auto"
-            config={{
-              vimeo: {
-                background: true,
-              },
-            }}
-          />
-        )}
-      </div>
+      <div className="hero__video">{video && <Video url={video} />}</div>
     </div>
   )
 }
