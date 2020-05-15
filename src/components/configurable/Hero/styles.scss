@@ -69,6 +69,10 @@
       }
     }
   }
+
+  @media ($mobile) {
+    height: 144px;
+  }
 }
 
 .hero-overlap-block {

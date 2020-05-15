@@ -15,6 +15,7 @@ interface BlockCTAProps {
   inline?: boolean
   large?: boolean
   fullWidth?: boolean
+  className?: string
 }
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
@@ -29,6 +30,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   inline,
   large,
   fullWidth,
+  className,
 }) => {
   if (!url && !submit) {
     return null
@@ -59,6 +61,10 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
 
     if (fullWidth) {
       classes += " block-cta--full-width"
+    }
+
+    if (className) {
+      classes += ` ${className}`
     }
 
     return classes

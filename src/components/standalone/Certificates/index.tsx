@@ -11,7 +11,12 @@ const Certificates = () => {
         <Heading level={2} underlined>
           We are Certified
         </Heading>
-        <img src="/images/certificates.png" />
+        <img className="hidden-xs" src="/images/certificates.png" />
+        <img
+          className="visible-xs"
+          style={{ maxWidth: "276px", margin: "0 auto" }}
+          src="/images/certificates-mobile.jpg"
+        />
       </div>
     </Block>
   )

@@ -1,6 +1,10 @@
+@import "~/styles/_variables.scss";
+
 .u-layout {
   &--indent {
-    padding-left: 116px;
+    @media ($phablet) {
+      padding-left: 116px;
+    }
   }
 
   &--sticky-top {

@@ -35,6 +35,10 @@ $light-family: "gothamlight", sans-serif;
 
 %h1 {
   font-size: 48px;
+
+  @media ($mobile) {
+    font-size: 32px;
+  }
 }
 
 %h2 {

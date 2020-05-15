@@ -4,11 +4,15 @@
   position: relative;
   max-width: 1440px;
 
+  .heading {
+    margin-bottom: 22px;
+  }
+
   @media ($phablet) {
     padding: $space-xl 0;
+  }
 
-    .heading {
-      margin-bottom: 22px;
-    }
+  @media ($mobile) {
+    padding: 48px 0;
   }
 }

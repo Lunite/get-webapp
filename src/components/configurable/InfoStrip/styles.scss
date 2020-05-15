@@ -19,10 +19,27 @@
     align-items: center;
     height: 74px;
   }
+
+  @media ($mobile) {
+    padding: $space-m 0;
+
+    &__items {
+      flex-direction: column;
+    }
+
+    &__map-button {
+      margin-top: 72px;
+      padding-left: 0;
+    }
+
+    .container {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
 }
 
 .info-item {
-  width: 20%;
   text-align: center;
 
   &__icon {
@@ -38,5 +55,17 @@
     font-size: 18px;
     font-weight: 500;
     color: $white;
+  }
+
+  @media ($phablet) {
+    width: 20%;
+  }
+
+  @media ($mobile) {
+    text-align: center;
+
+    & + & {
+      margin-top: 42px;
+    }
   }
 }

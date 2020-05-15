@@ -51,11 +51,14 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
     <footer className="footer">
       <div className="footer__top">
         <div className="container">
+          <BlockCTA className="visible-xs" url="/quote">
+            Get a Quote Today
+          </BlockCTA>
           <div className="footer__logo">
             <Logo />
             {/* <Vector src="logo" /> */}
           </div>
-          <BlockCTA url="/quote" right>
+          <BlockCTA className="hidden-xs" url="/quote" right>
             Get a Quote Today
           </BlockCTA>
         </div>

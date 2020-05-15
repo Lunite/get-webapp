@@ -25,6 +25,17 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    @media ($mobile) {
+      .container {
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .footer__logo {
+        margin-top: 52px;
+      }
+    }
   }
 
   &__middle {
@@ -60,8 +71,16 @@
   }
 
   &__bottom {
+    padding: 12px;
+
     .container {
       justify-content: flex-end;
+    }
+
+    @media ($mobile) {
+      .container {
+        justify-content: center;
+      }
     }
   }
 }
