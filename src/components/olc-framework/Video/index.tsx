@@ -1,23 +1,33 @@
 import React, { useState } from "react"
 import ReactPlayer from "react-player"
 
-const Video = ({ url }) => {
-  const [getPlaying, setPlaying] = useState(false)
+import "./styles.scss"
+
+const Video = ({ url, image }) => {
+  const [playing, setPlaying] = useState(false)
 
   return (
-    <ReactPlayer
-      url={url}
-      playing
-      muted
-      playsinline
-      controls={false}
-      loop
-      width="1920px"
-      height="auto"
-      onPlay={() => {
-        setPlaying(true)
-      }}
-    />
+    <div className={`video ${playing ? " video--playing" : ""}`}>
+      <div className="video__video">
+        <ReactPlayer
+          url={url}
+          playing
+          muted
+          playsinline
+          controls={false}
+          loop
+          width="1440px"
+          height="auto"
+          onPlay={() => {
+            setPlaying(true)
+          }}
+        />
+      </div>
+      <div
+        className="video__image"
+        style={{ backgroundImage: `src(${image})` }}
+      />
+    </div>
   )
 }
 

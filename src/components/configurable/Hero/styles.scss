@@ -7,7 +7,7 @@
   color: $white;
   z-index: 1;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
 
   &:before {
     content: "";
@@ -35,10 +35,12 @@
     height: 100%;
     overflow: hidden;
 
-    div,
-    iframe {
-      width: 1440px !important;
-      height: 810px !important;
+    .video__video {
+      div,
+      iframe {
+        width: 1440px !important;
+        height: 810px !important;
+      }
     }
   }
 
