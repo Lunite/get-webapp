@@ -27,6 +27,7 @@ $max-width: 1440px;
 
 $transition: 0.18s ease-in-out;
 $fast-transition: 0.08s ease-in-out;
+$slow-transition: 1.26s cubic-bezier(0.31, 0.18, 0.07, 0.77);
 
 /* Font stuff */
 $bold-family: "gothambold", sans-serif;

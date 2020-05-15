@@ -1,0 +1,15 @@
+@import "~/styles/_variables.scss";
+
+.page-wrapper {
+  &__main {
+    position: relative;
+    transform: translateY(-40px);
+    opacity: 0;
+    transition: transform $slow-transition, opacity $slow-transition;
+
+    &.main--init {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

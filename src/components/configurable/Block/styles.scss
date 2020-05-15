@@ -1,6 +1,7 @@
 @import "~/styles/_variables.scss";
 
 .block {
+  position: relative;
   max-width: 1440px;
 
   @media ($phablet) {

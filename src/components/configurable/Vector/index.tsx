@@ -7,7 +7,6 @@ const Vector = props => {
     ;(async () => {
       await import(`~/vectors/${props.src}.inline.svg`)
         .then(svg => {
-          debugger
           SVG = svg.ReactComponent
         })
         .catch(e => {

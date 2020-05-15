@@ -9,6 +9,8 @@ import Col3 from "../grid/Col3"
 import Col6 from "../grid/Col6"
 import Col9 from "../grid/Col9"
 
+import ContactUsDetails from "~/vectors/contact-us-details.inline.svg"
+
 const ContactUsPage = ({ location }) => {
   const { state = {} } = location
 
@@ -81,7 +83,9 @@ const ContactUsPage = ({ location }) => {
                 </div>
               </form>
             </Col9>
-            <Col3></Col3>
+            <Col3>
+              <ContactUsDetails />
+            </Col3>
           </div>
         </div>
       </Block>

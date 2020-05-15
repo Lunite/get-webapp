@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useEffect, useState } from "react"
 
 import "./styles.scss"
 
@@ -12,10 +12,16 @@ const Block: FunctionComponent<BlockProps> = ({
   highlightColour,
   children,
 }) => {
+  const [init, setInit] = useState(false)
+
+  useEffect(() => {
+    setInit(true)
+  }, [])
+
   return (
     <div
-      className={`block ${
-        highlightColour ? `block--${highlightColour}` : ""
+      className={`block${init ? " block--init" : ""}${
+        highlightColour ? ` block--${highlightColour}` : ""
       } ${className}`}
     >
       {children}
