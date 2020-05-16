@@ -29,6 +29,13 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       return
     }
 
+    const children = parentItem.children.slice()
+
+    // limit length of project
+    if (parentItem.slug === "projects") {
+      children.length = children.length > 6 ? 6 : children.length
+    }
+
     return (
       <Col4>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>

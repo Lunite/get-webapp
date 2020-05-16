@@ -43,14 +43,13 @@ const CaseStudiesMap = () => {
     return null
   }
 
-  console.log(projects)
-
   const carouselItems = (() => {
     return projects
       .filter(
         project =>
           project.acf.project.show_in_case_studies &&
-          project.acf.project.image?.source_url
+          (project.acf.project.image_case_studies_component?.source_url ||
+            project.acf.project.image?.source_url)
       )
       .map(project => {
         const pData = {
@@ -59,15 +58,25 @@ const CaseStudiesMap = () => {
           ...project.acf.project,
         }
 
+        const pImage =
+          pData.image_case_studies_component?.source_url ||
+          pData.image?.source_url
+
+        if (!pImage) {
+          return null
+        }
+
         return (
           <div className="project-item" key={pData.slug}>
             <div
               className="project-item__image"
               title={pData.title}
-              style={{ backgroundImage: `url(${pData.image.source_url})` }}
+              style={{ backgroundImage: `url(${pImage})` }}
             />
             <Heading className="project-item__title" level={4}>
-              <span dangerouslySetInnerHTML={{ __html: pData.title }} />
+              <span
+                dangerouslySetInnerHTML={{ __html: pData.quote || pData.title }}
+              />
             </Heading>
             <p
               className="project-item__description"
@@ -107,8 +116,6 @@ const CaseStudiesMap = () => {
     return null
   }
 
-  console.log(carouselItems)
-
   return (
     <div className="case-studies-map">
       <div className="row">
@@ -116,13 +123,12 @@ const CaseStudiesMap = () => {
           <UKMap />
         </Col6>
         <Col6>
+          {/* This hidden element ensures the carousel is the correct height */}
           <div
             style={{
               opacity: 0,
               pointerEvents: "none",
               display: "flex",
-              flexBasis: 0,
-              width: 0,
               overflow: "hidden",
             }}
           >
