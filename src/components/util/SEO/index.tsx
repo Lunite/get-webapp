@@ -28,6 +28,7 @@ const SEO: FunctionComponent<SEOProps> = ({
         name="robots"
         content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
       />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
       <link rel="icon" type="image/png" href="/images/favicon.png" />
       <link rel="canonical" href={siteUrl} />
       <meta property="og:locale" content="en_GB" />

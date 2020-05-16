@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react"
-import Vector from "~/components/configurable/Vector"
 import { Link } from "gatsby"
 
 import "./styles.scss"
+import Icon from "~/components/olc-framework/Icon"
 
 interface BlockCTAProps {
   url?: string
@@ -82,9 +82,9 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
     <>
       {!external && (
         <Link to={url} className={`block-cta ${extraClasses()}`}>
-          {arrow === "left" && <Vector src="arrow-left" />}
+          {arrow === "left" && <Icon alias="arrow-left" />}
           {children}
-          {arrow === "right" && <Vector src="arrow-right" />}
+          {arrow === "right" && <Icon alias="arrow-right" />}
         </Link>
       )}
       {external && (

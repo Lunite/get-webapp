@@ -11,6 +11,10 @@
   transform: scale(1);
   transition: transform $fast-transition;
 
+  .icon {
+    font-size: 24px;
+  }
+
   &--primary {
     background-color: $green;
     border-color: $green;

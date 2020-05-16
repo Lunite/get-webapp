@@ -82,6 +82,17 @@ export const useSitemap = (): SitemapItem[] => {
       restructuredSitemap[parentIndex].children.push(item)
     })
 
+    const projectIndex = restructuredSitemap.findIndex(
+      item => item.slug === "project"
+    )
+
+    // if (restructuredSitemap[projectIndex]?.children?.length) {
+    //   restructuredSitemap[projectIndex].children.length =
+    //     restructuredSitemap[projectIndex].children.length > 6
+    //       ? 6
+    //       : restructuredSitemap[projectIndex].children.length
+    // }
+
     return restructuredSitemap
   }
 

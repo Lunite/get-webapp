@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
-import Vector from "~/components/configurable/Vector"
 import Col4 from "~/components/grid/Col4"
 import Heading from "~/components/configurable/Heading"
 
@@ -11,6 +10,7 @@ import { SitemapItem } from "~/hooks/useSitemap"
 import { Link } from "gatsby"
 
 import "./styles.scss"
+import Icon from "~/components/olc-framework/Icon"
 
 interface FooterProps {
   sitemap: SitemapItem[]
@@ -66,7 +66,6 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
           </BlockCTA>
           <div className="footer__logo">
             <Logo />
-            {/* <Vector src="logo" /> */}
           </div>
           <BlockCTA className="hidden-xs" url="/quote" right>
             Get a Quote Today
@@ -79,12 +78,26 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
             <Col4>
               <Heading className="footer__column-heading">GET UK</Heading>
               <div className="footer__item">
-                <span>Green Energy Together</span>
-                <span>8 Peerglow Center,</span>
-                <span>Marsh Lane Ware</span>
                 <span>
-                  <Vector src="phone" />
-                  020 3995 4422
+                  Green Energy Together
+                  <span style={{ position: "relative", paddingLeft: "34px" }}>
+                    <Icon alias="pin" />
+                    8 Peerglow Center,
+                    <br />
+                    Marsh Lane Ware,
+                    <br />
+                    Hertfordshire
+                    <br />
+                    SG12 9QL
+                    <br />
+                    VAT 292 7158 75
+                  </span>
+                </span>
+                <span>
+                  <span style={{ position: "relative", paddingLeft: "34px" }}>
+                    <Icon alias="phone" />
+                    020 3995 4422
+                  </span>
                 </span>
               </div>
             </Col4>

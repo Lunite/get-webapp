@@ -16,7 +16,6 @@ const Vector = props => {
   }, [])
 
   return <>{SVG && <SVG {...props} />}</>
-  return null
 }
 
 export default Vector

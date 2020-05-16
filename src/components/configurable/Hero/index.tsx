@@ -6,7 +6,7 @@ import Video from "~/components/olc-framework/Video"
 
 interface HeroProps {
   image: string
-  video: string
+  video?: string
   compact?: boolean
   overlapBlock?: JSX.Element
   className?: string

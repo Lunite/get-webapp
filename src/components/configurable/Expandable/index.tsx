@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react"
-import Vector from "../Vector"
 
 import "./styles.scss"
+import Icon from "~/components/olc-framework/Icon"
 
 interface ExpandableProps {
   readmore: JSX.Element
@@ -21,13 +21,13 @@ const Expandable: FunctionComponent<ExpandableProps> = ({ readmore }) => {
         {collapsed && (
           <>
             Expand for more information
-            <Vector src="thin-arrow-right-icon" />
+            <Icon alias="thin-arrow-right" />
           </>
         )}
         {!collapsed && (
           <>
             Collapse
-            <Vector src="thin-arrow-up-icon" />
+            <Icon alias="thin-arrow-up" />
           </>
         )}
       </a>

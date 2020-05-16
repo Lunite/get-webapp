@@ -7,7 +7,7 @@ import Col9 from "~/components/grid/Col9"
 import Col10 from "~/components/grid/Col10"
 import Col6 from "~/components/grid/Col6"
 import Image from "~/components/configurable/Image"
-import Vector from "~/components/configurable/Vector"
+import Icon from "~/components/olc-framework/Icon"
 
 import "./styles.scss"
 
@@ -32,7 +32,7 @@ const Service: FunctionComponent<any> = context => {
               {service.block_1_highlight_1 && (
                 <div className="highlight">
                   <div className="highlight__icon">
-                    <Vector src="solar-energy-house-icon" />
+                    <Icon alias="solar-energy-house" />
                   </div>
                   <div
                     className="highlight__contents"
@@ -88,7 +88,7 @@ const Service: FunctionComponent<any> = context => {
               {service.block_1_highlight_1 && (
                 <div className="highlight">
                   <div className="highlight__icon">
-                    <Vector src="solar-energy-house-icon" />
+                    <Icon alias="solar-energy-house" />
                   </div>
                   <div
                     className="highlight__contents"

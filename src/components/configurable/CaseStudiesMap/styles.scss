@@ -89,4 +89,47 @@
     right: 0;
     line-height: 1;
   }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 48px;
+    padding-bottom: 48px;
+
+    @media ($mobile) {
+      flex-direction: column;
+      padding-right: 0;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+.cs-info-item {
+  text-align: left;
+
+  &__icon {
+    color: $light-blue;
+  }
+
+  &__heading {
+    display: block;
+    font-family: $bold-family;
+    font-size: 16px;
+    line-height: 1;
+    color: $dark-blue;
+  }
+
+  &__value {
+    font-size: 16px;
+    line-height: 1;
+    color: $medium-grey;
+    margin-top: 16px;
+    white-space: nowrap;
+  }
+
+  @media ($mobile) {
+    & + .cs-info-item {
+      margin-top: 30px;
+    }
+  }
 }

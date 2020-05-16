@@ -84,21 +84,25 @@ const CaseStudiesMap = () => {
             />
             <div className="project-item__info">
               {pData.info_system && (
-                <div className="info-item">
-                  <span className="info-item__heading">System</span>
-                  <span className="info-item__value">{pData.info_system}</span>
+                <div className="cs-info-item">
+                  <span className="cs-info-item__heading">System</span>
+                  <span className="cs-info-item__value">
+                    {pData.info_system}
+                  </span>
                 </div>
               )}
               {pData.info_output && (
-                <div className="info-item">
-                  <span className="info-item__heading">Output</span>
-                  <span className="info-item__value">{pData.info_output}</span>
+                <div className="cs-info-item">
+                  <span className="cs-info-item__heading">Output</span>
+                  <span className="cs-info-item__value">
+                    {pData.info_output}
+                  </span>
                 </div>
               )}
               {pData.info_location && (
-                <div className="info-item">
-                  <span className="info-item__heading">Location</span>
-                  <span className="info-item__value">
+                <div className="cs-info-item">
+                  <span className="cs-info-item__heading">Location</span>
+                  <span className="cs-info-item__value">
                     {pData.info_location}
                   </span>
                 </div>

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
-import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
 import BurgerMenu from "~/components/configurable/BurgerMenu"
 
@@ -45,14 +44,14 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
         >
           {item.title}
           {item.children?.length && (
-            <Vector className="navigation-item__arrow" src="arrow-down-icon" />
+            <Icon className="navigation-item__arrow" alias="arrow-down" />
           )}
         </Link>
       ) : (
         <div className="navigation-item__link" data-title={item.title}>
           {item.title}
           {item.children?.length && (
-            <Vector className="navigation-item__arrow" src="arrow-down-icon" />
+            <Icon className="navigation-item__arrow" alias="arrow-down" />
           )}
         </div>
       )}
@@ -132,7 +131,6 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           <Link className="logo__anchor" to="/">
             <Logo className="hidden-xs" />
           </Link>
-          {/* <Vector className="navigation__logo logo" src="logo" /> */}
           <div className="navigation__items right">
             {/* <NavItem slug="service" /> */}
             <NavItem slug="project" path="/projects" />

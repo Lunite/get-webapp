@@ -4,7 +4,6 @@ import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import StatsBlock from "~/components/standalone/StatsBlock"
 import Block from "../configurable/Block"
-import Vector from "../configurable/Vector"
 import Col8 from "../grid/Col8"
 import Col6 from "../grid/Col6"
 import Expandable from "../configurable/Expandable"
@@ -15,6 +14,7 @@ import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlo
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
+import Icon from "../olc-framework/Icon"
 
 const Homepage = () => {
   const { changeCustomerType } = useCustomerType()
@@ -69,7 +69,7 @@ const Homepage = () => {
                 readmore={
                   <div className="row">
                     <Col6 className="u-layout--centered">
-                      <Vector src="solar-house" />
+                      <Icon alias="solar-house" />
                       <p>
                         Our designs produce peak return on solar investment
                         because we base recommendations on your lifestyle and
@@ -81,7 +81,7 @@ const Homepage = () => {
                       </p>
                     </Col6>
                     <Col6 className="u-layout--centered">
-                      <Vector src="solar-house" />
+                      <Icon alias="solar-house" />
                       <p>
                         From quoting and design to our comprehensive aftercare
                         package, we provide a complete solution. We'll take care

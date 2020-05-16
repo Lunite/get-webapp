@@ -56,8 +56,17 @@
     font-size: 18px;
     font-weight: 300;
 
-    span {
+    span:not(.icon) {
       display: block;
+    }
+
+    .icon {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      color: $light-blue;
+      font-size: 24px;
+      margin-top: 0;
     }
   }
 

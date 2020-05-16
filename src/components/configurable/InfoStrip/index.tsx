@@ -1,8 +1,8 @@
 import React from "react"
 import BlockCTA from "~/components/configurable/BlockCTA"
-import Vector from "~/components/configurable/Vector"
 
 import "./styles.scss"
+import Icon from "~/components/olc-framework/Icon"
 
 interface InfoStripProps {
   location?: string
@@ -27,11 +27,16 @@ const InfoStrip = ({
   whereToFindUs,
   mapUrl,
 }: InfoStripProps) => {
+  const iconMap = {
+    location: "pin",
+    dcPeak: "battery-charging",
+  }
+
   const getInfoItem = (alias: string, label: string, value) => {
     return (
       <div className="info-item">
         <div className="info-item__icon">
-          <Vector src={`info-${alias}-icon`} />
+          <Icon alias={`${iconMap[alias] || alias}`} />
         </div>
         <div className="info-item__label">{label}</div>
         <div className="info-item__value">{value}</div>
@@ -58,6 +63,7 @@ const InfoStrip = ({
           <div className="info-strip__map-button">
             <BlockCTA url={mapUrl} secondary external>
               Check on Map
+              <Icon alias="location" />
             </BlockCTA>
           </div>
         )}
