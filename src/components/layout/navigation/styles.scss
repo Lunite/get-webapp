@@ -59,6 +59,11 @@
       &__link {
         display: inline-block;
         font-family: $bold-family;
+
+        .icon {
+          font-size: 140%;
+          margin-right: 8px;
+        }
       }
 
       &__link + .contact-details__link {

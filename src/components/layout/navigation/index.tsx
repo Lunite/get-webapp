@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Fragment } from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
 import Vector from "~/components/configurable/Vector"
 import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
@@ -11,6 +11,7 @@ import Phone from "~/vectors/phone.inline.svg"
 import "./styles.scss"
 import "./navigation-item.scss"
 import { useCustomerType } from "~/hooks/useCustomerType"
+import Icon from "~/components/olc-framework/Icon"
 
 interface NavItemProps {
   slug: string
@@ -115,11 +116,11 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           </div>
           <div className="navigation__contact-details contact-details">
             <Link className="contact-details__link" to="/contact-us">
-              <Vector src="at-icon" />
+              <Icon alias="at" />
               Contact us
             </Link>
             <a className="contact-details__link" href="tel:02039954422">
-              <Vector src="phone" />
+              <Icon alias="phone" />
               020 3995 4422
             </a>
           </div>
