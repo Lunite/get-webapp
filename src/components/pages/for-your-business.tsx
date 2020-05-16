@@ -74,9 +74,9 @@ const HomepageB2b = () => {
                   we trade significantly larger volumes than the competitors.
                 </li>
               </TickList>
-              <BlockCTA secondary url="/products" arrow="right">
+              {/* <BlockCTA secondary url="/products" arrow="right">
                 Explore Packages
-              </BlockCTA>
+              </BlockCTA> */}
             </Col10>
             <Col2>
               <Image
@@ -116,9 +116,9 @@ const HomepageB2b = () => {
                   optimised solar and battery solution for you.
                 </li>
               </TickList>
-              <BlockCTA secondary url="/products" arrow="right">
+              {/* <BlockCTA secondary url="/products" arrow="right">
                 Find out more
-              </BlockCTA>
+              </BlockCTA> */}
             </Col10>
           </div>
         </Section>
@@ -134,7 +134,7 @@ const HomepageB2b = () => {
                 commercial businesses and large-scale grounded mount solar
                 farms, for over 10 years.
               </p>
-              <BlockCTA url="/products">Find out more</BlockCTA>
+              {/* <BlockCTA url="/products">Find out more</BlockCTA> */}
             </>
           }
         />
