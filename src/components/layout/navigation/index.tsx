@@ -26,16 +26,20 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
     return null
   }
 
+  item.path = path || item.path
+
+  item.path = item.path === "/projects" ? "" : item.path
+
   return (
     <div
       className={`navigation-item ${
         item.children?.length ? "navigation-item--has-children" : ""
       }`}
     >
-      {item.path || path ? (
+      {item.path ? (
         <Link
           className="navigation-item__link"
-          to={item.path || path}
+          to={item.path}
           data-title={item.title}
         >
           {item.title}
