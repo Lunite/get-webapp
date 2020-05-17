@@ -9,7 +9,6 @@ import Icon from "../olc-framework/Icon"
 import Col11 from "../grid/Col11"
 import Col6 from "../grid/Col6"
 import HighlightBlock from "../configurable/HighlightBlock"
-import { useStaticQuery, graphql } from "gatsby"
 import Grid from "../configurable/Grid"
 
 const ProductsAndWarranties = ({ pageContext }) => {

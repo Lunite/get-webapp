@@ -53,12 +53,17 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   return (
     <>
       <SEO {...seoData} />
-      <Navigation sitemap={useSitemap()} />
-      <main className={`page-wrapper__main${init ? " main--init" : ""}`}>
-        {children}
-        <Certificates />
-      </main>
-      <Footer sitemap={useSitemap()} />
+      <div
+        className={`page-wrapper${init ? " page-wrapper--init" : ""}`}
+        style={{ opacity: 0 }}
+      >
+        <Navigation sitemap={useSitemap()} />
+        <main>
+          {children}
+          <Certificates />
+        </main>
+        <Footer sitemap={useSitemap()} />
+      </div>
     </>
   )
 }
