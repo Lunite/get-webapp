@@ -135,10 +135,33 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }`
 
+  const productsWarrantiesQuery = `query getAllWordpressPosts {
+    allWordpressPost(
+      filter: {
+        categories: { elemMatch: { slug: { eq: "product_warranty" } } }
+      }
+    ) {
+      nodes {
+        id
+        acf {
+          product_warranty {
+            image {
+              source_url
+              title
+            }
+            pdf
+          }
+        }
+        slug
+        title
+      }
+    }
+  }`
+
   const createPages = (query, category, queryName = "allWordpressPost") => {
     try {
       return graphql(query, { category }).then(results => {
-        if (!results.data[queryName].nodes.length) {
+        if (!results.data[queryName] || !results.data[queryName].nodes.length) {
           return Promise.resolve()
         }
 
@@ -172,6 +195,30 @@ exports.createPages = async ({ graphql, actions }) => {
   const createStaticPages = pages => {
     pages.forEach(page => {
       const template = path.resolve(`./src/components/pages/${page.slug}.tsx`)
+
+      if (page.slug === "products-warranties") {
+        return graphql(productsWarrantiesQuery).then(results => {
+          if (
+            !results.data.allWordpressPost ||
+            !results.data.allWordpressPost.nodes.length
+          ) {
+            Promise.resolve()
+          }
+
+          createPage({
+            path: "/products-warranties",
+            component: slash(template),
+            context: {
+              title: page.title,
+              slug: page.slug,
+              acf: {
+                seo: ({ keywords, description } = page),
+              },
+              productsWarranties: results.data.allWordpressPost.nodes,
+            },
+          })
+        })
+      }
 
       createPage({
         path: `/${page.slug === "index" ? "" : page.slug}`,
@@ -220,6 +267,12 @@ exports.createPages = async ({ graphql, actions }) => {
       // },
       { slug: "quote", title: "Get a Quote", keywords: "", description: "" },
       { slug: "404", title: "Page not found", keywords: "", description: "" },
+      {
+        slug: "products-warranties",
+        title: "Products and Warranties",
+        keywords: "",
+        description: "",
+      },
     ]),
   ])
 }

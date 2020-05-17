@@ -1,0 +1,23 @@
+@import "~/styles/_variables.scss";
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  color: $dark-blue;
+
+  li {
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 25%;
+    min-width: 304px;
+    max-width: 304px;
+  }
+}
+
+.grid-item {
+  &__icon {
+    color: $green;
+  }
+}

@@ -1,0 +1,7 @@
+@import "~/styles/_variables.scss";
+
+.u-styling {
+  &--box-shadow {
+    box-shadow: $box-shadow;
+  }
+}

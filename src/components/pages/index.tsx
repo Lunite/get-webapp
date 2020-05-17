@@ -73,7 +73,7 @@ const Homepage = () => {
                       <Col6 className="u-layout--centered">
                         <div
                           className="icon__circle-wrapper"
-                          style={{ marginBottom: 40 }}
+                          style={{ marginBottom: 40, fontSize: 40 }}
                         >
                           <Icon alias="solar-house" />
                         </div>
@@ -90,7 +90,7 @@ const Homepage = () => {
                       <Col6 className="u-layout--centered">
                         <div
                           className="icon__circle-wrapper"
-                          style={{ marginBottom: 40 }}
+                          style={{ marginBottom: 40, fontSize: 40 }}
                         >
                           <Icon alias="solar-power" />
                         </div>

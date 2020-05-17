@@ -6,6 +6,7 @@ import Icon from "~/components/olc-framework/Icon"
 
 interface BlockCTAProps {
   url?: string
+  action?: Function
   submit?: boolean
   secondary?: boolean
   left?: boolean
@@ -20,6 +21,7 @@ interface BlockCTAProps {
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   url,
+  action,
   submit,
   secondary,
   left,
@@ -80,17 +82,34 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
 
   return (
     <>
-      {!external && (
-        <Link to={url} className={`block-cta ${extraClasses()}`}>
-          {arrow === "left" && <Icon alias="arrow-left" />}
+      {action ? (
+        <span
+          className={`block-cta ${extraClasses()}`}
+          onClick={() => {
+            action()
+          }}
+        >
           {children}
-          {arrow === "right" && <Icon alias="arrow-right" />}
-        </Link>
-      )}
-      {external && (
-        <a className={`block-cta ${extraClasses()}`} href={url} target="_blank">
-          {children}
-        </a>
+        </span>
+      ) : (
+        <>
+          {!external && (
+            <Link to={url} className={`block-cta ${extraClasses()}`}>
+              {arrow === "left" && <Icon alias="arrow-left" />}
+              {children}
+              {arrow === "right" && <Icon alias="arrow-right" />}
+            </Link>
+          )}
+          {external && (
+            <a
+              className={`block-cta ${extraClasses()}`}
+              href={url}
+              target="_blank"
+            >
+              {children}
+            </a>
+          )}
+        </>
       )}
     </>
   )

@@ -1,7 +1,8 @@
 @import "./variables", "./normalize.scss", "./olc-grid.scss",
-  "./gotham-font.scss", "./icon-font.scss", "./layout.scss", "./form.scss",
-  "./divider.scss";
+  "./gotham-font.scss", "./icon-font.scss", "./layout.scss", "./styling.scss",
+  "./form.scss", "./divider.scss";
 
+@import "~/components/pages/content-page.scss";
 @import "./illustrated-house-block.scss";
 @import "./awesome-slider.scss";
 
@@ -30,5 +31,9 @@ svg {
 }
 
 p + * {
+  margin-top: 24px;
+}
+
+.image__container + p {
   margin-top: 24px;
 }

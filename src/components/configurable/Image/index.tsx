@@ -20,7 +20,7 @@ const Image: FunctionComponent<ImageProps> = ({
   shoutout,
   hover,
   url,
-  className,
+  className = "",
 }) => {
   const fixedQuery = graphql`
     query($imagePath: string, $width: string) {
@@ -47,7 +47,12 @@ const Image: FunctionComponent<ImageProps> = ({
   `
 
   const image = (
-    <img className={`image ${className}`} src={src} alt={title} title={title} />
+    <img
+      className={`image ${className} u-styling--box-shadow`}
+      src={src}
+      alt={title}
+      title={title}
+    />
   )
 
   const getHoverContent = () => {

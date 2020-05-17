@@ -31,7 +31,6 @@
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
   }
 }
 
@@ -109,4 +108,10 @@
 }
 .icon-phone:before {
   content: "\79";
+}
+.icon-sun:before {
+  content: "\7a";
+}
+.icon-pdf:before {
+  content: "\41";
 }
