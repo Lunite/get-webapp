@@ -67,31 +67,45 @@ const Homepage = () => {
               </p>
               <Expandable
                 readmore={
-                  <div className="row">
-                    <Col6 className="u-layout--centered">
-                      <Icon alias="solar-house" />
-                      <p>
-                        Our designs produce peak return on solar investment
-                        because we base recommendations on your lifestyle and
-                        consumption, integrate the battery from the start and
-                        use only market leading software PV*SOL for forecasting.
-                        This means you'll generate the optimum level of energy
-                        for your requirements and storage size, saving you
-                        money.
-                      </p>
-                    </Col6>
-                    <Col6 className="u-layout--centered">
-                      <Icon alias="solar-house" />
-                      <p>
-                        From quoting and design to our comprehensive aftercare
-                        package, we provide a complete solution. We'll take care
-                        of the boring bits for you, including commissioning and
-                        free registration, and for 2 years we offer free
-                        operation and maintenance as well as monitoring your
-                        system remotely, using data for optimal performance.
-                      </p>
-                    </Col6>
-                  </div>
+                  <>
+                    <div className="visible-xs" style={{ height: 40 }} />
+                    <div className="row">
+                      <Col6 className="u-layout--centered">
+                        <div
+                          className="icon__circle-wrapper"
+                          style={{ marginBottom: 40 }}
+                        >
+                          <Icon alias="solar-house" />
+                        </div>
+                        <p>
+                          Our designs produce peak return on solar investment
+                          because we base recommendations on your lifestyle and
+                          consumption, integrate the battery from the start and
+                          use only market leading software PV*SOL for
+                          forecasting. This means you'll generate the optimum
+                          level of energy for your requirements and storage
+                          size, saving you money.
+                        </p>
+                      </Col6>
+                      <Col6 className="u-layout--centered">
+                        <div
+                          className="icon__circle-wrapper"
+                          style={{ marginBottom: 40 }}
+                        >
+                          <Icon alias="solar-power" />
+                        </div>
+                        <p>
+                          From quoting and design to our comprehensive aftercare
+                          package, we provide a complete solution. We'll take
+                          care of the boring bits for you, including
+                          commissioning and free registration, and for 2 years
+                          we offer free operation and maintenance as well as
+                          monitoring your system remotely, using data for
+                          optimal performance.
+                        </p>
+                      </Col6>
+                    </div>
+                  </>
                 }
               />
             </Col8>

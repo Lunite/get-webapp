@@ -5328,6 +5328,12 @@ gatsby-plugin-alias-imports@1.0.5:
   dependencies:
     "@babel/runtime" "^7.2.0"
 
+gatsby-plugin-google-tagmanager@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.3.1.tgz#377824a10eacaf209b962527750647d2562bb8a5"
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+
 gatsby-plugin-manifest@2.3.7:
   version "2.3.7"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.3.7.tgz#f4fdb4dc04a4dec2b669f5e49c959e7e687cf7c7"
@@ -9848,7 +9854,6 @@ react-lifecycles-compat@^3.0.4:
 react-player@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-player/-/react-player-2.0.1.tgz#4d80f2a50ad07f26a220ff5cd0f225e72cb69df7"
-  integrity sha512-QG/NutOfDq4FF/7nzMDzM4nmb8ExVES/5n973NSZgZ/1iE6ObmhDOau9gO67NPYOQv/RhOJ4S8b0g9bVAdK9vA==
   dependencies:
     deepmerge "^4.0.0"
     load-script "^1.0.0"
