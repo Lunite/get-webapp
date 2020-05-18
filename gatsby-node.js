@@ -161,7 +161,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const createPages = (query, category, queryName = "allWordpressPost") => {
     try {
       return graphql(query, { category }).then(results => {
-        if (!results.data[queryName] || !results.data[queryName].nodes.length) {
+        console.log(results.data[queryName].nodes)
+        if (
+          !results ||
+          !results.data ||
+          !results.data[queryName] ||
+          !results.data[queryName].nodes.length
+        ) {
           return Promise.resolve()
         }
 
@@ -199,6 +205,8 @@ exports.createPages = async ({ graphql, actions }) => {
       if (page.slug === "products-warranties") {
         return graphql(productsWarrantiesQuery).then(results => {
           if (
+            !results ||
+            !results.data ||
             !results.data.allWordpressPost ||
             !results.data.allWordpressPost.nodes.length
           ) {
