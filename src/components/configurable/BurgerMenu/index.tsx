@@ -1,6 +1,5 @@
-import { FunctionComponent, useState } from "react"
-
-import React from "react"
+import React, { FunctionComponent, useState, useEffect } from "react"
+import { globalHistory } from "@reach/router"
 
 import "./styles.scss"
 
@@ -16,6 +15,14 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
   children,
 }) => {
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    return globalHistory.listen(({ action }) => {
+      if (action === "PUSH") {
+        setOpen(false)
+      }
+    })
+  }, [])
 
   const toggleOpen = () => {
     setOpen(!open)
