@@ -169,5 +169,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-netlify-cms",
+    "gatsby-transformer-remark"
   ],
 }

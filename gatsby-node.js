@@ -4,198 +4,31 @@ const { slash } = require(`gatsby-core-utils`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pagesQuery = `query getAllWordpressPages {
-    allWordpressPage {
-      nodes {
-        id
-        acf {
-          seo {
-            keywords
-            description
-            image {
-              source_url
-            }
-          }
-        }
-        title
-        path
-        slug
-        content
-      }
-    }
-  }`
+  const createProjectPages = async () => {
+    const template = path.resolve('./src/templates/project/index.tsx')
 
-  const projectsQuery = `query getAllWordpressPosts {
-    allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: "project"}}}}) {
-      nodes {
-        id
-        acf {
-          post_type
-          project {
-            description
-            subtitle
-            hero_image {
-              source_url
-            }
-            image {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            info_location
-            info_dc_peak
-            info_developer
-            info_inverters
-            info_modules
-            info_map_url
-            info_output
-            info_system
-          }
-          seo {
-            description
-            keywords
-            image {
-              source_url
-            }
-          }
-        }
-        title
-        path
-        slug
-        content
-      }
-    }
-  }`
-
-  const servicesQuery = `query getAllWordpressPosts {
-    allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: "service"}}}}) {
-      nodes {
-        id
-        acf {
-          post_type
-          seo {
-            description
-            keywords
-            image {
-              source_url
-            }
-          }
-          service {
-            hero_image {
-              source_url
-              title
-            }
-            block_1_description
-            block_1_heading
-            block_1_highlight_1
-            block_1_highlight_2
-            block_1_image_1 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_1_image_2 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_2_description
-            block_2_heading
-            block_2_highlight_1
-            block_2_highlight_2
-            block_2_image_1 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_2_image_2 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            description
-            display_image {
-              alt_text
-              caption
-              source_url
-              title
-            }
-          }
-        }
-        title
-        path
-        slug
-        content
-      }
-    }
-  }`
-
-  const productsWarrantiesQuery = `query getAllWordpressPosts {
-    allWordpressPost(
-      filter: {
-        categories: { elemMatch: { slug: { eq: "product_warranty" } } }
-      }
-    ) {
-      nodes {
-        id
-        acf {
-          product_warranty {
-            image {
-              source_url
-              title
-            }
-            pdf
-          }
-        }
-        slug
-        title
-      }
-    }
-  }`
-
-  const createPages = (query, category, queryName = "allWordpressPost") => {
-    try {
-      return graphql(query, { category }).then(results => {
-        console.log(results.data[queryName].nodes)
-        if (
-          !results ||
-          !results.data ||
-          !results.data[queryName] ||
-          !results.data[queryName].nodes.length
+    const result = await graphql(`
+      {
+        allMarkdownRemark(
+          sort: { order: DESC, fields: [frontmatter___date] }
+          limit: 1000
         ) {
-          return Promise.resolve()
-        }
-
-        const template = path.resolve(`./src/templates/${category}/index.tsx`)
-
-        results.data[queryName].nodes.forEach(node => {
-          const path = (() => {
-            if (node.slug === "homepage") {
-              return "/"
+          edges {
+            node {
+              frontmatter {
+                title
+                description
+                path
+              }
             }
-            return `${category !== "page" ? `${category}/` : ""}${node.slug}`
-          })()
+          }
+        }
+      }
+    `)
 
-          createPage({
-            path,
-            component: slash(template),
-            context: {
-              content: node.content,
-              title: node.title,
-              slug: node.slug,
-              acf: node.acf,
-            },
-          })
-        })
-      })
-    } catch (e) {
-      console.log(e)
-    }
+    result.data.allMarkdownRemark.edges.forEach(({node}) => {
+      consol.log(node)
+    })
   }
 
   const createStaticPages = pages => {
@@ -243,9 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   return Promise.all([
-    // createPages(pagesQuery, "page", "allWordpressPage"),
-    // createPages(projectsQuery, "project"),
-    // createPages(servicesQuery, "service"),
+    createProjectPages(),
     createStaticPages([
       {
         slug: "contact-us",
