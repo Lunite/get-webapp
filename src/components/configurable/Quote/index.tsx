@@ -5,7 +5,10 @@ import BlockCTA from "~/components/configurable/BlockCTA"
 
 import "./styles.scss"
 
-const Quote: FunctionComponent = () => {
+const Quote: FunctionComponent<any> = ({
+  title = "Get a Free Quote today.",
+  description = "It only takes 2 minutes to request a no-obligation quote, customized to your needs.",
+}) => {
   const formState = {}
 
   const handleInputChange = event => {
@@ -22,11 +25,8 @@ const Quote: FunctionComponent = () => {
 
   return (
     <div className="quote">
-      <Heading level={3}>Get a Free Quote today.</Heading>
-      <p>
-        It only takes 2 minutes to request a no-obligation quote, customized to
-        your needs.
-      </p>
+      <Heading level={3}>{title}</Heading>
+      <p>{description}</p>
       <form className="form form--horizontal" onSubmit={handleSubmit}>
         <div className="form__fields">
           <input

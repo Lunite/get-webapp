@@ -30,12 +30,15 @@ const HomepageB2b = () => {
         video="https://vimeo.com/418982748"
         overlapBlock={
           <div className="hidden-xs">
-            <Quote />
+            <Quote
+              title="Let us produce a solar business case for you"
+              description="No one understands solar better than us, and we love efficient processes.  Give us a call or request a free consultation in seconds, so you can concentrate on what matters most - operating your business."
+            />
           </div>
         }
       >
-        <Heading level={1}>We are here to help grow your business.</Heading>
-        <p>Providing all the solutions to move to Solar Energy</p>
+        <Heading level={1}>Future proof your business</Heading>
+        <p>We are here to help grow</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>
@@ -60,23 +63,24 @@ const HomepageB2b = () => {
             <Col10>
               <Heading underlined>Industrial Commercial Solutions</Heading>
               <p>
-                For more than a decade, Green Energy Together has designed,
-                engineered, installed and maintained commercial solar power
-                systems across the UK.
+                We offer a one-stop service for all your needs, from consulting
+                and design to installation and lifetime maintenance. Our package
+                offers:
               </p>
               <TickList>
                 <li>
-                  From Initial consulting and engineering design through to
-                  installation and lifetime maintenance.
+                  Full assessment of your energy consumption profile, with an
+                  obligation-free report.
                 </li>
                 <li>
-                  As one of the largest solar development groups in the country,
-                  we trade significantly larger volumes than the competitors.
+                  We take care of the entire project, from grid connection to
+                  certification, plus a 2-year guarantee.
                 </li>
               </TickList>
-              {/* <BlockCTA secondary url="/products" arrow="right">
+
+              <BlockCTA secondary url="/products-warranties" arrow="right">
                 Explore Packages
-              </BlockCTA> */}
+              </BlockCTA>
             </Col10>
             <Col2>
               <Image
@@ -100,25 +104,23 @@ const HomepageB2b = () => {
             <Col10>
               <Heading underlined>Operation &amp; Maintenance</Heading>
               <p>
-                We believe that your solar system should be designed based on
-                your goals and consumption, not how many solar panels you can
-                fit on your property.
+                Our dedicated Operation &amp; Maintenance team provides O&amp;M
+                and asset services, making sure your set-up performs optimally.
               </p>
               <TickList>
                 <li>
-                  Our team will only recommend the system that works best for
-                  you based on an accurate forecast of your return on
-                  investment.
+                  We offer preventative maintenance scheduling, full system
+                  monitoring and control, as well as fault rectification.
                 </li>
                 <li>
-                  We will work with you to understand your electricity
-                  consumption and how much this costs you, to create an
-                  optimised solar and battery solution for you.
+                  We ensure savings for power plant owners through preventive
+                  maintenance and high-quality data analysis from the latest
+                  software.
                 </li>
               </TickList>
-              {/* <BlockCTA secondary url="/products" arrow="right">
+              <BlockCTA secondary url="/products-warranties" arrow="right">
                 Find out more
-              </BlockCTA> */}
+              </BlockCTA>
             </Col10>
           </div>
         </Section>
@@ -129,12 +131,13 @@ const HomepageB2b = () => {
             <>
               <Heading underlined>Products &amp; Warranties</Heading>
               <p>
-                Our dedicated Operation & Maintenance team has services
-                thousands of systems, including private homes, social housing,
-                commercial businesses and large-scale grounded mount solar
-                farms, for over 10 years.
+                We believe sustainable options and peace of mind should be
+                generally available and affordable. As one of the largest
+                installers in the country, we deal directly with manufacturers,
+                letting us offer highly competitive prices and unique warranties
+                and service guarantees.
               </p>
-              {/* <BlockCTA url="/products">Find out more</BlockCTA> */}
+              <BlockCTA url="/products-warranties">Find out more</BlockCTA>
             </>
           }
         />
@@ -142,30 +145,23 @@ const HomepageB2b = () => {
         <Section>
           <div className="row">
             <Col10>
-              <Heading underlined>Technical Design</Heading>
-              <p>
-                Successful asset management requires the effective coordination
-                of processes in line with strategic objectives.
-              </p>
+              <Heading underlined>Asset Management</Heading>
               <p>
                 We provide a full range of Asset Management Services, as a
                 package or on their own, to safely maximise output and
-                efficiency, ensuring minimal system downtime and smooth
-                operation at all times.
+                efficiency.
               </p>
               <TickList>
                 <li>
-                  Uninterrupted monitoring in addition to quantification,
-                  measurement and verification of performance allows us to
-                  retrieve essential information from the raw data gathered from
-                  multiple sources.
+                  We offer uninterrupted monitoring to compare the asset’s
+                  digital data and information with its actual physical status.
                 </li>
                 <li>
-                  We provide data tools and specialist engineers to analyse
-                  historic datasets of any asset
+                  We provide extensive performance analysis to identify root
+                  causes of underperformance.
                 </li>
               </TickList>
-              {/* <BlockCTA secondary url="/service/technical-design" arrow="right">
+              {/* <BlockCTA secondary url="/service/asset-management" arrow="right">
                 Find out more
               </BlockCTA> */}
             </Col10>
@@ -189,25 +185,20 @@ const HomepageB2b = () => {
               />
             </Col2>
             <Col10>
-              <Heading underlined>Asset Management</Heading>
+              <Heading underlined>Technical Design</Heading>
               <p>
-                Our dedicated Operation &amp; Maintenance team has serviced
-                thousands of systems, including private homes, social housing,
-                commercial businesses and large-scale grounded¬ mount solar
-                farms, for over 10 years, and we currently provide O&amp;M and
-                asset services to over 150MW of ground mounted solar assets.
-                Whatever the set up, we can make sure that it performs
-                optimally, protecting the asset owner’s investment.
+                Green Energy Together offers expert technical consultancy across
+                all components of the planning and installation process.
               </p>
               <TickList>
                 <li>
-                  Maximise power output and investment return and ensure ongoing
-                  system safety.
+                  We provide a comprehensive suite of services for assessing the
+                  viability of a project, ensuring you get the best value for
+                  money.
                 </li>
                 <li>
-                  Ensuring savings for power plant owners through a combination
-                  of preventive maintenance and high-quality data analysis from
-                  the latest software.
+                  We provide expert project management, ensuring your milestones
+                  run smoothly and efficiently.
                 </li>
               </TickList>
               {/* <BlockCTA secondary url="/service/asset-management" arrow="right">
@@ -217,8 +208,11 @@ const HomepageB2b = () => {
           </div>
         </Section>
         <div className="divider" />
-        <div className="container">
-          <StatsBlock business />
+        <div className="container visible-xs">
+          <StatsBlock device="mobile" business />
+        </div>
+        <div className="container hidden-xs">
+          <StatsBlock device="desktop" business />
         </div>
         <div className="divider" />
       </Block>
