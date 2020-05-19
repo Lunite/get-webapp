@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: add-netlify-cms
+  branch: master
   repo: olc-digital/get-webapp
   use_graphql: true
 
@@ -50,7 +50,7 @@ collections:
           - { label: "Developer", name: "developer", widget: "string", required: false }
           - { label: "Inverters", name: "inverters", widget: "string", required: false }
           - { label: "Modules", name: "modules", widget: "string", required: false }
-          - { label: "Map URL", name: "map_url", widget: "map", required: false }
+          - { label: "Map URL", name: "map_url", widget: "string", required: false }
 
       - label: "SEO"
         name: "seo"
