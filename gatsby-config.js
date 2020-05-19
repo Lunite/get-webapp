@@ -168,5 +168,6 @@ module.exports = {
         // defaultDataLayer: { platform: "gatsby" },
       },
     },
+    "gatsby-plugin-netlify-cms",
   ],
 }
