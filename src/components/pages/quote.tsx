@@ -104,7 +104,7 @@ const QuotePage = ({ location }) => {
               </form>
             </Col6>
             <Col6>
-              <Image src="/images/contact-24.jpg" title="Fast Response" />
+              <Image src="/images/quote-24.jpg" title="Fast Response" />
             </Col6>
           </div>
         </div>
