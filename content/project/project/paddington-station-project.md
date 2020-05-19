@@ -13,6 +13,11 @@ description: >-
 image: paddington_2-150x150.jpg
 image_hero: pexels-photo-356049-1-1-768x119.png
 show_in_case_studies: false
+info_strip:
+  location: London, UK
+  developer: Carillion
+  inverters: Power One PV
+  modules: Cenergy PA
 seo:
   description: Paddington, also known as London Paddington, is a Central London
     railway terminus and London Underground station complex, located on Praed
