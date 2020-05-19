@@ -10,34 +10,34 @@ import "./styles.scss"
 import Heading from "../Heading"
 
 const CaseStudiesMap = () => {
-  const projects =
-    useStaticQuery(graphql`
-      query getAllWordpressPosts {
-        allWordpressPost(
-          filter: { categories: { elemMatch: { slug: { eq: "project" } } } }
-        ) {
-          nodes {
-            id
-            acf {
-              project {
-                subtitle
-                description
-                image {
-                  source_url
-                  title
-                }
-                info_location
-                info_output
-                info_system
-                show_in_case_studies
-              }
-            }
-            slug
-            title
-          }
-        }
-      }
-    `)?.allWordpressPost?.nodes || []
+  const projects = []
+  //   useStaticQuery(graphql`
+  //     query getAllWordpressPosts {
+  //       allWordpressPost(
+  //         filter: { categories: { elemMatch: { slug: { eq: "project" } } } }
+  //       ) {
+  //         nodes {
+  //           id
+  //           acf {
+  //             project {
+  //               subtitle
+  //               description
+  //               image {
+  //                 source_url
+  //                 title
+  //               }
+  //               info_location
+  //               info_output
+  //               info_system
+  //               show_in_case_studies
+  //             }
+  //           }
+  //           slug
+  //           title
+  //         }
+  //       }
+  //     }
+  //   `)?.allWordpressPost?.nodes || []
 
   if (!projects?.length) {
     return null
