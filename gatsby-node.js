@@ -7,28 +7,28 @@ exports.createPages = async ({ graphql, actions }) => {
   const createProjectPages = async () => {
     const template = path.resolve('./src/templates/project/index.tsx')
 
-    const result = await graphql(`
-      {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              frontmatter {
-                title
-                description
-                path
-              }
-            }
-          }
-        }
-      }
-    `)
+    // const result = await graphql(`
+    //   {
+    //     allMarkdownRemark(
+    //       sort: { order: DESC, fields: [frontmatter___date] }
+    //       limit: 1000
+    //     ) {
+    //       edges {
+    //         node {
+    //           frontmatter {
+    //             title
+    //             description
+    //             path
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // `)
 
-    result.data.allMarkdownRemark.edges.forEach(({node}) => {
-      consol.log(node)
-    })
+    // result.data.allMarkdownRemark.edges.forEach(({node}) => {
+    //   consol.log(node)
+    // })
   }
 
   const createStaticPages = pages => {
