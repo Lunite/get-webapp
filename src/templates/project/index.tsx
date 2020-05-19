@@ -17,7 +17,7 @@ const Project: FunctionComponent<any> = context => {
 
   return (
     <>
-      <Hero image={hero_image?.publicURL} compact>
+      <Hero image={image_hero?.publicURL} compact>
         <Heading level={1} subheading={subheading} underlined>
           <span dangerouslySetInnerHTML={{ __html: title }} />
         </Heading>
