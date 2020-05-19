@@ -101,7 +101,7 @@ const Homepage = () => {
                           commissioning and free registration, and for 2 years
                           we offer free operation and maintenance as well as
                           monitoring your system remotely, using data for
-                          optimal performance.
+                          optimal performance.     
                         </p>
                       </Col6>
                     </div>
