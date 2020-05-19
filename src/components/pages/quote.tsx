@@ -6,6 +6,8 @@ import Heading from "~/components/configurable/Heading"
 import FormSelect from "~/components/olc-framework/FormSelect"
 import BlockCTA from "~/components/configurable/BlockCTA"
 import FormCheckbox from "../olc-framework/FormCheckbox"
+import Col6 from "~/components/grid/Col6"
+import Image from "../configurable/Image"
 
 const QuotePage = ({ location }) => {
   const { state = {} } = location
@@ -19,85 +21,92 @@ const QuotePage = ({ location }) => {
       </Hero>
       <Block>
         <div className="container u-layout--indent container--column">
-          <form
-            className="form"
-            action="https://formspree.io/mbjzlwgw"
-            method="POST"
-            // data-netlify="true" -- to use netlify forms
-          >
-            <FormInput
-              name="full-name"
-              label="Full name"
-              placeholder="Type your full name"
-              value={state?.name}
-              required
-            />
-            <FormInput
-              name="email"
-              label="Email"
-              type="email"
-              placeholder="Type your email"
-              value={state?.email}
-              required
-            />
-            <FormInput
-              name="phone-number"
-              label="Phone number"
-              type="tel"
-              placeholder="Type your phone number"
-              value={state?.phone}
-              required
-            />
-            <FormSelect
-              name="annual-electricity-usage"
-              label="Annual Electricity Usage"
-              options={["22KW", "32KW", "49KW"]}
-            />
-            <FormInput
-              name="unit-rate"
-              label="Unit Rate"
-              placeholder="Type unit rate"
-            />
-            <FormSelect
-              name="standing-charge"
-              label="Standing Charge"
-              options={["no idea", "who knows", "have no clue"]}
-            />
-            <Block>
-              <Heading level={4}>Usage based Model</Heading>
-              <p>
-                Green Energy Together's range of detailed design services ensure
-                that you get the best value for money on your solar project.
-                Whether it's system designs, electrical engineering design,
-                cost/value engineering, data monitoring systems or grid
-                connection, our experts have you covered.
-              </p>
-            </Block>
-            <p className="u-font--body-large">
-              If you have a bill to hand, please input the following details
-              which will help us refine your quote.
-            </p>
-            <FormSelect
-              name="beds"
-              label="Number of beds"
-              options={["1", "2", "3", "4"]}
-            />
-            <FormCheckbox
-              name="own"
-              label="And if you own:"
-              options={[
-                "Electric Car",
-                "Air Source Eating",
-                "Swimming Pool",
-                "Electric storage heating",
-              ]}
-            />
-            <div className="form__actions">
-              <BlockCTA fullWidth large submit>
-                Request Quote
-              </BlockCTA>
-            </div>
-          </form>
+          <p className="u-font--body-large">
+            If you have a bill to hand, please input the following details which
+            will help us refine your quote.
+          </p>
+          <div className="row">
+            <Col6>
+              <form
+                className="form"
+                action="https://formspree.io/mbjzlwgw"
+                method="POST"
+                // data-netlify="true" -- to use netlify forms
+              >
+                <FormInput
+                  name="full-name"
+                  label="Full name"
+                  placeholder="Type your full name"
+                  value={state?.name}
+                  required
+                />
+                <FormInput
+                  name="email"
+                  label="Email"
+                  type="email"
+                  placeholder="Type your email"
+                  value={state?.email}
+                  required
+                />
+                <FormInput
+                  name="phone-number"
+                  label="Phone number"
+                  type="tel"
+                  placeholder="Type your phone number"
+                  value={state?.phone}
+                  required
+                />
+                <FormInput
+                  name="annual-electricity-usage"
+                  label="Annual Electricity Usage"
+                  placeholder="Type your annual electricity usage"
+                />
+                <FormInput
+                  name="unit-rate"
+                  label="Unit Rate"
+                  placeholder="Type unit rate"
+                />
+                <FormInput
+                  name="standing-charge"
+                  label="Standing Charge"
+                  placeholder="Type standing charge"
+                />
+                <Block>
+                  <Heading level={4}>Why we need this information</Heading>
+                  <p>
+                    Our usage-based model means that our designs are truly cost
+                    effective and based around your consumption, lifestyle and
+                    needs. This is in order to design a system that generates
+                    the optimum amount of energy, minimising surplus export to
+                    the grid and reducing payback time.
+                  </p>
+                </Block>
+                <FormSelect
+                  name="beds"
+                  label="Number of beds"
+                  options={["1", "2", "3", "4", "5", "6+"]}
+                />
+                <FormCheckbox
+                  name="own"
+                  label="And if you own:"
+                  options={[
+                    "Electric Car",
+                    "Air Source Heating",
+                    "Swimming Pool",
+                    "Electric Storage Heating",
+                  ]}
+                />
+                <div className="form__actions">
+                  <BlockCTA fullWidth large submit>
+                    Request Quote
+                  </BlockCTA>
+                </div>
+              </form>
+            </Col6>
+            <Col6>
+              <Image src="/images/contact-24.jpg" title="Fast Response" />
+            </Col6>
+          </div>
         </div>
       </Block>
     </div>
