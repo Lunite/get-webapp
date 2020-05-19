@@ -1,5 +1,18 @@
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const nodeSlug = createFilePath({ node, getNode, basePath: `` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: nodeSlug,
+    })
+  }
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -7,28 +20,43 @@ exports.createPages = async ({ graphql, actions }) => {
   const createProjectPages = async () => {
     const template = path.resolve('./src/templates/project/index.tsx')
 
-    // const result = await graphql(`
-    //   {
-    //     allMarkdownRemark(
-    //       sort: { order: DESC, fields: [frontmatter___date] }
-    //       limit: 1000
-    //     ) {
-    //       edges {
-    //         node {
-    //           frontmatter {
-    //             title
-    //             description
-    //             path
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // `)
+    const result = await graphql(`
+      {
+        allMarkdownRemark(limit: 10) {
+          edges {
+            node {
+              frontmatter {
+                description
+                title
+                image_hero {
+                  name
+                  publicURL
+                }
+                image {
+                  name
+                  publicURL
+                }
+                seo {
+                  description
+                  keywords
+                }
+              }
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `)
 
-    // result.data.allMarkdownRemark.edges.forEach(({node}) => {
-    //   consol.log(node)
-    // })
+    result.data.allMarkdownRemark.edges.forEach(({node}) => {
+      createPage({
+        path: `/project${node.fields.slug}`,
+        component: slash(template),
+        context: node.frontmatter,
+      })
+    })
   }
 
   const createStaticPages = pages => {
