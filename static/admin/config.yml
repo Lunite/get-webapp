@@ -30,25 +30,25 @@ collections:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
       - { label: "Description", name: "description", widget: "markdown", required: true }
       - { label: "Image", name: "image", widget: "image", hint: "The main project image is shown in the description. Note: this image is also used for SEO", required: true }
       - { label: "Image: Hero", name: "image_hero", widget: "image", hint: "The project's hero image is shown at the top of the page behind the Project title", required: true }
       - { label: "Show in Case Studies?", name: "show_in_case_studies", widget: "boolean", default: false }
-      - { label: "Image: Case Studies", name: "image_case_studies", widget: "image" }
+      - { label: "Image: Case Studies", name: "image_case_studies", widget: "image", required: false }
       - label: "Info Strip"
         name: "info_strip"
         widget: "object"
         collapsed: true
         fields:
-          - { label: "Location", name: "location", widget: "string" }
-          - { label: "Output", name: "output", widget: "string" }
-          - { label: "System", name: "system", widget: "string" }
-          - { label: "DC Peak", name: "dc_peak", widget: "string" }
-          - { label: "Developer", name: "developer", widget: "string" }
-          - { label: "Inverters", name: "inverters", widget: "string" }
-          - { label: "Modules", name: "modules", widget: "string" }
-          - { label: "Map URL", name: "map_url", widget: "map" }
+          - { label: "Location", name: "location", widget: "string", required: false }
+          - { label: "Output", name: "output", widget: "string", required: false }
+          - { label: "System", name: "system", widget: "string", required: false }
+          - { label: "DC Peak", name: "dc_peak", widget: "string", required: false }
+          - { label: "Developer", name: "developer", widget: "string", required: false }
+          - { label: "Inverters", name: "inverters", widget: "string", required: false }
+          - { label: "Modules", name: "modules", widget: "string", required: false }
+          - { label: "Map URL", name: "map_url", widget: "map", required: false }
 
       - label: "SEO"
         name: "seo"
