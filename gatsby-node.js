@@ -202,31 +202,31 @@ exports.createPages = async ({ graphql, actions }) => {
     pages.forEach(page => {
       const template = path.resolve(`./src/components/pages/${page.slug}.tsx`)
 
-      if (page.slug === "products-warranties") {
-        return graphql(productsWarrantiesQuery).then(results => {
-          if (
-            !results ||
-            !results.data ||
-            !results.data.allWordpressPost ||
-            !results.data.allWordpressPost.nodes.length
-          ) {
-            Promise.resolve()
-          }
+      // if (page.slug === "products-warranties") {
+      //   return graphql(productsWarrantiesQuery).then(results => {
+      //     if (
+      //       !results ||
+      //       !results.data ||
+      //       !results.data.allWordpressPost ||
+      //       !results.data.allWordpressPost.nodes.length
+      //     ) {
+      //       Promise.resolve()
+      //     }
 
-          createPage({
-            path: "/products-warranties",
-            component: slash(template),
-            context: {
-              title: page.title,
-              slug: page.slug,
-              acf: {
-                seo: ({ keywords, description } = page),
-              },
-              productsWarranties: results.data.allWordpressPost.nodes,
-            },
-          })
-        })
-      }
+      //     createPage({
+      //       path: "/products-warranties",
+      //       component: slash(template),
+      //       context: {
+      //         title: page.title,
+      //         slug: page.slug,
+      //         acf: {
+      //           seo: ({ keywords, description } = page),
+      //         },
+      //         productsWarranties: results.data.allWordpressPost.nodes,
+      //       },
+      //     })
+      //   })
+      // }
 
       createPage({
         path: `/${page.slug === "index" ? "" : page.slug}`,
@@ -244,7 +244,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   return Promise.all([
     // createPages(pagesQuery, "page", "allWordpressPage"),
-    createPages(projectsQuery, "project"),
+    // createPages(projectsQuery, "project"),
     // createPages(servicesQuery, "service"),
     createStaticPages([
       {
