@@ -114,8 +114,7 @@ const HomepageB2b = () => {
                 </li>
                 <li>
                   We ensure savings for power plant owners through preventive
-                  maintenance and high-quality data analysis from the latest
-                  software.
+                  maintenance 
                 </li>
               </TickList>
               <BlockCTA secondary url="/products-warranties" arrow="right">
