@@ -43,27 +43,17 @@ const Homepage = () => {
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
-            We believe that solar shouldn’t be a luxury, it should be for
-            everyone. Our solutions are designed with transparency in mind,
-            providing premium service and performance in all areas important to
-            homeowners at a fair price, while making it easy to make truly
-            informed choices.
+          We believe that solar shouldn’t be a luxury, it should be for everyone. Our solutions are designed to be simple, easy to understand with no hidden costs or additions.  We provide a fantastic service which is whats important to homeowners and always at a fair price.  We will help you understand the best solution and make it easy to make simple and informed choice.
           </p>
           <HouseIllustration className="house-illustration" />
           <div className="row">
             <Col8>
               <Heading level={3}>The best solution for your Home</Heading>
               <p>
-                We provide smart solutions for your home by treating
-                microgeneration seriously but applying simple principles to get
-                solar right. So what makes our offering special?
+              We provide smart solutions for your home by treating microgeneration seriously; we  apply simple design principles to get solar just right for you and your home. So what makes our offering special?
               </p>
               <p>
-                Our tailored system design, with the battery fully integrated,
-                is firmly based on your consumption and lifestyle profile to
-                give you the best possible return on your investment. Our
-                service and aftercare package is a streamlined and stress-free
-                process designed to protect your peace of mind.
+              Our tailored system design, with the battery fully integrated, is always based on your consumption and lifestyle profile to give you the best possible return on your investment. Our service and aftercare package is a streamlined and stress-free process designed to protect your asset and peace of mind.
               </p>
               <Expandable
                 readmore={
@@ -78,13 +68,7 @@ const Homepage = () => {
                           <Icon alias="solar-house" />
                         </div>
                         <p>
-                          Our designs produce peak return on solar investment
-                          because we base recommendations on your lifestyle and
-                          consumption, integrate the battery from the start and
-                          use only market leading software PV*SOL for
-                          forecasting. This means you'll generate the optimum
-                          level of energy for your requirements and storage
-                          size, saving you money.
+                        Our designs produce peak return on your solar investment because we base our recommendations on your lifestyle and home energy consumption.  We integrate the battery from the start and use only market leading software PV*SOL for accurate forecasting. This means you'll generate the optimum level of energy for your home, saving you money.
                         </p>
                       </Col6>
                       <Col6 className="u-layout--centered">
@@ -95,13 +79,7 @@ const Homepage = () => {
                           <Icon alias="solar-power" />
                         </div>
                         <p>
-                          From quoting and design to our comprehensive aftercare
-                          package, we provide a complete solution. We'll take
-                          care of the boring bits for you, including
-                          commissioning and free registration, and for 2 years
-                          we offer free operation and maintenance as well as
-                          monitoring your system remotely, using data for
-                          optimal performance.
+                        From quoting and design to our comprehensive aftercare package, we provide a complete solution. We'll take care of the boring bits for you, including commissioning and free registration, and for 2 years we offer free operation and maintenance as well as monitoring your system remotely, using data for the best system performance.   
                         </p>
                       </Col6>
                     </div>
