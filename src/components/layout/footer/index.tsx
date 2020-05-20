@@ -114,12 +114,12 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                 >
                   King's College Hospital
                 </Link>
-                <Link
+                {/* <Link
                   className="footer__item"
                   to="/project/we-couldnt-be-happier-with-our-design"
                 >
                   Moss Electrical Installation
-                </Link>
+                </Link> */}
                 <Link className="footer__item" to="/project/bay-solar-farm">
                   Bay Solar Farm
                 </Link>

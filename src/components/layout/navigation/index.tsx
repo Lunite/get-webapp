@@ -158,12 +158,12 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
                 >
                   Bay Solar Farm
                 </Link>
-                <Link
+                {/* <Link
                   className="navigation-item__child-link"
                   to="/project/we-couldnt-be-happier-with-our-design"
                 >
                   Moss Electrical Installation
-                </Link>
+                </Link> */}
               </div>
             </div>
             <NavItem slug="company" />
@@ -211,12 +211,12 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
                 >
                   Bay Solar Farm
                 </Link>
-                <Link
+                {/* <Link
                   className="navigation-item__child-link"
                   to="/project/we-couldnt-be-happier-with-our-design"
                 >
                   Moss Electrical Installation
-                </Link>
+                </Link> */}
               </div>
             </div>
             <NavItem slug="company" />

@@ -1,0 +1,79 @@
+backend:
+  name: git-gateway
+  branch: master
+  repo: olc-digital/get-webapp
+  use_graphql: true
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content"
+    create: true
+    slug: "{{slug}}-blog"
+    path: "blog/{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "project"
+    label: "Project"
+    folder: "content"
+    create: true
+    slug: "{{slug}}"
+    path: "project/{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "markdown", required: true }
+      - { label: "Quote", name: "quote", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", hint: "The main project image is shown in the description. Note: this image is also used for SEO", required: true }
+      - { label: "Image: Hero", name: "image_hero", widget: "image", hint: "The project's hero image is shown at the top of the page behind the Project title", required: true }
+      - { label: "Show in Case Studies?", name: "show_in_case_studies", widget: "boolean", default: false }
+      - { label: "Image: Case Studies", name: "image_case_studies", widget: "image", required: false }
+      - label: "Info Strip"
+        name: "info_strip"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Location", name: "location", widget: "string", required: false }
+          - { label: "Output", name: "output", widget: "string", required: false }
+          - { label: "System", name: "system", widget: "string", required: false }
+          - { label: "DC Peak", name: "dc_peak", widget: "string", required: false }
+          - { label: "Developer", name: "developer", widget: "string", required: false }
+          - { label: "Inverters", name: "inverters", widget: "string", required: false }
+          - { label: "Modules", name: "modules", widget: "string", required: false }
+          - { label: "Map URL", name: "map_url", widget: "string", required: false }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Keywords", name: "keywords", widget: "string" }
+
+  - name: "page"
+    label: "Page"
+    folder: "content/page"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Keywords", name: "keywords", widget: "string" }

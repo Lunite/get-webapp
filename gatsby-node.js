@@ -1,232 +1,103 @@
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const nodeSlug = createFilePath({ node, getNode, basePath: `` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: nodeSlug,
+    })
+  }
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pagesQuery = `query getAllWordpressPages {
-    allWordpressPage {
-      nodes {
-        id
-        acf {
-          seo {
-            keywords
-            description
-            image {
-              source_url
-            }
-          }
-        }
-        title
-        path
-        slug
-        content
-      }
-    }
-  }`
+  const createProjectPages = async () => {
+    const template = path.resolve('./src/templates/project/index.tsx')
 
-  const projectsQuery = `query getAllWordpressPosts {
-    allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: "project"}}}}) {
-      nodes {
-        id
-        acf {
-          post_type
-          project {
-            description
-            subtitle
-            hero_image {
-              source_url
-            }
-            image {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            info_location
-            info_dc_peak
-            info_developer
-            info_inverters
-            info_modules
-            info_map_url
-            info_output
-            info_system
+    const result = await graphql(`
+      {
+        allMarkdownRemark(limit: 10) {
+    edges {
+      node {
+        frontmatter {
+          description
+          title
+          image_hero {
+            name
+            publicURL
+          }
+          image {
+            name
+            publicURL
           }
           seo {
             description
             keywords
-            image {
-              source_url
-            }
+          }
+          info_strip {
+            dc_peak
+            developer
+            inverters
+            location
+            modules
+            output
+            system
+            map_url
           }
         }
-        title
-        path
-        slug
-        content
+        fields {
+          slug
+        }
       }
     }
-  }`
-
-  const servicesQuery = `query getAllWordpressPosts {
-    allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: "service"}}}}) {
-      nodes {
-        id
-        acf {
-          post_type
-          seo {
-            description
-            keywords
-            image {
-              source_url
-            }
-          }
-          service {
-            hero_image {
-              source_url
-              title
-            }
-            block_1_description
-            block_1_heading
-            block_1_highlight_1
-            block_1_highlight_2
-            block_1_image_1 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_1_image_2 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_2_description
-            block_2_heading
-            block_2_highlight_1
-            block_2_highlight_2
-            block_2_image_1 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            block_2_image_2 {
-              alt_text
-              caption
-              source_url
-              title
-            }
-            description
-            display_image {
-              alt_text
-              caption
-              source_url
-              title
-            }
-          }
-        }
-        title
-        path
-        slug
-        content
+  }
       }
-    }
-  }`
+    `)
 
-  const productsWarrantiesQuery = `query getAllWordpressPosts {
-    allWordpressPost(
-      filter: {
-        categories: { elemMatch: { slug: { eq: "product_warranty" } } }
-      }
-    ) {
-      nodes {
-        id
-        acf {
-          product_warranty {
-            image {
-              source_url
-              title
-            }
-            pdf
-          }
-        }
-        slug
-        title
-      }
-    }
-  }`
-
-  const createPages = (query, category, queryName = "allWordpressPost") => {
-    try {
-      return graphql(query, { category }).then(results => {
-        console.log(results.data[queryName].nodes)
-        if (
-          !results ||
-          !results.data ||
-          !results.data[queryName] ||
-          !results.data[queryName].nodes.length
-        ) {
-          return Promise.resolve()
-        }
-
-        const template = path.resolve(`./src/templates/${category}/index.tsx`)
-
-        results.data[queryName].nodes.forEach(node => {
-          const path = (() => {
-            if (node.slug === "homepage") {
-              return "/"
-            }
-            return `${category !== "page" ? `${category}/` : ""}${node.slug}`
-          })()
-
-          createPage({
-            path,
-            component: slash(template),
-            context: {
-              content: node.content,
-              title: node.title,
-              slug: node.slug,
-              acf: node.acf,
-            },
-          })
-        })
+    result.data.allMarkdownRemark.edges.forEach(({node}) => {
+      createPage({
+        path: `/project${node.fields.slug}`,
+        component: slash(template),
+        context: node.frontmatter,
       })
-    } catch (e) {
-      console.log(e)
-    }
+    })
   }
 
   const createStaticPages = pages => {
     pages.forEach(page => {
       const template = path.resolve(`./src/components/pages/${page.slug}.tsx`)
 
-      if (page.slug === "products-warranties") {
-        return graphql(productsWarrantiesQuery).then(results => {
-          if (
-            !results ||
-            !results.data ||
-            !results.data.allWordpressPost ||
-            !results.data.allWordpressPost.nodes.length
-          ) {
-            Promise.resolve()
-          }
+      // if (page.slug === "products-warranties") {
+      //   return graphql(productsWarrantiesQuery).then(results => {
+      //     if (
+      //       !results ||
+      //       !results.data ||
+      //       !results.data.allWordpressPost ||
+      //       !results.data.allWordpressPost.nodes.length
+      //     ) {
+      //       Promise.resolve()
+      //     }
 
-          createPage({
-            path: "/products-warranties",
-            component: slash(template),
-            context: {
-              title: page.title,
-              slug: page.slug,
-              acf: {
-                seo: ({ keywords, description } = page),
-              },
-              productsWarranties: results.data.allWordpressPost.nodes,
-            },
-          })
-        })
-      }
+      //     createPage({
+      //       path: "/products-warranties",
+      //       component: slash(template),
+      //       context: {
+      //         title: page.title,
+      //         slug: page.slug,
+      //         acf: {
+      //           seo: ({ keywords, description } = page),
+      //         },
+      //         productsWarranties: results.data.allWordpressPost.nodes,
+      //       },
+      //     })
+      //   })
+      // }
 
       createPage({
         path: `/${page.slug === "index" ? "" : page.slug}`,
@@ -243,9 +114,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   return Promise.all([
-    // createPages(pagesQuery, "page", "allWordpressPage"),
-    createPages(projectsQuery, "project"),
-    // createPages(servicesQuery, "service"),
+    createProjectPages(),
     createStaticPages([
       {
         slug: "contact-us",
