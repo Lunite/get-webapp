@@ -69,14 +69,6 @@
       .form-select {
         margin: 18px;
         flex-grow: 1;
-
-        @media ($phablet) {
-          & + .form__text-input,
-          & + .form-input,
-          & + .form-select {
-            margin-left: $space;
-          }
-        }
       }
 
       &__actions {

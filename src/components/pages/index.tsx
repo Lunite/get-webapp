@@ -32,28 +32,48 @@ const Homepage = () => {
         className="homepage__hero"
         image="/images/homepage-video.jpg"
         video="https://vimeo.com/418983793"
-        overlapBlock={<StatsBlock device="desktop" />}
+        overlapBlock={
+          <div className="hidden-xs">
+            <Quote />
+          </div>
+        }
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
         <p>Welcome to the future of energy</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
+      <Block className="visible-xs">
+        <div className="container container--column">
+          <Quote />
+        </div>
+      </Block>
       <Block>
-        <StatsBlock device="mobile" />
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
-          We believe that solar shouldn’t be a luxury, it should be for everyone. Our solutions are designed to be simple, easy to understand with no hidden costs or additions.  We provide a fantastic service which is whats important to homeowners and always at a fair price.  We will help you understand the best solution and make it easy to make simple and informed choice.
+            We believe that solar shouldn’t be a luxury, it should be for
+            everyone. Our solutions are designed to be simple, easy to
+            understand with no hidden costs or additions.  We provide a
+            fantastic service which is whats important to homeowners and always
+            at a fair price.  We will help you understand the best solution and
+            make it easy to make simple and informed choice.
           </p>
           <HouseIllustration className="house-illustration" />
           <div className="row">
             <Col8>
               <Heading level={3}>The best solution for your Home</Heading>
               <p>
-              We provide smart solutions for your home by treating microgeneration seriously; we  apply simple design principles to get solar just right for you and your home. So what makes our offering special?
+                We provide smart solutions for your home by treating
+                microgeneration seriously; we  apply simple design principles to
+                get solar just right for you and your home. So what makes our
+                offering special?
               </p>
               <p>
-              Our tailored system design, with the battery fully integrated, is always based on your consumption and lifestyle profile to give you the best possible return on your investment. Our service and aftercare package is a streamlined and stress-free process designed to protect your asset and peace of mind.
+                Our tailored system design, with the battery fully integrated,
+                is always based on your consumption and lifestyle profile to
+                give you the best possible return on your investment. Our
+                service and aftercare package is a streamlined and stress-free
+                process designed to protect your asset and peace of mind.
               </p>
               <Expandable
                 readmore={
@@ -68,7 +88,13 @@ const Homepage = () => {
                           <Icon alias="solar-house" />
                         </div>
                         <p>
-                        Our designs produce peak return on your solar investment because we base our recommendations on your lifestyle and home energy consumption.  We integrate the battery from the start and use only market leading software PV*SOL for accurate forecasting. This means you'll generate the optimum level of energy for your home, saving you money.
+                          Our designs produce peak return on your solar
+                          investment because we base our recommendations on your
+                          lifestyle and home energy consumption.  We integrate
+                          the battery from the start and use only market leading
+                          software PV*SOL for accurate forecasting. This means
+                          you'll generate the optimum level of energy for your
+                          home, saving you money.
                         </p>
                       </Col6>
                       <Col6 className="u-layout--centered">
@@ -79,7 +105,13 @@ const Homepage = () => {
                           <Icon alias="solar-power" />
                         </div>
                         <p>
-                        From quoting and design to our comprehensive aftercare package, we provide a complete solution. We'll take care of the boring bits for you, including commissioning and free registration, and for 2 years we offer free operation and maintenance as well as monitoring your system remotely, using data for the best system performance.   
+                          From quoting and design to our comprehensive aftercare
+                          package, we provide a complete solution. We'll take
+                          care of the boring bits for you, including
+                          commissioning and free registration, and for 2 years
+                          we offer free operation and maintenance as well as
+                          monitoring your system remotely, using data for the
+                          best system performance.
                         </p>
                       </Col6>
                     </div>
@@ -91,7 +123,8 @@ const Homepage = () => {
         </div>
       </Block>
       <div className="container">
-        <Quote />
+        <StatsBlock device="desktop" />
+        <StatsBlock device="mobile" />
       </div>
       <Block>
         <div className="container">
