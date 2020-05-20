@@ -8,36 +8,37 @@ import InfoStrip from "~/components/configurable/InfoStrip"
 
 // gatsby-node passes in data as context variable
 const Project: FunctionComponent<any> = context => {
-  // this asigns two variables title and acf e.g. context.pageContext.title and context.pageContext.acf
-  const { title, acf } = context.pageContext
+  console.log(context)
+  // this grabs all the needed variables from within content.pageContext
+  const { title, description, image, image_hero, seo, info_strip } = context.pageContext
 
-  const { project } = acf
+  const subheading = ''
 
   return (
     <>
-      <Hero image={project.hero_image?.source_url} compact>
-        <Heading level={1} subheading={project.subheading} underlined>
+      <Hero image={image_hero?.publicURL} compact>
+        <Heading level={1} subheading={subheading} underlined>
           <span dangerouslySetInnerHTML={{ __html: title }} />
         </Heading>
       </Hero>
       <Block>
         <div className="container">
           <Col6 indent>
-            <div dangerouslySetInnerHTML={{ __html: project.description }} />
+            <div dangerouslySetInnerHTML={{ __html: description }} />
           </Col6>
           <Col6 indent>
-            <Image src={project.image?.source_url} title={title} />
+            <Image src={image?.publicURL} title={title} />
           </Col6>
         </div>
       </Block>
-      <InfoStrip
-        location={project.info_location}
-        dcPeak={project.info_dc_peak}
-        developer={project.info_developer}
-        inverters={project.info_inverters}
-        modules={project.info_modules}
-        mapUrl={project.info_map_url}
-      />
+      {Object.keys(info_strip).length && (<InfoStrip
+        location={info_strip.location}
+        dcPeak={info_strip.dc_peak}
+        developer={info_strip.developer}
+        inverters={info_strip.inverters}
+        modules={info_strip.modules}
+        mapUrl={info_strip.map_url}
+      />)}
       {
         // project.related_products && (
         // <Block>
