@@ -8,7 +8,6 @@ import InfoStrip from "~/components/configurable/InfoStrip"
 
 // gatsby-node passes in data as context variable
 const Project: FunctionComponent<any> = context => {
-  console.log(context)
   // this grabs all the needed variables from within content.pageContext
   const { title, description, image, image_hero, seo, info_strip } = context.pageContext
 

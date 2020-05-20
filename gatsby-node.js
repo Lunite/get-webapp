@@ -48,6 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
             modules
             output
             system
+            map_url
           }
         }
         fields {
