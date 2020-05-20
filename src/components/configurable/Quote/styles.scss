@@ -3,8 +3,6 @@
 .quote {
   width: 100%;
   background-color: $light-blue;
-  border-top-left-radius: 14px;
-  border-bottom-right-radius: 14px;
   color: $white;
   padding: $space-m $space-l 56px;
 
@@ -24,5 +22,17 @@
 
   @media ($mobile) {
     padding: 30px 24px 48px;
+  }
+
+  @media ($phablet) {
+    @media (max-width: 1088px) {
+      h3 {
+        font-size: 2.94vw;
+      }
+
+      p {
+        font-size: 2.2vw;
+      }
+    }
   }
 }

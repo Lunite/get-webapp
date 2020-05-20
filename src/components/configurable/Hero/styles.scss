@@ -116,6 +116,7 @@
   overflow: hidden;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
+  width: 100%;
 
   svg {
     display: block;
@@ -131,7 +132,6 @@
   }
 
   .quote {
-    background-color: $dark-blue;
     padding: $space;
   }
 }
