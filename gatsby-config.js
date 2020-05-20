@@ -10,8 +10,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `project`,
-        path: `${__dirname}/content/project`
-      }
+        path: `${__dirname}/content/project`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -21,10 +21,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#051c3f`,
+        theme_color: `#ffffff`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     "gatsby-plugin-sass",
@@ -169,6 +169,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-netlify-cms",
-    "gatsby-transformer-remark"
+    "gatsby-transformer-remark",
   ],
 }
