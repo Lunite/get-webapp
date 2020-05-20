@@ -34,6 +34,7 @@ collections:
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
       - { label: "Description", name: "description", widget: "markdown", required: true }
+      - { label: "Quote", name: "quote", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", hint: "The main project image is shown in the description. Note: this image is also used for SEO", required: true }
       - { label: "Image: Hero", name: "image_hero", widget: "image", hint: "The project's hero image is shown at the top of the page behind the Project title", required: true }
       - { label: "Show in Case Studies?", name: "show_in_case_studies", widget: "boolean", default: false }
