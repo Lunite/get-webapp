@@ -6,13 +6,18 @@
   align-items: center;
   color: $white;
   z-index: 1;
-  background-size: cover;
-  background-position: center center;
+  background-size: 1920px 1080px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $low-grey;
 
   &:before {
     content: "";
     display: block;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1920px;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #051b3f 0%, rgba(196, 196, 196, 0) 100%);
@@ -33,13 +38,17 @@
     z-index: -1;
     width: 100%;
     height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     overflow: hidden;
+    max-width: 1920px;
+    margin: 0 auto;
 
     .video__video {
       div,
       iframe {
-        width: 1440px !important;
-        height: 810px !important;
+        width: 1920px !important;
+        height: 1080px !important;
       }
     }
   }
@@ -74,14 +83,14 @@
     }
 
     @media ($phablet) {
-      height: 565px;
+      height: calc(100vh - 160px);
+      max-height: calc(1080px - 160px);
+      min-height: 680px;
     }
   }
 
   &--has-overlap {
     @media ($phablet) {
-      margin-bottom: 74px;
-
       & > .container {
         margin-top: -148px;
       }
@@ -105,11 +114,17 @@
 
 .hero-overlap-block {
   overflow: hidden;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+
+  svg {
+    display: block;
+  }
 
   @media ($phablet) {
     &__container {
       position: absolute;
-      bottom: -74px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
     }

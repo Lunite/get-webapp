@@ -16,7 +16,7 @@ const Video = ({ url, image }) => {
           playsinline
           controls={false}
           loop
-          width="1440px"
+          width="1920px"
           height="auto"
           onPlay={() => {
             setPlaying(true)
