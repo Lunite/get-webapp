@@ -23,40 +23,40 @@ exports.createPages = async ({ graphql, actions }) => {
     const result = await graphql(`
       {
         allMarkdownRemark(limit: 10) {
-    edges {
-      node {
-        frontmatter {
-          description
-          title
-          image_hero {
-            name
-            publicURL
-          }
-          image {
-            name
-            publicURL
-          }
-          seo {
-            description
-            keywords
-          }
-          info_strip {
-            dc_peak
-            developer
-            inverters
-            location
-            modules
-            output
-            system
-            map_url
+          edges {
+            node {
+              frontmatter {
+                description
+                title
+                image_hero {
+                  name
+                  publicURL
+                }
+                image {
+                  name
+                  publicURL
+                }
+                seo {
+                  description
+                  keywords
+                }
+                info_strip {
+                  dc_peak
+                  developer
+                  inverters
+                  location
+                  modules
+                  output
+                  system
+                  map_url
+                }
+              }
+              fields {
+                slug
+              }
+            }
           }
         }
-        fields {
-          slug
-        }
-      }
-    }
-  }
       }
     `)
 

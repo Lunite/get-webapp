@@ -9,58 +9,61 @@ import UKMap from "~/vectors/uk-map.inline.svg"
 import "./styles.scss"
 import Heading from "../Heading"
 
-const CaseStudiesMap = () => {
-  const projects = []
-  //   useStaticQuery(graphql`
-  //     query getAllWordpressPosts {
-  //       allWordpressPost(
-  //         filter: { categories: { elemMatch: { slug: { eq: "project" } } } }
-  //       ) {
-  //         nodes {
-  //           id
-  //           acf {
-  //             project {
-  //               subtitle
-  //               description
-  //               image {
-  //                 source_url
-  //                 title
-  //               }
-  //               info_location
-  //               info_output
-  //               info_system
-  //               show_in_case_studies
-  //             }
-  //           }
-  //           slug
-  //           title
-  //         }
-  //       }
-  //     }
-  //   `)?.allWordpressPost?.nodes || []
+const ALL_MARKDOWN_REMARK = graphql`
+  {
+    allMarkdownRemark(limit: 10) {
+      edges {
+        node {
+          frontmatter {
+            description
+            title
+            image {
+              name
+              publicURL
+            }
+            show_in_case_studies
+            image_case_studies {
+              publicURL
+            }
+            info_strip {
+              location
+              system
+              output
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
 
-  if (!projects?.length) {
+const CaseStudiesMap = () => {
+  const items = useStaticQuery(ALL_MARKDOWN_REMARK)?.allMarkdownRemark?.edges
+
+  if (!items?.length) {
     return null
   }
 
   const carouselItems = (() => {
-    return projects
+    return items
       .filter(
-        project =>
-          project.acf.project.show_in_case_studies &&
-          (project.acf.project.image_case_studies_component?.source_url ||
-            project.acf.project.image?.source_url)
+        ({node}) =>
+          node.frontmatter.show_in_case_studies &&
+          (node.frontmatter.image_case_studies?.publicURL ||
+            node.frontmatter.image?.publicURL)
       )
-      .map(project => {
+      .map(({node}) => {
         const pData = {
-          title: project.title,
-          slug: project.slug,
-          ...project.acf.project,
+          slug: node.fields.slug,
+          ...node.frontmatter
         }
 
         const pImage =
-          pData.image_case_studies_component?.source_url ||
-          pData.image?.source_url
+          pData.image_case_studies?.publicURL ||
+          pData.image?.publicURL
 
         if (!pImage) {
           return null
@@ -83,32 +86,32 @@ const CaseStudiesMap = () => {
               dangerouslySetInnerHTML={{ __html: pData.description }}
             />
             <div className="project-item__info">
-              {pData.info_system && (
+              {pData.info_strip?.system && (
                 <div className="cs-info-item">
                   <span className="cs-info-item__heading">System</span>
                   <span className="cs-info-item__value">
-                    {pData.info_system}
+                    {pData.info_strip?.system}
                   </span>
                 </div>
               )}
-              {pData.info_output && (
+              {pData.info_strip?.output && (
                 <div className="cs-info-item">
                   <span className="cs-info-item__heading">Output</span>
                   <span className="cs-info-item__value">
-                    {pData.info_output}
+                    {pData.info_strip?.output}
                   </span>
                 </div>
               )}
-              {pData.info_location && (
+              {pData.info_strip?.location && (
                 <div className="cs-info-item">
                   <span className="cs-info-item__heading">Location</span>
                   <span className="cs-info-item__value">
-                    {pData.info_location}
+                    {pData.info_strip?.location}
                   </span>
                 </div>
               )}
             </div>
-            <Link className="project-item__link" to={`/projects/${pData.slug}`}>
+            <Link className="project-item__link" to={`/projects${pData.slug}`}>
               Read More
             </Link>
           </div>
