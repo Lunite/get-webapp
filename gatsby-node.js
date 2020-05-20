@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const createProjectPages = async () => {
-    const template = path.resolve('./src/templates/project/index.tsx')
+    const template = path.resolve("./src/templates/project/index.tsx")
 
     const result = await graphql(`
       {
@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    result.data.allMarkdownRemark.edges.forEach(({node}) => {
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: `/project${node.fields.slug}`,
         component: slash(template),
@@ -118,22 +118,26 @@ exports.createPages = async ({ graphql, actions }) => {
     createStaticPages([
       {
         slug: "contact-us",
-        title: "Contact Us",
+        title: "Contact | Green Energy Together | Solar Panel Installer",
         keywords: "",
-        description: "",
+        description:
+          "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
       },
       // { slug: "faq", title: "Support & FAQ", keywords: "", description: "" },
       {
         slug: "for-your-business",
-        title: "For Your Business",
+        title:
+          "For Your Business | Green Energy Together | Solar Panel Installer",
         keywords: "",
-        description: "",
+        description:
+          "For more than a decade, Green Energy Together has designed, engineered, installed and maintained commercial solar power systems across the UK.",
       },
       {
         slug: "index",
-        title: "For Your Home",
-        keywords: "test, keywords, homepage, solar",
-        description: "Hey. This is a test description. Is everything okay?",
+        title: "Home | Green Energy Together | Solar Panel Installer",
+        keywords: "",
+        description:
+          "Solar generation shouldn't be a luxury - it should be for everyone. We are one of the largest installers in the UK, and bring a fresh approach to the solar market.",
       },
       // { slug: "products", title: "Products", keywords: "", description: "" },
       // {
@@ -142,13 +146,21 @@ exports.createPages = async ({ graphql, actions }) => {
       //   keywords: "",
       //   description: "",
       // },
-      { slug: "quote", title: "Get a Quote", keywords: "", description: "" },
+      {
+        slug: "quote",
+        title: "Get A Quote | Green Energy Together | Solar Panel Installer",
+        keywords: "",
+        description:
+          "Just simply fill out a few details to receive a free no-obligation quote and survey from us here at Green Energy Together.",
+      },
       { slug: "404", title: "Page not found", keywords: "", description: "" },
       {
         slug: "products-warranties",
-        title: "Products and Warranties",
+        title:
+          "Products & Warranties | Green Energy Together | Solar Panel Installer",
         keywords: "",
-        description: "",
+        description:
+          "All of the solar panels Green Energy Together supplies come with a minimum 10 year product warranty and a 25 year linear performance warranty.",
       },
     ]),
   ])
