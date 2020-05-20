@@ -16,6 +16,7 @@ info_strip:
   location: London, UK
   dc_peak: 25,250 KW
   inverters: Samil Power 12000TL
+  map_url: https://goo.gl/maps/PmfTVQqfMQLWNiL28
 seo:
   description: King’s College Hospital is an acute care facility managed by King’s
     College Hospital NHS Foundation Trust. The hospital was opened in 1840 in
