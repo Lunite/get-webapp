@@ -124,7 +124,6 @@ const HomepageB2b = () => {
             </Col10>
           </div>
         </Section>
-        <div className="divider" />
         <Shoutout
           image={<Image src="/images/products-bulb.jpg" title="Products" />}
           text={
@@ -141,7 +140,6 @@ const HomepageB2b = () => {
             </>
           }
         />
-        <div className="divider" />
         <Section>
           <div className="row">
             <Col10>
