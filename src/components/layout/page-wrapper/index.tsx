@@ -4,6 +4,7 @@ import Navigation from "~/components/layout/navigation"
 import SEO from "~/components/util/SEO"
 import { useSitemap } from "~/hooks/useSitemap"
 import Certificates from "~/components/standalone/Certificates"
+import AOS from "aos"
 
 import "./styles.scss"
 
@@ -53,10 +54,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   return (
     <>
       <SEO {...seoData} />
-      <div
-        className={`page-wrapper${init ? " page-wrapper--init" : ""}`}
-        style={{ opacity: 0 }}
-      >
+      <div className={`page-wrapper${init ? " page-wrapper--init" : ""}`}>
         <Navigation sitemap={useSitemap()} />
         <main>
           {children}
