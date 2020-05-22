@@ -153,3 +153,15 @@ collections:
         fields:
           - { label: "Description", name: "description", widget: "markdown" }
           - { label: "Keywords", name: "keywords", widget: "string" }
+
+  - name: "projects_and_warranties"
+    label: "Projects and Warranties"
+    label_singular: "Project / Warranty"
+    folder: "content/projects_and_warranties"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "PDF Link", name: "pdf_link", widget: "string" }
