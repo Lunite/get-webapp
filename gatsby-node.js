@@ -118,7 +118,8 @@ exports.createPages = async ({ graphql, actions }) => {
     createStaticPages([
       {
         slug: "contact-us",
-        title: "Contact | Green Energy Together | Solar Panel Installer",
+        seo_title: "Contact | Green Energy Together | Solar Panel Installer",
+        title: "Contact Us",
         keywords: "",
         description:
           "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
@@ -126,15 +127,17 @@ exports.createPages = async ({ graphql, actions }) => {
       // { slug: "faq", title: "Support & FAQ", keywords: "", description: "" },
       {
         slug: "for-your-business",
-        title:
+        seo_title:
           "For Your Business | Green Energy Together | Solar Panel Installer",
+        title: "For Your Business",
         keywords: "",
         description:
           "For more than a decade, Green Energy Together has designed, engineered, installed and maintained commercial solar power systems across the UK.",
       },
       {
         slug: "index",
-        title: "Home | Green Energy Together | Solar Panel Installer",
+        seo_title: "Home | Green Energy Together | Solar Panel Installer",
+        title: "Homepage",
         keywords: "",
         description:
           "Solar generation shouldn't be a luxury - it should be for everyone. We are one of the largest installers in the UK, and bring a fresh approach to the solar market.",
@@ -148,7 +151,9 @@ exports.createPages = async ({ graphql, actions }) => {
       // },
       {
         slug: "quote",
-        title: "Get A Quote | Green Energy Together | Solar Panel Installer",
+        seo_title:
+          "Get A Quote | Green Energy Together | Solar Panel Installer",
+        title: "Ge a Quote",
         keywords: "",
         description:
           "Just simply fill out a few details to receive a free no-obligation quote and survey from us here at Green Energy Together.",
@@ -156,8 +161,9 @@ exports.createPages = async ({ graphql, actions }) => {
       { slug: "404", title: "Page not found", keywords: "", description: "" },
       {
         slug: "products-warranties",
-        title:
+        seo_title:
           "Products & Warranties | Green Energy Together | Solar Panel Installer",
+        title: "Products & Warranties",
         keywords: "",
         description:
           "All of the solar panels Green Energy Together supplies come with a minimum 10 year product warranty and a 25 year linear performance warranty.",
