@@ -68,7 +68,7 @@ const ProductsAndWarranties = ({ pageContext }) => {
               <Icon alias="power" style={{ fontSize: 90 }} />
               <Heading level={4}>Performance optimisation</Heading>
               <p>
-              Operations &amp; Maintenance plans are essential for the majority of solar installations.  At Green Energy Together, after your install for 2 years,  we'll look after you and your system in line with the data we receive from your remote monitoring solution, while our Customer Care team will be available to answer your questions, all for free for 2 years. We can then offer you a maintenance package that suits your needs, when you are ready.
+              Operations &amp; Maintenance plans are essential for the majority of solar installations.  At Green Energy Together, for 2 years after your install we'll look after you and your system in line with the data we receive from your remote monitoring solution, while our Customer Care team will be available to answer your questions, all for free for 2 years. We can then offer you a maintenance package that suits your needs, when you are ready.
               </p>
               <Icon alias="solar-panel" style={{ fontSize: 90 }} />
               <Heading level={4}>Warranties</Heading>
@@ -101,7 +101,7 @@ const ProductsAndWarranties = ({ pageContext }) => {
             </Col9>
             <Col11>
               <p>
-              Our usage-based model makes our designs really cost effective. Our team will only recommend the system that works best for you, based on the amount of energy you use and we provide an accurate forecast on your return on investment. The system providing a great ROI is one that generates the perfect amount of energy for you to consume at home without exporting a large surplus out on to the grid. We're confident our designs are perfect for you our customer and we'll back that up by providing your final quote and the calculation in an easy to understand and simple format.
+              Our usage-based model makes our designs really cost effective. Our team will only recommend the system that works best for you, based on the amount of energy you use, and we provide an accurate forecast on your return on investment. The system providing a great ROI is one that generates the perfect amount of energy for you to consume at home without exporting a large surplus out on to the grid. We're confident our designs are perfect for you, our customer, and we'll back that up by providing your final quote and the calculation in an easy to understand and simple format.
               </p>
               <div className="row">
                 <Col6>
@@ -109,13 +109,13 @@ const ProductsAndWarranties = ({ pageContext }) => {
                   After analysing a number of key factors, including your location, building and roof orientation and inclination, we use state-of-the-art modelling technology to design your proposed system. Our desktop survey process uses industry-leading PV*SOL simulation software, enabling 3D visualisation and accurate shading analysis.
                   </p>
                   <p>
-                  This program considers every factor, including the last 10 years of local meteorological data, for optimal performance and return on investment.
+                  This programme considers every factor, including the last 10 years of local meteorological data, for optimal performance and return on investment.
 
                   </p>
                 </Col6>
                 <Col6>
                   <p>
-                  The government via Energy Companies offer the Smart Export Guarantee for excess energy not being used on site to be exported onto the grid and this guarantee will buy that energy from you at a low rate.  Sadly the rate per KWH offered doesn’t come close to offset the initial cost of the system. Therefore, our modelling as close to 100% of consumption as possible prevents over sizing of the system and over generation. Avoiding surplus exported enrgy at a loss and reducing payback time.
+                  The government, via Energy Companies, offers the Smart Export Guarantee for excess energy not being used on site to be exported onto the grid, and this guarantee will buy that energy from you at a low rate.  Sadly, the rate per KWH offered doesn’t come close to offset the initial cost of the system. Therefore, our modelling as close to 100% of consumption as possible prevents oversizing of the system and over-generation, avoiding surplus energy being exported at a loss and reducing payback time.
                   </p>
                 </Col6>
               </div>

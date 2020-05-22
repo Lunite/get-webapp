@@ -51,12 +51,7 @@ const Homepage = () => {
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
-            We believe that solar shouldn’t be a luxury, it should be for
-            everyone. Our solutions are designed to be simple, easy to
-            understand with no hidden costs or additions.  We provide a
-            fantastic service which is whats important to homeowners and always
-            at a fair price.  We will help you understand the best solution and
-            make it easy to make simple and informed choice.
+          We believe that solar shouldn’t be a luxury, it should be for everyone. Our solutions are designed to be simple, easy to understand, with no hidden costs or additions.  We provide a fantastic service, which is what's important to homeowners, and always at a fair price.  We'll help you understand the best solution so that it will be easy to a make simple and informed choice.
           </p>
           <HouseIllustration className="house-illustration" />
           <div className="row">

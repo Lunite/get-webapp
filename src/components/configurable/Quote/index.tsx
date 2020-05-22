@@ -7,7 +7,7 @@ import "./styles.scss"
 
 const Quote: FunctionComponent<any> = ({
   title = "Get a Free Quote today.",
-  description = "It only takes 2 minutes to request a no-obligation quote, customized to your needs.",
+  description = "It only takes 2 minutes to request a no-obligation quote, customised to you and your home's needs.",
 }) => {
   const formState = {}
 

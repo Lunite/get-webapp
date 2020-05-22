@@ -9,16 +9,10 @@ const Certificates = () => {
     <Block className="certificates" highlightColour="blue">
       <div className="container">
         <Heading level={2} underlined>
-          We are Certified
+          Our Certifications
         </Heading>
         <p>
-          To further our commitment to our customers, Green Energy Together has
-          had its Quality Management System certified against a number of
-          national and international quality standards. To attain and maintain
-          these certifications, our business undertakes a vigorous program to
-          ensure the ongoing quality and improvement of our Management Systems.
-          Review is undertaken by regular internal audits and external audits,
-          conducted by our third-party certification auditors.
+        Quality is what we do. Green Energy Together has had its Quality Management System certified against a number of national and international quality standards. To attain and maintain these certifications, our business undertakes a vigorous programme to ensure the ongoing quality and improvement of our Management Systems. Review is undertaken by regular internal and external audits, conducted by our third-party certification partners.
         </p>
         <img className="hidden-xs" src="/images/certificates.png" />
         <img
@@ -26,6 +20,10 @@ const Certificates = () => {
           style={{ maxWidth: "276px", margin: "0 auto" }}
           src="/images/certificates-mobile.jpg"
         />
+        <div style={{paddingTop: "20px", color: "grey", fontSize: "10px", margin:"auto", display: "flex", alignContent: "center" }}>
+        <p >
+        *All works carried out by the Green Energy Together brand operate under Solarplicity Smart Systems registration NAPIT 30902 and MCS NAP30902.
+        </p></div>
       </div>
     </Block>
   )
