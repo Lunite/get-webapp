@@ -154,14 +154,20 @@ collections:
           - { label: "Description", name: "description", widget: "markdown" }
           - { label: "Keywords", name: "keywords", widget: "string" }
 
-  - name: "projects_and_warranties"
-    label: "Projects and Warranties"
+  - name: "products_and_warranties"
+    label: "Products and Warranties"
     label_singular: "Project / Warranty"
-    folder: "content/projects_and_warranties"
+    folder: "content/products_and_warranties"
     create: true
     slug: "{{slug}}"
     path: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "PDF Link", name: "pdf_link", widget: "string" }
+      - {
+          label: "PDF",
+          name: "pdf",
+          widget: "file",
+          allow_multiple: false,
+          config: { multiple: false },
+        }
