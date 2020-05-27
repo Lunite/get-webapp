@@ -10,10 +10,10 @@ description: >-
 
 
   Our team was honoured to be trusted with the installation of the whole PV system and all labour required.
-image: mask-group.png
+image: paddington.png
 image_hero: title-page-banner.png
 show_in_case_studies: true
-image_case_studies: mask-group.png
+image_case_studies: paddington2.png
 info_strip:
   location: London, UK
   output: 15KW
