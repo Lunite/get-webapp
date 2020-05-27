@@ -1,8 +1,21 @@
 @import "~/styles/_variables.scss";
 
-.heading {
+%headingBase {
   line-height: 1.125;
   font-family: $bold-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %headingBase;
+}
+
+.heading {
+  @extend %headingBase;
 
   &--1 {
     @extend %h1;
