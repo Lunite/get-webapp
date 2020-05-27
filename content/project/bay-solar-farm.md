@@ -10,6 +10,7 @@ description: >-
 image: bay.jpg
 image_hero: bay_2.jpg
 show_in_case_studies: true
+image_case_studies: bay.jpg
 info_strip:
   location: Suffolk, UK
   dc_peak: 8,128 KW
