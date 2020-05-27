@@ -28,6 +28,9 @@ const ProductsAndWarranties = () => {
                   name
                   publicURL
                 }
+                pdf {
+                  publicURL
+                }
               }
               fields {
                 slug
@@ -210,7 +213,7 @@ const ProductsAndWarranties = () => {
           </div>
         </div>
       </Block>
-      {/* {productsWarranties?.length && (
+      {productsWarranties?.length && (
         <Block style={{ paddingTop: 0 }}>
           <div className="container">
             <div
@@ -230,15 +233,15 @@ const ProductsAndWarranties = () => {
               </p>
               <Grid>
                 {productsWarranties.map(item => {
-                  const pwItem = item
+                  const pwItem = item.node.frontmatter
 
                   return (
-                    <li key={item.slug}>
-                      {pwItem.node.image?.publicURL && (
+                    <li key={item.node.fields.slug}>
+                      {pwItem.image?.publicURL && (
                         <Image
                           className="grid-item__image"
-                          src={pwItem.node.image?.publicURL}
-                          title={pwItem.node.image?.title || ""}
+                          src={pwItem.image?.publicURL}
+                          title={pwItem.image?.title || ""}
                         />
                       )}
                       <div
@@ -249,10 +252,10 @@ const ProductsAndWarranties = () => {
                         }}
                       >
                         <p className="grid-item__title">{pwItem.title}</p>
-                        {pwItem.pdf && (
+                        {pwItem.pdf?.publicURL && (
                           <>
                             <a
-                              href={pwItem.pdf_url}
+                              href={pwItem.pdf.publicURL}
                               target="_blank"
                               style={{
                                 display: "block",
@@ -280,7 +283,7 @@ const ProductsAndWarranties = () => {
             </div>
           </div>
         </Block>
-      )} */}
+      )}
     </div>
   )
 }

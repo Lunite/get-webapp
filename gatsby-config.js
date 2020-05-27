@@ -13,6 +13,20 @@ module.exports = {
         path: `${__dirname}/content/project`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `products_and_warranties`,
+        path: `${__dirname}/content/products_and_warranties`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
