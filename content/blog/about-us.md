@@ -1,7 +1,9 @@
 ---
 hero_image: breadcrumb17.jpg
+hero_title: Disrupting the domestic solar market
 title: About Us
 date: 2020-05-27T09:33:47.631Z
+show_quote_block: false
 seo:
   title: "About Green Energy Together "
   keywords: Green energy together vat, green energy together companies house
