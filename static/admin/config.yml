@@ -19,7 +19,7 @@ collections:
     fields:
       - {
           label: "Hero Image",
-          name: "hero_image",
+          name: "image_hero",
           widget: "image",
           required: false,
           hint: "If left blank, hero will not appear",

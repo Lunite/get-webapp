@@ -25,15 +25,14 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   }
 
-  const createProjectPages = async () => {
-    const template = path.resolve("./src/templates/project/index.tsx")
-
+  const createPages = async () => {
     const result = await graphql(`
       {
-        allMarkdownRemark(limit: 10) {
+        allMarkdownRemark(limit: 100) {
           edges {
             node {
               frontmatter {
+                body
                 description
                 title
                 image_hero {
@@ -45,6 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   publicURL
                 }
                 seo {
+                  title
                   description
                   keywords
                 }
@@ -69,6 +69,9 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
+    //-- PROJECT PAGES --//
+    const projectTemplate = path.resolve("./src/templates/project/index.tsx")
+
     const projects = filterResults(
       result.data.allMarkdownRemark.edges,
       "project"
@@ -77,10 +80,25 @@ exports.createPages = async ({ graphql, actions }) => {
     projects.forEach(({ node }) => {
       createPage({
         path: `/project${node.fields.slug}`,
-        component: slash(template),
+        component: slash(projectTemplate),
         context: node.frontmatter,
       })
     })
+    //-- PROJECT PAGES DONE --//
+
+    //-- BLOG ITEM PAGES --//
+    const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
+
+    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog")
+
+    blogItems.forEach(({ node }) => {
+      createPage({
+        path: `/blog${node.fields.slug}`,
+        component: slash(blogItemTemplate),
+        context: node.frontmatter,
+      })
+    })
+    //-- BLOG ITEM PAGES DONE --//
   }
 
   const createStaticPages = pages => {
@@ -128,7 +146,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   return Promise.all([
-    createProjectPages(),
+    createPages(),
     createStaticPages([
       {
         slug: "contact-us",

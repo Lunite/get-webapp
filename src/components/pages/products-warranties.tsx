@@ -213,7 +213,7 @@ const ProductsAndWarranties = () => {
           </div>
         </div>
       </Block>
-      {productsWarranties?.length && (
+      {!!productsWarranties?.length && (
         <Block style={{ paddingTop: 0 }}>
           <div className="container">
             <div
