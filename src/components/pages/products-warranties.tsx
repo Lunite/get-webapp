@@ -10,10 +10,47 @@ import Col11 from "../grid/Col11"
 import Col6 from "../grid/Col6"
 import HighlightBlock from "../configurable/HighlightBlock"
 import Grid from "../configurable/Grid"
+import { useStaticQuery, graphql } from "gatsby"
 
-const ProductsAndWarranties = ({ pageContext }) => {
-  const { productsWarranties } = pageContext
+const ProductsAndWarranties = () => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
+
+  const queryResults =
+    useStaticQuery(graphql`
+      query MyMarkdownQuery {
+        allMarkdownRemark(limit: 1000) {
+          edges {
+            node {
+              frontmatter {
+                description
+                title
+                image {
+                  name
+                  publicURL
+                }
+              }
+              fields {
+                slug
+              }
+              fileAbsolutePath
+            }
+          }
+        }
+      }
+    `)?.allMarkdownRemark?.edges || []
+
+  const productsWarranties = (() => {
+    if (queryResults?.length) {
+      return queryResults.filter(
+        item =>
+          item.node.fileAbsolutePath.indexOf(
+            `/content/products_and_warranties/`
+          ) > -1
+      )
+    }
+
+    return []
+  })()
 
   const goToProducts = () => {
     productsBlockRef.current.scrollIntoView({
@@ -35,17 +72,28 @@ const ProductsAndWarranties = ({ pageContext }) => {
             <Col9>
               <Heading level={3}>Redefining solar</Heading>
               <p>
-              We believe in the solar future.  We believe the future of energy is green, renewable, ethical and fair-priced and our transparent approach places us well to deliver the future, now.
+                We believe in the solar future.  We believe the future of energy
+                is green, renewable, ethical and fair-priced and our transparent
+                approach places us well to deliver the future, now.
               </p>
               <p>
-              As one of the largest commercial installers in the country, with over 400 million watts of solar generated in the last decade including landmarks like King's College Hospital and Paddington Train Station, we get great deals directly from the manufacturers and we pride ourselves on our fair market pricing.
+                As one of the largest commercial installers in the country, with
+                over 400 million watts of solar generated in the last decade
+                including landmarks like King's College Hospital and Paddington
+                Train Station, we get great deals directly from the
+                manufacturers and we pride ourselves on our fair market pricing.
               </p>
               <p>
-              Our designs are cost effective because we only sell you what your lifestyle needs. Throughout the process, your home and investment are in safe hands.
+                Our designs are cost effective because we only sell you what
+                your lifestyle needs. Throughout the process, your home and
+                investment are in safe hands.
               </p>
               <Image src="/images/climb-mountain.jpg" title="Help achieve" />
               <p>
-              Quality of products, equipment, system design and effective installation techniques will affect the performance and longevity of your solar system, so it's crucial to have both effective and reasonably priced solutions.
+                Quality of products, equipment, system design and effective
+                installation techniques will affect the performance and
+                longevity of your solar system, so it's crucial to have both
+                effective and reasonably priced solutions.
               </p>
             </Col9>
           </div>
@@ -63,17 +111,35 @@ const ProductsAndWarranties = ({ pageContext }) => {
             >
               <Heading level={3}>Peace of mind</Heading>
               <p>
-              Every step of the process and scope of the work is clearly outlined and explained. We pride ourselves on ensuring that you understand everything clearly before making the decision to go green. Our service includes the offer of a detailed commissioning review. A qualified engineer will review the documentation, undertake any necessary registrations for the property and issue them on your behalf.
+                Every step of the process and scope of the work is clearly
+                outlined and explained. We pride ourselves on ensuring that you
+                understand everything clearly before making the decision to go
+                green. Our service includes the offer of a detailed
+                commissioning review. A qualified engineer will review the
+                documentation, undertake any necessary registrations for the
+                property and issue them on your behalf.
               </p>
               <Icon alias="power" style={{ fontSize: 90 }} />
               <Heading level={4}>Performance optimisation</Heading>
               <p>
-              Operations &amp; Maintenance plans are essential for the majority of solar installations.  At Green Energy Together, for 2 years after your install we'll look after you and your system in line with the data we receive from your remote monitoring solution, while our Customer Care team will be available to answer your questions, all for free for 2 years. We can then offer you a maintenance package that suits your needs, when you are ready.
+                Operations &amp; Maintenance plans are essential for the
+                majority of solar installations. At Green Energy Together, for 2
+                years after your install we'll look after you and your system in
+                line with the data we receive from your remote monitoring
+                solution, while our Customer Care team will be available to
+                answer your questions, all for free for 2 years. We can then
+                offer you a maintenance package that suits your needs, when you
+                are ready.
               </p>
               <Icon alias="solar-panel" style={{ fontSize: 90 }} />
               <Heading level={4}>Warranties</Heading>
               <p>
-              All of the solar panels we supply come with a 10 year product warranty (materials warranty) and a 25 year linear performance warranty. All of the inverters we supply come with at least a 5 year warranty as standard. In addition, we offer a 2 years warranty over our workmanship. Full details of specific components can be found below in the products section
+                All of the solar panels we supply come with a 10 year product
+                warranty (materials warranty) and a 25 year linear performance
+                warranty. All of the inverters we supply come with at least a 5
+                year warranty as standard. In addition, we offer a 2 years
+                warranty over our workmanship. Full details of specific
+                components can be found below in the products section
               </p>
             </Col9>
             <Col3>
@@ -95,27 +161,48 @@ const ProductsAndWarranties = ({ pageContext }) => {
           </div>
           <div className="row" style={{ marginTop: 60 }}>
             <Col9>
-              <Heading level={2}>
-                Superior system design
-              </Heading>
+              <Heading level={2}>Superior system design</Heading>
             </Col9>
             <Col11>
               <p>
-              Our usage-based model makes our designs really cost effective. Our team will only recommend the system that works best for you, based on the amount of energy you use, and we provide an accurate forecast on your return on investment. The system providing a great ROI is one that generates the perfect amount of energy for you to consume at home without exporting a large surplus out on to the grid. We're confident our designs are perfect for you, our customer, and we'll back that up by providing your final quote and the calculation in an easy to understand and simple format.
+                Our usage-based model makes our designs really cost effective.
+                Our team will only recommend the system that works best for you,
+                based on the amount of energy you use, and we provide an
+                accurate forecast on your return on investment. The system
+                providing a great ROI is one that generates the perfect amount
+                of energy for you to consume at home without exporting a large
+                surplus out on to the grid. We're confident our designs are
+                perfect for you, our customer, and we'll back that up by
+                providing your final quote and the calculation in an easy to
+                understand and simple format.
               </p>
               <div className="row">
                 <Col6>
                   <p>
-                  After analysing a number of key factors, including your location, building and roof orientation and inclination, we use state-of-the-art modelling technology to design your proposed system. Our desktop survey process uses industry-leading PV*SOL simulation software, enabling 3D visualisation and accurate shading analysis.
+                    After analysing a number of key factors, including your
+                    location, building and roof orientation and inclination, we
+                    use state-of-the-art modelling technology to design your
+                    proposed system. Our desktop survey process uses
+                    industry-leading PV*SOL simulation software, enabling 3D
+                    visualisation and accurate shading analysis.
                   </p>
                   <p>
-                  This programme considers every factor, including the last 10 years of local meteorological data, for optimal performance and return on investment.
-
+                    This programme considers every factor, including the last 10
+                    years of local meteorological data, for optimal performance
+                    and return on investment.
                   </p>
                 </Col6>
                 <Col6>
                   <p>
-                  The government, via Energy Companies, offers the Smart Export Guarantee for excess energy not being used on site to be exported onto the grid, and this guarantee will buy that energy from you at a low rate.  Sadly, the rate per KWH offered doesn’t come close to offset the initial cost of the system. Therefore, our modelling as close to 100% of consumption as possible prevents oversizing of the system and over-generation, avoiding surplus energy being exported at a loss and reducing payback time.
+                    The government, via Energy Companies, offers the Smart
+                    Export Guarantee for excess energy not being used on site to
+                    be exported onto the grid, and this guarantee will buy that
+                    energy from you at a low rate. Sadly, the rate per KWH
+                    offered doesn’t come close to offset the initial cost of the
+                    system. Therefore, our modelling as close to 100% of
+                    consumption as possible prevents oversizing of the system
+                    and over-generation, avoiding surplus energy being exported
+                    at a loss and reducing payback time.
                   </p>
                 </Col6>
               </div>
@@ -143,15 +230,15 @@ const ProductsAndWarranties = ({ pageContext }) => {
               </p>
               <Grid>
                 {productsWarranties.map(item => {
-                  const pwItem = item.acf.product_warranty
+                  const pwItem = item
 
                   return (
                     <li key={item.slug}>
-                      {pwItem.image?.source_url && (
+                      {pwItem.node.image?.publicURL && (
                         <Image
                           className="grid-item__image"
-                          src={pwItem.image.source_url}
-                          title={pwItem.image?.title || ""}
+                          src={pwItem.node.image?.publicURL}
+                          title={pwItem.node.image?.title || ""}
                         />
                       )}
                       <div
@@ -161,11 +248,11 @@ const ProductsAndWarranties = ({ pageContext }) => {
                           marginTop: 24,
                         }}
                       >
-                        <p className="grid-item__title">{item.title}</p>
+                        <p className="grid-item__title">{pwItem.title}</p>
                         {pwItem.pdf && (
                           <>
                             <a
-                              href={pwItem.pdf}
+                              href={pwItem.pdf_url}
                               target="_blank"
                               style={{
                                 display: "block",
