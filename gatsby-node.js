@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               frontmatter {
-                body
+                date(formatString: "DD MMM YYYY")
                 description
                 title
                 image_hero {
@@ -63,6 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               fileAbsolutePath
+              html
             }
           }
         }
@@ -95,7 +96,10 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: `/blog${node.fields.slug}`,
         component: slash(blogItemTemplate),
-        context: node.frontmatter,
+        context: {
+          ...node.frontmatter,
+          body: node.html,
+        },
       })
     })
     //-- BLOG ITEM PAGES DONE --//
