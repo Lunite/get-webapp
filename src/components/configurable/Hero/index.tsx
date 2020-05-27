@@ -10,6 +10,7 @@ interface HeroProps {
   compact?: boolean
   overlapBlock?: JSX.Element
   className?: string
+  centered?: boolean
 }
 
 const Hero: FunctionComponent<HeroProps> = ({
@@ -19,15 +20,18 @@ const Hero: FunctionComponent<HeroProps> = ({
   overlapBlock,
   children,
   className,
+  centered,
 }) => {
   return (
     <div
       className={`hero hero--${compact ? "compact" : "large"}${
         overlapBlock ? " hero--has-overlap" : ""
-      } ${className || ""}`}
+      }${centered ? " hero--centered" : ""} ${className || ""}`}
       style={{ backgroundImage: image ? `url(${image})` : "" }}
     >
-      <div className="container u-layout--indent">{children}</div>
+      <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
+        {children}
+      </div>
       <div className="hero__video">
         {video && <Video url={video} image={image} />}
       </div>

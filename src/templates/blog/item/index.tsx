@@ -4,24 +4,32 @@ import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
 
 import "./styles.scss"
+import Quote from "~/components/configurable/Quote"
 
 // gatsby-node passes in data as context variable
 const BlogItem: FunctionComponent<any> = context => {
   // this grabs all the needed variables from within content.pageContext
-  const { date, title, hero_title, body, image_hero } = context.pageContext
+  const {
+    date,
+    title,
+    hero_title,
+    body,
+    image_hero,
+    show_quote_block,
+  } = context.pageContext
 
   return (
     <div className="blog-item">
-      {!!image_hero?.publicURL && (
-        <Hero image={image_hero?.publicURL} compact>
+      {/* {!!image_hero?.publicURL && (
+        <Hero image={image_hero?.publicURL}>
           <Heading level={1} underlined>
             <span dangerouslySetInnerHTML={{ __html: hero_title }} />
           </Heading>
         </Hero>
-      )}
+      )} */}
 
       <Block>
-        <div className="container">
+        <div className="container" style={{ maxWidth: 740 }}>
           <Heading className="blog-item__heading" level={3}>
             <span dangerouslySetInnerHTML={{ __html: title }} />
           </Heading>
@@ -34,6 +42,13 @@ const BlogItem: FunctionComponent<any> = context => {
           />
         </div>
       </Block>
+      {!!show_quote_block && (
+        <Block>
+          <div className="container container--column">
+            <Quote />
+          </div>
+        </Block>
+      )}
     </div>
   )
 }
