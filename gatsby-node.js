@@ -17,6 +17,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const filterResults = (results, slug) => {
+    return (
+      results.filter(item => {
+        return item.node.fileAbsolutePath.indexOf(slug) > -1
+      }) || []
+    )
+  }
+
   const createProjectPages = async () => {
     const template = path.resolve("./src/templates/project/index.tsx")
 
@@ -54,13 +62,16 @@ exports.createPages = async ({ graphql, actions }) => {
               fields {
                 slug
               }
+              fileAbsolutePath
             }
           }
         }
       }
     `)
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const projects = filterResults(result.data.allMarkdownRemark.edges)
+
+    projects.forEach(({ node }) => {
       createPage({
         path: `/project${node.fields.slug}`,
         component: slash(template),
