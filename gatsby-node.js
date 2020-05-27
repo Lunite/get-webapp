@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const filterResults = (results, slug) => {
     return (
       results.filter(item => {
-        return item.node.fileAbsolutePath.indexOf(slug) > -1
+        return item.node.fileAbsolutePath.indexOf(`/content/${slug}/`) > -1
       }) || []
     )
   }
@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const projects = filterResults(
       result.data.allMarkdownRemark.edges,
-      "/project/"
+      "project"
     )
 
     console.log(projects)
