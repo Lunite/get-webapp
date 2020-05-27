@@ -1,0 +1,14 @@
+@import "~/styles/_variables.scss";
+
+.blog-item {
+  &__heading {
+    display: block;
+    width: 100%;
+    color: $light-blue;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 740px;
+  }
+}
