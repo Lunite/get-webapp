@@ -7,7 +7,7 @@ description: >-
 
 
   The installation was carried out over a 10 week programme. The scope of the installation included all groundworks, electrical installation, framework installation, DC installation, fencing installation and CCTV installation. All equipment site wide was specified and designed by our team.
-image: group-125-1-e1588762555349.png
+image: bay.jpg
 image_hero: bay_2.jpg
 show_in_case_studies: true
 info_strip:
