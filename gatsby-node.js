@@ -69,7 +69,12 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `)
 
-    const projects = filterResults(result.data.allMarkdownRemark.edges)
+    const projects = filterResults(
+      result.data.allMarkdownRemark.edges,
+      "/project/"
+    )
+
+    console.log(projects)
 
     projects.forEach(({ node }) => {
       createPage({
