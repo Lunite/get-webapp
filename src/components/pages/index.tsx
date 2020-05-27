@@ -28,6 +28,9 @@ const Homepage = () => {
       <Banner className="visible-xs">
         <Link to="/for-your-business">Go to Business Site</Link>
       </Banner>
+      <Banner className="banner--covid-19">
+        <Link to="/blog/covid-19">Click here to read our COVID-19 plan</Link>
+      </Banner>
       <Hero
         className="homepage__hero"
         image="/images/homepage-video.jpg"
@@ -51,7 +54,12 @@ const Homepage = () => {
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
-          We believe that solar shouldn’t be a luxury, it should be for everyone. Our solutions are designed to be simple, easy to understand, with no hidden costs or additions.  We provide a fantastic service, which is what's important to homeowners, and always at a fair price.  We'll help you understand the best solution so that it will be easy to a make simple and informed choice.
+            We believe that solar shouldn’t be a luxury, it should be for
+            everyone. Our solutions are designed to be simple, easy to
+            understand, with no hidden costs or additions. We provide a
+            fantastic service, which is what's important to homeowners, and
+            always at a fair price. We'll help you understand the best solution
+            so that it will be easy to a make simple and informed choice.
           </p>
           <HouseIllustration className="house-illustration" />
           <div className="row">

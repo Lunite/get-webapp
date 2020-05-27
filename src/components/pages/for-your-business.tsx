@@ -14,6 +14,8 @@ import StatsBlock from "../standalone/StatsBlock"
 import { useCustomerType } from "~/hooks/useCustomerType"
 
 import "./for-your-business.scss"
+import Banner from "../configurable/Banner"
+import { Link } from "gatsby"
 
 const HomepageB2b = () => {
   const { changeCustomerType } = useCustomerType()
@@ -24,6 +26,9 @@ const HomepageB2b = () => {
 
   return (
     <div className="homepage-b2b">
+      <Banner className="banner--covid-19">
+        <Link to="/blog/covid-19">Click here to read our COVID-19 plan</Link>
+      </Banner>
       <Hero
         className="homepage__hero"
         image="/images/b2b-video.jpg"
