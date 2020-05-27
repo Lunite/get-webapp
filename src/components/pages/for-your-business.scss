@@ -4,4 +4,8 @@
   .quote {
     background-color: $dark-blue;
   }
+
+  .block:last-child {
+    padding-bottom: 0;
+  }
 }

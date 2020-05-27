@@ -205,14 +205,16 @@ const HomepageB2b = () => {
             </Col10>
           </div>
         </Section>
-        <div className="divider" />
-        <div className="container visible-xs">
-          <StatsBlock device="mobile" business />
-        </div>
-        <div className="container hidden-xs">
-          <StatsBlock device="desktop" business />
-        </div>
-        <div className="divider" />
+        <Section>
+          <>
+            <div className="container visible-xs">
+              <StatsBlock device="mobile" business />
+            </div>
+            <div className="container hidden-xs">
+              <StatsBlock device="desktop" business />
+            </div>
+          </>
+        </Section>
       </Block>
     </div>
   )
