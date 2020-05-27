@@ -38,7 +38,7 @@ const HomepageB2b = () => {
         }
       >
         <Heading level={1}>Future proof your business</Heading>
-        <p>We are here to help grow</p>
+        <p>We are here to help you grow</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
       <Block>
