@@ -17,9 +17,24 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: "Hero Image", name: "hero_image", widget: "image" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              required: false,
+              hint: "Main title will be used if this is left blank",
+            }
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Keywords", name: "keywords", widget: "string" }
 
   - name: "project"
     label: "Project"
@@ -129,6 +144,13 @@ collections:
         widget: "object"
         collapsed: true
         fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              required: false,
+              hint: "Main title will be used if this is left blank",
+            }
           - { label: "Description", name: "description", widget: "markdown" }
           - { label: "Keywords", name: "keywords", widget: "string" }
 
@@ -146,6 +168,13 @@ collections:
         widget: "object"
         collapsed: true
         fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              required: false,
+              hint: "Main title will be used if this is left blank",
+            }
           - { label: "Description", name: "description", widget: "markdown" }
           - { label: "Keywords", name: "keywords", widget: "string" }
 
