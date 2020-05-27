@@ -1,11 +1,11 @@
 ---
 title: Sevenoaks home
 subtitle: "Domestic installation "
-description: We were extremely impressed with our Green Energy Together
+description: '"We were extremely impressed with our Green Energy Together
   consultant’s knowledge about solar and trusted his design recommendations. The
   installation process went very smoothly, and the quality of the solar
   components seem to be of a top standard. I am very pleased with the overall
-  experience.
+  experience."'
 quote: “Very happy with my design”
 image: 1.jpg
 image_hero: breadcrumb17.jpg
