@@ -48,6 +48,8 @@ exports.createPages = async ({ graphql, actions }) => {
                   description
                   keywords
                 }
+                hero_title
+                show_quote_block
                 info_strip {
                   dc_peak
                   developer

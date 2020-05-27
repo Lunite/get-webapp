@@ -38,6 +38,7 @@ collections:
           name: "show_quote_block",
           widget: "boolean",
           default: false,
+          required: false,
         }
       - label: "SEO"
         name: "seo"
