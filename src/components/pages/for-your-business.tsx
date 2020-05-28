@@ -16,6 +16,7 @@ import { useCustomerType } from "~/hooks/useCustomerType"
 import "./for-your-business.scss"
 import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
+import CaseStudiesMap from "../configurable/CaseStudiesMap"
 
 const HomepageB2b = () => {
   const { changeCustomerType } = useCustomerType()
@@ -212,13 +213,23 @@ const HomepageB2b = () => {
         </Section>
         <Section>
           <>
-            <div className="container visible-xs">
+            <div className="visible-xs">
               <StatsBlock device="mobile" business />
             </div>
-            <div className="container hidden-xs">
+            <div className="hidden-xs">
               <StatsBlock device="desktop" business />
             </div>
           </>
+        </Section>
+        <Section>
+          <Heading underlined>Business Case Studies</Heading>
+          <p>
+            We provide a turnkey supply, installation and maintenance service
+            for industrial commercial solar systems. provide and commercial
+            solar systems. provide a turnkey supply, installation and
+            maintenance service for industrial and commercial solar systems.
+          </p>
+          <CaseStudiesMap customerType="commercial" />
         </Section>
       </Block>
     </div>

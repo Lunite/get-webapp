@@ -11,7 +11,7 @@ import Heading from "../Heading"
 
 const ALL_MARKDOWN_REMARK = graphql`
   {
-    allMarkdownRemark(limit: 10) {
+    allMarkdownRemark(limit: 100) {
       edges {
         node {
           frontmatter {
@@ -38,9 +38,13 @@ const ALL_MARKDOWN_REMARK = graphql`
       }
     }
   }
-`;
+`
 
-const CaseStudiesMap = () => {
+const CaseStudiesMap = ({
+  customerType,
+}: {
+  customerType: "domestic" | "commercial"
+}) => {
   const items = useStaticQuery(ALL_MARKDOWN_REMARK)?.allMarkdownRemark?.edges
 
   if (!items?.length) {
@@ -50,20 +54,20 @@ const CaseStudiesMap = () => {
   const carouselItems = (() => {
     return items
       .filter(
-        ({node}) =>
+        ({ node }) =>
+          node.frontmatter.category === customerType &&
           node.frontmatter.show_in_case_studies &&
           (node.frontmatter.image_case_studies?.publicURL ||
             node.frontmatter.image?.publicURL)
       )
-      .map(({node}) => {
+      .map(({ node }) => {
         const pData = {
           slug: node.fields.slug,
-          ...node.frontmatter
+          ...node.frontmatter,
         }
 
         const pImage =
-          pData.image_case_studies?.publicURL ||
-          pData.image?.publicURL
+          pData.image_case_studies?.publicURL || pData.image?.publicURL
 
         if (!pImage) {
           return null

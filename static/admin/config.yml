@@ -72,6 +72,13 @@ collections:
           required: false,
         }
       - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["domestic", "commercial"],
+          required: true,
+        }
+      - {
           label: "Description",
           name: "description",
           widget: "markdown",

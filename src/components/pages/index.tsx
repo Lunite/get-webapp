@@ -144,7 +144,7 @@ const Homepage = () => {
             bespoke solutions that exceed expectations. Check out what our
             customers have to say and some of our favourite projects.
           </p>
-          <CaseStudiesMap />
+          <CaseStudiesMap customerType="domestic" />
         </div>
       </Block>
     </div>
