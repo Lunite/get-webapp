@@ -33,9 +33,9 @@ const ProductsAndWarrantiesBlock = () => {
               guarantees.
             </li>
           </TickList>
-          {/* <BlockCTA secondary right arrow="right" url="/products">
+          <BlockCTA secondary right arrow="right" url="/products-warranties">
             Find out more
-          </BlockCTA> */}
+          </BlockCTA>
         </Col7>
       </div>
     </div>
