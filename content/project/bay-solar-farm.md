@@ -1,6 +1,7 @@
 ---
 title: Bay Solar Farm
 subtitle: Groundmount installation
+category: commercial
 description: >-
   Complete design, installation, commissioning and connection of the entire
   solar installation including all HV and LV works site wide. The installation
