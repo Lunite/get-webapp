@@ -19,6 +19,6 @@ Your home deserves a solar installer with the highest level of care, quality and
 
 ### It all starts with a quote
 
-Call us now on 020 3995 4422 or fill the form below to get a no obligation quote customised for your needs. 
+Call us now on [020 3995 4422](tel:02039954422) or fill the form below to get a no obligation quote customised for your needs. 
 
 Because sustainable options should be available and affordable for everyone, and affordability shouldn't cost your peace of mind.
