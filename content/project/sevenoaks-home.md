@@ -1,6 +1,7 @@
 ---
 title: Sevenoaks home
 subtitle: "Domestic installation "
+category: domestic
 description: '"We were extremely impressed with our Green Energy Together
   consultant’s knowledge about solar and trusted his design recommendations. The
   installation process went very smoothly, and the quality of the solar
