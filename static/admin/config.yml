@@ -7,6 +7,8 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+site_url: https://get-uk.com
+
 collections:
   - name: "blog"
     label: "Blog"

@@ -20,13 +20,13 @@ const BlogItem: FunctionComponent<any> = context => {
 
   return (
     <div className="blog-item">
-      {/* {!!image_hero?.publicURL && (
-        <Hero image={image_hero?.publicURL}>
-          <Heading level={1} underlined>
+      {!!image_hero?.publicURL && (
+        <Hero image={image_hero?.publicURL} centered>
+          <Heading level={1} underlined centered>
             <span dangerouslySetInnerHTML={{ __html: hero_title }} />
           </Heading>
         </Hero>
-      )} */}
+      )}
 
       <Block>
         <div className="container" style={{ maxWidth: 740 }}>

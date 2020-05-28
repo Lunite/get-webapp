@@ -49,4 +49,14 @@ h6 {
       background-color: $light-blue;
     }
   }
+
+  &--centered {
+    width: 100%;
+    text-align: center;
+
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }

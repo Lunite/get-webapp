@@ -7,12 +7,14 @@ interface HeadingProps {
   subheading?: string
   underlined?: boolean
   level?: number
+  centered?: boolean
 }
 
 const Heading: FunctionComponent<HeadingProps> = ({
   className = "",
   subheading,
   underlined,
+  centered = false,
   level = 2,
   children,
 }) => {
@@ -22,7 +24,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
       <HeaderTag
         className={`heading heading--${level} ${
           underlined ? "heading--underlined" : ""
-        } ${className}`}
+        } ${centered ? "heading--centered" : ""} ${className}`}
       >
         {children}
       </HeaderTag>
