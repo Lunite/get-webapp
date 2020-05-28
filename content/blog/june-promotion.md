@@ -11,7 +11,11 @@ seo:
 ---
 Eleifend donec pretium vulputate sapien. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nulla malesuada pellentesque elit eget gravida cum sociis natoque. Duis at consectetur lorem donec massa sapien faucibus. In egestas erat imperdiet sed euismod nisi. Odio pellentesque diam volutpat commodo sed. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus. 
 
+
+
 ![alt](/img/solar-powered-gadgets-994x400.jpg "title")
+
+
 
 #### Feugiat nisl pretium fusce id velit. Iaculis at 
 
