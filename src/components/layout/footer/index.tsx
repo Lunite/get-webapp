@@ -94,10 +94,17 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                   </span>
                 </span>
                 <span>
-                  <span style={{ position: "relative", paddingLeft: "34px" }}>
+                  <a
+                    href="tel:02039954422"
+                    style={{
+                      position: "relative",
+                      paddingLeft: "34px",
+                      display: "block",
+                    }}
+                  >
                     <Icon alias="phone" />
                     020 3995 4422
-                  </span>
+                  </a>
                 </span>
               </div>
             </Col4>
