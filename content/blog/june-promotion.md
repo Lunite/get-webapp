@@ -15,10 +15,10 @@ For every 30 installs we will give away a free solar PV system to a lucky winner
 
 Don’t compromise
 
-Your home deserves a solar installer with the highest level of care, quality and experience. Our large sales volume means we can provide the latest and most effective solar technology at the best price in the market, all without compromising on quality and service. Find out more about our comprehensive [warranties and aftercare](https://www.get-uk.com/products-warranties) packages and join the solar revolution. 
+Your home deserves a solar installer with the highest level of care, quality and experience. Our large sales volume means we can provide the latest and most effective solar technology at the best price in the market, all without compromising on quality and service. Find out more about our comprehensive **warranties and aftercare** packages and join the solar revolution. 
 
 ### It all starts with a quote
 
-Call us now on [020 3995 4422](tel:02039954422) or fill the form below to get a no obligation quote customised for your needs. 
+Call us now on** [020 3995 4422](tel:02039954422)** or fill the form below to get a no obligation quote customised for your needs. 
 
 Because sustainable options should be available and affordable for everyone, and affordability shouldn't cost your peace of mind.
