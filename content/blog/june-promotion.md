@@ -22,5 +22,3 @@ erat pellentesque adipiscing commodo. Odio pellentesque diam volutpat commodo se
 * Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. 
 
 Non odio euismod lacinia at. Sit amet massa vitae tortor condimentum lacinia. Volutpat commodo sed egestas egestas fringilla phasellus faucibus.
-
-![x](/img/imgpsh_mobile_save.jpg "x")
