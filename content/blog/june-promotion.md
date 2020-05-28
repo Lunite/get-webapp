@@ -1,7 +1,7 @@
 ---
 image_hero: breadcrumb17.jpg
-hero_title: June promotion
-title: June promotion
+hero_title: "Spring solar giveaway "
+title: Go green this spring and be in for a chance to win a FREE PV solar system
 date: 2020-05-28T13:39:19.406Z
 show_quote_block: true
 seo:
@@ -9,20 +9,16 @@ seo:
   description: June promotion
   keywords: June promotion
 ---
-Eleifend donec pretium vulputate sapien. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nulla malesuada pellentesque elit eget gravida cum sociis natoque. Duis at consectetur lorem donec massa sapien faucibus. In egestas erat imperdiet sed euismod nisi. Odio pellentesque diam volutpat commodo sed. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus. 
+For every 30 installs we will give away a free solar PV system to a lucky winner. Book your installation and get a chance to win your system completely FREE. We will randomly draw 1 lucky customer in batches of 30 to receive their first stage payment back and their system and installation for free. 
 
+![solar panels](/img/shutterstock_1670095636 [Converted]2.jpg "Solar Panels")
 
+Don’t compromise
 
-![alt](/img/solar-powered-gadgets-994x400.jpg "title")
+Your home deserves a solar installer with the highest level of care, quality and experience. Our large sales volume means we can provide the latest and most effective solar technology at the best price in the market, all without compromising on quality and service. Find out more about our comprehensive [warranties and aftercare](https://www.get-uk.com/products-warranties) packages and join the solar revolution. 
 
+### It all starts with a quote
 
+Call us now on 020 3995 4422 or fill the form below to get a no obligation quote customised for your needs. 
 
-#### Feugiat nisl pretium fusce id velit. Iaculis at 
-
-erat pellentesque adipiscing commodo. Odio pellentesque diam volutpat commodo sed. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. 
-
-* Mauris nunc congue nisi vitae. Proin sed libero enim sed. 
-
-* Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. 
-
-Non odio euismod lacinia at. Sit amet massa vitae tortor condimentum lacinia. Volutpat commodo sed egestas egestas fringilla phasellus faucibus.
+Because sustainable options should be available and affordable for everyone, and affordability shouldn't cost your peace of mind.
