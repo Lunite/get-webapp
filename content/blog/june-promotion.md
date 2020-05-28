@@ -13,7 +13,7 @@ For every 30 installs we will give away a free solar PV system to a lucky winner
 
 ![solar panels](/img/shutterstock.jpg "Solar Panels")
 
-Don’t compromise
+# Don’t compromise
 
 Your home deserves a solar installer with the highest level of care, quality and experience. Our large sales volume means we can provide the latest and most effective solar technology at the best price in the market, all without compromising on quality and service. Find out more about our comprehensive **warranties and aftercare** packages and join the solar revolution. 
 
