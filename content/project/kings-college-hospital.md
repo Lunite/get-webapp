@@ -1,5 +1,6 @@
 ---
 title: King's College Hospital
+category: commercial
 description: >-
   King’s College Hospital is an acute care facility managed by King’s College
   Hospital NHS Foundation Trust. The hospital was opened in 1840 in the disused
