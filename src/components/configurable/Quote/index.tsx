@@ -8,6 +8,8 @@ import "./styles.scss"
 const Quote: FunctionComponent<any> = ({
   title = "Get a Free Quote today.",
   description = "It only takes 2 minutes to request a no-obligation quote, customised to you and your home's needs.",
+  ctaText = "Request Quote",
+  compact = false,
 }) => {
   const formState = {}
 
@@ -23,40 +25,58 @@ const Quote: FunctionComponent<any> = ({
     })
   }
 
+  const fields = (
+    <>
+      <div className="form__fields">
+        <input
+          className="form__text-input"
+          type="text"
+          placeholder="Name"
+          name="name"
+          onChange={handleInputChange}
+        />
+        <input
+          className="form__text-input"
+          type="email"
+          placeholder="Email"
+          name="email"
+          onChange={handleInputChange}
+        />
+        <input
+          className="form__text-input"
+          type="tel"
+          placeholder="Phone"
+          name="phone"
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="form__actions">
+        <BlockCTA submit inline>
+          {ctaText}
+        </BlockCTA>
+      </div>
+    </>
+  )
+
   return (
     <div className="quote">
       <Heading level={3}>{title}</Heading>
       <p>{description}</p>
-      <form className="form form--horizontal" onSubmit={handleSubmit}>
-        <div className="form__fields">
-          <input
-            className="form__text-input"
-            type="text"
-            placeholder="Name"
-            name="name"
-            onChange={handleInputChange}
-          />
-          <input
-            className="form__text-input"
-            type="email"
-            placeholder="Email"
-            name="email"
-            onChange={handleInputChange}
-          />
-          <input
-            className="form__text-input"
-            type="tel"
-            placeholder="Phone"
-            name="phone"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form__actions">
-          <BlockCTA submit inline>
-            Request Quote
-          </BlockCTA>
-        </div>
-      </form>
+      {compact && (
+        <form
+          className="form form--horizontal"
+          action="https://formspree.io/mbjzlwgw"
+          method="POST"
+          name="quote-block"
+        >
+          {fields}
+        </form>
+      )}
+      {!compact && (
+        <form className="form form--horizontal" onSubmit={handleSubmit}>
+          {fields}
+        </form>
+      )}
     </div>
   )
 }

@@ -31,6 +31,7 @@ const QuotePage = ({ location }) => {
                 className="form"
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
+                name="quote-page"
                 // data-netlify="true" -- to use netlify forms
               >
                 <FormInput

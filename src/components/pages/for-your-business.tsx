@@ -38,7 +38,9 @@ const HomepageB2b = () => {
           <div className="hidden-xs">
             <Quote
               title="Let us produce a solar business case for you"
-              description="No one understands solar better than us, and we love efficient processes.  Give us a call or request a free consultation in seconds, so you can concentrate on what matters most - operating your business."
+              description="No one understands solar better than us, and we love efficient processes. Give us a call or request a free consultation in seconds, so you can concentrate on what matters most - operating your business."
+              ctaText="Get In Touch"
+              compact
             />
           </div>
         }

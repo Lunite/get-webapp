@@ -29,6 +29,7 @@ const ContactUsPage = ({ location }) => {
                 className="form form--full-width"
                 action="https://formspree.io/xwkrpynw"
                 method="POST"
+                name="contact-us"
                 // data-netlify="true" -- to use netlify forms
               >
                 <div className="row">
