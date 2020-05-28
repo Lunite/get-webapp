@@ -17,6 +17,7 @@ const ALL_MARKDOWN_REMARK = graphql`
           frontmatter {
             description
             title
+            category
             image {
               name
               publicURL
@@ -55,7 +56,7 @@ const CaseStudiesMap = ({
     return items
       .filter(
         ({ node }) =>
-          node.frontmatter.category === customerType &&
+          // node.frontmatter.category === customerType &&
           node.frontmatter.show_in_case_studies &&
           (node.frontmatter.image_case_studies?.publicURL ||
             node.frontmatter.image?.publicURL)
