@@ -57,14 +57,11 @@ seo:
 
 <p>Further information can be found in the following documents:</p>
 
-<!--StartFragment-->
+
 
 * [Covid-19 Domestic Install Methodology.pdf](https://www.keepandshare.com/doc24/110673/covid-19-domestic-install-methodology-get-pdf-430k?da=y)
 
-
 * [Covid-19 Warehouse Methodology.pdf](https://www.keepandshare.com/doc24/110674/covid-19-warehouse-methodology-get-pdf-280k?da=y)
-
 
 * [HSF02B-14 - Gold Standard Risk Assessment 14 - Coronavirus COVID-19 (B-1) Return To Work.pdf](https://www.keepandshare.com/doc24/110675/ra14-coronavirus-covid-19-get-pdf-616k?da=y)
 
-<!--EndFragment-->
