@@ -11,7 +11,7 @@ seo:
 ---
 For every 30 installs we will give away a free solar PV system to a lucky winner. Book your installation and get a chance to win your system completely FREE. We will randomly draw 1 lucky customer in batches of 30 to receive their first stage payment back and their system and installation for free. 
 
-![solar panels](/img/shutterstock_1670095636_[Converted]2.jpg "Solar Panels")
+![solar panels]('/img/shutterstock.jpg "Solar Panels")
 
 Don’t compromise
 
@@ -19,6 +19,6 @@ Your home deserves a solar installer with the highest level of care, quality and
 
 ### It all starts with a quote
 
-Call us now on** [020 3995 4422](tel:02039954422)** or fill the form below to get a no obligation quote customised for your needs. 
+Call us now on **[020 3995 4422](tel:02039954422)** or fill the form below to get a no obligation quote customised for your needs. 
 
 Because sustainable options should be available and affordable for everyone, and affordability shouldn't cost your peace of mind.
