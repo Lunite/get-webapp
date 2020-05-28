@@ -191,7 +191,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: "quote",
         seo_title:
           "Get A Quote | Green Energy Together | Solar Panel Installer",
-        title: "Ge a Quote",
+        title: "Get a Quote",
         keywords: "",
         description:
           "Just simply fill out a few details to receive a free no-obligation quote and survey from us here at Green Energy Together.",
