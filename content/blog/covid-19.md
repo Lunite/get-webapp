@@ -1,5 +1,6 @@
 ---
 hero_image: breadcrumb17.jpg
+hero_title: COVID-19
 title: COVID-19
 date: 2020-05-27T09:34:48.339Z
 seo:
@@ -19,9 +20,6 @@ seo:
 <p>Please note:&nbsp;<em>If you fall into the Lower Risk category, we will still carry out additional risk assessment during installation planning and on the day of install. If any subsequent assessment results in you falling into the Higher Risk category we won&rsquo;t be able to go ahead with your install.</em></p>
 <p>What this means for <strong>Domestic solar</strong> installations</p>
 <p>Key Workers will continue to be prioritised wherever possible but we will now also be able to install for other customers too, where there is a Lower Risk of COVID-19 transmission.</p>
-<p>After our remote and then physical survey, we will conduct a risk assessment and agree with you if we should proceed or to wait.&nbsp; 14 days prior to the agreed install we will ask you for the first stage payment.</p>
-<p>This is already part of our standard installation process but we will use the information provided to conduct our covid risk assessment.&nbsp;</p>
-<p>&nbsp;</p>
 <p>If your installation is classified as:</p>
 <ol>
 <li>Lower Risk - we will be able to progress your install.</li>
@@ -56,3 +54,17 @@ seo:
 <p>We expect that our updated operating protocols will make it possible for a greater number of installations to be completed but also apologise for any inconvenience caused to those customers who will need to wait a bit longer.</p>
 <p>In what is a challenging time, we appreciate your understanding as we do our best to balance the needs of homes and businesses with the duty of care we have for our team and those we install for.&nbsp;</p>
 <p>We remain committed to our vision of a world where energy shouldn&rsquo;t damage the earth and to protecting the health of our customers, team and wider society.&nbsp; We hope that you, your friends and families are keeping safe and well.</p>
+
+<p>Further information can be found in the following documents:</p>
+
+<!--StartFragment-->
+
+* [Covid-19 Domestic Install Methodology.pdf](https://www.keepandshare.com/doc24/110673/covid-19-domestic-install-methodology-get-pdf-430k?da=y)
+
+
+* [Covid-19 Warehouse Methodology.pdf](https://www.keepandshare.com/doc24/110674/covid-19-warehouse-methodology-get-pdf-280k?da=y)
+
+
+* [HSF02B-14 - Gold Standard Risk Assessment 14 - Coronavirus COVID-19 (B-1) Return To Work.pdf](https://www.keepandshare.com/doc24/110675/ra14-coronavirus-covid-19-get-pdf-616k?da=y)
+
+<!--EndFragment-->
