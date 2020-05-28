@@ -1,5 +1,6 @@
 ---
 title: Paddington Station
+category: commercial
 description: >-
   Paddington, also known as London Paddington, is a Central London railway
   terminus and London Underground station complex, located on Praed Street in
