@@ -1,5 +1,5 @@
 ---
-image_hero: breadcrumb17.jpg
+image_hero: banner.png
 hero_title: "Spring solar giveaway "
 title: Go green this spring and be in for a chance to win a FREE PV solar system
 date: 2020-05-28T13:39:19.406Z
