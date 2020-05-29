@@ -1,7 +1,7 @@
 ---
 image_hero: banner.png
-hero_title: "Spring solar giveaway "
-title: Go green this spring and be in for a chance to win a FREE PV solar system
+hero_title: Win solar for your home for FREE
+title: Go green this spring and be in for a chance to win a FREE solar PV system
 date: 2020-05-28T13:39:19.406Z
 show_quote_block: true
 seo:
@@ -19,6 +19,6 @@ Your home deserves a solar installer with the highest level of care, quality and
 
 ### It all starts with a quote
 
-Call us now on[ **020 3995 4422** ](tel:02039954422)or fill the form below to get a no obligation quote customised for your needs. 
+Call us now on[ **020 3995 4422** ](tel:02039954422)or fill in the form below to get a no obligation quote customised for your needs. 
 
 Because sustainable options should be available and affordable for everyone, and affordability shouldn't cost your peace of mind.
