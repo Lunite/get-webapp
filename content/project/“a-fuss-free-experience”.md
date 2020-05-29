@@ -9,7 +9,7 @@ description: '"From the very beginning I was happy with the efficiency of the
 quote: “A fuss-free experience”
 image: 2.jpg
 image_hero: breadcrumb6.png
-show_in_case_studies: false
+show_in_case_studies: true
 image_case_studies: 2.jpg
 info_strip:
   location: Norwich, Norfolk
