@@ -1,5 +1,5 @@
 ---
-image_hero: banner2.jpg
+image_hero: banner3.jpg
 hero_title: Win solar for your home for FREE
 title: Go green this spring and be in for a chance to win a FREE solar PV system
 date: 2020-05-28T13:39:19.406Z
