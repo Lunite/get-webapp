@@ -15,6 +15,7 @@ import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
+import BlockCTA from "../configurable/BlockCTA"
 
 const Homepage = () => {
   const { changeCustomerType } = useCustomerType()
@@ -42,8 +43,11 @@ const Homepage = () => {
         }
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
-        <p>Welcome to the future of energy</p>
-        {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
+        <p>
+          Order now for a chance to get your system FREE. Event 1 in 30 orders
+          will win!
+        </p>
+        <BlockCTA url="/blog/june-promotion">Find Out More</BlockCTA>
       </Hero>
       <Block className="visible-xs">
         <div className="container container--column">
