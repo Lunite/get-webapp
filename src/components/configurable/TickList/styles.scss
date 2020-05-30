@@ -23,16 +23,18 @@
       transform: translateY(-2px);
     }
 
-    & + li {
-      border-top: 1px solid $low-grey-faded;
-    }
-
     &:first-child {
       padding-top: 0;
     }
 
     &:last-child {
       padding-bottom: 0;
+    }
+  }
+
+  &:not(.tick-list--no-lines) {
+    li + li {
+      border-top: 1px solid $low-grey-faded;
     }
   }
 }

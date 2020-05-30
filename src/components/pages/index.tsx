@@ -6,6 +6,7 @@ import StatsBlock from "~/components/standalone/StatsBlock"
 import Block from "../configurable/Block"
 import Col8 from "../grid/Col8"
 import Col6 from "../grid/Col6"
+import Col4 from "../grid/Col4"
 import Expandable from "../configurable/Expandable"
 import Quote from "../configurable/Quote"
 import Banner from "../configurable/Banner"
@@ -16,6 +17,7 @@ import { useCustomerType } from "~/hooks/useCustomerType"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
+import TickList from "../configurable/TickList"
 
 const Homepage = () => {
   const { changeCustomerType } = useCustomerType()
@@ -126,6 +128,15 @@ const Homepage = () => {
                 }
               />
             </Col8>
+            <Col4>
+              <TickList>
+                <li>Usage-based design</li>
+                <li>Transparent data analysis</li>
+                <li>Streamlined and stress free process</li>
+                <li>Market leading after care &amp; warranty package</li>
+                <li>Large product selection at a fair price</li>
+              </TickList>
+            </Col4>
           </div>
         </div>
       </Block>

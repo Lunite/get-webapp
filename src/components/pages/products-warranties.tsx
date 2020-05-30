@@ -146,7 +146,7 @@ const ProductsAndWarranties = () => {
               </p>
             </Col9>
             <Col3>
-              {/* <HighlightBlock title="Warranty Data" action={goToProducts}>
+              <HighlightBlock title="Warranty Data" action={goToProducts}>
                 <li>
                   <Icon alias="battery-charging" />
                   5+ years warranty on inverters
@@ -159,7 +159,7 @@ const ProductsAndWarranties = () => {
                   25+ years performance warranty and 10+ years product warranty
                   on panels
                 </li>
-              </HighlightBlock> */}
+              </HighlightBlock>
             </Col3>
           </div>
           <div className="row" style={{ marginTop: 60 }}>
