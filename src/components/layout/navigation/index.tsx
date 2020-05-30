@@ -167,12 +167,12 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
               </div>
             </div>
             <NavItem slug="company" />
-            <div className="navigation-item navigation-item--coming-soon">
+            {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
                 Blog
                 <span>coming soon</span>
               </div>
-            </div>
+            </div> */}
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
@@ -220,12 +220,12 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
               </div>
             </div>
             <NavItem slug="company" />
-            <div className="navigation-item navigation-item--coming-soon">
+            {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
                 Blog
                 <span>coming soon</span>
               </div>
-            </div>
+            </div> */}
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
