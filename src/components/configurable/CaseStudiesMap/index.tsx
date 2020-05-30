@@ -17,6 +17,7 @@ const ALL_MARKDOWN_REMARK = graphql`
           frontmatter {
             description
             title
+            quote
             category
             image {
               name

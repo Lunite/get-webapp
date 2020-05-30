@@ -14,6 +14,16 @@ import ContactUsDetails from "~/vectors/contact-us-details.inline.svg"
 const ContactUsPage = ({ location }) => {
   const { state = {} } = location
 
+  const logFormSubmitEvent = () => {
+    window.dataLayer = window.dataLayer || []
+
+    window.dataLayer.push({
+      category: "Form",
+      action: "Submit",
+      label: "Contact Us",
+    })
+  }
+
   return (
     <div className="contact-us-page">
       <Hero image="/images/contact-banner.jpg" compact>
@@ -27,6 +37,9 @@ const ContactUsPage = ({ location }) => {
             <Col9>
               <form
                 className="form form--full-width"
+                onSubmit={() => {
+                  logFormSubmitEvent()
+                }}
                 action="https://formspree.io/xwkrpynw"
                 method="POST"
                 name="contact-us"

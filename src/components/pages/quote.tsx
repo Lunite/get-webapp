@@ -32,6 +32,15 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
+                onSubmit={() => {
+                  window.dataLayer = window.dataLayer || []
+
+                  window.dataLayer.push({
+                    category: "Form",
+                    action: "Submit",
+                    label: "Quote",
+                  })
+                }}
                 // data-netlify="true" -- to use netlify forms
               >
                 <FormInput
