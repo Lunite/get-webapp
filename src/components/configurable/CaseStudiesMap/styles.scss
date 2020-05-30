@@ -20,8 +20,8 @@
   }
 
   .awssld__bullets {
+    width: calc(100% - 120px);
     bottom: 0;
-    border-top: 1px solid $low-grey;
     padding-top: 30px;
     justify-content: flex-start;
     z-index: 1;
@@ -40,6 +40,15 @@
       & + button {
         margin-left: 16px;
       }
+    }
+
+    &::before {
+      position: absolute;
+      width: calc(100% + 120px);
+      content: "";
+      height: 1px;
+      background-color: $low-grey;
+      top: 0;
     }
   }
 }

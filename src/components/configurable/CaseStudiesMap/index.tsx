@@ -116,7 +116,7 @@ const CaseStudiesMap = ({
                 </div>
               )}
             </div>
-            <Link className="project-item__link" to={`/projects${pData.slug}`}>
+            <Link className="project-item__link" to={`/project${pData.slug}`}>
               Read More
             </Link>
           </div>
