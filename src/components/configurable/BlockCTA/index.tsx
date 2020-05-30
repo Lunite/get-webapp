@@ -34,7 +34,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   fullWidth,
   className,
 }) => {
-  if (!url && !submit) {
+  if (!url && !submit && !action) {
     return null
   }
 

@@ -21,7 +21,7 @@ const ProductsAndWarrantiesBlock = () => {
             We believe sustainable options should be available and affordable
             for everyone — affordability shouldn't cost your peace of mind.
           </p>
-          <TickList nolines>
+          <TickList>
             <li>
               As one of the largest installers in the country, we deal directly
               with manufacturers, letting us offer prices usually found in

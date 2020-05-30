@@ -9,6 +9,10 @@
     margin-top: 32px;
     margin-bottom: 32px;
 
+    *[class^="col-"] {
+      align-self: center;
+    }
+
     &::before {
       content: "";
       position: absolute;

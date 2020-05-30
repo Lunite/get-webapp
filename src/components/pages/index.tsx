@@ -129,7 +129,7 @@ const Homepage = () => {
               />
             </Col8>
             <Col4>
-              <TickList>
+              <TickList nolines blueticks>
                 <li>Usage-based design</li>
                 <li>Transparent data analysis</li>
                 <li>Streamlined and stress free process</li>

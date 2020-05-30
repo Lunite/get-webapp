@@ -87,6 +87,12 @@ const CaseStudiesMap = ({
                 dangerouslySetInnerHTML={{ __html: pData.quote || pData.title }}
               />
             </Heading>
+            <Heading className="project-item__subtitle" level={5}>
+              <>
+                {customerType === "commercial" && "Comercial installation"}
+                {customerType === "domestic" && "Domestic installation"}
+              </>
+            </Heading>
             <p
               className="project-item__description"
               dangerouslySetInnerHTML={{ __html: pData.description }}

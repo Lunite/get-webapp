@@ -3,7 +3,8 @@ import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import Col9 from "../grid/Col9"
-import Col3 from "../grid/Col3"
+import Col4 from "../grid/Col4"
+import Col8 from "../grid/Col8"
 import Image from "../configurable/Image"
 import Icon from "../olc-framework/Icon"
 import Col11 from "../grid/Col11"
@@ -106,7 +107,7 @@ const ProductsAndWarranties = () => {
               marginTop: 78,
             }}
           >
-            <Col9
+            <Col8
               style={{
                 borderTop: "1px solid #d1d1d1",
                 paddingTop: 52,
@@ -144,9 +145,13 @@ const ProductsAndWarranties = () => {
                 warranty over our workmanship. Full details of specific
                 components can be found below in the products section
               </p>
-            </Col9>
-            <Col3>
-              <HighlightBlock title="Warranty Data" action={goToProducts}>
+            </Col8>
+            <Col4>
+              <HighlightBlock
+                title="Warranty Data"
+                action={goToProducts}
+                actionText="Jump to products area"
+              >
                 <li>
                   <Icon alias="battery-charging" />
                   5+ years warranty on inverters
@@ -160,7 +165,7 @@ const ProductsAndWarranties = () => {
                   on panels
                 </li>
               </HighlightBlock>
-            </Col3>
+            </Col4>
           </div>
           <div className="row" style={{ marginTop: 60 }}>
             <Col9>
@@ -223,6 +228,7 @@ const ProductsAndWarranties = () => {
                 borderTop: "1px solid #d1d1d1",
                 paddingTop: 52,
               }}
+              ref={productsBlockRef}
             >
               <Heading level={3}>Products:</Heading>
               <p>
