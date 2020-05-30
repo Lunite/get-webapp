@@ -82,9 +82,9 @@ export const useSitemap = (): SitemapItem[] => {
       restructuredSitemap[parentIndex].children.push(item)
     })
 
-    const projectIndex = restructuredSitemap.findIndex(
-      item => item.slug === "project"
-    )
+    // const projectIndex = restructuredSitemap.findIndex(
+    //   item => item.slug === "project"
+    // )
 
     // if (restructuredSitemap[projectIndex]?.children?.length) {
     //   restructuredSitemap[projectIndex].children.length =
@@ -92,6 +92,18 @@ export const useSitemap = (): SitemapItem[] => {
     //       ? 6
     //       : restructuredSitemap[projectIndex].children.length
     // }
+
+    const companyIndex = restructuredSitemap.findIndex(
+      item => item.slug === "company"
+    )
+
+    if (restructuredSitemap[companyIndex]?.children?.length) {
+      restructuredSitemap[companyIndex].children.push({
+        title: "About Us",
+        path: "/blog/about-us",
+        slug: "about-us",
+      })
+    }
 
     return restructuredSitemap
   }
