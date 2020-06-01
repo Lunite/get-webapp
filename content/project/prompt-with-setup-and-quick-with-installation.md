@@ -6,10 +6,9 @@ description: >-
   the day and looked exactly how they explained on the survey. They even gave me
   some advice regarding a water heater controller I had fitted after the panels
   were installed. I would recommend them to anyone wanting to save money as it
-  really made a difference to our bills."
+  really made a difference to our bills."\
 
-
-  \- Mr. Jones
+  - Mr. Jones
 quote: '"Prompt with setup and quick with installation"'
 image: dsc_7520-copy.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
