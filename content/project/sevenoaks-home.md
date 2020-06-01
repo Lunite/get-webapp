@@ -2,11 +2,14 @@
 title: “Very happy with my design”
 subtitle: "Domestic installation "
 category: domestic
-description: '"We were extremely impressed with our Green Energy Together
-  consultant’s knowledge about solar and trusted his design recommendations. The
-  installation process went very smoothly, and the quality of the solar
-  components seem to be of a top standard. I am very pleased with the overall
-  experience." - Mr. Wakefield'
+description: >-
+  "We were extremely impressed with our Green Energy Together consultant’s
+  knowledge about solar and trusted his design recommendations. The installation
+  process went very smoothly, and the quality of the solar components seem to be
+  of a top standard. I am very pleased with the overall experience." 
+
+
+  \- Mr. Wakefield
 quote: “Very happy with my design”
 image: 1.jpg
 image_hero: breadcrumb17.jpg
