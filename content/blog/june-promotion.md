@@ -9,7 +9,7 @@ seo:
   description: June promotion
   keywords: June promotion
 ---
-For every 30 installs we will give away a free solar PV system to a lucky winner. Book your installation and get a chance to win your system completely FREE. We will randomly draw one lucky customer in batches of 30 to receive their first stage payment back and their system and installation for free.
+Book your installation to be in for a chance to win your system completely FREE. For every 30 customers we will randomly draw one lucky winner to receive their system and installation completely free and a refund on their first stage payment.
 
 ![solar panels](/img/shutterstock.jpg "Solar Panels")
 
