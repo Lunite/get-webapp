@@ -46,8 +46,10 @@ const Homepage = () => {
       >
         <Heading level={1}>Because Not All Solar Is The Same.</Heading>
         <p>
-          Order now for a chance to get your system FREE. 1 in 30 orders
-          will win!
+          Order now for a chance to get your system FREE. 
+        </p>
+        <p>  
+          1 in 30 orders will win!
         </p>
         <BlockCTA url="/blog/june-promotion">Find Out More</BlockCTA>
       </Hero>
