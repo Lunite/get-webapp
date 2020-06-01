@@ -11,7 +11,7 @@ description: >-
 
 
   For drone footage of the installation [click here](https://www.youtube.com/watch?v=JMzMvZP3Ss0&feature=emb_title).
-image: moss1.png
+image: moss.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
 image_case_studies: moss1.png
@@ -19,6 +19,7 @@ info_strip:
   location: Dartford, Kent
   output: DC Peak 1016 KW
   system: Rooftoop installation
+  map_url: https://drive.google.com/open?id=1aiD49jlcVOLGd4pvFJqP8eS-KGd-l6O1&usp=sharing
 seo:
   description: Moss Electrical solar panels
   keywords: Moss Electrical
