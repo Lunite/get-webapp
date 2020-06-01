@@ -14,7 +14,7 @@ show_in_case_studies: true
 image_case_studies: 1.jpg
 info_strip:
   location: Norfolk, UK
-  output: 8.525KW and 3.68 KW Battery
+  output: 8.525kW and 3.68kW Battery
   system: Storage and PV System
 seo:
   description: Domestic installation Green Energy Together
