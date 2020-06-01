@@ -12,7 +12,7 @@ description: >-
 
   For drone footage of the installation [click here](https://www.youtube.com/watch?v=JMzMvZP3Ss0&feature=emb_title).
 image: moss1.png
-image_hero: moss1.png
+image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
 image_case_studies: moss1.png
 info_strip:
