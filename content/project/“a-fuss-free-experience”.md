@@ -12,7 +12,7 @@ image_hero: breadcrumb6.png
 show_in_case_studies: true
 image_case_studies: 2.jpg
 info_strip:
-  location: Norwich, Norfolk
+  location: Norfolk, UK
   output: 2.2KW and 2.5KW battery
   system: Storage and PV System
 seo:
