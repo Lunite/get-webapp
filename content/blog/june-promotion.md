@@ -1,15 +1,15 @@
 ---
 image_hero: banner4.jpg
 hero_title: Win solar for your home for FREE
-title: Go green this spring and be in for a chance to win a FREE solar PV system
-date: 2020-05-28T13:39:19.406Z
+title: Go green this summer and be in for a chance to win a FREE solar PV system
+date: 2020-05-28T14:22:18.602Z
 show_quote_block: true
 seo:
   title: June promotion
   description: June promotion
   keywords: June promotion
 ---
-For every 30 installs we will give away a free solar PV system to a lucky winner. Book your installation and get a chance to win your system completely FREE. We will randomly draw 1 lucky customer in batches of 30 to receive their first stage payment back and their system and installation for free. 
+For every 30 installs we will give away a free solar PV system to a lucky winner. Book your installation and get a chance to win your system completely FREE. We will randomly draw one lucky customer in batches of 30 to receive their first stage payment back and their system and installation for free.
 
 ![solar panels](/img/shutterstock.jpg "Solar Panels")
 
