@@ -6,10 +6,9 @@ description: >-
   "Using our logo as part of the design of our system was simply a brilliant
   idea and has proved to be a great source of PR with both customers and
   commercial partners. We are deeply pleased and impressed with the quality of
-  work that the Green Energy Together team delivered for us." 
+  work that the Green Energy Together team delivered for us." \
 
-
-  \- Mr. Moss, Moss Electrical Managing Director
+  - Mr. Moss, Moss Electrical Managing Director
 image: moss.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
