@@ -13,7 +13,7 @@ image_hero: breadcrumb17.jpg
 show_in_case_studies: true
 image_case_studies: 1.jpg
 info_strip:
-  location: Sevenoaks, Kent
+  location: Norfolk, UK
   output: 8.525KW and 3.68 KW Battery
   system: Storage and PV System
 seo:
