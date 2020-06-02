@@ -51,7 +51,12 @@ const HomepageB2b = () => {
       </Hero>
       <Block>
         <Section className="visible-xs">
-          <Quote />
+          <Quote
+            title="Let us produce a solar business case for you"
+            description="No one understands solar better than us, and we love efficient processes. Give us a call or request a free consultation in seconds, so you can concentrate on what matters most - operating your business."
+            ctaText="Get In Touch"
+            compact
+          />
         </Section>
         <Section>
           <Heading underlined>A Strong Foundation</Heading>
