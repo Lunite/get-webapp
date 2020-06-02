@@ -16,6 +16,12 @@ interface AllSitePageNode {
   }
 }
 
+const blackListPaths = [
+  '/promo/',
+  '/covid-19/',
+  '/privacy/',
+]
+
 export const useSitemap = (): SitemapItem[] => {
   const sitemapNodes =
     (useStaticQuery(graphql`
@@ -42,9 +48,10 @@ export const useSitemap = (): SitemapItem[] => {
     let restructuredSitemap: SitemapItem[] = []
 
     sitemap.forEach(sItem => {
-      let [, parent, post] = sItem.path.split("/")
+      let [, parent, post] = sItem.path.split("/");
 
-      if (!parent || !sItem.context || !sItem.context.title) {
+      // Don't add promo page to the footer
+      if (!parent || !sItem.context || !sItem.context.title || blackListPaths.includes(sItem.path)) {
         // for some reason the item doesn't have a title
         return
       }
@@ -55,6 +62,9 @@ export const useSitemap = (): SitemapItem[] => {
         path: sItem.path,
         children: [], // it may have children
       }
+
+      
+
 
       if (!post) {
         // add post as a child of Company
@@ -98,14 +108,20 @@ export const useSitemap = (): SitemapItem[] => {
     )
 
     if (restructuredSitemap[companyIndex]?.children?.length) {
-      restructuredSitemap[companyIndex].children.push({
-        title: "About Us",
-        path: "/blog/about-us",
-        slug: "about-us",
-      })
-    }
+      // restructuredSitemap[companyIndex].children.push({
+      //   title: "About Us",
+      //   path: "/blog/about-us",
+      //   slug: "about-us",
+      // });
 
-    return restructuredSitemap
+      restructuredSitemap[companyIndex].children.push({
+        title: "Privacy",
+        path: "/privacy",
+        slug: "privacy",
+      });
+    }
+    
+    return restructuredSitemap;
   }
 
   const [sitemap, setSitemap] = useState([])

@@ -16,6 +16,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `root`,
+        path: `${__dirname}/content/root`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `products_and_warranties`,
         path: `${__dirname}/content/products_and_warranties`,
       },
@@ -27,6 +34,7 @@ module.exports = {
         path: `${__dirname}/content/blog`,
       },
     },
+    
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
