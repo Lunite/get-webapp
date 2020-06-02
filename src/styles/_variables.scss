@@ -27,9 +27,12 @@ $space-xl: 96px;
 
 $max-width: 1440px;
 
+$transition-timing-function: cubic-bezier(0.31, 0.18, 0.07, 0.77);
+
 $transition: 0.18s ease-in-out;
 $fast-transition: 0.08s ease-in-out;
-$slow-transition: 1.26s cubic-bezier(0.31, 0.18, 0.07, 0.77);
+$slowish-transition: 0.42s $transition-timing-function;
+$slow-transition: 1.26s $transition-timing-function;
 
 /* Font stuff */
 $bold-family: "gothambold", sans-serif;

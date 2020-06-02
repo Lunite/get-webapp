@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
@@ -11,13 +11,16 @@ const Quote: FunctionComponent<any> = ({
   ctaText = "Request Quote",
   compact = false,
 }) => {
+  const [submitted, setSubmitted] = useState(false)
   const formState = {}
 
   const handleInputChange = event => {
     formState[event.target.name] = event.target.value
   }
 
-  const shortQuoteEvent = event => {
+  const handleSubmit = event => {
+    event.preventDefault()
+
     window.dataLayer = window.dataLayer || []
 
     window.dataLayer.push({
@@ -25,69 +28,85 @@ const Quote: FunctionComponent<any> = ({
       action: "Submit",
       label: "ShortQuote",
     })
+
+    if (compact) {
+      setSubmitted(true)
+    }
+
+    const form = event.target
+    const data = new FormData(form)
+    const xhr = new XMLHttpRequest()
+    xhr.open(form.method, form.action)
+    xhr.setRequestHeader("Accept", "application/json")
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return
+      }
+    }
+    xhr.send(data)
+
+    if (!compact) {
+      return navigate("/quote", {
+        state: formState,
+      })
+    }
   }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-
-    navigate("/quote", {
-      state: formState,
-    })
-  }
-
-  const fields = (
-    <>
-      <div className="form__fields">
-        <input
-          className="form__text-input"
-          type="text"
-          placeholder="Name"
-          name="name"
-          onChange={handleInputChange}
-        />
-        <input
-          className="form__text-input"
-          type="email"
-          placeholder="Email"
-          name="email"
-          onChange={handleInputChange}
-        />
-        <input
-          className="form__text-input"
-          type="tel"
-          placeholder="Phone"
-          name="phone"
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form__actions">
-        <BlockCTA submit inline>
-          {ctaText}
-        </BlockCTA>
-      </div>
-    </>
-  )
 
   return (
     <div className="quote">
       <Heading level={3}>{title}</Heading>
       <p>{description}</p>
-      {compact && (
-        <form
-          className="form form--horizontal"
-          onSubmit={shortQuoteEvent}
-          action="https://formspree.io/mbjzlwgw"
-          method="POST"
-          name="quote-block"
+      <form
+        className="form form--horizontal"
+        action="https://formspree.io/mbjzlwgw"
+        method="POST"
+        name="quote-block"
+        onSubmit={handleSubmit}
+      >
+        <div
+          className="form__inner"
+          style={{ filter: submitted ? "blur(40px)" : "blur(0px)" }}
         >
-          {fields}
-        </form>
-      )}
-      {!compact && (
-        <form className="form form--horizontal" onSubmit={handleSubmit}>
-          {fields}
-        </form>
-      )}
+          <div className="form__fields">
+            <input
+              className="form__text-input"
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={handleInputChange}
+            />
+            <input
+              className="form__text-input"
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleInputChange}
+            />
+            <input
+              className="form__text-input"
+              type="tel"
+              placeholder="Phone"
+              name="phone"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form__actions">
+            <BlockCTA submit inline>
+              {ctaText}
+            </BlockCTA>
+          </div>
+        </div>
+        <div
+          className="form__submitted-text"
+          style={
+            submitted
+              ? { opacity: 1, pointerEvents: "all" }
+              : { opacity: 0, pointerEvents: "none" }
+          }
+        >
+          <Heading level={5}>Thank you. We will be in touch</Heading>
+        </div>
+      </form>
     </div>
   )
 }
