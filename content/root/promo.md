@@ -2,7 +2,7 @@
 image_hero: banner4.jpg
 hero_title: Win solar for your home for FREE
 hero_subtitle: Go green this summer and be in for a chance to win a FREE solar PV system
-title: Go green this summer and be in for a chance to win a FREE solar PV system
+title: How does it work?
 date: 
 show_quote_block: true
 seo:
