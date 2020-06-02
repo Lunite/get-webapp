@@ -38,7 +38,7 @@ const QuotePage = ({ location }) => {
                   window.dataLayer.push({
                     category: "Form",
                     action: "Submit",
-                    label: "Quote",
+                    label: "LongQuote",
                   })
                 }}
                 // data-netlify="true" -- to use netlify forms

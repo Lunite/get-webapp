@@ -17,6 +17,16 @@ const Quote: FunctionComponent<any> = ({
     formState[event.target.name] = event.target.value
   }
 
+  const shortQuoteEvent = event => {
+    window.dataLayer = window.dataLayer || []
+
+    window.dataLayer.push({
+      category: "Form",
+      action: "Submit",
+      label: "ShortQuote",
+    })
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
 
@@ -65,6 +75,7 @@ const Quote: FunctionComponent<any> = ({
       {compact && (
         <form
           className="form form--horizontal"
+          onSubmit={shortQuoteEvent}
           action="https://formspree.io/mbjzlwgw"
           method="POST"
           name="quote-block"
