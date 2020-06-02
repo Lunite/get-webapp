@@ -49,6 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   keywords
                 }
                 hero_title
+                hero_subtitle
                 show_quote_block
                 info_strip {
                   dc_peak
@@ -70,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `)
+    `);
 
     //-- PROJECT PAGES --//
     const projectTemplate = path.resolve("./src/templates/project/index.tsx")
@@ -92,7 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
     //-- BLOG ITEM PAGES --//
     const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
 
-    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog")
+    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog");
 
     blogItems.forEach(({ node }) => {
       createPage({
@@ -105,6 +106,24 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
     //-- BLOG ITEM PAGES DONE --//
+
+    //-- ROOT MARKDOWN PAGES --//
+
+    const rootItems = filterResults(result.data.allMarkdownRemark.edges, "root");
+
+    rootItems.forEach(({ node }) => {
+      createPage({
+        path: `${node.fields.slug}`,
+        component: slash(blogItemTemplate),
+        context: {
+          ...node.frontmatter,
+          body: node.html,
+        },
+      })
+    });
+    
+
+    //-- ROOT MARKDOWN PAGES DONE --//
   }
 
   const createStaticPages = pages => {

@@ -13,10 +13,11 @@ const BlogItem: FunctionComponent<any> = context => {
     date,
     title,
     hero_title,
+    hero_subtitle,
     body,
     image_hero,
     show_quote_block,
-  } = context.pageContext
+  } = context.pageContext;
 
   return (
     <div className="blog-item">
@@ -25,6 +26,9 @@ const BlogItem: FunctionComponent<any> = context => {
           <Heading level={1} underlined centered>
             <span dangerouslySetInnerHTML={{ __html: hero_title }} />
           </Heading>
+          {
+            hero_subtitle && <p style={{textAlign: 'center'}}>{hero_subtitle}</p>
+          }
         </Hero>
       )}
 

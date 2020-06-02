@@ -32,7 +32,7 @@ const Homepage = () => {
         <Link to="/for-your-business">Go to Business Site</Link>
       </Banner>
       <Banner className="banner--covid-19">
-        <Link to="/blog/covid-19">Click here to read our COVID-19 plan</Link>
+        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
       </Banner>
       <Hero
         className="homepage__hero"
@@ -51,7 +51,7 @@ const Homepage = () => {
         <p>  
           1 in 30 orders will win!
         </p>
-        <BlockCTA url="/blog/june-promotion">Find Out More</BlockCTA>
+        <BlockCTA url="/promo">Find Out More</BlockCTA>
       </Hero>
       <Block className="visible-xs">
         <div className="container container--column">
