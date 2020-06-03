@@ -1,9 +1,9 @@
 ---
 title: Mr. Weiss
 category: domestic
-description: Straight forward no surprises and just happy with the results.
+description: '"Straight forward no surprises and just happy with the results.
   Thank you Michael for your assistance, I warmly recommend Green Energy
-  Together. - Mr. Weiss
+  Together." - Mr. Weiss'
 quote: '"No surprises and just happy with the results"'
 image: plusdane1.png
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
