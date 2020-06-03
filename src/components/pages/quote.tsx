@@ -67,6 +67,11 @@ const QuotePage = ({ location }) => {
                   required
                 />
                 <FormInput
+                  name="address"
+                  label="Address"
+                  placeholder="Type your full address"
+                />                
+                <FormInput
                   name="annual-electricity-usage"
                   label="Annual Electricity Usage"
                   placeholder="Type your annual electricity usage"
