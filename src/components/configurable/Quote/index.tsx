@@ -75,7 +75,7 @@ const Quote: FunctionComponent<any> = ({
             <input
               className="form__text-input"
               type="text"
-              placeholder="Name"
+              placeholder="Full name"
               name="name"
               onChange={handleInputChange}
             />
