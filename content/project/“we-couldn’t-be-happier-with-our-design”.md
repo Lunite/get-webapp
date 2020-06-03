@@ -1,6 +1,6 @@
 ---
-title: “We couldn’t be happier with our design”
-subtitle: Moss Electrical
+title: Moss Electrical
+subtitle: ""
 category: commercial
 description: >-
   "Using our logo as part of the design of our system was simply a brilliant
@@ -9,6 +9,7 @@ description: >-
   work that the Green Energy Together team delivered for us." \
 
   - Mr. Moss, Moss Electrical Managing Director
+quote: '"We couldn’t be happier with our design”'
 image: moss.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
