@@ -1,5 +1,5 @@
 ---
-title: '"Prompt with setup and quick with installation"'
+title: Mr. Jones
 category: domestic
 description: "\"I'm really happy with my solar installation, everything was
   installed within the day and looked exactly how they explained on the survey.
