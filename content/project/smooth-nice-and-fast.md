@@ -1,13 +1,10 @@
 ---
 title: '"Smooth, nice and fast"'
 category: domestic
-description: >-
-  "I am impressed by the efficiency of the installation. My installation was
-  completed within 3 weeks from agreement being reached with no issues. All went
-  very smooth, nice and fast from quotation to installation"
-
-
-  \-Mrs. Farcasan
+description: '"I am impressed by the efficiency of the installation. My
+  installation was completed within 3 weeks from agreement being reached with no
+  issues. All went very smooth, nice and fast from quotation to installation"
+  -Mrs. Farcasan'
 quote: '"Smooth, nice and fast"'
 image: 030-copy.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
