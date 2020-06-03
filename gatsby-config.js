@@ -190,6 +190,13 @@ module.exports = {
         // defaultDataLayer: { platform: "gatsby" },
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-153856744-1",
+        head: true,
+      },
+    },
     "gatsby-plugin-netlify-cms",
     "gatsby-transformer-remark",
   ],

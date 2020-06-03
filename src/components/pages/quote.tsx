@@ -9,6 +9,8 @@ import FormCheckbox from "../olc-framework/FormCheckbox"
 import Col6 from "~/components/grid/Col6"
 import Image from "../configurable/Image"
 
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+
 const QuotePage = ({ location }) => {
   const { state = {} } = location
 
@@ -33,13 +35,16 @@ const QuotePage = ({ location }) => {
                 method="POST"
                 name="quote-page"
                 onSubmit={() => {
-                  window.dataLayer = window.dataLayer || []
+                  window.dataLayer = window.dataLayer || [];
 
-                  window.dataLayer.push({
+                  const eventData = {
                     category: "Form",
                     action: "Submit",
                     label: "LongQuote",
-                  })
+                    // value: 0 // optional
+                  }
+
+                  trackCustomEvent(eventData);
                 }}
                 // data-netlify="true" -- to use netlify forms
               >
