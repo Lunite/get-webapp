@@ -1,5 +1,5 @@
 ---
-title: '"Very happy with the system we purchased"'
+title: Mr. Gilder
 category: domestic
 description: '"Very happy with the system we purchased from Green Energy
   Together. Their work was beyond my expectation. Michael was very efficient to
