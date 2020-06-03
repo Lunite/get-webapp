@@ -186,8 +186,15 @@ module.exports = {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-W6LJZSJ",
-        includeInDevelopment: false,
+        includeInDevelopment: true,
         // defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-153856744-1",
+        head: true,
       },
     },
     "gatsby-plugin-netlify-cms",

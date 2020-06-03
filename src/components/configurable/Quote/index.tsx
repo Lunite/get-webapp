@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from "react"
 import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 import "./styles.scss"
 
@@ -19,15 +20,18 @@ const Quote: FunctionComponent<any> = ({
   }
 
   const handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    window.dataLayer = window.dataLayer || []
-
-    window.dataLayer.push({
+    const eventData = {
       category: "Form",
       action: "Submit",
       label: "ShortQuote",
-    })
+      // value: 0 // optional
+    }
+
+    trackCustomEvent(eventData);
+
+    window.dataLayer = window.dataLayer || []
 
     if (compact) {
       setSubmitted(true)

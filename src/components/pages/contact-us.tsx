@@ -10,6 +10,7 @@ import Col6 from "../grid/Col6"
 import Col9 from "../grid/Col9"
 
 import ContactUsDetails from "~/vectors/contact-us-details.inline.svg"
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const ContactUsPage = ({ location }) => {
   const { state = {} } = location
@@ -17,11 +18,14 @@ const ContactUsPage = ({ location }) => {
   const logFormSubmitEvent = () => {
     window.dataLayer = window.dataLayer || []
 
-    window.dataLayer.push({
+    const eventData = {
       category: "Form",
       action: "Submit",
       label: "Contact Us",
-    })
+      // value: 0 // optional
+    }
+
+    trackCustomEvent(eventData);
   }
 
   return (
