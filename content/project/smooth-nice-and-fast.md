@@ -1,5 +1,6 @@
 ---
-title: '"Smooth, nice and fast"'
+title: Mrs. Farcasan
+subtitle: Domestic installation
 category: domestic
 description: '"I am impressed by the efficiency of the installation. My
   installation was completed within 3 weeks from agreement being reached with no
