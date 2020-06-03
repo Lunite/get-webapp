@@ -16,27 +16,40 @@ interface AllSitePageNode {
   }
 }
 
-const blackListPaths = [
-  '/promo/',
-  '/covid-19/',
-  '/privacy/',
-]
+const blackListPaths = ["/promo/", "/covid-19/", "/privacy/"]
 
 export const useSitemap = (): SitemapItem[] => {
-  const sitemapNodes =
-    (useStaticQuery(graphql`
-      query MySitemapQuery {
-        allSitePage {
-          nodes {
-            path
-            context {
-              title
-              slug
-            }
+  const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
+    query MySitemapQuery {
+      allSitePage {
+        nodes {
+          path
+          context {
+            title
+            slug
           }
         }
       }
-    `)?.allSitePage?.nodes as AllSitePageNode[]) || []
+      allMarkdownRemark(limit: 100) {
+        edges {
+          node {
+            frontmatter {
+              title
+              category
+            }
+            fields {
+              slug
+            }
+            fileAbsolutePath
+          }
+        }
+      }
+    }
+  `)
+
+  const sitemapNodes = (() => {
+    return allSitePage.nodes
+  })() as AllSitePageNode[]
 
   const parentTitleMap = {
     service: "Services",
@@ -44,14 +57,22 @@ export const useSitemap = (): SitemapItem[] => {
     company: "Company",
   }
 
-  const restructureSitemap = (sitemap: AllSitePageNode[]): SitemapItem[] => {
+  const restructureSitemap = (
+    sitemap: AllSitePageNode[],
+    projectNodes
+  ): SitemapItem[] => {
     let restructuredSitemap: SitemapItem[] = []
 
     sitemap.forEach(sItem => {
-      let [, parent, post] = sItem.path.split("/");
+      let [, parent, post] = sItem.path.split("/")
 
       // Don't add promo page to the footer
-      if (!parent || !sItem.context || !sItem.context.title || blackListPaths.includes(sItem.path)) {
+      if (
+        !parent ||
+        !sItem.context ||
+        !sItem.context.title ||
+        blackListPaths.includes(sItem.path)
+      ) {
         // for some reason the item doesn't have a title
         return
       }
@@ -62,9 +83,6 @@ export const useSitemap = (): SitemapItem[] => {
         path: sItem.path,
         children: [], // it may have children
       }
-
-      
-
 
       if (!post) {
         // add post as a child of Company
@@ -92,16 +110,19 @@ export const useSitemap = (): SitemapItem[] => {
       restructuredSitemap[parentIndex].children.push(item)
     })
 
-    // const projectIndex = restructuredSitemap.findIndex(
-    //   item => item.slug === "project"
-    // )
+    const projectIndex = restructuredSitemap.findIndex(
+      item => item.slug === "project"
+    )
 
-    // if (restructuredSitemap[projectIndex]?.children?.length) {
-    //   restructuredSitemap[projectIndex].children.length =
-    //     restructuredSitemap[projectIndex].children.length > 6
-    //       ? 6
-    //       : restructuredSitemap[projectIndex].children.length
-    // }
+    if (restructuredSitemap[projectIndex]) {
+      restructuredSitemap[projectIndex].children = projectNodes
+        .filter(({ node }) => node.frontmatter.category === "domestic")
+        .map(({ node }) => ({
+          title: node.frontmatter.title,
+          slug: node.fields.slug,
+          path: `/project/${node.fields.slug}`,
+        }))
+    }
 
     const companyIndex = restructuredSitemap.findIndex(
       item => item.slug === "company"
@@ -118,16 +139,20 @@ export const useSitemap = (): SitemapItem[] => {
         title: "Privacy",
         path: "/privacy",
         slug: "privacy",
-      });
+      })
     }
-    
-    return restructuredSitemap;
+
+    return restructuredSitemap
   }
 
   const [sitemap, setSitemap] = useState([])
 
   useEffect(() => {
-    const structuredSitemap = restructureSitemap(sitemapNodes)
+    const projectNodes = allMarkdownRemark?.edges?.filter(item => {
+      return item.node.fileAbsolutePath.indexOf("/content/project/") > -1
+    })
+
+    const structuredSitemap = restructureSitemap(sitemapNodes, projectNodes)
 
     setSitemap(structuredSitemap)
   }, [])

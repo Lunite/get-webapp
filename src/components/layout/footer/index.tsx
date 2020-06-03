@@ -109,30 +109,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
               </div>
             </Col4>
             {buildColumn("service")}
-            <Col4>
-              <Heading className="footer__column-heading">Case Studies</Heading>
-              <div className="footer__item">
-                <Link className="footer__item" to="/project/paddington-station">
-                  Paddington Station
-                </Link>
-                <Link
-                  className="footer__item"
-                  to="/project/kings-college-hospital"
-                >
-                  King's College Hospital
-                </Link>
-                {/* <Link
-                  className="footer__item"
-                  to="/project/we-couldnt-be-happier-with-our-design"
-                >
-                  Moss Electrical Installation
-                </Link> */}
-                <Link className="footer__item" to="/project/bay-solar-farm">
-                  Bay Solar Farm
-                </Link>
-              </div>
-            </Col4>
-            {/* {buildColumn("project")} */}
+            {buildColumn("project")}
             {buildColumn("company")}
           </div>
         </div>

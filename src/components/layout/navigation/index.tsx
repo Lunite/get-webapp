@@ -133,39 +133,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           </Link>
           <div className="navigation__items right">
             {/* <NavItem slug="service" /> */}
-            {/* <NavItem slug="project" path="/projects" /> */}
-            <div className="navigation-item navigation-item--has-children">
-              <div className="navigation-item__link" data-title="Case Studies">
-                Case Studies
-                <Icon className="navigation-item__arrow" alias="arrow-down" />
-              </div>
-              <div className="navigation-item__children">
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/paddington-station"
-                >
-                  Paddington Station
-                </Link>
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/kings-college-hospital"
-                >
-                  King’s College Hospital
-                </Link>
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/bay-solar-farm"
-                >
-                  Bay Solar Farm
-                </Link>
-                {/* <Link
-                  className="navigation-item__child-link"
-                  to="/project/we-couldnt-be-happier-with-our-design"
-                >
-                  Moss Electrical Installation
-                </Link> */}
-              </div>
-            </div>
+            <NavItem slug="project" path="/projects" />
             <NavItem slug="company" />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
@@ -186,39 +154,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
         <div className="container">
           <BurgerMenu className="navigation__burger-menu">
             {/* <NavItem slug="service" /> */}
-            {/* <NavItem slug="project" /> */}
-            <div className="navigation-item navigation-item--has-children">
-              <div className="navigation-item__link" data-title="Case Studies">
-                Case Studies
-                <Icon className="navigation-item__arrow" alias="arrow-down" />
-              </div>
-              <div className="navigation-item__children">
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/paddington-station"
-                >
-                  Paddington Station
-                </Link>
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/kings-college-hospital"
-                >
-                  King’s College Hospital
-                </Link>
-                <Link
-                  className="navigation-item__child-link"
-                  to="/project/bay-solar-farm"
-                >
-                  Bay Solar Farm
-                </Link>
-                {/* <Link
-                  className="navigation-item__child-link"
-                  to="/project/we-couldnt-be-happier-with-our-design"
-                >
-                  Moss Electrical Installation
-                </Link> */}
-              </div>
-            </div>
+            <NavItem slug="project" path="/projects" />
             <NavItem slug="company" />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
