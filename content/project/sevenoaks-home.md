@@ -1,5 +1,5 @@
 ---
-title: “Very happy with my design”
+title: Mr. Wakefield
 subtitle: "Domestic installation "
 category: domestic
 description: '"We were extremely impressed with our Green Energy Together
