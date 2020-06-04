@@ -82,7 +82,7 @@ interface NavigationProps {
 }
 
 const Navigation: FunctionComponent<NavigationProps> = () => {
-  const { type, changeCustomerType } = useCustomerType()
+  const { customerType, changeCustomerType } = useCustomerType()
 
   return (
     <header className="navigation">
@@ -91,11 +91,11 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           <div className="navigation__customer-switcher customer-switcher">
             <Link
               className={`customer-switcher__link${
-                type === "residential" ? " link--active" : ""
+                customerType === "domestic" ? " link--active" : ""
               }`}
               to="/"
               onClick={() => {
-                changeCustomerType("residential")
+                changeCustomerType("domestic")
               }}
             >
               For your Home
@@ -103,7 +103,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
             <span className="customer-switcher__link-separator" />
             <Link
               className={`customer-switcher__link${
-                type === "commercial" ? " link--active" : ""
+                customerType === "commercial" ? " link--active" : ""
               }`}
               to="/for-your-business"
               onClick={() => {

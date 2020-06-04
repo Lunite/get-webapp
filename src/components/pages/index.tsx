@@ -23,7 +23,7 @@ const Homepage = () => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
-    changeCustomerType("residential")
+    changeCustomerType("domestic")
   }, [])
 
   return (
@@ -44,10 +44,10 @@ const Homepage = () => {
           </div>
         }
       >
-        <Heading level={1}>Order in June and get a 1 in 30 chance to win your system for free</Heading>
-        <p style={{fontSize: "25px"}}>
-          Because not all solar is the same
-        </p>
+        <Heading level={1}>
+          Order in June and get a 1 in 30 chance to win your system for free
+        </Heading>
+        <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
         <BlockCTA url="/promo">Find Out More</BlockCTA>
       </Hero>
       <Block className="visible-xs">

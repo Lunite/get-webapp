@@ -32,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               frontmatter {
+                category
                 date(formatString: "DD MMM YYYY")
                 description
                 title
@@ -71,15 +72,34 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `);
+    `)
 
     //-- PROJECT PAGES --//
+    const projectsTemplate = path.resolve("./src/components/pages/projects.tsx")
     const projectTemplate = path.resolve("./src/templates/project/index.tsx")
 
     const projects = filterResults(
       result.data.allMarkdownRemark.edges,
       "project"
     )
+
+    createPage({
+      path: `/projects`,
+      component: slash(projectsTemplate),
+      context: {
+        projects,
+        title: "Case Studies",
+        seo_title:
+          "Case Studies | Green Energy Together | Solar Panel Installer",
+        slug: "projects",
+        acf: {
+          seo: {
+            description: "",
+            keywords: "",
+          },
+        },
+      },
+    })
 
     projects.forEach(({ node }) => {
       createPage({
@@ -93,7 +113,7 @@ exports.createPages = async ({ graphql, actions }) => {
     //-- BLOG ITEM PAGES --//
     const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
 
-    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog");
+    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog")
 
     blogItems.forEach(({ node }) => {
       createPage({
@@ -109,7 +129,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     //-- ROOT MARKDOWN PAGES --//
 
-    const rootItems = filterResults(result.data.allMarkdownRemark.edges, "root");
+    const rootItems = filterResults(result.data.allMarkdownRemark.edges, "root")
 
     rootItems.forEach(({ node }) => {
       createPage({
@@ -120,8 +140,7 @@ exports.createPages = async ({ graphql, actions }) => {
           body: node.html,
         },
       })
-    });
-    
+    })
 
     //-- ROOT MARKDOWN PAGES DONE --//
   }
@@ -203,6 +222,8 @@ exports.createPages = async ({ graphql, actions }) => {
       // {
       //   slug: "projects",
       //   title: "Case Studies",
+      //   seo_title:
+      //     "Case Studies | Green Energy Together | Solar Panel Installer",
       //   keywords: "",
       //   description: "",
       // },
