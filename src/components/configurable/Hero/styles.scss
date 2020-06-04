@@ -87,6 +87,12 @@
       max-height: calc(1080px - 160px);
       min-height: 680px;
     }
+
+    @media ($mobile) {
+      .heading--1 {
+        font-size: 24px;
+      }
+    }
   }
 
   &--has-overlap {

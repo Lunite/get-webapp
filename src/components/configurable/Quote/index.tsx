@@ -7,7 +7,7 @@ import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 import "./styles.scss"
 
 const Quote: FunctionComponent<any> = ({
-  title = "Get a Quote today.",
+  title = "Get a quote today.",
   description = "It only takes 2 minutes to request a no-obligation quote, customised to you and your home's needs. Don't miss the chance to win your solar PV system for FREE.",
   ctaText = "Request Quote",
   compact = false,
