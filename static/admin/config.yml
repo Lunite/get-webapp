@@ -32,6 +32,13 @@ collections:
           wiget: "string",
           hint: "Title displayed on top of hero",
         }
+      - {
+          label: "List Image (square)",
+          name: "list_image",
+          widget: "image",
+          required: false,
+          hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
+        }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -42,6 +49,86 @@ collections:
           default: false,
           required: false,
         }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              required: false,
+              hint: "Main title will be used if this is left blank",
+            }
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Keywords", name: "keywords", widget: "string" }
+
+  - name: "service"
+    label: "Service"
+    folder: "content/service"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - {
+          label: "Hero Image",
+          name: "hero_image",
+          widget: "image",
+          required: true,
+        }
+      - label: "Block 1"
+        name: "block_1"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Highlight 1", name: "highlight_1", widget: "markdown" }
+          - { label: "Highlight 2", name: "highlight_2", widget: "markdown" }
+          - {
+              label: "Image 1",
+              name: "image_1",
+              widget: "image",
+              required: false,
+            }
+          - {
+              label: "Image 2",
+              name: "image_2",
+              widget: "image",
+              required: false,
+            }
+
+      - label: "Display Image"
+        name: "display_image"
+        widget: "image"
+        required: true
+
+      - label: "Block 2"
+        name: "block_2"
+        widget: "object"
+        collapsed: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Highlight 1", name: "highlight_1", widget: "markdown" }
+          - { label: "Highlight 2", name: "highlight_2", widget: "markdown" }
+          - {
+              label: "Image 1",
+              name: "image_1",
+              widget: "image",
+              required: false,
+            }
+          - {
+              label: "Image 2",
+              name: "image_2",
+              widget: "image",
+              required: false,
+            }
+
       - label: "SEO"
         name: "seo"
         widget: "object"
