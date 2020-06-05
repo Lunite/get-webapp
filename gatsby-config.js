@@ -3,6 +3,7 @@ module.exports = {
     title: `Green Energy Together`,
     description: ``,
     author: `@gomezruo`,
+    siteUrl: `https://www.get-uk.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -34,9 +35,10 @@ module.exports = {
         path: `${__dirname}/content/blog`,
       },
     },
-    
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
