@@ -133,7 +133,15 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
           </Link>
           <div className="navigation__items right">
             {/* <NavItem slug="service" /> */}
-            <NavItem slug="project" path="/projects" />
+            <div className="navigation-item">
+              <Link
+                data-title="Case Studies"
+                className="navigation-item__link"
+                to="/projects"
+              >
+                Case Studies
+              </Link>
+            </div>
             <NavItem slug="company" />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
@@ -154,7 +162,15 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
         <div className="container">
           <BurgerMenu className="navigation__burger-menu">
             {/* <NavItem slug="service" /> */}
-            <NavItem slug="project" path="/projects" />
+            <div className="navigation-item">
+              <Link
+                data-title="Case Studies"
+                className="navigation-item__link"
+                to="/projects"
+              >
+                Case Studies
+              </Link>
+            </div>
             <NavItem slug="company" />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">

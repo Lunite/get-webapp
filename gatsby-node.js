@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const createPages = async () => {
     const result = await graphql(`
       {
-        allMarkdownRemark(limit: 100) {
+        allMarkdownRemark(limit: 500) {
           edges {
             node {
               frontmatter {

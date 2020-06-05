@@ -39,16 +39,24 @@ const ProjectsPage = ({ pageContext }) => {
             const project = item.node.frontmatter
 
             return (
-              <li
-                className="project"
-                key={item.node.fields.slug}
-                style={{
-                  backgroundImage: `url('${project.image?.publicURL}')`,
-                }}
-              >
-                <Link to={`/project${item.node.fields.slug}`}>
-                  <p className="project__title">{project.title}</p>
-                  <p className="project__location">
+              <li className="project" key={item.node.fields.slug}>
+                <Link
+                  to={`/project${item.node.fields.slug}`}
+                  style={{
+                    backgroundImage: `url('${project.image?.publicURL}')`,
+                  }}
+                >
+                  <p className="project__title hidden-xs">{project.title}</p>
+                  <p className="project__location hidden-xs">
+                    {project.info_strip.location}
+                  </p>
+                </Link>
+                <Link
+                  className="visible-xs"
+                  to={`/project${item.node.fields.slug}`}
+                >
+                  <p className="project__title visible-xs">{project.title}</p>
+                  <p className="project__location visible-xs">
                     {project.info_strip.location}
                   </p>
                 </Link>
@@ -78,23 +86,30 @@ const ProjectsPage = ({ pageContext }) => {
           </Col9>
         </div>
       </div>
-
       <div className="container">
         <Grid className="projects" autoHeight>
           {domesticProjects.map(item => {
             const project = item.node.frontmatter
 
             return (
-              <li
-                className="project"
-                key={item.node.fields.slug}
-                style={{
-                  backgroundImage: `url('${project.image?.publicURL}')`,
-                }}
-              >
-                <Link to={`/project${item.node.fields.slug}`}>
-                  <p className="project__title">{project.title}</p>
-                  <p className="project__location">
+              <li className="project" key={item.node.fields.slug}>
+                <Link
+                  to={`/project${item.node.fields.slug}`}
+                  style={{
+                    backgroundImage: `url('${project.image?.publicURL}')`,
+                  }}
+                >
+                  <p className="project__title hidden-xs">{project.title}</p>
+                  <p className="project__location hidden-xs">
+                    {project.info_strip.location}
+                  </p>
+                </Link>
+                <Link
+                  className="visible-xs"
+                  to={`/project${item.node.fields.slug}`}
+                >
+                  <p className="project__title visible-xs">{project.title}</p>
+                  <p className="project__location visible-xs">
                     {project.info_strip.location}
                   </p>
                 </Link>
