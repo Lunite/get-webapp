@@ -2,7 +2,6 @@ import React from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
-import Section from "~/components/configurable/Section"
 import Col9 from "~/components/grid/Col9"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import Grid from "../configurable/Grid"
@@ -41,13 +40,18 @@ const ProjectsPage = ({ pageContext }) => {
 
             return (
               <li
+                className="project"
                 key={item.node.fields.slug}
                 style={{
                   backgroundImage: `url('${project.image?.publicURL}')`,
                 }}
               >
-                <p className="project__title">{project.title}</p>
-                <p className="project__location"></p>
+                <Link to={`/project${item.node.fields.slug}`}>
+                  <p className="project__title">{project.title}</p>
+                  <p className="project__location">
+                    {project.info_strip.location}
+                  </p>
+                </Link>
               </li>
             )
           })}
@@ -82,17 +86,17 @@ const ProjectsPage = ({ pageContext }) => {
 
             return (
               <li
+                className="project"
                 key={item.node.fields.slug}
                 style={{
                   backgroundImage: `url('${project.image?.publicURL}')`,
                 }}
               >
-                <Link
-                  style={{ display: "block" }}
-                  to={`/project${item.node.fields.slug}`}
-                >
+                <Link to={`/project${item.node.fields.slug}`}>
                   <p className="project__title">{project.title}</p>
-                  <p className="project__location"></p>
+                  <p className="project__location">
+                    {project.info_strip.location}
+                  </p>
                 </Link>
               </li>
             )
