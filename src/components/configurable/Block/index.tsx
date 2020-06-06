@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { FunctionComponent } from "react"
 
 import "./styles.scss"
+import Animate from "../Animate"
 
 interface BlockProps {
   className?: string
@@ -14,21 +15,17 @@ const Block: FunctionComponent<BlockProps> = ({
   style,
   children,
 }) => {
-  const [init, setInit] = useState(false)
-
-  useEffect(() => {
-    setInit(true)
-  }, [])
-
   return (
-    <div
-      className={`block${init ? " block--init" : ""}${
-        highlightColour ? ` block--${highlightColour}` : ""
-      } ${className}`}
-      style={style}
-    >
-      {children}
-    </div>
+    <Animate>
+      <div
+        className={`block${
+          highlightColour ? ` block--${highlightColour}` : ""
+        } ${className}`}
+        style={style}
+      >
+        {children}
+      </div>
+    </Animate>
   )
 }
 

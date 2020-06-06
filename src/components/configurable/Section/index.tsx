@@ -1,12 +1,15 @@
 import React, { FunctionComponent } from "react"
 
 import "./styles.scss"
+import Animate from "../Animate"
 
 const Section: FunctionComponent<any> = ({ className = "", children }) => {
   return (
-    <div className={`section ${className}`}>
-      <div className="container container--column">{children}</div>
-    </div>
+    <Animate>
+      <div className={`section ${className}`}>
+        <div className="container container--column">{children}</div>
+      </div>
+    </Animate>
   )
 }
 

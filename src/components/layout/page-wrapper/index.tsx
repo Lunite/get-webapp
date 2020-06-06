@@ -15,12 +15,6 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
-  const [init, setInit] = useState(false)
-
-  useEffect(() => {
-    setInit(true)
-  }, [])
-
   /**
    * seoData
    * This method returns the required SEO data that is then passed to the SEO component below
@@ -53,10 +47,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   return (
     <>
       <SEO {...seoData} />
-      <div
-        className={`page-wrapper${init ? " page-wrapper--init" : ""}`}
-        style={{ opacity: 0 }}
-      >
+      <div className="page-wrapper">
         <Navigation sitemap={useSitemap()} />
         <main>
           {children}

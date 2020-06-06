@@ -3,6 +3,7 @@ import ReactPlayer from "react-player"
 
 import "./styles.scss"
 import Video from "~/components/olc-framework/Video"
+import Animate from "../Animate"
 
 interface HeroProps {
   image: string
@@ -30,7 +31,7 @@ const Hero: FunctionComponent<HeroProps> = ({
       style={{ backgroundImage: image ? `url(${image})` : "" }}
     >
       <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
-        {children}
+        <Animate>{children}</Animate>
       </div>
       <div className="hero__video">
         {video && <Video url={video} image={image} />}
