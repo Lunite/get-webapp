@@ -3,7 +3,7 @@ import ReactPlayer from "react-player"
 
 import "./styles.scss"
 import Video from "~/components/olc-framework/Video"
-import Animate from "../Animate"
+import Animate from "~/components/olc-framework/Animate"
 
 interface HeroProps {
   image: string

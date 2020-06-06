@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 
 import "./styles.scss"
-import Animate from "../Animate"
+import Animate from "~/components/olc-framework/Animate"
 
 const Section: FunctionComponent<any> = ({ className = "", children }) => {
   return (
