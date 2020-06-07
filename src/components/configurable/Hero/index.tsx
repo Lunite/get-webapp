@@ -2,12 +2,14 @@ import React, { FunctionComponent, useState } from "react"
 import ReactPlayer from "react-player"
 
 import "./styles.scss"
-import Video from "~/components/olc-framework/Video"
+import VimeoVideo from "~/components/olc-framework/VimeoVideo"
 import Animate from "~/components/olc-framework/Animate"
+import { VideoProps } from "~/components/olc-framework/Video"
+import Video from "~/components/olc-framework/Video"
 
 interface HeroProps {
   image: string
-  video?: string
+  video?: VideoProps
   compact?: boolean
   overlapBlock?: JSX.Element
   className?: string
@@ -33,9 +35,7 @@ const Hero: FunctionComponent<HeroProps> = ({
       <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
         <Animate>{children}</Animate>
       </div>
-      <div className="hero__video">
-        {video && <Video url={video} image={image} />}
-      </div>
+      <div className="hero__video">{video && <Video {...video} />}</div>
 
       {overlapBlock && (
         <div className="hero-overlap-block__container container">

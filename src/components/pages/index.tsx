@@ -36,8 +36,14 @@ const Homepage = () => {
       </Banner>
       <Hero
         className="homepage__hero"
+        video={{
+          poster: "/images/homepage-video.jpg",
+          sources: {
+            mp4: "/video/domestic-drone.mp4",
+            ogv: "/video/domestic-drone.ogv",
+          },
+        }}
         image="/images/homepage-video.jpg"
-        video="https://vimeo.com/418983793"
         overlapBlock={
           <div className="hidden-xs">
             <Quote />

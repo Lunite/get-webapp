@@ -1,33 +1,21 @@
-import React, { useState } from "react"
-import ReactPlayer from "react-player"
+import React from "react"
 
-import "./styles.scss"
+export interface VideoProps {
+  poster: string
+  sources: {
+    webm?: string
+    ogv?: string
+    mp4?: string
+  }
+}
 
-const Video = ({ url, image }) => {
-  const [playing, setPlaying] = useState(false)
-
+const Video = ({ poster, sources }: VideoProps) => {
   return (
-    <div className={`video ${playing ? " video--playing" : ""}`}>
-      <div className="video__video">
-        <ReactPlayer
-          url={url}
-          playing
-          muted
-          playsinline
-          controls={false}
-          loop
-          width="1920px"
-          height="auto"
-          onPlay={() => {
-            setPlaying(true)
-          }}
-        />
-      </div>
-      <div
-        className="video__image"
-        style={{ backgroundImage: `src(${image})` }}
-      />
-    </div>
+    <video autoPlay loop poster={poster}>
+      {/* <source src={sources.webm} type="video/webm" /> */}
+      <source src={sources.ogv} type="video/ogv" />
+      <source src={sources.mp4} type="video/mp4" />
+    </video>
   )
 }
 

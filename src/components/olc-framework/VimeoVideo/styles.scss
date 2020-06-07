@@ -1,0 +1,32 @@
+@import "~/styles/_variables.scss";
+
+.video {
+  position: relative;
+  height: 100%;
+
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-size: cover;
+  }
+
+  &__video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity $transition;
+  }
+
+  &--playing {
+    .video__video {
+      opacity: 1;
+    }
+  }
+}
