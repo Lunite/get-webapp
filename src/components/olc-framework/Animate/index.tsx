@@ -1,13 +1,7 @@
-import React, {
-  useState,
-  FunctionComponent,
-  useEffect,
-  CSSProperties,
-} from "react"
+import React, { useState, FunctionComponent } from "react"
 import VizSensor from "react-visibility-sensor"
 
 import "./styles.scss"
-import { useStaticQuery } from "gatsby"
 
 interface AnimateProps {
   properties: string[]
