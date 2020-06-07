@@ -14,6 +14,7 @@ interface InfoStripProps {
   phoneNumber?: string
   whereToFindUs?: string
   mapUrl?: string
+  theme?: "light" | "green"
 }
 
 const InfoStrip = ({
@@ -26,10 +27,12 @@ const InfoStrip = ({
   phoneNumber,
   whereToFindUs,
   mapUrl,
+  theme = "green",
 }: InfoStripProps) => {
   const iconMap = {
     location: "pin",
     dcPeak: "battery-charging",
+    phoneNumber: "phone",
   }
 
   const getInfoItem = (alias: string, label: string, value) => {
@@ -45,7 +48,7 @@ const InfoStrip = ({
   }
 
   return (
-    <div className="info-strip">
+    <div className={`info-strip info-strip--${theme}`}>
       <div className="container">
         <div className="info-strip__items">
           {location && getInfoItem("location", "Location", location)}

@@ -56,7 +56,7 @@
     background-color: $light-blue;
     border-radius: 50%;
     color: $white;
-    font-size: 40px;
+    font-size: 36px;
 
     .icon {
       margin-top: 0;
@@ -67,6 +67,7 @@
     font-family: "gotham", sans-serif;
     font-size: 18px;
     font-weight: 500;
+    margin-top: 10px;
     color: $white;
   }
 
@@ -79,6 +80,23 @@
 
     & + & {
       margin-top: 42px;
+    }
+  }
+}
+
+.info-strip--light {
+  color: $dark-blue;
+  background-color: $bg-grey;
+
+  .info-item {
+    background-color: $bg-grey;
+
+    &__label {
+      color: $dark-blue;
+    }
+
+    &__icon {
+      background-color: $green;
     }
   }
 }
