@@ -37,7 +37,7 @@ const Homepage = () => {
       <Hero
         className="homepage__hero"
         image="/images/homepage-video.jpg"
-        video="https://vimeo.com/418983793"
+        video="https://player.vimeo.com/video/418983793"
         overlapBlock={
           <div className="hidden-xs">
             <Quote />

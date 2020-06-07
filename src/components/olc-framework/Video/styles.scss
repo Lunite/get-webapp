@@ -19,14 +19,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
     z-index: 1;
     transition: opacity $transition;
-  }
-
-  &--playing {
-    .video__video {
-      opacity: 1;
-    }
   }
 }
