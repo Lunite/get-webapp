@@ -15,6 +15,13 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
+  const [sitemap, setSitemap] = useState([])
+
+  useEffect(() => {
+    const sm = useSitemap()
+    setSitemap(useSitemap())
+  }, [])
+
   /**
    * seoData
    * This method returns the required SEO data that is then passed to the SEO component below
@@ -48,12 +55,12 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     <>
       <SEO {...seoData} />
       <div className="page-wrapper">
-        <Navigation sitemap={useSitemap()} />
+        <Navigation sitemap={sitemap} />
         <main>
           {children}
           <Certificates />
         </main>
-        <Footer sitemap={useSitemap()} />
+        <Footer sitemap={sitemap} />
       </div>
     </>
   )
