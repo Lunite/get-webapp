@@ -31,7 +31,14 @@ const Hero: FunctionComponent<HeroProps> = ({
       style={{ backgroundImage: image ? `url(${image})` : "" }}
     >
       <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
-        <Animate>{children}</Animate>
+        <Animate
+          properties={["opacity", "transform"]}
+          startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+          endValues={["1", "translateY(0) rotate(0deg)"]}
+          delay="0s"
+        >
+          {children}
+        </Animate>
       </div>
       <div className="hero__video">
         {video && <Video url={video} image={image} />}

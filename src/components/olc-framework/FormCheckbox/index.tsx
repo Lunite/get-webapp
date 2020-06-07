@@ -24,7 +24,7 @@ const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
     <div className={`form-checkbox ${className}`}>
       <Heading level={4}>{label}</Heading>
       {options?.map((oValue, oIndex) => (
-        <div className="form-checkbox__item">
+        <div className="form-checkbox__item" key={oIndex}>
           <input
             className="form-checkbox__box"
             type="checkbox"

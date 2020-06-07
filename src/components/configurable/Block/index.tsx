@@ -16,7 +16,11 @@ const Block: FunctionComponent<BlockProps> = ({
   children,
 }) => {
   return (
-    <Animate>
+    <Animate
+      properties={["opacity", "transform"]}
+      startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+      endValues={["1", "translateY(0) rotate(0deg)"]}
+    >
       <div
         className={`block${
           highlightColour ? ` block--${highlightColour}` : ""

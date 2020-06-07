@@ -1,13 +1,6 @@
 @import "~/styles/_variables";
 
 .animate {
-  transition: opacity $slow-transition, transform $slow-transition;
-  opacity: 0;
-  transform: translateY(40px) rotate(0.5deg);
+  transition: $slow-transition;
   transform-origin: top left;
-
-  &--visible {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
-  }
 }
