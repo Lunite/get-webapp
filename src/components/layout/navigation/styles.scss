@@ -7,8 +7,6 @@
   z-index: 100;
 
   &__top {
-    display: none;
-
     font-size: 16px;
     border-bottom: 1px solid $white;
 
@@ -72,8 +70,8 @@
       }
     }
 
-    @media ($phablet) {
-      display: block;
+    @media ($mobile) {
+      display: none;
     }
   }
 
