@@ -22,12 +22,12 @@ const Project: FunctionComponent<any> = context => {
 
   return (
     <>
-      <Hero image={image_hero?.publicURL} compact>
+      {/* <Hero image={image_hero?.publicURL} compact>
         <Heading level={1} subheading={subheading} underlined>
           <span dangerouslySetInnerHTML={{ __html: title }} />
         </Heading>
-      </Hero>
-      {/* <Block>
+      </Hero> */}
+      <Block>
         <div className="container">
           <Col6 indent>
             <div dangerouslySetInnerHTML={{ __html: description }} />
@@ -36,7 +36,7 @@ const Project: FunctionComponent<any> = context => {
             <Image src={image?.publicURL} title={title} />
           </Col6>
         </div>
-      </Block> */}
+      </Block>
       {Object.keys(info_strip).length && (
         <InfoStrip
           location={info_strip.location}
