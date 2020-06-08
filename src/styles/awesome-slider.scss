@@ -1,3 +1,5 @@
+@import "~/styles/_variables.scss";
+
 .awssld__container figure,
 .awssld__content,
 .awssld__box {
@@ -402,16 +404,17 @@
   --timer-delay: 2000ms;
   --timer-release: 200ms;
   --timer-height: 4px;
-  --timer-background-color: rgba(0, 0, 0, 0.15);
+  --timer-background-color: $dark-blue;
   width: 100%;
   height: var(--timer-height);
-  background-color: var(--timer-background-color);
+  background-color: $dark-blue;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
+  opacity: 0.8;
 }
 .awssld__timer--animated {
   will-change: transform;

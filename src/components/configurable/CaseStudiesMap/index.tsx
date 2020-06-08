@@ -3,12 +3,15 @@ import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
 
 import AwesomeSlider from "react-awesome-slider"
+import withAutoplay from "react-awesome-slider/dist/autoplay"
 
 import UKMap from "~/vectors/uk-map.inline.svg"
 
 import "./styles.scss"
 import Heading from "../Heading"
 import { markdownNodesFilter } from "~/utils"
+
+const AutoplaySlider = withAutoplay(AwesomeSlider)
 
 const CaseStudiesMap = ({
   customerType,
@@ -124,9 +127,15 @@ const CaseStudiesMap = ({
             {carouselItems}
           </div>
           <div className="case-studies-map__carousel">
-            <AwesomeSlider buttons={false} fillParent={true}>
+            <AutoplaySlider
+              play={true}
+              interval={10000}
+              cancelOnIteraction={true}
+              buttons={false}
+              fillParent={true}
+            >
               {carouselItems}
-            </AwesomeSlider>
+            </AutoplaySlider>
           </div>
         </Col6>
       </div>
