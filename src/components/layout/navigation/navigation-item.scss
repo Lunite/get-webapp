@@ -39,6 +39,15 @@
     }
   }
 
+  &__arrow {
+    position: absolute;
+    font-size: 65%;
+    margin-top: 0;
+    margin-left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   &__children {
     display: block;
     left: 0;
@@ -98,6 +107,14 @@
 
   &--has-children {
     cursor: pointer;
+
+    .navigation-item__link {
+      padding-right: 32px;
+
+      &::before {
+        margin-left: -6px;
+      }
+    }
   }
 
   &--shout {

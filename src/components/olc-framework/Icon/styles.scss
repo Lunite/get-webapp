@@ -127,15 +127,15 @@
   content: "\43";
 }
 
-.icon-arrow-up {
+.icon-arrow-up:before {
   transform: rotate(-90deg);
 }
 
-.icon-arrow-down {
+.icon-arrow-down:before {
   transform: rotate(90deg);
 }
 
-.icon-arrow-left {
+.icon-arrow-left:before {
   transform: rotate(180deg);
 }
 

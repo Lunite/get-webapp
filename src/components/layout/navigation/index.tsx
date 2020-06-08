@@ -43,14 +43,14 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path, sitemap }) => {
         >
           {item.title}
           {item.children?.length && (
-            <Icon className="navigation-item__arrow" alias="arrow-down" />
+            <Icon className="navigation-item__arrow" alias="fat-arrow" />
           )}
         </Link>
       ) : (
         <div className="navigation-item__link" data-title={item.title}>
           {item.title}
           {item.children?.length && (
-            <Icon className="navigation-item__arrow" alias="arrow-down" />
+            <Icon className="navigation-item__arrow" alias="fat-arrow" />
           )}
         </div>
       )}
