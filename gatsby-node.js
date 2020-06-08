@@ -37,9 +37,20 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               list {
                 image {
-                  name
-                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 326) {
+                      aspectRatio
+                      srcSet
+                      srcSet
+                      sizes
+                      base64
+                      tracedSVG
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
                 }
+                intro
               }
               image_hero {
                 name
@@ -120,33 +131,33 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const blogItems = filterResults(result.data.allMarkdownRemark.nodes, "blog")
 
-    // createPage({
-    //   path: `/blog`,
-    //   component: slash(blogTemplate),
-    //   context: {
-    //     blogItems,
-    //     title: "Blog",
-    //     seo_title: "Blog | Green Energy Together | Solar Panel Installer",
-    //     slug: "blog",
-    //     acf: {
-    //       seo: {
-    //         description: "",
-    //         keywords: "",
-    //       },
-    //     },
-    //   },
-    // })
-
-    blogItems.forEach(node => {
-      createPage({
-        path: `/blog${node.fields.slug}`,
-        component: slash(blogItemTemplate),
-        context: {
-          ...node.frontmatter,
-          body: node.html,
+    createPage({
+      path: `/blog`,
+      component: slash(blogTemplate),
+      context: {
+        blogItems,
+        title: "Blog",
+        seo_title: "Blog | Green Energy Together | Solar Panel Installer",
+        slug: "blog",
+        acf: {
+          seo: {
+            description: "",
+            keywords: "",
+          },
         },
-      })
+      },
     })
+
+    // blogItems.forEach(node => {
+    //   createPage({
+    //     path: `/blog${node.fields.slug}`,
+    //     component: slash(blogItemTemplate),
+    //     context: {
+    //       ...node.frontmatter,
+    //       body: node.html,
+    //     },
+    //   })
+    // })
     //-- BLOG ITEM PAGES DONE --//
 
     //-- ROOT MARKDOWN PAGES --//

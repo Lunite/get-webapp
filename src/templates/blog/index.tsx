@@ -2,14 +2,41 @@ import React from "react"
 import Hero from "~/components/configurable/Hero"
 import Block from "~/components/configurable/Block"
 import Heading from "~/components/configurable/Heading"
+import Markdown from "react-markdown"
 import { markdownNodesFilter } from "~/utils"
+import Image from "~/components/configurable/Image"
+import Img from "gatsby-image"
 
-export const BlogListItem = ({ item }) => {
-  return <div className="blog-list-item"></div>
+export const BlogListItem = ({
+  item: {
+    date,
+    title,
+    list: { image, intro },
+  },
+}) => {
+  return (
+    <div className="blog-list-item">
+      <Img
+        className="blog-list-item__image"
+        fluid={image.childImageSharp.fluid}
+        title={title}
+      />
+      <div className="blog-list-item__details">
+        <Heading level={3}>{title}</Heading>
+        <Markdown source={intro} />
+      </div>
+    </div>
+  )
 }
 
 const BlogPage = ({ pageContext: { blogItems } }) => {
-  console.log(blogItems)
+  const blogItemsToDisplay = blogItems
+    .filter(
+      ({ frontmatter }) => frontmatter?.list?.image && frontmatter?.list?.intro
+    )
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  console.log(blogItemsToDisplay)
 
   return (
     <div className="blog">
@@ -20,8 +47,8 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
       </Hero>
       <Block>
         <div className="blog__items">
-          {blogItems.map(blogItem => (
-            <BlogListItem item={blogItem} />
+          {blogItemsToDisplay.splice(0, 3).map(({ frontmatter }) => (
+            <BlogListItem item={frontmatter} />
           ))}
         </div>
       </Block>

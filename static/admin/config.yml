@@ -22,12 +22,12 @@ collections:
         fields:
           - hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page"
             label: "List Image (square)"
-            name: list_image
+            name: image
             required: false
             widget: image
           - hint: "This text will be displayed on the Blog page"
             label: "List Intro"
-            name: list_intro
+            name: intro
             required: false
             widget: markdown
         hint: "When both these items are specified, the blog item will appear on the Blog page"
