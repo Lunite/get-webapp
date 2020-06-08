@@ -33,7 +33,6 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
       allMarkdownRemark(limit: 1000) {
         nodes {
           frontmatter {
-            answer
             description
             title
             quote

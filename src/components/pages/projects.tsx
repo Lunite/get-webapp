@@ -131,13 +131,13 @@ const ProjectsPage = ({ pageContext }) => {
       <Block>
         {customerType === "commercial" ? (
           <>
-            {domesticSection}
             {commercialSection}
+            {domesticSection}
           </>
         ) : (
           <>
-            {commercialSection}
             {domesticSection}
+            {commercialSection}
           </>
         )}
       </Block>
