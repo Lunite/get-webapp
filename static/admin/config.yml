@@ -33,19 +33,27 @@ collections:
           hint: "Title displayed on top of hero",
         }
       - {
-          label: "List Image (square)",
-          name: "list_image",
-          widget: "image",
-          required: false,
-          hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
-        }
-      - {
-          label: "List Intro",
-          name: "list_intro",
-          widget: "markdown",
-          required: false,
-          hint: "This text will be displayed on the Blog page",
-        }
+          label: "List",
+          name: "list",
+          widget: "object",
+          hint: "When both these items are specified, the blog item will appear on the Blog page",
+          collapsed: false,
+          fields:
+            - {
+                label: "List Image (square)",
+                name: "list_image",
+                widget: "image",
+                required: false,
+                hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
+              }
+            - {
+                label: "List Intro",
+                name: "list_intro",
+                widget: "markdown",
+                required: false,
+                hint: "This text will be displayed on the Blog page",
+              }
+      }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
