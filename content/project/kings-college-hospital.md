@@ -12,7 +12,7 @@ description: >-
 image: king2.gif
 image_hero: kings-cross-header.jpg
 show_in_case_studies: true
-image_case_studies: king2.gif
+image_case_studies: kings-college-london.jpg
 info_strip:
   location: London, UK
   dc_peak: 25,250 KW
