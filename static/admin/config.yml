@@ -39,6 +39,13 @@ collections:
           required: false,
           hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
         }
+      - {
+          label: "List Intro",
+          name: "list_intro",
+          widget: "markdown",
+          required: false,
+          hint: "This text will be displayed on the Blog page",
+        }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }

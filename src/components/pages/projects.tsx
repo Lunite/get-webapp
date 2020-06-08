@@ -9,14 +9,14 @@ import Grid from "../configurable/Grid"
 import "./projects.scss"
 import { Link } from "gatsby"
 
-const ProjectsPage = ({ pageContext }) => {
+const ProjectsPage = ({ pageContext: { projects } }) => {
   const { customerType } = useCustomerType()
 
-  const commercialProjects = pageContext.projects.filter(
-    p => p.node.frontmatter.category === "commercial"
+  const commercialProjects = projects.filter(
+    ({ frontmatter }) => frontmatter.category === "commercial"
   )
-  const domesticProjects = pageContext.projects.filter(
-    p => p.node.frontmatter.category === "domestic"
+  const domesticProjects = projects.filter(
+    ({ frontmatter }) => frontmatter.category === "domestic"
   )
 
   const commercialSection = (() => (
@@ -35,29 +35,28 @@ const ProjectsPage = ({ pageContext }) => {
       </div>
       <div className="container">
         <Grid className="projects" autoHeight>
-          {commercialProjects.map(item => {
-            const project = item.node.frontmatter
-
+          {commercialProjects.map(({ frontmatter, fields }) => {
             return (
-              <li className="project" key={item.node.fields.slug}>
+              <li className="project" key={fields.slug}>
                 <Link
-                  to={`/project${item.node.fields.slug}`}
+                  to={`/project${fields.slug}`}
                   style={{
-                    backgroundImage: `url('${project.image?.publicURL}')`,
+                    backgroundImage: `url('${frontmatter.image?.publicURL}')`,
                   }}
                 >
-                  <p className="project__title hidden-xs">{project.title}</p>
+                  <p className="project__title hidden-xs">
+                    {frontmatter.title}
+                  </p>
                   <p className="project__location hidden-xs">
-                    {project.info_strip.location}
+                    {frontmatter.info_strip.location}
                   </p>
                 </Link>
-                <Link
-                  className="visible-xs"
-                  to={`/project${item.node.fields.slug}`}
-                >
-                  <p className="project__title visible-xs">{project.title}</p>
+                <Link className="visible-xs" to={`/project${fields.slug}`}>
+                  <p className="project__title visible-xs">
+                    {frontmatter.title}
+                  </p>
                   <p className="project__location visible-xs">
-                    {project.info_strip.location}
+                    {frontmatter.info_strip.location}
                   </p>
                 </Link>
               </li>
@@ -88,29 +87,28 @@ const ProjectsPage = ({ pageContext }) => {
       </div>
       <div className="container">
         <Grid className="projects" autoHeight>
-          {domesticProjects.map(item => {
-            const project = item.node.frontmatter
-
+          {domesticProjects.map(({ frontmatter, fields }) => {
             return (
-              <li className="project" key={item.node.fields.slug}>
+              <li className="project" key={fields.slug}>
                 <Link
-                  to={`/project${item.node.fields.slug}`}
+                  to={`/project${fields.slug}`}
                   style={{
-                    backgroundImage: `url('${project.image?.publicURL}')`,
+                    backgroundImage: `url('${frontmatter.image?.publicURL}')`,
                   }}
                 >
-                  <p className="project__title hidden-xs">{project.title}</p>
+                  <p className="project__title hidden-xs">
+                    {frontmatter.title}
+                  </p>
                   <p className="project__location hidden-xs">
-                    {project.info_strip.location}
+                    {frontmatter.info_strip.location}
                   </p>
                 </Link>
-                <Link
-                  className="visible-xs"
-                  to={`/project${item.node.fields.slug}`}
-                >
-                  <p className="project__title visible-xs">{project.title}</p>
+                <Link className="visible-xs" to={`/project${fields.slug}`}>
+                  <p className="project__title visible-xs">
+                    {frontmatter.title}
+                  </p>
                   <p className="project__location visible-xs">
-                    {project.info_strip.location}
+                    {frontmatter.info_strip.location}
                   </p>
                 </Link>
               </li>

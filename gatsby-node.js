@@ -19,8 +19,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const filterResults = (results, slug) => {
     return (
-      results.filter(item => {
-        return item.node.fileAbsolutePath.indexOf(`/content/${slug}/`) > -1
+      results.filter(({ fileAbsolutePath }) => {
+        return fileAbsolutePath.indexOf(`/content/${slug}/`) > -1
       }) || []
     )
   }
@@ -29,46 +29,44 @@ exports.createPages = async ({ graphql, actions }) => {
     const result = await graphql(`
       {
         allMarkdownRemark(limit: 500) {
-          edges {
-            node {
-              frontmatter {
-                category
-                date(formatString: "DD MMM YYYY")
-                description
+          nodes {
+            frontmatter {
+              category
+              date(formatString: "DD MMM YYYY")
+              description
+              title
+              image_hero {
+                name
+                publicURL
+              }
+              image {
+                name
+                publicURL
+              }
+              seo {
                 title
-                image_hero {
-                  name
-                  publicURL
-                }
-                image {
-                  name
-                  publicURL
-                }
-                seo {
-                  title
-                  description
-                  keywords
-                }
-                hero_title
-                hero_subtitle
-                show_quote_block
-                info_strip {
-                  dc_peak
-                  developer
-                  inverters
-                  location
-                  modules
-                  output
-                  system
-                  map_url
-                }
+                description
+                keywords
               }
-              fields {
-                slug
+              hero_title
+              hero_subtitle
+              show_quote_block
+              info_strip {
+                dc_peak
+                developer
+                inverters
+                location
+                modules
+                output
+                system
+                map_url
               }
-              fileAbsolutePath
-              html
             }
+            fields {
+              slug
+            }
+            fileAbsolutePath
+            html
           }
         }
       }
@@ -79,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const projectTemplate = path.resolve("./src/templates/project/index.tsx")
 
     const projects = filterResults(
-      result.data.allMarkdownRemark.edges,
+      result.data.allMarkdownRemark.nodes,
       "project"
     )
 
@@ -101,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
 
-    projects.forEach(({ node }) => {
+    projects.forEach(node => {
       createPage({
         path: `/project${node.fields.slug}`,
         component: slash(projectTemplate),
@@ -112,10 +110,28 @@ exports.createPages = async ({ graphql, actions }) => {
 
     //-- BLOG ITEM PAGES --//
     const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
+    const blogTemplate = path.resolve("./src/templates/blog/index.tsx")
 
-    const blogItems = filterResults(result.data.allMarkdownRemark.edges, "blog")
+    const blogItems = filterResults(result.data.allMarkdownRemark.nodes, "blog")
 
-    blogItems.forEach(({ node }) => {
+    // createPage({
+    //   path: `/blog`,
+    //   component: slash(blogTemplate),
+    //   context: {
+    //     blogItems,
+    //     title: "Blog",
+    //     seo_title: "Blog | Green Energy Together | Solar Panel Installer",
+    //     slug: "blog",
+    //     acf: {
+    //       seo: {
+    //         description: "",
+    //         keywords: "",
+    //       },
+    //     },
+    //   },
+    // })
+
+    blogItems.forEach(node => {
       createPage({
         path: `/blog${node.fields.slug}`,
         component: slash(blogItemTemplate),
@@ -129,9 +145,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
     //-- ROOT MARKDOWN PAGES --//
 
-    const rootItems = filterResults(result.data.allMarkdownRemark.edges, "root")
+    const rootItems = filterResults(result.data.allMarkdownRemark.nodes, "root")
 
-    rootItems.forEach(({ node }) => {
+    rootItems.forEach(node => {
       createPage({
         path: `${node.fields.slug}`,
         component: slash(blogItemTemplate),
