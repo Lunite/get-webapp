@@ -14,7 +14,6 @@ const Project: FunctionComponent<any> = context => {
     description,
     image,
     image_hero,
-    seo,
     info_strip,
   } = context.pageContext
 
@@ -37,6 +36,16 @@ const Project: FunctionComponent<any> = context => {
           </Col6>
         </div>
       </Block>
+      {Object.keys(info_strip).length && (
+        <InfoStrip
+          location={info_strip.location}
+          dcPeak={info_strip.dc_peak}
+          developer={info_strip.developer}
+          inverters={info_strip.inverters}
+          modules={info_strip.modules}
+          mapUrl={info_strip.map_url}
+        />
+      )}
     </>
   )
 }
