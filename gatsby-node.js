@@ -40,7 +40,6 @@ exports.createPages = async ({ graphql, actions }) => {
                   name
                   publicURL
                 }
-                intro
               }
               image_hero {
                 name
