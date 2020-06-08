@@ -1,338 +1,324 @@
+---
 backend:
-  name: git-gateway
   branch: master
+  name: git-gateway
   repo: olc-digital/get-webapp
   use_graphql: true
-
-media_folder: static/img
-public_folder: /img
-
-site_url: https://get-uk.com
-
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
-    create: true
-    slug: "{{slug}}"
-    path: "{{slug}}"
+  - create: true
     editor:
       preview: false
     fields:
-      - {
-          label: "Hero Image",
-          name: "image_hero",
-          widget: "image",
-          required: false,
-          hint: "If left blank, hero will not appear",
-        }
-      - {
-          label: "Hero Title",
-          name: "hero_title",
-          wiget: "string",
-          hint: "Title displayed on top of hero",
-        }
-      - {
-          label: "List",
-          name: "list",
-          widget: "object",
-          hint: "When both these items are specified, the blog item will appear on the Blog page",
-          collapsed: false,
-          fields:
-            - {
-                label: "List Image (square)",
-                name: "list_image",
-                widget: "image",
-                required: false,
-                hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
-              }
-            - {
-                label: "List Intro",
-                name: "list_intro",
-                widget: "markdown",
-                required: false,
-                hint: "This text will be displayed on the Blog page",
-              }
-      }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - {
-          label: "Show Quote Block",
-          name: "show_quote_block",
-          widget: "boolean",
-          default: false,
-          required: false,
-        }
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        collapsed: true
+      - hint: "If left blank, hero will not appear"
+        label: "Hero Image"
+        name: image_hero
+        required: false
+        widget: image
+      - hint: "Title displayed on top of hero"
+        label: "Hero Title"
+        name: hero_title
+        widget: string
+      - collapsed: false
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              required: false,
-              hint: "Main title will be used if this is left blank",
-            }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Keywords", name: "keywords", widget: "string" }
-
-  - name: "service"
-    label: "Service"
-    folder: "content/service"
-    create: true
-    slug: "{{slug}}"
+          - hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page"
+            label: "List Image (square)"
+            name: list_image
+            required: false
+            widget: image
+          - hint: "This text will be displayed on the Blog page"
+            label: "List Intro"
+            name: list_intro
+            required: false
+            widget: markdown
+        hint: "When both these items are specified, the blog item will appear on the Blog page"
+        label: List
+        name: list
+        widget: object
+      - label: Title
+        name: title
+        widget: string
+      - label: "Publish Date"
+        name: date
+        widget: datetime
+      - label: Body
+        name: body
+        widget: markdown
+      - default: false
+        label: "Show Quote Block"
+        name: show_quote_block
+        required: false
+        widget: boolean
+      - collapsed: true
+        fields:
+          - hint: "Main title will be used if this is left blank"
+            label: Title
+            name: title
+            required: false
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: Keywords
+            name: keywords
+            widget: string
+        label: SEO
+        name: seo
+        widget: object
+    folder: content/blog
+    label: Blog
+    name: blog
     path: "{{slug}}"
+    slug: "{{slug}}"
+  - create: true
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - {
-          label: "Hero Image",
-          name: "hero_image",
-          widget: "image",
-          required: true,
-        }
-      - label: "Block 1"
-        name: "block_1"
-        widget: "object"
-        collapsed: false
-        fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Highlight 1", name: "highlight_1", widget: "markdown" }
-          - { label: "Highlight 2", name: "highlight_2", widget: "markdown" }
-          - {
-              label: "Image 1",
-              name: "image_1",
-              widget: "image",
-              required: false,
-            }
-          - {
-              label: "Image 2",
-              name: "image_2",
-              widget: "image",
-              required: false,
-            }
-
-      - label: "Display Image"
-        name: "display_image"
-        widget: "image"
+      - label: Title
+        name: title
         required: true
-
-      - label: "Block 2"
-        name: "block_2"
-        widget: "object"
-        collapsed: false
+        widget: string
+      - label: "Hero Image"
+        name: hero_image
+        required: true
+        widget: image
+      - collapsed: false
         fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Highlight 1", name: "highlight_1", widget: "markdown" }
-          - { label: "Highlight 2", name: "highlight_2", widget: "markdown" }
-          - {
-              label: "Image 1",
-              name: "image_1",
-              widget: "image",
-              required: false,
-            }
-          - {
-              label: "Image 2",
-              name: "image_2",
-              widget: "image",
-              required: false,
-            }
-
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        collapsed: true
+          - label: Heading
+            name: heading
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: "Highlight 1"
+            name: highlight_1
+            widget: markdown
+          - label: "Highlight 2"
+            name: highlight_2
+            widget: markdown
+          - label: "Image 1"
+            name: image_1
+            required: false
+            widget: image
+          - label: "Image 2"
+            name: image_2
+            required: false
+            widget: image
+        label: "Block 1"
+        name: block_1
+        widget: object
+      - label: "Display Image"
+        name: display_image
+        required: true
+        widget: image
+      - collapsed: false
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              required: false,
-              hint: "Main title will be used if this is left blank",
-            }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Keywords", name: "keywords", widget: "string" }
-
-  - name: "project"
-    label: "Project"
-    folder: "content/project"
-    create: true
-    slug: "{{slug}}"
+          - label: Heading
+            name: heading
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: "Highlight 1"
+            name: highlight_1
+            widget: markdown
+          - label: "Highlight 2"
+            name: highlight_2
+            widget: markdown
+          - label: "Image 1"
+            name: image_1
+            required: false
+            widget: image
+          - label: "Image 2"
+            name: image_2
+            required: false
+            widget: image
+        label: "Block 2"
+        name: block_2
+        widget: object
+      - collapsed: true
+        fields:
+          - hint: "Main title will be used if this is left blank"
+            label: Title
+            name: title
+            required: false
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: Keywords
+            name: keywords
+            widget: string
+        label: SEO
+        name: seo
+        widget: object
+    folder: content/service
+    label: Service
+    name: service
     path: "{{slug}}"
+    slug: "{{slug}}"
+  - create: true
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - {
-          label: "Subtitle",
-          name: "subtitle",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "Category",
-          name: "category",
-          widget: "select",
-          options: ["domestic", "commercial"],
-          required: true,
-        }
-      - {
-          label: "Description",
-          name: "description",
-          widget: "markdown",
-          required: true,
-        }
-      - { label: "Quote", name: "quote", widget: "string", required: false }
-      - {
-          label: "Image",
-          name: "image",
-          widget: "image",
-          hint: "The main project image is shown in the description. Note: this image is also used for SEO",
-          required: true,
-        }
-      - {
-          label: "Image: Hero",
-          name: "image_hero",
-          widget: "image",
-          hint: "The project's hero image is shown at the top of the page behind the Project title",
-          required: true,
-        }
-      - {
-          label: "Show in Case Studies?",
-          name: "show_in_case_studies",
-          widget: "boolean",
-          default: false,
-        }
-      - {
-          label: "Image: Case Studies",
-          name: "image_case_studies",
-          widget: "image",
-          required: false,
-        }
-      - label: "Info Strip"
-        name: "info_strip"
-        widget: "object"
-        collapsed: true
+      - label: Title
+        name: title
+        required: true
+        widget: string
+      - label: Subtitle
+        name: subtitle
+        required: false
+        widget: string
+      - label: Category
+        name: category
+        options:
+          - domestic
+          - commercial
+        required: true
+        widget: select
+      - label: Description
+        name: description
+        required: true
+        widget: markdown
+      - label: Quote
+        name: quote
+        required: false
+        widget: string
+      - hint: "The main project image is shown in the description. Note: this image is also used for SEO"
+        label: Image
+        name: image
+        required: true
+        widget: image
+      - hint: "The project's hero image is shown at the top of the page behind the Project title"
+        label: "Image: Hero"
+        name: image_hero
+        required: true
+        widget: image
+      - default: false
+        label: "Show in Case Studies?"
+        name: show_in_case_studies
+        widget: boolean
+      - label: "Image: Case Studies"
+        name: image_case_studies
+        required: false
+        widget: image
+      - collapsed: true
         fields:
-          - {
-              label: "Location",
-              name: "location",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "Output",
-              name: "output",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "System",
-              name: "system",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "DC Peak",
-              name: "dc_peak",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "Developer",
-              name: "developer",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "Inverters",
-              name: "inverters",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "Modules",
-              name: "modules",
-              widget: "string",
-              required: false,
-            }
-          - {
-              label: "Map URL",
-              name: "map_url",
-              widget: "string",
-              required: false,
-            }
-
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        collapsed: true
+          - label: Location
+            name: location
+            required: false
+            widget: string
+          - label: Output
+            name: output
+            required: false
+            widget: string
+          - label: System
+            name: system
+            required: false
+            widget: string
+          - label: "DC Peak"
+            name: dc_peak
+            required: false
+            widget: string
+          - label: Developer
+            name: developer
+            required: false
+            widget: string
+          - label: Inverters
+            name: inverters
+            required: false
+            widget: string
+          - label: Modules
+            name: modules
+            required: false
+            widget: string
+          - label: "Map URL"
+            name: map_url
+            required: false
+            widget: string
+        label: "Info Strip"
+        name: info_strip
+        widget: object
+      - collapsed: true
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              required: false,
-              hint: "Main title will be used if this is left blank",
-            }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Keywords", name: "keywords", widget: "string" }
-
-  - name: "page"
-    label: "Page"
-    folder: "content/page"
-    create: true
-    slug: "{{slug}}"
+          - hint: "Main title will be used if this is left blank"
+            label: Title
+            name: title
+            required: false
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: Keywords
+            name: keywords
+            widget: string
+        label: SEO
+        name: seo
+        widget: object
+    folder: content/project
+    label: Project
+    name: project
     path: "{{slug}}"
+    slug: "{{slug}}"
+  - create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        collapsed: true
+      - label: Title
+        name: title
+        widget: string
+      - collapsed: true
         fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              required: false,
-              hint: "Main title will be used if this is left blank",
-            }
-          - { label: "Description", name: "description", widget: "markdown" }
-          - { label: "Keywords", name: "keywords", widget: "string" }
-
-  - name: "products_and_warranties"
+          - hint: "Main title will be used if this is left blank"
+            label: Title
+            name: title
+            required: false
+            widget: string
+          - label: Description
+            name: description
+            widget: markdown
+          - label: Keywords
+            name: keywords
+            widget: string
+        label: SEO
+        name: seo
+        widget: object
+    folder: content/page
+    label: Page
+    name: page
+    path: "{{slug}}"
+    slug: "{{slug}}"
+  - create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Image
+        name: image
+        widget: image
+      - allow_multiple: false
+        config:
+          multiple: false
+        label: PDF
+        name: pdf
+        widget: file
+    folder: content/products_and_warranties
     label: "Products and Warranties"
     label_singular: "Project / Warranty"
-    folder: "content/products_and_warranties"
-    create: true
-    slug: "{{slug}}"
+    name: products_and_warranties
     path: "{{slug}}"
+    slug: "{{slug}}"
+  - create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - {
-          label: "PDF",
-          name: "pdf",
-          widget: "file",
-          allow_multiple: false,
-          config: { multiple: false },
-        }
-
-  - name: "questions"
+      - label: Question
+        name: title
+        widget: string
+      - label: Answer
+        name: answer
+        widget: markdown
+    folder: content/questions
     label: "FAQ Questions"
-    label_singular: "Question"
-    folder: "content/questions"
-    create: true
-    slug: "{{slug}}"
+    label_singular: Question
+    name: questions
     path: "{{slug}}"
-    fields:
-      - { label: "Question", name: "title", widget: "string" }
-      - { label: "Answer", name: "answer", widget: "markdown" }
+    slug: "{{slug}}"
+media_folder: static/img
+public_folder: /img
+site_url: "https://get-uk.com"

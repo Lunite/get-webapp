@@ -35,6 +35,13 @@ exports.createPages = async ({ graphql, actions }) => {
               date(formatString: "DD MMM YYYY")
               description
               title
+              list {
+                image {
+                  name
+                  publicURL
+                }
+                intro
+              }
               image_hero {
                 name
                 publicURL
