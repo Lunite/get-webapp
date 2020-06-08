@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState } from "react"
 
-import "./styles.scss"
 import Icon from "~/components/olc-framework/Icon"
 
 interface ExpandableProps {

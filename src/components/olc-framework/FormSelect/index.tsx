@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react"
 
-import "./styles.scss"
-
 interface FormSelectProps {
   label: string
   name: string

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import ReactPlayer from "react-player"
 
-import "./styles.scss"
 import Video from "~/components/olc-framework/Video"
 import Animate from "~/components/olc-framework/Animate"
 

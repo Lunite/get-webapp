@@ -7,8 +7,6 @@ import Logo from "~/vectors/logo.inline.svg"
 import LogoSmall from "~/vectors/logo-small.inline.svg"
 import Phone from "~/vectors/phone.inline.svg"
 
-import "./styles.scss"
-import "./navigation-item.scss"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import Icon from "~/components/olc-framework/Icon"
 

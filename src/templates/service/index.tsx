@@ -9,8 +9,6 @@ import Col6 from "~/components/grid/Col6"
 import Image from "~/components/configurable/Image"
 import Icon from "~/components/olc-framework/Icon"
 
-import "./styles.scss"
-
 const Service: FunctionComponent<any> = context => {
   const { title, acf } = context.pageContext
 

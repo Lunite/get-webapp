@@ -6,7 +6,6 @@ import Col9 from "~/components/grid/Col9"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import Grid from "../configurable/Grid"
 
-import "./projects.scss"
 import { Link } from "gatsby"
 
 const ProjectsPage = ({ pageContext }) => {

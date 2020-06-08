@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import ReactPlayer from "react-player"
 
-import "./styles.scss"
-
 const Video = ({ url, image }) => {
   const [playing, setPlaying] = useState(false)
 

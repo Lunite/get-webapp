@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react"
 import { globalHistory } from "@reach/router"
 
-import "./styles.scss"
-
 import Burger from "~/vectors/burger.inline.svg"
 import Close from "~/vectors/close.inline.svg"
 

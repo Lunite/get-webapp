@@ -2,8 +2,6 @@ import React, { FunctionComponent } from "react"
 import Col5 from "~/components/grid/Col5"
 import Col7 from "~/components/grid/Col7"
 
-import "./styles.scss"
-
 interface ShoutoutProps {
   text: JSX.Element
   image: JSX.Element

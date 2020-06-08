@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react"
 
-import "./styles.scss"
 import { graphql } from "gatsby"
 
 interface ImageProps {

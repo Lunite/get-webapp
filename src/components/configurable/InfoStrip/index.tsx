@@ -1,7 +1,6 @@
 import React from "react"
 import BlockCTA from "~/components/configurable/BlockCTA"
 
-import "./styles.scss"
 import Icon from "~/components/olc-framework/Icon"
 
 interface InfoStripProps {

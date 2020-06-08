@@ -2,8 +2,6 @@ import React from "react"
 import Block from "~/components/configurable/Block"
 import Heading from "~/components/configurable/Heading"
 
-import "./styles.scss"
-
 const Certificates = () => {
   return (
     <Block className="certificates" highlightColour="blue">

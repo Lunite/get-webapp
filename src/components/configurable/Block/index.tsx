@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react"
 
-import "./styles.scss"
 import Animate from "~/components/olc-framework/Animate"
 
 interface BlockProps {

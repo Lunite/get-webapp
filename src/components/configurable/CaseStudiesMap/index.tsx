@@ -7,7 +7,6 @@ import withAutoplay from "react-awesome-slider/dist/autoplay"
 
 import UKMap from "~/vectors/uk-map.inline.svg"
 
-import "./styles.scss"
 import Heading from "../Heading"
 import { markdownNodesFilter } from "~/utils"
 

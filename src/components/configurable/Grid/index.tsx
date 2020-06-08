@@ -1,7 +1,5 @@
 import React from "react"
 
-import "./styles.scss"
-
 const Grid = ({ className = "", autoHeight = false, children }) => {
   return (
     <ul

@@ -2,8 +2,6 @@ import React, { FunctionComponent } from "react"
 import Heading from "../Heading"
 import BlockCTA from "../BlockCTA"
 
-import "./styles.scss"
-
 interface HighlightBlockProps {
   title: string
   url?: string

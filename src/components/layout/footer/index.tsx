@@ -9,7 +9,6 @@ import Logo from "~/vectors/logo.inline.svg"
 import { SitemapItem } from "~/hooks/useSitemap"
 import { Link } from "gatsby"
 
-import "./styles.scss"
 import Icon from "~/components/olc-framework/Icon"
 
 interface FooterProps {

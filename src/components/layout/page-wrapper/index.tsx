@@ -5,7 +5,6 @@ import SEO from "~/components/util/SEO"
 import { useSitemap } from "~/hooks/useSitemap"
 import Certificates from "~/components/standalone/Certificates"
 
-import "./styles.scss"
 import { useStaticQuery, graphql } from "gatsby"
 
 interface PageWrapperProps {

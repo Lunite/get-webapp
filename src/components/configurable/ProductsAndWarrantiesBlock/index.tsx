@@ -6,8 +6,6 @@ import Heading from "../Heading"
 import TickList from "../TickList"
 import BlockCTA from "../BlockCTA"
 
-import "./styles.scss"
-
 const ProductsAndWarrantiesBlock = () => {
   return (
     <div className="p-and-w">

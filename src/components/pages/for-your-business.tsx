@@ -13,7 +13,6 @@ import Shoutout from "../configurable/Shoutout"
 import StatsBlock from "../standalone/StatsBlock"
 import { useCustomerType } from "~/hooks/useCustomerType"
 
-import "./for-your-business.scss"
 import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"

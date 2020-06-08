@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react"
 
-import "./styles.scss"
 import Heading from "~/components/configurable/Heading"
 
 interface FormCheckboxProps {

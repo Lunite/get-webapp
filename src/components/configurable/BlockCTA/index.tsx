@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
 
-import "./styles.scss"
 import Icon from "~/components/olc-framework/Icon"
 
 interface BlockCTAProps {

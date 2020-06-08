@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react"
 
-import "./styles.scss"
-
 const TickList: FunctionComponent<any> = ({ nolines, blueticks, children }) => {
   return (
     <ul

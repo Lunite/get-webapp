@@ -7,8 +7,6 @@ import InfoStrip from "../configurable/InfoStrip"
 import Collapsible from "../configurable/Collapsible"
 import { markdownNodesFilter } from "~/utils"
 
-import "./faq.scss"
-
 const FAQPage = ({ markdownNodes }) => {
   const [questions, setQuestions] = useState([])
 

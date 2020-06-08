@@ -1,8 +1,6 @@
 import React, { useState, FunctionComponent } from "react"
 import VizSensor from "react-visibility-sensor"
 
-import "./styles.scss"
-
 interface AnimateProps {
   properties: string[]
   startValues: string[]

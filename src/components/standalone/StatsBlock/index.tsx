@@ -1,7 +1,5 @@
 import React from "react"
 
-import "./styles.scss"
-
 import StatsDesktop from "~/vectors/stats-desktop.inline.svg"
 import StatsMobile from "~/vectors/stats-mobile.inline.svg"
 

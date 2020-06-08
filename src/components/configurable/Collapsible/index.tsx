@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import Icon from "~/components/olc-framework/Icon"
 
-import "./styles.scss"
-
 const Collapsible = ({ heading, content }) => {
   const [collapsed, setCollapsed] = useState(true)
 

@@ -3,7 +3,6 @@ import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
 
-import "./styles.scss"
 import Quote from "~/components/configurable/Quote"
 
 // gatsby-node passes in data as context variable
@@ -17,7 +16,7 @@ const BlogItem: FunctionComponent<any> = context => {
     body,
     image_hero,
     show_quote_block,
-  } = context.pageContext;
+  } = context.pageContext
 
   return (
     <div className="blog-item">
@@ -26,9 +25,9 @@ const BlogItem: FunctionComponent<any> = context => {
           <Heading level={1} underlined centered>
             <span dangerouslySetInnerHTML={{ __html: hero_title }} />
           </Heading>
-          {
-            hero_subtitle && <p style={{textAlign: 'center'}}>{hero_subtitle}</p>
-          }
+          {hero_subtitle && (
+            <p style={{ textAlign: "center" }}>{hero_subtitle}</p>
+          )}
         </Hero>
       )}
 
