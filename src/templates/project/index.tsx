@@ -27,7 +27,7 @@ const Project: FunctionComponent<any> = context => {
           <span dangerouslySetInnerHTML={{ __html: title }} />
         </Heading>
       </Hero>
-      <Block>
+      {/* <Block>
         <div className="container">
           <Col6 indent>
             <div dangerouslySetInnerHTML={{ __html: description }} />
@@ -36,15 +36,17 @@ const Project: FunctionComponent<any> = context => {
             <Image src={image?.publicURL} title={title} />
           </Col6>
         </div>
-      </Block>
-      {/* {Object.keys(info_strip).length && (<InfoStrip
-        location={info_strip.location}
-        dcPeak={info_strip.dc_peak}
-        developer={info_strip.developer}
-        inverters={info_strip.inverters}
-        modules={info_strip.modules}
-        mapUrl={info_strip.map_url}
-      />)} */}
+      </Block> */}
+      {Object.keys(info_strip).length && (
+        <InfoStrip
+          location={info_strip.location}
+          dcPeak={info_strip.dc_peak}
+          developer={info_strip.developer}
+          inverters={info_strip.inverters}
+          modules={info_strip.modules}
+          mapUrl={info_strip.map_url}
+        />
+      )}
       {
         // project.related_products && (
         // <Block>
