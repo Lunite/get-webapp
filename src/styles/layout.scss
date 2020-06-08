@@ -7,6 +7,13 @@
     }
   }
 
+  &--squidge {
+    @media ($phablet) {
+      padding-left: 116px;
+      padding-right: 116px;
+    }
+  }
+
   &--sticky-top {
     position: sticky;
     top: 0;

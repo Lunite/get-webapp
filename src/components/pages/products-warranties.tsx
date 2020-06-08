@@ -11,50 +11,15 @@ import Col11 from "../grid/Col11"
 import Col6 from "../grid/Col6"
 import HighlightBlock from "../configurable/HighlightBlock"
 import Grid from "../configurable/Grid"
-import { useStaticQuery, graphql } from "gatsby"
+import { markdownNodesFilter } from "~/utils"
 
-const ProductsAndWarranties = () => {
+const ProductsAndWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
 
-  const queryResults =
-    useStaticQuery(graphql`
-      query MyMarkdownQuery {
-        allMarkdownRemark(limit: 1000) {
-          edges {
-            node {
-              frontmatter {
-                description
-                title
-                image {
-                  name
-                  publicURL
-                }
-                pdf {
-                  publicURL
-                }
-              }
-              fields {
-                slug
-              }
-              fileAbsolutePath
-            }
-          }
-        }
-      }
-    `)?.allMarkdownRemark?.edges || []
-
-  const productsWarranties = (() => {
-    if (queryResults?.length) {
-      return queryResults.filter(
-        item =>
-          item.node.fileAbsolutePath.indexOf(
-            `/content/products_and_warranties/`
-          ) > -1
-      )
-    }
-
-    return []
-  })()
+  const productsWarranties = markdownNodesFilter(
+    markdownNodes,
+    "products_and_warranties"
+  )
 
   const goToProducts = () => {
     productsBlockRef.current.scrollIntoView({
@@ -239,10 +204,10 @@ const ProductsAndWarranties = () => {
               </p>
               <Grid>
                 {productsWarranties.map(item => {
-                  const pwItem = item.node.frontmatter
+                  const pwItem = item.frontmatter
 
                   return (
-                    <li key={item.node.fields.slug}>
+                    <li key={item.fields.slug}>
                       {pwItem.image?.publicURL && (
                         <Image
                           className="grid-item__image"

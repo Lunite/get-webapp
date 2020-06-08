@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
 
 import AwesomeSlider from "react-awesome-slider"
@@ -8,46 +8,16 @@ import UKMap from "~/vectors/uk-map.inline.svg"
 
 import "./styles.scss"
 import Heading from "../Heading"
-
-const ALL_MARKDOWN_REMARK = graphql`
-  {
-    allMarkdownRemark(limit: 100) {
-      edges {
-        node {
-          frontmatter {
-            description
-            title
-            quote
-            category
-            image {
-              name
-              publicURL
-            }
-            show_in_case_studies
-            image_case_studies {
-              publicURL
-            }
-            info_strip {
-              location
-              system
-              output
-            }
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`
+import { markdownNodesFilter } from "~/utils"
 
 const CaseStudiesMap = ({
   customerType,
+  markdownNodes,
 }: {
   customerType: "domestic" | "commercial"
+  markdownNodes: any[]
 }) => {
-  const items = useStaticQuery(ALL_MARKDOWN_REMARK)?.allMarkdownRemark?.edges
+  const items = markdownNodesFilter(markdownNodes, "project")
 
   if (!items?.length) {
     return null
@@ -56,13 +26,13 @@ const CaseStudiesMap = ({
   const carouselItems = (() => {
     return items
       .filter(
-        ({ node }) =>
+        node =>
           node.frontmatter.category === customerType &&
           node.frontmatter.show_in_case_studies &&
           (node.frontmatter.image_case_studies?.publicURL ||
             node.frontmatter.image?.publicURL)
       )
-      .map(({ node }) => {
+      .map(node => {
         const pData = {
           slug: node.fields.slug,
           ...node.frontmatter,

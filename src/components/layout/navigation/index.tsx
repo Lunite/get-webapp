@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
-import { SitemapItem, useSitemap } from "~/hooks/useSitemap"
+import { SitemapItem } from "~/hooks/useSitemap"
 import BurgerMenu from "~/components/configurable/BurgerMenu"
 
 import Logo from "~/vectors/logo.inline.svg"
@@ -15,11 +15,10 @@ import Icon from "~/components/olc-framework/Icon"
 interface NavItemProps {
   slug: string
   path?: string
+  sitemap: any[]
 }
 
-const NavItem: FunctionComponent<NavItemProps> = ({ slug, path }) => {
-  const sitemap = useSitemap()
-
+const NavItem: FunctionComponent<NavItemProps> = ({ slug, path, sitemap }) => {
   const item = sitemap.find(sItem => sItem.slug === slug)
 
   if (!item) {
@@ -81,7 +80,7 @@ interface NavigationProps {
   sitemap: SitemapItem[]
 }
 
-const Navigation: FunctionComponent<NavigationProps> = () => {
+const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
   const { customerType, changeCustomerType } = useCustomerType()
 
   return (
@@ -142,7 +141,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
                 Case Studies
               </Link>
             </div>
-            <NavItem slug="company" />
+            <NavItem slug="company" sitemap={sitemap} />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
                 Blog
@@ -171,7 +170,7 @@ const Navigation: FunctionComponent<NavigationProps> = () => {
                 Case Studies
               </Link>
             </div>
-            <NavItem slug="company" />
+            <NavItem slug="company" sitemap={sitemap} />
             {/* <div className="navigation-item navigation-item--coming-soon">
               <div className="navigation-item__link">
                 Blog

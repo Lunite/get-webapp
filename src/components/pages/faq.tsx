@@ -1,41 +1,23 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import Markdown from "react-markdown"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import InfoStrip from "../configurable/InfoStrip"
 import Collapsible from "../configurable/Collapsible"
+import { markdownNodesFilter } from "~/utils"
 
-const FAQPage = () => {
+import "./faq.scss"
+
+const FAQPage = ({ markdownNodes }) => {
   const [questions, setQuestions] = useState([])
-
-  const qResponse =
-    useStaticQuery(graphql`
-      query MyMarkdownQuery {
-        allMarkdownRemark(limit: 1000) {
-          edges {
-            node {
-              frontmatter {
-                title
-                answer
-              }
-              fileAbsolutePath
-            }
-          }
-        }
-      }
-    `)?.allMarkdownRemark?.edges || []
 
   useEffect(() => {
     setQuestions(
-      qResponse
-        .filter(
-          item => item.node.fileAbsolutePath.indexOf("/content/faq/") > -1
-        )
-        .map(q => ({
-          question: q.node.frontmatter.title,
-          answer: q.node.frontmatter.answer,
-        }))
+      markdownNodesFilter(markdownNodes, "questions").map(q => ({
+        question: q.frontmatter.title,
+        answer: q.frontmatter.answer,
+      }))
     )
   }, [])
 
@@ -52,9 +34,13 @@ const FAQPage = () => {
         phoneNumber="020 3995 4422"
       />
       <Block>
-        <div className="container u-layout--indent container--column">
-          {questions.map(q => (
-            <Collapsible heading={q.question} content={q.answer} />
+        <div className="container u-layout--squidge container--column">
+          {questions.map((q, i) => (
+            <Collapsible
+              key={i}
+              heading={q.question}
+              content={<Markdown source={q.answer} />}
+            />
           ))}
         </div>
       </Block>

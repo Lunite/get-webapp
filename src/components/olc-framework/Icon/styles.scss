@@ -118,9 +118,27 @@
 .icon-email:before {
   content: "\42";
 }
-.icon-arrow:before {
+
+.icon-arrow:before,
+.icon-arrow-up:before,
+.icon-arrow-right:before,
+.icon-arrow-down:before,
+.icon-arrow-left:before {
   content: "\43";
 }
+
+.icon-arrow-up {
+  transform: rotate(-90deg);
+}
+
+.icon-arrow-down {
+  transform: rotate(90deg);
+}
+
+.icon-arrow-left {
+  transform: rotate(180deg);
+}
+
 .icon-fat-arrow:before {
   content: "\44";
 }

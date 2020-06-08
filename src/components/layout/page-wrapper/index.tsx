@@ -6,6 +6,7 @@ import { useSitemap } from "~/hooks/useSitemap"
 import Certificates from "~/components/standalone/Certificates"
 
 import "./styles.scss"
+import { useStaticQuery, graphql } from "gatsby"
 
 interface PageWrapperProps {
   context: any
@@ -15,6 +16,65 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
+  const [sitemap, setSitemap] = useState([])
+  const [markdownNodes, setMarkdownNodes] = useState([])
+
+  const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
+    query MySitemapQuery {
+      allSitePage {
+        nodes {
+          path
+          context {
+            title
+            slug
+          }
+        }
+      }
+      allMarkdownRemark(limit: 1000) {
+        nodes {
+          frontmatter {
+            answer
+            description
+            title
+            quote
+            category
+            image {
+              name
+              publicURL
+            }
+            show_in_case_studies
+            image_case_studies {
+              publicURL
+            }
+            info_strip {
+              location
+              system
+              output
+            }
+            pdf {
+              publicURL
+            }
+          }
+          fields {
+            slug
+          }
+          fileAbsolutePath
+        }
+      }
+    }
+  `)
+
+  if (!allMarkdownRemark?.nodes?.length || !allSitePage?.nodes?.length) {
+    return null
+  }
+
+  const sm = useSitemap(allSitePage.nodes, allMarkdownRemark.nodes)
+
+  useEffect(() => {
+    setSitemap(sm)
+    setMarkdownNodes(allMarkdownRemark.nodes)
+  })
+
   /**
    * seoData
    * This method returns the required SEO data that is then passed to the SEO component below
@@ -47,14 +107,20 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   return (
     <>
       <SEO {...seoData} />
-      <div className="page-wrapper">
-        <Navigation sitemap={useSitemap()} />
-        <main>
-          {children}
-          <Certificates />
-        </main>
-        <Footer sitemap={useSitemap()} />
-      </div>
+      {sitemap.length && markdownNodes.length ? (
+        <div className="page-wrapper">
+          <Navigation sitemap={sitemap} />
+          <main>
+            {React.Children.toArray(children).map(child =>
+              React.cloneElement(child, { markdownNodes })
+            )}
+            <Certificates />
+          </main>
+          <Footer sitemap={sitemap} />
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

@@ -19,7 +19,7 @@ import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
 
-const Homepage = () => {
+const Homepage = ({ markdownNodes }) => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
@@ -158,7 +158,10 @@ const Homepage = () => {
             bespoke solutions that exceed expectations. Check out what our
             customers have to say and some of our favourite projects.
           </p>
-          <CaseStudiesMap customerType="domestic" />
+          <CaseStudiesMap
+            markdownNodes={markdownNodes}
+            customerType="domestic"
+          />
         </div>
       </Block>
     </div>

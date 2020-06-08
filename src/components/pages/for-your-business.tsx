@@ -18,7 +18,7 @@ import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
 
-const HomepageB2b = () => {
+const HomepageB2b = ({ markdownNodes }) => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
@@ -236,7 +236,10 @@ const HomepageB2b = () => {
             solar systems. provide a turnkey supply, installation and
             maintenance service for industrial and commercial solar systems.
           </p>
-          <CaseStudiesMap customerType="commercial" />
+          <CaseStudiesMap
+            markdownNodes={markdownNodes}
+            customerType="commercial"
+          />
         </Section>
       </Block>
     </div>

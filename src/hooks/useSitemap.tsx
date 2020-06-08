@@ -1,4 +1,3 @@
-import { useStaticQuery, graphql } from "gatsby"
 import { useEffect, useState } from "react"
 
 export interface SitemapItem {
@@ -18,38 +17,8 @@ interface AllSitePageNode {
 
 const blackListPaths = ["/promo/", "/covid-19/", "/privacy/"]
 
-export const useSitemap = (): SitemapItem[] => {
-  const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
-    query MySitemapQuery {
-      allSitePage {
-        nodes {
-          path
-          context {
-            title
-            slug
-          }
-        }
-      }
-      allMarkdownRemark(limit: 100) {
-        edges {
-          node {
-            frontmatter {
-              title
-              category
-            }
-            fields {
-              slug
-            }
-            fileAbsolutePath
-          }
-        }
-      }
-    }
-  `)
-
-  const sitemapNodes = (() => {
-    return allSitePage.nodes
-  })() as AllSitePageNode[]
+export const useSitemap = (sitePageNodes, markdownNodes): SitemapItem[] => {
+  const sitemapNodes = sitePageNodes as AllSitePageNode[]
 
   const parentTitleMap = {
     service: "Services",
@@ -116,8 +85,8 @@ export const useSitemap = (): SitemapItem[] => {
 
     if (restructuredSitemap[projectIndex]) {
       restructuredSitemap[projectIndex].children = projectNodes
-        .filter(({ node }) => node.frontmatter.category === "domestic")
-        .map(({ node }) => ({
+        .filter(node => node.frontmatter.category === "domestic")
+        .map(node => ({
           title: node.frontmatter.title,
           slug: node.fields.slug,
           path: `/project/${node.fields.slug}`,
@@ -148,8 +117,8 @@ export const useSitemap = (): SitemapItem[] => {
   const [sitemap, setSitemap] = useState([])
 
   useEffect(() => {
-    const projectNodes = allMarkdownRemark?.edges?.filter(item => {
-      return item.node.fileAbsolutePath.indexOf("/content/project/") > -1
+    const projectNodes = markdownNodes.filter(item => {
+      return item.fileAbsolutePath.indexOf("/content/project/") > -1
     })
 
     const structuredSitemap = restructureSitemap(sitemapNodes, projectNodes)
