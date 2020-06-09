@@ -53,8 +53,18 @@ exports.createPages = async ({ graphql, actions }) => {
                 intro
               }
               image_hero {
-                name
-                publicURL
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    aspectRatio
+                    srcSet
+                    srcSet
+                    sizes
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                  }
+                }
               }
               image {
                 name

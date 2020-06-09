@@ -18,9 +18,31 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 }) => {
   const [sitemap, setSitemap] = useState([])
   const [markdownNodes, setMarkdownNodes] = useState([])
+  const [imageNodes, setImageNodes] = useState([])
 
-  const { allSitePage, allMarkdownRemark } = useStaticQuery(graphql`
-    query MySitemapQuery {
+  const {
+    allSitePage,
+    allMarkdownRemark,
+    allImageSharp,
+  } = useStaticQuery(graphql`
+    query MyMultiQuery {
+      allImageSharp {
+        nodes {
+          fluid(maxWidth: 1920) {
+            originalName
+            aspectRatio
+            srcSet
+            srcSet
+            sizes
+            base64
+            tracedSVG
+            srcWebp
+            srcSetWebp
+            presentationWidth
+            presentationHeight
+          }
+        }
+      }
       allSitePage {
         nodes {
           path
@@ -72,6 +94,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   useEffect(() => {
     setSitemap(sm)
     setMarkdownNodes(allMarkdownRemark.nodes)
+    setImageNodes(allImageSharp?.nodes)
   })
 
   /**
@@ -111,7 +134,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
           <Navigation sitemap={sitemap} />
           <main>
             {React.Children.toArray(children).map(child =>
-              React.cloneElement(child, { markdownNodes })
+              React.cloneElement(child, { markdownNodes, imageNodes })
             )}
             <Certificates />
           </main>

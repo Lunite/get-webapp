@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import FormInput from "../olc-framework/FormInput"
 import BlockCTA from "../configurable/BlockCTA"
@@ -10,9 +11,31 @@ import Col6 from "../grid/Col6"
 import Col9 from "../grid/Col9"
 
 import ContactUsDetails from "~/vectors/contact-us-details.inline.svg"
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { useStaticQuery, graphql } from "gatsby"
 
 const ContactUsPage = ({ location }) => {
+  const {
+    file: { childImageSharp: heroImage },
+  } = useStaticQuery(graphql`
+    query MyQuery {
+      file(relativePath: { eq: "contact-banner.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1920) {
+            aspectRatio
+            srcSet
+            srcSet
+            sizes
+            base64
+            tracedSVG
+            srcWebp
+            srcSetWebp
+          }
+        }
+      }
+    }
+  `)
+
   const { state = {} } = location
 
   const logFormSubmitEvent = () => {
@@ -25,12 +48,15 @@ const ContactUsPage = ({ location }) => {
       // value: 0 // optional
     }
 
-    trackCustomEvent(eventData);
+    trackCustomEvent(eventData)
   }
 
   return (
     <div className="contact-us-page">
-      <Hero image="/images/contact-banner.jpg" compact>
+      <Hero
+        image={<Img fluid={heroImage.fluid} alt="Solar panel roof" />}
+        compact
+      >
         <Heading level={1} underlined>
           Contact
         </Heading>

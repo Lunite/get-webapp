@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
@@ -21,7 +22,10 @@ const Project: FunctionComponent<any> = context => {
 
   return (
     <>
-      <Hero image={image_hero?.publicURL} compact>
+      <Hero
+        image={<Img fluid={image_hero.childImageSharp.fluid} title={title} />}
+        compact
+      >
         <Heading level={1} subheading={subheading} underlined>
           <span dangerouslySetInnerHTML={{ __html: title }} />
         </Heading>

@@ -1,0 +1,5 @@
+const getImage = (originalName: string) => {
+
+}
+
+export default getImage

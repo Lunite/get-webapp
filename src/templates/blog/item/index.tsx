@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
@@ -17,18 +18,21 @@ const BlogItem: FunctionComponent<any> = context => {
     body,
     image_hero,
     show_quote_block,
-  } = context.pageContext;
+  } = context.pageContext
 
   return (
     <div className="blog-item">
-      {!!image_hero?.publicURL && (
-        <Hero image={image_hero?.publicURL} centered>
+      {!!image_hero && (
+        <Hero
+          image={<Img fluid={image_hero.childImageSharp.fluid} title={title} />}
+          centered
+        >
           <Heading level={1} underlined centered>
             <span dangerouslySetInnerHTML={{ __html: hero_title }} />
           </Heading>
-          {
-            hero_subtitle && <p style={{textAlign: 'center'}}>{hero_subtitle}</p>
-          }
+          {hero_subtitle && (
+            <p style={{ textAlign: "center" }}>{hero_subtitle}</p>
+          )}
         </Hero>
       )}
 

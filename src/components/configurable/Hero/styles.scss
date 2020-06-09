@@ -10,6 +10,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: $low-grey;
+  overflow: hidden;
 
   &:before {
     content: "";
@@ -21,6 +22,16 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #051b3f 0%, rgba(196, 196, 196, 0) 100%);
+  }
+
+  &__image {
+    position: absolute;
+    max-width: 1920px;
+    width: 100%;
+    transform: translateX(-50%);
+    left: 50%;
+    min-height: 100%;
+    z-index: -1;
   }
 
   & > .container:first-child {

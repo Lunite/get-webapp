@@ -6,7 +6,7 @@ import Video from "~/components/olc-framework/Video"
 import Animate from "~/components/olc-framework/Animate"
 
 interface HeroProps {
-  image: string
+  image: JSX.Element
   video?: string
   compact?: boolean
   overlapBlock?: JSX.Element
@@ -30,6 +30,7 @@ const Hero: FunctionComponent<HeroProps> = ({
       }${centered ? " hero--centered" : ""} ${className || ""}`}
       style={{ backgroundImage: image ? `url(${image})` : "" }}
     >
+      <div className="hero__image">{image}</div>
       <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
         <Animate
           properties={["opacity", "transform"]}

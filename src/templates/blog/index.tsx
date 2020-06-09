@@ -3,8 +3,6 @@ import Hero from "~/components/configurable/Hero"
 import Block from "~/components/configurable/Block"
 import Heading from "~/components/configurable/Heading"
 import Markdown from "react-markdown"
-import { markdownNodesFilter } from "~/utils"
-import Image from "~/components/configurable/Image"
 import Img from "gatsby-image"
 
 export const BlogListItem = ({
@@ -20,6 +18,7 @@ export const BlogListItem = ({
         className="blog-list-item__image"
         fluid={image.childImageSharp.fluid}
         title={title}
+        alt={title}
       />
       <div className="blog-list-item__details">
         <Heading level={3}>{title}</Heading>

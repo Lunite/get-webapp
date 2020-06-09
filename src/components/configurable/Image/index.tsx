@@ -1,14 +1,17 @@
 import React, { FunctionComponent } from "react"
+import Img from "gatsby-image"
 
 import "./styles.scss"
 import { graphql } from "gatsby"
+import { FluidObject } from "gatsby-image"
 
 interface ImageProps {
-  src: string
+  src?: string
   title: string
   className?: string
   caption?: string
   shoutout?: string
+  fluid?: FluidObject
   hover?: JSX.Element
   url?: string
 }
@@ -20,40 +23,23 @@ const Image: FunctionComponent<ImageProps> = ({
   shoutout,
   hover,
   url,
+  fluid,
   className = "",
 }) => {
-  const fixedQuery = graphql`
-    query($imagePath: string, $width: string) {
-      fileName: file(relativePath: { eq: $imagePath }) {
-        childImageSharp {
-          fixed(width: $width) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
+  const image = (() => {
+    if (fluid) {
+      return <Img fluid={fluid} alt={title} />
     }
-  `
 
-  const fluidQuery = graphql`
-    query($imagePath: string, $maxWidth: string, $minWidth: string) {
-      fileName: file(relativePath: { eq: $imagePath }) {
-        childImageSharp {
-          fluid(maxWidth: $width, minWidth: $minWidth) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-    }
-  `
-
-  const image = (
-    <img
-      className={`image ${className} u-styling--box-shadow`}
-      src={src}
-      alt={title}
-      title={title}
-    />
-  )
+    return (
+      <img
+        className={`image ${className} u-styling--box-shadow`}
+        src={src}
+        alt={title}
+        title={title}
+      />
+    )
+  })()
 
   const getHoverContent = () => {
     if (!hover) {

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import StatsBlock from "~/components/standalone/StatsBlock"
@@ -18,9 +19,12 @@ import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
+import { imageNodesFilter } from "~/utils"
 
-const Homepage = ({ markdownNodes }) => {
+const Homepage = ({ markdownNodes, imageNodes }) => {
   const { changeCustomerType } = useCustomerType()
+
+  const heroImage = imageNodesFilter(imageNodes, "homepage-video.jpg")
 
   useEffect(() => {
     changeCustomerType("domestic")
@@ -36,7 +40,7 @@ const Homepage = ({ markdownNodes }) => {
       </Banner>
       <Hero
         className="homepage__hero"
-        image="/images/homepage-video.jpg"
+        image={<Img fluid={heroImage.fluid} alt="For your home" />}
         video="https://vimeo.com/418983793"
         overlapBlock={
           <div className="hidden-xs">

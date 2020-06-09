@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -8,8 +9,9 @@ import Collapsible from "../configurable/Collapsible"
 import { markdownNodesFilter } from "~/utils"
 
 import "./faq.scss"
+import { useStaticQuery, graphql } from "gatsby"
 
-const FAQPage = ({ markdownNodes }) => {
+const FAQPage = ({ markdownNodes, images }) => {
   const [questions, setQuestions] = useState([])
 
   useEffect(() => {
@@ -23,11 +25,14 @@ const FAQPage = ({ markdownNodes }) => {
 
   return (
     <div className="faq-page">
-      <Hero image="/images/quote-banner.jpg" compact>
+      {/* <Hero
+        image={<Img fluid={heroImage.fluid} alt="Support and FAQ" />}
+        compact
+      >
         <Heading level={1} underlined>
           Support and FAQ
         </Heading>
-      </Hero>
+      </Hero> */}
       <InfoStrip
         theme="light"
         email="support@get-uk.com"
