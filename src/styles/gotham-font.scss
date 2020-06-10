@@ -1,14 +1,17 @@
 @font-face {
   font-family: "gothamblack";
-  src: url("~/fonts/gotham/gotham-black-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-black-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-black-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gothambold";
-  src: url("~/fonts/gotham/gotham-bold-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-bold-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -16,15 +19,18 @@
 
 @font-face {
   font-family: "gothamlight";
-  src: url("~/fonts/gotham/gotham-light-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-light-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gothamthin";
-  src: url("~/fonts/gotham/gotham-thin-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-thin-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-thin-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -32,7 +38,8 @@
 
 @font-face {
   font-family: "gothamthin";
-  src: url("~/fonts/gotham/gotham-thinitalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-thinitalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-thinitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: oblique;
@@ -48,15 +55,18 @@
 
 @font-face {
   font-family: "gothamxlight";
-  src: url("~/fonts/gotham/gotham-xlight-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-xlight-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-xlight-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gothamxlight";
-  src: url("~/fonts/gotham/gotham-xlightitalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gotham-xlightitalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gotham-xlightitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: oblique;
@@ -68,11 +78,13 @@
     url("~/fonts/gotham/gothambold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gothambold";
-  src: url("~/fonts/gotham/gothambolditalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gothambolditalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gothambolditalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: oblique;
@@ -84,11 +96,13 @@
     url("~/fonts/gotham/gothambook-webfont.woff") format("woff");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gotham";
-  src: url("~/fonts/gotham/gothambookitalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gothambookitalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gothambookitalic-webfont.woff") format("woff");
   font-weight: 300;
   font-style: oblique;
@@ -100,28 +114,35 @@
     url("~/fonts/gotham/gothamlight-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gothamlight_italic";
-  src: url("~/fonts/gotham/gothamlightitalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gothamlightitalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gothamlightitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: oblique;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gotham";
-  src: url("~/fonts/gotham/gothammedium-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gothammedium-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gothammedium-webfont.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "gotham";
-  src: url("~/fonts/gotham/gothammediumitalic-webfont.woff2") format("woff2"),
+  src: local("sans-serif"),
+    url("~/fonts/gotham/gothammediumitalic-webfont.woff2") format("woff2"),
     url("~/fonts/gotham/gothammediumitalic-webfont.woff") format("woff");
   font-weight: 500;
   font-style: oblique;
+  font-display: swap;
 }
