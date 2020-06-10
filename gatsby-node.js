@@ -141,33 +141,33 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const blogItems = filterResults(result.data.allMarkdownRemark.nodes, "blog")
 
-    // createPage({
-    //   path: `/blog`,
-    //   component: slash(blogTemplate),
-    //   context: {
-    //     blogItems,
-    //     title: "Blog",
-    //     seo_title: "Blog | Green Energy Together | Solar Panel Installer",
-    //     slug: "blog",
-    //     acf: {
-    //       seo: {
-    //         description: "",
-    //         keywords: "",
-    //       },
-    //     },
-    //   },
-    // })
+    createPage({
+      path: `/blog`,
+      component: slash(blogTemplate),
+      context: {
+        blogItems,
+        title: "Blog",
+        seo_title: "Blog | Green Energy Together | Solar Panel Installer",
+        slug: "blog",
+        acf: {
+          seo: {
+            description: "",
+            keywords: "",
+          },
+        },
+      },
+    })
 
-    // blogItems.forEach(node => {
-    //   createPage({
-    //     path: `/blog${node.fields.slug}`,
-    //     component: slash(blogItemTemplate),
-    //     context: {
-    //       ...node.frontmatter,
-    //       body: node.html,
-    //     },
-    //   })
-    // })
+    blogItems.forEach(node => {
+      createPage({
+        path: `/blog${node.fields.slug}`,
+        component: slash(blogItemTemplate),
+        context: {
+          ...node.frontmatter,
+          body: node.html,
+        },
+      })
+    })
     //-- BLOG ITEM PAGES DONE --//
 
     //-- ROOT MARKDOWN PAGES --//
@@ -243,7 +243,7 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
       },
-      // { slug: "faq", title: "Support and FAQ", keywords: "", description: "" },
+      { slug: "faq", title: "Support and FAQ", keywords: "", description: "" },
       {
         slug: "for-your-business",
         seo_title:
@@ -261,15 +261,6 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Solar generation shouldn't be a luxury - it should be for everyone. We are one of the largest installers in the UK, and bring a fresh approach to the solar market.",
       },
-      // { slug: "products", title: "Products", keywords: "", description: "" },
-      // {
-      //   slug: "projects",
-      //   title: "Case Studies",
-      //   seo_title:
-      //     "Case Studies | Green Energy Together | Solar Panel Installer",
-      //   keywords: "",
-      //   description: "",
-      // },
       {
         slug: "quote",
         seo_title:

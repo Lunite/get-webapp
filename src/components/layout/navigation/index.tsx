@@ -18,6 +18,10 @@ interface NavItemProps {
   sitemap: any[]
 }
 
+const titleMap = {
+  services: "Services",
+}
+
 const NavItem: FunctionComponent<NavItemProps> = ({ slug, path, sitemap }) => {
   const item = sitemap.find(sItem => sItem.slug === slug)
 
@@ -131,7 +135,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
             <Logo className="hidden-xs" />
           </Link>
           <div className="navigation__items right">
-            {/* <NavItem slug="service" /> */}
+            <NavItem sitemap={sitemap} slug="service" />
             <div className="navigation-item">
               <Link
                 data-title="Case Studies"
@@ -142,12 +146,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
               </Link>
             </div>
             <NavItem slug="company" sitemap={sitemap} />
-            {/* <div className="navigation-item navigation-item--coming-soon">
-              <div className="navigation-item__link">
+            <div className="navigation-item__link">
+              <Link className="navigation-item__link" to="/blog">
                 Blog
-                <span>coming soon</span>
-              </div>
-            </div> */}
+              </Link>
+            </div>
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
@@ -160,7 +163,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
       <div className="navigation__main visible-xs">
         <div className="container">
           <BurgerMenu className="navigation__burger-menu">
-            {/* <NavItem slug="service" /> */}
+            <NavItem slug="service" sitemap={sitemap} />
             <div className="navigation-item">
               <Link
                 data-title="Case Studies"
@@ -171,12 +174,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
               </Link>
             </div>
             <NavItem slug="company" sitemap={sitemap} />
-            {/* <div className="navigation-item navigation-item--coming-soon">
-              <div className="navigation-item__link">
+            <div className="navigation-item__link">
+              <Link className="navigation-item__link" to="/blog">
                 Blog
-                <span>coming soon</span>
-              </div>
-            </div> */}
+              </Link>
+            </div>
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
