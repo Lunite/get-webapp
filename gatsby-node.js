@@ -141,22 +141,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const blogItems = filterResults(result.data.allMarkdownRemark.nodes, "blog")
 
-    createPage({
-      path: `/blog`,
-      component: slash(blogTemplate),
-      context: {
-        blogItems,
-        title: "Blog",
-        seo_title: "Blog | Green Energy Together | Solar Panel Installer",
-        slug: "blog",
-        acf: {
-          seo: {
-            description: "",
-            keywords: "",
-          },
-        },
-      },
-    })
+    // createPage({
+    //   path: `/blog`,
+    //   component: slash(blogTemplate),
+    //   context: {
+    //     blogItems,
+    //     title: "Blog",
+    //     seo_title: "Blog | Green Energy Together | Solar Panel Installer",
+    //     slug: "blog",
+    //     acf: {
+    //       seo: {
+    //         description: "",
+    //         keywords: "",
+    //       },
+    //     },
+    //   },
+    // })
 
     // blogItems.forEach(node => {
     //   createPage({
