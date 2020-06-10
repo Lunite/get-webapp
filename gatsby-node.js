@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date(formatString: "DD MMM YYYY")
               description
               title
+              answer
               list {
                 image {
                   childImageSharp {
