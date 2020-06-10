@@ -19,12 +19,9 @@ import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
-import { imageNodesFilter } from "~/utils"
 
-const Homepage = ({ markdownNodes, imageNodes }) => {
+const Homepage = ({ markdownNodes }) => {
   const { changeCustomerType } = useCustomerType()
-
-  const heroImage = imageNodesFilter(imageNodes, "homepage-video.jpg")
 
   useEffect(() => {
     changeCustomerType("domestic")
@@ -40,7 +37,8 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
       </Banner>
       <Hero
         className="homepage__hero"
-        image={<Img fluid={heroImage.fluid} alt="For your home" />}
+        // image={<Img fluid={heroImage.fluid} alt="For your home" />}
+        imageUrl="/images/homepage-video.jpg"
         video="https://vimeo.com/418983793"
         overlapBlock={
           <div className="hidden-xs">

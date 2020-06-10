@@ -9,14 +9,14 @@ import FormCheckbox from "../olc-framework/FormCheckbox"
 import Col6 from "~/components/grid/Col6"
 import Image from "../configurable/Image"
 
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 const QuotePage = ({ location }) => {
   const { state = {} } = location
 
   return (
     <div className="quote-page">
-      <Hero image="/images/quote-banner.jpg" compact>
+      <Hero imageUrl="/images/quote-banner.jpg" compact>
         <Heading level={1} underlined>
           Get a Quote
         </Heading>
@@ -35,7 +35,7 @@ const QuotePage = ({ location }) => {
                 method="POST"
                 name="quote-page"
                 onSubmit={() => {
-                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer = window.dataLayer || []
 
                   const eventData = {
                     category: "Form",
@@ -44,7 +44,7 @@ const QuotePage = ({ location }) => {
                     // value: 0 // optional
                   }
 
-                  trackCustomEvent(eventData);
+                  trackCustomEvent(eventData)
                 }}
                 // data-netlify="true" -- to use netlify forms
               >
@@ -75,7 +75,7 @@ const QuotePage = ({ location }) => {
                   name="address"
                   label="Address"
                   placeholder="Type your full address"
-                />                
+                />
                 <FormInput
                   name="annual-electricity-usage"
                   label="Annual Electricity Usage"

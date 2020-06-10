@@ -15,27 +15,6 @@ import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import { useStaticQuery, graphql } from "gatsby"
 
 const ContactUsPage = ({ location }) => {
-  const {
-    file: { childImageSharp: heroImage },
-  } = useStaticQuery(graphql`
-    query MyQuery {
-      file(relativePath: { eq: "contact-banner.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1920) {
-            aspectRatio
-            srcSet
-            srcSet
-            sizes
-            base64
-            tracedSVG
-            srcWebp
-            srcSetWebp
-          }
-        }
-      }
-    }
-  `)
-
   const { state = {} } = location
 
   const logFormSubmitEvent = () => {
@@ -54,7 +33,8 @@ const ContactUsPage = ({ location }) => {
   return (
     <div className="contact-us-page">
       <Hero
-        image={<Img fluid={heroImage.fluid} alt="Solar panel roof" />}
+        imageUrl="/images/contact-banner.jpg"
+        // image={<Img fluid={heroImage.fluid} alt="Solar panel roof" />}
         compact
       >
         <Heading level={1} underlined>

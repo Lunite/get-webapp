@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "../configurable/Block"
@@ -16,15 +15,10 @@ import { useCustomerType } from "~/hooks/useCustomerType"
 
 import "./for-your-business.scss"
 import Banner from "../configurable/Banner"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
-import { imageNodesFilter } from "~/utils"
 
-const HomepageB2b = ({ markdownNodes, imageNodes }) => {
-  console.log(imageNodes)
-
-  const heroImage = imageNodesFilter(imageNodes, "b2b-video.jpg")
-
+const HomepageB2b = ({ markdownNodes }) => {
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
@@ -38,7 +32,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
       </Banner>
       <Hero
         className="homepage__hero"
-        image={<Img fluid={heroImage.fluid} alt="For your business" />}
+        imageUrl="/images/b2b-video.jpg"
         video="https://vimeo.com/418982748"
         overlapBlock={
           <div className="hidden-xs">
@@ -103,9 +97,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
             </Col10>
             <Col2>
               <Image
-                fluid={
-                  imageNodesFilter(imageNodes, "paddington-station.jpg")?.fluid
-                }
+                src="/images/paddington-station.jpg"
                 title="Commercial Installation at Paddington Station, London UK"
                 caption="Paddington Station, London UK"
               />
@@ -117,7 +109,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
           <div className="row">
             <Col2>
               <Image
-                fluid={imageNodesFilter(imageNodes, "no-idea.jpg")?.fluid}
+                src="/images/no-idea.jpg"
                 title="Commercial Installation at Kelly Solar Farm"
                 caption="Kelly Solar Farm"
               />
@@ -146,12 +138,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
           </div>
         </Section>
         <Shoutout
-          image={
-            <Image
-              fluid={imageNodesFilter(imageNodes, "products-bulb.jpg")?.fluid}
-              title="Products"
-            />
-          }
+          image={<Image src="/images/products-bulb.jpg" title="Products" />}
           text={
             <>
               <Heading underlined>Products &amp; Warranties</Heading>
@@ -191,9 +178,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
             </Col10>
             <Col2>
               <Image
-                fluid={
-                  imageNodesFilter(imageNodes, "newham-solar-farm.jpg")?.fluid
-                }
+                src="/images/newnham-solar-farm.jpg"
                 title="Technical design at Newnham Solar Farm"
                 caption="Newnham Solar Farm"
               />
@@ -205,9 +190,7 @@ const HomepageB2b = ({ markdownNodes, imageNodes }) => {
           <div className="row">
             <Col2>
               <Image
-                fluid={
-                  imageNodesFilter(imageNodes, "bay-solar-farm.jpg")?.fluid
-                }
+                src="/images/bay-solar-farm.jpg"
                 title="Asset Management at Bay Solar Farm"
                 caption="Bay Solar Farm"
               />

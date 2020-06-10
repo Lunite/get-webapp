@@ -8,15 +8,9 @@ import Image from "~/components/configurable/Image"
 import InfoStrip from "~/components/configurable/InfoStrip"
 
 // gatsby-node passes in data as context variable
-const Project: FunctionComponent<any> = context => {
+const Project: FunctionComponent<any> = ({ pageContext }) => {
   // this grabs all the needed variables from within content.pageContext
-  const {
-    title,
-    description,
-    image,
-    image_hero,
-    info_strip,
-  } = context.pageContext
+  const { title, description, image, image_hero, info_strip } = pageContext
 
   const subheading = ""
 

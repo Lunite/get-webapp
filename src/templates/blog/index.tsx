@@ -39,7 +39,7 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
 
   return (
     <div className="blog">
-      <Hero image="/images/blog-hero.jpg" compact>
+      <Hero imageUrl="/images/blog-hero.jpg" compact>
         <Heading level={1} underlined>
           Blog
         </Heading>

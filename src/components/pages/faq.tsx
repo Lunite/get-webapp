@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -11,8 +10,29 @@ import { markdownNodesFilter } from "~/utils"
 import "./faq.scss"
 import { useStaticQuery, graphql } from "gatsby"
 
-const FAQPage = ({ markdownNodes, images }) => {
+const FAQPage = ({ markdownNodes }) => {
   const [questions, setQuestions] = useState([])
+
+  const {
+    file: { childImageSharp: heroImage },
+  } = useStaticQuery(graphql`
+    query MyQuery {
+      file(relativePath: { eq: "contact-banner.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1920) {
+            aspectRatio
+            srcSet
+            srcSet
+            sizes
+            base64
+            tracedSVG
+            srcWebp
+            srcSetWebp
+          }
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
     setQuestions(
@@ -25,14 +45,11 @@ const FAQPage = ({ markdownNodes, images }) => {
 
   return (
     <div className="faq-page">
-      {/* <Hero
-        image={<Img fluid={heroImage.fluid} alt="Support and FAQ" />}
-        compact
-      >
+      <Hero imageUrl="/images/quote-banner.jpg" compact>
         <Heading level={1} underlined>
           Support and FAQ
         </Heading>
-      </Hero> */}
+      </Hero>
       <InfoStrip
         theme="light"
         email="support@get-uk.com"

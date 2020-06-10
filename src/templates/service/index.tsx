@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from "react"
+import Markdown from "react-markdown"
+import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "~/components/configurable/Block"
@@ -11,14 +13,15 @@ import Icon from "~/components/olc-framework/Icon"
 
 import "./styles.scss"
 
-const Service: FunctionComponent<any> = context => {
-  const { title, acf } = context.pageContext
-
-  const { service } = acf
+const Service: FunctionComponent<any> = ({ pageContext }) => {
+  const { title, image_hero, block_1, block_2, display_image } = pageContext
 
   return (
     <>
-      <Hero image={service.hero_image?.source_url} compact>
+      <Hero
+        image={<Img fluid={image_hero?.childImageSharp?.fluid} alt={title} />}
+        compact
+      >
         <Heading level={1} underlined>
           {title}
         </Heading>
@@ -26,108 +29,90 @@ const Service: FunctionComponent<any> = context => {
       <Block>
         <div className="container">
           <Col9 indent>
-            <Heading level={2}>{service.block_1_heading}</Heading>
-            <p>{service.block_1_description}</p>
+            <Heading level={2}>{block_1.heading}</Heading>
+            <p>
+              <Markdown source={block_1.description} />
+            </p>
             <div className="service__highlights">
-              {service.block_1_highlight_1 && (
+              {block_1.highlight_1 && (
                 <div className="highlight">
                   <div className="highlight__icon">
                     <Icon alias="solar-energy-house" />
                   </div>
-                  <div
-                    className="highlight__contents"
-                    dangerouslySetInnerHTML={{
-                      __html: service.bock_1_highlight_1,
-                    }}
-                  ></div>
+                  <div className="highlight__contents">
+                    <Markdown source={block_1.highlight_1} />
+                  </div>
                 </div>
               )}
-              {service.block_1_highlight_2 && (
-                <div
-                  className="highlight"
-                  dangerouslySetInnerHTML={{
-                    __html: service.block_1_highlight_2,
-                  }}
-                ></div>
+              {block_1.highlight_2 && (
+                <div className="highlight">
+                  <Markdown source={block_1.highlight_2} />
+                </div>
               )}
             </div>
           </Col9>
-          {(service.block_1_image_1 || service.block_1_image_2) && (
+          {(block_1.image_1 || block_1.image_2) && (
             <Col3>
-              {service.block_1_image_1 && (
-                <Image
-                  src={service.block_1_image_1?.source_url}
-                  title={title}
-                />
+              {block_1.image_1 && (
+                <Image src={block_1.image_1?.source_url} title={title} />
               )}
-              {service.block_1_image_2 && (
-                <Image
-                  src={service.block_1_image_2?.source_url}
-                  title={title}
-                />
+              {block_1.image_2 && (
+                <Image src={block_1.image_2?.source_url} title={title} />
               )}
             </Col3>
           )}
         </div>
       </Block>
-      {service.display_image && (
+      {display_image && (
         <Block className="service__wide-image">
-          <Image
-            src={service.display_image?.source_url}
-            title={service.display_image?.title}
-            caption={service.display_image?.caption}
-          />
+          <Img fluid={display_image.imageSharp.fluid} alt={title} />
         </Block>
       )}
       <Block>
         <div className="container">
           <Col10 indent>
-            <Heading level={2}>{service.block_1_heading}</Heading>
-            <p>{service.block_1_description}</p>
+            <Heading level={2}>{block_1.heading}</Heading>
+            <p>
+              <Markdown source={block_1.description} />
+            </p>
             <div className="service__highlights">
-              {service.block_1_highlight_1 && (
+              {block_1.highlight_1 && (
                 <div className="highlight">
                   <div className="highlight__icon">
                     <Icon alias="solar-energy-house" />
                   </div>
-                  <div
-                    className="highlight__contents"
-                    dangerouslySetInnerHTML={{
-                      __html: service.bock_1_highlight_1,
-                    }}
-                  ></div>
+                  <div className="highlight__contents">
+                    <Markdown source={block_1.highlight_1} />
+                  </div>
                 </div>
               )}
-              {service.block_1_highlight_2 && (
-                <div
-                  className="highlight"
-                  dangerouslySetInnerHTML={{
-                    __html: service.block_1_highlight_2,
-                  }}
-                ></div>
+              {block_1.highlight_2 && (
+                <div className="highlight">
+                  <Markdown source={block_1.highlight_2} />
+                </div>
               )}
             </div>
           </Col10>
         </div>
       </Block>
-      {(service.block_2_image_1 || service.block_2_image_1) && (
+      {(block_2.image_1 || block_2.image_1) && (
         <Block>
           <div className="container">
-            {service.block_2_image_1 && (
+            {block_2.image_1 && (
               <Col6>
                 <Image
-                  src={service.block_2_image_1?.source_url}
-                  title={service.block_2_image_1?.title}
-                  caption={service.block_2_image_1?.caption}
+                  src={block_2.image_1?.source_url}
+                  title={block_2.image_1?.title}
+                  caption={block_2.image_1?.caption}
                 />
               </Col6>
             )}
-            {service.block_2_image_2 && (
+            {block_2.image_2 && (
               <Col6>
                 <Image
-                  src={service.block_2_image_2?.source_url}
-                  title={service.block_2_image_2?.title}
-                  caption={service.block_2_image_2?.caption}
+                  src={block_2.image_2?.source_url}
+                  title={block_2.image_2?.title}
+                  caption={block_2.image_2?.caption}
                 />
               </Col6>
             )}

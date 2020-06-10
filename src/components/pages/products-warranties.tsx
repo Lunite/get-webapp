@@ -30,7 +30,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
 
   return (
     <div className="products-and-warranties content-page">
-      <Hero image="/images/products-warranties-banner.jpg" compact>
+      <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
         <Heading level={1} underlined>
           Products &amp; Warranties
         </Heading>

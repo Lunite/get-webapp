@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useState } from "react"
-import ReactPlayer from "react-player"
 
-import "./styles.scss"
 import Video from "~/components/olc-framework/Video"
 import Animate from "~/components/olc-framework/Animate"
 
+import "./styles.scss"
+
 interface HeroProps {
-  image: JSX.Element
+  image?: JSX.Element
+  imageUrl?: string
   video?: string
   compact?: boolean
   overlapBlock?: JSX.Element
@@ -16,6 +17,7 @@ interface HeroProps {
 
 const Hero: FunctionComponent<HeroProps> = ({
   image,
+  imageUrl,
   video,
   compact,
   overlapBlock,
@@ -28,9 +30,9 @@ const Hero: FunctionComponent<HeroProps> = ({
       className={`hero hero--${compact ? "compact" : "large"}${
         overlapBlock ? " hero--has-overlap" : ""
       }${centered ? " hero--centered" : ""} ${className || ""}`}
-      style={{ backgroundImage: image ? `url(${image})` : "" }}
+      style={{ backgroundImage: imageUrl ? `url(${imageUrl})` : "" }}
     >
-      <div className="hero__image">{image}</div>
+      {image && <div className="hero__image">{image}</div>}
       <div className={`container ${!centered ? "u-layout--indent" : ""}`}>
         <Animate
           properties={["opacity", "transform"]}
@@ -42,7 +44,7 @@ const Hero: FunctionComponent<HeroProps> = ({
         </Animate>
       </div>
       <div className="hero__video">
-        {video && <Video url={video} image={image} />}
+        {video && <Video url={video} image={imageUrl} />}
       </div>
 
       {overlapBlock && (

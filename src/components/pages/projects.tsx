@@ -121,7 +121,7 @@ const ProjectsPage = ({ pageContext: { projects } }) => {
 
   return (
     <div className="projects">
-      <Hero image="/images/products-warranties-banner.jpg" compact>
+      <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
         <Heading level={1} underlined>
           Our Case Studies
         </Heading>
