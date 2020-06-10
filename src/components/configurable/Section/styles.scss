@@ -3,14 +3,6 @@
 .section {
   padding: $space-m 0;
 
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-  }
-
   .block-cta {
     margin-top: 32px;
   }
