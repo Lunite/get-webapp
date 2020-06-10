@@ -108,21 +108,25 @@ collections:
         widget: object
       - label: "Display Image"
         name: display_image
-        required: true
+        required: false
         widget: image
       - collapsed: false
         fields:
           - label: Heading
             name: heading
+            required: false
             widget: string
           - label: Description
             name: description
+            required: false
             widget: markdown
           - label: "Highlight 1"
             name: highlight_1
+            required: false
             widget: markdown
           - label: "Highlight 2"
             name: highlight_2
+            required: false
             widget: markdown
           - label: "Image 1"
             name: image_1
