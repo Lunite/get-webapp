@@ -39,7 +39,11 @@
   }
 
   &__content {
-    padding: 22px 32px 12px 32px;
+    padding: 22px 32px 12px;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   &--collapsed .collapsible__heading {

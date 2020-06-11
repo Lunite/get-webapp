@@ -146,11 +146,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
               </Link>
             </div>
             <NavItem slug="company" sitemap={sitemap} />
-            <div className="navigation-item__link">
+            {/* <div className="navigation-item__link">
               <Link className="navigation-item__link" to="/blog">
                 Blog
               </Link>
-            </div>
+            </div> */}
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
@@ -174,11 +174,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sitemap }) => {
               </Link>
             </div>
             <NavItem slug="company" sitemap={sitemap} />
-            <div className="navigation-item__link">
+            {/* <div className="navigation-item__link">
               <Link className="navigation-item__link" to="/blog">
                 Blog
               </Link>
-            </div>
+            </div> */}
             <div className="navigation-item navigation-item--shout">
               <Link className="navigation-item__link" to="/quote">
                 Get a Quote
