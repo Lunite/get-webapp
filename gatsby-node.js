@@ -244,7 +244,14 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
       },
-      { slug: "faq", title: "Support and FAQ", keywords: "", description: "" },
+      {
+        slug: "faq",
+        title: "Support and FAQ",
+        seo_title:
+          "Support and FAQ | Green Energy Together | Solar Panel Installer",
+        keywords: "",
+        description: "",
+      },
       {
         slug: "for-your-business",
         seo_title:
