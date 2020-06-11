@@ -5,12 +5,15 @@ import Heading from "~/components/configurable/Heading"
 import Markdown from "react-markdown"
 import Img from "gatsby-image"
 
+import "./styles.scss"
+import BlockCTA from "~/components/configurable/BlockCTA"
+
 export const BlogListItem = ({
-  item: {
-    date,
-    title,
+  frontmatter: {
     list: { image, intro },
+    title,
   },
+  fields: { slug },
 }) => {
   return (
     <div className="blog-list-item">
@@ -23,6 +26,9 @@ export const BlogListItem = ({
       <div className="blog-list-item__details">
         <Heading level={3}>{title}</Heading>
         <Markdown source={intro} />
+        <BlockCTA secondary url={`/blog${slug}`} arrow="right">
+          Read more
+        </BlockCTA>
       </div>
     </div>
   )
@@ -45,10 +51,12 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
         </Heading>
       </Hero>
       <Block>
-        <div className="blog__items">
-          {blogItemsToDisplay.splice(0, 3).map(({ frontmatter }) => (
-            <BlogListItem item={frontmatter} />
-          ))}
+        <div className="container u-layout--squidge container--column">
+          <div className="blog__items">
+            {blogItemsToDisplay.splice(0, 3).map(item => (
+              <BlogListItem {...item} />
+            ))}
+          </div>
         </div>
       </Block>
     </div>

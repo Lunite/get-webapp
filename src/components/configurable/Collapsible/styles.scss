@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    transition: border-color $transition;
+    transition: border-color $fast-transition;
 
     span {
       margin: 0;
@@ -28,7 +28,7 @@
       margin: -6px -20px -6px 0;
       opacity: 1;
 
-      transition: opacity $transition;
+      transition: opacity $fast-transition;
     }
 
     &:active {
@@ -39,7 +39,11 @@
   }
 
   &__content {
-    padding: 22px 0 12px;
+    padding: 22px 32px 12px;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   &--collapsed .collapsible__heading {

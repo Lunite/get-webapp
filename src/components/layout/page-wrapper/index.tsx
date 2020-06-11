@@ -57,6 +57,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
           frontmatter {
             description
             title
+            answer
             quote
             category
             image {
