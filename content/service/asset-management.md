@@ -21,7 +21,7 @@ block_1:
   image_2: clapham_3.jpg
   heading: Experts on your side
 seo:
-  title: Asset Management solarp panels
-  description: Asset Management solarp panels
-  keywords: Asset Management solarp panels
+  title: Asset Management solar panels
+  description: Asset Management solar panels
+  keywords: Asset Management solar panels
 ---
