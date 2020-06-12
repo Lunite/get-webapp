@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const createPages = async () => {
     const result = await graphql(`
       {
-        allMarkdownRemark(limit: 500) {
+        allMarkdownRemark(limit: 1000) {
           nodes {
             frontmatter {
               category
@@ -41,11 +41,9 @@ exports.createPages = async ({ graphql, actions }) => {
                   childImageSharp {
                     fluid(maxWidth: 326) {
                       aspectRatio
-                      srcSet
+                      src
                       srcSet
                       sizes
-                      base64
-                      tracedSVG
                       srcWebp
                       srcSetWebp
                     }
@@ -57,11 +55,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 childImageSharp {
                   fluid(maxWidth: 1920) {
                     aspectRatio
-                    srcSet
+                    src
                     srcSet
                     sizes
-                    base64
-                    tracedSVG
                     srcWebp
                     srcSetWebp
                   }

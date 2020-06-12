@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
@@ -19,39 +19,48 @@ import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
+import { imageNodesFilter } from "~/utils"
 
-const Homepage = ({ markdownNodes }) => {
+const Homepage = ({ markdownNodes, imageNodes }) => {
+  const [heroImage, setHeroImage] = useState(undefined)
+  const [loading, setLoading] = useState(true)
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
     changeCustomerType("domestic")
-  }, [])
+
+    setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
+
+    setLoading(false)
+  }, [imageNodes])
 
   return (
-    <div className="homepage">
+    <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
       <Banner className="visible-xs">
         <Link to="/for-your-business">Go to Business Site</Link>
       </Banner>
       <Banner className="banner--covid-19">
         <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
       </Banner>
-      <Hero
-        className="homepage__hero"
-        // image={<Img fluid={heroImage.fluid} alt="For your home" />}
-        imageUrl="/images/homepage-video.jpg"
-        video="https://vimeo.com/418983793"
-        overlapBlock={
-          <div className="hidden-xs">
-            <Quote />
-          </div>
-        }
-      >
-        <Heading level={1}>
-          Order in June and get a 1 in 30 chance to win your system for free
-        </Heading>
-        <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
-        <BlockCTA url="/promo">Find Out More</BlockCTA>
-      </Hero>
+      {!!heroImage && (
+        <Hero
+          className="homepage__hero"
+          image={<Img fluid={heroImage.fluid} alt="For your home" />}
+          // imageUrl="/images/homepage-video.jpg"
+          video="https://vimeo.com/418983793"
+          overlapBlock={
+            <div className="hidden-xs">
+              <Quote />
+            </div>
+          }
+        >
+          <Heading level={1}>
+            Order in June and get a 1 in 30 chance to win your system for free
+          </Heading>
+          <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
+          <BlockCTA url="/promo">Find Out More</BlockCTA>
+        </Hero>
+      )}
       <Block className="visible-xs">
         <div className="container container--column">
           <Quote />

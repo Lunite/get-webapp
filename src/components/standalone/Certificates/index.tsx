@@ -1,10 +1,20 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import Img from "gatsby-image"
 import Block from "~/components/configurable/Block"
 import Heading from "~/components/configurable/Heading"
 
 import "./styles.scss"
+import { imageNodesFilter } from "~/utils"
 
-const Certificates = () => {
+const Certificates = ({ imageNodes }) => {
+  const [mobileImage, setMobileImage] = useState(undefined)
+  const [desktopImage, setDesktopImage] = useState(undefined)
+
+  useEffect(() => {
+    setMobileImage(imageNodesFilter(imageNodes, "certificates-mobile.jpg"))
+    setDesktopImage(imageNodesFilter(imageNodes, "certificates.png"))
+  }, [imageNodes])
+
   return (
     <Block className="certificates" highlightColour="blue">
       <div className="container">
@@ -20,7 +30,21 @@ const Certificates = () => {
           is undertaken by regular internal and external audits, conducted by
           our third-party certification partners.
         </p>
-        <img
+        {!!desktopImage && (
+          <Img
+            className="hidden-xs"
+            fluid={desktopImage.fluid}
+            alt="Certificate logos"
+          />
+        )}
+        {!!mobileImage && (
+          <Img
+            className="visible-xs"
+            fluid={mobileImage.fluid}
+            alt="Certificate logos"
+          />
+        )}
+        {/* <img
           className="hidden-xs"
           src="/images/certificates.png"
           alt="Certificate Logos"
@@ -30,7 +54,7 @@ const Certificates = () => {
           style={{ maxWidth: "276px", margin: "0 auto" }}
           src="/images/certificates-mobile.jpg"
           alt="Certificate Logos"
-        />
+        /> */}
         <div
           style={{
             paddingTop: "20px",

@@ -5,10 +5,16 @@
     flex-direction: column;
   }
 
-  img {
-    width: 1047px;
+  .gatsby-image-wrapper {
     margin: 0 auto;
     margin-top: $space-m;
+
+    &.hidden-xs {
+      width: 1047px;
+    }
+    &.visible-xs {
+      max-width: 276px;
+    }
   }
 
   p {

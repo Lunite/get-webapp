@@ -1,7 +1,26 @@
 const imageNodesFilter = (imageNodes: any[], originalName: string) => {
-  return (
-    imageNodes.find(({ fluid }) => fluid.originalName === originalName) || {}
+  const image = imageNodes.find(
+    ({ fluid }) => fluid.originalName === originalName
   )
+
+  if (!image) {
+    return undefined
+  }
+
+  const {
+    fluid: { src, aspectRatio, sizes, srcSet, srcSetWebp, srcWebp },
+  } = image
+
+  return {
+    fluid: {
+      src,
+      aspectRatio,
+      sizes,
+      srcSet,
+      srcSetWebp,
+      srcWebp,
+    },
+  }
 }
 
 export default imageNodesFilter

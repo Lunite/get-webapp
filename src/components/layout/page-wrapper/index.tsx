@@ -31,15 +31,11 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
           fluid(maxWidth: 1920) {
             originalName
             aspectRatio
-            srcSet
+            src
             srcSet
             sizes
-            base64
-            tracedSVG
             srcWebp
             srcSetWebp
-            presentationWidth
-            presentationHeight
           }
         }
       }
@@ -96,7 +92,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     setSitemap(sm)
     setMarkdownNodes(allMarkdownRemark.nodes)
     setImageNodes(allImageSharp?.nodes)
-  })
+  }, [sm, allMarkdownRemark, allImageSharp])
 
   /**
    * seoData
@@ -137,7 +133,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
             {React.Children.toArray(children).map(child =>
               React.cloneElement(child, { markdownNodes, imageNodes })
             )}
-            <Certificates />
+            <Certificates imageNodes={imageNodes} />
           </main>
           <Footer sitemap={sitemap} />
         </div>
