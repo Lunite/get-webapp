@@ -132,6 +132,25 @@ exports.createPages = async ({ graphql, actions }) => {
     })
     //-- PROJECT PAGES DONE --//
 
+    //-- SERVICE PAGES --//
+    const serviceTemplate = path.resolve("./src/templates/service/index.tsx")
+
+    const services = filterResults(
+      result.data.allMarkdownRemark.nodes,
+      "service"
+    )
+
+    services.forEach(node => {
+      console.log(node)
+
+      // createPage({
+      //   path: `/service${fields.slug}`,
+      //   component: slash(serviceTemplate),
+      //   context: frontmatter,
+      // })
+    })
+    //-- SERVICE PAGES DONE --//
+
     //-- BLOG ITEM PAGES --//
     const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
     // const blogTemplate = path.resolve("./src/templates/blog/index.tsx")

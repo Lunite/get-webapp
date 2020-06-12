@@ -65,7 +65,7 @@ const Service: FunctionComponent<any> = ({ pageContext }) => {
       </Block>
       {display_image && (
         <Block className="service__wide-image">
-          <Img fluid={display_image.imageSharp.fluid} alt={title} />
+          <Img fluid={display_image.childImageSharp.fluid} alt={title} />
         </Block>
       )}
       <Block>

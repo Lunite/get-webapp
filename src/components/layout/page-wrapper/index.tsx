@@ -57,8 +57,16 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
             quote
             category
             image {
-              name
-              publicURL
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                  srcWebp
+                  srcSetWebp
+                }
+              }
             }
             show_in_case_studies
             image_case_studies {

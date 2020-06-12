@@ -1,19 +1,31 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import Img from "gatsby-image"
 import Col7 from "~/components/grid/Col7"
 import Col5 from "~/components/grid/Col5"
-import Image from "../Image"
 import Heading from "../Heading"
 import TickList from "../TickList"
 import BlockCTA from "../BlockCTA"
 
 import "./styles.scss"
+import { imageNodesFilter } from "~/utils"
 
-const ProductsAndWarrantiesBlock = () => {
+const ProductsAndWarrantiesBlock = ({ imageNodes }) => {
+  const [image, setImage] = useState(undefined)
+
+  useEffect(() => {
+    setImage(imageNodesFilter(imageNodes, "homepage-p-w.jpg"))
+  }, [imageNodes])
+
   return (
     <div className="p-and-w">
       <div className="row">
         <Col5>
-          <Image src="/images/homepage-p-w.jpg" title="Bay Solar Farm" />
+          {!!image && (
+            <Img
+              alt="Bay Solar Farm"
+              fluid={{ ...image.fluid, aspectRatio: "0.55" }}
+            />
+          )}
         </Col5>
         <Col7>
           <Heading underlined>Products &amp; Warranties</Heading>

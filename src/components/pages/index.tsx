@@ -156,7 +156,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
       </div>
       <Block>
         <div className="container">
-          <ProductsAndWarrantiesBlock />
+          <ProductsAndWarrantiesBlock imageNodes={imageNodes} />
         </div>
       </Block>
       <Block>

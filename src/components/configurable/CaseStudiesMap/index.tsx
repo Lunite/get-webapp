@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
 
@@ -32,8 +33,7 @@ const CaseStudiesMap = ({
         node =>
           node.frontmatter.category === customerType &&
           node.frontmatter.show_in_case_studies &&
-          (node.frontmatter.image_case_studies?.publicURL ||
-            node.frontmatter.image?.publicURL)
+          (node.frontmatter.image_case_studies || node.frontmatter.image)
       )
       .map(node => {
         const pData = {
@@ -41,8 +41,7 @@ const CaseStudiesMap = ({
           ...node.frontmatter,
         }
 
-        const pImage =
-          pData.image_case_studies?.publicURL || pData.image?.publicURL
+        const pImage = pData.image
 
         if (!pImage) {
           return null
@@ -50,10 +49,10 @@ const CaseStudiesMap = ({
 
         return (
           <div className="project-item" key={pData.slug}>
-            <div
+            <Img
               className="project-item__image"
-              title={pData.title}
-              style={{ backgroundImage: `url(${pImage})` }}
+              alt={pData.title}
+              fluid={pImage.childImageSharp.fluid}
             />
             <Heading className="project-item__title" level={4}>
               <span
