@@ -1,6 +1,6 @@
 ---
 title: Industrial & Commercial Solutions
-hero_image: breadcrumb19.png
+image_hero: breadcrumb19.png
 block_1:
   heading: A different way of doing solar
   description: "We believe that solar power systems should be for everyone -\r
@@ -22,12 +22,13 @@ block_1:
 display_image: breadcrumb20.png
 block_2:
   heading: Our process
-  description: "Our commercial solar consultants conduct a full assessment of your
+  description:
+    "Our commercial solar consultants conduct a full assessment of your
     facility’s electricity consumption profile, including your current and
     future electricity tariffs, and take into consideration the suitability of
     your business for commercial solar power. "
   highlight_1: |-
-    ### Your obligation-free final report 
+    ### Your obligation-free final report
 
     This will include: ⠀
 

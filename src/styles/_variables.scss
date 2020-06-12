@@ -13,6 +13,11 @@ $low-grey: #d1d1d1;
 $low-grey-faded: rgba(209, 209, 209, 0.3);
 $gradient-green: linear-gradient(180deg, #70b33b 0%, #4db9af 100%);
 $gradient-light-blue: linear-gradient(180deg, #3c96c5 0%, #4db9af 100%);
+$white-gradient: linear-gradient(
+  90deg,
+  #f5f5f5 0%,
+  rgba(196, 196, 196, 0) 100%
+);
 $lighter-grey: #fafafa;
 $white: #fff;
 

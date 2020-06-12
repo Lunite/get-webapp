@@ -1,6 +1,6 @@
 ---
 title: Operation & Maintenance
-hero_image: breadcrumb10.png
+image_hero: breadcrumb10.png
 block_1:
   heading: End to end service
   description: Our dedicated Operation & Maintenance team has serviced thousands
@@ -15,7 +15,7 @@ block_1:
 
     Maximise power output and investment return and ensure ongoing system safety. Our O&M team offers preventative maintenance scheduling, full system monitoring and control, as well as fault rectification.
   highlight_2: >-
-    ### Stay one step ahead 
+    ### Stay one step ahead
 
 
     Our proactive solutions are based on ensuring savings for power plant owners through a combination of preventive maintenance and high-quality data analysis from the latest software.

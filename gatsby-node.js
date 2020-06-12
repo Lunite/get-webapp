@@ -31,9 +31,81 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(limit: 1000) {
           nodes {
             frontmatter {
+              block_1 {
+                heading
+                description
+                highlight_1
+                highlight_2
+                image_1 {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
+                }
+                image_2 {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
+                }
+              }
+              block_2 {
+                heading
+                description
+                highlight_1
+                highlight_2
+                image_1 {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
+                }
+                image_2 {
+                  childImageSharp {
+                    fluid(maxWidth: 1920) {
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
+                }
+              }
               category
               date(formatString: "DD MMM YYYY")
               description
+              display_image {
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                    srcWebp
+                    srcSetWebp
+                  }
+                }
+              }
               title
               answer
               list {
@@ -63,6 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
               }
+
               image {
                 name
                 publicURL
@@ -140,14 +213,12 @@ exports.createPages = async ({ graphql, actions }) => {
       "service"
     )
 
-    services.forEach(node => {
-      console.log(node)
-
-      // createPage({
-      //   path: `/service${fields.slug}`,
-      //   component: slash(serviceTemplate),
-      //   context: frontmatter,
-      // })
+    services.forEach(({ fields, frontmatter }) => {
+      createPage({
+        path: `/service${fields.slug}`,
+        component: slash(serviceTemplate),
+        context: frontmatter,
+      })
     })
     //-- SERVICE PAGES DONE --//
 

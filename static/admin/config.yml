@@ -78,7 +78,7 @@ collections:
         required: true
         widget: string
       - label: "Hero Image"
-        name: hero_image
+        name: image_hero
         required: true
         widget: image
       - collapsed: false
@@ -110,6 +110,10 @@ collections:
         name: display_image
         required: false
         widget: image
+      - label: "Display Image Caption"
+        name: display_image_caption
+        required: false
+        widget: markdown
       - collapsed: false
         fields:
           - label: Heading
@@ -132,10 +136,18 @@ collections:
             name: image_1
             required: false
             widget: image
+          - label: "Image 1 Caption"
+            name: image_1_caption
+            required: false
+            widget: string
           - label: "Image 2"
             name: image_2
             required: false
             widget: image
+          - label: "Image 2 Caption"
+            name: image_2_caption
+            required: false
+            widget: string
         label: "Block 2"
         name: block_2
         widget: object

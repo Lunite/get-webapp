@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `questions`,
+        name: `images`,
         path: `${__dirname}/static/images`,
       },
     },
@@ -49,7 +49,13 @@ module.exports = {
         path: `${__dirname}/content/questions`,
       },
     },
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `service`,
+        path: `${__dirname}/content/service`,
+      },
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,

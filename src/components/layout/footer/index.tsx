@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
-import Col4 from "~/components/grid/Col4"
+import Col3 from "~/components/grid/Col3"
 import Heading from "~/components/configurable/Heading"
 
 import Logo from "~/vectors/logo.inline.svg"
@@ -37,7 +37,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
     }
 
     return (
-      <Col4>
+      <Col3>
         <Heading className="footer__column-heading">{parentItem.title}</Heading>
         {parentItem.children.map(cItem => {
           if (cItem.slug === "404") {
@@ -46,14 +46,14 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
 
           return (
             <Link
-              key={cItem.slug}
+              key={cItem.path}
               className="footer__item"
               to={cItem.path}
               dangerouslySetInnerHTML={{ __html: cItem.title }}
             />
           )
         })}
-      </Col4>
+      </Col3>
     )
   }
 
@@ -75,7 +75,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
       <div className="footer__middle">
         <div className="container">
           <div className="row">
-            <Col4>
+            <Col3>
               <Heading className="footer__column-heading">GET UK</Heading>
               <div className="footer__item">
                 <span>
@@ -107,7 +107,7 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
                   </a>
                 </span>
               </div>
-            </Col4>
+            </Col3>
             {buildColumn("service")}
             {buildColumn("project")}
             {buildColumn("company")}

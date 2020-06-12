@@ -18,10 +18,6 @@ interface NavItemProps {
   sitemap: any[]
 }
 
-const titleMap = {
-  services: "Services",
-}
-
 const NavItem: FunctionComponent<NavItemProps> = ({ slug, path, sitemap }) => {
   const item = sitemap.find(sItem => sItem.slug === slug)
 
@@ -67,7 +63,7 @@ const NavItem: FunctionComponent<NavItemProps> = ({ slug, path, sitemap }) => {
 
             return (
               <Link
-                key={child.slug}
+                key={child.path}
                 className="navigation-item__child-link"
                 to={child.path}
                 dangerouslySetInnerHTML={{ __html: child.title }}

@@ -68,6 +68,10 @@
       font-size: 24px;
       margin-top: 0;
     }
+
+    & + .footer__item {
+      margin-top: 8px;
+    }
   }
 
   a.footer__item:hover {
@@ -77,6 +81,7 @@
   &__column-heading {
     font-size: 24px;
     font-weight: 500;
+    margin-bottom: 26px;
   }
 
   &__bottom {

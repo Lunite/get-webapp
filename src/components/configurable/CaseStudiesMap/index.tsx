@@ -52,7 +52,7 @@ const CaseStudiesMap = ({
             <Img
               className="project-item__image"
               alt={pData.title}
-              fluid={pImage.childImageSharp.fluid}
+              fluid={{ ...pImage.childImageSharp.fluid, aspectRatio: "1.9" }}
             />
             <Heading className="project-item__title" level={4}>
               <span

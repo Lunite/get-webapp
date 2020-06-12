@@ -1,8 +1,9 @@
 ---
 title: Asset Management
-hero_image: breadcrumb3.png
+image_hero: breadcrumb3.png
 block_1:
-  description: Successful asset management requires the effective coordination of
+  description:
+    Successful asset management requires the effective coordination of
     processes in line with strategic objectives. We provide a full range of
     Asset Management Services, as a package or on their own, to safely maximise
     output and efficiency, ensuring minimal system downtime and smooth operation
