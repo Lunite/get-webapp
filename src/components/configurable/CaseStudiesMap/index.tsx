@@ -30,10 +30,17 @@ const CaseStudiesMap = ({
   const carouselItems = (() => {
     return items
       .filter(
-        node =>
-          node.frontmatter.category === customerType &&
-          node.frontmatter.show_in_case_studies &&
-          (node.frontmatter.image_case_studies || node.frontmatter.image)
+        ({
+          frontmatter: {
+            category,
+            show_in_case_studies,
+            image_case_studies,
+            image,
+          },
+        }) =>
+          category === customerType &&
+          show_in_case_studies &&
+          (image_case_studies?.childImageSharp || image?.childImageSharp)
       )
       .map(node => {
         const pData = {
@@ -43,7 +50,7 @@ const CaseStudiesMap = ({
 
         const pImage = pData.image
 
-        if (!pImage) {
+        if (!pImage?.childImageSharp) {
           return null
         }
 
@@ -52,7 +59,7 @@ const CaseStudiesMap = ({
             <Img
               className="project-item__image"
               alt={pData.title}
-              fluid={{ ...pImage.childImageSharp.fluid, aspectRatio: "1.9" }}
+              fluid={{ ...pImage.childImageSharp.fluid, aspectRatio: 1.9 }}
             />
             <Heading className="project-item__title" level={4}>
               <span
