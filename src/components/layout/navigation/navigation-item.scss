@@ -177,9 +177,18 @@
 
   @media ($mobile) {
     display: block;
+    padding: 8px 0;
 
     &__link {
       line-height: 1;
+
+      &::before {
+        margin-left: 0 !important;
+      }
+    }
+
+    &__arrow {
+      margin-top: 0 !important;
     }
 
     &__children {
@@ -192,8 +201,14 @@
       height: auto;
     }
 
-    &:first-child .navigation-item__link {
-      padding-top: 0;
+    &:first-child {
+      .navigation-item__link {
+        padding-top: 0;
+      }
+
+      .navigation-item__arrow {
+        top: calc(50% - 7px);
+      }
     }
 
     & + .navigation-item {

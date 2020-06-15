@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState } from "react"
 import Footer from "~/components/layout/footer"
 import Navigation from "~/components/layout/navigation"
 import SEO from "~/components/util/SEO"
-import { useSitemap } from "~/hooks/useSitemap"
 import Certificates from "~/components/standalone/Certificates"
 
 import "./styles.scss"
@@ -16,7 +15,6 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
-  const [sitemap, setSitemap] = useState([])
   const [markdownNodes, setMarkdownNodes] = useState([])
   const [imageNodes, setImageNodes] = useState([])
 
@@ -93,14 +91,10 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   if (!allMarkdownRemark?.nodes?.length || !allSitePage?.nodes?.length) {
     return null
   }
-
-  const sm = useSitemap(allSitePage.nodes, allMarkdownRemark.nodes)
-
   useEffect(() => {
-    setSitemap(sm)
     setMarkdownNodes(allMarkdownRemark.nodes)
     setImageNodes(allImageSharp?.nodes)
-  }, [sm, allMarkdownRemark, allImageSharp])
+  }, [allMarkdownRemark, allImageSharp])
 
   /**
    * seoData
@@ -134,16 +128,16 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   return (
     <>
       <SEO {...seoData} />
-      {sitemap.length && markdownNodes.length ? (
+      {markdownNodes.length ? (
         <div className="page-wrapper">
-          <Navigation sitemap={sitemap} />
+          <Navigation />
           <main>
             {React.Children.toArray(children).map(child =>
               React.cloneElement(child, { markdownNodes, imageNodes })
             )}
             <Certificates imageNodes={imageNodes} />
           </main>
-          <Footer sitemap={sitemap} />
+          <Footer />
         </div>
       ) : (
         <></>

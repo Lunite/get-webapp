@@ -5,9 +5,10 @@ import "./styles.scss"
 
 import Burger from "~/vectors/burger.inline.svg"
 import Close from "~/vectors/close.inline.svg"
+import { Link } from "gatsby"
 
 interface BurgerMenuProps {
-  className: string
+  className?: string
 }
 
 const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
@@ -36,7 +37,96 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
         {open && <Close />}
         {!open && <Burger />}
       </div>
-      <div className="burger-menu__items">{children}</div>
+      <div className="burger-menu__items">
+        <div className="navigation-item navigation-item--has-children">
+          <div className="navigation-item__link" data-title="Services">
+            Services
+            <span className="icon icon-fat-arrow navigation-item__arrow"></span>
+          </div>
+          <div className="navigation-item__children">
+            <Link
+              className="navigation-item__child-link"
+              to="/service/asset-management/"
+            >
+              Asset Management
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/service/industrial-commercial-solutions/"
+            >
+              Industrial &amp; Commercial Solutions
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/service/operation-maintenance/"
+            >
+              Operation &amp; Maintenance
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/service/technical-design/"
+            >
+              Technical design
+            </Link>
+          </div>
+        </div>
+        <div className="navigation-item">
+          <Link
+            data-title="Case Studies"
+            className="navigation-item__link"
+            to="/projects"
+          >
+            Case Studies
+          </Link>
+        </div>
+        <div className="navigation-item navigation-item--has-children">
+          <div className="navigation-item__link" data-title="Company">
+            Company
+            <span className="icon icon-fat-arrow navigation-item__arrow"></span>
+          </div>
+          <div className="navigation-item__children">
+            <Link className="navigation-item__child-link" to="/contact-us">
+              Contact Us
+            </Link>
+            <Link
+              aria-current="page"
+              className="navigation-item__child-link"
+              to="/faq"
+            >
+              Support and FAQ
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/for-your-business"
+            >
+              For Your Business
+            </Link>
+            <Link className="navigation-item__child-link" to="/quote">
+              Get a Quote
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/products-warranties"
+            >
+              Products &amp; Warranties
+            </Link>
+            <Link className="navigation-item__child-link" to="/projects">
+              Case Studies
+            </Link>
+            <Link className="navigation-item__child-link" to="/about-us/">
+              About Us
+            </Link>
+            <Link className="navigation-item__child-link" to="/privacy">
+              Privacy
+            </Link>
+          </div>
+        </div>
+        <div className="navigation-item navigation-item--shout">
+          <Link className="navigation-item__link" to="/quote">
+            Get a Quote
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
