@@ -4,9 +4,66 @@
   .house-illustration {
     margin-top: $space;
     margin-bottom: $space-m;
+
+    &__pulsing-energy-transfer {
+      animation: pulsingEnergyTransfer 2.2s $transition-timing-function infinite;
+      animation-delay: 1.2s;
+    }
+
+    &__sun {
+      transform-origin: 65% 15%;
+      animation: sun 2.2s $transition-timing-function infinite;
+
+      &.sun--outer {
+        animation-delay: 0.5s;
+      }
+      &.sun--middle {
+        animation-delay: 0.3s;
+      }
+    }
   }
 
   h3 {
     color: $light-blue;
+  }
+}
+
+@keyframes pulsingEnergyTransfer {
+  0% {
+    stroke-width: 7px;
+  }
+
+  50% {
+    stroke-width: 1px;
+  }
+
+  100% {
+    stroke-width: 7px;
+  }
+}
+
+@keyframes sun {
+  0% {
+    transform: scale(1);
+  }
+
+  8% {
+    transform: scale(0.92);
+  }
+
+  15% {
+    transform: scale(0.88);
+  }
+
+  20% {
+    transform: scale(1.3);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
