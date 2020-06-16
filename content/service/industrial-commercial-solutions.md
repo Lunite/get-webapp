@@ -20,10 +20,13 @@ block_1:
   image_1: broadoak5.jpg
   image_2: solar-panels-on-day-surgerythumb.png
 display_image: breadcrumb20.png
+display_image_caption: |-
+  ### Bay Solar Farm Design
+
+  Design and Installation by Green Energy Together
 block_2:
   heading: Our process
-  description:
-    "Our commercial solar consultants conduct a full assessment of your
+  description: "Our commercial solar consultants conduct a full assessment of your
     facility’s electricity consumption profile, including your current and
     future electricity tariffs, and take into consideration the suitability of
     your business for commercial solar power. "
