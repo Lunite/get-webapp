@@ -119,10 +119,10 @@
     background-color: $green;
 
     @media ($mobile) {
-      position: sticky;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: fixed;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
       padding: 15px;
       border-radius: 2px;
       text-align: center;
