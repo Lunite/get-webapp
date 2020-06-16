@@ -27,6 +27,22 @@ const Animate: FunctionComponent<AnimateProps> = ({
     }
   }
 
+  const animateChildren = (() => {
+    return React.Children.toArray(children).map((child, cIndex) => {
+      const childClassName = child.props.className || ""
+
+      return React.cloneElement(child, {
+        className: `${childClassName} animate animate--${uID} ${
+          visible ? "animate--end" : ""
+        }`,
+        style: {
+          transitionDelay: delay,
+          transitionProperty: properties.join(", "),
+        },
+      })
+    })
+  })()
+
   return (
     <>
       <style
@@ -43,15 +59,7 @@ const Animate: FunctionComponent<AnimateProps> = ({
       />
 
       <VizSensor partialVisibility onChange={changeHandler}>
-        <div
-          className={`animate animate--${uID} ${visible ? "animate--end" : ""}`}
-          style={{
-            transitionDelay: delay,
-            transitionProperty: properties.join(", "),
-          }}
-        >
-          {children}
-        </div>
+        {animateChildren[0]}
       </VizSensor>
     </>
   )
