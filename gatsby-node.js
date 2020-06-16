@@ -184,13 +184,13 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         projects,
         title: "Case Studies",
-        seo_title:
-          "Case Studies | Green Energy Together | Solar Panel Installer",
         slug: "projects",
         acf: {
           seo: {
             description: "",
             keywords: "",
+            seo_title:
+              "Case Studies | Green Energy Together | Solar Panel Installer",
           },
         },
       },
@@ -224,26 +224,26 @@ exports.createPages = async ({ graphql, actions }) => {
 
     //-- BLOG ITEM PAGES --//
     const blogItemTemplate = path.resolve("./src/templates/blog/item/index.tsx")
-    // const blogTemplate = path.resolve("./src/templates/blog/index.tsx")
+    const blogTemplate = path.resolve("./src/templates/blog/index.tsx")
 
     const blogItems = filterResults(result.data.allMarkdownRemark.nodes, "blog")
 
-    // createPage({
-    //   path: `/blog`,
-    //   component: slash(blogTemplate),
-    //   context: {
-    //     blogItems,
-    //     title: "Blog",
-    //     seo_title: "Blog | Green Energy Together | Solar Panel Installer",
-    //     slug: "blog",
-    //     acf: {
-    //       seo: {
-    //         description: "",
-    //         keywords: "",
-    //       },
-    //     },
-    //   },
-    // })
+    createPage({
+      path: `/blog`,
+      component: slash(blogTemplate),
+      context: {
+        blogItems,
+        title: "Blog",
+        slug: "blog",
+        acf: {
+          seo: {
+            seo_title: "Blog | Green Energy Together | Solar Panel Installer",
+            description: "",
+            keywords: "",
+          },
+        },
+      },
+    })
 
     blogItems.forEach(node => {
       createPage({
