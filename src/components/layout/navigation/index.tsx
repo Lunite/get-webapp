@@ -84,11 +84,11 @@ const Navigation: FunctionComponent<any> = () => {
           </Link>
         </div>
       </div>
-      <div className="navigation-item">
+      {/* <div className="navigation-item">
         <Link className="navigation-item__link" to="/blog">
           Blog
         </Link>
-      </div>
+      </div> */}
       <div className="navigation-item navigation-item--shout">
         <Link className="navigation-item__link" to="/quote">
           Get a Quote
