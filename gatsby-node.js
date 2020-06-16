@@ -312,7 +312,11 @@ exports.createPages = async ({ graphql, actions }) => {
           title: page.title,
           slug: page.slug,
           acf: {
-            seo: ({ keywords, description } = page),
+            seo: {
+              seo_title: page.seo_title,
+              keywords: page.keywords,
+              description: page.description,
+            },
           },
         },
       })

@@ -104,7 +104,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     let title, slug, image
 
     // title and slug always come from the context
-    title = context.seo_title || context.title || ""
+    title = context.acf?.seo?.seo_title || context.title || ""
     slug = context.slug || ""
 
     if (!context?.acf?.seo) {
