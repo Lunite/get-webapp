@@ -86,16 +86,14 @@
     transform: translateX(0);
     transition: transform #{$fast-transition};
 
-    &:not(:first-child) {
-      padding: 15px 15px 15px 0;
-    }
-
     @media ($mobile) {
+      padding: 15px 12px;
       border-top: 1px solid rgba(60, 150, 197, 0.2);
     }
 
     @media ($phablet) {
-      & + .navigation-item__child-link {
+      &:not(:first-child) {
+        padding: 15px 15px 15px 0;
         border-top: 1px solid rgba(60, 150, 197, 0.2);
       }
 
