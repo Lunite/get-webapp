@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
@@ -208,11 +209,10 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
 
                   return (
                     <li key={item.fields.slug}>
-                      {pwItem.image?.publicURL && (
-                        <Image
-                          className="grid-item__image"
-                          src={pwItem.image?.publicURL}
-                          title={pwItem.image?.title || ""}
+                      {pwItem.image?.childImageSharp && (
+                        <Img
+                          fluid={pwItem.image.childImageSharp.fluid}
+                          alt={pwItem.title}
                         />
                       )}
                       <div
