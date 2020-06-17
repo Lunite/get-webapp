@@ -1,7 +1,8 @@
 ---
+image_hero: breadcrumb17.jpg
 hero_title: The Electric Revolution
 list:
-  image: breadcrumb17.jpg
+  image: telemmglpict000223668895_trans_nvbqzqnjv4bqjjo5k0omu92glp5v4dw_lgqehlkk9lgwjp6hd3g9bh4.jpg
   intro: "At the height of the coronavirus lockdown, with roads empty, global
     pollution levels plummeted. That just underlines the damage that traditional
     petrol and diesel vehicles are doing to the planet. "
