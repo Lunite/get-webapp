@@ -28,7 +28,7 @@ const HomepageB2b = ({ markdownNodes }) => {
   return (
     <div className="homepage-b2b">
       <Banner className="banner--covid-19">
-        <Link to="/blog/covid-19">Click here to read our COVID-19 plan</Link>
+        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
       </Banner>
       <Hero
         className="homepage__hero"
