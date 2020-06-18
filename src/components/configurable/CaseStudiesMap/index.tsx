@@ -23,6 +23,25 @@ const CaseStudiesMap = ({
 }) => {
   const items = markdownNodesFilter(markdownNodes, "project")
 
+  // these relate to the dots in the map. This is how the dot selected for a project is linked to the dot on the map
+  const mapDots = {
+    "Ireland: South East": "seIreland",
+    "Ireland: South West": "swIreland",
+    "Scotland: Highlands": "hScotland",
+    "Scotland: South East": "seScotland",
+    "Wales: North": "nWales",
+    "London: North": "nLondon",
+    "London: West": "wLondon",
+    "London: South": "sLondon",
+    "Midlands: North": "nMidlands",
+    "Midlands: South": "sMidlands",
+    Cornwall: "cornwall",
+    Devon: "devon",
+    "England: North East": "neEngland",
+    "England: East": "eEngland",
+    "England: South East": "seEngland",
+  }
+
   if (!items?.length) {
     return null
   }
