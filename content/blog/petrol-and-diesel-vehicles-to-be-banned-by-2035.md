@@ -11,9 +11,9 @@ date: 2020-06-17T08:21:07.043Z
 show_quote_block: false
 seo:
   title: The Electric Revolution | Blog | Green Energy Together
-  description: At the height of the coronavirus lockdown, with roads empty, global
-    pollution levels plummeted. However, the move to eco-friendly driving leaves
-    three main issues still to be solved.
+  description: At the height of the coronavirus lockdown, global pollution levels
+    plummeted. However, the move to eco-friendly driving leaves three main
+    issues to be solved.
   keywords: "The Electric Revolution — Petrol and Diesel Vehicles to Be Banned by 2035 "
 ---
 The Electric Car Revolution 
