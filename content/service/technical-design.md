@@ -3,8 +3,7 @@ title: Technical design
 image_hero: breadcrumb17.jpg
 block_1:
   heading: A strong foundation
-  description:
-    Design and drafting is a critical aspect of successful engineering
+  description: Design and drafting is a critical aspect of successful engineering
     projects, including solar energy. At Green Energy Together, we offer our
     expert technical solutions to the solar market on a consultancy basis, and
     our design professionals provide their extensive services for projects large
@@ -41,7 +40,9 @@ block_2:
   image_1: grange.jpg
   image_2: construction.jpg
 seo:
-  title: "Technical design solar panels "
-  description: Technical design solar panels
+  title: Technical Design | Green Energy Together | Solar Panel Installer
+  description: We offer our expert technical solutions to the solar market on a
+    consultancy basis, and our design professionals provide their extensive
+    services.
   keywords: "Technical design solar panels "
 ---
