@@ -16,6 +16,8 @@ info_strip:
   output: 3.3kW and 5kW Battery
   system: Roofmount
 seo:
-  description: Domestic installation Green Energy Together
+  description: '"It really made a difference to our bills". Read more here about
+    what Mr Jones had to say about our solar panel installation service.'
   keywords: Domestic installation Green Energy Together
+  title: Mr Jones Testimonial | Green Energy Together | Solar Panel Installer
 ---
