@@ -17,7 +17,9 @@ info_strip:
   map_url: https://drive.google.com/open?id=1V5DENc25qfujUrm4z1NZ_EDNyPNpWCep&usp=sharing
   location: Podington, Bedfordshire
 seo:
-  title: Clapham Solar Farm
-  description: Clapham Solar Farm
+  title: Clapham Solar Farm | Green Energy Together | Solar Panel Installer
+  description: Complete design, installation, commissioning and connection of the
+    entire solar installation including all HV and LV Works at Clapham Solar
+    Farm.
   keywords: Clapham Solar Farm
 ---
