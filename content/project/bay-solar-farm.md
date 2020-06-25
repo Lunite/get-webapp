@@ -22,8 +22,9 @@ info_strip:
   output: 8,128 KW
   system: Groundmount installation
 seo:
-  description: Complete design, installation, commissioning and connection of the
-    entire solar installation including all HV and LV works site wide. The
-    installation was connected and registered prior to March 31st 2014.
+  description: Bay Solar Farm. Complete design, installation, commissioning and
+    connection of the entire solar installation including all HV and LV works
+    site wide.
   keywords: solar, commercial, suffolk
+  title: Bay Solar Farm | Green Energy Together | Solar Panel Installer
 ---
