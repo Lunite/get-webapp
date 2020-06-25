@@ -17,6 +17,9 @@ info_strip:
   output: 8.525kW and 3.68kW Battery
   system: Storage and PV System
 seo:
-  description: Domestic installation Green Energy Together
+  description: '"I am very pleased with the overall experience". Read more here
+    about what Mr Wakefield had to say about our solar panel installation
+    service.'
   keywords: "domestic solar panels sevenoaks kent "
+  title: Mr Wakefield Testimonial | Green Energy Together | Solar Panel Installer
 ---
