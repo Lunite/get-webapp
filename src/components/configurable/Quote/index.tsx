@@ -1,26 +1,36 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent, useState, useEffect } from "react"
 import { navigate } from "gatsby"
-import Heading from "~/components/configurable/Heading"
-import BlockCTA from "~/components/configurable/BlockCTA"
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+import Heading from "../Heading"
+import BlockCTA from "../BlockCTA"
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 import "./styles.scss"
+
+const postcodeRegex = new RegExp(
+  "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+)
 
 const Quote: FunctionComponent<any> = ({
   title = "Get a quote today.",
   description = "It only takes 2 minutes to request a no-obligation quote, customised to you and your home's needs. Don't miss the chance to win your solar PV system for FREE.",
   ctaText = "Request Quote",
-  compact = false,
 }) => {
-  const [submitted, setSubmitted] = useState(false)
-  const formState = {}
+  const [postcode, setPostcode] = useState("")
+  const [valid, setValid] = useState(true)
 
-  const handleInputChange = event => {
-    formState[event.target.name] = event.target.value
-  }
+  useEffect(() => {
+    if (postcodeRegex.test(postcode)) {
+      setValid(true)
+    } else {
+      setValid(false)
+    }
+  }, [postcode])
 
   const handleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
+    if (!valid || postcode === "") {
+      return 1
+    }
 
     const eventData = {
       category: "Form",
@@ -29,31 +39,13 @@ const Quote: FunctionComponent<any> = ({
       // value: 0 // optional
     }
 
-    trackCustomEvent(eventData);
+    trackCustomEvent(eventData)
 
     window.dataLayer = window.dataLayer || []
 
-    if (compact) {
-      setSubmitted(true)
-    }
-
-    const form = event.target
-    const data = new FormData(form)
-    const xhr = new XMLHttpRequest()
-    xhr.open(form.method, form.action)
-    xhr.setRequestHeader("Accept", "application/json")
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return
-      }
-    }
-    xhr.send(data)
-
-    if (!compact) {
-      return navigate("/quote", {
-        state: formState,
-      })
-    }
+    return navigate("/quote", {
+      state: postcode,
+    })
   }
 
   return (
@@ -62,53 +54,33 @@ const Quote: FunctionComponent<any> = ({
       <p>{description}</p>
       <form
         className="form form--horizontal"
-        action="https://formspree.io/mbjzlwgw"
-        method="POST"
         name="quote-block"
         onSubmit={handleSubmit}
       >
-        <div
-          className="form__inner"
-          style={{ filter: submitted ? "blur(40px)" : "blur(0px)" }}
-        >
+        <div className="form__inner" style={{ filter: "blur(0px)" }}>
           <div className="form__fields">
             <input
               className="form__text-input"
               type="text"
-              placeholder="Full name"
-              name="name"
-              onChange={handleInputChange}
+              placeholder="Enter your postcode..."
+              name="postcode"
+              value={postcode}
+              onChange={e => {
+                setPostcode(e.target.value.toUpperCase())
+              }}
             />
-            <input
-              className="form__text-input"
-              type="email"
-              placeholder="Email"
-              name="email"
-              onChange={handleInputChange}
-            />
-            <input
-              className="form__text-input"
-              type="tel"
-              placeholder="Phone"
-              name="phone"
-              onChange={handleInputChange}
-            />
+            <p
+              className="error-text"
+              style={{ opacity: valid || postcode === "" ? "0" : "1" }}
+            >
+              Please enter a valid postcode
+            </p>
           </div>
           <div className="form__actions">
             <BlockCTA submit inline>
               {ctaText}
             </BlockCTA>
           </div>
-        </div>
-        <div
-          className="form__submitted-text"
-          style={
-            submitted
-              ? { opacity: 1, pointerEvents: "all" }
-              : { opacity: 0, pointerEvents: "none" }
-          }
-        >
-          <Heading level={5}>Thank you. We will be in touch</Heading>
         </div>
       </form>
     </div>

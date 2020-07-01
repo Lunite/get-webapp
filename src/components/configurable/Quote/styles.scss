@@ -18,6 +18,13 @@
 
   .form {
     margin-top: 32px;
+
+    .error-text {
+      font-size: small;
+      margin-top: 0px;
+      margin-left: 18px;
+      color: red;
+    }
   }
 
   @media ($mobile) {
