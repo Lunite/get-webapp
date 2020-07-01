@@ -61,6 +61,7 @@ const Quote: FunctionComponent<any> = ({
           <div className="form__fields">
             <input
               className="form__text-input"
+              id="postcode-input"
               type="text"
               placeholder="Enter your postcode..."
               name="postcode"

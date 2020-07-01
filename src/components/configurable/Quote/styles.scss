@@ -24,6 +24,11 @@
       margin-top: 0px;
       margin-left: 18px;
       color: red;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    #postcode-input {
+      margin-bottom: 0px;
     }
   }
 
