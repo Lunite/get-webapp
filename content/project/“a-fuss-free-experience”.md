@@ -16,6 +16,8 @@ info_strip:
   output: 2.2kW and 2.5kW battery
   system: Storage and PV System
 seo:
-  description: Domestic installation Green Energy Together
+  description: '"I was happy with the efficiency of the service". Read more here
+    about what Mrs Neil had to say about our solar panel installation service.'
   keywords: domestic solar panels Norwich Norfolk
+  title: Mrs Neil Testimonial | Green Energy Together | Solar Panel Installer
 ---

@@ -20,7 +20,9 @@ info_strip:
   map_url: https://drive.google.com/open?id=1sqJ48ZamjfgYOEX30CByTJEjYeArayMe&usp=sharing
   system: Rooftop installation
 seo:
-  title: Broad Oak Farm
-  description: Broad Oak Farm solar panels
+  title: Broad Oak Farm | Green Energy Together | Solar Panel Installer
+  description: The scope of the Installation included complete design,
+    installation, commissioning and connection of the entire PV System by our
+    team.
   keywords: Broad Oak Farm solar panels
 ---

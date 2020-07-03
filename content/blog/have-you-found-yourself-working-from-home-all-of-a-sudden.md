@@ -9,8 +9,10 @@ title: "Have you found yourself working from home all of a sudden? "
 date: 2020-03-23T14:37:33.320Z
 show_quote_block: false
 seo:
-  title: 7 Tips to Reduce Energy Usage at Home
-  description: 7 Tips to Reduce Energy Usage at Home
+  title: 7 Tips to Reduce Energy Usage at Home | Blog | Green Energy Together
+  description: Everyone's telling you to reduce your energy usage at home, but how
+    do you do that, short of living in a cabin in the woods with no power
+    connections?
   keywords: 7 Tips to Reduce Energy Usage at Home
 ---
 Everyone's telling you to reduce your energy usage at home, but how do you do that, short of living in a cabin in the woods with no power connections? And, even if you knew how, could you afford to make the changes? In fact, there are several very simple steps you can take and far from being expensive, they'll actually save you money, as well as contributing to saving the planet. Here are some energy-saving tips, but remember, solar panels which harvest energy from the sun and turn it into electricity, will always be one of your best options.

@@ -2,8 +2,7 @@
 title: Asset Management
 image_hero: breadcrumb3.png
 block_1:
-  description:
-    Successful asset management requires the effective coordination of
+  description: Successful asset management requires the effective coordination of
     processes in line with strategic objectives. We provide a full range of
     Asset Management Services, as a package or on their own, to safely maximise
     output and efficiency, ensuring minimal system downtime and smooth operation
@@ -22,7 +21,9 @@ block_1:
   image_2: clapham_3.jpg
   heading: Experts on your side
 seo:
-  title: Asset Management solar panels
-  description: Asset Management solar panels
-  keywords: Asset Management solar panels
+  title: Asset Management | Green Energy Together | Solar Panel Installer
+  description: We provide a full range of services to safely maximise output and
+    efficiency, ensuring minimal system downtime and smooth operation at all
+    times.
+  keywords: Asset Management
 ---

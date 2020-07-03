@@ -18,6 +18,9 @@ info_strip:
   system: Rooftoop installation
   map_url: https://drive.google.com/open?id=1aiD49jlcVOLGd4pvFJqP8eS-KGd-l6O1&usp=sharing
 seo:
-  description: Moss Electrical solar panels
+  description: Our team was delighted to design and install a bespoke solar PV
+    system at the Dartford warehouse, featuring the company’s logo in an array
+    of panels.
   keywords: Moss Electrical
+  title: Moss Electrical | Green Energy Together | Solar Panel Installer
 ---

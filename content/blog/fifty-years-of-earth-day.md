@@ -3,16 +3,17 @@ image_hero: breadcrumb17.jpg
 hero_title: Blog
 list:
   image: blogim2.jpg
-  intro: On 22nd April 2020, the world will be celebrating its fiftieth Earth
-    Day — and not even the Coronavirus lockdown can stop that. Although the
-    usual mass gatherings are out, for the first time Earth Day is going
-    digital.
+  intro: On 22nd April 2020, the world will be celebrating its fiftieth Earth Day
+    — and not even the Coronavirus lockdown can stop that. Although the usual
+    mass gatherings are out, for the first time Earth Day is going digital.
 title: Fifty Years of Earth Day
 date: 2020-04-14T11:28:23.910Z
 show_quote_block: false
 seo:
-  title: Fifty Years of Earth Day
-  description: Fifty Years of Earth Day
+  title: Fifty Years of Earth Day | Green Energy Together | Solar Panel Installer
+  description: On 22nd April 2020, the world will be celebrating its fiftieth
+    Earth Day. Although the usual mass gatherings are out, for the first time
+    Earth Day is going digital.
   keywords: Fifty Years of Earth Day
 ---
 

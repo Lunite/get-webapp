@@ -16,6 +16,9 @@ info_strip:
   output: 5.775kW and 7.5kW Battery
   system: Roofmount
 seo:
-  description: Domestic installation Green Energy Together
+  description: '"I am impressed by the efficiency of the installation". Read more
+    here about what Mr Farcasan had to say about our solar panel installation
+    service.'
   keywords: Domestic installation Green Energy Together
+  title: Mr Farcasan Testimonial | Green Energy Together | Solar Panel Installer
 ---

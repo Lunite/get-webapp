@@ -22,7 +22,9 @@ block_1:
   image_1: bay9.jpg
   image_2: clapham_2.jpg
 seo:
-  title: Operation & Maintenance solar panels
-  description: Operation & Maintenance solar panels
+  title: Operation & Maintenance | Green Energy Together | Solar Panel Installer
+  description: We have serviced thousands of systems, including private homes,
+    social housing, commercial businesses and large-scale grounded¬ mount solar
+    farms.
   keywords: Operation & Maintenance solar panels
 ---

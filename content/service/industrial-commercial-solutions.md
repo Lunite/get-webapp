@@ -50,7 +50,8 @@ block_2:
   image_1: moss1.png
   image_2: kings-college-london.jpg
 seo:
-  title: Industrial & Commercial Solutions
-  description: Industrial & Commercial Solutions
+  title: Industrial & Commercial | Green Energy Together | Solar Panel Installer
+  description: Our experience covers landfill, brownfield, greenfield, commercial
+    and industrial rooftops, and a number of historic British landmarks.
   keywords: Industrial & Commercial Solutions
 ---

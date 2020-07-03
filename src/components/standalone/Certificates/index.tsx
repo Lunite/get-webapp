@@ -66,7 +66,7 @@ const Certificates = ({ imageNodes }) => {
           }}
         >
           <p>
-            *All works carried out by the Green Energy Together brand operate
+            *All works carried out by Green Energy Together Limited operate
             under Solarplicity Smart Systems registration NAPIT 30902 and MCS
             NAP30902.
           </p>

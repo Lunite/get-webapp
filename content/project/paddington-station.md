@@ -23,8 +23,8 @@ info_strip:
   inverters: Power One PV
   modules: Cenergy PA
 seo:
-  description: Paddington, also known as London Paddington, is a Central London
-    railway terminus and London Underground station complex, located on Praed
-    Street in the Paddington area.
+  description: Our team was honoured to be trusted with the installation of the
+    whole London Paddington Station PV system and all labour required.
   keywords: paddington, london, solar, commercial
+  title: Paddington Station | Green Energy Together | Solar Panel Installer
 ---
