@@ -25,21 +25,81 @@ const CaseStudiesMap = ({
 
   // these relate to the dots in the map. This is how the dot selected for a project is linked to the dot on the map
   const mapDots = {
-    "Ireland: South East": "seIreland",
-    "Ireland: South West": "swIreland",
-    "Scotland: Highlands": "hScotland",
-    "Scotland: South East": "seScotland",
-    "Wales: North": "nWales",
-    "London: North": "nLondon",
-    "London: West": "wLondon",
-    "London: South": "sLondon",
-    "Midlands: North": "nMidlands",
-    "Midlands: South": "sMidlands",
-    Cornwall: "cornwall",
-    Devon: "devon",
-    "England: North East": "neEngland",
-    "England: East": "eEngland",
-    "England: South East": "seEngland",
+    "Ireland: South East": {
+      alias: "seIreland",
+      x: 147.839,
+      y: 499.482,
+    },
+    "Ireland: South West": {
+      alias: "swIreland",
+      x: 59.3246,
+      y: 528.119,
+    },
+    "Scotland: Highlands": {
+      alias: "hScotland",
+      x: 217.263,
+      y: 180.135,
+    },
+    "Scotland: South East": {
+      alias: "seScotland",
+      x: 330.943,
+      y: 299.022,
+    },
+    "Wales: North": {
+      alias: "nWales",
+      x: 287.553,
+      y: 482.994,
+    },
+    "London: North": {
+      alias: "nLondon",
+      x: 412.515,
+      y: 562.83,
+    },
+    "London: West": {
+      alias: "wLondon",
+      x: 389.084,
+      y: 580.186,
+    },
+    "London: South": {
+      alias: "sLondon",
+      x: 389.084,
+      y: 580.186,
+    },
+    "Midlands: North": {
+      alias: "nMidlands",
+      x: 348.298,
+      y: 471.712,
+    },
+    "Midlands: South": {
+      alias: "sMidlands",
+      x: 377.803,
+      y: 489.936,
+    },
+    Cornwall: {
+      alias: "cornwall",
+      x: 246.767,
+      y: 653.08,
+    },
+    Devon: {
+      alias: "devon",
+      x: 260.651,
+      y: 610.559,
+    },
+    "England: North East": {
+      alias: "neEngland",
+      x: 380.407,
+      y: 388.405,
+    },
+    "England: East": {
+      alias: "eEngland",
+      x: 485.409,
+      y: 518.573,
+    },
+    "England: South East": {
+      alias: "seEngland",
+      x: 478.467,
+      y: 603.617,
+    },
   }
 
   if (!items?.length) {
