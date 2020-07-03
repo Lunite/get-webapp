@@ -2,6 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
+import Map from "~/components/configurable/Map"
 
 import AwesomeSlider from "react-awesome-slider"
 import withAutoplay from "react-awesome-slider/dist/autoplay"
@@ -62,8 +63,8 @@ const CaseStudiesMap = ({
     },
     "London: South": {
       alias: "sLondon",
-      x: 389.084,
-      y: 580.186,
+      x: 415.986,
+      y: 589.732,
     },
     "Midlands: North": {
       alias: "nMidlands",
@@ -101,6 +102,8 @@ const CaseStudiesMap = ({
       y: 603.617,
     },
   }
+
+  const mapDotsArray = Object.keys(mapDots).map(key => mapDots[key])
 
   if (!items?.length) {
     return null
@@ -197,7 +200,7 @@ const CaseStudiesMap = ({
     <div className="case-studies-map">
       <div className="row">
         <Col6>
-          <UKMap />
+          <Map dots={mapDotsArray} />
         </Col6>
         <Col6>
           {/* This hidden element ensures the carousel is the correct height */}

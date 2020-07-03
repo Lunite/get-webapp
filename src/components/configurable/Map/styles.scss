@@ -1,0 +1,11 @@
+@import "~/styles/_variables.scss";
+
+.dot {
+  cursor: pointer;
+  fill: $dark-blue;
+
+  &--active {
+    &::before {
+    }
+  }
+}
