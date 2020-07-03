@@ -5,13 +5,11 @@ import "./styles.scss"
 
 interface MapProps {
   dots: { alias: string; x: number; y: number }[]
-  onSelect?: Function
-  activeDot?: string
+  onSelect: Function
+  activeDot: string
 }
 
 const Map: React.FC<MapProps> = ({ dots, onSelect, activeDot }) => {
-  console.log(dots)
-
   return (
     <svg
       className="map"
@@ -30,17 +28,37 @@ const Map: React.FC<MapProps> = ({ dots, onSelect, activeDot }) => {
 
       <g className="map__dots">
         {dots.map(dot => (
-          <circle
-            cx={dot.x}
-            cy={dot.y}
-            r="6.94231"
+          <g
             className={`dot dot--${dot.alias} ${
               activeDot === dot.alias ? "dot--active" : ""
             }`}
-            onClick={() => {
-              onSelect(dot.alias)
-            }}
-          />
+          >
+            <circle
+              className="dot__outer"
+              cx={dot.x}
+              cy={dot.y}
+              r="6.94231"
+              fillOpacity="0.5"
+            />
+
+            <circle
+              className="dot__middle"
+              cx={dot.x}
+              cy={dot.y}
+              r="6.94231"
+              fillOpacity="0.5"
+            />
+
+            <circle
+              cx={dot.x}
+              cy={dot.y}
+              r="6.94231"
+              className="dot__inner"
+              onClick={() => {
+                onSelect(dot.alias)
+              }}
+            />
+          </g>
         ))}
       </g>
     </svg>

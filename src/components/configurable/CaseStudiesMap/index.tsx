@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
@@ -22,6 +22,7 @@ const CaseStudiesMap = ({
   customerType: "domestic" | "commercial"
   markdownNodes: any[]
 }) => {
+  const [activeDot, setActiveDot] = useState("")
   const items = markdownNodesFilter(markdownNodes, "project")
 
   // these relate to the dots in the map. This is how the dot selected for a project is linked to the dot on the map
@@ -101,6 +102,10 @@ const CaseStudiesMap = ({
       x: 478.467,
       y: 603.617,
     },
+  }
+
+  const onDotSelect = dotAlias => {
+    setActiveDot(dotAlias)
   }
 
   const mapDotsArray = Object.keys(mapDots).map(key => mapDots[key])
@@ -200,7 +205,11 @@ const CaseStudiesMap = ({
     <div className="case-studies-map">
       <div className="row">
         <Col6>
-          <Map dots={mapDotsArray} />
+          <Map
+            dots={mapDotsArray}
+            activeDot={activeDot}
+            onSelect={onDotSelect}
+          />
         </Col6>
         <Col6>
           {/* This hidden element ensures the carousel is the correct height */}
