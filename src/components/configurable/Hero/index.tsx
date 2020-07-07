@@ -40,7 +40,7 @@ const Hero: FunctionComponent<HeroProps> = ({
           endValues={["1", "translateY(0) rotate(0deg)"]}
           delay="0s"
         >
-          {children}
+          <>{children}</>
         </Animate>
       </div>
       <div className="hero__video">
