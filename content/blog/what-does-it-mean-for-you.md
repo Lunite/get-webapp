@@ -11,14 +11,9 @@ date: 2020-07-10T08:17:28.822Z
 show_quote_block: false
 seo:
   title: Green Home Voucher Scheme | Green Energy Together | Solar Panel Installer
-  description: >-
-    The Green Home Voucher Scheme — What Does It Mean for You?
-
-
-    Homeowners in 2020 are facing a double energy challenge. Perhaps your income has reduced during the lockdown, making it more imperative than ever to find ways of reducing your bills. At the same time, it's becoming harder than ever to ignore the damage that climate change is doing to the planet, and household energy plays a significant role in this.
-
-
-    So it's both welcome and timely that the government has just announced the Green Homes Grant voucher scheme, designed to reduce the impact of both challenges.
+  description: The government announced this week that £2 billion has been
+    assigned to Green Home Grants voucher scheme, allowing homeowners to have
+    energy-saving measures substantially funded - including Solar.
   keywords: Green Home Voucher Scheme green energy
 ---
 Homeowners in 2020 are facing a double energy challenge. Perhaps your income has reduced during the lockdown, making it more imperative than ever to find ways of reducing your bills. At the same time, it's becoming harder than ever to ignore the damage that climate change is doing to the planet, and household energy plays a significant role in this.
