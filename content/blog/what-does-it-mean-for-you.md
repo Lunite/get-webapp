@@ -6,7 +6,7 @@ list:
     income has reduced during the lockdown, making it more imperative than ever
     to find ways of reducing your bills. "
   image: green_house_energy_eco_home_climate-7645.jpg
-title: What Does It Mean for You?
+title: What Does It Mean for You
 date: 2020-07-10T08:17:28.822Z
 show_quote_block: false
 seo:
