@@ -133,9 +133,9 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
               </Link>
             </Col3>
             <Col3>
-              <Heading className="footer__column-heading">Use Cases</Heading>
+              <Heading className="footer__column-heading">Case studies</Heading>
               <Link className="footer__item" to="/projects">
-                All use cases
+                All case studies
               </Link>
               <Link className="footer__item" to="/project/paddington-station">
                 Paddington
