@@ -2,15 +2,9 @@
 image_hero: breadcrumb17.jpg
 hero_title: The Green Home Voucher Scheme
 list:
-  intro: >-
-    Homeowners in 2020 are facing a double energy challenge. Perhaps your income
-    has reduced during the lockdown, making it more imperative than ever to find
-    ways of reducing your bills. At the same time, it's becoming harder than
-    ever to ignore the damage that climate change is doing to the planet, and
-    household energy plays a significant role in this.
-
-
-    So it's both welcome and timely that the government has just announced the Green Homes Grant voucher scheme, designed to reduce the impact of both challenges.
+  intro: "Homeowners in 2020 are facing a double energy challenge. Perhaps your
+    income has reduced during the lockdown, making it more imperative than ever
+    to find ways of reducing your bills. "
   image: green_house_energy_eco_home_climate-7645.jpg
 title: What Does It Mean for You?
 date: 2020-07-10T08:17:28.822Z
@@ -31,13 +25,13 @@ Homeowners in 2020 are facing a double energy challenge. Perhaps your income has
 
 So it's both welcome and timely that the government has just announced the Green Homes Grant voucher scheme, designed to reduce the impact of both challenges.
 
-The Double Energy Challenge
+## The Double Energy Challenge
 
 In recent months, we've seen alarming signs that global climate change is beginning to bite. From abnormal storms to some of Australia's biggest ever bushfires, unusual events are becoming everyday occurances. Record high temperatures have been recorded in arctic Siberia, while it's been predicted that we could be soon passing the ominous 1.5oC global rise in global temperatures.
 
 A significant amount of this could be prevented by cutting the average home's carbon footprint. At the same time, these measures would slash energy bills — it's been estimated that a household could save up to £600 per year simply by insulating the building efficiently.
 
-Green Home Vouchers
+## Green Home Vouchers
 
 The problem has always been the initial outlay, even though it's likely to pay for itself many times over. That's why on Tuesday the government announced that £2 billion has been assigned to Green Home Grants voucher scheme, allowing homeowners to have energy-saving measures substantially funded.
 
@@ -45,7 +39,7 @@ From September, anyone with a quote for measures such as home insulation or doub
 
 This isn't a bottomless purse, though, and experts have warned the £2 billion could be quickly gone. This means that, even though you can't apply for a grant until September, it would be as well to start making preparations now, so you can get in early.
 
-Does the Grant Include Solar?
+## Does the Grant Include Solar?
 
 No announcement has been made yet about exactly what measures will be covered by the grants, although insulation and double-glazing have been given as examples. It would certainly make sense to include converting to solar, which slashes both the cost and the carbon footprint of producing the energy in the first place. A home with solar panels, efficient insulation and double-glazing, for example, would have significantly lower energy bills and carbon footprint than the average home.
 
