@@ -10,7 +10,7 @@ title: The Green Home Voucher Scheme
 date: 2020-07-10T08:17:28.822Z
 show_quote_block: false
 seo:
-  title: Green Home Voucher Scheme | Green Energy Together | Solar Panel Installer
+  title: Green Home Voucher Scheme | Blog | Green Energy Together
   description: The government announced this week that £2 billion has been
     assigned to Green Home Grants voucher scheme, allowing homeowners to have
     energy-saving measures substantially funded - including Solar.
