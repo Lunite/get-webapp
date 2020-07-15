@@ -17,6 +17,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 }) => {
   const [markdownNodes, setMarkdownNodes] = useState([])
   const [imageNodes, setImageNodes] = useState([])
+  const [seoData, setSeoData] = useState({})
 
   const {
     allSitePage,
@@ -91,20 +92,20 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   if (!allMarkdownRemark?.nodes?.length || !allSitePage?.nodes?.length) {
     return null
   }
-  useEffect(() => {
-    setMarkdownNodes(allMarkdownRemark.nodes)
-    setImageNodes(allImageSharp?.nodes)
-  }, [allMarkdownRemark, allImageSharp])
 
   /**
    * seoData
    * This method returns the required SEO data that is then passed to the SEO component below
    */
-  const seoData = (() => {
+  const getSeoData = () => {
     let title, slug, image
 
     // title and slug always come from the context
-    title = context.acf?.seo?.seo_title || context.title || ""
+    title =
+      context.acf?.seo?.seo_title ||
+      `${
+        context.title ? `${context.title} | ` : ""
+      }Green Energy Together | Solar Panel Installer`
     slug = context.slug || ""
 
     if (!context?.acf?.seo) {
@@ -123,7 +124,16 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
       keywords,
       image,
     }
-  })()
+  }
+
+  useEffect(() => {
+    setMarkdownNodes(allMarkdownRemark.nodes)
+    setImageNodes(allImageSharp?.nodes)
+
+    if (context) {
+      setSeoData(getSeoData())
+    }
+  }, [allMarkdownRemark, allImageSharp, context])
 
   return (
     <>

@@ -41,8 +41,6 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
     )
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  console.log(blogItemsToDisplay)
-
   return (
     <div className="blog">
       <Hero imageUrl="/images/blog-hero.jpg" compact>
@@ -53,7 +51,7 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
       <Block>
         <div className="container u-layout--squidge container--column">
           <div className="blog__items">
-            {blogItemsToDisplay.splice(0, 3).map(item => (
+            {blogItemsToDisplay.map(item => (
               <BlogListItem {...item} />
             ))}
           </div>
