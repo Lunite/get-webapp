@@ -41,8 +41,6 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
     )
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  console.log(blogItemsToDisplay)
-
   return (
     <div className="blog">
       <Hero imageUrl="/images/blog-hero.jpg" compact>
