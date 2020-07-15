@@ -22,9 +22,22 @@ const CaseStudiesMap = ({
 }) => {
   const [activeDot, setActiveDot] = useState("")
   const items = markdownNodesFilter(markdownNodes, "project")
+  const itemsToDisplay = items.filter(
+    ({
+      frontmatter: {
+        category,
+        show_in_case_studies,
+        image_case_studies,
+        image,
+      },
+    }) =>
+      category === customerType &&
+      show_in_case_studies &&
+      (image_case_studies?.childImageSharp || image?.childImageSharp)
+  )
 
   // these relate to the dots in the map. This is how the dot selected for a project is linked to the dot on the map
-  const mapDots = {
+  const mapDotsData = {
     "Ireland: South East": {
       alias: "seIreland",
       x: 147.839,
@@ -102,97 +115,93 @@ const CaseStudiesMap = ({
     },
   }
 
-  const onDotSelect = dotAlias => {
-    setActiveDot(dotAlias)
-  }
+  const mapDotsSet: Set<string> = new Set()
 
-  const mapDotsArray = Object.keys(mapDots).map(key => mapDots[key])
+  itemsToDisplay.forEach(({ frontmatter: { map_dot } }) => {
+    if (map_dot) {
+      mapDotsSet.add(map_dot)
+    }
+  })
+
+  const mapDots = [...mapDotsSet].map(item => mapDotsData[item])
+
+  console.log(mapDots)
 
   if (!items?.length) {
     return null
   }
 
+  const onDotSelect = dotAlias => {
+    setActiveDot(dotAlias)
+  }
+
   const carouselItems = (() => {
-    return items
-      .filter(
-        ({
-          frontmatter: {
-            category,
-            show_in_case_studies,
-            image_case_studies,
-            image,
-          },
-        }) =>
-          category === customerType &&
-          show_in_case_studies &&
-          (image_case_studies?.childImageSharp || image?.childImageSharp)
-      )
-      .map(node => {
-        const pData = {
-          slug: node.fields.slug,
-          ...node.frontmatter,
-        }
+    return itemsToDisplay.map(node => {
+      const pData = {
+        slug: node.fields.slug,
+        ...node.frontmatter,
+      }
 
-        const pImage = pData.image
+      const pImage = pData.image
 
-        if (!pImage?.childImageSharp) {
-          return null
-        }
+      if (!pImage?.childImageSharp) {
+        return null
+      }
 
-        return (
-          <div className="project-item" key={pData.slug}>
-            <Img
-              className="project-item__image"
-              alt={pData.title}
-              fluid={{ ...pImage.childImageSharp.fluid, aspectRatio: 1.9 }}
+      return (
+        <div className="project-item" key={pData.slug}>
+          <Img
+            className="project-item__image"
+            alt={pData.title}
+            fluid={{ ...pImage.childImageSharp.fluid, aspectRatio: 1.9 }}
+          />
+          <Heading className="project-item__title" level={4}>
+            <span
+              dangerouslySetInnerHTML={{ __html: pData.quote || pData.title }}
             />
-            <Heading className="project-item__title" level={4}>
-              <span
-                dangerouslySetInnerHTML={{ __html: pData.quote || pData.title }}
-              />
-            </Heading>
-            <Heading className="project-item__subtitle" level={5}>
-              <>
-                {customerType === "commercial" && "Comercial installation"}
-                {customerType === "domestic" && "Domestic installation"}
-              </>
-            </Heading>
-            <p
-              className="project-item__description"
-              dangerouslySetInnerHTML={{ __html: pData.description }}
-            />
-            <div className="project-item__info">
-              {pData.info_strip?.system && (
-                <div className="cs-info-item">
-                  <span className="cs-info-item__heading">System</span>
-                  <span className="cs-info-item__value">
-                    {pData.info_strip?.system}
-                  </span>
-                </div>
-              )}
-              {pData.info_strip?.output && (
-                <div className="cs-info-item">
-                  <span className="cs-info-item__heading">Output</span>
-                  <span className="cs-info-item__value">
-                    {pData.info_strip?.output}
-                  </span>
-                </div>
-              )}
-              {pData.info_strip?.location && (
-                <div className="cs-info-item">
-                  <span className="cs-info-item__heading">Location</span>
-                  <span className="cs-info-item__value">
-                    {pData.info_strip?.location}
-                  </span>
-                </div>
-              )}
-            </div>
-            <Link className="project-item__link" to={`/project${pData.slug}`}>
-              Read More
-            </Link>
+          </Heading>
+          <Heading className="project-item__subtitle" level={5}>
+            <>
+              {customerType === "commercial" && "Comercial installation"}
+              {customerType === "domestic" && "Domestic installation"}
+            </>
+          </Heading>
+          <p
+            className="project-item__description"
+            dangerouslySetInnerHTML={{ __html: pData.description }}
+          />
+          <div className="project-item__info">
+            {pData.info_strip?.system && (
+              <div className="cs-info-item">
+                <span className="cs-info-item__heading">System</span>
+                <span className="cs-info-item__value">
+                  {pData.info_strip?.system}
+                </span>
+              </div>
+            )}
+            {pData.info_strip?.output && (
+              <div className="cs-info-item">
+                <span className="cs-info-item__heading">Output</span>
+                <span className="cs-info-item__value">
+                  {pData.info_strip?.output}
+                </span>
+              </div>
+            )}
+            {pData.info_strip?.location && (
+              <div className="cs-info-item">
+                <span className="cs-info-item__heading">Location</span>
+                <span className="cs-info-item__value">
+                  {pData.info_strip?.location}
+                </span>
+              </div>
+            )}
           </div>
-        )
-      })
+          <Link className="project-item__link" to={`/project${pData.slug}`}>
+            Read More
+          </Link>
+        </div>
+      )
+    })
   })()
 
   if (!carouselItems.length) {
@@ -203,11 +212,7 @@ const CaseStudiesMap = ({
     <div className="case-studies-map">
       <div className="row">
         <Col6>
-          <Map
-            dots={mapDotsArray}
-            activeDot={activeDot}
-            onSelect={onDotSelect}
-          />
+          <Map dots={mapDots} activeDot={activeDot} onSelect={onDotSelect} />
         </Col6>
         <Col6>
           {/* This hidden element ensures the carousel is the correct height */}

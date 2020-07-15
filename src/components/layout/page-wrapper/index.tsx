@@ -68,6 +68,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
               }
             }
             show_in_case_studies
+            map_dot
             image_case_studies {
               publicURL
             }
