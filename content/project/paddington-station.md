@@ -14,6 +14,7 @@ description: >-
 image: paddington.png
 image_hero: title-page-banner.png
 show_in_case_studies: true
+map_dot: "London: South"
 image_case_studies: paddington2.png
 info_strip:
   location: London, UK
