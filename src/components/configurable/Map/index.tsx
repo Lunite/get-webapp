@@ -2,14 +2,18 @@ import React from "react"
 import { backgroundBase64 } from "./data.json"
 
 import "./styles.scss"
+import { Dot } from "pure-react-carousel"
 
 interface MapProps {
-  dots: { alias: string; x: number; y: number }[]
-  onSelect: Function
-  activeDot: string
+  dots: {
+    node: any
+    mapDot: { alias: string; x: number; y: number }
+    index: number
+  }[]
+  currentSlide: number
 }
 
-const Map: React.FC<MapProps> = ({ dots, onSelect, activeDot }) => {
+const Map: React.FC<MapProps> = ({ dots, currentSlide }) => {
   return (
     <svg
       className="map"
@@ -27,38 +31,37 @@ const Map: React.FC<MapProps> = ({ dots, onSelect, activeDot }) => {
       />
 
       <g className="map__dots">
-        {dots.map(dot => (
-          <g
-            className={`dot dot--${dot.alias} ${
-              activeDot === dot.alias ? "dot--active" : ""
-            }`}
-          >
-            <circle
-              className="dot__outer"
-              cx={dot.x}
-              cy={dot.y}
-              r="6.94231"
-              fillOpacity="0.5"
-            />
+        {dots.map(({ mapDot, index }) => (
+          <Dot slide={index}>
+            <g
+              className={`dot dot--${mapDot.alias} ${
+                currentSlide === index ? "dot--active" : ""
+              }`}
+            >
+              <circle
+                className="dot__outer"
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                fillOpacity="0.5"
+              />
 
-            <circle
-              className="dot__middle"
-              cx={dot.x}
-              cy={dot.y}
-              r="6.94231"
-              fillOpacity="0.5"
-            />
+              <circle
+                className="dot__middle"
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                fillOpacity="0.5"
+              />
 
-            <circle
-              cx={dot.x}
-              cy={dot.y}
-              r="6.94231"
-              className="dot__inner"
-              onClick={() => {
-                onSelect(dot.alias)
-              }}
-            />
-          </g>
+              <circle
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                className="dot__inner"
+              />
+            </g>
+          </Dot>
         ))}
       </g>
     </svg>
