@@ -218,6 +218,7 @@ const CaseStudiesMap = ({
         lockOnWindowScroll={true}
         naturalSlideHeight={0}
         naturalSlideWidth={0}
+        infinite={true}
         totalSlides={carouselItems.length}
       >
         <div className="row">

@@ -7,15 +7,19 @@
     position: relative;
   }
 
-  // &__carousel {
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  //   top: 0;
-  // }
+  &__carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
 
   .carousel__slider {
-    height: 600px;
+    height: 100%;
+  }
+
+  .carousel__slider-tray {
+    display: flex;
   }
 
   // .carousel__slide {
@@ -40,7 +44,7 @@
     z-index: 0;
   }
 
-  .awssld__bullets {
+  .carousel__dot-group {
     width: calc(100% - 120px);
     bottom: 0;
     padding-top: 30px;
@@ -53,8 +57,11 @@
       background-color: $dark-blue;
       opacity: 0.4;
       transition: opacity $transition;
+      border: none;
+      outline: none;
+      border-radius: 50%;
 
-      &.awssld__bullets--active {
+      &.carousel__dot--selected {
         opacity: 1;
       }
 

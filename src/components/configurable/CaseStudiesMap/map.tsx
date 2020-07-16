@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useRef } from "react"
 import { backgroundBase64 } from "./mapData.json"
 
-import "./styles.scss"
+import "./mapstyles.scss"
 import { Dot, WithStore } from "pure-react-carousel"
 
 interface MapProps {
@@ -13,31 +13,37 @@ interface MapProps {
   currentSlide: number
 }
 
-class Map extends React.Component<MapProps, { currentSlide }> {
-  render() {
-    return (
-      <svg
-        className="map"
+const Map = ({ dots }) => {
+  return (
+    <svg
+      className="map"
+      width="501"
+      height="736"
+      viewBox="0 0 501 736"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <image
+        className="map__image"
         width="501"
         height="736"
-        viewBox="0 0 501 736"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <image
-          className="map__image"
-          width="501"
-          height="736"
-          href={backgroundBase64}
-        />
+        href={backgroundBase64}
+      />
 
-        <g className="map__dots">
-          {this.props.dots.map(({ mapDot, index }) => (
-            <Dot slide={index}>
+      <g className="map__dots">
+        {dots.map(({ mapDot, index }) => {
+          const dotButtonRef = useRef(null)
+
+          return (
+            <>
+              <Dot slide={index} ref={dotButtonRef}>
+                <span />
+              </Dot>
               <g
-                className={`dot dot--${mapDot.alias} ${
-                  this.state?.currentSlide === index ? "dot--active" : ""
-                }`}
+                className={`dot dot--${mapDot.alias}`}
+                onClick={() => {
+                  dotButtonRef.current.click()
+                }}
               >
                 <circle
                   className="dot__outer"
@@ -62,12 +68,12 @@ class Map extends React.Component<MapProps, { currentSlide }> {
                   className="dot__inner"
                 />
               </g>
-            </Dot>
-          ))}
-        </g>
-      </svg>
-    )
-  }
+            </>
+          )
+        })}
+      </g>
+    </svg>
+  )
 }
 
-export default WithStore(Map)
+export default Map
