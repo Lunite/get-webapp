@@ -10,7 +10,7 @@ quote: '"Prompt with setup and quick with installation"'
 image: dsc_7520-copy.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
-map_dot: "Wales: North"
+map_dot: "England: East"
 image_case_studies: dsc_7520-copy.jpg
 info_strip:
   location: Cambridgeshire, England

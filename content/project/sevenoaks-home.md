@@ -11,6 +11,7 @@ quote: “Very happy with my design”
 image: 1.jpg
 image_hero: breadcrumb17.jpg
 show_in_case_studies: true
+map_dot: "England: South East"
 image_case_studies: 1.jpg
 info_strip:
   location: Sevenoaks, Kent

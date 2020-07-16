@@ -13,6 +13,7 @@ description: >-
 image: broadoak.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
+map_dot: "London: North"
 image_case_studies: broadoak5.jpg
 info_strip:
   output: DC Peak 52 KW
