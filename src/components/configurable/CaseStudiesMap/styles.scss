@@ -18,7 +18,11 @@
     height: 100%;
   }
 
-  .carousel__slider-tray {
+  .slick-list {
+    overflow: hidden;
+  }
+
+  .slick-track {
     display: flex;
   }
 
@@ -44,28 +48,37 @@
     z-index: 0;
   }
 
-  .carousel__dot-group {
+  .slick-arrow {
+    display: none !important;
+  }
+
+  .slick-dots {
     width: calc(100% - 120px);
     bottom: 0;
     padding-top: 30px;
     justify-content: flex-start;
     z-index: 1;
 
-    button {
-      width: 16px;
-      height: 16px;
-      background-color: $dark-blue;
-      opacity: 0.4;
-      transition: opacity $transition;
-      border: none;
-      outline: none;
-      border-radius: 50%;
+    li {
+      display: inline-flex;
 
-      &.carousel__dot--selected {
+      button {
+        width: 16px;
+        height: 16px;
+        background-color: $dark-blue;
+        opacity: 0.4;
+        transition: opacity $transition;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        font-size: 0;
+      }
+
+      &.slick-active button {
         opacity: 1;
       }
 
-      & + button {
+      & + li {
         margin-left: 16px;
       }
     }

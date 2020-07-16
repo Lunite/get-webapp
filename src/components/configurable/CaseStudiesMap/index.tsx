@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
 import Map from "./map"
 import Carousel from "./carousel"
 
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  Dot,
-  DotGroup,
-} from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
+import Slider from "react-slick"
 
 import "./styles.scss"
 import Heading from "../Heading"
@@ -21,7 +14,6 @@ import { markdownNodesFilter } from "~/utils"
 const CaseStudiesMap = ({
   customerType,
   markdownNodes,
-  currentSlide,
 }: {
   customerType: "domestic" | "commercial"
   markdownNodes: any[]
@@ -126,6 +118,11 @@ const CaseStudiesMap = ({
   }
 
   const [carouselItems, setCarouselItems] = useState([])
+  const carousel = useRef(Slider)
+
+  const onDotClick = index => {
+    carousel.current.slickGoTo(index)
+  }
 
   useEffect(() => {
     setCarouselItems(
@@ -210,53 +207,49 @@ const CaseStudiesMap = ({
     )
   }, [])
 
+  const [currentSlide, setCurrentSlide] = useState(0)
+
   return (
     <div className="case-studies-map">
-      <CarouselProvider
-        isPlaying={true}
-        interval={10000}
-        lockOnWindowScroll={true}
-        naturalSlideHeight={0}
-        naturalSlideWidth={0}
-        infinite={true}
-        totalSlides={carouselItems.length}
-      >
-        <div className="row">
-          <Col6>
-            <Map
-              dots={carouselItems.filter(({ mapDot }) => !!mapDot)}
-              currentSlide={currentSlide}
-            />
-          </Col6>
-          <Col6>
-            {/* This hidden element ensures the carousel is the correct height */}
-            <div
-              style={{
-                opacity: 0,
-                pointerEvents: "none",
-                display: "flex",
-                overflow: "hidden",
+      <div className="row">
+        <Col6>
+          <Map
+            dots={carouselItems.filter(({ mapDot }) => !!mapDot)}
+            currentSlide={currentSlide}
+            onDotClick={onDotClick}
+          />
+        </Col6>
+        <Col6>
+          {/* This hidden element ensures the carousel is the correct height */}
+          <div
+            style={{
+              opacity: 0,
+              pointerEvents: "none",
+              display: "flex",
+              overflow: "hidden",
+            }}
+          >
+            {carouselItems.map(({ node }) => node)}
+          </div>
+          <div className="case-studies-map__carousel">
+            <Slider
+              ref={carousel}
+              dots={true}
+              infinite={true}
+              autoplaySpeed={10000}
+              speed={500}
+              autoplay={true}
+              slidesToShow={1}
+              slidesToScroll={1}
+              beforeChange={(oldIndex, newIndex) => {
+                setCurrentSlide(newIndex)
               }}
             >
               {carouselItems.map(({ node }) => node)}
-            </div>
-            <div className="case-studies-map__carousel">
-              <Slider>
-                {carouselItems.map(({ node, index }) => (
-                  <Slide index={index}>{node}</Slide>
-                ))}
-              </Slider>
-              <DotGroup>
-                {carouselItems.map(({ index }) => (
-                  <Dot slide={index}>
-                    <div className="carousel__dot" />
-                  </Dot>
-                ))}
-              </DotGroup>
-            </div>
-          </Col6>
-        </div>
-      </CarouselProvider>
+            </Slider>
+          </div>
+        </Col6>
+      </div>
     </div>
   )
 }

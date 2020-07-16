@@ -1,8 +1,7 @@
-import React, { useRef } from "react"
+import React from "react"
 import { backgroundBase64 } from "./mapData.json"
 
 import "./mapstyles.scss"
-import { Dot, WithStore } from "pure-react-carousel"
 
 interface MapProps {
   dots: {
@@ -10,10 +9,11 @@ interface MapProps {
     mapDot: { alias: string; x: number; y: number }
     index: number
   }[]
+  onDotClick: Function
   currentSlide: number
 }
 
-const Map = ({ dots }) => {
+const Map: React.FC<MapProps> = ({ dots, currentSlide, onDotClick }) => {
   return (
     <svg
       className="map"
@@ -32,43 +32,39 @@ const Map = ({ dots }) => {
 
       <g className="map__dots">
         {dots.map(({ mapDot, index }) => {
-          const dotButtonRef = useRef(null)
-
           return (
-            <>
-              <Dot slide={index} ref={dotButtonRef}>
-                <span />
-              </Dot>
-              <g
-                className={`dot dot--${mapDot.alias}`}
-                onClick={() => {
-                  dotButtonRef.current.click()
-                }}
-              >
-                <circle
-                  className="dot__outer"
-                  cx={mapDot.x}
-                  cy={mapDot.y}
-                  r="6.94231"
-                  fillOpacity="0.5"
-                />
+            <g
+              className={`dot dot--${mapDot.alias} ${
+                currentSlide === index ? "dot--active" : ""
+              }`}
+              onClick={() => {
+                onDotClick(index)
+              }}
+              key={index}
+            >
+              <circle
+                className="dot__outer"
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                fillOpacity="0.5"
+              />
 
-                <circle
-                  className="dot__middle"
-                  cx={mapDot.x}
-                  cy={mapDot.y}
-                  r="6.94231"
-                  fillOpacity="0.5"
-                />
+              <circle
+                className="dot__middle"
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                fillOpacity="0.5"
+              />
 
-                <circle
-                  cx={mapDot.x}
-                  cy={mapDot.y}
-                  r="6.94231"
-                  className="dot__inner"
-                />
-              </g>
-            </>
+              <circle
+                cx={mapDot.x}
+                cy={mapDot.y}
+                r="6.94231"
+                className="dot__inner"
+              />
+            </g>
           )
         })}
       </g>
