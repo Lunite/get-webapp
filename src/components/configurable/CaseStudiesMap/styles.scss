@@ -12,6 +12,7 @@
     width: 100%;
     height: 100%;
     top: 0;
+    overflow: hidden;
   }
 
   .carousel__slider {
@@ -52,8 +53,28 @@
     display: none !important;
   }
 
+  .slick-slide {
+    & > div {
+    height: 100%;
+    }
+
+    .project-item {
+      opacity: 0.85;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    .project-item:focus {
+      opacity: 1;
+    }
+  }
+
   .slick-dots {
+    position: absolute;
     width: calc(100% - 120px);
+    height: 46px;
     bottom: 0;
     padding-top: 30px;
     justify-content: flex-start;
@@ -61,6 +82,7 @@
 
     li {
       display: inline-flex;
+      vertical-align: top;
 
       button {
         width: 16px;
