@@ -55,19 +55,27 @@
 
   .slick-slide {
     & > div {
-    height: 100%;
+      height: 100%;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
     }
 
     .project-item {
-      opacity: 0.85;
+      opacity: 0.92;
+      filter: saturate(75%);
+      user-select: none;
     }
 
-    &:focus {
+    *:focus {
       outline: none;
     }
 
     .project-item:focus {
       opacity: 1;
+      filter: saturate(100%);
     }
   }
 
@@ -94,6 +102,7 @@
         outline: none;
         border-radius: 50%;
         font-size: 0;
+        cursor: pointer;
       }
 
       &.slick-active button {
