@@ -68,8 +68,18 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
               }
             }
             show_in_case_studies
+            map_dot
             image_case_studies {
-              publicURL
+              childImageSharp {
+                fluid(maxWidth: 1920) {
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                  srcWebp
+                  srcSetWebp
+                }
+              }
             }
             info_strip {
               location

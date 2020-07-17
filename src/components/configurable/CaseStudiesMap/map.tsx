@@ -1,8 +1,7 @@
 import React from "react"
-import { backgroundBase64 } from "./data.json"
+import { backgroundBase64 } from "./mapData.json"
 
-import "./styles.scss"
-import { Dot } from "pure-react-carousel"
+import "./mapstyles.scss"
 
 interface MapProps {
   dots: {
@@ -10,10 +9,11 @@ interface MapProps {
     mapDot: { alias: string; x: number; y: number }
     index: number
   }[]
+  onDotClick: Function
   currentSlide: number
 }
 
-const Map: React.FC<MapProps> = ({ dots, currentSlide }) => {
+const Map: React.FC<MapProps> = ({ dots, currentSlide, onDotClick }) => {
   return (
     <svg
       className="map"
@@ -31,12 +31,16 @@ const Map: React.FC<MapProps> = ({ dots, currentSlide }) => {
       />
 
       <g className="map__dots">
-        {dots.map(({ mapDot, index }) => (
-          <Dot slide={index}>
+        {dots.map(({ mapDot, index }) => {
+          return (
             <g
               className={`dot dot--${mapDot.alias} ${
                 currentSlide === index ? "dot--active" : ""
               }`}
+              onClick={() => {
+                onDotClick(index)
+              }}
+              key={index}
             >
               <circle
                 className="dot__outer"
@@ -61,8 +65,8 @@ const Map: React.FC<MapProps> = ({ dots, currentSlide }) => {
                 className="dot__inner"
               />
             </g>
-          </Dot>
-        ))}
+          )
+        })}
       </g>
     </svg>
   )
