@@ -3,7 +3,6 @@ import Img from "gatsby-image"
 import { Link } from "gatsby"
 import Col6 from "~/components/grid/Col6"
 import Map from "./map"
-import Carousel from "./carousel"
 
 import Slider from "react-slick"
 
