@@ -20,8 +20,17 @@
     margin-top: 32px;
   }
 
+  .quoteform {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
   @media ($mobile) {
     padding: 30px 24px 48px;
+    .quoteform {
+      flex-direction: column;
+    }
     .postcode-input {
       margin-bottom: 0px;
     }
@@ -29,9 +38,6 @@
 
   @media ($phablet) {
     @media (max-width: 1088px) {
-      .postcode-input {
-        margin-bottom: 0px;
-      }
       h3 {
         font-size: 2.94vw;
       }
