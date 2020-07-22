@@ -7,6 +7,34 @@
     position: relative;
   }
 
+  &__carousel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+  }
+
+  .carousel__slider {
+    height: 100%;
+  }
+
+  .slick-list {
+    overflow: hidden;
+  }
+
+  .slick-track {
+    display: flex;
+  }
+
+  // .carousel__slide {
+  //   height: auto;
+
+  //   &--hidden {
+  //     opacity: 0;
+  //   }
+  // }
+
   .awssld__container {
     padding-bottom: 0;
   }
@@ -21,25 +49,67 @@
     z-index: 0;
   }
 
-  .awssld__bullets {
+  .slick-arrow {
+    display: none !important;
+  }
+
+  .slick-slide {
+    & > div {
+      height: 100%;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    .project-item {
+      opacity: 0.92;
+      filter: saturate(75%);
+      user-select: none;
+    }
+
+    *:focus {
+      outline: none;
+    }
+
+    .project-item:focus {
+      opacity: 1;
+      filter: saturate(100%);
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
     width: calc(100% - 120px);
+    height: 46px;
     bottom: 0;
     padding-top: 30px;
     justify-content: flex-start;
     z-index: 1;
 
-    button {
-      width: 16px;
-      height: 16px;
-      background-color: $dark-blue;
-      opacity: 0.4;
-      transition: opacity $transition;
+    li {
+      display: inline-flex;
+      vertical-align: top;
 
-      &.awssld__bullets--active {
+      button {
+        width: 16px;
+        height: 16px;
+        background-color: $dark-blue;
+        opacity: 0.4;
+        transition: opacity $transition;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        font-size: 0;
+        cursor: pointer;
+      }
+
+      &.slick-active button {
         opacity: 1;
       }
 
-      & + button {
+      & + li {
         margin-left: 16px;
       }
     }

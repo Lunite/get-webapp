@@ -6,9 +6,9 @@ title: How does it work?
 date: 
 show_quote_block: true
 seo:
-  title: June promotion
-  description: June promotion
-  keywords: June promotion
+  title: July promotion
+  description: July promotion
+  keywords: July promotion
 ---
 Book your installation to be in for a chance to win your system completely FREE. For every 30 customers we will randomly draw one lucky winner to receive their system and installation completely free and a refund on their first stage payment.
 

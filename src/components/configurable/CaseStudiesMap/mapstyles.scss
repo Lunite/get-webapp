@@ -1,0 +1,31 @@
+@import "~/styles/_variables.scss";
+
+.dot {
+  cursor: pointer;
+  position: relative;
+  transform-origin: center;
+
+  &__inner,
+  &__middle,
+  &__outer {
+    fill: $dark-blue;
+  }
+
+  &__middle,
+  &__outer {
+    transform: scale(1);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: 0.3s transform $transition;
+  }
+
+  &--active {
+    .dot__outer {
+      transform: scale(3);
+    }
+
+    .dot__middle {
+      transform: scale(2);
+    }
+  }
+}

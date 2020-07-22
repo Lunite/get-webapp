@@ -55,7 +55,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           }
         >
           <Heading level={1}>
-            Order in June and get a 1 in 30 chance to win your system for free
+            Order in July and get a 1 in 30 chance to win your system for free
           </Heading>
           <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
           <BlockCTA url="/promo">Find Out More</BlockCTA>

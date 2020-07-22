@@ -10,6 +10,7 @@ description: Complete design, installation, commissioning and connection of the
 image: clapham.jpg
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
+map_dot: "Midlands: South"
 image_case_studies: clapham_42.jpg
 info_strip:
   output: DC Peak 4.97MWP

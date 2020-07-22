@@ -1,340 +1,505 @@
----
-backend:
-  branch: master
-  name: git-gateway
-  repo: olc-digital/get-webapp
-  use_graphql: true
-collections:
-  - create: true
-    editor:
-      preview: false
-    fields:
-      - hint: "If left blank, hero will not appear"
-        label: "Hero Image"
-        name: image_hero
-        required: false
-        widget: image
-      - hint: "Title displayed on top of hero"
-        label: "Hero Title"
-        name: hero_title
-        widget: string
-      - collapsed: false
-        fields:
-          - hint: "This image is displayed on the Blog page, if specified, the item will show on the /blog page"
-            label: "List Image (square)"
-            name: image
-            required: false
-            widget: image
-          - hint: "This text will be displayed on the Blog page"
-            label: "List Intro"
-            name: intro
-            required: false
-            widget: markdown
-        hint: "When both these items are specified, the blog item will appear on the Blog page"
-        label: List
-        name: list
-        widget: object
-      - label: Title
-        name: title
-        widget: string
-      - label: "Publish Date"
-        name: date
-        widget: datetime
-      - label: Body
-        name: body
-        widget: markdown
-      - default: false
-        label: "Show Quote Block"
-        name: show_quote_block
-        required: false
-        widget: boolean
-      - collapsed: true
-        fields:
-          - hint: "Main title will be used if this is left blank"
-            label: Title
-            name: title
-            required: false
-            widget: string
-          - label: Description
-            name: description
-            widget: markdown
-          - label: Keywords
-            name: keywords
-            widget: string
-        label: SEO
-        name: seo
-        widget: object
-    folder: content/blog
-    label: Blog
-    name: blog
-    path: "{{slug}}"
-    slug: "{{slug}}"
-  - create: true
-    editor:
-      preview: false
-    fields:
-      - label: Title
-        name: title
-        required: true
-        widget: string
-      - label: "Hero Image"
-        name: image_hero
-        required: true
-        widget: image
-      - collapsed: false
-        fields:
-          - label: Heading
-            name: heading
-            widget: string
-          - label: Description
-            name: description
-            widget: markdown
-          - label: "Highlight 1"
-            name: highlight_1
-            widget: markdown
-          - label: "Highlight 2"
-            name: highlight_2
-            widget: markdown
-          - label: "Image 1"
-            name: image_1
-            required: false
-            widget: image
-          - label: "Image 2"
-            name: image_2
-            required: false
-            widget: image
-        label: "Block 1"
-        name: block_1
-        widget: object
-      - label: "Display Image"
-        name: display_image
-        required: false
-        widget: image
-      - label: "Display Image Caption"
-        name: display_image_caption
-        required: false
-        widget: markdown
-      - collapsed: false
-        fields:
-          - label: Heading
-            name: heading
-            required: false
-            widget: string
-          - label: Description
-            name: description
-            required: false
-            widget: markdown
-          - label: "Highlight 1"
-            name: highlight_1
-            required: false
-            widget: markdown
-          - label: "Highlight 2"
-            name: highlight_2
-            required: false
-            widget: markdown
-          - label: "Image 1"
-            name: image_1
-            required: false
-            widget: image
-          - label: "Image 1 Caption"
-            name: image_1_caption
-            required: false
-            widget: string
-          - label: "Image 2"
-            name: image_2
-            required: false
-            widget: image
-          - label: "Image 2 Caption"
-            name: image_2_caption
-            required: false
-            widget: string
-        label: "Block 2"
-        name: block_2
-        widget: object
-      - collapsed: true
-        fields:
-          - hint: "Main title will be used if this is left blank"
-            label: Title
-            name: title
-            required: false
-            widget: string
-          - label: Description
-            name: description
-            widget: markdown
-          - label: Keywords
-            name: keywords
-            widget: string
-        label: SEO
-        name: seo
-        widget: object
-    folder: content/service
-    label: Service
-    name: service
-    path: "{{slug}}"
-    slug: "{{slug}}"
-  - create: true
-    editor:
-      preview: false
-    fields:
-      - label: Title
-        name: title
-        required: true
-        widget: string
-      - label: Subtitle
-        name: subtitle
-        required: false
-        widget: string
-      - label: Category
-        name: category
-        options:
-          - domestic
-          - commercial
-        required: true
-        widget: select
-      - label: Description
-        name: description
-        required: true
-        widget: markdown
-      - label: Quote
-        name: quote
-        required: false
-        widget: string
-      - hint: "The main project image is shown in the description. Note: this image is also used for SEO"
-        label: Image
-        name: image
-        required: true
-        widget: image
-      - hint: "The project's hero image is shown at the top of the page behind the Project title"
-        label: "Image: Hero"
-        name: image_hero
-        required: true
-        widget: image
-      - default: false
-        label: "Show in Case Studies?"
-        name: show_in_case_studies
-        widget: boolean
-      - label: "Image: Case Studies"
-        name: image_case_studies
-        required: false
-        widget: image
-      - collapsed: true
-        fields:
-          - label: Location
-            name: location
-            required: false
-            widget: string
-          - label: Output
-            name: output
-            required: false
-            widget: string
-          - label: System
-            name: system
-            required: false
-            widget: string
-          - label: "DC Peak"
-            name: dc_peak
-            required: false
-            widget: string
-          - label: Developer
-            name: developer
-            required: false
-            widget: string
-          - label: Inverters
-            name: inverters
-            required: false
-            widget: string
-          - label: Modules
-            name: modules
-            required: false
-            widget: string
-          - label: "Map URL"
-            name: map_url
-            required: false
-            widget: string
-        label: "Info Strip"
-        name: info_strip
-        widget: object
-      - collapsed: true
-        fields:
-          - hint: "Main title will be used if this is left blank"
-            label: Title
-            name: title
-            required: false
-            widget: string
-          - label: Description
-            name: description
-            widget: markdown
-          - label: Keywords
-            name: keywords
-            widget: string
-        label: SEO
-        name: seo
-        widget: object
-    folder: content/project
-    label: Project
-    name: project
-    path: "{{slug}}"
-    slug: "{{slug}}"
-  - create: true
-    fields:
-      - label: Title
-        name: title
-        widget: string
-      - collapsed: true
-        fields:
-          - hint: "Main title will be used if this is left blank"
-            label: Title
-            name: title
-            required: false
-            widget: string
-          - label: Description
-            name: description
-            widget: markdown
-          - label: Keywords
-            name: keywords
-            widget: string
-        label: SEO
-        name: seo
-        widget: object
-    folder: content/page
-    label: Page
-    name: page
-    path: "{{slug}}"
-    slug: "{{slug}}"
-  - create: true
-    fields:
-      - label: Title
-        name: title
-        widget: string
-      - label: Image
-        name: image
-        widget: image
-      - allow_multiple: false
-        config:
-          multiple: false
-        label: PDF
-        name: pdf
-        widget: file
-    folder: content/products_and_warranties
-    label: "Products and Warranties"
-    label_singular: "Project / Warranty"
-    name: products_and_warranties
-    path: "{{slug}}"
-    slug: "{{slug}}"
-  - create: true
-    fields:
-      - label: Question
-        name: title
-        widget: string
-      - label: Answer
-        name: answer
-        widget: markdown
-    folder: content/questions
-    label: "FAQ Questions"
-    label_singular: Question
-    name: questions
-    path: "{{slug}}"
-    slug: "{{slug}}"
-media_folder: static/img
-public_folder: /img
-site_url: "https://get-uk.com"
+{
+  "backend":
+    {
+      "branch": "master",
+      "name": "git-gateway",
+      "repo": "olc-digital/get-webapp",
+      "use_graphql": true,
+    },
+  "collections":
+    [
+      {
+        "create": true,
+        "editor": { "preview": false },
+        "fields":
+          [
+            {
+              "hint": "If left blank, hero will not appear",
+              "label": "Hero Image",
+              "name": "image_hero",
+              "required": false,
+              "widget": "image",
+            },
+            {
+              "hint": "Title displayed on top of hero",
+              "label": "Hero Title",
+              "name": "hero_title",
+              "widget": "string",
+            },
+            {
+              "collapsed": false,
+              "fields":
+                [
+                  {
+                    "hint": "This image is displayed on the Blog page, if specified, the item will show on the /blog page",
+                    "label": "List Image (square)",
+                    "name": "image",
+                    "required": false,
+                    "widget": "image",
+                  },
+                  {
+                    "hint": "This text will be displayed on the Blog page",
+                    "label": "List Intro",
+                    "name": "intro",
+                    "required": false,
+                    "widget": "markdown",
+                  },
+                ],
+              "hint": "When both these items are specified, the blog item will appear on the Blog page",
+              "label": "List",
+              "name": "list",
+              "widget": "object",
+            },
+            { "label": "Title", "name": "title", "widget": "string" },
+            { "label": "Publish Date", "name": "date", "widget": "datetime" },
+            { "label": "Body", "name": "body", "widget": "markdown" },
+            {
+              "default": false,
+              "label": "Show Quote Block",
+              "name": "show_quote_block",
+              "required": false,
+              "widget": "boolean",
+            },
+            {
+              "collapsed": true,
+              "fields":
+                [
+                  {
+                    "hint": "Main title will be used if this is left blank",
+                    "label": "Title",
+                    "name": "title",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Keywords",
+                    "name": "keywords",
+                    "widget": "string",
+                  },
+                ],
+              "label": "SEO",
+              "name": "seo",
+              "widget": "object",
+            },
+          ],
+        "folder": "content/blog",
+        "label": "Blog",
+        "name": "blog",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+      {
+        "create": true,
+        "editor": { "preview": false },
+        "fields":
+          [
+            {
+              "label": "Title",
+              "name": "title",
+              "required": true,
+              "widget": "string",
+            },
+            {
+              "label": "Hero Image",
+              "name": "image_hero",
+              "required": true,
+              "widget": "image",
+            },
+            {
+              "collapsed": false,
+              "fields":
+                [
+                  { "label": "Heading", "name": "heading", "widget": "string" },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Highlight 1",
+                    "name": "highlight_1",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Highlight 2",
+                    "name": "highlight_2",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Image 1",
+                    "name": "image_1",
+                    "required": false,
+                    "widget": "image",
+                  },
+                  {
+                    "label": "Image 2",
+                    "name": "image_2",
+                    "required": false,
+                    "widget": "image",
+                  },
+                ],
+              "label": "Block 1",
+              "name": "block_1",
+              "widget": "object",
+            },
+            {
+              "label": "Display Image",
+              "name": "display_image",
+              "required": false,
+              "widget": "image",
+            },
+            {
+              "label": "Display Image Caption",
+              "name": "display_image_caption",
+              "required": false,
+              "widget": "markdown",
+            },
+            {
+              "collapsed": false,
+              "fields":
+                [
+                  {
+                    "label": "Heading",
+                    "name": "heading",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "required": false,
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Highlight 1",
+                    "name": "highlight_1",
+                    "required": false,
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Highlight 2",
+                    "name": "highlight_2",
+                    "required": false,
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Image 1",
+                    "name": "image_1",
+                    "required": false,
+                    "widget": "image",
+                  },
+                  {
+                    "label": "Image 1 Caption",
+                    "name": "image_1_caption",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Image 2",
+                    "name": "image_2",
+                    "required": false,
+                    "widget": "image",
+                  },
+                  {
+                    "label": "Image 2 Caption",
+                    "name": "image_2_caption",
+                    "required": false,
+                    "widget": "string",
+                  },
+                ],
+              "label": "Block 2",
+              "name": "block_2",
+              "widget": "object",
+            },
+            {
+              "collapsed": true,
+              "fields":
+                [
+                  {
+                    "hint": "Main title will be used if this is left blank",
+                    "label": "Title",
+                    "name": "title",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Keywords",
+                    "name": "keywords",
+                    "widget": "string",
+                  },
+                ],
+              "label": "SEO",
+              "name": "seo",
+              "widget": "object",
+            },
+          ],
+        "folder": "content/service",
+        "label": "Service",
+        "name": "service",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+      {
+        "create": true,
+        "editor": { "preview": false },
+        "fields":
+          [
+            {
+              "label": "Title",
+              "name": "title",
+              "required": true,
+              "widget": "string",
+            },
+            {
+              "label": "Subtitle",
+              "name": "subtitle",
+              "required": false,
+              "widget": "string",
+            },
+            {
+              "label": "Category",
+              "name": "category",
+              "options": ["domestic", "commercial"],
+              "required": true,
+              "widget": "select",
+            },
+            {
+              "label": "Description",
+              "name": "description",
+              "required": true,
+              "widget": "markdown",
+            },
+            {
+              "label": "Quote",
+              "name": "quote",
+              "required": false,
+              "widget": "string",
+            },
+            {
+              "hint": "The main project image is shown in the description. Note: this image is also used for SEO",
+              "label": "Image",
+              "name": "image",
+              "required": true,
+              "widget": "image",
+            },
+            {
+              "hint": "The project's hero image is shown at the top of the page behind the Project title",
+              "label": "Image: Hero",
+              "name": "image_hero",
+              "required": true,
+              "widget": "image",
+            },
+            {
+              "default": false,
+              "label": "Show in Case Studies?",
+              "name": "show_in_case_studies",
+              "widget": "boolean",
+            },
+            {
+              "label": "Map Dot: Case Studies",
+              "name": "map_dot",
+              "required": false,
+              "widget": "select",
+              "options":
+                [
+                  "Ireland: South East",
+                  "Ireland: South West",
+                  "Scotland: Highlands",
+                  "Scotland: South East",
+                  "Wales: North",
+                  "London: North",
+                  "London: West",
+                  "London: South",
+                  "Midlands: North",
+                  "Midlands: South",
+                  "Cornwall",
+                  "Devon",
+                  "England: North East",
+                  "England: East",
+                  "England: South East",
+                ],
+            },
+            {
+              "label": "Image: Case Studies",
+              "name": "image_case_studies",
+              "required": false,
+              "widget": "image",
+            },
+            {
+              "collapsed": true,
+              "fields":
+                [
+                  {
+                    "label": "Location",
+                    "name": "location",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Output",
+                    "name": "output",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "System",
+                    "name": "system",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "DC Peak",
+                    "name": "dc_peak",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Inverters",
+                    "name": "inverters",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Modules",
+                    "name": "modules",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Map URL",
+                    "name": "map_url",
+                    "required": false,
+                    "widget": "string",
+                  },
+                ],
+              "label": "Info Strip",
+              "name": "info_strip",
+              "widget": "object",
+            },
+            {
+              "collapsed": true,
+              "fields":
+                [
+                  {
+                    "hint": "Main title will be used if this is left blank",
+                    "label": "Title",
+                    "name": "title",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Keywords",
+                    "name": "keywords",
+                    "widget": "string",
+                  },
+                ],
+              "label": "SEO",
+              "name": "seo",
+              "widget": "object",
+            },
+          ],
+        "folder": "content/project",
+        "label": "Project",
+        "name": "project",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+      {
+        "create": true,
+        "fields":
+          [
+            { "label": "Title", "name": "title", "widget": "string" },
+            {
+              "collapsed": true,
+              "fields":
+                [
+                  {
+                    "hint": "Main title will be used if this is left blank",
+                    "label": "Title",
+                    "name": "title",
+                    "required": false,
+                    "widget": "string",
+                  },
+                  {
+                    "label": "Description",
+                    "name": "description",
+                    "widget": "markdown",
+                  },
+                  {
+                    "label": "Keywords",
+                    "name": "keywords",
+                    "widget": "string",
+                  },
+                ],
+              "label": "SEO",
+              "name": "seo",
+              "widget": "object",
+            },
+          ],
+        "folder": "content/page",
+        "label": "Page",
+        "name": "page",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+      {
+        "create": true,
+        "fields":
+          [
+            { "label": "Title", "name": "title", "widget": "string" },
+            { "label": "Image", "name": "image", "widget": "image" },
+            {
+              "allow_multiple": false,
+              "config": { "multiple": false },
+              "label": "PDF",
+              "name": "pdf",
+              "widget": "file",
+            },
+          ],
+        "folder": "content/products_and_warranties",
+        "label": "Products and Warranties",
+        "label_singular": "Project / Warranty",
+        "name": "products_and_warranties",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+      {
+        "create": true,
+        "fields":
+          [
+            { "label": "Question", "name": "title", "widget": "string" },
+            { "label": "Answer", "name": "answer", "widget": "markdown" },
+          ],
+        "folder": "content/questions",
+        "label": "FAQ Questions",
+        "label_singular": "Question",
+        "name": "questions",
+        "path": "{{slug}}",
+        "slug": "{{slug}}",
+      },
+    ],
+  "media_folder": "static/img",
+  "public_folder": "/img",
+  "site_url": "https://get-uk.com",
+}

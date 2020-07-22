@@ -10,6 +10,7 @@ quote: “A fuss-free experience”
 image: 2.jpg
 image_hero: breadcrumb6.png
 show_in_case_studies: true
+map_dot: "London: North"
 image_case_studies: 2.jpg
 info_strip:
   location: Norfolk, UK

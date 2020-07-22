@@ -16,46 +16,8 @@ interface FooterProps {
   sitemap: SitemapItem[]
 }
 
-const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
-  const buildColumn = (parentSlug: string) => {
-    if (!sitemap?.length) {
-      return
-    }
-
-    const parentItem = sitemap.find(parent => parent.slug === parentSlug)
-
-    if (!parentItem?.title || !parentItem?.children?.length) {
-      // if no title or children, do not show
-      return
-    }
-
-    const children = parentItem.children.slice()
-
-    // limit length of project
-    if (parentItem.slug === "projects") {
-      children.length = children.length > 6 ? 6 : children.length
-    }
-
-    return (
-      <Col3>
-        <Heading className="footer__column-heading">{parentItem.title}</Heading>
-        {parentItem.children.map(cItem => {
-          if (cItem.slug === "404") {
-            return null
-          }
-
-          return (
-            <Link
-              key={cItem.path}
-              className="footer__item"
-              to={cItem.path}
-              dangerouslySetInnerHTML={{ __html: cItem.title }}
-            />
-          )
-        })}
-      </Col3>
-    )
-  }
+const Footer: FunctionComponent<FooterProps> = () => {
+  // buildColumn()
 
   return (
     <footer className="footer">
@@ -124,18 +86,18 @@ const Footer: FunctionComponent<FooterProps> = ({ sitemap }) => {
               </Link>
               <Link
                 className="footer__item"
-                to="/service/operations-maintenance"
+                to="/service/operation-maintenance"
               >
-                Operations &amp; Maintenance
+                Operation &amp; Maintenance
               </Link>
               <Link className="footer__item" to="/service/asset-management">
                 Asset Management
               </Link>
             </Col3>
             <Col3>
-              <Heading className="footer__column-heading">Use Cases</Heading>
+              <Heading className="footer__column-heading">Case studies</Heading>
               <Link className="footer__item" to="/projects">
-                All use cases
+                All case studies
               </Link>
               <Link className="footer__item" to="/project/paddington-station">
                 Paddington

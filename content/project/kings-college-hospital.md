@@ -12,6 +12,7 @@ description: >-
 image: king2.gif
 image_hero: kings-cross-header.jpg
 show_in_case_studies: true
+map_dot: "London: North"
 image_case_studies: kings-college-london.jpg
 info_strip:
   location: London, UK

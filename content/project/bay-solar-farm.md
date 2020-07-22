@@ -12,6 +12,7 @@ description: >-
 image: bay.jpg
 image_hero: bay_2.jpg
 show_in_case_studies: true
+map_dot: "England: East"
 image_case_studies: bay.jpg
 info_strip:
   location: Suffolk, UK

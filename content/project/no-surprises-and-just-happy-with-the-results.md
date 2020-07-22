@@ -8,6 +8,7 @@ quote: '"No surprises and just happy with the results"'
 image: plusdane1.png
 image_hero: a0e6468e-6ca3-472c-b931-43ce96810932.jpg
 show_in_case_studies: true
+map_dot: "England: North East"
 image_case_studies: plusdane1.png
 info_strip:
   location: Warrington, Cheshire
