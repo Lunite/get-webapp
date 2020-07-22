@@ -18,30 +18,23 @@
 
   .form {
     margin-top: 32px;
-
-    .error-text {
-      font-size: small;
-      margin-top: 0px;
-      margin-left: 18px;
-      color: red;
-      transition: opacity 0.1s ease-in-out;
-    }
-
-    #postcode-input {
-      margin-bottom: 0px;
-    }
   }
 
   @media ($mobile) {
     padding: 30px 24px 48px;
+    .postcode-input {
+      margin-bottom: 0px;
+    }
   }
 
   @media ($phablet) {
     @media (max-width: 1088px) {
+      .postcode-input {
+        margin-bottom: 0px;
+      }
       h3 {
         font-size: 2.94vw;
       }
-
       p {
         font-size: 2.2vw;
       }
