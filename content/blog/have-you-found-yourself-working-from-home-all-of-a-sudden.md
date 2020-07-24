@@ -54,3 +54,30 @@ In all, the difference between a poorly insulated house and a well-insulated one
 7. ### Generate Your Own Renewable Energy
 
 Most of us rely on energy from the National Grid. Not only is this expensive, but even now the majority is still generated from fossil fuel. Fitting your home with Solar panels and a battery-based storage solution can supply your own clean energy needs, and you can sell back any excess to the National Grid, slashing your bills by up to 70%.
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.get-uk.com/blog/have-you-found-yourself-working-from-home-all-of-a-sudden/"
+  },
+  "headline": "7 Tips to Reduce Energy Usage at Home",
+  "description": "Everyone's telling you to reduce your energy usage at home, but how do you do that, short of living in a cabin in the woods with no power connections?",
+  "image": "",  
+  "author": {
+    "@type": "Organization",
+    "name": "Green Energy Together"
+  },  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Green Energy Together",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ibb.co/gRJhwxL"
+    }
+  },
+  "datePublished": "2020-03-23",
+  "dateModified": "2020-07-24"
+}
+</script>
