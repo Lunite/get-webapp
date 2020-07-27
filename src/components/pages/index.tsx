@@ -169,6 +169,19 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
             bespoke solutions that exceed expectations. Check out what our
             customers have to say and some of our favourite projects.
           </p>
+          <p>
+            <Link
+              to="/projects"
+              style={{
+                color: "#70b33b",
+                textDecoration: "underline",
+                fontWeight: "bold",
+              }}
+            >
+              All Case Studies
+              <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
+            </Link>
+          </p>
           <CaseStudiesMap
             markdownNodes={markdownNodes}
             customerType="domestic"
