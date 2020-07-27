@@ -174,11 +174,12 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
               to="/projects"
               style={{
                 color: "#70b33b",
-                textDecoration: "underline",
                 fontWeight: "bold",
               }}
             >
-              All Case Studies
+              <span style={{ textDecoration: "underline" }}>
+                All Case Studies
+              </span>
               <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
             </Link>
           </p>
