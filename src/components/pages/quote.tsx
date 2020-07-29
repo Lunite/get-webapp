@@ -87,9 +87,15 @@ const QuotePage = ({ location }) => {
                   placeholder="Type unit rate"
                 />
                 <FormInput
-                  name="standing-charge"
+                  name="standing-charge" 
                   label="Standing Charge"
                   placeholder="Type standing charge"
+                />
+                <FormSelect
+                  name="source"
+                  label="How did you hear about us"
+                  options={["Don't Waste Money referral", "Other"]}
+                  required
                 />
                 <Block>
                   <Heading level={4}>Why we need this information</Heading>
