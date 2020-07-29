@@ -17,6 +17,7 @@ import "./for-your-business.scss"
 import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
+import Icon from "../olc-framework/Icon"
 
 const HomepageB2b = ({ markdownNodes }) => {
   const { changeCustomerType } = useCustomerType()
@@ -235,6 +236,20 @@ const HomepageB2b = ({ markdownNodes }) => {
             for industrial commercial solar systems. provide and commercial
             solar systems. provide a turnkey supply, installation and
             maintenance service for industrial and commercial solar systems.
+          </p>
+          <p>
+            <Link
+              to="/projects"
+              style={{
+                color: "#70b33b",
+                fontWeight: "bold",
+              }}
+            >
+              <span style={{ textDecoration: "underline" }}>
+                All Case Studies
+              </span>
+              <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
+            </Link>
           </p>
           <CaseStudiesMap
             markdownNodes={markdownNodes}
