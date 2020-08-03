@@ -10,6 +10,8 @@ interface FormInputProps {
   placeholder?: string
   value?: string
   required?: boolean
+  pattern?: string
+  title?: string
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
@@ -21,6 +23,8 @@ const FormInput: FunctionComponent<FormInputProps> = ({
   value = "",
   required = false,
   children,
+  pattern,
+  title,
 }) => {
   return (
     <div className={`form-input ${className}`}>
@@ -32,6 +36,8 @@ const FormInput: FunctionComponent<FormInputProps> = ({
         placeholder={placeholder}
         defaultValue={value}
         required={required}
+        pattern={pattern}
+        title={title}
       />
       {children && <div className="form-input__appendix">{children}</div>}
     </div>
