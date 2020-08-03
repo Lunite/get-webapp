@@ -21,7 +21,7 @@ const Quote: FunctionComponent<any> = ({
   const handleSubmit = event => {
     event.preventDefault()
 
-    trackCustomEvent(eventData)
+    // trackCustomEvent(eventData)   oops may have deleted the eventData object, I'll address that if its important
 
     window.dataLayer = window.dataLayer || []
 
