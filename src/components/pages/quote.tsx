@@ -71,6 +71,7 @@ const QuotePage: React.FC<PageProps> = props => {
     ...props.location.state,
   })
   const [page, setPage] = useState(0)
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (page !== pages - 1) {

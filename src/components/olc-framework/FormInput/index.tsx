@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, HTMLProps } from "react"
 
 import "./styles.scss"
 
@@ -14,7 +14,7 @@ interface FormInputProps {
   title?: string
 }
 
-const FormInput: FunctionComponent<FormInputProps> = ({
+const FormInput: FunctionComponent<HTMLProps<HTMLInputElement>> = ({
   label,
   name,
   className = "",
