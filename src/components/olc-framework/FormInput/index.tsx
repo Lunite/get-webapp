@@ -14,32 +14,14 @@ interface FormInputProps {
   title?: string
 }
 
-const FormInput: FunctionComponent<HTMLProps<HTMLInputElement>> = ({
-  label,
-  name,
-  className = "",
-  type = "text",
-  placeholder = "",
-  value = "",
-  required = false,
-  children,
-  pattern,
-  title,
-}) => {
+const FormInput: FunctionComponent<HTMLProps<HTMLInputElement>> = props => {
   return (
-    <div className={`form-input ${className}`}>
-      <label className="form-input__label">{label}</label>
-      <input
-        className="form-input__field"
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        defaultValue={value}
-        required={required}
-        pattern={pattern}
-        title={title}
-      />
-      {children && <div className="form-input__appendix">{children}</div>}
+    <div className={`form-input ${props.className}`}>
+      <label className="form-input__label">{props.label}</label>
+      <input {...props} className="form-input__field" />
+      {props.children && (
+        <div className="form-input__appendix">{props.children}</div>
+      )}
     </div>
   )
 }
