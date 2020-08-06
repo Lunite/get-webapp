@@ -10,24 +10,24 @@ const RadioGrid: React.FC<{}> = () => {
         <Col6>
           <input
             required
-            className="radio-input"
+            className="hidden radio-label"
             type="radio"
             name="inclination"
             id="incl-flat"
           />
-          <label className="radio-label" htmlFor="incl-flat">
+          <label className="button-label" htmlFor="incl-flat">
             Flat Roof
           </label>
         </Col6>
         <Col6>
           <input
             required
-            className="radio-input"
+            className="hidden radio-label"
             type="radio"
             name="inclination"
             id="incl-low"
           />
-          <label className="radio-label" htmlFor="incl-low">
+          <label className="button-label" htmlFor="incl-low">
             Low Slope
           </label>
         </Col6>
@@ -36,24 +36,24 @@ const RadioGrid: React.FC<{}> = () => {
         <Col6>
           <input
             required
-            className="radio-input"
+            className="hidden radio-label"
             type="radio"
             name="inclination"
             id="incl-med"
           />
-          <label className="radio-label" htmlFor="incl-med">
+          <label className="button-label" htmlFor="incl-med">
             Medium Slope
           </label>
         </Col6>
         <Col6>
           <input
             required
-            className="radio-input"
+            className="hidden radio-label"
             type="radio"
             name="inclination"
             id="incl-high"
           />
-          <label className="radio-label" htmlFor="incl-high">
+          <label className="button-label" htmlFor="incl-high">
             High Slope
           </label>
         </Col6>
