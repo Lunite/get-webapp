@@ -16,6 +16,7 @@ import Col11 from "../grid/Col11"
 import Col12 from "../grid/Col12"
 import { number } from "prop-types"
 import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
+import RadioGrid from "../configurable/QuoteTool/RadioGrid"
 
 interface IQuoteFormValues {
   name: string
@@ -106,37 +107,35 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
-  const pages = 4
+  const pages = 3
 
   const getPage = () => {
     switch (page) {
       case 0:
         return (
-          <Col9>
-            <div className="row">
-              <Col6>
-                <Heading level={3}>Enter your postcode to get started</Heading>
-              </Col6>
-              <Col6>
-                <FormInput
-                  name="postcode"
-                  label="Postcode"
-                  placeholder="Enter postcode..."
-                  required
-                  pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
-                  title="Please enter a valid UK postcode"
-                  value={formValues.postcode}
-                  onChange={updatePostcode}
-                  id="postcode"
-                />
-                <div className="form__actions">
-                  <BlockCTA large submit className="fl-r">
-                    Get Started
-                  </BlockCTA>
-                </div>
-              </Col6>
-            </div>
-          </Col9>
+          <div className="row">
+            <Col6>
+              <Heading level={3}>Enter your postcode to get started</Heading>
+            </Col6>
+            <Col6>
+              <FormInput
+                name="postcode"
+                label="Postcode"
+                placeholder="Enter postcode..."
+                required
+                pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                title="Please enter a valid UK postcode"
+                value={formValues.postcode}
+                onChange={updatePostcode}
+                id="postcode"
+              />
+              <div className="form__actions">
+                <BlockCTA large submit className="fl-r">
+                  Get Started
+                </BlockCTA>
+              </div>
+            </Col6>
+          </div>
         )
       case 1:
         return (
@@ -195,9 +194,28 @@ const QuotePage: React.FC<PageProps> = props => {
             </Col6>
           </div>
         )
-
+      case 2:
+        return (
+          <>
+            <Heading level={3}>
+              Choose the angle that best matches your roof
+            </Heading>
+            <RadioGrid />
+          </>
+        )
       default:
-        return <>No Page Here :)</>
+        return (
+          <>
+            No Page Here :){" "}
+            <button
+              onClick={() => {
+                setPage(0)
+              }}
+            >
+              Back To Start
+            </button>
+          </>
+        )
     }
   }
   return (

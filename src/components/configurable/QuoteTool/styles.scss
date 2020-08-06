@@ -12,3 +12,72 @@
 .gm-svpc {
   visibility: hidden;
 }
+
+.radio-input:checked + label,
+.radio-input:not(:checked) + label {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 50px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+}
+.radio-input:not(:checked) + label {
+  background-color: $light-grey;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.radio-input:checked + label {
+  background-color: transparent;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.radio-input:not(:checked) + label:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.radio-input:checked + label::before,
+.radio-input:not(:checked) + label::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-image: linear-gradient(298deg, $light-blue, $green);
+  z-index: -1;
+}
+.radio-input:checked + label .uil,
+.radio-input:not(:checked) + label .uil {
+  font-size: 24px;
+  line-height: 24px;
+  display: block;
+  padding-bottom: 10px;
+}
+
+.radio-input:not(:checked) + label {
+  background-color: $light-blue;
+  color: var(--dark-blue);
+  box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked),
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
