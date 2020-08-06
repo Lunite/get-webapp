@@ -55,7 +55,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           }
         >
           <Heading level={1}>
-            Order in July and get a 1 in 30 chance to win your system for free
+            Get a 2.75kw system with a 5kw battery for £4,999.99 inc VAT
           </Heading>
           <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
           <BlockCTA url="/promo">Find Out More</BlockCTA>
@@ -168,6 +168,20 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
             our expertise, including over 60,000 unique designs, we can create
             bespoke solutions that exceed expectations. Check out what our
             customers have to say and some of our favourite projects.
+          </p>
+          <p>
+            <Link
+              to="/projects"
+              style={{
+                color: "#70b33b",
+                fontWeight: "bold",
+              }}
+            >
+              <span style={{ textDecoration: "underline" }}>
+                All Case Studies
+              </span>
+              <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
+            </Link>
           </p>
           <CaseStudiesMap
             markdownNodes={markdownNodes}

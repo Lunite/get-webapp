@@ -9,6 +9,7 @@ import Slider from "react-slick"
 import "./styles.scss"
 import Heading from "../Heading"
 import { markdownNodesFilter } from "~/utils"
+import Icon from "~/components/olc-framework/Icon"
 
 const CaseStudiesMap = ({
   customerType,
@@ -16,7 +17,6 @@ const CaseStudiesMap = ({
 }: {
   customerType: "domestic" | "commercial"
   markdownNodes: any[]
-  currentSlide: number
 }) => {
   const items = markdownNodesFilter(markdownNodes, "project")
   const itemsToDisplay = items.filter(
@@ -172,6 +172,7 @@ const CaseStudiesMap = ({
                 <div className="project-item__info">
                   {info_strip?.system && (
                     <div className="cs-info-item">
+                      <Icon alias="build" className="cs-info-item__icon" />
                       <span className="cs-info-item__heading">System</span>
                       <span className="cs-info-item__value">
                         {info_strip?.system}
@@ -180,6 +181,10 @@ const CaseStudiesMap = ({
                   )}
                   {info_strip?.output && (
                     <div className="cs-info-item">
+                      <Icon
+                        alias="battery-charging"
+                        className="cs-info-item__icon"
+                      />
                       <span className="cs-info-item__heading">Output</span>
                       <span className="cs-info-item__value">
                         {info_strip?.output}
@@ -188,6 +193,7 @@ const CaseStudiesMap = ({
                   )}
                   {info_strip?.location && (
                     <div className="cs-info-item">
+                      <Icon alias="pin" className="cs-info-item__icon" />
                       <span className="cs-info-item__heading">Location</span>
                       <span className="cs-info-item__value">
                         {info_strip?.location}
@@ -237,7 +243,6 @@ const CaseStudiesMap = ({
               infinite={true}
               autoplaySpeed={10000}
               speed={500}
-              autoplay={true}
               slidesToShow={1}
               slidesToScroll={1}
               beforeChange={(oldIndex, newIndex) => {
