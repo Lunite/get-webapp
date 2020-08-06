@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const fs = require("fs")
 const readline = require("readline")
+const { google } = require("googleapis")
 
 const SCOPES = ["https://mail.google.com/"]
 const TOKEN_PATH = "token.json"
@@ -35,7 +36,6 @@ function getNewToken(oAuth2Client, callback) {
     })
   })
 }
-exports.getNewToken = getNewToken
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
