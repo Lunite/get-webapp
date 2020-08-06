@@ -106,100 +106,94 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
-  const pages = 2
+  const pages = 4
 
   const getPage = () => {
     switch (page) {
       case 0:
         return (
-          <Block>
-            <Col9>
-              <div className="row">
-                <Col6>
-                  <Heading level={3}>
-                    Enter your postcode to get started
-                  </Heading>
-                </Col6>
-                <Col6>
-                  <FormInput
-                    name="postcode"
-                    label="Postcode"
-                    placeholder="Enter postcode..."
-                    required
-                    pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
-                    title="Please enter a valid UK postcode"
-                    value={formValues.postcode}
-                    onChange={updatePostcode}
-                    id="postcode"
-                  />
-                  <div className="form__actions">
-                    <BlockCTA large submit className="fl-r">
-                      Get Started
-                    </BlockCTA>
-                  </div>
-                </Col6>
-              </div>
-            </Col9>
-          </Block>
-        )
-      case 1:
-        return (
-          <Block>
-            <div className="row center">
+          <Col9>
+            <div className="row">
               <Col6>
-                <InteractiveMap location={location} setLocation={setLocation} />
+                <Heading level={3}>Enter your postcode to get started</Heading>
               </Col6>
               <Col6>
-                <Heading level={3}>Find your property</Heading>
-                <FormInput
-                  name="houseNumber"
-                  id="houseNumber"
-                  label="House number/name"
-                  placeholder="Enter house number..."
-                  type="text"
-                  required
-                  value={formValues.houseNumber}
-                  onChange={updateTextValue}
-                />
-                <FormInput
-                  name="street"
-                  id="street"
-                  label="Street"
-                  type="text"
-                  placeholder="Enter street name..."
-                  required
-                  value={formValues.street}
-                  onChange={updateTextValue}
-                />
-                <FormInput
-                  name="town"
-                  id="town"
-                  label="Town"
-                  type="text"
-                  placeholder="Enter town..."
-                  required
-                  value={formValues.town}
-                  onChange={updateTextValue}
-                />
                 <FormInput
                   name="postcode"
-                  id="postcode"
                   label="Postcode"
                   placeholder="Enter postcode..."
                   required
                   pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
-                  onChange={updateTextValue}
+                  onChange={updatePostcode}
+                  id="postcode"
                 />
                 <div className="form__actions">
                   <BlockCTA large submit className="fl-r">
-                    Next
+                    Get Started
                   </BlockCTA>
                 </div>
               </Col6>
             </div>
-          </Block>
+          </Col9>
+        )
+      case 1:
+        return (
+          <div className="row center">
+            <Col6>
+              <InteractiveMap location={location} setLocation={setLocation} />
+            </Col6>
+            <Col6>
+              <Heading level={3}>Find your property</Heading>
+              <FormInput
+                name="houseNumber"
+                id="houseNumber"
+                label="House number/name"
+                placeholder="Enter house number..."
+                type="text"
+                required
+                value={formValues.houseNumber}
+                onChange={updateTextValue}
+              />
+              <FormInput
+                name="street"
+                id="street"
+                label="Street"
+                type="text"
+                placeholder="Enter street name..."
+                required
+                value={formValues.street}
+                onChange={updateTextValue}
+              />
+              <FormInput
+                name="town"
+                id="town"
+                label="Town"
+                type="text"
+                placeholder="Enter town..."
+                required
+                value={formValues.town}
+                onChange={updateTextValue}
+              />
+              <FormInput
+                name="postcode"
+                id="postcode"
+                label="Postcode"
+                placeholder="Enter postcode..."
+                required
+                pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                title="Please enter a valid UK postcode"
+                value={formValues.postcode}
+                onChange={updateTextValue}
+              />
+              <div className="form__actions">
+                <BlockCTA large submit className="fl-r">
+                  Next
+                </BlockCTA>
+              </div>
+            </Col6>
+          </div>
         )
 
       default:
@@ -213,17 +207,19 @@ const QuotePage: React.FC<PageProps> = props => {
           Get a Quote
         </Heading>
       </Hero>
-      <div className="container u-layout--indent container--column">
-        <Col12>
-          <form
-            name="quote-form"
-            onSubmit={handleSubmit}
-            className="form form--full-width"
-          >
-            {getPage()}
-          </form>
-        </Col12>
-      </div>
+      <Block>
+        <div className="container u-layout--indent container--column">
+          <Col12>
+            <form
+              name="quote-form"
+              onSubmit={handleSubmit}
+              className="form form--full-width"
+            >
+              {getPage()}
+            </form>
+          </Col12>
+        </div>
+      </Block>
     </div>
   )
 }

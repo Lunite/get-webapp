@@ -1,0 +1,17 @@
+{
+  "name": "post-quote-form",
+  "version": "0.0.1",
+  "description": "Serverless function to take quote details, calculate quote cost then send an automated email",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kilian Seifert Leitch",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^58.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0"
+  }
+}
