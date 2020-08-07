@@ -3,7 +3,14 @@ import BlockCTA from "../BlockCTA"
 import Col6 from "../../grid/Col6"
 import Animate from "~/components/olc-framework/Animate"
 
-const RadioGrid: React.FC<{}> = () => {
+const RadioGrid: React.FC<{
+  selectedValue: number
+  setSelected: (number) => void
+}> = props => {
+  const handleOptionChange = (e: number) => {
+    props.setSelected(e)
+  }
+
   return (
     <>
       <Animate
@@ -19,6 +26,11 @@ const RadioGrid: React.FC<{}> = () => {
               type="radio"
               name="inclination"
               id="incl-flat"
+              value="0"
+              checked={props.selectedValue === 0}
+              onChange={() => {
+                handleOptionChange(0)
+              }}
             />
             <label className="button-label" htmlFor="incl-flat">
               Flat Roof
@@ -31,6 +43,11 @@ const RadioGrid: React.FC<{}> = () => {
               type="radio"
               name="inclination"
               id="incl-low"
+              value="18"
+              onChange={() => {
+                handleOptionChange(18)
+              }}
+              checked={props.selectedValue === 18}
             />
             <label className="button-label" htmlFor="incl-low">
               Low Slope
@@ -51,6 +68,11 @@ const RadioGrid: React.FC<{}> = () => {
               type="radio"
               name="inclination"
               id="incl-med"
+              value="35"
+              onChange={() => {
+                handleOptionChange(35)
+              }}
+              checked={props.selectedValue === 35}
             />
             <label className="button-label" htmlFor="incl-med">
               Medium Slope
@@ -63,6 +85,11 @@ const RadioGrid: React.FC<{}> = () => {
               type="radio"
               name="inclination"
               id="incl-high"
+              value="45"
+              checked={props.selectedValue === 45}
+              onChange={() => {
+                handleOptionChange(45)
+              }}
             />
             <label className="button-label" htmlFor="incl-high">
               High Slope

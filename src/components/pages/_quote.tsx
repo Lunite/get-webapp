@@ -16,7 +16,7 @@ const QuotePage = ({ location }) => {
 
   return (
     <div className="quote-page">
-      {/* <Hero imageUrl="/images/quote-banner.jpg" compact>
+      <Hero imageUrl="/images/quote-banner.jpg" compact>
         <Heading level={1} underlined>
           Get a Quote
         </Heading>
@@ -128,7 +128,7 @@ const QuotePage = ({ location }) => {
             </Col6>
           </div>
         </div>
-      </Block> */}
+      </Block>
     </div>
   )
 }

@@ -50,7 +50,7 @@ const values: IQuoteFormValues = {
   postcode: "",
   roof: {
     azimuth: 0,
-    inclination: 0,
+    inclination: 1,
   },
   property: {
     bedrooms: 0,
@@ -87,6 +87,14 @@ const QuotePage: React.FC<PageProps> = props => {
     effect()
   }, [location])
 
+  useEffect(() => {
+    page !== 0 && window.scrollTo(0, 200)
+  }, [page])
+
+  useEffect(() => {
+    console.log(formValues)
+  }, [formValues])
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
@@ -100,6 +108,12 @@ const QuotePage: React.FC<PageProps> = props => {
     let newFv = { ...formValues }
     newFv[e.target.id] = e.target.value
     console.log("Updated FV to", newFv)
+    setFormValues(newFv)
+  }
+
+  const updateInclination = (e: number) => {
+    const newFv = { ...formValues }
+    newFv.roof.inclination = e
     setFormValues(newFv)
   }
 
@@ -124,9 +138,14 @@ const QuotePage: React.FC<PageProps> = props => {
                   startValues={["0", "translateY(40px) rotate(0.5deg)"]}
                   endValues={["1", "translateY(0) rotate(0deg)"]}
                 >
-                  <Heading underlined>
-                    Enter your postcode to get started
-                  </Heading>
+                  <div>
+                    <Heading underlined level={1}>
+                      Get a Quote
+                    </Heading>
+                    <Heading level={3}>
+                      Enter your postcode to get started
+                    </Heading>
+                  </div>
                 </Animate>
                 <Animate
                   properties={["opacity", "transform"]}
@@ -236,7 +255,10 @@ const QuotePage: React.FC<PageProps> = props => {
             <Heading level={3}>
               Choose the angle that best matches your roof
             </Heading>
-            <RadioGrid />
+            <RadioGrid
+              selectedValue={formValues.roof.inclination}
+              setSelected={updateInclination}
+            />
           </>
         )
       default:
