@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react"
 import { Map, GoogleApiWrapper } from "google-maps-react"
 import "./arrowMapStyles.scss"
 
-interface InteractiveMapProps {
+interface ArrowMapProps {
   google: any
   location: {
     lat: number
@@ -10,7 +10,7 @@ interface InteractiveMapProps {
   }
 }
 
-const InteractiveMap: React.FC<InteractiveMapProps> = props => {
+const ArrowMap: React.FC<ArrowMapProps> = props => {
   const mapOptions = {
     mapTypeControl: false,
     center: props.location,
@@ -108,4 +108,4 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyCIxU03Aoq29qJ5-KQT9F_v763fpJf0B3c",
-})(InteractiveMap)
+})(ArrowMap)
