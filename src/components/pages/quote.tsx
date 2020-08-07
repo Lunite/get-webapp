@@ -18,6 +18,7 @@ import { number } from "prop-types"
 import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
 import RadioGrid from "../configurable/QuoteTool/RadioGrid"
 import Shoutout from "../configurable/Shoutout"
+import Animate from "../olc-framework/Animate"
 
 interface IQuoteFormValues {
   name: string
@@ -118,22 +119,42 @@ const QuotePage: React.FC<PageProps> = props => {
             image={<Image src="/images/products-bulb.jpg" title="Products" />}
             text={
               <>
-                <Heading underlined>Enter your postcode to get started</Heading>
-                <FormInput
-                  name="postcode"
-                  placeholder="Enter postcode..."
-                  required
-                  pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
-                  title="Please enter a valid UK postcode"
-                  value={formValues.postcode}
-                  onChange={updatePostcode}
-                  id="postcode"
-                />
-                <div className="form__actions">
-                  <BlockCTA large submit className="fl-r">
-                    Get Started
-                  </BlockCTA>
-                </div>
+                <Animate
+                  properties={["opacity", "transform"]}
+                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                  endValues={["1", "translateY(0) rotate(0deg)"]}
+                >
+                  <Heading underlined>
+                    Enter your postcode to get started
+                  </Heading>
+                </Animate>
+                <Animate
+                  properties={["opacity", "transform"]}
+                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                  endValues={["1", "translateY(0) rotate(0deg)"]}
+                >
+                  <FormInput
+                    name="postcode"
+                    placeholder="Enter postcode..."
+                    required
+                    pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                    title="Please enter a valid UK postcode"
+                    value={formValues.postcode}
+                    onChange={updatePostcode}
+                    id="postcode"
+                  />
+                </Animate>
+                <Animate
+                  properties={["opacity", "transform"]}
+                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                  endValues={["1", "translateY(0) rotate(0deg)"]}
+                >
+                  <div className="form__actions">
+                    <BlockCTA large submit className="fl-r">
+                      Get Started
+                    </BlockCTA>
+                  </div>
+                </Animate>
               </>
             }
           />
@@ -146,52 +167,66 @@ const QuotePage: React.FC<PageProps> = props => {
             </Col6>
             <Col6>
               <Heading level={3}>Find your property</Heading>
-              <FormInput
-                name="houseNumber"
-                id="houseNumber"
-                label="House number/name"
-                placeholder="Enter house number..."
-                type="text"
-                required
-                value={formValues.houseNumber}
-                onChange={updateTextValue}
-              />
-              <FormInput
-                name="street"
-                id="street"
-                label="Street"
-                type="text"
-                placeholder="Enter street name..."
-                required
-                value={formValues.street}
-                onChange={updateTextValue}
-              />
-              <FormInput
-                name="town"
-                id="town"
-                label="Town"
-                type="text"
-                placeholder="Enter town..."
-                required
-                value={formValues.town}
-                onChange={updateTextValue}
-              />
-              <FormInput
-                name="postcode"
-                id="postcode"
-                label="Postcode"
-                placeholder="Enter postcode..."
-                required
-                pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
-                title="Please enter a valid UK postcode"
-                value={formValues.postcode}
-                onChange={updateTextValue}
-              />
-              <div className="form__actions">
-                <BlockCTA large submit className="fl-r">
-                  Next
-                </BlockCTA>
-              </div>
+              <Animate
+                properties={["opacity", "transform"]}
+                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                endValues={["1", "translateY(0) rotate(0deg)"]}
+              >
+                <div>
+                  <FormInput
+                    name="houseNumber"
+                    id="houseNumber"
+                    label="House number/name"
+                    placeholder="Enter house number..."
+                    type="text"
+                    required
+                    value={formValues.houseNumber}
+                    onChange={updateTextValue}
+                  />
+                  <FormInput
+                    name="street"
+                    id="street"
+                    label="Street"
+                    type="text"
+                    placeholder="Enter street name..."
+                    required
+                    value={formValues.street}
+                    onChange={updateTextValue}
+                  />
+                  <FormInput
+                    name="town"
+                    id="town"
+                    label="Town"
+                    type="text"
+                    placeholder="Enter town..."
+                    required
+                    value={formValues.town}
+                    onChange={updateTextValue}
+                  />
+                  <FormInput
+                    name="postcode"
+                    id="postcode"
+                    label="Postcode"
+                    placeholder="Enter postcode..."
+                    required
+                    pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                    title="Please enter a valid UK postcode"
+                    value={formValues.postcode}
+                    onChange={updateTextValue}
+                  />
+                </div>
+              </Animate>
+              <Animate
+                properties={["opacity", "transform"]}
+                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                endValues={["1", "translateY(0) rotate(0deg)"]}
+              >
+                <div className="form__actions">
+                  <BlockCTA large submit className="fl-r">
+                    Next
+                  </BlockCTA>
+                </div>
+              </Animate>
             </Col6>
           </div>
         )
@@ -207,7 +242,7 @@ const QuotePage: React.FC<PageProps> = props => {
       default:
         return (
           <>
-            No Page Here :){" "}
+            No Page Here :)
             <button
               onClick={() => {
                 setPage(0)
