@@ -25,11 +25,22 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
     console.log(location)
     props.setLocation(location)
   }
+  const mapOptions = {
+    mapTypeControl: false,
+    center: location,
+    mapTypeId: "satellite",
+    disableDefaultUI: true,
+  }
 
   return (
     <Map
       google={props.google}
       initialCenter={props.location}
+      // @ts-ignore
+      zoom={20}
+      onReady={(mapProps, map) => {
+        map.setOptions(mapOptions)
+      }}
       containerStyle={{
         position: "relative",
         height: "550px",

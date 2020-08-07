@@ -19,6 +19,10 @@ import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
 import RadioGrid from "../configurable/QuoteTool/RadioGrid"
 import Shoutout from "../configurable/Shoutout"
 import Animate from "../olc-framework/Animate"
+import ArrowMap from "../configurable/QuoteTool/ArrowMap"
+
+const postcodeRegex =
+  "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
 
 interface IQuoteFormValues {
   name: string
@@ -123,7 +127,9 @@ const QuotePage: React.FC<PageProps> = props => {
 
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
-    fromAddress(e.target.value).then(res => setLocation(res))
+    if (e.target.value.match(postcodeRegex)) {
+      fromAddress(e.target.value).then(res => setLocation(res))
+    }
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
@@ -160,7 +166,7 @@ const QuotePage: React.FC<PageProps> = props => {
                     name="postcode"
                     placeholder="Enter postcode..."
                     required
-                    pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                    pattern={postcodeRegex}
                     title="Please enter a valid UK postcode"
                     value={formValues.postcode}
                     onChange={updatePostcode}
@@ -190,6 +196,7 @@ const QuotePage: React.FC<PageProps> = props => {
             </Col6>
             <Col6>
               <Heading level={3}>Find your property</Heading>
+              <Heading level={5}> Please select your roof on the map</Heading>
               <Animate
                 properties={["opacity", "transform"]}
                 startValues={["0", "translateY(40px) rotate(0.5deg)"]}
@@ -239,7 +246,6 @@ const QuotePage: React.FC<PageProps> = props => {
                   />
                 </div>
               </Animate>
-
               <div className="form__actions">
                 <BlockCTA large left action={prevPage}>
                   Back
@@ -252,6 +258,24 @@ const QuotePage: React.FC<PageProps> = props => {
           </div>
         )
       case 2:
+        return (
+          <>
+            <Heading level={3}>Which direction does your roof face?</Heading>
+            <Heading level={5}>
+              Rotate the arrow to match the direction of your roof
+            </Heading>
+            <ArrowMap location={location} />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 3:
         return (
           <>
             <Heading level={3}>
