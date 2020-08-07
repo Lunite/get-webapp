@@ -97,11 +97,6 @@ const RadioGrid: React.FC<{
           </Col6>
         </div>
       </Animate>
-      <div className="form__actions">
-        <BlockCTA large submit className="fl-r">
-          Next
-        </BlockCTA>
-      </div>
     </>
   )
 }

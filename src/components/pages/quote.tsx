@@ -103,6 +103,10 @@ const QuotePage: React.FC<PageProps> = props => {
     }
   }
 
+  const prevPage = () => {
+    setPage(page - 1)
+  }
+
   const updateTextValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Updates a text value in formValues
     let newFv = { ...formValues }
@@ -123,7 +127,7 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
-  const pages = 3
+  const pages = 4
 
   const getPage = () => {
     switch (page) {
@@ -235,17 +239,15 @@ const QuotePage: React.FC<PageProps> = props => {
                   />
                 </div>
               </Animate>
-              <Animate
-                properties={["opacity", "transform"]}
-                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                endValues={["1", "translateY(0) rotate(0deg)"]}
-              >
-                <div className="form__actions">
-                  <BlockCTA large submit className="fl-r">
-                    Next
-                  </BlockCTA>
-                </div>
-              </Animate>
+
+              <div className="form__actions">
+                <BlockCTA large left action={prevPage}>
+                  Back
+                </BlockCTA>
+                <BlockCTA large submit right>
+                  Next
+                </BlockCTA>
+              </div>
             </Col6>
           </div>
         )
@@ -259,6 +261,14 @@ const QuotePage: React.FC<PageProps> = props => {
               selectedValue={formValues.roof.inclination}
               setSelected={updateInclination}
             />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
           </>
         )
       default:
