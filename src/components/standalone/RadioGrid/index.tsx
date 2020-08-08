@@ -1,7 +1,8 @@
 import React from "react"
 import BlockCTA from "../BlockCTA"
 import Col6 from "../../grid/Col6"
-import Animate from "~/components/olc-framework/Animate"
+import "./styles.scss"
+import Animate from "../../olc-framework/Animate"
 
 const RadioGrid: React.FC<{
   selectedValue: number

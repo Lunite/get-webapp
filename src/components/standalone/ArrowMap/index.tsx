@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import { Map, GoogleApiWrapper } from "google-maps-react"
-import "./arrowMapStyles.scss"
+import "./styles.scss"
 
 interface ArrowMapProps {
   google: any
