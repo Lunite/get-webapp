@@ -16,6 +16,7 @@ list:
     \r
 
     It depends on a number of factors.\r\n"
+  image: capturesfdsh.jpg
 title: Calculating your savings
 date: 2020-08-10T13:43:48.075Z
 show_quote_block: false
