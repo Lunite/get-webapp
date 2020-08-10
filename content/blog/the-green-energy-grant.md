@@ -4,8 +4,7 @@ hero_title: The Green Energy Grant
 list:
   image: capture.jpg
   intro: On 4th August, the government announced which measures would be eligible
-    for grants. As expected, these included a wide range of home insulation, as
-    well as heat pumps. However, the only solar solution listed is the rather
+    for grants. However, the only solar solution listed is the rather
     specialised solar water heating. There was no mention of generating solar
     power for general electricity needs. So what's next?
 title: No Green Home Grant for Solar — But It's Still a No-brainer
