@@ -6,7 +6,7 @@ list:
   intro: On 4th August, the government announced which measures would be eligible
     for grants. However, the only solar solution listed is the rather
     specialised solar water heating. There was no mention of generating solar
-    power for general electricity needs. So what's next?
+    power for general electricity needs. So, what's next?
 title: No Green Home Grant for Solar — But It's Still a No-brainer
 date: 2020-08-10T12:25:48.632Z
 show_quote_block: false
