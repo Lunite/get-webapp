@@ -34,10 +34,10 @@
 }
 
 .radio-label:checked + .button-label {
-  background: $light-blue;
+  background: $green;
   color: $dark-blue;
   &:hover {
-    background: darken($light-blue, 5%);
+    background: lighten($green, 5%);
     color: darken($dark-blue, 5%);
   }
 }

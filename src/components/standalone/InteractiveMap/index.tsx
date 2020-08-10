@@ -32,6 +32,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
     disableDefaultUI: true,
   }
 
+  // TODO Add styling to make cursor on map a PIN not a HAND
+
   return (
     <Map
       google={props.google}

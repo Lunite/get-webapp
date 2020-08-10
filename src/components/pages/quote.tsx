@@ -1,9 +1,6 @@
 import React, { useState, FormEvent, useEffect } from "react"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
-import Col3 from "../grid/Col3"
-import Col9 from "../grid/Col9"
-import Section from "../configurable/Section"
 import Block from "../configurable/Block"
 import "./quote.scss"
 import Col6 from "../grid/Col6"
@@ -11,15 +8,14 @@ import FormInput from "../olc-framework/FormInput"
 import BlockCTA from "../configurable/BlockCTA"
 import Image from "../configurable/Image"
 import { PageProps } from "gatsby"
-import InteractiveMap from "../configurable/QuoteTool/InteractiveMap"
-import Col11 from "../grid/Col11"
+import InteractiveMap from "../standalone/InteractiveMap"
 import Col12 from "../grid/Col12"
-import { number } from "prop-types"
 import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
-import RadioGrid from "../configurable/QuoteTool/RadioGrid"
+import RadioGrid from "../standalone/RadioGrid"
 import Shoutout from "../configurable/Shoutout"
 import Animate from "../olc-framework/Animate"
-import ArrowMap from "../configurable/QuoteTool/ArrowMap"
+import ArrowMap from "../standalone/ArrowMap"
+import SlideQuestion from "../configurable/SlideInput"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -42,6 +38,7 @@ interface IQuoteFormValues {
     pump: boolean
     eHeating: boolean
   }
+  eac: number
 }
 
 const values: IQuoteFormValues = {
@@ -62,6 +59,11 @@ const values: IQuoteFormValues = {
     pump: false,
     eHeating: false,
   },
+  eac: 100,
+}
+
+const ofgemAverages = {
+  eac: 100,
 }
 
 const QuotePage: React.FC<PageProps> = props => {
@@ -95,9 +97,9 @@ const QuotePage: React.FC<PageProps> = props => {
     page !== 0 && window.scrollTo(0, 200)
   }, [page])
 
-  useEffect(() => {
-    console.log(formValues)
-  }, [formValues])
+  // useEffect(() => {
+  //   console.log(formValues)
+  // }, [formValues])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
@@ -133,7 +135,7 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
-  const pages = 4
+  const pages = 6
 
   const getPage = () => {
     switch (page) {
@@ -295,6 +297,77 @@ const QuotePage: React.FC<PageProps> = props => {
             </div>
           </>
         )
+      case 4:
+        return (
+          <>
+            <SlideQuestion
+              title="Enter your annual electric consumption"
+              min={0}
+              max={200}
+              value={formValues.eac}
+              onChange={e => {
+                setFormValues({ ...formValues, eac: Number(e.target.value) })
+              }}
+              inputAdornments={{ start: "£" }}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 5:
+        return (
+          <>
+            <Col6>
+              <Heading level={3}>Enter your personal details</Heading>
+              <FormInput
+                name="name"
+                id="name"
+                label="Full name"
+                placeholder="Type your full name..."
+                value={formValues.name}
+                onChange={updateTextValue}
+                required
+              />
+              <FormInput
+                name="email"
+                id="email"
+                label="Email"
+                type="email"
+                placeholder="Type your email..."
+                value={formValues.email}
+                onChange={updateTextValue}
+                required
+              />
+              <FormInput
+                name="phone"
+                id="phone"
+                label="Phone number"
+                type="tel"
+                placeholder="Type your phone number..."
+                value={formValues.phone}
+                onChange={updateTextValue}
+                required
+              />
+              <div className="form__actions">
+                <BlockCTA large left action={prevPage}>
+                  Back
+                </BlockCTA>
+                <BlockCTA large submit right>
+                  Submit
+                </BlockCTA>
+              </div>
+            </Col6>
+            <Col6>
+              <Image src="/images/quote-24.jpg" title="Fast Response" />
+            </Col6>
+          </>
+        )
       default:
         return (
           <>
@@ -318,7 +391,7 @@ const QuotePage: React.FC<PageProps> = props => {
         </Heading>
       </Hero>
       <Block>
-        <div className="container u-layout--indent container--column">
+        <div className="container container--column">
           <Col12>
             <form
               name="quote-form"
