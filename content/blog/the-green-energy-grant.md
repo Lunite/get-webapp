@@ -1,8 +1,8 @@
 ---
-image_hero: calculator.jpg
+image_hero: greevoucher.jpg
 hero_title: No Green Home Grant for Solar — But It's Still a No-brainer
 list:
-  image: calculator.jpg
+  image: capture.jpg
   intro: >-
     Last month, we let you know about the exciting news of the government's
     Green Home Grant, which would heavily subsidise measures to reduce wasted
@@ -18,6 +18,12 @@ seo:
   description: No Green Home Grant for Solar but still a good deal
   keywords: Green Energy Grant, savings, solar energy
 ---
+Last month, we let you know about the exciting news of the government's Green Home Grant, which would heavily subsidise measures to reduce wasted energy in your home.
+
+We were hopeful this would include installing solar PV panels. After all, what better way to reduce energy wastage than to slash your reliance on grid energy? Unfortunately, the government doesn't see it the same way. Even so, going solar is still a no-brainer.
+
+### How does it work?
+
 In early July, the government announced a scheme called the Green Home Grant (also referred to as Green Energy Vouchers) to subsidise homeowners undertaking energy-saving measures such as home insulation. 
 
 The advantages of this scheme are two-fold. First of all, it will help financially beleaguered households to reduce their energy bills, a saving that will be especially valuable as the post-COVID-19 recession begins to bite. Secondly, and just as importantly, it will help them reduce their carbon footprint and do their bit to fight climate change.
