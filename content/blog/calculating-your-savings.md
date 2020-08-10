@@ -1,5 +1,5 @@
 ---
-image_hero: calculator.jpg
+image_hero: calculator2.jpg
 hero_title: How Much Could You Save from a Solar Panel System?
 list:
   intro: >
