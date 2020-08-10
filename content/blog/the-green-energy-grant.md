@@ -1,16 +1,14 @@
 ---
 image_hero: greevoucher.jpg
-hero_title: No Green Home Grant for Solar — But It's Still a No-brainer
+hero_title: The Green Energy Grant
 list:
   image: capture.jpg
-  intro: >-
-    Last month, we let you know about the exciting news of the government's
-    Green Home Grant, which would heavily subsidise measures to reduce wasted
-    energy in your home.
-
-
-    We were hopeful this would include installing solar PV panels. After all, what better way to reduce energy wastage than to slash your reliance on grid energy? Unfortunately, the government doesn't see it the same way. Even so, going solar is still a no-brainer.
-title: The Green Energy Grant
+  intro: On 4th August, the government announced which measures would be eligible
+    for grants. As expected, these included a wide range of home insulation, as
+    well as heat pumps. However, the only solar solution listed is the rather
+    specialised solar water heating. There was no mention of generating solar
+    power for general electricity needs. So what's next?
+title: No Green Home Grant for Solar — But It's Still a No-brainer
 date: 2020-08-10T12:25:48.632Z
 show_quote_block: false
 seo:
