@@ -2,7 +2,7 @@
 image_hero: round.jpg
 hero_title: It’s time to save more
 hero_subtitle: ⠀
-title: How does it work?
+title: Special offer
 date: 
 show_quote_block: true
 seo:
