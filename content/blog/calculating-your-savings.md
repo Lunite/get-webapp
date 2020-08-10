@@ -1,5 +1,5 @@
 ---
-image_hero: greevoucher.jpg
+image_hero: calculator.jpg
 hero_title: How Much Could You Save from a Solar Panel System?
 list:
   intro: "Why do people invest in solar power for their homes? Well, besides the
