@@ -12,7 +12,7 @@ title: Calculating your savings
 date: 2020-08-10T13:43:48.075Z
 show_quote_block: false
 seo:
-  title: How Much Could You Save from a Solar Panel System?
+  title: How Much Could You Save? | Green Energy Together | Solar Panel Installer
   description: How Much Could You Save from a Solar Panel System?
   keywords: calculate solar panels savings
 ---
