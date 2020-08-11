@@ -11,8 +11,8 @@ title: No Green Home Grant for Solar — But It's Still a No-brainer
 date: 2020-08-10T12:25:48.632Z
 show_quote_block: false
 seo:
-  title: The Green Energy Grant
-  description: No Green Home Grant for Solar but still a good deal
+  title: The Green Energy Grant | Green Energy Together | Solar Panel Installer
+  description: No Green Home Grant for Solar but still a good deal.
   keywords: Green Energy Grant, savings, solar energy
 ---
 Last month, we let you know about the exciting news of the government's Green Home Grant, which would heavily subsidise measures to reduce wasted energy in your home.
