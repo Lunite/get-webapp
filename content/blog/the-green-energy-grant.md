@@ -41,4 +41,4 @@ Even without support from the Green Home Grants, however, converting your home t
 
 This can amount to around £500 a year, and you may even be able to make extra by schemes to sell unused solar energy to the National Grid. At this rate, it won't take long to pay for the upfront costs and then start making pure profit.
 
-It's even better at the moment. We currently have an offer of a 2.75kw system, with a battery, for £4,200 including VAT, with no deposit required. This is an all-in package that comes complete with install, warranties and aftercare package. [Get in touch with us](https://www.get-uk.com/promo) to find out more about how this can slash both your bills and your carbon footprint.
+It's even better at the moment. We currently have an [offer](https://www.get-uk.com/promo) of a 2.75kw system, with a battery, for £4,200 including VAT, with no deposit required. This is an all-in package that comes complete with install, warranties and aftercare package. [Get in touch with us](https://www.get-uk.com/promo) to find out more about how this can slash both your bills and your carbon footprint.
