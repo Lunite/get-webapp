@@ -15,7 +15,7 @@ seo:
   description: No Green Home Grant for Solar but still a good deal.
   keywords: Green Energy Grant, savings, solar energy
 ---
-Last month, we let you know about the exciting news of the government's Green Home Grant, which would heavily subsidise measures to reduce wasted energy in your home.
+Last month, we let you know about the exciting news of the government's [Green Home Grant](https://www.get-uk.com/blog/what-does-it-mean-for-you/), which would heavily subsidise measures to reduce wasted energy in your home.
 
 We were hopeful this would include installing solar PV panels. After all, what better way to reduce energy wastage than to slash your reliance on grid energy? Unfortunately, the government doesn't see it the same way. Even so, going solar is still a no-brainer.
 
