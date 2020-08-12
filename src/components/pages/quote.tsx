@@ -40,7 +40,8 @@ interface IQuoteFormValues {
     bedrooms: number
     eCar: boolean
     pump: boolean
-    eHeating: boolean
+    pool: boolean
+    heater: boolean
   }
   aec: number
   ppw: number
@@ -63,7 +64,8 @@ const values: IQuoteFormValues = {
     bedrooms: 0,
     eCar: false,
     pump: false,
-    eHeating: false,
+    pool: false,
+    heater: false,
   },
   aec: 100,
   ppw: 100,
@@ -72,6 +74,13 @@ const values: IQuoteFormValues = {
 
 const ofgemAverages = {
   eac: 100,
+}
+
+const propertyOptions = {
+  eCar: "Electric Car",
+  pump: "Air Source Heating", // check this
+  pool: "Swimming Pool",
+  heater: "Electric Storage Heating",
 }
 
 const QuotePage: React.FC<PageProps> = props => {
@@ -141,6 +150,12 @@ const QuotePage: React.FC<PageProps> = props => {
       fromAddress(e.target.value).then(res => setLocation(res))
     }
     setFormValues({ ...formValues, postcode: e.target.value })
+  }
+
+  const toggleProperty = (id: string) => {
+    const newP = { ...formValues.property }
+    newP[id] = !newP[id]
+    setFormValues({ ...formValues, property: newP })
   }
 
   const pages = 10
@@ -407,13 +422,14 @@ const QuotePage: React.FC<PageProps> = props => {
                     <FormCheckbox
                       name="own"
                       label="And if you own:"
-                      options={[
-                        "Electric Car",
-                        "Air Source Heating",
-                        "Swimming Pool",
-                        "Electric Storage Heating",
-                      ]}
-                      onChange
+                      options={Object.keys(propertyOptions)}
+                      getOptionLabel={option => {
+                        return propertyOptions[option]
+                      }}
+                      onChange={e => {
+                        toggleProperty(e.target.value)
+                      }}
+                      value={formValues.property}
                     />
                   </div>
                 </Animate>
