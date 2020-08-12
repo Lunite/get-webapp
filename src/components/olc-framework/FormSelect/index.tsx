@@ -10,6 +10,7 @@ interface FormSelectProps {
   placeholder?: string
   value?: string
   required?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const FormSelect: FunctionComponent<FormSelectProps> = ({
@@ -21,6 +22,7 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
   value = "",
   required = false,
   children,
+  onChange = () => {},
 }) => {
   return (
     <div className={`form-select ${className}`}>
@@ -30,6 +32,7 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
         className="form-select__field"
         defaultValue={value}
         required={required}
+        onChange={onChange}
       >
         <option value="" disabled hidden>
           {placeholder}

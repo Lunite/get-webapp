@@ -3,6 +3,8 @@ import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import "./quote.scss"
+import Col9 from "../grid/Col9"
+
 import Col6 from "../grid/Col6"
 import FormInput from "../olc-framework/FormInput"
 import BlockCTA from "../configurable/BlockCTA"
@@ -16,6 +18,8 @@ import Shoutout from "../configurable/Shoutout"
 import Animate from "../olc-framework/Animate"
 import ArrowMap from "../standalone/ArrowMap"
 import SlideQuestion from "../configurable/SlideInput"
+import FormSelect from "../olc-framework/FormSelect"
+import FormCheckbox from "../olc-framework/FormCheckbox"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -38,7 +42,9 @@ interface IQuoteFormValues {
     pump: boolean
     eHeating: boolean
   }
-  eac: number
+  aec: number
+  ppw: number
+  standingChange: number
 }
 
 const values: IQuoteFormValues = {
@@ -59,7 +65,9 @@ const values: IQuoteFormValues = {
     pump: false,
     eHeating: false,
   },
-  eac: 100,
+  aec: 100,
+  ppw: 100,
+  standingChange: 100,
 }
 
 const ofgemAverages = {
@@ -97,9 +105,9 @@ const QuotePage: React.FC<PageProps> = props => {
     page !== 0 && window.scrollTo(0, 200)
   }, [page])
 
-  // useEffect(() => {
-  //   console.log(formValues)
-  // }, [formValues])
+  useEffect(() => {
+    console.log(formValues)
+  }, [formValues])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
@@ -135,7 +143,7 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, postcode: e.target.value })
   }
 
-  const pages = 6
+  const pages = 10
 
   const getPage = () => {
     switch (page) {
@@ -304,11 +312,11 @@ const QuotePage: React.FC<PageProps> = props => {
               title="Enter your annual electric consumption"
               min={0}
               max={200}
-              value={formValues.eac}
+              value={formValues.aec}
               onChange={e => {
-                setFormValues({ ...formValues, eac: Number(e.target.value) })
+                setFormValues({ ...formValues, aec: Number(e.target.value) })
               }}
-              inputAdornments={{ start: "£" }}
+              inputAdornments={{ end: "W" }}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -323,37 +331,158 @@ const QuotePage: React.FC<PageProps> = props => {
       case 5:
         return (
           <>
+            <SlideQuestion
+              title="Price per Watt of electricity"
+              min={0}
+              max={200}
+              value={formValues.ppw}
+              onChange={e => {
+                setFormValues({ ...formValues, ppw: Number(e.target.value) })
+              }}
+              inputAdornments={{ start: "£" }}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 6:
+        return (
+          <>
+            <SlideQuestion
+              title="Standing Charge"
+              min={0}
+              max={200}
+              value={formValues.standingChange}
+              onChange={e => {
+                setFormValues({
+                  ...formValues,
+                  standingChange: Number(e.target.value),
+                })
+              }}
+              inputAdornments={{ start: "£" }}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 7:
+        return (
+          <>
+            <div className="row">
+              <Col6>
+                <Heading level={3}>Household Usage</Heading>
+                <Animate
+                  properties={["opacity", "transform"]}
+                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                  endValues={["1", "translateY(0) rotate(0deg)"]}
+                >
+                  <div>
+                    <FormSelect
+                      name="beds"
+                      label="Number of bedrooms"
+                      options={["1", "2", "3", "4", "5", "6+"]}
+                      onChange={e => {
+                        setFormValues({
+                          ...formValues,
+                          property: {
+                            ...formValues.property,
+                            bedrooms: Number(e.target.value[0]),
+                          },
+                        })
+                      }}
+                    />
+                    <br />
+                    <FormCheckbox
+                      name="own"
+                      label="And if you own:"
+                      options={[
+                        "Electric Car",
+                        "Air Source Heating",
+                        "Swimming Pool",
+                        "Electric Storage Heating",
+                      ]}
+                      onChange
+                    />
+                  </div>
+                </Animate>
+              </Col6>
+              <Col6>
+                <Block>
+                  <Heading level={4}>Why we need this information</Heading>
+                  <p>
+                    Our usage-based model means that our designs are truly cost
+                    effective and based around your consumption, lifestyle and
+                    needs. This is in order to design a system that generates
+                    the optimum amount of energy, minimising surplus export to
+                    the grid and reducing payback time.
+                  </p>
+                </Block>
+              </Col6>
+            </div>
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 8:
+        return (
+          <>
             <Col6>
               <Heading level={3}>Enter your personal details</Heading>
-              <FormInput
-                name="name"
-                id="name"
-                label="Full name"
-                placeholder="Type your full name..."
-                value={formValues.name}
-                onChange={updateTextValue}
-                required
-              />
-              <FormInput
-                name="email"
-                id="email"
-                label="Email"
-                type="email"
-                placeholder="Type your email..."
-                value={formValues.email}
-                onChange={updateTextValue}
-                required
-              />
-              <FormInput
-                name="phone"
-                id="phone"
-                label="Phone number"
-                type="tel"
-                placeholder="Type your phone number..."
-                value={formValues.phone}
-                onChange={updateTextValue}
-                required
-              />
+              <Animate
+                properties={["opacity", "transform"]}
+                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+                endValues={["1", "translateY(0) rotate(0deg)"]}
+              >
+                <div>
+                  <FormInput
+                    name="name"
+                    id="name"
+                    label="Full name"
+                    placeholder="Type your full name..."
+                    value={formValues.name}
+                    onChange={updateTextValue}
+                    required
+                  />
+                  <FormInput
+                    name="email"
+                    id="email"
+                    label="Email"
+                    type="email"
+                    placeholder="Type your email..."
+                    value={formValues.email}
+                    onChange={updateTextValue}
+                    required
+                  />
+                  <FormInput
+                    name="phone"
+                    id="phone"
+                    label="Phone number"
+                    type="tel"
+                    placeholder="Type your phone number..."
+                    value={formValues.phone}
+                    onChange={updateTextValue}
+                    required
+                  />
+                </div>
+              </Animate>
               <div className="form__actions">
                 <BlockCTA large left action={prevPage}>
                   Back

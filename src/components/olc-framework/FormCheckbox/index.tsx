@@ -11,6 +11,7 @@ interface FormCheckboxProps {
   placeholder?: string
   value?: string
   required?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
@@ -19,6 +20,7 @@ const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
   options,
   className = "",
   children,
+  onChange = e => {},
 }) => {
   return (
     <div className={`form-checkbox ${className}`}>
@@ -31,6 +33,7 @@ const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
             name={`${name}: ${oValue}`}
             value={oValue}
             id={`checkbox-${name}-${oIndex}`}
+            onChange={onChange}
           />
           <label
             className="form-checkbox__label"

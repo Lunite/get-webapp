@@ -31,13 +31,13 @@ const SlideInput: React.FC<SlideInputProps> = props => {
   const position = props.value / (props.max - props.min) // position along the slider
 
   return (
-    <Animate
-      properties={["opacity", "transform"]}
-      startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-      endValues={["1", "translateY(0) rotate(0deg)"]}
-    >
-      <div className="slide-container">
-        <Heading level={3}>{props.title}</Heading>
+    <div className="slide-container">
+      <Heading level={3}>{props.title}</Heading>
+      <Animate
+        properties={["opacity", "transform"]}
+        startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+        endValues={["1", "translateY(0) rotate(0deg)"]}
+      >
         <div className="range-slider">
           <span
             className="rs-label"
@@ -57,6 +57,12 @@ const SlideInput: React.FC<SlideInputProps> = props => {
             max={props.max}
           />
         </div>
+      </Animate>
+      <Animate
+        properties={["opacity", "transform"]}
+        startValues={["0", "translateY(40px) rotate(0.5deg)"]}
+        endValues={["1", "translateY(0) rotate(0deg)"]}
+      >
         <div className="box-minmax">
           <span>
             {props?.inputAdornments.start}
@@ -69,8 +75,8 @@ const SlideInput: React.FC<SlideInputProps> = props => {
             {props?.inputAdornments.end}
           </span>
         </div>
-      </div>
-    </Animate>
+      </Animate>
+    </div>
   )
 }
 
