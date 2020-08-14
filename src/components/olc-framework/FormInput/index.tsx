@@ -17,7 +17,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({
   label,
   name,
   className = "",
-  type = "text",
+  type = "text", 
   placeholder = "",
   value = "",
   required = false,
