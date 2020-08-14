@@ -71,10 +71,13 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   const onMouseUp = (e: MouseEvent) => {
-    setMouseState({ x: e.offsetX, y: e.offsetY, down: false })
+    // setMouseState({ x: e.offsetX, y: e.offsetY, down: false })
   }
 
   const onMouseMove = (e: MouseEvent) => {
+    if (!mouseState.down) {
+      return
+    }
     setMouseState({ x: e.offsetX, y: e.offsetY, down: true }) // use useEffect for callback from this, adjust arrow position apropriately
   }
 
@@ -113,10 +116,11 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     // Configures canvasRef event listeners
     if (canvasRef) {
       const canvas = canvasRef.current
+      canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
+
       canvas.addEventListener("mousedown", onMouseDown, false)
       canvas.addEventListener("mouseup", onMouseUp, false)
       canvas.addEventListener("mouseout", onMouseUp, false)
-      canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
 
       // Draws initial arrow at 0 degrees on canvas
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
@@ -142,7 +146,11 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           width: "100%",
         }}
       />
-      <canvas className="map-overlay" ref={canvasRef} />
+      <canvas
+        className="map-overlay"
+        ref={canvasRef}
+        onMouseDown={onMouseDown}
+      />
     </div>
   )
 }
