@@ -20,9 +20,9 @@ const QuotePage = ({ location }) => {
   const { state = {} } = location;
 
   let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
-  const storedSpecialValue = localStorage.getItem(STORAGE_KEY);
+  const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
   if (!storedSpecialValue) {
-    localStorage.setItem(STORAGE_KEY, specialValue);
+    window.localStorage.setItem(STORAGE_KEY, specialValue);
   } else {
     specialValue = storedSpecialValue;
   }
@@ -51,7 +51,7 @@ const QuotePage = ({ location }) => {
                 onSubmit={() => {
                   window.dataLayer = window.dataLayer || [];
 
-                  localStorage.removeItem(STORAGE_KEY);
+                  window.localStorage.removeItem(STORAGE_KEY);
 
                   const eventData = {
                     category: "Form",
@@ -141,7 +141,7 @@ const QuotePage = ({ location }) => {
                 />
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
-                    Request Quote
+                    Request Quote 
                   </BlockCTA>
                 </div>
               </form>
