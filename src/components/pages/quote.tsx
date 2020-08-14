@@ -18,7 +18,7 @@ const STORAGE_KEY = 'IS_SPECIAL';
 
 const awaitForLocalStorageNastyHack = () => {
   return new Promise((resolve) => {
-    if (!localStorage) {
+    if (!window || !window.localStorage) {
       setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
     }
 
@@ -31,22 +31,16 @@ const QuotePage = ({ location }) => {
 
   let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
 
-
   const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
   console.log('SPECIAL VALUE', specialValue);
 
   const setValueFromStorage = async() => {
-    console.log('wait for local storage');
     await awaitForLocalStorageNastyHack();
-
-    console.log('get value from local storage if set, or set it');
-    
-    const storedSpecialValue = localStorage.getItem(STORAGE_KEY);
-
-    console.log(storedSpecialValue);
+   
+    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
 
     if (!storedSpecialValue) {
-      localStorage.setItem(STORAGE_KEY, specialValue);
+      window.localStorage.setItem(STORAGE_KEY, specialValue);
     } else {
       specialValue = storedSpecialValue;
       setIsSpecial(storedSpecialValue);
@@ -55,8 +49,6 @@ const QuotePage = ({ location }) => {
 
   // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
   setValueFromStorage();
-
-  console.log('specialValue', specialValue);
 
   return (
     <div className="quote-page">
@@ -82,11 +74,11 @@ const QuotePage = ({ location }) => {
                   window.dataLayer = window.dataLayer || [];
 
                   // TODO: This index is set to the hidden input field
-                  // if you add fields or remove fields, change the index accordingly
+                  // if you add fields or remove fields, change the index
                   e.target[12].value = isSpecial;                  
 
-                  localStorage.removeItem(STORAGE_KEY);
-
+                  window.localStorage.removeItem(STORAGE_KEY);
+                  
                   const eventData = {
                    category: "Form",
                     action: "Submit",
