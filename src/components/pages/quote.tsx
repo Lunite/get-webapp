@@ -145,9 +145,9 @@ const QuotePage: React.FC<PageProps> = props => {
     page !== 0 && window.scrollTo(0, 200)
   }, [page])
 
-  useEffect(() => {
-    console.log(formValues)
-  }, [formValues])
+  // useEffect(() => {
+  //   console.log(formValues)
+  // }, [formValues])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
@@ -168,7 +168,6 @@ const QuotePage: React.FC<PageProps> = props => {
     // Updates a text value in formValues
     let newFv = { ...formValues }
     newFv[e.target.id] = e.target.value
-    console.log("Updated FV to", newFv)
     setFormValues(newFv)
   }
 
@@ -447,6 +446,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 >
                   <div>
                     <FormSelect
+                      required
                       name="beds"
                       label="Number of bedrooms"
                       options={["1", "2", "3", "4", "5", "6+"]}

@@ -22,7 +22,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
     }
-    console.log(location)
     props.setLocation(location)
   }
   const mapOptions = {

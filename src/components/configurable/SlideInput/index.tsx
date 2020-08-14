@@ -23,7 +23,6 @@ const SlideInput: React.FC<SlideInputProps> = props => {
 
   useEffect(() => {
     if (ref.current) {
-      console.log("Element is width", ref.current.offsetWidth)
       setWidth(ref.current.offsetWidth)
     }
   }, [ref])
