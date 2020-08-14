@@ -105,7 +105,6 @@ const QuotePage: React.FC<PageProps> = props => {
     lng: 0,
   })
 
-<<<<<<< HEAD
   // Check for discount query string params on component mount
   useEffect(() => {
     const checkForDiscount = async () => {
@@ -160,41 +159,6 @@ const QuotePage: React.FC<PageProps> = props => {
       window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested.
     }
   }
-=======
-const awaitForLocalStorageNastyHack = () => {
-  return new Promise((resolve) => {
-    if (!window || !window.localStorage) {
-      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
-    }
-
-    return resolve();
-  });
-}
-
-const QuotePage = ({ location }) => {
-  const { state = {} } = location;
-
-  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
-
-  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
-  console.log('SPECIAL VALUE', specialValue);
-
-  const setValueFromStorage = async() => {
-    await awaitForLocalStorageNastyHack();
-   
-    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
-
-    if (!storedSpecialValue) {
-      window.localStorage.setItem(STORAGE_KEY, specialValue);
-    } else {
-      specialValue = storedSpecialValue;
-      setIsSpecial(storedSpecialValue);
-    }
-  }
-
-  // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
-  setValueFromStorage();
->>>>>>> upstream/master
 
   const prevPage = () => {
     setPage(page - 1)
@@ -290,39 +254,12 @@ const QuotePage = ({ location }) => {
               <InteractiveMap location={location} setLocation={setLocation} />
             </Col6>
             <Col6>
-<<<<<<< HEAD
               <Heading level={3}>Find your property</Heading>
               <Heading level={5}> Please select your roof on the map</Heading>
               <Animate
                 properties={["opacity", "transform"]}
                 startValues={["0", "translateY(40px) rotate(0.5deg)"]}
                 endValues={["1", "translateY(0) rotate(0deg)"]}
-=======
-              <form
-                className="form"
-                action="https://formspree.io/mbjzlwgw"
-                method="POST"
-                name="quote-page"
-                onSubmit={(e) => {
-                  window.dataLayer = window.dataLayer || [];
-
-                  // TODO: This index is set to the hidden input field
-                  // if you add fields or remove fields, change the index
-                  e.target[12].value = isSpecial;                  
-
-                  window.localStorage.removeItem(STORAGE_KEY);
-                  
-                  const eventData = {
-                   category: "Form",
-                    action: "Submit",
-                    label: "LongQuote",
-                    // value: 0 // optional
-                  }
-
-                  trackCustomEvent(eventData)
-                }}
-                // data-netlify="true" -- to use netlify forms
->>>>>>> upstream/master
               >
                 <div>
                   <FormInput
@@ -542,7 +479,6 @@ const QuotePage = ({ location }) => {
                     the grid and reducing payback time.
                   </p>
                 </Block>
-<<<<<<< HEAD
               </Col6>
             </div>
             <div className="form__actions">
@@ -595,34 +531,6 @@ const QuotePage = ({ location }) => {
                     onChange={updateTextValue}
                     required
                   />
-=======
-                <FormSelect
-                  name="beds"
-                  label="Number of beds"
-                  options={["1", "2", "3", "4", "5", "6+"]}
-                />
-                <FormCheckbox
-                  name="own"
-                  label="And if you own:"
-                  options={[
-                    "Electric Car",
-                    "Air Source Heating",
-                    "Swimming Pool",
-                    "Electric Storage Heating",
-                  ]}
-                />
-                 <FormInput
-                  name="DWMPrice"
-                  label="DWMPrice"
-                  placeholder="We should not see this"
-                  style={{maxHeight:0, opacity: 0}}
-                  value={isSpecial}
-                />
-                <div className="form__actions">
-                  <BlockCTA fullWidth large submit>
-                    Request Quote 
-                  </BlockCTA>
->>>>>>> upstream/master
                 </div>
               </Animate>
               <div className="form__actions">
