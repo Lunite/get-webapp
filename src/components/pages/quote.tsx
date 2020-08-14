@@ -11,8 +11,22 @@ import Image from "../configurable/Image"
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
+const SPECIAL_PRICE_KEY = 'utm_campaign';
+const SPECIAL_PRICE_VALUE = 'special_price';
+
+const STORAGE_KEY = 'IS_SPECIAL';
+
 const QuotePage = ({ location }) => {
-  const { state = {} } = location
+  const { state = {} } = location;
+
+  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
+  const storedSpecialValue = localStorage.getItem(STORAGE_KEY);
+  if (!storedSpecialValue) {
+    localStorage.setItem(STORAGE_KEY, specialValue);
+  } else {
+    specialValue = storedSpecialValue;
+  }
+  
 
   return (
     <div className="quote-page">
@@ -35,7 +49,9 @@ const QuotePage = ({ location }) => {
                 method="POST"
                 name="quote-page"
                 onSubmit={() => {
-                  window.dataLayer = window.dataLayer || []
+                  window.dataLayer = window.dataLayer || [];
+
+                  localStorage.removeItem(STORAGE_KEY);
 
                   const eventData = {
                     category: "Form",
@@ -91,12 +107,6 @@ const QuotePage = ({ location }) => {
                   label="Standing Charge"
                   placeholder="Type standing charge"
                 />
-                <FormSelect
-                  name="source"
-                  label="How did you hear about us"
-                  options={["Don't Waste Money referral", "Other"]}
-                  required
-                />
                 <Block>
                   <Heading level={4}>Why we need this information</Heading>
                   <p>
@@ -121,6 +131,13 @@ const QuotePage = ({ location }) => {
                     "Swimming Pool",
                     "Electric Storage Heating",
                   ]}
+                />
+                 <FormInput
+                  name="DWMPrice"
+                  label="DWMPrice"
+                  placeholder="We should not see this"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={specialValue}
                 />
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>

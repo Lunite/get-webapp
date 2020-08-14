@@ -9,7 +9,8 @@ interface FormInputProps {
   type?: string
   placeholder?: string
   value?: string
-  required?: boolean
+  required?: boolean;
+  style?: React.CSSProperties;
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
@@ -21,9 +22,10 @@ const FormInput: FunctionComponent<FormInputProps> = ({
   value = "",
   required = false,
   children,
+  style,
 }) => {
   return (
-    <div className={`form-input ${className}`}>
+    <div className={`form-input ${className}`} style={style}>
       <label className="form-input__label">{label}</label>
       <input
         className="form-input__field"
