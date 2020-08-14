@@ -8,6 +8,7 @@ interface ArrowMapProps {
     lat: number
     lng: number
   }
+  setAzimuth: (value: number) => void
 }
 
 // Throttles function invocation to once every delay
@@ -33,7 +34,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   // State Hooks
-  const [mouseState, setMouseState] = useState<{
+  const [mouseState, _setMouseState] = useState<{
     x: number
     y: number
     down: boolean
@@ -42,8 +43,13 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     y: 0,
     down: false,
   })
+  const setMouseState = (state: { x: number; y: number; down: boolean }) => {
+    mouseDown.current = state.down
+    _setMouseState(state)
+  }
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const mouseDown = useRef(mouseState.down)
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -53,14 +59,14 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         x: canvas.clientWidth / 2,
         y: canvas.clientHeight / 2,
       }
-      console.log("canvas center", clientCenter)
       const r = canvas.height / 3
       let theta = Math.atan2(
         mouseState.x - clientCenter.x,
         mouseState.y - clientCenter.y
       )
       theta = -theta + Math.PI
-      console.log("angle is", theta * (180 / Math.PI) - 180)
+      // console.log("angle is", theta * (180 / Math.PI) - 180)
+      props.setAzimuth(theta * (180 / Math.PI) - 180)
       drawArrowFromAngle(center.x, center.y, r, theta - Math.PI / 2)
     }
   }, [mouseState.x, mouseState.y])
@@ -71,11 +77,11 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   const onMouseUp = (e: MouseEvent) => {
-    // setMouseState({ x: e.offsetX, y: e.offsetY, down: false })
+    setMouseState({ x: e.offsetX, y: e.offsetY, down: false })
   }
 
   const onMouseMove = (e: MouseEvent) => {
-    if (!mouseState.down) {
+    if (!mouseDown.current) {
       return
     }
     setMouseState({ x: e.offsetX, y: e.offsetY, down: true }) // use useEffect for callback from this, adjust arrow position apropriately
@@ -116,11 +122,9 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     // Configures canvasRef event listeners
     if (canvasRef) {
       const canvas = canvasRef.current
-      canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
-
       canvas.addEventListener("mousedown", onMouseDown, false)
+      canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
       canvas.addEventListener("mouseup", onMouseUp, false)
-      canvas.addEventListener("mouseout", onMouseUp, false)
 
       // Draws initial arrow at 0 degrees on canvas
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
@@ -146,11 +150,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           width: "100%",
         }}
       />
-      <canvas
-        className="map-overlay"
-        ref={canvasRef}
-        onMouseDown={onMouseDown}
-      />
+      <canvas className="map-overlay" ref={canvasRef} />
     </div>
   )
 }

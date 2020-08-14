@@ -323,7 +323,15 @@ const QuotePage: React.FC<PageProps> = props => {
             <Heading level={5}>
               Rotate the arrow to match the direction of your roof
             </Heading>
-            <ArrowMap location={location} />
+            <ArrowMap
+              location={location}
+              setAzimuth={azimuth => {
+                setFormValues({
+                  ...formValues,
+                  roof: { ...formValues.roof, azimuth },
+                })
+              }}
+            />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
                 Back
