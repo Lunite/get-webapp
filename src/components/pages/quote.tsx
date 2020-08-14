@@ -16,17 +16,46 @@ const SPECIAL_PRICE_VALUE = 'special_price';
 
 const STORAGE_KEY = 'IS_SPECIAL';
 
+const awaitForLocalStorageNastyHack = () => {
+  return new Promise((resolve) => {
+    if (!window || !window.localStorage) {
+      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
+    }
+
+    return resolve();
+  });
+}
+
 const QuotePage = ({ location }) => {
   const { state = {} } = location;
 
   let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
-  const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
-  if (!storedSpecialValue) {
-    window.localStorage.setItem(STORAGE_KEY, specialValue);
-  } else {
-    specialValue = storedSpecialValue;
+
+  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
+  console.log('SPECIAL VALUE', specialValue);
+
+  const setValueFromStorage = async() => {
+    console.log('wait for local storage');
+    await awaitForLocalStorageNastyHack();
+
+    console.log('get value from local storage if set, or set it');
+    
+    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
+
+    console.log(storedSpecialValue);
+
+    if (!storedSpecialValue) {
+      window.localStorage.setItem(STORAGE_KEY, specialValue);
+    } else {
+      specialValue = storedSpecialValue;
+      setIsSpecial(storedSpecialValue);
+    }
   }
-  
+
+  // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
+  setValueFromStorage();
+
+  console.log('specialValue', specialValue);
 
   return (
     <div className="quote-page">
@@ -48,13 +77,17 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
-                onSubmit={() => {
+                onSubmit={(e) => {
                   window.dataLayer = window.dataLayer || [];
+
+                  // TODO: This index is set to the hidden input field
+                  // if you add fields or remove fields, change the index
+                  e.target[12].value = isSpecial;                  
 
                   window.localStorage.removeItem(STORAGE_KEY);
 
                   const eventData = {
-                    category: "Form",
+                   category: "Form",
                     action: "Submit",
                     label: "LongQuote",
                     // value: 0 // optional
@@ -137,7 +170,7 @@ const QuotePage = ({ location }) => {
                   label="DWMPrice"
                   placeholder="We should not see this"
                   style={{maxHeight:0, opacity: 0}}
-                  value={specialValue}
+                  value={isSpecial}
                 />
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
