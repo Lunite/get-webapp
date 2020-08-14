@@ -23,6 +23,7 @@ import FormCheckbox from "../olc-framework/FormCheckbox"
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
 
+<<<<<<< HEAD
 interface IQuoteFormValues {
   name: string
   email: string
@@ -46,6 +47,24 @@ interface IQuoteFormValues {
   ppw: number
   standingChange: number
 }
+=======
+const SPECIAL_PRICE_KEY = 'utm_campaign';
+const SPECIAL_PRICE_VALUE = 'special_price';
+
+const STORAGE_KEY = 'IS_SPECIAL';
+
+const QuotePage = ({ location }) => {
+  const { state = {} } = location;
+
+  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
+  const storedSpecialValue = localStorage.getItem(STORAGE_KEY);
+  if (!storedSpecialValue) {
+    localStorage.setItem(STORAGE_KEY, specialValue);
+  } else {
+    specialValue = storedSpecialValue;
+  }
+  
+>>>>>>> upstream/master
 
 const values: IQuoteFormValues = {
   name: "",
@@ -212,6 +231,7 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <div className="row center">
             <Col6>
+<<<<<<< HEAD
               <InteractiveMap location={location} setLocation={setLocation} />
             </Col6>
             <Col6>
@@ -430,6 +450,72 @@ const QuotePage: React.FC<PageProps> = props => {
                 </Animate>
               </Col6>
               <Col6>
+=======
+              <form
+                className="form"
+                action="https://formspree.io/mbjzlwgw"
+                method="POST"
+                name="quote-page"
+                onSubmit={() => {
+                  window.dataLayer = window.dataLayer || [];
+
+                  localStorage.removeItem(STORAGE_KEY);
+
+                  const eventData = {
+                    category: "Form",
+                    action: "Submit",
+                    label: "LongQuote",
+                    // value: 0 // optional
+                  }
+
+                  trackCustomEvent(eventData)
+                }}
+                // data-netlify="true" -- to use netlify forms
+              >
+                <FormInput
+                  name="full-name"
+                  label="Full name"
+                  placeholder="Type your full name"
+                  value={state?.name}
+                  required
+                />
+                <FormInput
+                  name="email"
+                  label="Email"
+                  type="email"
+                  placeholder="Type your email"
+                  value={state?.email}
+                  required
+                />
+                <FormInput
+                  name="phone-number"
+                  label="Phone number"
+                  type="tel"
+                  placeholder="Type your phone number"
+                  value={state?.phone}
+                  required
+                />
+                <FormInput
+                  name="address"
+                  label="Address"
+                  placeholder="Type your full address"
+                />
+                <FormInput
+                  name="annual-electricity-usage"
+                  label="Annual Electricity Usage"
+                  placeholder="Type your annual electricity usage"
+                />
+                <FormInput
+                  name="unit-rate"
+                  label="Unit Rate"
+                  placeholder="Type unit rate"
+                />
+                <FormInput
+                  name="standing-charge" 
+                  label="Standing Charge"
+                  placeholder="Type standing charge"
+                />
+>>>>>>> upstream/master
                 <Block>
                   <Heading level={4}>Why we need this information</Heading>
                   <p>
@@ -440,6 +526,7 @@ const QuotePage: React.FC<PageProps> = props => {
                     the grid and reducing payback time.
                   </p>
                 </Block>
+<<<<<<< HEAD
               </Col6>
             </div>
             <div className="form__actions">
@@ -492,6 +579,34 @@ const QuotePage: React.FC<PageProps> = props => {
                     onChange={updateTextValue}
                     required
                   />
+=======
+                <FormSelect
+                  name="beds"
+                  label="Number of beds"
+                  options={["1", "2", "3", "4", "5", "6+"]}
+                />
+                <FormCheckbox
+                  name="own"
+                  label="And if you own:"
+                  options={[
+                    "Electric Car",
+                    "Air Source Heating",
+                    "Swimming Pool",
+                    "Electric Storage Heating",
+                  ]}
+                />
+                 <FormInput
+                  name="DWMPrice"
+                  label="DWMPrice"
+                  placeholder="We should not see this"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={specialValue}
+                />
+                <div className="form__actions">
+                  <BlockCTA fullWidth large submit>
+                    Request Quote
+                  </BlockCTA>
+>>>>>>> upstream/master
                 </div>
               </Animate>
               <div className="form__actions">
@@ -503,7 +618,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 </BlockCTA>
               </div>
             </Col6>
-            <Col6>
+            <Col6> 
               <Image src="/images/quote-24.jpg" title="Fast Response" />
             </Col6>
           </>
