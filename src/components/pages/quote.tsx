@@ -45,6 +45,7 @@ interface IQuoteFormValues {
   aec: number
   ppw: number
   standingChange: number
+  discount: boolean
 }
 
 const values: IQuoteFormValues = {
@@ -69,6 +70,18 @@ const values: IQuoteFormValues = {
   aec: 100,
   ppw: 100,
   standingChange: 100,
+  discount: false,
+}
+
+const awaitForLocalStorageNastyHack = () => {
+  // recursive await for local storage lol???
+  return new Promise(resolve => {
+    if (!window || !window.localStorage) {
+      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333)
+    }
+
+    return resolve()
+  })
 }
 
 const propertyOptions = {
@@ -81,21 +94,7 @@ const propertyOptions = {
 const SPECIAL_PRICE_KEY = "utm_campaign"
 const SPECIAL_PRICE_VALUE = "special_price"
 
-const STORAGE_KEY = "IS_SPECIAL"
-
 const QuotePage: React.FC<PageProps> = props => {
-  let specialValue = props.location.search.includes(
-    `${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`
-  )
-    ? "Yes"
-    : "No"
-  const storedSpecialValue = localStorage.getItem(STORAGE_KEY)
-  if (!storedSpecialValue) {
-    localStorage.setItem(STORAGE_KEY, specialValue)
-  } else {
-    specialValue = storedSpecialValue
-  }
-
   const [formValues, setFormValues] = useState<IQuoteFormValues>({
     ...values,
     ...props.location.state,
@@ -105,6 +104,26 @@ const QuotePage: React.FC<PageProps> = props => {
     lat: 0,
     lng: 0,
   })
+
+  // Check for discount query string params on component mount
+  useEffect(() => {
+    const checkForDiscount = async () => {
+      await awaitForLocalStorageNastyHack() // awaits local storage
+      const storedSpecialVal = window.localStorage.getItem(SPECIAL_PRICE_KEY)
+      if (storedSpecialVal === SPECIAL_PRICE_VALUE) {
+        // if value exists, set discounted to true
+        setFormValues({ ...formValues, discount: true })
+      } else {
+        const urlParams = new URLSearchParams(props.location.search) // if value doesn't exist, instead check query string params
+        if (urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE) {
+          // if query string params exist, update local storage + set discount true
+          window.localStorage.setItem(SPECIAL_PRICE_KEY, SPECIAL_PRICE_VALUE)
+          setFormValues({ ...formValues, discount: true })
+        }
+      }
+    }
+    checkForDiscount()
+  }, [])
 
   useEffect(() => {
     // Updates address when coordinates from map change
@@ -135,6 +154,9 @@ const QuotePage: React.FC<PageProps> = props => {
     e.preventDefault()
     if (page !== pages - 1) {
       setPage(page + 1)
+    } else {
+      // post form values
+      window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested.
     }
   }
 
