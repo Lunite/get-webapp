@@ -3,7 +3,6 @@ import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import "./quote.scss"
-import Col9 from "../grid/Col9"
 
 import Col6 from "../grid/Col6"
 import FormInput from "../olc-framework/FormInput"
@@ -70,10 +69,6 @@ const values: IQuoteFormValues = {
   aec: 100,
   ppw: 100,
   standingChange: 100,
-}
-
-const ofgemAverages = {
-  eac: 100,
 }
 
 const propertyOptions = {
