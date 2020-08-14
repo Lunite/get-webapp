@@ -35,14 +35,9 @@ const QuotePage = ({ location }) => {
   console.log('SPECIAL VALUE', specialValue);
 
   const setValueFromStorage = async() => {
-    console.log('wait for local storage');
     await awaitForLocalStorageNastyHack();
-
-    console.log('get value from local storage if set, or set it');
-    
+   
     const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
-
-    console.log(storedSpecialValue);
 
     if (!storedSpecialValue) {
       window.localStorage.setItem(STORAGE_KEY, specialValue);
@@ -54,8 +49,6 @@ const QuotePage = ({ location }) => {
 
   // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
   setValueFromStorage();
-
-  console.log('specialValue', specialValue);
 
   return (
     <div className="quote-page">
@@ -85,7 +78,7 @@ const QuotePage = ({ location }) => {
                   e.target[12].value = isSpecial;                  
 
                   window.localStorage.removeItem(STORAGE_KEY);
-
+                  
                   const eventData = {
                    category: "Form",
                     action: "Submit",
