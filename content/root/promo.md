@@ -1,22 +1,32 @@
 ---
-image_hero: banner4.jpg
-hero_title: Win solar for your home for FREE
-hero_subtitle: Go green this summer and be in for a chance to win a FREE solar PV system
-title: How does it work?
+image_hero: round.jpg
+hero_title: It’s time to save more
+hero_subtitle: ⠀
+title: Special offer
 date: 
 show_quote_block: true
 seo:
-  title: July promotion
-  description: July promotion
-  keywords: July promotion
+  title: Promotion
+  description: Promotion
+  keywords: Promotion
 ---
-Book your installation to be in for a chance to win your system completely FREE. For every 30 customers we will randomly draw one lucky winner to receive their system and installation completely free and a refund on their first stage payment.
+Green Energy Together would like to make you a special offer — a complete solar package for your home at a discount price.
 
-![solar panels](/img/shutterstock.jpg "Solar Panels")
+![solar panels](/img/net.jpg "Solar Panels")
 
-# Don’t compromise
+## The package
 
-Your home deserves a solar installer with the highest level of care, quality and experience. Our large sales volume means we can provide the latest and most effective solar technology at the best price in the market, all without compromising on quality and service. Find out more about our comprehensive[ **warranties and aftercare** ](https://www.get-uk.com/products-warranties)packages and join the solar revolution. 
+Get a 2.75kw system with 10 PV panels and 2.5kw battery fully installed at an unbeatable price of £4,200 inc. VAT, no hidden charges!
+
+### Need more storage?
+
+We have you covered. Our £4,999 inc. VAT deal gets you all the above plus an extra 2.5kw capacity on your battery. It’s never been a better time to go solar. 
+
+### It's the perfect time to switch to solar
+
+Switching your home to solar power is a no-brainer. Not only are you slashing your carbon footprint and doing your bit to combat climate change, but you're slashing your energy bills at the same time. The system we're offering could save you up to £450 a year.
+
+Not only that — for this summer, we're offering you a substantial discount on our normal price and an even bigger saving on the prices you'd be charged by most of our competitors. It's the perfect opportunity to go green and save money in one go. Find out more about our comprehensive[ **warranties and aftercare** ](https://www.get-uk.com/products-warranties)packages and join the solar revolution. 
 
 ### It all starts with a quote
 

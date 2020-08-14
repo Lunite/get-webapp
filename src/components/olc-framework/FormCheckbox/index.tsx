@@ -7,10 +7,12 @@ interface FormCheckboxProps {
   label: string
   name: string
   options: string[]
+  getOptionLabel?: (option: string) => string
   className?: string
   placeholder?: string
-  value?: string
+  value?: any
   required?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
@@ -19,6 +21,11 @@ const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
   options,
   className = "",
   children,
+  onChange = e => {},
+  getOptionLabel = option => {
+    return option
+  },
+  value,
 }) => {
   return (
     <div className={`form-checkbox ${className}`}>
@@ -31,12 +38,14 @@ const FormCheckbox: FunctionComponent<FormCheckboxProps> = ({
             name={`${name}: ${oValue}`}
             value={oValue}
             id={`checkbox-${name}-${oIndex}`}
+            onChange={onChange}
+            checked={value && value[oValue]}
           />
           <label
             className="form-checkbox__label"
             htmlFor={`checkbox-${name}-${oIndex}`}
           >
-            {oValue}
+            {getOptionLabel(oValue)}
           </label>
         </div>
       ))}

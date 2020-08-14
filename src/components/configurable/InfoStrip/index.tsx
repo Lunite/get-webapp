@@ -56,9 +56,16 @@ const InfoStrip = ({
           {developer && getInfoItem("developer", "Developer", developer)}
           {inverters && getInfoItem("inverters", "Inverters", inverters)}
           {modules && getInfoItem("modules", "Modules", modules)}
-          {email && getInfoItem("email", "Email", email)}
-          {phoneNumber &&
-            getInfoItem("phoneNumber", "Phone Number", phoneNumber)}
+          {email && (
+            <a className="info-item" href={`mailto:${email}`}>
+              {getInfoItem("email", "Email", email)}
+            </a>
+          )}
+          {phoneNumber && (
+            <a className="info-item" href={`tel: ${phoneNumber}`}>
+              {getInfoItem("phoneNumber", "Phone Number", phoneNumber)}
+            </a>
+          )}
           {whereToFindUs &&
             getInfoItem("whereToFindUs", "Where to find us", whereToFindUs)}
         </div>

@@ -1,0 +1,15 @@
+@import "~/styles/_variables.scss";
+@import "~/styles/breakpoints.scss";
+
+.qp-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.gm-svpc {
+  visibility: hidden;
+}

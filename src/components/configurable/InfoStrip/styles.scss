@@ -73,6 +73,10 @@
 
   @media ($phablet) {
     width: 20%;
+
+    .info-item {
+      width: auto;
+    }
   }
 
   @media ($mobile) {
