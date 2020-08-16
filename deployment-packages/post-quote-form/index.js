@@ -1,60 +1,41 @@
 const fs = require("fs")
-const { google } = require("googleapis")
 const { authorize } = require("./gmailAuth")
+const { sendEmail } = require("./gmailFns")
+const { calculateQuote } = require("./quote")
 
+const sampleFormValues = {
+  name: "Kilian Seifert",
+  email: "kisele606@gmail.com",
+  phone: "07731894329",
+  houseNumber: "34",
+  street: "Manor Way",
+  town: "Mitcham",
+  postcode: "SY20 5EE",
+  roof: {
+    azimuth: 3.2,
+    inclination: 30,
+  },
+  property: {
+    bedrooms: 3,
+    eCar: false,
+    pump: false,
+    pool: false,
+    heater: false,
+  },
+  eac: 100,
+  ppw: 100,
+  standingCharge: 100,
+  discount: false, // -10%
+}
+
+// entry point for request
 exports.handler = (req, res) => {
   // Load client secrets from a local file.
-  fs.readFile("credentials.json", (err, content) => {
-    if (err) return console.log("Error loading client secret file:", err)
-    // Authorize a client with credentials, then call the Gmail API.
-    authorize(JSON.parse(content), sendEmail)
-  })
+  // fs.readFile("credentials.json", (err, content) => {
+  //   if (err) return console.log("Error loading client secret file:", err)
+  //   // Authorize a client with credentials, then call the Gmail API.
+  //   authorize(JSON.parse(content), sendEmail) // Authorizes using locally stored id then calls callback
+  // })
+
+  calculateQuote(sampleFormValues)
 }
-
-function makeBody(to, from, subject, message) {
-  var str = [
-    'Content-Type: text/plain; charset="UTF-8"\n',
-    "MIME-Version: 1.0\n",
-    "Content-Transfer-Encoding: 7bit\n",
-    "to: ",
-    to,
-    "\n",
-    "from: ",
-    from,
-    "\n",
-    "subject: ",
-    subject,
-    "\n\n",
-    message,
-  ].join("")
-
-  var encodedMail = new Buffer(str)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-  return encodedMail
-}
-
-const sendEmail = auth => {
-  var raw = makeBody(
-    "seifk007.319@wcgs.foliotrust.uk",
-    "admin@get-uk.com",
-    "This is your subject",
-    "I got this working finally!!!"
-  )
-  const gmail = google.gmail({ version: "v1", auth })
-  gmail.users.messages.send(
-    {
-      auth: auth,
-      userId: "me",
-      resource: {
-        raw: raw,
-      },
-    },
-    function (err, response) {
-      return err || response
-    }
-  )
-}
-
-exports.handler("a", "b")

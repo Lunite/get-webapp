@@ -8,7 +8,7 @@ import Col6 from "../grid/Col6"
 import FormInput from "../olc-framework/FormInput"
 import BlockCTA from "../configurable/BlockCTA"
 import Image from "../configurable/Image"
-import { PageProps } from "gatsby"
+import { PageProps, navigate } from "gatsby"
 import InteractiveMap from "../standalone/InteractiveMap"
 import Col12 from "../grid/Col12"
 import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
@@ -155,8 +155,12 @@ const QuotePage: React.FC<PageProps> = props => {
     if (page !== pages - 1) {
       setPage(page + 1)
     } else {
-      // post form values
-      window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested.
+      const postFormValues = async () => {
+        const quote = {} // post form values
+        window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested.
+        return navigate("/showquote", { state: quote }) // Navigates to show quote page with the returned values
+      }
+      return postFormValues() // so it can be async
     }
   }
 
@@ -200,7 +204,7 @@ const QuotePage: React.FC<PageProps> = props => {
     }
   }
 
-  const pages = 10
+  const pages = 9
 
   const getPage = () => {
     switch (page) {
