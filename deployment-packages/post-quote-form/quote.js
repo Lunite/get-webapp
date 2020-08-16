@@ -4,14 +4,58 @@ const lookup = require("./lookupTables")
 
 exports.calculateQuote = async formValues => {
   const inputs = getInputs(formValues)
-  const result = getResultsTemplate(inputs)
+  let result = getResultsTemplate(inputs)
+  const [cost, vat] = getTotalCost(inputs)
+  result.totalCost = cost
+  result.vat = vat
+  console.log(result)
   return result
+}
+
+// calculates total cost of installation
+// assumed: in roof panels, 5kW battery equipment, no scaffolding,
+const getTotalCost = inputs => {
+  let cost = 0
+  let vat = 0
+  const addMarginVat = basecost => {
+    let adjustedCost = basecost + inputs.margin * basecost
+    let lvat = adjustedCost * inputs.vat
+    vat += lvat
+    adjustedCost += lvat
+    return adjustedCost
+  }
+  // cost of in roof solar panels (extend to more roof types??)
+  cost = addMarginVat(60 * inputs.panelQuantity)
+  // cost of ancillary materials
+  cost += addMarginVat(40 * inputs.systemSize)
+  // cost of blue solar modules
+  cost += addMarginVat(210 * inputs.systemSize)
+  // cost of inverter
+  cost += addMarginVat(92 * inputs.systemSize)
+  // cost of metering equipment
+  cost += addMarginVat(120.5)
+  // cost of 5kW battery equipment
+  cost += addMarginVat(1330)
+  // labour cost
+  cost += addMarginVat(160 * inputs.systemSize)
+  // HS & project management
+  cost += addMarginVat(50)
+  // commissioning
+  cost += addMarginVat(50)
+  // packaging and delivery
+  cost += addMarginVat(150)
+  // admin fees
+  cost += addMarginVat(500)
+  // registrations
+  cost += addMarginVat(105)
+  return [cost, vat]
 }
 
 // initial template for the quote results object
 const getResultsTemplate = inputs => {
   return {
     totalCost: 0,
+    vat: 0,
     yearsPayback: 0,
     systemSize: 0,
     panelQuantity: inputs.panelQuantity,
@@ -35,10 +79,13 @@ const getResultsTemplate = inputs => {
     irradiationLevel: 0,
     roofPitch: inputs.roofPitch,
     azimuth: inputs.azimuth,
-    address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
     assumedEnergyInflation: 0,
     energyUnitCost: 0,
     twentyYearOutlook: [],
+    item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${"Whatever systemsize is"} kWdc )`,
+    item2: `Supply, Installation, Commissioning and Handover of Battery Storage System ( ${inputs.storageSize} kWdc )`,
+    address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
+    name: inputs.name,
   }
 }
 
