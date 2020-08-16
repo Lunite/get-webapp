@@ -17,7 +17,7 @@ const Navigation: FunctionComponent<any> = () => {
 
   const navItems = (
     <>
-      <div className="navigation-item navigation-item--has-children">
+      <div className="navigation-item">
         <div className="navigation-item__link" data-title="Services">
           Services
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
@@ -85,7 +85,7 @@ const Navigation: FunctionComponent<any> = () => {
         </div>
       </div>
       <div className="navigation-item">
-        <Link className="navigation-item__link" to="/blog">
+        <Link className="navigation-item__link" to="/blog" data-title="Blog">
           Blog
         </Link>
       </div>
