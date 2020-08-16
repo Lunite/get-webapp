@@ -39,7 +39,7 @@ const BlogPage = ({ pageContext: { blogItems } }) => {
     .filter(
       ({ frontmatter }) => frontmatter?.list?.image && frontmatter?.list?.intro
     )
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
 
   return (
     <div className="blog">
