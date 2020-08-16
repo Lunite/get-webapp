@@ -191,6 +191,15 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues({ ...formValues, property: newP })
   }
 
+  const validateRadioGrid = () => {
+    if (formValues.roof.inclination === 1) {
+      // if no inclination has been selected
+      alert("Please select a value")
+    } else {
+      setPage(page + 1)
+    }
+  }
+
   const pages = 10
 
   const getPage = () => {
@@ -355,7 +364,7 @@ const QuotePage: React.FC<PageProps> = props => {
               <BlockCTA large left action={prevPage}>
                 Back
               </BlockCTA>
-              <BlockCTA large submit right>
+              <BlockCTA large right action={validateRadioGrid}>
                 Next
               </BlockCTA>
             </div>

@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react"
 import "./styles.scss"
 
 interface InteractiveMapProps {
-  google: any
+  google: any // injected auth object
   location: {
     lat: number
     lng: number
