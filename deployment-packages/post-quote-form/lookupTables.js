@@ -381,3 +381,154 @@ exports.getIrradienceZone = postcode => {
   code = postcode.substr(0, 2)
   return [irradienceLookup[code], code]
 }
+
+const ex = require("exceljs")
+
+exports.getSpecificYield = async (zone, pitch, azimuth) => {
+  // gets specific yield from spreadsheet
+  const workbook = new ex.Workbook()
+  await workbook.xlsx.readFile("./spreadsheet.xlsx")
+  const table = workbook.getWorksheet("MCS Irradiation Zones")
+  let irradienceIdx
+  let pitchIdx
+  let azimuthIdx
+  table.eachRow((row, rowNum) => {
+    if (!irradienceIdx) {
+      if (row.getCell(1).value == zone) {
+        irradienceIdx = rowNum
+      }
+    } else if (!pitchIdx) {
+      if (row.getCell(2).value == pitch) {
+        pitchIdx = rowNum
+      }
+    }
+  })
+  const azRow = table.getRow(2)
+  azRow.eachCell((cell, idx) => {
+    if (!azimuthIdx) {
+      if (cell.value == azimuth) {
+        azimuthIdx = idx
+      }
+    }
+  })
+  return table.getCell(pitchIdx, azimuthIdx).value
+}
+
+// initial template for the quote results object
+exports.getResultsTemplate = inputs => {
+  return {
+    totalCost: 0,
+    vat: 0,
+    yearsPayback: 0,
+    systemSize: 0,
+    panelQuantity: inputs.panelQuantity,
+    batterySize: inputs.storageSize,
+    gridUseage: [],
+    solarGeneration: [],
+    solarToGrid: [],
+    solarHomeUse: [],
+    gridUse: [],
+    solarToGridBattery: [],
+    solarToHomeBattery: [],
+    gridUseSolarBattery: [],
+    predictedOutput: 0,
+    assumedInflation: 0,
+    onsiteEnergyConsumption: 0,
+    co2Savings: 0,
+    co2Savings20years: 0,
+    projectReference: inputs.projectReference,
+    postcode: inputs.postcode,
+    irradienceZone: inputs.irradienceZone,
+    irradiationLevel: 0,
+    roofPitch: inputs.roofPitch,
+    azimuth: inputs.azimuth,
+    assumedEnergyInflation: 0,
+    energyUnitCost: 0,
+    twentyYearOutlook: [],
+    item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${inputs.systemSize} kWdc )`,
+    item2: `Supply, Installation, Commissioning and Handover of Battery Storage System ( ${inputs.storageSize} kWdc )`,
+    address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
+    name: inputs.name,
+  }
+}
+
+// Gets spreadsheet inputs from formvalues (some cannot be derived, the "average" or default has been assumed)
+exports.getInputs = async formValues => {
+  const getDateSerial = date => {
+    let returnDateTime =
+      25569.0 +
+      (date.getTime() - date.getTimezoneOffset() * 60 * 1000) /
+        (1000 * 60 * 60 * 24)
+    return returnDateTime.toString().substr(0, 5)
+  }
+  const calculatePanelNumber = roofArea =>
+    Math.min(Math.ceil(roofArea / 1.5) - 1, 20) // calculates the max amount of panels that can be fit on a roof (1 panel = 1.5sq meters)
+  const inputs = {
+    projectReference: "",
+    date: new Date().toLocaleDateString(),
+    eac: formValues.eac,
+    ppw: formValues.ppw,
+    standingCharge: formValues.standingCharge,
+    annualCost: 0,
+    panelQuantity: calculatePanelNumber(formValues.roof.area),
+    panelManufacturer: "Phonosolar",
+    panelWattage: 275,
+    systemSize: 0,
+    specificYield: 0,
+    annualYield: 0,
+    irradienceZone: 0,
+    roofPitch: formValues.roof.inclination, // will be 0, 15, 30, 40
+    azimuth: Math.round(formValues.roof.azimuth / 5) * 5, // to nearest 5
+    roofType: "In Roof",
+    panels: "Blue",
+    scaffold: "No",
+    storageSize: 5,
+    postcodeShort: "",
+    title: "Mr/s.",
+    name: formValues.name,
+    houseNumber: formValues.houseNumber,
+    street: formValues.street,
+    town: formValues.town,
+    postcode: formValues.postcode,
+    phone: formValues.phone,
+    additionalItems: [],
+    margin: 0.33, // 33%
+    vat: 0.05, // 5%
+    discount: formValues.discount, // special price thing
+  }
+  inputs.projectReference = `${getDateSerial(new Date())}${inputs.postcode}`
+  inputs.annualCost = inputs.eac * inputs.ppw + inputs.standingCharge * 365
+  inputs.systemSize = (inputs.panelQuantity * inputs.panelWattage) / 1000
+  const [irradience, shortPc] = exports.getIrradienceZone(inputs.postcode)
+  inputs.postcodeShort = shortPc
+  inputs.irradienceZone = irradience
+  inputs.specificYield = await exports.getSpecificYield(
+    irradience,
+    inputs.roofPitch,
+    inputs.azimuth
+  )
+  inputs.annualYield = inputs.specificYield * inputs.systemSize
+  inputs.additionalItems = this.getAdditionalCosts(inputs.systemSize)
+  console.log(inputs)
+  return inputs
+}
+
+exports.getAdditionalCosts = systemSize => {
+  console.log(systemSize)
+  const additionalItems = []
+  if (systemSize > 10) {
+    additionalItems.push({ "Grid Application 2": 650 })
+    return additionalItems
+  }
+  if (systemSize > 4) {
+    additionalItems.push({ "Grid Application": 160 })
+    if (systemSize < 5) {
+      additionalItems.push({ "Sofar Solar 4000 HYD Hybrid Inverter": 446.5 })
+    } else if (systemSize < 6) {
+      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 511.4 })
+    } else if (systemSize < 7) {
+      additionalItems.push({ "Sofar Solar 6000 HYD Hybrid Inverter": 546.68 })
+    }
+  }
+  return additionalItems
+}

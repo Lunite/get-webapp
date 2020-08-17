@@ -12,8 +12,9 @@ const sampleFormValues = {
   town: "Mitcham",
   postcode: "SY20 5EE",
   roof: {
-    azimuth: 3.2,
-    inclination: 30,
+    azimuth: 0,
+    inclination: 20,
+    area: 50,
   },
   property: {
     bedrooms: 3,
