@@ -8,7 +8,8 @@ exports.calculateQuote = async formValues => {
   const [cost, vat] = getTotalCost(inputs)
   result.totalCost = cost
   result.vat = vat
-  console.log(result)
+  result = getEnergySavings(inputs, result)
+  // console.log(result)
   return result
 }
 
@@ -24,8 +25,8 @@ const getTotalCost = inputs => {
     adjustedCost += lvat
     return adjustedCost
   }
-  // cost of in roof solar panels (extend to more roof types??)
-  cost = addMarginVat(60 * inputs.panelQuantity)
+  // cost of in roof solar panels (concrete)
+  cost = addMarginVat(75.99 * inputs.panelQuantity)
   // cost of ancillary materials
   cost += addMarginVat(40 * inputs.systemSize)
   // cost of blue solar modules
@@ -48,8 +49,14 @@ const getTotalCost = inputs => {
   cost += addMarginVat(500)
   // registrations
   cost += addMarginVat(105)
-  return [cost, vat]
+  if (inputs.discount) {
+    cost += 600 // DWMSpecialPrice "discount"
+  }
+  return [cost.toFixed(2), vat.toFixed(2)]
 }
+
+// gets total enery savings, as well as 20 year savings + time to pay back
+const getEnergySavings = (inputs, result) => {}
 
 // initial template for the quote results object
 const getResultsTemplate = inputs => {
@@ -82,11 +89,41 @@ const getResultsTemplate = inputs => {
     assumedEnergyInflation: 0,
     energyUnitCost: 0,
     twentyYearOutlook: [],
-    item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${"Whatever systemsize is"} kWdc )`,
+    item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${inputs.systemSize} kWdc )`,
     item2: `Supply, Installation, Commissioning and Handover of Battery Storage System ( ${inputs.storageSize} kWdc )`,
     address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
     name: inputs.name,
   }
+}
+
+const getSpecificYield = async (zone, pitch, azimuth) => {
+  const workbook = new ex.Workbook()
+  await workbook.xlsx.readFile("./spreadsheet.xlsx")
+  const table = workbook.getWorksheet("MCS Irradiation Zones")
+  let irradienceIdx
+  let pitchIdx
+  let azimuthIdx
+  console.log(zone, pitch, azimuth)
+  table.eachRow((row, rowNum) => {
+    if (!irradienceIdx) {
+      if (row.getCell(1).value == zone) {
+        irradienceIdx = rowNum
+      }
+    } else if (!pitchIdx) {
+      if (row.getCell(2).value == pitch) {
+        pitchIdx = rowNum
+      }
+    }
+  })
+  const azRow = table.getRow(2)
+  azRow.eachCell((cell, idx) => {
+    if (!azimuthIdx) {
+      if (cell.value == azimuth) {
+        azimuthIdx = idx
+      }
+    }
+  })
+  return table.getCell(pitchIdx, azimuthIdx).value
 }
 
 // Gets spreadsheet inputs from formvalues (some cannot be derived, the "average" or default has been assumed)
@@ -107,13 +144,13 @@ const getInputs = formValues => {
     annualCost: 0,
     panelQuantity: 10,
     panelManufacturer: "Phonosolar",
-    panelWattage: 270,
+    panelWattage: 275,
     systemSize: 0,
-    specificYield: 1500,
+    specificYield: 0,
     annualYield: 0,
     irradienceZone: 0,
-    roofPitch: formValues.roof.inclination,
-    azimuth: formValues.roof.azimuth,
+    roofPitch: formValues.roof.inclination, // will be 0, 15, 30, 40
+    azimuth: Math.round(formValues.roof.azimuth / 5) * 5, // to nearest 5
     roofType: "In Roof",
     panels: "Blue",
     scaffold: "No",
@@ -137,6 +174,11 @@ const getInputs = formValues => {
   const [irradience, shortPc] = lookup.getIrradienceZone(inputs.postcode)
   inputs.postcodeShort = shortPc
   inputs.irradienceZone = irradience
+  inputs.specificYield = getSpecificYield(
+    irradience,
+    inputs.roofPitch,
+    inputs.azimuth
+  )
   console.log(inputs)
   return inputs
 }
