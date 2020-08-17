@@ -98,7 +98,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-brotli",
       options: {
-        extensions: ["css", "html", "js", "svg"],
+        extensions: ["css", "html", "js", "svg", "json"],
       },
     },
     {
