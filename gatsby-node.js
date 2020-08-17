@@ -368,6 +368,13 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Just simply fill out a few details to receive a free no-obligation quote and survey from us here at Green Energy Together.",
       },
+      {
+        slug: "yourquote",
+        seo_title: "Your Quote | Green Energy Together | Solar Panel Installer",
+        title: "Your Quote",
+        keywords: "",
+        description: "Your free no-obligation quote", // TODO refine this
+      },
       { slug: "404", title: "Page not found", keywords: "", description: "" },
       {
         slug: "products-warranties",

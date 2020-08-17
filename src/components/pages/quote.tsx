@@ -19,6 +19,7 @@ import ArrowMap from "../standalone/ArrowMap"
 import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
+import { any } from "prop-types"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -104,6 +105,7 @@ const QuotePage: React.FC<PageProps> = props => {
     lat: 0,
     lng: 0,
   })
+  const [status, setStatus] = useState<"form" | "loading">("form") // status for when values are posted
 
   // Check for discount query string params on component mount
   useEffect(() => {
@@ -127,7 +129,7 @@ const QuotePage: React.FC<PageProps> = props => {
 
   useEffect(() => {
     // Updates address when coordinates from map change
-    const effect = async () => {
+    const updateAddress = async () => {
       const address = await fromLatLong(location.lat, location.lng)
       const newFv = {
         ...formValues,
@@ -138,7 +140,7 @@ const QuotePage: React.FC<PageProps> = props => {
       }
       setFormValues(newFv)
     }
-    effect()
+    updateAddress()
   }, [location])
 
   useEffect(() => {
@@ -156,10 +158,21 @@ const QuotePage: React.FC<PageProps> = props => {
       setPage(page + 1)
     } else {
       const postFormValues = async () => {
-        const quote = {} // post form values
-        window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested.
-        return navigate("/showquote", { state: quote }) // Navigates to show quote page with the returned values
+        const req: Request = {
+          method: "GET",
+          mode: "cors",
+          // @ts-ignore
+          // body: JSON.stringify(formValues),
+        }
+        let quote: any = await fetch(
+          "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+          req
+        ) // post form values
+        // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
+        console.log(quote)
+        return navigate("/youtquote", { state: quote }) // Navigates to show quote page with the returned values
       }
+      setStatus("loading")
       return postFormValues() // so it can be async
     }
   }
