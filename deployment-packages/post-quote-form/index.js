@@ -30,7 +30,7 @@ const sampleFormValues = {
 }
 
 // entry point for request
-exports.handler = (req, res) => {
+exports.handler = async (req, res) => {
   // Load client secrets from a local file.
   // fs.readFile("credentials.json", (err, content) => {
   //   if (err) return console.log("Error loading client secret file:", err)
@@ -38,5 +38,6 @@ exports.handler = (req, res) => {
   //   authorize(JSON.parse(content), sendEmail) // Authorizes using locally stored id then calls callback
   // })
 
-  calculateQuote(sampleFormValues)
+  const result = await calculateQuote(sampleFormValues)
+  console.log(result)
 }

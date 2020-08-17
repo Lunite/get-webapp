@@ -479,7 +479,7 @@ exports.getInputs = async formValues => {
     irradienceZone: 0,
     roofPitch: formValues.roof.inclination, // will be 0, 15, 30, 40
     azimuth: Math.round(formValues.roof.azimuth / 5) * 5, // to nearest 5
-    roofType: "In Roof",
+    roofType: "Concrete",
     panels: "Blue",
     scaffold: "No",
     storageSize: 5,
@@ -525,7 +525,7 @@ exports.getAdditionalCosts = systemSize => {
     if (systemSize < 5) {
       additionalItems.push({ "Sofar Solar 4000 HYD Hybrid Inverter": 446.5 })
     } else if (systemSize < 6) {
-      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 511.4 })
+      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 254.4 })
     } else if (systemSize < 7) {
       additionalItems.push({ "Sofar Solar 6000 HYD Hybrid Inverter": 546.68 })
     }
