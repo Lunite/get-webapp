@@ -170,7 +170,6 @@ const getInputs = formValues => {
   inputs.projectReference = `${getDateSerial(new Date())}${inputs.postcode}`
   inputs.annualCost = inputs.eac * inputs.ppw + inputs.standingCharge * 365
   inputs.systemSize = (inputs.panelQuantity * inputs.panelWattage) / 1000
-  inputs.annualYield = inputs.specificYield * inputs.systemSize
   const [irradience, shortPc] = lookup.getIrradienceZone(inputs.postcode)
   inputs.postcodeShort = shortPc
   inputs.irradienceZone = irradience
@@ -179,6 +178,7 @@ const getInputs = formValues => {
     inputs.roofPitch,
     inputs.azimuth
   )
+  inputs.annualYield = inputs.specificYield * inputs.systemSize
   console.log(inputs)
   return inputs
 }
