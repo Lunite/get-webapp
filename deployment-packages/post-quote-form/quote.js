@@ -7,7 +7,6 @@ exports.calculateQuote = async formValues => {
   const [cost, vat] = getTotalCost(inputs)
   result.totalCost = cost
   result.vat = vat
-  result.additionalItems = inputs.additionalItems
   // result = getEnergySavings(inputs, result)
   // console.log(result)
   return result
@@ -19,49 +18,65 @@ const getTotalCost = inputs => {
   let cost = 0
   let vat = 0
   const addMarginVat = basecost => {
-    let adjustedCost = basecost + inputs.margin * basecost
+    let adjustedCost = basecost * (1 + inputs.margin)
+    console.log("Margin", adjustedCost - basecost)
     let lvat = adjustedCost * inputs.vat
+    lvat = Math.round((lvat + Number.EPSILON) * 100) / 100
     vat += lvat
     adjustedCost += lvat
-    adjustedCost = Number(adjustedCost.toFixed(2))
+    adjustedCost = Math.round((adjustedCost + Number.EPSILON) * 100) / 100
     console.log(adjustedCost)
     return adjustedCost
   }
   // cost of in roof solar panels (concrete)
-  cost = addMarginVat(75.59 * inputs.systemSize)
+  cost = 75.59 * inputs.systemSize
+  console.log(75.59 * inputs.systemSize)
   // cost of ancillary materials
-  cost += addMarginVat(40 * inputs.systemSize)
+  cost += 40 * inputs.systemSize
+  console.log(40 * inputs.systemSize)
   // cost of blue solar modules
-  cost += addMarginVat(210 * inputs.systemSize)
+  cost += 210 * inputs.systemSize
+  console.log(210 * inputs.systemSize)
   // cost of inverter
-  cost += addMarginVat(92 * inputs.systemSize)
+  cost += 92 * inputs.systemSize
+  console.log(92 * inputs.systemSize)
   // cost of metering equipment
-  cost += addMarginVat(120.5)
+  cost += 120.5
+  console.log(120.5)
   // cost of 5kW battery equipment
-  cost += addMarginVat(1330)
+  cost += 1330
+  console.log(1330)
   // labour cost
-  cost += addMarginVat(160 * inputs.systemSize)
+  cost += 160 * inputs.systemSize
+  console.log(160 * inputs.systemSize)
   // HS & project management
-  cost += addMarginVat(50)
+  cost += 50
+  console.log(50)
   // commissioning
-  cost += addMarginVat(50)
+  cost += 50
+  console.log(50)
   // packaging and delivery
-  cost += addMarginVat(150)
+  cost += 150
+  console.log(150)
   // admin fees
-  cost += addMarginVat(500)
+  cost += 500
+  console.log(500)
   // registrations
-  cost += addMarginVat(105)
+  cost += 105
+  console.log(105)
   const additionalCosts = inputs.additionalItems.map(item => {
-    console.log(item)
     return Object.values(item)[0]
   })
   additionalCosts.forEach(c => {
-    cost += addMarginVat(c)
+    console.log("Add", c)
+    cost += c
   })
   if (inputs.discount) {
     cost += 600 // DWMSpecialPrice "discount"
   }
-  return [cost.toFixed(2), vat.toFixed(2)]
+  console.log(cost)
+  cost = addMarginVat(cost)
+  return [cost, vat]
 }
 
 // gets total enery savings, as well as 20 year savings + time to pay back

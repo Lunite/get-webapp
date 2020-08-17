@@ -420,7 +420,7 @@ exports.getResultsTemplate = inputs => {
     totalCost: 0,
     vat: 0,
     yearsPayback: 0,
-    systemSize: 0,
+    systemSize: inputs.systemSize,
     panelQuantity: inputs.panelQuantity,
     batterySize: inputs.storageSize,
     gridUseage: [],
@@ -447,6 +447,7 @@ exports.getResultsTemplate = inputs => {
     twentyYearOutlook: [],
     item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${inputs.systemSize} kWdc )`,
     item2: `Supply, Installation, Commissioning and Handover of Battery Storage System ( ${inputs.storageSize} kWdc )`,
+    additionalItems: inputs.additionalItems,
     address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
     name: inputs.name,
   }
@@ -525,7 +526,7 @@ exports.getAdditionalCosts = systemSize => {
     if (systemSize < 5) {
       additionalItems.push({ "Sofar Solar 4000 HYD Hybrid Inverter": 446.5 })
     } else if (systemSize < 6) {
-      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 254.4 })
+      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 258.4 })
     } else if (systemSize < 7) {
       additionalItems.push({ "Sofar Solar 6000 HYD Hybrid Inverter": 546.68 })
     }

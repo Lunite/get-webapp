@@ -23,9 +23,9 @@ const sampleFormValues = {
     pool: false,
     heater: false,
   },
-  eac: 100,
-  ppw: 100,
-  standingCharge: 100,
+  eac: 5000,
+  ppw: 0.176,
+  standingCharge: 0.223,
   discount: false, // -10%
 }
 
