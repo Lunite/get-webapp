@@ -96,12 +96,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-brotli",
-      options: {
-        extensions: ["css", "html", "js", "svg", "json"],
-      },
-    },
-    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-W6LJZSJ",
