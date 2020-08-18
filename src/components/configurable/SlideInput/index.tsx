@@ -27,7 +27,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
     }
   }, [ref])
 
-  const position = props.value / (props.max - props.min) // position along the slider
+  const position = (props.value - props.min) / (props.max - props.min) // position along the slider
 
   return (
     <div className="slide-container">
