@@ -68,9 +68,9 @@ const values: IQuoteFormValues = {
     pool: false,
     heater: false,
   },
-  aec: 100,
-  ppw: 100,
-  standingChange: 100,
+  aec: 3500,
+  ppw: 20,
+  standingChange: 20,
   discount: false,
 }
 
@@ -170,7 +170,7 @@ const QuotePage: React.FC<PageProps> = props => {
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
         console.log(quote)
-        return navigate("/youtquote", { state: quote }) // Navigates to show quote page with the returned values
+        return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
       setStatus("loading")
       return postFormValues() // so it can be async
@@ -392,13 +392,13 @@ const QuotePage: React.FC<PageProps> = props => {
           <>
             <SlideQuestion
               title="Enter your annual electric consumption"
-              min={0}
-              max={200}
+              min={1000}
+              max={8000}
               value={formValues.aec}
               onChange={e => {
                 setFormValues({ ...formValues, aec: Number(e.target.value) })
               }}
-              inputAdornments={{ end: "W" }}
+              inputAdornments={{ end: "kWh" }}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -414,14 +414,17 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Price per Watt of electricity"
+              title="Price per kWh of electricity"
               min={0}
               max={200}
               value={formValues.ppw}
               onChange={e => {
-                setFormValues({ ...formValues, ppw: Number(e.target.value) })
+                setFormValues({
+                  ...formValues,
+                  ppw: Number(e.target.value),
+                })
               }}
-              inputAdornments={{ start: "£" }}
+              inputAdornments={{ end: "p" }}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -447,7 +450,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   standingChange: Number(e.target.value),
                 })
               }}
-              inputAdornments={{ start: "£" }}
+              inputAdornments={{ end: "p" }}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
