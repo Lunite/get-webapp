@@ -39,7 +39,7 @@
 
 @keyframes scrollin {
   from {
-    transform: translateY(-1000px);
+    transform: translateY(1000px);
     opacity: 0;
   }
   to {
@@ -58,7 +58,7 @@
 
 @keyframes scrollout {
   from {
-    transform: translateY(1000px);
+    transform: translateY(-1000px);
     opacity: 0;
   }
   to {

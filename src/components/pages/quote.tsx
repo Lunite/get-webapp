@@ -202,7 +202,9 @@ const QuotePage: React.FC<PageProps> = props => {
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
     if (e.target.value.match(postcodeRegex)) {
-      fromAddress(e.target.value).then(res => setLocation(res))
+      fromAddress(e.target.value).then(res =>
+        setLocation(res as { lat: number; lng: number })
+      )
     }
     setFormValues({ ...formValues, postcode: e.target.value })
   }
@@ -634,7 +636,7 @@ const QuotePage: React.FC<PageProps> = props => {
               ) : (
                 <div className="loading-container">
                   <Heading level={3}>
-                    Please wait for your quote to be generated
+                    Please wait while we generate your quote...
                   </Heading>
                   <CircleLoader size={150} color="#3c96c5" />
                 </div>
