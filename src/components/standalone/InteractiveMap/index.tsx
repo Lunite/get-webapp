@@ -48,7 +48,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
       }}
       containerStyle={{
         position: "relative",
-        height: "550px",
+        height: "min(550px, 100vw)",
         width: "100%",
       }}
       onClick={onClickHandler}
