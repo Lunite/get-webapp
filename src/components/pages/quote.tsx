@@ -170,7 +170,7 @@ const QuotePage: React.FC<PageProps> = props => {
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
-        await new Promise(resolve => setTimeout(resolve, 3000))
+        await new Promise(resolve => setTimeout(resolve, 5000))
         console.log(quote)
 
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values

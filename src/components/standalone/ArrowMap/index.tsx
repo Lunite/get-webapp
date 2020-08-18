@@ -147,7 +147,10 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }, [canvasRef])
 
   return (
-    <div className="map-container">
+    <div
+      className="map-container"
+      style={{ height: "min(550px, 100vw)", width: "100%" }}
+    >
       <Map
         google={props.google}
         initialCenter={props.location}
