@@ -87,6 +87,17 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     setMouseState({ x: e.offsetX, y: e.offsetY, down: true }) // use useEffect for callback from this, adjust arrow position apropriately
   }
 
+  const onTouchMove = (e: TouchEvent) => {
+    e.preventDefault()
+    if (!mouseDown.current) {
+      return
+    }
+    setMouseState({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+      down: true,
+    })
+  }
   // Canvas update functions
 
   const drawArrowFromAngle = (
@@ -125,6 +136,9 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
       canvas.addEventListener("mousedown", onMouseDown, false)
       canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
       canvas.addEventListener("mouseup", onMouseUp, false)
+      canvas.addEventListener("touchstart", onMouseDown, false)
+      // canvas.addEventListener("ontouchmove", throttle(onTouchMove, 5), false)
+      canvas.addEventListener("touchend", onMouseUp, false)
 
       // Draws initial arrow at 0 degrees on canvas
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
@@ -146,11 +160,15 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           position: "relative",
           gridColumn: "1",
           gridRow: "1",
-          height: "550px",
+          height: "min(550px, 100vw)",
           width: "100%",
         }}
       />
-      <canvas className="map-overlay" ref={canvasRef} />
+      <canvas
+        className="map-overlay"
+        ref={canvasRef}
+        style={{ height: "min(550px, 100%)", width: "100%" }}
+      />
     </div>
   )
 }
