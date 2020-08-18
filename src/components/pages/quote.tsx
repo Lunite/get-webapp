@@ -20,6 +20,7 @@ import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import CircleLoader from "react-spinners/ClipLoader"
+import ReactPageScroll from "react-page-scroller/"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -35,6 +36,7 @@ interface IQuoteFormValues {
   roof: {
     azimuth: number
     inclination: number
+    area: number
   }
   property: {
     bedrooms: number
@@ -60,6 +62,7 @@ const values: IQuoteFormValues = {
   roof: {
     azimuth: 0,
     inclination: 1,
+    area: 10,
   },
   property: {
     bedrooms: 0,
@@ -162,19 +165,19 @@ const QuotePage: React.FC<PageProps> = props => {
       setPage(page + 1)
     } else {
       const postFormValues = async () => {
-        const req: Request = {
+        const req: RequestInit = {
           method: "GET",
           mode: "cors",
-          // @ts-ignore
           // body: JSON.stringify(formValues),
         }
-        let quote: any = await fetch(
+        let quote = await fetch(
           "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
         await new Promise(resolve => setTimeout(resolve, 3000))
         console.log(quote)
+
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
       setStatus("loading")
@@ -222,10 +225,10 @@ const QuotePage: React.FC<PageProps> = props => {
     }
   }
 
-  const pages = 9
+  const pages = 10
 
-  const getPage = () => {
-    switch (page) {
+  const getPage = p => {
+    switch (p) {
       case 0:
         return (
           <Shoutout
@@ -396,14 +399,18 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Enter your annual electric consumption"
-              min={1000}
-              max={8000}
-              value={formValues.aec}
+              title="Enter your available roof space"
+              min={5}
+              max={50}
+              value={formValues.roof.area}
               onChange={e => {
-                setFormValues({ ...formValues, aec: Number(e.target.value) })
+                setFormValues({
+                  ...formValues,
+                  roof: { ...formValues.roof, area: Number(e.target.value) },
+                })
               }}
-              inputAdornments={{ end: "kWh" }}
+              inputAdornments={{ end: "m^2" }}
+              remount
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -419,17 +426,15 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Price per kWh of electricity"
-              min={0}
-              max={200}
-              value={formValues.ppw}
+              title="Enter your annual electric consumption"
+              min={1000}
+              max={8000}
+              value={formValues.aec}
               onChange={e => {
-                setFormValues({
-                  ...formValues,
-                  ppw: Number(e.target.value),
-                })
+                setFormValues({ ...formValues, aec: Number(e.target.value) })
               }}
-              inputAdornments={{ end: "p" }}
+              inputAdornments={{ end: "kWh" }}
+              remount
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -445,17 +450,18 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Standing Charge"
+              title="Price per kWh of electricity"
               min={0}
               max={200}
-              value={formValues.standingChange}
+              value={formValues.ppw}
               onChange={e => {
                 setFormValues({
                   ...formValues,
-                  standingChange: Number(e.target.value),
+                  ppw: Number(e.target.value),
                 })
               }}
               inputAdornments={{ end: "p" }}
+              remount
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -468,6 +474,33 @@ const QuotePage: React.FC<PageProps> = props => {
           </>
         )
       case 7:
+        return (
+          <>
+            <SlideQuestion
+              title="Standing Charge"
+              min={0}
+              max={200}
+              value={formValues.standingChange}
+              onChange={e => {
+                setFormValues({
+                  ...formValues,
+                  standingChange: Number(e.target.value),
+                })
+              }}
+              remount
+              inputAdornments={{ end: "p" }}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        )
+      case 8:
         return (
           <>
             <div className="row">
@@ -533,7 +566,7 @@ const QuotePage: React.FC<PageProps> = props => {
             </div>
           </>
         )
-      case 8:
+      case 9:
         return (
           <>
             <Col6>
@@ -620,7 +653,7 @@ const QuotePage: React.FC<PageProps> = props => {
               className="form form--full-width"
             >
               {status === "form" ? (
-                getPage()
+                getPage(page)
               ) : (
                 <div className="loading-container">
                   <Heading level={3}>

@@ -30,51 +30,43 @@ const SlideInput: React.FC<SlideInputProps> = props => {
   const position = (props.value - props.min) / (props.max - props.min) // position along the slider
 
   return (
-    <div className="slide-container">
+    <div
+      className="slide-container"
+      id={Math.random().toString()}
+      key={Math.random().toString()}
+    >
       <Heading level={3}>{props.title}</Heading>
-      <Animate
-        properties={["opacity", "transform"]}
-        startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-        endValues={["1", "translateY(0) rotate(0deg)"]}
-      >
-        <div className="range-slider">
-          <span
-            className="rs-label"
-            style={{ left: `${position * width - 19 * position}px` }}
-          >
-            {props?.inputAdornments.start}
-            {props.value}
-            {props?.inputAdornments.end}
-          </span>
-          <input
-            className="rs-range"
-            type="range"
-            ref={ref}
-            value={props.value}
-            onChange={props.onChange}
-            min={props.min}
-            max={props.max}
-          />
-        </div>
-      </Animate>
-      <Animate
-        properties={["opacity", "transform"]}
-        startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-        endValues={["1", "translateY(0) rotate(0deg)"]}
-      >
-        <div className="box-minmax">
-          <span>
-            {props?.inputAdornments.start}
-            {props.min}
-            {props?.inputAdornments.end}
-          </span>
-          <span>
-            {props?.inputAdornments.start}
-            {props.max}
-            {props?.inputAdornments.end}
-          </span>
-        </div>
-      </Animate>
+      <div className="range-slider">
+        <span
+          className="rs-label"
+          style={{ left: `${position * width - 19 * position}px` }}
+        >
+          {props?.inputAdornments.start}
+          {props.value}
+          {props?.inputAdornments.end}
+        </span>
+        <input
+          className="rs-range"
+          type="range"
+          ref={ref}
+          value={props.value}
+          onChange={props.onChange}
+          min={props.min}
+          max={props.max}
+        />
+      </div>
+      <div className="box-minmax">
+        <span>
+          {props?.inputAdornments.start}
+          {props.min}
+          {props?.inputAdornments.end}
+        </span>
+        <span>
+          {props?.inputAdornments.start}
+          {props.max}
+          {props?.inputAdornments.end}
+        </span>
+      </div>
     </div>
   )
 }
