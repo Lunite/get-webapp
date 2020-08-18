@@ -41,6 +41,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
       zoom={20}
       onReady={(mapProps, map) => {
         map.setOptions(mapOptions)
+        map.setOptions({
+          draggableCursor:
+            "url(https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png) 13 40, auto",
+        })
       }}
       containerStyle={{
         position: "relative",
