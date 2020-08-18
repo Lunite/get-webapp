@@ -39,7 +39,6 @@ interface IQuoteFormValues {
   property: {
     bedrooms: number
     eCar: boolean
-    pump: boolean
     pool: boolean
     heater: boolean
   }
@@ -65,7 +64,6 @@ const values: IQuoteFormValues = {
   property: {
     bedrooms: 0,
     eCar: false,
-    pump: false,
     pool: false,
     heater: false,
   },
@@ -88,9 +86,8 @@ const awaitForLocalStorageNastyHack = () => {
 
 const propertyOptions = {
   eCar: "Electric Car",
-  pump: "Air Source Heating", // check this
+  heater: "Air Source Heating", // check this
   pool: "Swimming Pool",
-  heater: "Electric Storage Heating",
 }
 
 const SPECIAL_PRICE_KEY = "utm_campaign"
@@ -497,8 +494,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   <FormSelect
                     required
                     name="beds"
-                    label="Number of bedrooms"
-                    options={["1", "2", "3", "4", "5", "6+"]}
+                    label="Number of beds"
+                    options={["2", "3", "4", "5", "6+"]}
                     onChange={e => {
                       setFormValues({
                         ...formValues,

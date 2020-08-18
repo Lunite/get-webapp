@@ -462,12 +462,23 @@ exports.getInputs = async formValues => {
         (1000 * 60 * 60 * 24)
     return returnDateTime.toString().substr(0, 5)
   }
+  const getEAC = () => {
+    let eac = formValues.eac
+    if (eac === -1) {
+      const bedToEac = [0, 0, 2500, 3500, 4650, 5000, 5250] // standard eac values for beds
+      eac = bedToEac[formValues.property.bedrooms]
+      eac = formValues.property.eCar ? eac + 2500 : eac
+      eac = formValues.property.heater ? eac + 3000 : eac
+      eac = formValues.property.pool ? eac + 3500 : eac
+    }
+    return eac
+  }
   const calculatePanelNumber = roofArea =>
     Math.min(Math.ceil(roofArea / 1.5) - 1, 20) // calculates the max amount of panels that can be fit on a roof (1 panel = 1.5sq meters)
   const inputs = {
     projectReference: "",
     date: new Date().toLocaleDateString(),
-    eac: formValues.eac,
+    eac: getEAC(),
     ppw: formValues.ppw,
     standingCharge: formValues.standingCharge,
     annualCost: 0,
