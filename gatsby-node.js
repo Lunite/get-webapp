@@ -373,7 +373,7 @@ exports.createPages = async ({ graphql, actions }) => {
         seo_title: "Your Quote | Green Energy Together | Solar Panel Installer",
         title: "Your Quote",
         keywords: "",
-        description: "Your free no-obligation quote", // TODO refine this
+        description: "Your free no-obligation quote",
       },
       { slug: "404", title: "Page not found", keywords: "", description: "" },
       {
