@@ -6,6 +6,8 @@
   "author": "OLC",
   "dependencies": {
     "@apollo/react-hooks": "3.1.5",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@svgr/webpack": "5.3.1",
     "@types/react-geocode": "^0.2.0",
@@ -13,6 +15,7 @@
     "gatsby": "2.20.36",
     "gatsby-image": "2.3.5",
     "gatsby-plugin-alias-imports": "1.0.5",
+    "gatsby-plugin-emotion": "^4.3.10",
     "gatsby-plugin-google-analytics": "2.3.3",
     "gatsby-plugin-google-tagmanager": "2.3.3",
     "gatsby-plugin-manifest": "2.3.7",
@@ -41,6 +44,7 @@
     "react-markdown": "4.3.1",
     "react-player": "2.0.1",
     "react-slick": "^0.26.1",
+    "react-spinners": "^0.9.0",
     "react-visibility-sensor": "5.1.1"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@ import ArrowMap from "../standalone/ArrowMap"
 import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
-import { any } from "prop-types"
+import CircleLoader from "react-spinners/ClipLoader"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -173,6 +173,7 @@ const QuotePage: React.FC<PageProps> = props => {
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
+        await new Promise(resolve => setTimeout(resolve, 3000))
         console.log(quote)
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
@@ -618,7 +619,16 @@ const QuotePage: React.FC<PageProps> = props => {
               onSubmit={handleSubmit}
               className="form form--full-width"
             >
-              {getPage()}
+              {status === "form" ? (
+                getPage()
+              ) : (
+                <div className="loading-container">
+                  <Heading level={3}>
+                    Please wait for your quote to be generated
+                  </Heading>
+                  <CircleLoader size={150} color="#3c96c5" />
+                </div>
+              )}
             </form>
           </Col12>
         </div>
