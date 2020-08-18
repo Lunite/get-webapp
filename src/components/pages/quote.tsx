@@ -138,9 +138,13 @@ const QuotePage: React.FC<PageProps> = props => {
         town: address[2].long_name,
         postcode: address[address.length - 1].long_name,
       }
-      setFormValues(newFv)
+      return newFv
     }
     updateAddress()
+      .then(newFv => {
+        setFormValues(newFv)
+      })
+      .catch(err => console.error(err))
   }, [location])
 
   useEffect(() => {

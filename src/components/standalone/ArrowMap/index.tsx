@@ -138,7 +138,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         google={props.google}
         initialCenter={props.location}
         // @ts-ignore
-        zoom={22}
+        zoom={20}
         onReady={(mapProps, map) => {
           map.setOptions(mapOptions)
         }}
