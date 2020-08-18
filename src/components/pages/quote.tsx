@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from "react"
+import React, { useState, FormEvent, useEffect, useRef } from "react"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
@@ -14,13 +14,11 @@ import Col12 from "../grid/Col12"
 import { fromAddress, fromLatLong } from "../util/Quote/mapUtils"
 import RadioGrid from "../standalone/RadioGrid"
 import Shoutout from "../configurable/Shoutout"
-import Animate from "../olc-framework/Animate"
 import ArrowMap from "../standalone/ArrowMap"
 import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import CircleLoader from "react-spinners/ClipLoader"
-import ReactPageScroll from "react-page-scroller/"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -62,7 +60,7 @@ const values: IQuoteFormValues = {
   roof: {
     azimuth: 0,
     inclination: 1,
-    area: 10,
+    area: 100,
   },
   property: {
     bedrooms: 0,
@@ -109,6 +107,8 @@ const QuotePage: React.FC<PageProps> = props => {
     lng: 0,
   })
   const [status, setStatus] = useState<"form" | "loading">("form") // status for when values are posted
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [anim, setAnim] = useState<string>("fade-in")
 
   // Check for discount query string params on component mount
   useEffect(() => {
@@ -151,17 +151,15 @@ const QuotePage: React.FC<PageProps> = props => {
   }, [location])
 
   useEffect(() => {
-    page !== 0 && window.scrollTo(0, 200)
+    page !== 0 && scrollRef.current && scrollRef.current.scrollIntoView(true)
+    page === 0 && window.scrollTo(0, 0)
   }, [page])
-
-  // useEffect(() => {
-  //   console.log(formValues)
-  // }, [formValues])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
     if (page !== pages - 1) {
+      setAnim("scroll-in")
       setPage(page + 1)
     } else {
       const postFormValues = async () => {
@@ -180,12 +178,14 @@ const QuotePage: React.FC<PageProps> = props => {
 
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
+      setAnim("fade-in")
       setStatus("loading")
       return postFormValues() // so it can be async
     }
   }
 
   const prevPage = () => {
+    setAnim("scroll-out")
     setPage(page - 1)
   }
 
@@ -235,47 +235,30 @@ const QuotePage: React.FC<PageProps> = props => {
             image={<Image src="/images/products-bulb.jpg" title="Products" />}
             text={
               <>
-                <Animate
-                  properties={["opacity", "transform"]}
-                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                  endValues={["1", "translateY(0) rotate(0deg)"]}
-                >
-                  <div>
-                    <Heading underlined level={1}>
-                      Get a Quote
-                    </Heading>
-                    <Heading level={3}>
-                      Enter your postcode to get started
-                    </Heading>
-                  </div>
-                </Animate>
-                <Animate
-                  properties={["opacity", "transform"]}
-                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                  endValues={["1", "translateY(0) rotate(0deg)"]}
-                >
-                  <FormInput
-                    name="postcode"
-                    placeholder="Enter postcode..."
-                    required
-                    pattern={postcodeRegex}
-                    title="Please enter a valid UK postcode"
-                    value={formValues.postcode}
-                    onChange={updatePostcode}
-                    id="postcode"
-                  />
-                </Animate>
-                <Animate
-                  properties={["opacity", "transform"]}
-                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                  endValues={["1", "translateY(0) rotate(0deg)"]}
-                >
-                  <div className="form__actions">
-                    <BlockCTA large submit className="fl-r">
-                      Get Started
-                    </BlockCTA>
-                  </div>
-                </Animate>
+                <div>
+                  <Heading underlined level={1}>
+                    Get a Quote
+                  </Heading>
+                  <Heading level={3}>
+                    Enter your postcode to get started
+                  </Heading>
+                </div>
+                <FormInput
+                  name="postcode"
+                  placeholder="Enter postcode..."
+                  required
+                  pattern={postcodeRegex}
+                  title="Please enter a valid UK postcode"
+                  value={formValues.postcode}
+                  onChange={updatePostcode}
+                  id="postcode"
+                />
+
+                <div className="form__actions">
+                  <BlockCTA large submit className="fl-r">
+                    Get Started
+                  </BlockCTA>
+                </div>
               </>
             }
           />
@@ -289,55 +272,49 @@ const QuotePage: React.FC<PageProps> = props => {
             <Col6>
               <Heading level={3}>Find your property</Heading>
               <Heading level={5}> Please select your roof on the map</Heading>
-              <Animate
-                properties={["opacity", "transform"]}
-                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                endValues={["1", "translateY(0) rotate(0deg)"]}
-              >
-                <div>
-                  <FormInput
-                    name="houseNumber"
-                    id="houseNumber"
-                    label="House number/name"
-                    placeholder="Enter house number..."
-                    type="text"
-                    required
-                    value={formValues.houseNumber}
-                    onChange={updateTextValue}
-                  />
-                  <FormInput
-                    name="street"
-                    id="street"
-                    label="Street"
-                    type="text"
-                    placeholder="Enter street name..."
-                    required
-                    value={formValues.street}
-                    onChange={updateTextValue}
-                  />
-                  <FormInput
-                    name="town"
-                    id="town"
-                    label="Town"
-                    type="text"
-                    placeholder="Enter town..."
-                    required
-                    value={formValues.town}
-                    onChange={updateTextValue}
-                  />
-                  <FormInput
-                    name="postcode"
-                    id="postcode"
-                    label="Postcode"
-                    placeholder="Enter postcode..."
-                    required
-                    pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
-                    title="Please enter a valid UK postcode"
-                    value={formValues.postcode}
-                    onChange={updateTextValue}
-                  />
-                </div>
-              </Animate>
+              <div>
+                <FormInput
+                  name="houseNumber"
+                  id="houseNumber"
+                  label="House number/name"
+                  placeholder="Enter house number..."
+                  type="text"
+                  required
+                  value={formValues.houseNumber}
+                  onChange={updateTextValue}
+                />
+                <FormInput
+                  name="street"
+                  id="street"
+                  label="Street"
+                  type="text"
+                  placeholder="Enter street name..."
+                  required
+                  value={formValues.street}
+                  onChange={updateTextValue}
+                />
+                <FormInput
+                  name="town"
+                  id="town"
+                  label="Town"
+                  type="text"
+                  placeholder="Enter town..."
+                  required
+                  value={formValues.town}
+                  onChange={updateTextValue}
+                />
+                <FormInput
+                  name="postcode"
+                  id="postcode"
+                  label="Postcode"
+                  placeholder="Enter postcode..."
+                  required
+                  pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
+                  title="Please enter a valid UK postcode"
+                  value={formValues.postcode}
+                  onChange={updateTextValue}
+                />
+              </div>
               <div className="form__actions">
                 <BlockCTA large left action={prevPage}>
                   Back
@@ -400,8 +377,9 @@ const QuotePage: React.FC<PageProps> = props => {
           <>
             <SlideQuestion
               title="Enter your available roof space"
-              min={5}
-              max={50}
+              min={10}
+              max={200}
+              average={100}
               value={formValues.roof.area}
               onChange={e => {
                 setFormValues({
@@ -435,6 +413,7 @@ const QuotePage: React.FC<PageProps> = props => {
               title="Enter your annual electric consumption"
               min={1000}
               max={8000}
+              average={-1}
               value={formValues.aec}
               onChange={e => {
                 setFormValues({ ...formValues, aec: Number(e.target.value) })
@@ -459,6 +438,7 @@ const QuotePage: React.FC<PageProps> = props => {
               title="Price per kWh of electricity"
               min={0}
               max={200}
+              average={18}
               value={formValues.ppw}
               onChange={e => {
                 setFormValues({
@@ -486,6 +466,7 @@ const QuotePage: React.FC<PageProps> = props => {
               title="Standing Charge"
               min={0}
               max={200}
+              average={22}
               value={formValues.standingChange}
               onChange={e => {
                 setFormValues({
@@ -512,42 +493,36 @@ const QuotePage: React.FC<PageProps> = props => {
             <div className="row">
               <Col6>
                 <Heading level={3}>Household Usage</Heading>
-                <Animate
-                  properties={["opacity", "transform"]}
-                  startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                  endValues={["1", "translateY(0) rotate(0deg)"]}
-                >
-                  <div>
-                    <FormSelect
-                      required
-                      name="beds"
-                      label="Number of bedrooms"
-                      options={["1", "2", "3", "4", "5", "6+"]}
-                      onChange={e => {
-                        setFormValues({
-                          ...formValues,
-                          property: {
-                            ...formValues.property,
-                            bedrooms: Number(e.target.value[0]),
-                          },
-                        })
-                      }}
-                    />
-                    <br />
-                    <FormCheckbox
-                      name="own"
-                      label="And if you own:"
-                      options={Object.keys(propertyOptions)}
-                      getOptionLabel={option => {
-                        return propertyOptions[option]
-                      }}
-                      onChange={e => {
-                        toggleProperty(e.target.value)
-                      }}
-                      value={formValues.property}
-                    />
-                  </div>
-                </Animate>
+                <div>
+                  <FormSelect
+                    required
+                    name="beds"
+                    label="Number of bedrooms"
+                    options={["1", "2", "3", "4", "5", "6+"]}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        property: {
+                          ...formValues.property,
+                          bedrooms: Number(e.target.value[0]),
+                        },
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormCheckbox
+                    name="own"
+                    label="And if you own:"
+                    options={Object.keys(propertyOptions)}
+                    getOptionLabel={option => {
+                      return propertyOptions[option]
+                    }}
+                    onChange={e => {
+                      toggleProperty(e.target.value)
+                    }}
+                    value={formValues.property}
+                  />
+                </div>
               </Col6>
               <Col6>
                 <Block>
@@ -577,43 +552,38 @@ const QuotePage: React.FC<PageProps> = props => {
           <>
             <Col6>
               <Heading level={3}>Enter your personal details</Heading>
-              <Animate
-                properties={["opacity", "transform"]}
-                startValues={["0", "translateY(40px) rotate(0.5deg)"]}
-                endValues={["1", "translateY(0) rotate(0deg)"]}
-              >
-                <div>
-                  <FormInput
-                    name="name"
-                    id="name"
-                    label="Full name"
-                    placeholder="Type your full name..."
-                    value={formValues.name}
-                    onChange={updateTextValue}
-                    required
-                  />
-                  <FormInput
-                    name="email"
-                    id="email"
-                    label="Email"
-                    type="email"
-                    placeholder="Type your email..."
-                    value={formValues.email}
-                    onChange={updateTextValue}
-                    required
-                  />
-                  <FormInput
-                    name="phone"
-                    id="phone"
-                    label="Phone number"
-                    type="tel"
-                    placeholder="Type your phone number..."
-                    value={formValues.phone}
-                    onChange={updateTextValue}
-                    required
-                  />
-                </div>
-              </Animate>
+
+              <div>
+                <FormInput
+                  name="name"
+                  id="name"
+                  label="Full name"
+                  placeholder="Type your full name..."
+                  value={formValues.name}
+                  onChange={updateTextValue}
+                  required
+                />
+                <FormInput
+                  name="email"
+                  id="email"
+                  label="Email"
+                  type="email"
+                  placeholder="Type your email..."
+                  value={formValues.email}
+                  onChange={updateTextValue}
+                  required
+                />
+                <FormInput
+                  name="phone"
+                  id="phone"
+                  label="Phone number"
+                  type="tel"
+                  placeholder="Type your phone number..."
+                  value={formValues.phone}
+                  onChange={updateTextValue}
+                  required
+                />
+              </div>
               <div className="form__actions">
                 <BlockCTA large left action={prevPage}>
                   Back
@@ -651,12 +621,16 @@ const QuotePage: React.FC<PageProps> = props => {
         </Heading>
       </Hero>
       <Block>
-        <div className="container container--column">
+        <div
+          className="container container--column quote-container"
+          ref={scrollRef}
+        >
           <Col12>
             <form
               name="quote-form"
               onSubmit={handleSubmit}
-              className="form form--full-width"
+              className={`form form--full-width ${anim}`}
+              key={page.toString()}
             >
               {status === "form" ? (
                 getPage(page)

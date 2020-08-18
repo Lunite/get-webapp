@@ -1,13 +1,14 @@
+@import "~/styles/_variables.scss";
+
 .form-input {
   margin-bottom: 25px;
 }
 
-.fl-r {
-  float: right;
-}
-
-.fl-l {
-  float: left;
+.quote-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .loading-container {
@@ -15,4 +16,61 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotate(0.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.fade-in {
+  transition: $slow-transition;
+  transform-origin: top left;
+  transition-property: opacity, transform;
+  transition-delay: 0.25s;
+  animation: fade $slow-transition;
+}
+
+@keyframes scrollin {
+  from {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scroll-in {
+  transition: $slow-transition;
+  transform-origin: top left;
+  transition-property: opacity, transform;
+  transition-timing-function: $transition-timing-function;
+  animation: scrollin $slow-transition;
+}
+
+@keyframes scrollout {
+  from {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scroll-out {
+  transition: $slow-transition;
+  transform-origin: top left;
+  transition-property: opacity, transform;
+  transition-timing-function: $transition-timing-function;
+  animation: scrollout $slow-transition;
 }

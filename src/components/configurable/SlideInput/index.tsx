@@ -14,6 +14,7 @@ interface SlideInputProps {
     end?: React.ReactNode
   }
   value: number
+  average: number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   key: string
 }
@@ -64,6 +65,15 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           {props?.inputAdornments.end}
         </span>
       </div>
+      <button
+        onClick={() => {
+          // @ts-ignore
+          props.onChange({ target: { value: props.average.toString() } })
+        }}
+        type="submit"
+      >
+        I Don't Know
+      </button>
     </div>
   )
 }

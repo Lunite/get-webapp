@@ -1,28 +1,12 @@
 @import "~/styles/_variables.scss";
 
-@keyframes anim {
-  from {
-    opacity: 0;
-    transform: translateY(40px) rotate(0.5deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
-  }
-}
-
 .slide-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  transition: $slow-transition;
-  transform-origin: top left;
-  transition-property: opacity, transform;
-  transition-delay: 0.25s;
-  animation: anim $slow-transition;
 }
+
 .box-minmax {
   margin-top: 30px;
   width: 55%;
