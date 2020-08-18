@@ -409,8 +409,14 @@ const QuotePage: React.FC<PageProps> = props => {
                   roof: { ...formValues.roof, area: Number(e.target.value) },
                 })
               }}
-              inputAdornments={{ end: "m^2" }}
-              remount
+              inputAdornments={{
+                end: (
+                  <span>
+                    m<sup>2</sup>
+                  </span>
+                ),
+              }}
+              key={"roof"}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -434,7 +440,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 setFormValues({ ...formValues, aec: Number(e.target.value) })
               }}
               inputAdornments={{ end: "kWh" }}
-              remount
+              key={"eac"}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -461,7 +467,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 })
               }}
               inputAdornments={{ end: "p" }}
-              remount
+              key={"ppw"}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
@@ -487,8 +493,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   standingChange: Number(e.target.value),
                 })
               }}
-              remount
               inputAdornments={{ end: "p" }}
+              key={"sc"}
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
