@@ -157,4 +157,5 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyCIxU03Aoq29qJ5-KQT9F_v763fpJf0B3c",
+  version: "3",
 })(ArrowMap)
