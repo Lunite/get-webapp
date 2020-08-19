@@ -16,7 +16,6 @@ interface SlideInputProps {
   value: number
   average: number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  key: string
 }
 
 const SlideInput: React.FC<SlideInputProps> = props => {
@@ -32,7 +31,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
   const position = (props.value - props.min) / (props.max - props.min) // position along the slider
 
   return (
-    <div className="slide-container" id={props.key} key={props.key}>
+    <div className="slide-container">
       <Heading level={3}>{props.title}</Heading>
       <div className="range-slider">
         <span

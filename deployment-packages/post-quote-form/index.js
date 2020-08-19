@@ -4,32 +4,36 @@ const { sendEmail } = require("./gmailFns")
 const { calculateQuote } = require("./quote")
 
 const sampleFormValues = {
-  name: "Kilian Seifert",
-  email: "kisele606@gmail.com",
-  phone: "07731894329",
-  houseNumber: "34",
-  street: "Manor Way",
-  town: "Mitcham",
-  postcode: "SY20 5EE",
+  name: "Bob Stevens",
+  email: "bob@gmail.com",
+  phone: "000-000-000",
+  houseNumber: "17",
+  street: "Severn Rd",
+  town: "Stoke-On-Trent",
+  postcode: "GL20 5AF",
   roof: {
-    azimuth: 0,
-    inclination: 20,
-    area: 50,
+    azimuth: 13,
+    inclination: 30,
+    area: 100,
   },
   property: {
     bedrooms: 3,
     eCar: false,
-    pump: false,
-    pool: false,
+    pool: true,
     heater: false,
   },
-  eac: 5000,
-  ppw: 0.176,
-  standingCharge: 0.223,
-  discount: false, // -10%
+  aec: 3500,
+  ppw: 20,
+  standingChange: 20,
+  discount: false,
 }
 
-// entry point for request
+/**
+ * Responds to any HTTP request.
+ *
+ * @param {!express:Request} req HTTP request context.
+ * @param {!express:Response} res HTTP response context.
+ */
 exports.handler = async (req, res) => {
   // Load client secrets from a local file.
   // fs.readFile("credentials.json", (err, content) => {
@@ -38,6 +42,15 @@ exports.handler = async (req, res) => {
   //   authorize(JSON.parse(content), sendEmail) // Authorizes using locally stored id then calls callback
   // })
 
-  const result = await calculateQuote(sampleFormValues)
-  console.log(result)
+  res.set("Access-Control-Allow-Origin", "*")
+  res.set("Access-Control-Allow-Methods", "POST")
+  res.set("Access-Control-Allow-Headers", "Content-Type")
+  console.log("inputs", req.body)
+  try {
+    const result = await calculateQuote(req.body)
+    console.log(result)
+    res.json(result)
+  } catch (error) {
+    res.json(error)
+  }
 }

@@ -4,8 +4,9 @@ import "./yourquote.scss"
 import Heading from "../configurable/Heading"
 import Hero from "../configurable/Hero"
 import Col12 from "../grid/Col12"
+import Block from "../configurable/Block"
 
-const results = {
+let results: any = {
   // for testing purposes - replace with props.window.state
   totalCost: 8240.25,
   vat: 392.39,
@@ -48,6 +49,7 @@ const results = {
 }
 
 const YourQuotePage: React.FC<PageProps> = props => {
+  results = props.location.state
   return (
     <div className="yourquote-page">
       <Hero imageUrl="/images/quote-banner.jpg" compact>
@@ -57,79 +59,81 @@ const YourQuotePage: React.FC<PageProps> = props => {
       </Hero>
       <div className="container container--column">
         <Col12>
-          <div className="yourquote-container">
-            <div className="yq-header">
-              <h1>Your Quotation (Inclusive of VAT)</h1>
+          <Block>
+            <div className="yourquote-container">
+              <div className="yq-header">
+                <h1>Your Quotation (Inclusive of VAT)</h1>
+              </div>
+              <div className="yq-total">
+                <h3>£</h3>
+                <h3>{results.totalCost}</h3>
+              </div>
+              <div className="yq-subheading">
+                <h2>Payment Terms</h2>
+              </div>
+              <div className="yq-paymentterms-table">
+                <div>
+                  <span className="yq-left">
+                    <h3>Payment 1 @ 60% 14 Days prior to Installation Date</h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3>£</h3>
+                    <h3>{(results.totalCost * 0.6).toFixed(2)}</h3>
+                  </span>
+                </div>
+                <div>
+                  <span className="yq-left">
+                    <h3>
+                      Payment 2 @ 40% 7 days post Completion of Installation
+                    </h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3>£</h3>
+                    <h3>{(results.totalCost * 0.4).toFixed(2)}</h3>
+                  </span>
+                </div>
+                <div>
+                  <span className="yq-left">
+                    <h3>Estimated Years to Payback</h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3 />
+                    <h3>{"some form result"}</h3>
+                  </span>
+                </div>
+                <div>
+                  <span className="yq-left">
+                    <h3>System Size</h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3 />
+                    <h3>{results.systemSize} kWdc</h3>
+                  </span>
+                </div>
+                <div>
+                  <span className="yq-left">
+                    <h3>Quantity of Panels</h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3 />
+                    <h3>{results.panelQuantity} panels</h3>
+                  </span>
+                </div>
+                <div>
+                  <span className="yq-left">
+                    <h3>Battery Storage Size</h3>
+                  </span>
+                  <span className="yq-right">
+                    <h3 />
+                    <h3>{results.batterySize} kWdc</h3>
+                  </span>
+                </div>
+              </div>
+              <div className="yq-subheading">
+                <h2>Breakdown of Performance</h2>
+              </div>
             </div>
-            <div className="yq-total">
-              <h3>£</h3>
-              <h3>{results.totalCost}</h3>
-            </div>
-            <div className="yq-subheading">
-              <h2>Payment Terms</h2>
-            </div>
-            <div className="yq-paymentterms-table">
-              <div>
-                <span className="yq-left">
-                  <h3>Payment 1 @ 60% 14 Days prior to Installation Date</h3>
-                </span>
-                <span className="yq-right">
-                  <h3>£</h3>
-                  <h3>{(results.totalCost * 0.6).toFixed(2)}</h3>
-                </span>
-              </div>
-              <div>
-                <span className="yq-left">
-                  <h3>
-                    Payment 2 @ 40% 7 days post Completion of Installation
-                  </h3>
-                </span>
-                <span className="yq-right">
-                  <h3>£</h3>
-                  <h3>{(results.totalCost * 0.4).toFixed(2)}</h3>
-                </span>
-              </div>
-              <div>
-                <span className="yq-left">
-                  <h3>Estimated Years to Payback</h3>
-                </span>
-                <span className="yq-right">
-                  <h3 />
-                  <h3>{"some form result"}</h3>
-                </span>
-              </div>
-              <div>
-                <span className="yq-left">
-                  <h3>System Size</h3>
-                </span>
-                <span className="yq-right">
-                  <h3 />
-                  <h3>{results.systemSize} kWdc</h3>
-                </span>
-              </div>
-              <div>
-                <span className="yq-left">
-                  <h3>Quantity of Panels</h3>
-                </span>
-                <span className="yq-right">
-                  <h3 />
-                  <h3>{results.panelQuantity} panels</h3>
-                </span>
-              </div>
-              <div>
-                <span className="yq-left">
-                  <h3>Battery Storage Size</h3>
-                </span>
-                <span className="yq-right">
-                  <h3 />
-                  <h3>{results.batterySize} kWdc</h3>
-                </span>
-              </div>
-            </div>
-            <div className="yq-subheading">
-              <h2>Breakdown of Performance</h2>
-            </div>
-          </div>
+          </Block>
         </Col12>
       </div>
     </div>

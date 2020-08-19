@@ -73,6 +73,31 @@ const values: IQuoteFormValues = {
   discount: false,
 }
 
+const testFormVals = {
+  name: "Bob Stevens",
+  email: "bob@gmail.com",
+  phone: "911",
+  houseNumber: "34",
+  street: "Manor Way",
+  town: "Mitcham",
+  postcode: "CR4 1EE",
+  roof: {
+    azimuth: 13,
+    inclination: 30,
+    area: 132,
+  },
+  property: {
+    bedrooms: 3,
+    eCar: false,
+    pool: true,
+    heater: false,
+  },
+  aec: 3500,
+  ppw: 20,
+  standingChange: 20,
+  discount: false,
+}
+
 const awaitForLocalStorageNastyHack = () => {
   // recursive await for local storage lol???
   return new Promise(resolve => {
@@ -152,26 +177,31 @@ const QuotePage: React.FC<PageProps> = props => {
     page === 0 && window.scrollTo(0, 0)
   }, [page])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>, test?: boolean) => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
-    if (page !== pages - 1) {
+    if (page !== pages - 1 && !test) {
       setAnim("scroll-in")
       setPage(page + 1)
     } else {
       const postFormValues = async () => {
         const req: RequestInit = {
-          method: "GET",
+          method: "POST",
           mode: "cors",
-          // body: JSON.stringify(formValues),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formValues),
         }
+        console.log("Sending quote request with", req)
         let quote = await fetch(
           "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
-        await new Promise(resolve => setTimeout(resolve, 5000))
+        quote = await quote.json()
         console.log(quote)
+        await new Promise(resolve => setTimeout(resolve, 5000))
 
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
@@ -257,6 +287,15 @@ const QuotePage: React.FC<PageProps> = props => {
                   <BlockCTA large submit className="fl-r">
                     Get Started
                   </BlockCTA>
+                  <button
+                    onClick={e => {
+                      setFormValues(testFormVals)
+                      // @ts-ignore
+                      handleSubmit(e, true)
+                    }}
+                  >
+                    Test Form
+                  </button>
                 </div>
               </>
             }
