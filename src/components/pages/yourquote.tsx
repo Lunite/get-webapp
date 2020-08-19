@@ -66,7 +66,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
               </div>
               <div className="yq-total">
                 <h3>£</h3>
-                <h3>{results.totalCost}</h3>
+                <h3>{results?.totalCost}</h3>
               </div>
               <div className="yq-subheading">
                 <h2>Payment Terms</h2>
@@ -78,7 +78,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results.totalCost * 0.6).toFixed(2)}</h3>
+                    <h3>{(results?.totalCost * 0.6).toFixed(2)}</h3>
                   </span>
                 </div>
                 <div>
@@ -89,7 +89,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results.totalCost * 0.4).toFixed(2)}</h3>
+                    <h3>{(results?.totalCost * 0.4).toFixed(2)}</h3>
                   </span>
                 </div>
                 <div>
@@ -107,7 +107,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results.systemSize} kWdc</h3>
+                    <h3>{results?.systemSize} kWdc</h3>
                   </span>
                 </div>
                 <div>
@@ -116,7 +116,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results.panelQuantity} panels</h3>
+                    <h3>{results?.panelQuantity} panels</h3>
                   </span>
                 </div>
                 <div>
@@ -125,7 +125,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results.batterySize} kWdc</h3>
+                    <h3>{results?.batterySize} kWdc</h3>
                   </span>
                 </div>
               </div>

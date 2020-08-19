@@ -201,7 +201,7 @@ const QuotePage: React.FC<PageProps> = props => {
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
         quote = await quote.json()
         console.log(quote)
-        await new Promise(resolve => setTimeout(resolve, 5000))
+        // await new Promise(resolve => setTimeout(resolve, 5000))
 
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
