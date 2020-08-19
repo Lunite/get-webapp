@@ -473,8 +473,11 @@ exports.getInputs = async formValues => {
     }
     return eac
   }
+
+  // calculates the max amount of panels that can be fit on a roof (1 panel = 1.5sq meters)
   const calculatePanelNumber = roofArea =>
-    Math.min(Math.ceil(roofArea / 1.5) - 1, 20) // calculates the max amount of panels that can be fit on a roof (1 panel = 1.5sq meters)
+    Math.min(Math.ceil(roofArea / 1.5) - 1, 20)
+
   const inputs = {
     projectReference: "",
     date: new Date().toLocaleDateString(),
@@ -490,7 +493,7 @@ exports.getInputs = async formValues => {
     annualYield: 0,
     irradienceZone: 0,
     roofPitch: formValues.roof.inclination, // will be 0, 15, 30, 40
-    azimuth: Math.round(formValues.roof.azimuth / 5) * 5, // to nearest 5
+    azimuth: Math.abs(Math.round(formValues.roof.azimuth / 5) * 5), // to nearest 5
     roofType: "Concrete",
     panels: "Blue",
     scaffold: "No",

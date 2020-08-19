@@ -42,15 +42,26 @@ exports.handler = async (req, res) => {
   //   authorize(JSON.parse(content), sendEmail) // Authorizes using locally stored id then calls callback
   // })
 
+  let time = new Date().getTime()
+
   res.set("Access-Control-Allow-Origin", "*")
-  res.set("Access-Control-Allow-Methods", "POST")
-  res.set("Access-Control-Allow-Headers", "Content-Type")
-  console.log("inputs", req.body)
-  try {
-    const result = await calculateQuote(req.body)
+
+  if (req.method === "OPTIONS") {
+    // for preflight req
+    // Send response to OPTIONS requests
+    console.log("Doing Preflight Checks")
+    res.set("Access-Control-Allow-Methods", "POST")
+    res.set("Access-Control-Allow-Headers", "Content-Type")
+    res.set("Access-Control-Max-Age", "3600")
+    res.status(204).send("")
+  } else {
+    // for 2nd req
+    const formValues = await req.body
+    console.log("Calling Function With", formValues)
+    const result = await calculateQuote(formValues)
     console.log(result)
+    time = new Date().getTime() - time
+    console.log("Function Execution Time:", time / 1000, "seconds")
     res.json(result)
-  } catch (error) {
-    res.json(error)
   }
 }

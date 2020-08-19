@@ -191,7 +191,9 @@ const QuotePage: React.FC<PageProps> = props => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formValues),
+          body: test
+            ? JSON.stringify(testFormVals)
+            : JSON.stringify(formValues),
         }
         console.log("Sending quote request with", req)
         let quote = await fetch(
@@ -290,7 +292,6 @@ const QuotePage: React.FC<PageProps> = props => {
                   </BlockCTA>
                   <button
                     onClick={e => {
-                      setFormValues(testFormVals)
                       // @ts-ignore
                       handleSubmit(e, true)
                     }}
