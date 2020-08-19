@@ -27,7 +27,23 @@ const monthlyUseCoefficients = [
   0.1034,
 ]
 
+const monthlyYieldCoefficients = [
+  0.02850480898,
+  0.05313393615,
+  0.08577294325,
+  0.1177390998,
+  0.146747557,
+  0.1152009944,
+  0.1230423225,
+  0.1209678593,
+  0.09571649654,
+  0.06027087153,
+  0.02782072127,
+  0.02508238929,
+]
+
 exports.getUseAndSavings = (inputs, result) => {
+  const firstYearUse = energyUseCalculation(inputs)
   const twentyYearOutlook = []
   return result
 }
@@ -35,8 +51,12 @@ exports.getUseAndSavings = (inputs, result) => {
 const energyUseCalculation = inputs => {
   const yearlyCalcs = {
     // each array length 12 -> i=month
-    demand: [],
-    solar: [],
+    demand: monthlyUseCoefficients.map(coef => {
+      return inputs.eac * coef
+    }),
+    solar: monthlyYieldCoefficients.map(coef => {
+      return inputs.annualYield / coef
+    }),
     export: [],
     selfConsumptionWithoutBattery: [],
     demandAfterSolar: [],
@@ -44,7 +64,5 @@ const energyUseCalculation = inputs => {
     selfConsumptionTotal: [],
     demandTotal: [],
   }
-  yearlyCalcs.demand = monthlyUseCoefficients.map(coef => {
-    return inputs.eac * coef
-  })
+  return yearlyCalcs
 }
