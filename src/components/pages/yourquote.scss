@@ -75,11 +75,17 @@ td {
   justify-content: space-between;
 }
 
+@media ($phablet) {
+  .hide-lg {
+    display: none;
+  }
+}
+
 @media ($mobile) {
   .hide-mob {
     display: none;
   }
   .scale-mob {
-    overflow-x: auto;
+    overflow-x: scroll;
   }
 }

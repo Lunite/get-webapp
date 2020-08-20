@@ -75,3 +75,16 @@
   transition-timing-function: $transition-timing-function;
   animation: scrollout $slow-transition;
 }
+
+.firstpageImage {
+  padding: 0 15px;
+}
+
+@media ($mobile) {
+  .hide-mob {
+    display: none;
+  }
+  .firstpage {
+    padding: 15px;
+  }
+}

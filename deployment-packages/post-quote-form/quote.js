@@ -7,12 +7,12 @@ exports.calculateQuote = async formValues => {
   console.log("Using Inputs", inputs)
   let results = []
   let ps = [0, 2.5, 5, 7.5, 10].map(async size => {
-    inputs.storageSize = size
-    let tResult = lookup.getResultsTemplate(inputs)
-    const [cost, vat] = getTotalCost(inputs)
+    const localInput = { ...inputs, storageSize: size } // deep copy to avoid referencing outside of async code
+    let tResult = lookup.getResultsTemplate(localInput)
+    const [cost, vat] = getTotalCost(localInput)
     tResult.totalCost = cost
     tResult.vat = vat
-    tResult = await savings.getUseAndSavings(inputs, tResult)
+    tResult = await savings.getUseAndSavings(localInput, tResult)
     results.push(tResult)
   })
   await Promise.all(ps)

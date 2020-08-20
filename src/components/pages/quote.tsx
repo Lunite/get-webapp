@@ -234,9 +234,15 @@ const QuotePage: React.FC<PageProps> = props => {
       case 0:
         return (
           <Shoutout
-            image={<Image src="/images/products-bulb.jpg" title="Products" />}
+            image={
+              <Image
+                src="/images/products-bulb.jpg"
+                title="Products"
+                className="firstpageImage"
+              />
+            }
             text={
-              <>
+              <div className="firstpage">
                 <div>
                   <Heading underlined level={1}>
                     Get a Quote
@@ -257,11 +263,14 @@ const QuotePage: React.FC<PageProps> = props => {
                 />
 
                 <div className="form__actions">
-                  <BlockCTA large submit className="fl-r">
+                  <BlockCTA large submit className="fl-r hide-mob">
+                    Get Started
+                  </BlockCTA>
+                  <BlockCTA large submit fullWidth className="hide-lg">
                     Get Started
                   </BlockCTA>
                 </div>
-              </>
+              </div>
             }
           />
         )
@@ -527,7 +536,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 </div>
               </Col6>
               <Col6>
-                <Block>
+                <Block className="hide-mob">
                   <Heading level={4}>Why we need this information</Heading>
                   <p>
                     Our usage-based model means that our designs are truly cost
