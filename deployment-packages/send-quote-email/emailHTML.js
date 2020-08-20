@@ -45,9 +45,7 @@ module.exports.getEmailHTML = (results) => `
 
       .yq-total {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 15px 15px;
+        font-size: 20px;
       }
 
       .yq-subheading {
@@ -103,10 +101,12 @@ module.exports.getEmailHTML = (results) => `
   <body>
     <div class="yourquote-container">
       <div class="yq-header"><h1>Your Quotation (Inclusive of VAT)</h1></div>
-      <div class="yq-total">
-        <h3>£</h3>
-        <h3>${rnd(results.totalCost)}</h3>
-      </div>
+      <table class="yq-total">
+        <td style="text-align: left; border-right:none; padding-left: 10px;">£</td>
+        <th style="text-align: right; border-left:none; padding-right: 10px">${rnd(
+          results.totalCost,
+        )}</th>
+      </table>
       <div class="yq-subheading"><h2>Payment Terms</h2></div>
       <table>
         <tr>
