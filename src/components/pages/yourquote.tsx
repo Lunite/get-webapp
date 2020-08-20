@@ -45,10 +45,10 @@ let results: any = {
   name: "",
 }
 
-const rnd = num => {
+const rnd = (num: number) => {
   return Math.round((num + Number.EPSILON) * 100) / 100
 }
-const sum = arr => {
+const sum = (arr: Array<number>) => {
   return arr.reduce((a, b) => {
     return a + b
   }, 0)
