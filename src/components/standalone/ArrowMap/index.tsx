@@ -34,6 +34,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   // State Hooks
+  const [angle, setAngle] = useState(0) // for mobile
   const [mouseState, _setMouseState] = useState<{
     x: number
     y: number
@@ -52,6 +53,19 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   const mouseDown = useRef(mouseState.down)
 
   useEffect(() => {
+    // change arrow pos when angle changes
+    if (canvasRef.current) {
+      const canvas = canvasRef.current
+      const center = { x: canvas.width / 2, y: canvas.height / 2 }
+      const r = canvas.height / 3
+      let theta = angle
+      theta = -theta + Math.PI
+      props.setAzimuth(theta * (180 / Math.PI) - 180)
+      drawArrowFromAngle(center.x, center.y, r, theta - Math.PI / 2)
+    }
+  }, [angle])
+
+  useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
@@ -64,6 +78,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         mouseState.x - clientCenter.x,
         mouseState.y - clientCenter.y
       )
+      console.log("Theta is", theta)
       theta = -theta + Math.PI
       // console.log("angle is", theta * (180 / Math.PI) - 180)
       props.setAzimuth(theta * (180 / Math.PI) - 180)
@@ -87,17 +102,6 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     setMouseState({ x: e.offsetX, y: e.offsetY, down: true }) // use useEffect for callback from this, adjust arrow position apropriately
   }
 
-  const onTouchMove = (e: TouchEvent) => {
-    e.preventDefault()
-    if (!mouseDown.current) {
-      return
-    }
-    setMouseState({
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY,
-      down: true,
-    })
-  }
   // Canvas update functions
 
   const drawArrowFromAngle = (
@@ -136,43 +140,57 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
       canvas.addEventListener("mousedown", onMouseDown, false)
       canvas.addEventListener("mousemove", throttle(onMouseMove, 5), false)
       canvas.addEventListener("mouseup", onMouseUp, false)
-      canvas.addEventListener("touchstart", onMouseDown, false)
-      // canvas.addEventListener("ontouchmove", throttle(onTouchMove, 5), false)
-      canvas.addEventListener("touchend", onMouseUp, false)
-
-      // Draws initial arrow at 0 degrees on canvas
-      const center = { x: canvas.width / 2, y: canvas.height / 2 }
-      drawArrowFromAngle(center.x, center.y, canvas.height / 3, 0)
     }
   }, [canvasRef])
 
   return (
-    <div
-      className="map-container"
-      style={{ height: "min(550px, 100vw)", width: "100%" }}
-    >
-      <Map
-        google={props.google}
-        initialCenter={props.location}
-        // @ts-ignore
-        zoom={20}
-        onReady={(mapProps, map) => {
-          map.setOptions(mapOptions)
-        }}
-        containerStyle={{
-          position: "relative",
-          gridColumn: "1",
-          gridRow: "1",
-          height: "min(550px, 100vw)",
-          width: "100%",
-        }}
-      />
-      <canvas
-        className="map-overlay"
-        ref={canvasRef}
-        style={{ height: "min(550px, 100%)", width: "100%" }}
-      />
-    </div>
+    <>
+      <div
+        className="map-container"
+        style={{ height: "min(550px, 100vw)", width: "100%" }}
+      >
+        <Map
+          google={props.google}
+          initialCenter={props.location}
+          // @ts-ignore
+          zoom={20}
+          onReady={(mapProps, map) => {
+            map.setOptions(mapOptions)
+          }}
+          containerStyle={{
+            position: "relative",
+            gridColumn: "1",
+            gridRow: "1",
+            height: "min(550px, 100vw)",
+            width: "100%",
+          }}
+        />
+        <canvas
+          className="map-overlay"
+          ref={canvasRef}
+          style={{ height: "min(550px, 100%)", width: "100%" }}
+        />
+      </div>
+      <div className="slide-container show-mob">
+        <div className="range-slider">
+          <input
+            className="rs-range"
+            step={0.001}
+            type="range"
+            value={angle}
+            onChange={e => {
+              setAngle(Number(e.target.value))
+            }}
+            min={-Math.PI}
+            max={Math.PI}
+          />
+        </div>
+        <div className="box-minmax show-mob">
+          <span>-180</span>
+          <span>180</span>
+        </div>
+      </div>
+    </>
   )
 }
 

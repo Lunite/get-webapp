@@ -57,7 +57,7 @@ const values: IQuoteFormValues = {
   town: "",
   postcode: "",
   roof: {
-    azimuth: 0,
+    azimuth: 0.03,
     inclination: 1,
     area: 100,
   },
