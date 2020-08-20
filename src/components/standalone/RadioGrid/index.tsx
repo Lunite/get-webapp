@@ -41,9 +41,9 @@ const RadioGrid: React.FC<{
             id="incl-low"
             value="18"
             onChange={() => {
-              handleOptionChange(18)
+              handleOptionChange(15)
             }}
-            checked={props.selectedValue === 18}
+            checked={props.selectedValue === 15}
           />
           <label className="button-label" htmlFor="incl-low">
             Low Slope
@@ -60,9 +60,9 @@ const RadioGrid: React.FC<{
             id="incl-med"
             value="35"
             onChange={() => {
-              handleOptionChange(35)
+              handleOptionChange(30)
             }}
-            checked={props.selectedValue === 35}
+            checked={props.selectedValue === 30}
           />
           <label className="button-label" htmlFor="incl-med">
             Medium Slope
@@ -76,9 +76,9 @@ const RadioGrid: React.FC<{
             name="inclination"
             id="incl-high"
             value="45"
-            checked={props.selectedValue === 45}
+            checked={props.selectedValue === 40}
             onChange={() => {
-              handleOptionChange(45)
+              handleOptionChange(40)
             }}
           />
           <label className="button-label" htmlFor="incl-high">

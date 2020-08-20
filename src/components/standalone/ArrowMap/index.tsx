@@ -78,7 +78,6 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         mouseState.x - clientCenter.x,
         mouseState.y - clientCenter.y
       )
-      console.log("Theta is", theta)
       theta = -theta + Math.PI
       // console.log("angle is", theta * (180 / Math.PI) - 180)
       props.setAzimuth(theta * (180 / Math.PI) - 180)
@@ -186,8 +185,8 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           />
         </div>
         <div className="box-minmax show-mob">
-          <span>-180</span>
-          <span>180</span>
+          <span>-180&#176;</span>
+          <span>180&#176;</span>
         </div>
       </div>
     </>
