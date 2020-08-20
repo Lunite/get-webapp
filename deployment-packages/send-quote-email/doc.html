@@ -1,213 +1,630 @@
-<div class="yourquote-container">
-  <div class="yq-header"><h1>Your Quotation (Inclusive of VAT)</h1></div>
-  <div class="yq-total">
-    <h3>£</h3>
-    <h3>8240.25</h3>
-  </div>
-  <div class="yq-subheading"><h2>Payment Terms</h2></div>
-  <div class="yq-paymentterms-table">
-    <div>
-      <span class="yq-left"
-        ><h3>Payment 1 @ 60% 14 Days prior to Installation Date</h3></span
-      ><span class="yq-right"
-        ><h3>£</h3>
-        <h3>4944.15</h3></span
-      >
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        line-height: 1.78;
+        font-size: 18px;
+        font-weight: 300;
+        font-family: gotham, sans-serif;
+        color: #333;
+      }
+      div {
+        box-sizing: border-box;
+        display: block;
+      }
+      .yourquote-container {
+        width: 95%;
+        margin: auto;
+        border: 1px solid black;
+      }
+
+      h1,
+      h2 {
+        color: white;
+      }
+
+      .yq-header {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background-color: #3c96c5;
+      }
+
+      .yq-total {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 15px;
+      }
+
+      .yq-subheading {
+        background-color: #3c96c5;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .yq-paymentterms-table > div {
+        display: flex;
+      }
+
+      .yq-paymentterms-table > span {
+        box-sizing: border-box;
+        border-bottom: 1px solid black;
+        width: 50%;
+        padding: 20px 15px;
+      }
+
+      .yq-right {
+        display: flex;
+        justify-content: space-between;
+        border-left: 1px solid black;
+      }
+
+      table {
+        border-spacing: 0px;
+        width: 100%;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 5px 5px;
+        border: black 0.5px solid;
+      }
+      td {
+        text-align: center;
+      }
+      .tr-lg {
+        background-color: lightgrey;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      .td-price {
+        display: inline-flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="yourquote-container">
+      <div class="yq-header"><h1>Your Quotation (Inclusive of VAT)</h1></div>
+      <div class="yq-total">
+        <h3>£</h3>
+        <h3>8240.25</h3>
+      </div>
+      <div class="yq-subheading"><h2>Payment Terms</h2></div>
+      <table>
+        <tr>
+          <th>
+            Payment 1 @ 60% 14 Days prior to Installation Date
+          </th>
+          <td>£4399.19</td>
+        </tr>
+        <tr>
+          <th>
+            Payment 2 @ 40% 7 days post Completion of Installation
+          </th>
+          <td>£3296.1</td>
+        </tr>
+        <tr>
+          <th>
+            Estimated Years to Payback
+          </th>
+          <td>15 years</td>
+        </tr>
+        <tr>
+          <th>
+            System Size
+          </th>
+          <td>5.5 kWdc</td>
+        </tr>
+        <tr>
+          <th>
+            Quantity of Panels
+          </th>
+          <td>20 Panels</td>
+        </tr>
+        <tr>
+          <th>
+            Battery Storage Size
+          </th>
+          <td>5 kWdc</td>
+        </tr>
+      </table>
+      <div class="yq-subheading hide-mob">
+        <h2>Breakdown of Performance</h2>
+      </div>
+      <table class="hide-mob">
+        <tr class="tr-lg">
+          <th>Description</th>
+          <th>Jan</th>
+          <th>Feb</th>
+          <th>Mar</th>
+          <th>Apr</th>
+          <th>May</th>
+          <th>Jun</th>
+          <th>Jul</th>
+          <th>Aug</th>
+          <th>Sep</th>
+          <th>Oct</th>
+          <th>Nov</th>
+          <th>Dec</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td class="text-left">Grid Usage</td>
+          <td>354.36</td>
+          <td>309.86</td>
+          <td>315.84</td>
+          <td>272.92</td>
+          <td>262.22</td>
+          <td>241.78</td>
+          <td>246.72</td>
+          <td>250.94</td>
+          <td>259.88</td>
+          <td>297.13</td>
+          <td>326.38</td>
+          <td>361.98</td>
+          <td>3500</td>
+        </tr>
+        <tr>
+          <td class="text-left">Solar Generation</td>
+          <td>104.26</td>
+          <td>194.34</td>
+          <td>313.71</td>
+          <td>430.63</td>
+          <td>536.73</td>
+          <td>421.35</td>
+          <td>450.03</td>
+          <td>442.44</td>
+          <td>350.08</td>
+          <td>220.44</td>
+          <td>101.75</td>
+          <td>91.74</td>
+          <td>3657.5</td>
+        </tr>
+        <tr>
+          <td class="text-left">Solar Exported to Grid</td>
+          <td>21.48</td>
+          <td>76.7</td>
+          <td>105.24</td>
+          <td>87.28</td>
+          <td>73.03</td>
+          <td>63.83</td>
+          <td>64.49</td>
+          <td>76.67</td>
+          <td>94.83</td>
+          <td>84.07</td>
+          <td>25.27</td>
+          <td>16.79</td>
+          <td>789.68</td>
+        </tr>
+        <tr>
+          <td class="text-left">Solar Used at Home</td>
+          <td>104.2</td>
+          <td>184.35</td>
+          <td>243.42</td>
+          <td>233.29</td>
+          <td>229.26</td>
+          <td>211.51</td>
+          <td>213.56</td>
+          <td>214.26</td>
+          <td>216.38</td>
+          <td>191.43</td>
+          <td>101.43</td>
+          <td>91.66</td>
+          <td>2234.76</td>
+        </tr>
+        <tr>
+          <td class="text-left">Grid Usage with Solar</td>
+          <td>250.16</td>
+          <td>125.5</td>
+          <td>72.42</td>
+          <td>39.63</td>
+          <td>32.96</td>
+          <td>30.26</td>
+          <td>33.15</td>
+          <td>36.68</td>
+          <td>43.5</td>
+          <td>105.7</td>
+          <td>224.95</td>
+          <td>270.32</td>
+          <td>1265.24</td>
+        </tr>
+      </table>
+      <div class="yq-subheading">
+        <h2>Your Predicted System Performance</h2>
+      </div>
+      <div class="scale-mob">
+        <table>
+          <tr class="tr-lg">
+            <th colspan="3">The Assumptions we have made are based on...</th>
+            <th>Environmental Impact...</th>
+            <th colspan="4">Address and Climate Data</th>
+          </tr>
+          <tr>
+            <th>Predicted System Output</th>
+            <th>Assumed Annual Inflation</th>
+            <th>Assumed On-Site Energy Consumption</th>
+            <th>CO<sub>2</sub> Savings</th>
+            <th>Project Reference</th>
+            <th>Postcode</th>
+            <th>Irradience Zone</th>
+            <th>Roof Pitch</th>
+          </tr>
+          <tr>
+            <td>3657.5 kWh/annum</td>
+            <td>3%</td>
+            <td>61.1%</td>
+            <td>0.517kg saved per PV kWh</td>
+            <td>44063CR4 1EE</td>
+            <td>CR4 1EE</td>
+            <td>1</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <th>Our Proposal Installation Cost</th>
+            <th>Assumed Energy Unit Cost</th>
+            <th>Assumed Annual Energy Inflation</th>
+            <th>CO² Savings Over 20 Years</th>
+            <th colspan="2">Address</th>
+            <th>Irradiation Level</th>
+            <th>Degree's From South</th>
+          </tr>
+          <tr>
+            <td>£8240.25</td>
+            <td>£0.2</td>
+            <td>4%</td>
+            <td>36.02 tonnes</td>
+            <td colspan="2">34 Manor Way, Mitcham, CR4 1EE</td>
+            <td>665</td>
+            <td>115°</td>
+          </tr>
+        </table>
+      </div>
+      <div class="yq-subheading hide-mob">
+        <h2>Your Predicted System Performance - 20 Year Outlook</h2>
+      </div>
+      <table class="hide-mob">
+        <tr class="tr-lg">
+          <th>Year</th>
+          <th>Estimated Yearly Energy</th>
+          <th>Predicted Unit Cost</th>
+          <th>Predicted Bill Without Solar</th>
+          <th>Estimated Solar Generation</th>
+          <th>Solar Collector Efficiency</th>
+          <th>Solar Energy Used on Site</th>
+          <th>Saving from Solar Energy</th>
+          <th>Predicted Bill With Solar</th>
+          <th>Return on Investment</th>
+          <th>Total Savings</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>3500kWh</td>
+          <td>0.2</td>
+          <td>£773</td>
+          <td>3657.5kWh</td>
+          <td>100%</td>
+          <td>2234.76kWh</td>
+          <td>£446.95</td>
+          <td>£326.05</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-7793.3</td>
+          <td>£446.95</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>3500kWh</td>
+          <td>0.21</td>
+          <td>£801</td>
+          <td>3639.21kWh</td>
+          <td>99.5%</td>
+          <td>2234.76kWh</td>
+          <td>£464.83</td>
+          <td>£336.17</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-7328.47</td>
+          <td>£911.78</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>3500kWh</td>
+          <td>0.22</td>
+          <td>£830.12</td>
+          <td>3620.93kWh</td>
+          <td>99%</td>
+          <td>2234.76kWh</td>
+          <td>£483.42</td>
+          <td>£346.7</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-6845.04</td>
+          <td>£1395.21</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>3500kWh</td>
+          <td>0.22</td>
+          <td>£860.4</td>
+          <td>3602.64kWh</td>
+          <td>98.5%</td>
+          <td>2234.76kWh</td>
+          <td>£502.76</td>
+          <td>£357.64</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-6342.28</td>
+          <td>£1897.97</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>3500kWh</td>
+          <td>0.23</td>
+          <td>£891.9</td>
+          <td>3584.35kWh</td>
+          <td>98%</td>
+          <td>2234.76kWh</td>
+          <td>£522.87</td>
+          <td>£369.03</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-5819.41</td>
+          <td>£2420.84</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>3500kWh</td>
+          <td>0.24</td>
+          <td>£924.66</td>
+          <td>3566.06kWh</td>
+          <td>97.5%</td>
+          <td>2234.76kWh</td>
+          <td>£543.79</td>
+          <td>£380.87</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-5275.62</td>
+          <td>£2964.63</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>3500kWh</td>
+          <td>0.25</td>
+          <td>£958.72</td>
+          <td>3547.78kWh</td>
+          <td>97%</td>
+          <td>2234.76kWh</td>
+          <td>£565.54</td>
+          <td>£393.19</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-4710.08</td>
+          <td>£3530.17</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>3500kWh</td>
+          <td>0.26</td>
+          <td>£994.15</td>
+          <td>3529.49kWh</td>
+          <td>96.5%</td>
+          <td>2234.76kWh</td>
+          <td>£588.16</td>
+          <td>£405.99</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-4121.92</td>
+          <td>£4118.33</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>3500kWh</td>
+          <td>0.27</td>
+          <td>£1031</td>
+          <td>3511.2kWh</td>
+          <td>96%</td>
+          <td>2234.76kWh</td>
+          <td>£611.69</td>
+          <td>£419.31</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-3510.24</td>
+          <td>£4730.01</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>3500kWh</td>
+          <td>0.28</td>
+          <td>£1069.32</td>
+          <td>3492.91kWh</td>
+          <td>95.5%</td>
+          <td>2234.76kWh</td>
+          <td>£636.15</td>
+          <td>£433.16</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-2874.09</td>
+          <td>£5366.17</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>3500kWh</td>
+          <td>0.3</td>
+          <td>£1109.17</td>
+          <td>3474.63kWh</td>
+          <td>95%</td>
+          <td>2234.76kWh</td>
+          <td>£661.6</td>
+          <td>£447.57</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-2212.49</td>
+          <td>£6027.76</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>3500kWh</td>
+          <td>0.31</td>
+          <td>£1150.62</td>
+          <td>3456.34kWh</td>
+          <td>94.5%</td>
+          <td>2234.76kWh</td>
+          <td>£688.06</td>
+          <td>£462.55</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-1524.42</td>
+          <td>£6715.83</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>3500kWh</td>
+          <td>0.32</td>
+          <td>£1193.72</td>
+          <td>3438.05kWh</td>
+          <td>94%</td>
+          <td>2234.76kWh</td>
+          <td>£715.59</td>
+          <td>£478.14</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-808.84</td>
+          <td>£7431.41</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>3500kWh</td>
+          <td>0.33</td>
+          <td>£1238.55</td>
+          <td>3419.76kWh</td>
+          <td>93.5%</td>
+          <td>2234.76kWh</td>
+          <td>£744.21</td>
+          <td>£494.34</td>
+          <td style="background-color: rgba(255, 0, 0, 0.5);">£-64.63</td>
+          <td>£8175.62</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>3500kWh</td>
+          <td>0.35</td>
+          <td>£1285.17</td>
+          <td>3401.48kWh</td>
+          <td>93%</td>
+          <td>2234.76kWh</td>
+          <td>£773.98</td>
+          <td>£511.2</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£709.35</td>
+          <td>£8949.6</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>3500kWh</td>
+          <td>0.36</td>
+          <td>£1333.66</td>
+          <td>3383.19kWh</td>
+          <td>92.5%</td>
+          <td>2234.76kWh</td>
+          <td>£804.94</td>
+          <td>£528.72</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£1514.29</td>
+          <td>£9754.54</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>3500kWh</td>
+          <td>0.37</td>
+          <td>£1384.09</td>
+          <td>3364.9kWh</td>
+          <td>92%</td>
+          <td>2234.76kWh</td>
+          <td>£837.13</td>
+          <td>£546.95</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£2351.42</td>
+          <td>£10591.67</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>3500kWh</td>
+          <td>0.39</td>
+          <td>£1436.53</td>
+          <td>3346.61kWh</td>
+          <td>91.5%</td>
+          <td>2234.76kWh</td>
+          <td>£870.62</td>
+          <td>£565.91</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£3222.04</td>
+          <td>£11462.29</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>3500kWh</td>
+          <td>0.41</td>
+          <td>£1491.07</td>
+          <td>3328.33kWh</td>
+          <td>91%</td>
+          <td>2234.76kWh</td>
+          <td>£905.44</td>
+          <td>£585.63</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£4127.49</td>
+          <td>£12367.74</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>3500kWh</td>
+          <td>0.42</td>
+          <td>£1547.79</td>
+          <td>3310.04kWh</td>
+          <td>90.5%</td>
+          <td>2234.76kWh</td>
+          <td>£941.66</td>
+          <td>£606.13</td>
+          <td style="background-color: rgba(0, 255, 0, 0.5);">£5069.15</td>
+          <td>£13309.4</td>
+        </tr>
+      </table>
+      <div class="yq-subheading"><h2>Order Summary</h2></div>
+      <table>
+        <tr>
+          <th>Quote Reference</th>
+          <td>44063CR4 1EE</td>
+        </tr>
+        <tr class="tr-lg">
+          <th>Item</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>
+            Supply, Installation, Commissioning and Handover of Solar
+            Photovoltaic System ( 5.5 kWdc )
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>
+            Supply, Installation, Commissioning and Handover of Battery Storage
+            System ( 5 kWdc )
+          </td>
+        </tr>
+        <tr class="tr-lg">
+          <th>Item</th>
+          <th>Additional Items</th>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Grid Application</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Sofar Solar 5000 HYD Hybrid Inverter</td>
+        </tr>
+        <tr>
+          <td>VAT @ 5%</td>
+          <td>£392.39</td>
+        </tr>
+        <tr class="tr-lg">
+          <th colspan="2" style="text-align: center; padding: 10px;">
+            Total Price
+          </th>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding: 15px; font-size: 1.3em;">
+            <em
+              ><span style="float: left;">£</span
+              ><span style="float: right;">8240.25</span></em
+            >
+          </td>
+        </tr>
+        <tr>
+          <th>Address:</th>
+          <td>34 Manor Way, Mitcham, CR4 1EE</td>
+        </tr>
+        <tr>
+          <th>Name:</th>
+          <td>Mr/s. Kilian Seifert Leitch</td>
+        </tr>
+      </table>
     </div>
-    <div>
-      <span class="yq-left"
-        ><h3>Payment 2 @ 40% 7 days post Completion of Installation</h3></span
-      ><span class="yq-right"
-        ><h3>£</h3>
-        <h3>3296.1</h3></span
-      >
-    </div>
-    <div>
-      <span class="yq-left"><h3>Estimated Years to Payback</h3></span
-      ><span class="yq-right"
-        ><h3></h3>
-        <h3>years</h3></span
-      >
-    </div>
-    <div>
-      <span class="yq-left"><h3>System Size</h3></span
-      ><span class="yq-right"
-        ><h3></h3>
-        <h3>5.5 kWdc</h3></span
-      >
-    </div>
-    <div>
-      <span class="yq-left"><h3>Quantity of Panels</h3></span
-      ><span class="yq-right"
-        ><h3></h3>
-        <h3>20 panels</h3></span
-      >
-    </div>
-    <div>
-      <span class="yq-left"><h3>Battery Storage Size</h3></span
-      ><span class="yq-right"
-        ><h3></h3>
-        <h3>5 kWdc</h3></span
-      >
-    </div>
-  </div>
-  <div class="yq-subheading hide-mob"><h2>Breakdown of Performance</h2></div>
-  <table class="hide-mob">
-    <tr class="tr-lg">
-      <th>Description</th>
-      <th>Jan</th>
-      <th>Feb</th>
-      <th>Mar</th>
-      <th>Apr</th>
-      <th>May</th>
-      <th>Jun</th>
-      <th>Jul</th>
-      <th>Aug</th>
-      <th>Sep</th>
-      <th>Oct</th>
-      <th>Nov</th>
-      <th>Dec</th>
-      <th>Total</th>
-    </tr>
-    <tr>
-      <td class="text-left">Grid Usage</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td class="text-left">Solar Generation</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td class="text-left">Solar Exported to Grid</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td class="text-left">Solar Used at Home</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td class="text-left">Grid Usage with Solar</td>
-      <td>0</td>
-    </tr>
-  </table>
-  <div class="yq-subheading"><h2>Your Predicted System Performance</h2></div>
-  <div class="scale-mob">
-    <table>
-      <tr class="tr-lg">
-        <th colspan="3">The Assumptions we have made are based on...</th>
-        <th>Environmental Impact...</th>
-        <th colspan="4">Address and Climate Data</th>
-      </tr>
-      <tr>
-        <th>Predicted System Output</th>
-        <th>Assumed Annual Inflation</th>
-        <th>Assumed On-Site Energy Consumption</th>
-        <th>CO<sub>2</sub> Savings</th>
-        <th>Project Reference</th>
-        <th>Postcode</th>
-        <th>Irradience Zone</th>
-        <th>Roof Pitch</th>
-      </tr>
-      <tr>
-        <td>kWh/annum</td>
-        <td>3%</td>
-        <td>NaN%</td>
-        <td>0.517kg saved per PV kWh</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>20</td>
-      </tr>
-      <tr>
-        <th>Our Proposal Installation Cost</th>
-        <th>Assumed Energy Unit Cost</th>
-        <th>Assumed Annual Energy Inflation</th>
-        <th>CO² Savings Over 20 Years</th>
-        <th colspan="2">Address</th>
-        <th>Irradiation Level</th>
-        <th>Degree's From South</th>
-      </tr>
-      <tr>
-        <td>£8240.25</td>
-        <td>£0</td>
-        <td>4%</td>
-        <td>0 tonnes</td>
-        <td colspan="2"></td>
-        <td>0</td>
-        <td>0°</td>
-      </tr>
-    </table>
-  </div>
-  <div class="yq-subheading hide-mob">
-    <h2>Your Predicted System Performance - 20 Year Outlook</h2>
-  </div>
-  <table class="hide-mob">
-    <tr class="tr-lg">
-      <th>Year</th>
-      <th>Estimated Yearly Energy</th>
-      <th>Predicted Unit Cost</th>
-      <th>Predicted Bill Without Solar</th>
-      <th>Estimated Solar Generation</th>
-      <th>Solar Collector Efficiency</th>
-      <th>Solar Energy Used on Site</th>
-      <th>Saving from Solar Energy</th>
-      <th>Predicted Bill With Solar</th>
-      <th>Return on Investment</th>
-      <th>Total Savings</th>
-    </tr>
-  </table>
-  <div class="yq-subheading"><h2>Order Summary</h2></div>
-  <table>
-    <tr>
-      <th>Quote Reference</th>
-      <td></td>
-    </tr>
-    <tr class="tr-lg">
-      <th>Item</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        Supply, Installation, Commissioning and Handover of Solar Photovoltaic
-        System ( 5.5 kWdc )
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>
-        Supply, Installation, Commissioning and Handover of Battery Storage
-        System ( 5 kWdc )
-      </td>
-    </tr>
-    <tr class="tr-lg">
-      <th>Item</th>
-      <th>Additional Items</th>
-    </tr>
-    <tr>
-      <td>VAT @ NaN%</td>
-      <td>£392.39</td>
-    </tr>
-    <tr class="tr-lg">
-      <th colspan="2" style="text-align: center; padding: 10px;">
-        Total Price
-      </th>
-    </tr>
-    <tr>
-      <td colspan="2" style="padding: 15px; font-size: 1.3em;">
-        <em
-          ><span style="float: left;">£</span
-          ><span style="float: right;">8240.25</span></em
-        >
-      </td>
-    </tr>
-    <tr>
-      <th>Address:</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td>Mr/s.</td>
-    </tr>
-  </table>
-</div>
+  </body>
+</html>
