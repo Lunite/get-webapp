@@ -52,7 +52,7 @@ exports.getUseAndSavings = async (inputs, result) => {
       thisYear.unitCost * inputs.eac + 365 * inputs.standingCharge
     )
     thisYear.solarGeneration = rnd(
-      lastYear.solarGeneration * thisYear.collectorEfficiency
+      firstYearTotals.solarGeneration * thisYear.collectorEfficiency
     )
     thisYear.savingsFromSolar = rnd(
       thisYear.unitCost * thisYear.electriciyUseFromSolar

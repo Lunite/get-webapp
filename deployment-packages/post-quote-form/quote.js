@@ -101,6 +101,3 @@ const getTotalCost = inputs => {
   cost = addMarginVat(cost)
   return [cost, vat]
 }
-
-// gets total enery savings, as well as 20 year savings + time to pay back
-const getEnergySavings = (inputs, result) => {}
