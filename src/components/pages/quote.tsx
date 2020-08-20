@@ -168,7 +168,6 @@ const QuotePage: React.FC<PageProps> = props => {
           },
           body: JSON.stringify(formValues),
         }
-        console.log("Sending quote request with", req)
         let quote = await fetch(
           "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
           req
