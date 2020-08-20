@@ -79,7 +79,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
               </div>
               <div className="yq-total">
                 <h3>£</h3>
-                <h3>{results.totalCost}</h3>
+                <h3>{rnd(results.totalCost)}</h3>
               </div>
               <div className="yq-subheading">
                 <h2>Payment Terms</h2>
@@ -91,7 +91,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results.totalCost * 0.6).toFixed(2)}</h3>
+                    <h3>{rnd(results.totalCost * 0.6)}</h3>
                   </span>
                 </div>
                 <div>
@@ -102,7 +102,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results.totalCost * 0.4).toFixed(2)}</h3>
+                    <h3>{rnd(results.totalCost * 0.4)}</h3>
                   </span>
                 </div>
                 <div>
@@ -251,7 +251,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                     <th>Degree's From South</th>
                   </tr>
                   <tr>
-                    <td>£{results.totalCost}</td>
+                    <td>£{rnd(results.totalCost)}</td>
                     <td>£{results.energyUnitCost}</td>
                     <td>4%</td>
                     <td>{rnd(results.co2Savings)} tonnes</td>
@@ -283,12 +283,12 @@ const YourQuotePage: React.FC<PageProps> = props => {
                     <tr key={`static-tr-${i}`}>
                       <td>{i + 1}</td>
                       <td>{year.demand}kWh</td>
-                      <td>{year.unitCost}</td>
-                      <td>£{year.billBefore}</td>
-                      <td>{year.solarGeneration}kWh</td>
+                      <td>{rnd(year.unitCost)}</td>
+                      <td>£{rnd(year.billBefore)}</td>
+                      <td>{rnd(year.solarGeneration)}kWh</td>
                       <td>{rnd(year.collectorEfficiency * 100)}%</td>
-                      <td>{year.electricityUseFromSolar}kWh</td>
-                      <td>£{year.savingsFromSolar}</td>
+                      <td>{rnd(year.electricityUseFromSolar)}kWh</td>
+                      <td>£{rnd(year.savingsFromSolar)}</td>
                       <td>£{rnd(year.billAfter)}</td>
                       <td
                         style={{
@@ -298,9 +298,9 @@ const YourQuotePage: React.FC<PageProps> = props => {
                               : "rgba(0,255,0,0.5)",
                         }}
                       >
-                        £{year.roi}
+                        £{rnd(year.roi)}
                       </td>
-                      <td>£{year.totalSaving}</td>
+                      <td>£{rnd(year.totalSaving)}</td>
                     </tr>
                   )
                 })}
@@ -345,7 +345,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                 })}
                 <tr>
                   <td>VAT @ {results.vatRate * 100}%</td>
-                  <td>£{results.vat}</td>
+                  <td>£{rnd(results.vat)}</td>
                 </tr>
                 <tr className="tr-lg">
                   <th
@@ -363,7 +363,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                     <em>
                       <span style={{ float: "left" }}>£</span>
                       <span style={{ float: "right" }}>
-                        {results.totalCost}
+                        {rnd(results.totalCost)}
                       </span>
                     </em>
                   </td>
