@@ -445,6 +445,7 @@ exports.getResultsTemplate = inputs => {
     assumedEnergyInflation: 0,
     energyUnitCost: 0,
     twentyYearOutlook: [],
+    yearsToPayback: 0,
     item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${inputs.systemSize} kWdc )`,
     item2: `Supply, Installation, Commissioning and Handover of Battery Storage System ( ${inputs.storageSize} kWdc )`,
     additionalItems: inputs.additionalItems,
@@ -482,8 +483,8 @@ exports.getInputs = async formValues => {
     projectReference: "",
     date: new Date().toLocaleDateString(),
     eac: getEAC(),
-    ppw: formValues.ppw,
-    standingCharge: formValues.standingCharge,
+    ppw: formValues.ppw / 100,
+    standingCharge: formValues.standingCharge / 100,
     annualCost: 0,
     panelQuantity: calculatePanelNumber(formValues.roof.area),
     panelManufacturer: "Phonosolar",
@@ -524,12 +525,11 @@ exports.getInputs = async formValues => {
   )
   inputs.annualYield = inputs.specificYield * inputs.systemSize
   inputs.additionalItems = this.getAdditionalCosts(inputs.systemSize)
-  console.log(inputs)
+  console.log("Generated Inputs", inputs)
   return inputs
 }
 
 exports.getAdditionalCosts = systemSize => {
-  console.log(systemSize)
   const additionalItems = []
   if (systemSize > 10) {
     additionalItems.push({ "Grid Application 2": 650 })

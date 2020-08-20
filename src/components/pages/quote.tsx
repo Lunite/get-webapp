@@ -42,9 +42,9 @@ interface IQuoteFormValues {
     pool: boolean
     heater: boolean
   }
-  aec: number
+  eac: number
   ppw: number
-  standingChange: number
+  standingCharge: number
   discount: boolean
 }
 
@@ -67,9 +67,9 @@ const values: IQuoteFormValues = {
     pool: false,
     heater: false,
   },
-  aec: 3500,
+  eac: 3500,
   ppw: 20,
-  standingChange: 20,
+  standingCharge: 20,
   discount: false,
 }
 
@@ -92,9 +92,9 @@ const testFormVals = {
     pool: true,
     heater: false,
   },
-  aec: 3500,
+  eac: -1,
   ppw: 20,
-  standingChange: 20,
+  standingCharge: 20,
   discount: false,
 }
 
@@ -454,9 +454,9 @@ const QuotePage: React.FC<PageProps> = props => {
               min={1000}
               max={8000}
               average={-1}
-              value={formValues.aec}
+              value={formValues.eac}
               onChange={e => {
-                setFormValues({ ...formValues, aec: Number(e.target.value) })
+                setFormValues({ ...formValues, eac: Number(e.target.value) })
               }}
               inputAdornments={{ end: "kWh" }}
               key={"eac"}
@@ -507,11 +507,11 @@ const QuotePage: React.FC<PageProps> = props => {
               min={0}
               max={200}
               average={22}
-              value={formValues.standingChange}
+              value={formValues.standingCharge}
               onChange={e => {
                 setFormValues({
                   ...formValues,
-                  standingChange: Number(e.target.value),
+                  standingCharge: Number(e.target.value),
                 })
               }}
               inputAdornments={{ end: "p" }}

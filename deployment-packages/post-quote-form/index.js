@@ -59,7 +59,7 @@ exports.handler = async (req, res) => {
     const formValues = await req.body
     console.log("Calling Function With", formValues)
     const result = await calculateQuote(formValues)
-    console.log(result)
+    console.log("Got Result", result)
     time = new Date().getTime() - time
     console.log("Function Execution Time:", time / 1000, "seconds")
     res.json(result)

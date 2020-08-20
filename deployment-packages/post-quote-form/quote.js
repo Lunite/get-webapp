@@ -4,11 +4,32 @@ const savings = require("./useageAndSavings")
 
 exports.calculateQuote = async formValues => {
   const inputs = await lookup.getInputs(formValues)
-  let result = lookup.getResultsTemplate(inputs)
-  const [cost, vat] = getTotalCost(inputs)
-  result.totalCost = cost
-  result.vat = vat
-  result = savings.getUseAndSavings(inputs, result)
+  let results = []
+  let ps = [0, 2.5, 5, 7.5, 10].map(async size => {
+    inputs.storageSize = size
+    let tResult = lookup.getResultsTemplate(inputs)
+    const [cost, vat] = getTotalCost(inputs)
+    tResult.totalCost = cost
+    tResult.vat = vat
+    tResult = await savings.getUseAndSavings(inputs, tResult)
+    results.push(tResult)
+  })
+  await Promise.all(ps)
+  let bestRoi = 0
+  let result
+  results.forEach(r => {
+    if (r.twentyYearOutlook[19].roi > bestRoi) {
+      bestRoi = r.twentyYearOutlook[19].roi
+      result = r
+    }
+  })
+  let set = false
+  result.twentyYearOutlook.forEach((y, i) => {
+    if (!set && y.roi > 0) {
+      result.yearsToPayback = i + 1
+      set = true
+    }
+  })
   return result
 }
 
@@ -19,7 +40,6 @@ const getTotalCost = inputs => {
   let vat = 0
   const addMarginVat = basecost => {
     let adjustedCost = basecost * (1 + inputs.margin)
-    console.log("Margin", adjustedCost - basecost)
     let lvat = adjustedCost * inputs.vat
     lvat = Math.round((lvat + Number.EPSILON) * 100) / 100
     vat += lvat
@@ -60,7 +80,6 @@ const getTotalCost = inputs => {
   if (inputs.discount) {
     cost += 600 // DWMSpecialPrice "discount"
   }
-  console.log("Final Cost", cost)
   cost = addMarginVat(cost)
   return [cost, vat]
 }
