@@ -171,9 +171,9 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         />
       </div>
       <div className="slide-container show-mob">
-        <div className="range-slider">
+        <div className="range-slider am-range-slider">
           <input
-            className="rs-range"
+            className="rs-range am-rs-range"
             step={0.001}
             type="range"
             value={angle}
@@ -184,7 +184,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
             max={Math.PI}
           />
         </div>
-        <div className="box-minmax show-mob">
+        <div className="box-minmax show-mob am-box-minmax">
           <span>-180&#176;</span>
           <span>180&#176;</span>
         </div>
