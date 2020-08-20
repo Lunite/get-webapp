@@ -1,31 +1,11 @@
-const fs = require("fs")
-const { authorize } = require("./gmailAuth")
-const { sendEmail } = require("./gmailFns")
 const { calculateQuote } = require("./quote")
+const { PubSub } = require("@google-cloud/pubsub")
 
-const sampleFormValues = {
-  name: "Bob Stevens",
-  email: "bob@gmail.com",
-  phone: "000-000-000",
-  houseNumber: "17",
-  street: "Severn Rd",
-  town: "Stoke-On-Trent",
-  postcode: "GL20 5AF",
-  roof: {
-    azimuth: 13,
-    inclination: 30,
-    area: 100,
-  },
-  property: {
-    bedrooms: 3,
-    eCar: false,
-    pool: true,
-    heater: false,
-  },
-  aec: 3500,
-  ppw: 20,
-  standingChange: 20,
-  discount: false,
+const publishEmailMessage = async results => {
+  const psClient = new PubSub()
+  const topicName = "send-email"
+  const messageId = await psClient.topic(topicName).publishJSON(results)
+  return messageId
 }
 
 /**
@@ -61,6 +41,8 @@ exports.handler = async (req, res) => {
     const result = await calculateQuote(formValues)
     console.log("Got Result", result)
     time = new Date().getTime() - time
+    // publish results to email function to continue quoting process
+    await publishEmailMessage(result)
     console.log("Function Execution Time:", time / 1000, "seconds")
     res.json(result)
   }
