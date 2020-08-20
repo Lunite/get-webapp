@@ -282,7 +282,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   return (
                     <tr key={`static-tr-${i}`}>
                       <td>{i + 1}</td>
-                      <td>{year.demand}</td>
+                      <td>{year.demand}kWh</td>
                       <td>{year.unitCost}</td>
                       <td>£{year.billBefore}</td>
                       <td>{year.solarGeneration}kWh</td>
