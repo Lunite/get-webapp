@@ -22,44 +22,41 @@ exports.getUseAndSavings = async (inputs, result) => {
       return a + b
     }, 0)
   }
-  const rnd = num => {
-    return Math.round((num + Number.EPSILON) * 100) / 100
-  }
   const firstYearTotals = {
     demand: inputs.eac,
     unitCost: inputs.ppw,
-    billBefore: rnd(inputs.ppw * inputs.eac + 365 * inputs.standingCharge),
+    billBefore: inputs.ppw * inputs.eac + 365 * inputs.standingCharge,
     solarGeneration: inputs.annualYield,
     collectorEfficiency: 1,
-    electricityUseFromSolar: rnd(sum(firstYearUse.selfConsumptionTotal)),
-    savingsFromSolar: rnd(sum(firstYearUse.selfConsumptionTotal) * inputs.ppw),
+    electricityUseFromSolar: sum(firstYearUse.selfConsumptionTotal),
+    savingsFromSolar: sum(firstYearUse.selfConsumptionTotal) * inputs.ppw,
   }
-  firstYearTotals.billAfter = rnd(
+  firstYearTotals.billAfter =
     firstYearTotals.billBefore - firstYearTotals.savingsFromSolar
-  )
-  firstYearTotals.roi = rnd(firstYearTotals.savingsFromSolar - result.totalCost)
+
+  firstYearTotals.roi = firstYearTotals.savingsFromSolar - result.totalCost
   firstYearTotals.totalSaving = firstYearTotals.savingsFromSolar
   const twentyYearOutlook = [firstYearTotals]
   for (let i = 1; i < 20; i++) {
     const lastYear = twentyYearOutlook[i - 1]
     const thisYear = {
       demand: lastYear.demand,
-      unitCost: rnd(lastYear.unitCost * 1.04), // 4% inflation yearly
+      unitCost: lastYear.unitCost * 1.04, // 4% inflation yearly
       collectorEfficiency: lastYear.collectorEfficiency - 0.005,
       electricityUseFromSolar: lastYear.electricityUseFromSolar,
     }
-    thisYear.billBefore = rnd(
+    thisYear.billBefore =
       thisYear.unitCost * inputs.eac + 365 * inputs.standingCharge
-    )
-    thisYear.solarGeneration = rnd(
+
+    thisYear.solarGeneration =
       firstYearTotals.solarGeneration * thisYear.collectorEfficiency
-    )
-    thisYear.savingsFromSolar = rnd(
+
+    thisYear.savingsFromSolar =
       thisYear.unitCost * thisYear.electricityUseFromSolar
-    )
+
     thisYear.billAfter = thisYear.billBefore - thisYear.savingsFromSolar
-    thisYear.roi = rnd(lastYear.roi + thisYear.savingsFromSolar)
-    thisYear.totalSaving = rnd(lastYear.totalSaving + thisYear.savingsFromSolar)
+    thisYear.roi = lastYear.roi + thisYear.savingsFromSolar
+    thisYear.totalSaving = lastYear.totalSaving + thisYear.savingsFromSolar
     twentyYearOutlook.push(thisYear)
   }
   result.twentyYearOutlook = twentyYearOutlook

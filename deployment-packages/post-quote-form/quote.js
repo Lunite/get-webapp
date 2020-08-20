@@ -43,10 +43,8 @@ const getTotalCost = inputs => {
   const addMarginVat = basecost => {
     let adjustedCost = basecost * (1 + inputs.margin)
     let lvat = adjustedCost * inputs.vat
-    lvat = Math.round((lvat + Number.EPSILON) * 100) / 100
     vat += lvat
     adjustedCost += lvat
-    adjustedCost = Math.round((adjustedCost + Number.EPSILON) * 100) / 100
     return adjustedCost
   }
   // cost of in roof solar panels (concrete)
@@ -107,6 +105,6 @@ const getTotalCost = inputs => {
   if (inputs.discount) {
     cost += 600 // DWMSpecialPrice "discount"
   }
-  // cost = addMarginVat(cost)
+  cost = addMarginVat(cost)
   return [cost, vat]
 }
