@@ -15,7 +15,7 @@ const monthIndexToDays = {
   11: 31,
 }
 
-exports.getUseAndSavings = async (inputs, result) => {
+module.exports.getUseAndSavings = async (inputs, result) => {
   const firstYearUse = await energyUseCalculation(inputs)
   const sum = arr => {
     return arr.reduce((a, b) => {

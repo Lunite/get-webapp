@@ -2,7 +2,7 @@
 const lookup = require("./lookupTables")
 const savings = require("./useageAndSavings")
 
-exports.calculateQuote = async formValues => {
+module.exports.calculateQuote = async formValues => {
   const inputs = await lookup.getInputs(formValues)
   console.log("Using Inputs", inputs)
   let results = []

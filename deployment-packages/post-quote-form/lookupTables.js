@@ -1,4 +1,4 @@
-exports.getIrradienceZone = postcode => {
+module.exports.getIrradienceZone = postcode => {
   // gets irradience zone from short postcode
   const irradienceLookup = {
     AL: "1",
@@ -384,7 +384,7 @@ exports.getIrradienceZone = postcode => {
 
 const ex = require("exceljs")
 
-exports.getSpecificYield = async (zone, pitch, azimuth) => {
+module.exports.getSpecificYield = async (zone, pitch, azimuth) => {
   // gets specific yield from spreadsheet
   const workbook = new ex.Workbook()
   await workbook.xlsx.readFile("./spreadsheet.xlsx")
@@ -415,7 +415,7 @@ exports.getSpecificYield = async (zone, pitch, azimuth) => {
 }
 
 // initial template for the quote results object
-exports.getResultsTemplate = inputs => {
+module.exports.getResultsTemplate = inputs => {
   return {
     totalCost: 0,
     vat: 0,
@@ -445,7 +445,7 @@ exports.getResultsTemplate = inputs => {
 }
 
 // Gets spreadsheet inputs from formvalues (some cannot be derived, the "average" or default has been assumed)
-exports.getInputs = async formValues => {
+module.exports.getInputs = async formValues => {
   const getDateSerial = date => {
     let returnDateTime =
       25569.0 +
@@ -505,10 +505,12 @@ exports.getInputs = async formValues => {
   inputs.projectReference = `${getDateSerial(new Date())}${inputs.postcode}`
   inputs.annualCost = inputs.eac * inputs.ppw + inputs.standingCharge * 365
   inputs.systemSize = (inputs.panelQuantity * inputs.panelWattage) / 1000
-  const [irradience, shortPc] = exports.getIrradienceZone(inputs.postcode)
+  const [irradience, shortPc] = module.exports.getIrradienceZone(
+    inputs.postcode
+  )
   inputs.postcodeShort = shortPc
   inputs.irradienceZone = irradience
-  inputs.specificYield = await exports.getSpecificYield(
+  inputs.specificYield = await module.exports.getSpecificYield(
     irradience,
     inputs.roofPitch,
     inputs.azimuth
@@ -518,7 +520,7 @@ exports.getInputs = async formValues => {
   return inputs
 }
 
-exports.getAdditionalCosts = systemSize => {
+module.exports.getAdditionalCosts = systemSize => {
   const additionalItems = []
   if (systemSize > 10) {
     additionalItems.push({ "Grid Application 2": 650 })
