@@ -36,6 +36,13 @@ let results: any = {
   assumedEnergyInflation: 0,
   energyUnitCost: 0,
   twentyYearOutlook: [],
+  firstYearUse: {
+    demand: [],
+    solar: [],
+    exportAfterBattery: [],
+    selfConsumptionTotal: [],
+    demandTotal: [],
+  },
   item1:
     "Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( 5.5 kWdc )",
   item2:
@@ -72,7 +79,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
               </div>
               <div className="yq-total">
                 <h3>£</h3>
-                <h3>{results?.totalCost}</h3>
+                <h3>{results.totalCost}</h3>
               </div>
               <div className="yq-subheading">
                 <h2>Payment Terms</h2>
@@ -84,7 +91,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results?.totalCost * 0.6).toFixed(2)}</h3>
+                    <h3>{(results.totalCost * 0.6).toFixed(2)}</h3>
                   </span>
                 </div>
                 <div>
@@ -95,7 +102,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3>£</h3>
-                    <h3>{(results?.totalCost * 0.4).toFixed(2)}</h3>
+                    <h3>{(results.totalCost * 0.4).toFixed(2)}</h3>
                   </span>
                 </div>
                 <div>
@@ -104,7 +111,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results?.yearsToPayback} years</h3>
+                    <h3>{results.yearsToPayback} years</h3>
                   </span>
                 </div>
                 <div>
@@ -113,7 +120,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results?.systemSize} kWdc</h3>
+                    <h3>{results.systemSize} kWdc</h3>
                   </span>
                 </div>
                 <div>
@@ -122,7 +129,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results?.panelQuantity} panels</h3>
+                    <h3>{results.panelQuantity} panels</h3>
                   </span>
                 </div>
                 <div>
@@ -131,7 +138,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                   <span className="yq-right">
                     <h3 />
-                    <h3>{results?.batterySize} kWdc</h3>
+                    <h3>{results.batterySize} kWdc</h3>
                   </span>
                 </div>
               </div>
@@ -157,42 +164,40 @@ const YourQuotePage: React.FC<PageProps> = props => {
                 </tr>
                 <tr>
                   <td className="text-left">Grid Usage</td>
-                  {results?.firstYearUse.demand.map((n: number) => {
+                  {results.firstYearUse.demand.map((n: number) => {
                     return <td>{rnd(n)}</td>
                   })}
-                  <td>{rnd(sum(results?.firstYearUse.demand))}</td>
+                  <td>{rnd(sum(results.firstYearUse.demand))}</td>
                 </tr>
                 <tr>
                   <td className="text-left">Solar Generation</td>
-                  {results?.firstYearUse.solar.map((n: number) => {
+                  {results.firstYearUse.solar.map((n: number) => {
                     return <td>{rnd(n)}</td>
                   })}
-                  <td>{rnd(sum(results?.firstYearUse.solar))}</td>
+                  <td>{rnd(sum(results.firstYearUse.solar))}</td>
                 </tr>
                 <tr>
                   <td className="text-left">Solar Exported to Grid</td>
-                  {results?.firstYearUse.exportAfterBattery.map((n: number) => {
+                  {results.firstYearUse.exportAfterBattery.map((n: number) => {
                     return <td>{rnd(n)}</td>
                   })}
-                  <td>{rnd(sum(results?.firstYearUse.exportAfterBattery))}</td>
+                  <td>{rnd(sum(results.firstYearUse.exportAfterBattery))}</td>
                 </tr>
                 <tr>
                   <td className="text-left">Solar Used at Home</td>
-                  {results?.firstYearUse.selfConsumptionTotal.map(
+                  {results.firstYearUse.selfConsumptionTotal.map(
                     (n: number) => {
                       return <td>{rnd(n)}</td>
                     }
                   )}
-                  <td>
-                    {rnd(sum(results?.firstYearUse.selfConsumptionTotal))}
-                  </td>
+                  <td>{rnd(sum(results.firstYearUse.selfConsumptionTotal))}</td>
                 </tr>
                 <tr>
                   <td className="text-left">Grid Usage with Solar</td>
-                  {results?.firstYearUse.demandTotal.map((n: number) => {
+                  {results.firstYearUse.demandTotal.map((n: number) => {
                     return <td>{rnd(n)}</td>
                   })}
-                  <td>{rnd(sum(results?.firstYearUse.demandTotal))}</td>
+                  <td>{rnd(sum(results.firstYearUse.demandTotal))}</td>
                 </tr>
               </table>
               <div className="yq-subheading">
@@ -219,21 +224,21 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   <th>Roof Pitch</th>
                 </tr>
                 <tr>
-                  <td>{results?.annualYield} kWh/annum</td>
+                  <td>{results.annualYield} kWh/annum</td>
                   <td>3%</td>
                   <td>
                     {rnd(
                       100 *
-                        (sum(results?.firstYearUse.selfConsumptionTotal) /
-                          sum(results?.firstYearUse.solar))
+                        (sum(results.firstYearUse.selfConsumptionTotal) /
+                          sum(results.firstYearUse.solar))
                     )}
                     %
                   </td>
                   <td>0.517kg saved per PV kWh</td>
-                  <td>{results?.projectReference}</td>
-                  <td>{results?.postcode}</td>
-                  <td>{results?.irradienceZone}</td>
-                  <td>{results?.roofPitch}</td>
+                  <td>{results.projectReference}</td>
+                  <td>{results.postcode}</td>
+                  <td>{results.irradienceZone}</td>
+                  <td>{results.roofPitch}</td>
                 </tr>
                 <tr>
                   <th>Our Proposal Installation Cost</th>
@@ -304,7 +309,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
               <table>
                 <tr>
                   <th>Quote Reference</th>
-                  <td>{results?.projectReference}</td>
+                  <td>{results.projectReference}</td>
                 </tr>
                 <tr className="tr-lg">
                   <th>Item</th>
