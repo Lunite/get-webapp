@@ -260,14 +260,6 @@ const QuotePage: React.FC<PageProps> = props => {
                   <BlockCTA large submit className="fl-r">
                     Get Started
                   </BlockCTA>
-                  <button
-                    onClick={e => {
-                      // @ts-ignore
-                      handleSubmit(e, true)
-                    }}
-                  >
-                    Test Form
-                  </button>
                 </div>
               </>
             }
