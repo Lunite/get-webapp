@@ -51,34 +51,43 @@ const getTotalCost = inputs => {
   }
   // cost of in roof solar panels (concrete)
   cost = 75.59 * inputs.systemSize
+  console.log("solar panels", cost)
   // cost of ancillary materials
   cost += 40 * inputs.systemSize
+  console.log("materials", 40 * inputs.systemSize)
   // cost of blue solar modules
   cost += 210 * inputs.systemSize
+  console.log("modules", 210 * inputs.systemSize)
   // cost of inverter
   cost += 92 * inputs.systemSize
+  console.log("inverter", 92 * inputs.systemSize)
   // cost of metering equipment
   cost += 120.5
+  console.log("metering", 120.5)
   // cost of battery equipment
   switch (inputs.storageSize) {
     case 2.5:
       cost += 850
+      console.log("battery", 850)
       break
     case 5:
       cost += 1330
+      console.log("battery", 1330)
       break
     case 7.5:
       cost += 1850
+      console.log("battery", 1850)
       break
     case 10:
       cost += 2330
+      console.log("battery", 2330)
       break
     default:
       break
   }
-  cost += 1330
   // labour cost
   cost += 160 * inputs.systemSize
+  console.log("labour", 160 * inputs.systemSize)
   // HS & project management
   cost += 50
   // commissioning
@@ -98,6 +107,6 @@ const getTotalCost = inputs => {
   if (inputs.discount) {
     cost += 600 // DWMSpecialPrice "discount"
   }
-  cost = addMarginVat(cost)
+  // cost = addMarginVat(cost)
   return [cost, vat]
 }

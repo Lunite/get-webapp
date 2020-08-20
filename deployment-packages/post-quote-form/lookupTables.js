@@ -527,11 +527,17 @@ exports.getAdditionalCosts = systemSize => {
   if (systemSize > 4) {
     additionalItems.push({ "Grid Application": 160 })
     if (systemSize < 5) {
-      additionalItems.push({ "Sofar Solar 4000 HYD Hybrid Inverter": 446.5 })
+      additionalItems.push({
+        "Sofar Solar 4000 HYD Hybrid Inverter": 699.5 - 92 * systemSize,
+      })
     } else if (systemSize < 6) {
-      additionalItems.push({ "Sofar Solar 5000 HYD Hybrid Inverter": 258.4 })
+      additionalItems.push({
+        "Sofar Solar 5000 HYD Hybrid Inverter": 764.4 - 92 * systemSize,
+      })
     } else if (systemSize < 7) {
-      additionalItems.push({ "Sofar Solar 6000 HYD Hybrid Inverter": 546.68 })
+      additionalItems.push({
+        "Sofar Solar 6000 HYD Hybrid Inverter": 799.68 - 92 * systemSize,
+      })
     }
   }
   return additionalItems
