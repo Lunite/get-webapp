@@ -1,3 +1,5 @@
+@import "~/styles/_variables.scss";
+
 .yourquote-container {
   width: 100%;
   margin-top: 25px;
@@ -71,4 +73,13 @@ td {
 .td-price {
   display: inline-flex;
   justify-content: space-between;
+}
+
+@media ($mobile) {
+  .hide-mob {
+    display: none;
+  }
+  .scale-mob {
+    overflow-x: auto;
+  }
 }

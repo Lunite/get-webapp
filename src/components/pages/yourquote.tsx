@@ -142,10 +142,10 @@ const YourQuotePage: React.FC<PageProps> = props => {
                   </span>
                 </div>
               </div>
-              <div className="yq-subheading">
+              <div className="yq-subheading hide-mob">
                 <h2>Breakdown of Performance</h2>
               </div>
-              <table>
+              <table className="hide-mob">
                 <tr className="tr-lg">
                   <th>Description</th>
                   <th>Jan</th>
@@ -203,66 +203,68 @@ const YourQuotePage: React.FC<PageProps> = props => {
               <div className="yq-subheading">
                 <h2>Your Predicted System Performance</h2>
               </div>
-              <table>
-                <tr className="tr-lg">
-                  <th colSpan={3}>
-                    The Assumptions we have made are based on...
-                  </th>
-                  <th>Environmental Impact...</th>
-                  <th colSpan={4}> Address and Climate Data</th>
-                </tr>
-                <tr>
-                  <th>Predicted System Output</th>
-                  <th>Assumed Annual Inflation</th>
-                  <th>Assumed On-Site Energy Consumption</th>
-                  <th>
-                    CO<sub>2</sub> Savings
-                  </th>
-                  <th>Project Reference</th>
-                  <th>Postcode</th>
-                  <th>Irradience Zone</th>
-                  <th>Roof Pitch</th>
-                </tr>
-                <tr>
-                  <td>{results.annualYield} kWh/annum</td>
-                  <td>3%</td>
-                  <td>
-                    {rnd(
-                      100 *
-                        (sum(results.firstYearUse.selfConsumptionTotal) /
-                          sum(results.firstYearUse.solar))
-                    )}
-                    %
-                  </td>
-                  <td>0.517kg saved per PV kWh</td>
-                  <td>{results.projectReference}</td>
-                  <td>{results.postcode}</td>
-                  <td>{results.irradienceZone}</td>
-                  <td>{results.roofPitch}</td>
-                </tr>
-                <tr>
-                  <th>Our Proposal Installation Cost</th>
-                  <th>Assumed Energy Unit Cost</th>
-                  <th>Assumed Annual Energy Inflation</th>
-                  <th>CO² Savings Over 20 Years</th>
-                  <th colSpan={2}>Address</th>
-                  <th>Irradiation Level</th>
-                  <th>Degree's From South</th>
-                </tr>
-                <tr>
-                  <td>£{results.totalCost}</td>
-                  <td>£{results.energyUnitCost}</td>
-                  <td>4%</td>
-                  <td>{rnd(results.co2Savings)} tonnes</td>
-                  <td colSpan={2}>{results.address}</td>
-                  <td>{results.irradiationLevel}</td>
-                  <td>{results.azimuth}&#176;</td>
-                </tr>
-              </table>
-              <div className="yq-subheading">
+              <div className="scale-mob">
+                <table>
+                  <tr className="tr-lg">
+                    <th colSpan={3}>
+                      The Assumptions we have made are based on...
+                    </th>
+                    <th>Environmental Impact...</th>
+                    <th colSpan={4}> Address and Climate Data</th>
+                  </tr>
+                  <tr>
+                    <th>Predicted System Output</th>
+                    <th>Assumed Annual Inflation</th>
+                    <th>Assumed On-Site Energy Consumption</th>
+                    <th>
+                      CO<sub>2</sub> Savings
+                    </th>
+                    <th>Project Reference</th>
+                    <th>Postcode</th>
+                    <th>Irradience Zone</th>
+                    <th>Roof Pitch</th>
+                  </tr>
+                  <tr>
+                    <td>{results.annualYield} kWh/annum</td>
+                    <td>3%</td>
+                    <td>
+                      {rnd(
+                        100 *
+                          (sum(results.firstYearUse.selfConsumptionTotal) /
+                            sum(results.firstYearUse.solar))
+                      )}
+                      %
+                    </td>
+                    <td>0.517kg saved per PV kWh</td>
+                    <td>{results.projectReference}</td>
+                    <td>{results.postcode}</td>
+                    <td>{results.irradienceZone}</td>
+                    <td>{results.roofPitch}</td>
+                  </tr>
+                  <tr>
+                    <th>Our Proposal Installation Cost</th>
+                    <th>Assumed Energy Unit Cost</th>
+                    <th>Assumed Annual Energy Inflation</th>
+                    <th>CO² Savings Over 20 Years</th>
+                    <th colSpan={2}>Address</th>
+                    <th>Irradiation Level</th>
+                    <th>Degree's From South</th>
+                  </tr>
+                  <tr>
+                    <td>£{results.totalCost}</td>
+                    <td>£{results.energyUnitCost}</td>
+                    <td>4%</td>
+                    <td>{rnd(results.co2Savings)} tonnes</td>
+                    <td colSpan={2}>{results.address}</td>
+                    <td>{results.irradiationLevel}</td>
+                    <td>{results.azimuth}&#176;</td>
+                  </tr>
+                </table>
+              </div>
+              <div className="yq-subheading hide-mob">
                 <h2>Your Predicted System Performance - 20 Year Outlook</h2>
               </div>
-              <table>
+              <table className="hide-mob">
                 <tr className="tr-lg">
                   <th>Year</th>
                   <th>Estimated Yearly Energy</th>
