@@ -271,6 +271,7 @@ const sampleRes = {
   ],
   address: '34 Manor Way, Mitcham, CR4 1EE',
   name: 'asd',
+  email: 'seifk007.319@wcgs.foliotrust.uk',
   firstYearUse: {
     demand: [
       354.3587611808691,

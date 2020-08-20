@@ -10,8 +10,8 @@ const { sendEmail } = require('./gmailFns');
  */
 exports.handler = (event, context) => {
   const start = new Date().getTime();
-  //   const message = JSON.parse(Buffer.from(event.data, 'base64').toString());
-  const message = event;
+  const message = JSON.parse(Buffer.from(event.data, 'base64').toString());
+  // const message = event;
 
   // Reads client secret
   fs.readFile('credentials.json', (err, content) => {

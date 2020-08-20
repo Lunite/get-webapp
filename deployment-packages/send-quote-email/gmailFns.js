@@ -28,7 +28,7 @@ const makeBody = (to, from, subject, message) => {
 
 module.exports.sendEmail = (auth, results) => {
   const raw = makeBody(
-    'seifk007.319@wcgs.foliotrust.uk',
+    results.email,
     'admin@get-uk.com',
     'Your Quote',
     getEmailHTML(results),

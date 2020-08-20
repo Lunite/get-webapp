@@ -441,6 +441,7 @@ module.exports.getResultsTemplate = inputs => {
     additionalItems: inputs.additionalItems,
     address: `${inputs.houseNumber} ${inputs.street}, ${inputs.town}, ${inputs.postcode}`,
     name: inputs.name,
+    email: inputs.email,
   }
 }
 
@@ -497,6 +498,7 @@ module.exports.getInputs = async formValues => {
     town: formValues.town,
     postcode: formValues.postcode,
     phone: formValues.phone,
+    email: formValues.email,
     additionalItems: [],
     margin: 0.33, // 33%
     vat: 0.05, // 5%
