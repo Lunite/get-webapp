@@ -27,9 +27,9 @@ let results: any = {
   onsiteEnergyConsumption: 0,
   co2Savings: 0,
   co2Savings20years: 0,
-  projectReference: "44061SY20 5EE",
-  postcode: "SY20 5EE",
-  irradienceZone: "13",
+  projectReference: "",
+  postcode: "",
+  irradienceZone: "",
   irradiationLevel: 0,
   roofPitch: 20,
   azimuth: 0,
@@ -40,12 +40,9 @@ let results: any = {
     "Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( 5.5 kWdc )",
   item2:
     "Supply, Installation, Commissioning and Handover of Battery Storage System ( 5 kWdc )",
-  additionalItems: [
-    { "Grid Application": 160 },
-    { "Sofar Solar 5000 HYD Hybrid Inverter": 258.4 },
-  ],
-  address: "34 Manor Way, Mitcham, SY20 5EE",
-  name: "Kilian Seifert",
+  additionalItems: [],
+  address: "",
+  name: "",
 }
 
 const rnd = num => {

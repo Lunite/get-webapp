@@ -73,31 +73,6 @@ const values: IQuoteFormValues = {
   discount: false,
 }
 
-const testFormVals = {
-  name: "Bob Stevens",
-  email: "bob@gmail.com",
-  phone: "911",
-  houseNumber: "34",
-  street: "Manor Way",
-  town: "Mitcham",
-  postcode: "CR4 1EE",
-  roof: {
-    azimuth: 13,
-    inclination: 30,
-    area: 132,
-  },
-  property: {
-    bedrooms: 3,
-    eCar: false,
-    pool: true,
-    heater: false,
-  },
-  eac: -1,
-  ppw: 20,
-  standingCharge: 20,
-  discount: false,
-}
-
 const awaitForLocalStorageNastyHack = () => {
   // recursive await for local storage lol???
   return new Promise(resolve => {
@@ -177,10 +152,10 @@ const QuotePage: React.FC<PageProps> = props => {
     page === 0 && window.scrollTo(0, 0)
   }, [page])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>, test?: boolean) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
-    if (page !== pages - 1 && !test) {
+    if (page !== pages - 1) {
       setAnim("scroll-in")
       setPage(page + 1)
     } else {
@@ -191,20 +166,15 @@ const QuotePage: React.FC<PageProps> = props => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: test
-            ? JSON.stringify(testFormVals)
-            : JSON.stringify(formValues),
+          body: JSON.stringify(formValues),
         }
         console.log("Sending quote request with", req)
         let quote = await fetch(
-          // "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-          "http://localhost:8080",
+          "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
         quote = await quote.json()
-        console.log(quote)
-        // await new Promise(resolve => setTimeout(resolve, 5000))
 
         return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
