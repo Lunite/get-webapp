@@ -1,48 +1,46 @@
-const { google } = require("googleapis")
-
-exports.sendEmail = auth => {
-  var raw = makeBody(
-    "seifk007.319@wcgs.foliotrust.uk",
-    "admin@get-uk.com",
-    "This is your subject",
-    "I got this working finally!!!"
-  )
-  const gmail = google.gmail({ version: "v1", auth })
-  gmail.users.messages.send(
-    {
-      auth: auth,
-      userId: "me",
-      resource: {
-        raw: raw,
-      },
-    },
-    function (err, response) {
-      return err || response
-    }
-  )
-}
+const { google } = require('googleapis');
 
 const makeBody = (to, from, subject, message) => {
-  var str = [
+  const str = [
     'Content-Type: text/plain; charset="UTF-8"\n',
-    "MIME-Version: 1.0\n",
-    "Content-Transfer-Encoding: 7bit\n",
-    "to: ",
+    'MIME-Version: 1.0\n',
+    'Content-Transfer-Encoding: 7bit\n',
+    'to: ',
     to,
-    "\n",
-    "from: ",
+    '\n',
+    'from: ',
     from,
-    "\n",
-    "subject: ",
+    '\n',
+    'subject: ',
     subject,
-    "\n\n",
+    '\n\n',
     message,
-  ].join("")
+  ].join('');
 
   // eslint-disable-next-line no-undef
-  var encodedMail = new Buffer(str)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-  return encodedMail
-}
+  const encodedMail = Buffer.from(str)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_');
+  return encodedMail;
+};
+
+module.exports.sendEmail = (auth) => {
+  const raw = makeBody(
+    'seifk007.319@wcgs.foliotrust.uk',
+    'admin@get-uk.com',
+    'This is your subject',
+    'I got this working finally!!!',
+  );
+  const gmail = google.gmail({ version: 'v1', auth });
+  gmail.users.messages.send(
+    {
+      auth,
+      userId: 'me',
+      resource: {
+        raw,
+      },
+    },
+    (err, response) => err || response,
+  );
+};

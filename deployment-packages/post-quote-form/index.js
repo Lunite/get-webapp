@@ -15,13 +15,6 @@ const publishEmailMessage = async results => {
  * @param {!express:Response} res HTTP response context.
  */
 exports.handler = async (req, res) => {
-  // Load client secrets from a local file.
-  // fs.readFile("credentials.json", (err, content) => {
-  //   if (err) return console.log("Error loading client secret file:", err)
-  //   // Authorize a client with credentials, then call the Gmail API.
-  //   authorize(JSON.parse(content), sendEmail) // Authorizes using locally stored id then calls callback
-  // })
-
   let time = new Date().getTime()
 
   res.set("Access-Control-Allow-Origin", "*")
