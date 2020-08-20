@@ -30,6 +30,12 @@ module.exports.getEmailHTML = (results) => `
         color: white;
       }
 
+      .green{
+          background-color: rgba(0,255,0,0.5)
+      }
+      .red{
+        background-color: rgba(255,0,0,0.5)
+        }
       .yq-header {
         width: 100%;
         text-align: center;
@@ -237,7 +243,7 @@ module.exports.getEmailHTML = (results) => `
           <td>${rnd(results.firstYearUse.demandTotal[8])}</td>
           <td>${rnd(results.firstYearUse.demandTotal[9])}</td>
           <td>${rnd(results.firstYearUse.demandTotal[10])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[11])}<td>
+          <td>${rnd(results.firstYearUse.demandTotal[11])}</td>
           <td>${rnd(sum(results.firstYearUse.demandTotal))}</td>
         </tr>
       </table>
@@ -325,9 +331,9 @@ module.exports.getEmailHTML = (results) => `
                 <td>${rnd(year.electricityUseFromSolar)}kWh</td>
                 <td>£${rnd(year.savingsFromSolar)}</td>
                 <td>£${rnd(year.billAfter)}</td>
-                <td style="background-color: ${
-                  year.roi > 0 ? 'rgba(0,255,0,0.5)' : 'rgba(255,0,0,0.5)'
-                }>£${rnd(year.roi)}</td>
+                <td class="${year.roi > 0 ? 'green' : 'red'}">£${rnd(
+              year.roi,
+            )}</td>
                 <td>£${rnd(year.totalSaving)}</td>
               </tr>`,
           )
