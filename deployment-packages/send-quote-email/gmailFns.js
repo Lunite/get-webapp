@@ -1,8 +1,9 @@
 const { google } = require('googleapis');
+const { getEmailHTML } = require('./emailHTML');
 
 const makeBody = (to, from, subject, message) => {
   const str = [
-    'Content-Type: text/plain; charset="UTF-8"\n',
+    'Content-Type: text/html; charset="UTF-8"\n',
     'MIME-Version: 1.0\n',
     'Content-Transfer-Encoding: 7bit\n',
     'to: ',
@@ -25,12 +26,12 @@ const makeBody = (to, from, subject, message) => {
   return encodedMail;
 };
 
-module.exports.sendEmail = (auth) => {
+module.exports.sendEmail = (auth, results) => {
   const raw = makeBody(
     'seifk007.319@wcgs.foliotrust.uk',
     'admin@get-uk.com',
-    'This is your subject',
-    'I got this working finally!!!',
+    'Your Quote',
+    getEmailHTML(results),
   );
   const gmail = google.gmail({ version: 'v1', auth });
   gmail.users.messages.send(

@@ -1,0 +1,73 @@
+.yourquote-container {
+  width: 100%;
+  margin-top: 25px;
+  border: 1px solid black;
+}
+
+h1,
+h2 {
+  color: white;
+}
+
+.yq-header {
+  width: 100%;
+  text-align: center;
+  padding: 35px;
+  background-color: #3c96c5;
+}
+
+.yq-total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
+}
+
+.yq-subheading {
+  background-color: #3c96c5;
+  text-align: center;
+  padding: 25px;
+}
+
+.yq-paymentterms-table > div {
+  display: flex;
+}
+
+.yq-paymentterms-table > span {
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  width: 50%;
+  padding: 20px 15px;
+}
+
+.yq-right {
+  display: flex;
+  justify-content: space-between;
+  border-left: 1px solid black;
+}
+
+table {
+  border-spacing: 0px;
+  width: 100%;
+}
+th,
+td {
+  text-align: left;
+  padding: 5px 5px;
+  border: black 0.5px solid;
+}
+td {
+  text-align: center;
+}
+.tr-lg {
+  background-color: lightgrey;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.td-price {
+  display: inline-flex;
+  justify-content: space-between;
+}

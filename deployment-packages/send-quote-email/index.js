@@ -9,14 +9,17 @@ const { sendEmail } = require('./gmailFns');
  * @param {!Object} context Metadata for the event.
  */
 exports.handler = (event, context) => {
-  //   const message = event.data
-  //     ? Buffer.from(event.data, "base64").toString()
-  //     : "Hello, World"
+  const start = new Date().getTime();
+  //   const message = JSON.parse(Buffer.from(event.data, 'base64').toString());
+  const message = {};
 
   // Reads client secret
   fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Gmail API.
-    authorize(JSON.parse(content), sendEmail);
+    return authorize(JSON.parse(content), sendEmail, message);
   });
+
+  const duration = new Date().getTime() - start;
+  console.log('Function excution complete', duration, 'seconds');
 };
