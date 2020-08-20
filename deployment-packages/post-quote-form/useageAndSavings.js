@@ -17,7 +17,6 @@ const monthIndexToDays = {
 
 exports.getUseAndSavings = async (inputs, result) => {
   const firstYearUse = await energyUseCalculation(inputs)
-  console.log("First year use is", firstYearUse)
   const sum = arr => {
     return arr.reduce((a, b) => {
       return a + b
@@ -40,7 +39,6 @@ exports.getUseAndSavings = async (inputs, result) => {
   )
   firstYearTotals.roi = rnd(firstYearTotals.savingsFromSolar - result.totalCost)
   firstYearTotals.totalSaving = firstYearTotals.savingsFromSolar
-  console.log("First year use is", firstYearTotals)
   const twentyYearOutlook = [firstYearTotals]
   for (let i = 1; i < 20; i++) {
     const lastYear = twentyYearOutlook[i - 1]

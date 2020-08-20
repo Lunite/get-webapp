@@ -4,6 +4,7 @@ const savings = require("./useageAndSavings")
 
 exports.calculateQuote = async formValues => {
   const inputs = await lookup.getInputs(formValues)
+  console.log("Using Inputs", inputs)
   let results = []
   let ps = [0, 2.5, 5, 7.5, 10].map(async size => {
     inputs.storageSize = size
@@ -15,8 +16,8 @@ exports.calculateQuote = async formValues => {
     results.push(tResult)
   })
   await Promise.all(ps)
-  let bestRoi = 0
-  let result
+  let bestRoi = results[0].twentyYearOutlook[19].roi
+  let result = results[0]
   results.forEach(r => {
     if (r.twentyYearOutlook[19].roi > bestRoi) {
       bestRoi = r.twentyYearOutlook[19].roi
@@ -25,6 +26,7 @@ exports.calculateQuote = async formValues => {
   })
   let set = false
   result.twentyYearOutlook.forEach((y, i) => {
+    result.co2Savings = result.co2Savings + (0.517 * y.solarGeneration) / 1000
     if (!set && y.roi > 0) {
       result.yearsToPayback = i + 1
       set = true
@@ -57,7 +59,23 @@ const getTotalCost = inputs => {
   cost += 92 * inputs.systemSize
   // cost of metering equipment
   cost += 120.5
-  // cost of 5kW battery equipment
+  // cost of battery equipment
+  switch (inputs.storageSize) {
+    case 2.5:
+      cost += 850
+      break
+    case 5:
+      cost += 1330
+      break
+    case 7.5:
+      cost += 1850
+      break
+    case 10:
+      cost += 2330
+      break
+    default:
+      break
+  }
   cost += 1330
   // labour cost
   cost += 160 * inputs.systemSize

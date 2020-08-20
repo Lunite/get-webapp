@@ -46,3 +46,29 @@
   justify-content: space-between;
   border-left: 1px solid black;
 }
+
+table {
+  border-spacing: 0px;
+  width: 100%;
+}
+th,
+td {
+  text-align: left;
+  padding: 5px 5px;
+  border: black 0.5px solid;
+}
+td {
+  text-align: center;
+}
+.tr-lg {
+  background-color: lightgrey;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.td-price {
+  display: inline-flex;
+  justify-content: space-between;
+}

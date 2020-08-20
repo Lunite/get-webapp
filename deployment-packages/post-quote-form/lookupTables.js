@@ -419,31 +419,21 @@ exports.getResultsTemplate = inputs => {
   return {
     totalCost: 0,
     vat: 0,
+    vatRate: inputs.vat,
     yearsPayback: 0,
+    annualYield: inputs.specificYield * inputs.systemSize,
     systemSize: inputs.systemSize,
     panelQuantity: inputs.panelQuantity,
     batterySize: inputs.storageSize,
-    gridUseage: [],
-    solarGeneration: [],
-    solarToGrid: [],
-    solarHomeUse: [],
-    gridUse: [],
-    solarToGridBattery: [],
-    solarToHomeBattery: [],
-    gridUseSolarBattery: [],
-    predictedOutput: 0,
-    assumedInflation: 0,
-    onsiteEnergyConsumption: 0,
     co2Savings: 0,
-    co2Savings20years: 0,
     projectReference: inputs.projectReference,
     postcode: inputs.postcode,
     irradienceZone: inputs.irradienceZone,
-    irradiationLevel: 0,
+    irradiationLevel: inputs.specificYield,
     roofPitch: inputs.roofPitch,
     azimuth: inputs.azimuth,
     assumedEnergyInflation: 0,
-    energyUnitCost: 0,
+    energyUnitCost: inputs.ppw,
     twentyYearOutlook: [],
     yearsToPayback: 0,
     item1: `Supply, Installation, Commissioning and Handover of Solar Photovoltaic System ( ${inputs.systemSize} kWdc )`,
@@ -525,7 +515,6 @@ exports.getInputs = async formValues => {
   )
   inputs.annualYield = inputs.specificYield * inputs.systemSize
   inputs.additionalItems = this.getAdditionalCosts(inputs.systemSize)
-  console.log("Generated Inputs", inputs)
   return inputs
 }
 
