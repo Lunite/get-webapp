@@ -31,7 +31,7 @@ exports.getUseAndSavings = async (inputs, result) => {
     billBefore: rnd(inputs.ppw * inputs.eac + 365 * inputs.standingCharge),
     solarGeneration: inputs.annualYield,
     collectorEfficiency: 1,
-    electriciyUseFromSolar: rnd(sum(firstYearUse.selfConsumptionTotal)),
+    electricityUseFromSolar: rnd(sum(firstYearUse.selfConsumptionTotal)),
     savingsFromSolar: rnd(sum(firstYearUse.selfConsumptionTotal) * inputs.ppw),
   }
   firstYearTotals.billAfter = rnd(
@@ -46,7 +46,7 @@ exports.getUseAndSavings = async (inputs, result) => {
       demand: lastYear.demand,
       unitCost: rnd(lastYear.unitCost * 1.04), // 4% inflation yearly
       collectorEfficiency: lastYear.collectorEfficiency - 0.005,
-      electriciyUseFromSolar: lastYear.electriciyUseFromSolar,
+      electricityUseFromSolar: lastYear.electricityUseFromSolar,
     }
     thisYear.billBefore = rnd(
       thisYear.unitCost * inputs.eac + 365 * inputs.standingCharge
@@ -55,7 +55,7 @@ exports.getUseAndSavings = async (inputs, result) => {
       firstYearTotals.solarGeneration * thisYear.collectorEfficiency
     )
     thisYear.savingsFromSolar = rnd(
-      thisYear.unitCost * thisYear.electriciyUseFromSolar
+      thisYear.unitCost * thisYear.electricityUseFromSolar
     )
     thisYear.billAfter = thisYear.billBefore - thisYear.savingsFromSolar
     thisYear.roi = rnd(lastYear.roi + thisYear.savingsFromSolar)
