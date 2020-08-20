@@ -62,7 +62,7 @@ const sum = (arr: Array<number>) => {
 }
 
 const YourQuotePage: React.FC<PageProps> = props => {
-  results = props.location.state
+  results = props.location.state || results
   return (
     <div className="yourquote-page">
       <Hero imageUrl="/images/quote-banner.jpg" compact>
