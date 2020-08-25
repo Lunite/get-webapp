@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { lazy, Suspense, useEffect, useState } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
@@ -15,13 +15,14 @@ import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlo
 
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
 import { useCustomerType } from "~/hooks/useCustomerType"
-import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
 import { imageNodesFilter } from "~/utils"
 
 const Homepage = ({ markdownNodes, imageNodes }) => {
+  const CaseStudiesMap = lazy(() => import("../configurable/CaseStudiesMap"))
+
   const [heroImage, setHeroImage] = useState(undefined)
   const { changeCustomerType } = useCustomerType()
 
@@ -180,10 +181,12 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
               <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
             </Link>
           </p>
-          <CaseStudiesMap
-            markdownNodes={markdownNodes}
-            customerType="domestic"
-          />
+          <Suspense fallback="">
+            <CaseStudiesMap
+              markdownNodes={markdownNodes}
+              customerType="domestic"
+            />
+          </Suspense>
         </div>
       </Block>
     </div>
