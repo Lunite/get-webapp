@@ -1,4 +1,5 @@
-import React, { lazy, Suspense, useEffect, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
+import { loadable } from "@loadable/component"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
@@ -21,7 +22,9 @@ import TickList from "../configurable/TickList"
 import { imageNodesFilter } from "~/utils"
 
 const Homepage = ({ markdownNodes, imageNodes }) => {
-  const CaseStudiesMap = lazy(() => import("../configurable/CaseStudiesMap"))
+  const CaseStudiesMap = loadable(() =>
+    import("../configurable/CaseStudiesMap")
+  )
 
   const [heroImage, setHeroImage] = useState(undefined)
   const { changeCustomerType } = useCustomerType()
