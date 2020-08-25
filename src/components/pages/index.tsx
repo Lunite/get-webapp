@@ -23,19 +23,16 @@ import { imageNodesFilter } from "~/utils"
 
 const Homepage = ({ markdownNodes, imageNodes }) => {
   const [heroImage, setHeroImage] = useState(undefined)
-  const [loading, setLoading] = useState(true)
   const { changeCustomerType } = useCustomerType()
 
   useEffect(() => {
     changeCustomerType("domestic")
 
     setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
-
-    setLoading(false)
   }, [imageNodes])
 
   return (
-    <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
+    <div className="homepage">
       <Banner className="visible-xs">
         <Link to="/for-your-business">Go to Business Site</Link>
       </Banner>
