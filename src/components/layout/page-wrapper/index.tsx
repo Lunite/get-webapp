@@ -1,13 +1,11 @@
-import React, {
-  FunctionComponent,
-  lazy,
-  Suspense,
-  useEffect,
-  useState,
-} from "react"
+import React, { FunctionComponent, Suspense, useEffect, useState } from "react"
+
+import { lazy } from "@loadable/component"
 
 import "./styles.scss"
 import { useStaticQuery, graphql } from "gatsby"
+
+import SEO from "~/components/util/SEO"
 
 interface PageWrapperProps {
   context: any
@@ -23,7 +21,6 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   const Navigation = lazy(() => import("~/components/layout/navigation"))
   const Footer = lazy(() => import("~/components/layout/footer"))
-  const SEO = lazy(() => import("~/components/util/SEO"))
   const Certificates = lazy(() =>
     import("~/components/standalone/Certificates")
   )
@@ -156,23 +153,27 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   return (
     <>
-      <Suspense fallback={<h1>L O A D I N G . . .</h1>}>
-        <SEO {...seoData} />
-        {markdownNodes.length ? (
-          <div className="page-wrapper">
+      <SEO {...seoData} />
+      {markdownNodes.length ? (
+        <div className="page-wrapper">
+          <Suspense fallback="">
             <Navigation />
-            <main>
-              {React.Children.toArray(children).map(child =>
-                React.cloneElement(child, { markdownNodes, imageNodes })
-              )}
+          </Suspense>
+          <main>
+            {React.Children.toArray(children).map(child =>
+              React.cloneElement(child, { markdownNodes, imageNodes })
+            )}
+            <Suspense fallback="">
               <Certificates imageNodes={imageNodes} />
-            </main>
+            </Suspense>
+          </main>
+          <Suspense fallback="">
             <Footer />
-          </div>
-        ) : (
-          <></>
-        )}
-      </Suspense>
+          </Suspense>
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   )
 }
