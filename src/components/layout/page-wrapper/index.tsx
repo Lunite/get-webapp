@@ -156,10 +156,10 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   return (
     <>
-      <SEO {...seoData} />
-      {markdownNodes.length ? (
-        <div className="page-wrapper">
-          <Suspense fallback={<h1>L O A D I N G . . .</h1>}>
+      <Suspense fallback={<h1>L O A D I N G . . .</h1>}>
+        <SEO {...seoData} />
+        {markdownNodes.length ? (
+          <div className="page-wrapper">
             <Navigation />
             <main>
               {React.Children.toArray(children).map(child =>
@@ -168,11 +168,11 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
               <Certificates imageNodes={imageNodes} />
             </main>
             <Footer />
-          </Suspense>
-        </div>
-      ) : (
-        <></>
-      )}
+          </div>
+        ) : (
+          <></>
+        )}
+      </Suspense>
     </>
   )
 }
