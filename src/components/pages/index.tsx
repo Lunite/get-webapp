@@ -22,6 +22,8 @@ import TickList from "../configurable/TickList"
 import { imageNodesFilter } from "~/utils"
 
 const Homepage = ({ markdownNodes, imageNodes }) => {
+  const isSSR = typeof window === "undefined"
+
   const CaseStudiesMap = lazy(() => import("../configurable/CaseStudiesMap"))
 
   const [heroImage, setHeroImage] = useState(undefined)
@@ -182,12 +184,14 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
               <Icon style={{ marginLeft: "5px" }} alias="long-arrow" />
             </Link>
           </p>
-          <Suspense fallback="">
-            <CaseStudiesMap
-              markdownNodes={markdownNodes}
-              customerType="domestic"
-            />
-          </Suspense>
+          {!isSSR && (
+            <Suspense fallback="">
+              <CaseStudiesMap
+                markdownNodes={markdownNodes}
+                customerType="domestic"
+              />
+            </Suspense>
+          )}
         </div>
       </Block>
     </div>
