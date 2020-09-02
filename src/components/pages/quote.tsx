@@ -170,7 +170,6 @@ const QuotePage: React.FC<PageProps> = props => {
         }
         let quote = await fetch(
           "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-          // "http://localhost:8080",
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)

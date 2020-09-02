@@ -20,7 +20,7 @@ module.exports.getEmailHTML = (results) => `
         display: block;
       }
       .yourquote-container {
-        width: 95%;
+        width: 100%;
         margin: auto;
         border: 1px solid black;
       }
