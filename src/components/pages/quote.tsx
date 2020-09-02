@@ -177,12 +177,18 @@ const QuotePage: React.FC<PageProps> = props => {
   const updateLocation = async (coords: { lat: number; lng: number }) => {
     setLocation(coords)
     const address = await fromLatLong(location.lat, location.lng)
+    console.log("Address", address)
     const newFv = {
       ...formValues,
-      houseNumber: address[0].long_name,
-      street: address[1].long_name,
-      town: address[2].long_name,
-      postcode: address[address.length - 1].long_name,
+      houseNumber: address.find(element =>
+        element.types.includes("street_number")
+      ).long_name,
+      street: address.find(element => element.types.includes("route"))
+        .long_name,
+      town: address.find(element => element.types.includes("postal_town"))
+        .long_name,
+      postcode: address.find(element => element.types.includes("postal_code"))
+        .long_name,
     }
     setFormValues(newFv)
   }
@@ -218,9 +224,13 @@ const QuotePage: React.FC<PageProps> = props => {
         const address = await fromLatLong(res.lat, res.lng)
         const newFv = {
           ...formValues,
-          street: address[1].long_name,
-          town: address[2].long_name,
-          postcode: address[address.length - 1].long_name,
+          street: address.find(element => element.types.includes("route"))
+            .long_name,
+          town: address.find(element => element.types.includes("postal_town"))
+            .long_name,
+          postcode: address.find(element =>
+            element.types.includes("postal_code")
+          ).long_name,
         }
         setFormValues(newFv)
       })
@@ -273,7 +283,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   pattern={postcodeRegex}
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
-                  onChange={updatePostcode}
+                  onChange={updateTextValue}
+                  onBlur={updatePostcode}
                   id="postcode"
                 />
 
@@ -345,7 +356,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
                   onChange={updateTextValue}
-                  onBlur={updateAddress}
+                  onBlur={updatePostcode}
                 />
               </div>
               <div className="form__actions">
