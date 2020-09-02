@@ -134,26 +134,6 @@ const QuotePage: React.FC<PageProps> = props => {
   }, [])
 
   useEffect(() => {
-    // Updates address when coordinates from map change
-    const updateAddress = async () => {
-      const address = await fromLatLong(location.lat, location.lng)
-      const newFv = {
-        ...formValues,
-        houseNumber: address[0].long_name,
-        street: address[1].long_name,
-        town: address[2].long_name,
-        postcode: address[address.length - 1].long_name,
-      }
-      return newFv
-    }
-    updateAddress()
-      .then(newFv => {
-        setFormValues(newFv)
-      })
-      .catch(err => console.error(err))
-  }, [location])
-
-  useEffect(() => {
     page !== 0 && scrollRef.current && scrollRef.current.scrollIntoView(true)
     page === 0 && window.scrollTo(0, 0)
   }, [page])
@@ -194,6 +174,19 @@ const QuotePage: React.FC<PageProps> = props => {
     setPage(page - 1)
   }
 
+  const updateLocation = async (coords: { lat: number; lng: number }) => {
+    setLocation(coords)
+    const address = await fromLatLong(location.lat, location.lng)
+    const newFv = {
+      ...formValues,
+      houseNumber: address[0].long_name,
+      street: address[1].long_name,
+      town: address[2].long_name,
+      postcode: address[address.length - 1].long_name,
+    }
+    setFormValues(newFv)
+  }
+
   const updateTextValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Updates a text value in formValues
     let newFv = { ...formValues }
@@ -220,11 +213,18 @@ const QuotePage: React.FC<PageProps> = props => {
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
     if (e.target.value.match(postcodeRegex)) {
-      fromAddress(e.target.value).then(res =>
+      fromAddress(e.target.value).then(async res => {
         setLocation(res as { lat: number; lng: number })
-      )
+        const address = await fromLatLong(res.lat, res.lng)
+        const newFv = {
+          ...formValues,
+          street: address[1].long_name,
+          town: address[2].long_name,
+          postcode: address[address.length - 1].long_name,
+        }
+        setFormValues(newFv)
+      })
     }
-    setFormValues({ ...formValues, postcode: e.target.value })
   }
 
   const toggleProperty = (id: string) => {
@@ -293,7 +293,10 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <div className="row center">
             <Col6>
-              <InteractiveMap location={location} setLocation={setLocation} />
+              <InteractiveMap
+                location={location}
+                setLocation={updateLocation}
+              />
             </Col6>
             <Col6>
               <Heading level={3}>Find your property</Heading>
@@ -318,7 +321,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   placeholder="Enter street name..."
                   required
                   value={formValues.street}
-                  onChange={updateAddress}
+                  onChange={updateTextValue}
+                  onBlur={updateAddress}
                 />
                 <FormInput
                   name="town"
@@ -328,7 +332,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   placeholder="Enter town..."
                   required
                   value={formValues.town}
-                  onChange={updateAddress}
+                  onChange={updateTextValue}
+                  onBlur={updateAddress}
                 />
                 <FormInput
                   name="postcode"
@@ -339,7 +344,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
-                  onChange={updateAddress}
+                  onChange={updateTextValue}
+                  onBlur={updateAddress}
                 />
               </div>
               <div className="form__actions">
@@ -579,7 +585,6 @@ const QuotePage: React.FC<PageProps> = props => {
           <>
             <Col6>
               <Heading level={3}>Enter your personal details</Heading>
-
               <div>
                 <FormInput
                   name="name"

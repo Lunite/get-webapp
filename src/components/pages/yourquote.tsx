@@ -225,7 +225,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
                     <th>Roof Pitch</th>
                   </tr>
                   <tr>
-                    <td>{results.annualYield} kWh/annum</td>
+                    <td>{rnd(results.annualYield)} kWh/annum</td>
                     <td>3%</td>
                     <td>
                       {rnd(

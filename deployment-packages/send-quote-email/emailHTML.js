@@ -1,6 +1,7 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable indent */
-const rnd = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
+const rnd = (num) =>
+  (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2);
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 module.exports.getEmailHTML = (results) => `
@@ -268,7 +269,7 @@ module.exports.getEmailHTML = (results) => `
             <th>Roof Pitch</th>
           </tr>
           <tr>
-            <td>${results.annualYield} kWh/annum</td>
+            <td>${rnd(results.annualYield)} kWh/annum</td>
             <td>3%</td>
             <td>${rnd(
               100 *
