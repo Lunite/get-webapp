@@ -29,6 +29,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
     center: location,
     mapTypeId: "satellite",
     disableDefaultUI: true,
+    zoomControl: true,
   }
 
   // TODO Add styling to make cursor on map a PIN not a HAND
@@ -36,9 +37,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
   return (
     <Map
       google={props.google}
+      center={props.location}
       initialCenter={props.location}
       // @ts-ignore
-      zoom={20}
+      zoom={19}
       onReady={(mapProps, map) => {
         map.setOptions(mapOptions)
         map.setOptions({

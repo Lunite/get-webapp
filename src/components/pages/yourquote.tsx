@@ -53,7 +53,7 @@ let results: any = {
 }
 
 const rnd = (num: number) => {
-  return Math.round((num + Number.EPSILON) * 100) / 100
+  return (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2)
 }
 const sum = (arr: Array<number>) => {
   return arr.reduce((a, b) => {

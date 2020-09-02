@@ -100,3 +100,12 @@
   line-height: normal;
   font-size: 1em;
 }
+
+.btn-unsure {
+  border: none;
+  padding: 10px 25px;
+  background: darken($light-grey, 5);
+  &:hover {
+    background: darken($light-grey, 15);
+  }
+}

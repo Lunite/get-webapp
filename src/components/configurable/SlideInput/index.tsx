@@ -13,6 +13,7 @@ interface SlideInputProps {
     start?: React.ReactNode
     end?: React.ReactNode
   }
+  type?: string
   value: number
   average: number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -38,9 +39,21 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           className="rs-label"
           style={{ left: `${position * width - 19 * position}px` }}
         >
-          {props?.inputAdornments.start}
-          {props.value}
-          {props?.inputAdornments.end}
+          {props.type === "money" ? (
+            <>
+              {props.value > 99 ? (
+                <>£{props.value / 100}</>
+              ) : (
+                <>{props.value}p</>
+              )}
+            </>
+          ) : (
+            <>
+              {props?.inputAdornments.start}
+              {props.value}
+              {props?.inputAdornments.end}
+            </>
+          )}
         </span>
         <input
           className="rs-range"
@@ -54,14 +67,26 @@ const SlideInput: React.FC<SlideInputProps> = props => {
       </div>
       <div className="box-minmax">
         <span>
-          {props?.inputAdornments.start}
-          {props.min}
-          {props?.inputAdornments.end}
+          {props.type === "money" ? (
+            <>{props.min > 99 ? <>£{props.min / 100}</> : <>{props.min}p</>}</>
+          ) : (
+            <>
+              {props?.inputAdornments.start}
+              {props.min}
+              {props?.inputAdornments.end}
+            </>
+          )}
         </span>
         <span>
-          {props?.inputAdornments.start}
-          {props.max}
-          {props?.inputAdornments.end}
+          {props.type === "money" ? (
+            <>{props.max > 99 ? <>£{props.max / 100}</> : <>{props.max}p</>}</>
+          ) : (
+            <>
+              {props?.inputAdornments.start}
+              {props.max}
+              {props?.inputAdornments.end}
+            </>
+          )}
         </span>
       </div>
       <button
@@ -70,6 +95,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           props.onChange({ target: { value: props.average.toString() } })
         }}
         type="submit"
+        className="btn-unsure"
       >
         I Don't Know
       </button>

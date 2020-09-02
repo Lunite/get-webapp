@@ -41,6 +41,8 @@ interface IQuoteFormValues {
     eCar: boolean
     pool: boolean
     heater: boolean
+    ownsHouse: boolean
+    flat: boolean
   }
   eac: number
   ppw: number
@@ -66,6 +68,8 @@ const values: IQuoteFormValues = {
     eCar: false,
     pool: false,
     heater: false,
+    ownsHouse: false,
+    flat: false,
   },
   eac: 3500,
   ppw: 20,
@@ -85,9 +89,11 @@ const awaitForLocalStorageNastyHack = () => {
 }
 
 const propertyOptions = {
-  eCar: "Electric Car",
-  heater: "Air Source Heating", // check this
-  pool: "Swimming Pool",
+  eCar: "I own an electric car",
+  heater: "I own air source heating", // check this
+  pool: "I own a swimming pool",
+  ownsHouse: "I own my house (outright or mortgaged)",
+  flat: "I live in a flat",
 }
 
 const SPECIAL_PRICE_KEY = "utm_campaign"
@@ -201,6 +207,16 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues(newFv)
   }
 
+  const updateAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newFv = { ...formValues }
+    newFv[e.target.id] = e.target.value
+    setFormValues(newFv)
+    const address = `${newFv.houseNumber}, ${newFv.street}, ${newFv.town}`
+    fromAddress(address).then(coords =>
+      setLocation(coords as { lat: number; lng: number })
+    )
+  }
+
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
     if (e.target.value.match(postcodeRegex)) {
@@ -291,6 +307,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   type="text"
                   required
                   value={formValues.houseNumber}
+                  onBlur={updateAddress}
                   onChange={updateTextValue}
                 />
                 <FormInput
@@ -301,7 +318,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   placeholder="Enter street name..."
                   required
                   value={formValues.street}
-                  onChange={updateTextValue}
+                  onChange={updateAddress}
                 />
                 <FormInput
                   name="town"
@@ -311,7 +328,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   placeholder="Enter town..."
                   required
                   value={formValues.town}
-                  onChange={updateTextValue}
+                  onChange={updateAddress}
                 />
                 <FormInput
                   name="postcode"
@@ -322,7 +339,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
-                  onChange={updateTextValue}
+                  onChange={updateAddress}
                 />
               </div>
               <div className="form__actions">
@@ -456,7 +473,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   ppw: Number(e.target.value),
                 })
               }}
-              inputAdornments={{ end: "p" }}
+              type="money"
               key={"ppw"}
             />
             <div className="form__actions">
@@ -484,7 +501,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   standingCharge: Number(e.target.value),
                 })
               }}
-              inputAdornments={{ end: "p" }}
+              type="money"
               key={"sc"}
             />
             <div className="form__actions">
@@ -522,7 +539,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <br />
                   <FormCheckbox
                     name="own"
-                    label="And if you own:"
+                    label="Tick all that apply:"
                     options={Object.keys(propertyOptions)}
                     getOptionLabel={option => {
                       return propertyOptions[option]
