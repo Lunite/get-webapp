@@ -178,19 +178,34 @@ const QuotePage: React.FC<PageProps> = props => {
     setLocation(coords)
     const address = await fromLatLong(location.lat, location.lng)
     console.log("Address", address)
-    const newFv = {
-      ...formValues,
-      houseNumber: address.find(element =>
-        element.types.includes("street_number")
-      ).long_name,
-      street: address.find(element => element.types.includes("route"))
-        .long_name,
-      town: address.find(element => element.types.includes("postal_town"))
-        .long_name,
-      postcode: address.find(element => element.types.includes("postal_code"))
-        .long_name,
+    if (address) {
+      const houseNumber = address.find(
+        element =>
+          element.types.includes("street_number") ||
+          element.types.includes("premise")
+      ) || { long_name: "" }
+
+      const street = address.find(element =>
+        element.types.includes("route")
+      ) || { long_name: "" }
+
+      const town = address.find(element =>
+        element.types.includes("postal_town")
+      ) || { long_name: "" }
+
+      const postcode = address.find(element =>
+        element.types.includes("postal_code")
+      ) || { long_name: "" }
+
+      const newFv = {
+        ...formValues,
+        houseNumber: houseNumber.long_name,
+        street: street.long_name,
+        town: town.long_name,
+        postcode: postcode.long_name,
+      }
+      setFormValues(newFv)
     }
-    setFormValues(newFv)
   }
 
   const updateTextValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -212,18 +227,20 @@ const QuotePage: React.FC<PageProps> = props => {
     setFormValues(newFv)
     const address = `${newFv.houseNumber}, ${newFv.street}, ${newFv.town}`
     fromAddress(address).then(coords =>
-      setLocation(coords as { lat: number; lng: number })
+      updateLocation(coords as { lat: number; lng: number })
     )
   }
 
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
+    setFormValues({ ...formValues, postcode: e.target.value.toUpperCase() })
     if (e.target.value.match(postcodeRegex)) {
       fromAddress(e.target.value).then(async res => {
         setLocation(res as { lat: number; lng: number })
         const address = await fromLatLong(res.lat, res.lng)
         const newFv = {
           ...formValues,
+          houseNumber: "",
           street: address.find(element => element.types.includes("route"))
             .long_name,
           town: address.find(element => element.types.includes("postal_town"))
@@ -283,8 +300,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   pattern={postcodeRegex}
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
-                  onChange={updateTextValue}
-                  onBlur={updatePostcode}
+                  onChange={updatePostcode}
                   id="postcode"
                 />
 
@@ -356,7 +372,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   title="Please enter a valid UK postcode"
                   value={formValues.postcode}
                   onChange={updateTextValue}
-                  onBlur={updatePostcode}
+                  onBlur={updateAddress}
                 />
               </div>
               <div className="form__actions">
