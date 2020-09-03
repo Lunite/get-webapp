@@ -1,6 +1,7 @@
 import React from "react"
 import Col6 from "../../grid/Col6"
 import "./styles.scss"
+import flat from "~/images/flat-roof.png"
 
 const RadioGrid: React.FC<{
   selectedValue: number
@@ -27,6 +28,7 @@ const RadioGrid: React.FC<{
             }}
           />
           <label className="button-label" htmlFor="incl-flat">
+            <img className="label-image" src="/images/flat.png" />
             Flat Roof
           </label>
         </Col6>
@@ -44,6 +46,7 @@ const RadioGrid: React.FC<{
             checked={props.selectedValue === 15}
           />
           <label className="button-label" htmlFor="incl-low">
+            <img className="label-image" src="/images/low-slope.png" />
             Low Slope
           </label>
         </Col6>
@@ -63,6 +66,7 @@ const RadioGrid: React.FC<{
             checked={props.selectedValue === 30}
           />
           <label className="button-label" htmlFor="incl-med">
+            <img className="label-image" src="/images/med-slope.png" />
             Medium Slope
           </label>
         </Col6>
@@ -80,6 +84,7 @@ const RadioGrid: React.FC<{
             }}
           />
           <label className="button-label" htmlFor="incl-high">
+            <img className="label-image" src="/images/high-slope.png" />
             High Slope
           </label>
         </Col6>
