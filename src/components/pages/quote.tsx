@@ -21,9 +21,10 @@ const awaitForLocalStorageNastyHack = () => {
     if (!window || !window.localStorage) {
       setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
     }
+
     return resolve();
   });
-} 
+}
 
 const QuotePage = ({ location }) => {
   const { state = {} } = location;
@@ -45,13 +46,6 @@ const QuotePage = ({ location }) => {
       setIsSpecial(storedSpecialValue);
     }
   }
-
-  console.log(state);
-
-
-
-
-
 
   // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
   setValueFromStorage();
@@ -82,8 +76,6 @@ const QuotePage = ({ location }) => {
                   // TODO: This index is set to the hidden input field
                   // if you add fields or remove fields, change the index
                   e.target[12].value = isSpecial;                  
-                  e.target[13].value = state.isHert || 'no';                  
-                  e.target[14].value = state.isShortQuote || 'no';              
 
                   window.localStorage.removeItem(STORAGE_KEY);
                   
@@ -166,28 +158,13 @@ const QuotePage = ({ location }) => {
                     "Electric Storage Heating",
                   ]}
                 />
-                <FormInput
+                 <FormInput
                   name="DWMPrice"
                   label="DWMPrice"
                   placeholder="We should not see this"
                   style={{maxHeight:0, opacity: 0}}
                   value={isSpecial}
                 />
-                <FormInput
-                  name="Hert"
-                  label="Hert"
-                  placeholder="We should not see this, extra discout from he"
-                  style={{maxHeight:0, opacity: 0}}
-                  value={state.isHert}
-                />
-                <FormInput
-                  name="AlreadySubmittedShortQuote"
-                  label="AlreadySubmittedShortQuote"
-                  placeholder="We should not see this, indicates the person filled the short quote lready"
-                  style={{maxHeight:0, opacity: 0}}
-                  value={state.isShortQuote}
-                />
-
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
                     Request Quote 

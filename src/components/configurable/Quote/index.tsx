@@ -4,9 +4,7 @@ import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
-import "./styles.scss";
-
-const HERT_PAGE = '/hert_collective';
+import "./styles.scss"
 
 const Quote: FunctionComponent<any> = ({
   title = "Get a quote today.",
@@ -15,16 +13,7 @@ const Quote: FunctionComponent<any> = ({
   compact = false,
 }) => {
   const [submitted, setSubmitted] = useState(false)
-  const formState = {
-    // If this the `/hert_collective` could have queryParams change this to includes
-    isHert: window.location.pathname === HERT_PAGE ? 'yes' : 'no',
-    isShortQuote: 'yes',
-  }
-
-
-
-  console.log(window.location.pathname === '/' ? 'yes' : 'no' )
-
+  const formState = {}
 
   const handleInputChange = event => {
     formState[event.target.name] = event.target.value
@@ -48,10 +37,8 @@ const Quote: FunctionComponent<any> = ({
       setSubmitted(true)
     }
 
-    const form = event.target;
-    const data:any = new FormData(form);
-    data.isHert = formState.isHert;
-    data.isShortQuote = formState.isShortQuote;
+    const form = event.target
+    const data = new FormData(form)
     const xhr = new XMLHttpRequest()
     xhr.open(form.method, form.action)
     xhr.setRequestHeader("Accept", "application/json")
@@ -106,11 +93,6 @@ const Quote: FunctionComponent<any> = ({
               name="phone"
               onChange={handleInputChange}
             />
-            <input style={{opacity: 0}} name='isHert' onChange={() => {}} />
-
-            <input style={{opacity: 0}} name='isShortQuote' value='yes' onChange={() => {}} />
-
-
           </div>
           <div className="form__actions">
             <BlockCTA submit inline>

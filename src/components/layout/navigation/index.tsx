@@ -12,15 +12,8 @@ import "./navigation-item.scss"
 import { useCustomerType } from "~/hooks/useCustomerType"
 import Icon from "~/components/olc-framework/Icon"
 
-
-
-
-
-
 const Navigation: FunctionComponent<any> = () => {
   const { customerType, changeCustomerType } = useCustomerType()
-
-
 
   const navItems = (
     <>
