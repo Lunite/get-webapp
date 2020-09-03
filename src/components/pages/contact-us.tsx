@@ -13,12 +13,15 @@ import Col9 from "../grid/Col9"
 import ContactUsDetails from "~/vectors/contact-us-details.inline.svg"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import { useStaticQuery, graphql } from "gatsby"
+import { checkWindow } from "~/hooks/useWindow"
 
 const ContactUsPage = ({ location }) => {
   const { state = {} } = location
 
   const logFormSubmitEvent = () => {
-    window.dataLayer = window.dataLayer || []
+    if (checkWindow()) {
+      window.dataLayer = window.dataLayer || []
+    }
 
     const eventData = {
       category: "Form",

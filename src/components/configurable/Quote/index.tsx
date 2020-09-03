@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
-import { useWindow } from "~/hooks/useWindow"
+import { checkWindow } from "~/hooks/useWindow"
 
 import "./styles.scss"
 
@@ -32,7 +32,9 @@ const Quote: FunctionComponent<any> = ({
 
     trackCustomEvent(eventData)
 
-    window.dataLayer = window.dataLayer || []
+    if (checkWindow()) {
+      window.dataLayer = window.dataLayer || []
+    }
 
     if (compact) {
       setSubmitted(true)
