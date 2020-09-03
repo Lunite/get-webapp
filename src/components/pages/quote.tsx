@@ -11,50 +11,49 @@ import Image from "../configurable/Image"
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
-const SPECIAL_PRICE_KEY = 'utm_campaign';
-const SPECIAL_PRICE_VALUE = 'special_price';
+const SPECIAL_PRICE_KEY = "utm_campaign"
+const SPECIAL_PRICE_VALUE = "special_price"
 
-const STORAGE_KEY = 'IS_SPECIAL';
+const STORAGE_KEY = "IS_SPECIAL"
 
 const awaitForLocalStorageNastyHack = () => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (!window || !window.localStorage) {
-      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
+      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333)
     }
-    return resolve();
-  });
-} 
+    return resolve()
+  })
+}
 
 const QuotePage = ({ location }) => {
-  const { state = {} } = location;
+  const { state = {} } = location
 
-  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
+  let specialValue = location.search.includes(
+    `${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`
+  )
+    ? "Yes"
+    : "No"
 
-  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
-  console.log('SPECIAL VALUE', specialValue);
+  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue)
+  console.log("SPECIAL VALUE", specialValue)
 
-  const setValueFromStorage = async() => {
-    await awaitForLocalStorageNastyHack();
-   
-    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
+  const setValueFromStorage = async () => {
+    await awaitForLocalStorageNastyHack()
+
+    const storedSpecialValue = window?.localStorage.getItem(STORAGE_KEY)
 
     if (!storedSpecialValue) {
-      window.localStorage.setItem(STORAGE_KEY, specialValue);
+      window?.localStorage.setItem(STORAGE_KEY, specialValue)
     } else {
-      specialValue = storedSpecialValue;
-      setIsSpecial(storedSpecialValue);
+      specialValue = storedSpecialValue
+      setIsSpecial(storedSpecialValue)
     }
   }
 
-  console.log(state);
-
-
-
-
-
+  console.log(state)
 
   // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
-  setValueFromStorage();
+  setValueFromStorage()
 
   return (
     <div className="quote-page">
@@ -76,19 +75,21 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
-                onSubmit={(e) => {
-                  window.dataLayer = window.dataLayer || [];
+                onSubmit={e => {
+                  if (window) {
+                    window.dataLayer = window.dataLayer || []
+                  }
 
                   // TODO: This index is set to the hidden input field
                   // if you add fields or remove fields, change the index
-                  e.target[12].value = isSpecial;                  
-                  e.target[13].value = state.isHert || 'no';                  
-                  e.target[14].value = state.isShortQuote || 'no';              
+                  e.target[12].value = isSpecial
+                  e.target[13].value = state.isHert || "no"
+                  e.target[14].value = state.isShortQuote || "no"
 
-                  window.localStorage.removeItem(STORAGE_KEY);
-                  
+                  window?.localStorage.removeItem(STORAGE_KEY)
+
                   const eventData = {
-                   category: "Form",
+                    category: "Form",
                     action: "Submit",
                     label: "LongQuote",
                     // value: 0 // optional
@@ -137,7 +138,7 @@ const QuotePage = ({ location }) => {
                   placeholder="Type unit rate"
                 />
                 <FormInput
-                  name="standing-charge" 
+                  name="standing-charge"
                   label="Standing Charge"
                   placeholder="Type standing charge"
                 />
@@ -170,32 +171,32 @@ const QuotePage = ({ location }) => {
                   name="DWMPrice"
                   label="DWMPrice"
                   placeholder="We should not see this"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{ maxHeight: 0, opacity: 0 }}
                   value={isSpecial}
                 />
                 <FormInput
                   name="Hert"
                   label="Hert"
                   placeholder="We should not see this, extra discout from he"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{ maxHeight: 0, opacity: 0 }}
                   value={state.isHert}
                 />
                 <FormInput
                   name="AlreadySubmittedShortQuote"
                   label="AlreadySubmittedShortQuote"
                   placeholder="We should not see this, indicates the person filled the short quote lready"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{ maxHeight: 0, opacity: 0 }}
                   value={state.isShortQuote}
                 />
 
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
-                    Request Quote 
+                    Request Quote
                   </BlockCTA>
                 </div>
               </form>
             </Col6>
-            <Col6> 
+            <Col6>
               <Image src="/images/quote-24.jpg" title="Fast Response" />
             </Col6>
           </div>
