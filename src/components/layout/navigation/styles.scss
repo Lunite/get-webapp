@@ -34,6 +34,11 @@
         background-color: $low-grey;
         opacity: 0.2;
         margin: 0 12px;
+
+        @media ($tablet) {
+          height: 2vw;
+          margin: 0 1vw;
+        }
       }
 
       .link--active {
@@ -49,6 +54,13 @@
           background-color: $green;
           height: 5px;
           width: 100%;
+        }
+
+        @media ($tablet) {
+          &::before {
+            height: 0.4vw;
+            transform: translateY(-1.667vw);
+          }
         }
       }
     }
@@ -72,6 +84,24 @@
 
     @media ($mobile) {
       display: none;
+    }
+
+    @media ($tablet) {
+      font-size: 1.34vw;
+
+      .container {
+        height: 3.334vw;
+      }
+
+      .contact-details__link {
+        .icon {
+          margin-right: 0.7vw;
+        }
+
+        & + .contact-details__link {
+          margin-left: 2.7vw;
+        }
+      }
     }
   }
 
@@ -98,6 +128,18 @@
       .logo__anchor {
         width: 132px;
         height: 89px;
+      }
+    }
+
+    @media ($tablet) {
+      .container {
+        height: 10vw;
+      }
+
+      .logo,
+      .logo__anchor {
+        width: 11vw;
+        height: 7.417vw;
       }
     }
   }
