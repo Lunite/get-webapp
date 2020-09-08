@@ -108,8 +108,8 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     y: number,
     r: number,
     theta: number,
-    aWidth = 10,
-    aLength = 10
+    aWidth = 15,
+    aLength = 15
   ) => {
     const ctx = canvasRef.current.getContext("2d")
 
@@ -168,6 +168,8 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           className="map-overlay"
           ref={canvasRef}
           style={{ height: "min(550px, 100%)", width: "100%" }}
+          height={canvasRef?.current?.clientHeight}
+          width={canvasRef?.current?.clientWidth}
         />
       </div>
       <div className="slide-container show-mob">
