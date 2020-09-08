@@ -66,6 +66,12 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }, [angle])
 
   useEffect(() => {
+    setTimeout(() => {
+      setAngle(1)
+    }, 10)
+  }, [])
+
+  useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
@@ -108,8 +114,8 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     y: number,
     r: number,
     theta: number,
-    aWidth = 15,
-    aLength = 15
+    aWidth = 25,
+    aLength = 25
   ) => {
     const ctx = canvasRef.current.getContext("2d")
 
@@ -124,7 +130,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     ctx.lineTo(r - aLength, aWidth)
 
     ctx.fillStyle = "#3c96c5"
-    ctx.lineWidth = 5
+    ctx.lineWidth = 10
     ctx.strokeStyle = "#3c96c5"
     ctx.lineJoin = "miter"
 
