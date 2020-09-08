@@ -50,7 +50,6 @@ module.exports.sendEmail = (auth, results) => {
     'Your Quote',
     getEmailHTML(results, `Results JSON: ${results}`),
   );
-  const gmail = google.gmail({ version: 'v1', auth });
   gmail.users.messages.send(
     {
       auth,

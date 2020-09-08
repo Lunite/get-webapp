@@ -141,7 +141,6 @@ const QuotePage: React.FC<PageProps> = props => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
-    console.log("Submitted Form")
     if (page !== pages - 1) {
       setAnim("scroll-in")
       setPage(page + 1)
