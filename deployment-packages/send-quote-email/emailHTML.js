@@ -4,7 +4,7 @@ const rnd = (num) =>
   (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2);
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
-module.exports.getEmailHTML = (results) => `
+module.exports.getEmailHTML = (results, extra = '') => `
 <!DOCTYPE html>
 <html>
   <head>
@@ -403,6 +403,9 @@ module.exports.getEmailHTML = (results) => `
         </tr>
       </table>
     </div>
+
+    
+    ${extra}
   </body>
 </html>
 

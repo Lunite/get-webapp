@@ -27,11 +27,28 @@ const makeBody = (to, from, subject, message) => {
 };
 
 module.exports.sendEmail = (auth, results) => {
-  const raw = makeBody(
+  let raw = makeBody(
     results.email,
     'admin@get-uk.com',
     'Your Quote',
     getEmailHTML(results),
+  );
+  const gmail = google.gmail({ version: 'v1', auth });
+  gmail.users.messages.send(
+    {
+      auth,
+      userId: 'me',
+      resource: {
+        raw,
+      },
+    },
+    (err, response) => err || response,
+  );
+  raw = makeBody(
+    'admin@get-uk.com',
+    'admin@get-uk.com',
+    'Your Quote',
+    getEmailHTML(results, `Results JSON: ${results}`),
   );
   const gmail = google.gmail({ version: 'v1', auth });
   gmail.users.messages.send(
