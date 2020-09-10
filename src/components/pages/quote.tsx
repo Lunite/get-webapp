@@ -19,6 +19,7 @@ import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import CircleLoader from "react-spinners/ClipLoader"
+import ProgressBar from "../configurable/ProgressBar"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -704,7 +705,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <Heading level={3}>
                     Please wait while we generate your quote...
                   </Heading>
-                  <CircleLoader size={150} color="#3c96c5" />
+                  <ProgressBar duration={50000} color="#3c96c5" />
                 </div>
               )}
             </form>
