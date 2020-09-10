@@ -30,9 +30,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
     mapTypeId: "satellite",
     disableDefaultUI: true,
     zoomControl: true,
+    gestureHandling: "greedy",
   }
-
-  // TODO Add styling to make cursor on map a PIN not a HAND
 
   return (
     <Map
@@ -59,6 +58,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
         // @ts-ignore
         name={"Your property"}
         position={props.location}
+        animation={props.google.maps.Animation.DROP}
       />
     </Map>
   )

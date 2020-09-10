@@ -38,7 +38,13 @@
   @media ($mobile) {
     padding: 30px;
     margin: -10px 0;
+    height: 100px;
   }
+}
+
+.input-label-text {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .radio-label:checked + .button-label {

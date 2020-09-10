@@ -80,11 +80,21 @@
   padding: 0 15px;
 }
 
+.shoutout__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 115px;
+}
+
 @media ($mobile) {
   .hide-mob {
     display: none;
   }
   .firstpage {
     padding: 15px;
+  }
+  .shoutout__text {
+    padding-left: 0;
   }
 }

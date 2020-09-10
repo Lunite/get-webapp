@@ -18,7 +18,6 @@ import ArrowMap from "../standalone/ArrowMap"
 import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
-import CircleLoader from "react-spinners/ClipLoader"
 import ProgressBar from "../configurable/ProgressBar"
 
 const postcodeRegex =
@@ -90,9 +89,12 @@ const awaitForLocalStorageNastyHack = () => {
 }
 
 const propertyOptions = {
-  eCar: "I own an electric car",
-  heater: "I own air source heating", // check this
-  pool: "I own a swimming pool",
+  eCar: "Electric Car",
+  heater: "Air Source Heating", // check this
+  pool: "Swimming Pool",
+}
+
+const homeOptions = {
   ownsHouse: "I own my house (outright or mortgaged)",
   flat: "I live in a flat",
 }
@@ -333,7 +335,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="houseNumber"
                   id="houseNumber"
-                  label="House number/name"
+                  label="House number/name*"
                   placeholder="Enter house number..."
                   type="text"
                   required
@@ -344,7 +346,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="street"
                   id="street"
-                  label="Street"
+                  label="Street*"
                   type="text"
                   placeholder="Enter street name..."
                   required
@@ -355,7 +357,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="town"
                   id="town"
-                  label="Town"
+                  label="Town*"
                   type="text"
                   placeholder="Enter town..."
                   required
@@ -366,7 +368,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="postcode"
                   id="postcode"
-                  label="Postcode"
+                  label="Postcode*"
                   placeholder="Enter postcode..."
                   required
                   pattern="^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -390,19 +392,43 @@ const QuotePage: React.FC<PageProps> = props => {
       case 2:
         return (
           <>
-            <Heading level={3}>Which direction does your roof face?</Heading>
-            <Heading level={5}>
-              Rotate the arrow to match the direction of your roof
-            </Heading>
-            <ArrowMap
-              location={location}
-              setAzimuth={azimuth => {
-                setFormValues({
-                  ...formValues,
-                  roof: { ...formValues.roof, azimuth },
-                })
-              }}
-            />
+            <div className="row">
+              <Col6>
+                <Heading level={3}>
+                  Which direction does your roof face?
+                </Heading>
+                <Block className="hide-mob">
+                  <p>
+                    At Green Energy Together we love efficient processes. The
+                    following information will allow us to generate an
+                    extraordinarily comprehensive quote available for download
+                    immediately, including costs, recommended system size,
+                    payback periods and 20 year performance outlook. This
+                    process takes approximately 3 minutes.
+                  </p>
+                  <br />
+                  <p>
+                    <em>100% transparency. 100% efficiency. 0% hassle.</em>
+                  </p>
+                </Block>
+              </Col6>
+              <Col6>
+                <ArrowMap
+                  location={location}
+                  setAzimuth={azimuth => {
+                    setFormValues({
+                      ...formValues,
+                      roof: { ...formValues.roof, azimuth },
+                    })
+                  }}
+                />
+                <br />
+                <Heading level={5}>
+                  Rotate the arrow so that it points away from the roof where
+                  the panels will be installed
+                </Heading>
+              </Col6>
+            </div>
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
                 Back
@@ -423,7 +449,7 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <Heading level={3}>
-              Choose the angle that best matches your roof
+              Choose the angle that best matches your roof*
             </Heading>
             <RadioGrid
               selectedValue={formValues.roof.inclination}
@@ -564,7 +590,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <FormSelect
                     required
                     name="beds"
-                    label="Number of beds"
+                    label="Number of beds*"
                     options={["2", "3", "4", "5", "6+"]}
                     onChange={e => {
                       setFormValues({
@@ -579,10 +605,23 @@ const QuotePage: React.FC<PageProps> = props => {
                   <br />
                   <FormCheckbox
                     name="own"
-                    label="Tick all that apply:"
+                    label="Do you own any of the following?"
                     options={Object.keys(propertyOptions)}
                     getOptionLabel={option => {
                       return propertyOptions[option]
+                    }}
+                    onChange={e => {
+                      toggleProperty(e.target.value)
+                    }}
+                    value={formValues.property}
+                  />
+                  <br />
+                  <FormCheckbox
+                    name="housing"
+                    label="Tick all that apply*"
+                    options={Object.keys(homeOptions)}
+                    getOptionLabel={option => {
+                      return homeOptions[option]
                     }}
                     onChange={e => {
                       toggleProperty(e.target.value)
@@ -623,7 +662,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="name"
                   id="name"
-                  label="Full name"
+                  label="Full name*"
                   placeholder="Type your full name..."
                   value={formValues.name}
                   onChange={updateTextValue}
@@ -632,7 +671,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="email"
                   id="email"
-                  label="Email"
+                  label="Email*"
                   type="email"
                   placeholder="Type your email..."
                   value={formValues.email}
@@ -642,7 +681,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <FormInput
                   name="phone"
                   id="phone"
-                  label="Phone number"
+                  label="Phone number*"
                   type="tel"
                   placeholder="Type your phone number..."
                   value={formValues.phone}
