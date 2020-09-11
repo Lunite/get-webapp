@@ -11,6 +11,15 @@
   cursor: col-resize;
 }
 
+.arrowsvg {
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 1;
+  height: 100%;
+  width: 500px;
+  margin: auto;
+}
+
 .am-box-minmax {
   width: 100% !important;
   margin-left: 0 !important;

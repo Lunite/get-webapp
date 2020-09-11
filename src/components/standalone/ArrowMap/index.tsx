@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import { Map, GoogleApiWrapper } from "google-maps-react"
 import "./styles.scss"
+import Arrow from "./Arrow"
 
 interface ArrowMapProps {
   google: any
@@ -57,7 +58,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     if (canvasRef.current) {
       const canvas = canvasRef.current
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
-      const r = canvas.height / 3
+      const r = canvas.height / 3.4
       let theta = angle
       theta = -theta + Math.PI
       props.setAzimuth(theta * (180 / Math.PI) - 180)
@@ -79,7 +80,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         x: canvas.clientWidth / 2,
         y: canvas.clientHeight / 2,
       }
-      const r = canvas.height / 3
+      const r = canvas.height / 3.4
       let theta = Math.atan2(
         mouseState.x - clientCenter.x,
         mouseState.y - clientCenter.y
@@ -114,27 +115,29 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     y: number,
     r: number,
     theta: number,
-    aWidth = 25,
-    aLength = 25
+    aWidth = 35,
+    aLength = 100
   ) => {
     const ctx = canvasRef.current.getContext("2d")
+
+    ctx.fillStyle = "#152038"
+    ctx.lineJoin = "miter"
 
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
     ctx.translate(x, y)
     ctx.rotate(theta)
     ctx.beginPath()
+    ctx.arc(0, 0, 5, 0, 2 * Math.PI)
+    ctx.fill()
+    ctx.beginPath()
     ctx.moveTo(0, 0)
-    ctx.lineTo(r, 0)
+    ctx.moveTo(r, 0)
     ctx.moveTo(r - aLength, -aWidth)
     ctx.lineTo(r, 0)
     ctx.lineTo(r - aLength, aWidth)
-
+    ctx.lineTo(r - aLength / 1.5, 0)
     ctx.fillStyle = "#3c96c5"
-    ctx.lineWidth = 10
-    ctx.strokeStyle = "#3c96c5"
-    ctx.lineJoin = "miter"
-
-    ctx.stroke()
+    ctx.fill()
     ctx.setTransform(1, 0, 0, 1, 0, 0)
   }
 
@@ -170,6 +173,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
             width: "100%",
           }}
         />
+        <Arrow angle={angle} className="arrowsvg" />
         <canvas
           className="map-overlay"
           ref={canvasRef}
