@@ -86,7 +86,6 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         mouseState.y - clientCenter.y
       )
       theta = -theta + Math.PI
-      // console.log("angle is", theta * (180 / Math.PI) - 180)
       props.setAzimuth(theta * (180 / Math.PI) - 180)
       drawArrowFromAngle(center.x, center.y, r, theta - Math.PI / 2)
     }
