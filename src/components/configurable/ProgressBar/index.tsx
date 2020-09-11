@@ -30,7 +30,7 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
     width: `${completed}%`,
     backgroundColor: props.color,
     borderRadius: "inherit",
-    textAlign: "right",
+    textAlign: completed >= 10 ? "center" : "right",
     transition: "width 1s ease-in-out",
   }
 
@@ -40,14 +40,20 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
     fontWeight: 400,
   }
 
-  if (completed >= 100) {
-    clearInterval(intervalRef.current)
-  }
+  useEffect(() => {
+    if (completed >= 101) {
+      window.clearInterval(intervalRef.current)
+    }
+  }, [completed])
 
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${Math.floor(completed)}%`}</span>
+        <span style={labelStyles}>{`${
+          Math.floor(completed) >= 100
+            ? "Please Wait..."
+            : Math.floor(completed)
+        }%`}</span>
       </div>
     </div>
   )
