@@ -9,6 +9,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  .shoutout__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 115px;
+  }
 }
 
 .loading-container {
@@ -78,13 +84,6 @@
 
 .firstpageImage {
   padding: 0 15px;
-}
-
-.shoutout__text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 115px;
 }
 
 @media ($mobile) {

@@ -182,11 +182,14 @@ const QuotePage: React.FC<PageProps> = props => {
     const address = await fromLatLong(coords.lat, coords.lng)
     console.log("Address", address)
     if (address) {
-      const houseNumber = address.find(
-        element =>
-          element.types.includes("street_number") ||
-          element.types.includes("premise")
-      ) || { long_name: "" }
+      const houseNumber =
+        formValues.houseNumber === ""
+          ? address.find(
+              element =>
+                element.types.includes("street_number") ||
+                element.types.includes("premise")
+            ) || { long_name: formValues.houseNumber }
+          : { long_name: formValues.houseNumber }
 
       const street = address.find(element =>
         element.types.includes("route")
