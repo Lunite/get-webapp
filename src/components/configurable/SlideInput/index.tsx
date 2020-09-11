@@ -89,7 +89,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           )}
         </span>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           // @ts-ignore
           props.onChange({ target: { value: props.average.toString() } })
@@ -98,7 +98,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
         className="btn-unsure"
       >
         I Don't Know
-      </button>
+      </button> */}
     </div>
   )
 }

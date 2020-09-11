@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react"
 import { Map, GoogleApiWrapper } from "google-maps-react"
 import "./styles.scss"
 import Arrow from "./Arrow"
+import info from "~/vectors/info.svg"
 
 interface ArrowMapProps {
   google: any
@@ -180,6 +181,13 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           height={canvasRef?.current?.clientHeight}
           width={canvasRef?.current?.clientWidth}
         />
+      </div>
+      <div className="arrowmap-tip">
+        <img src={info} alt="Hint:" />
+        <p className="help-text">
+          Rotate the arrow until it faces away from the roof where the panels
+          will be installed
+        </p>
       </div>
       <div className="slide-container show-mob">
         <div className="range-slider am-range-slider">

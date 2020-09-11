@@ -65,8 +65,8 @@ const colorScale = [
   "#57bb8a",
   "#73b87e",
   "#94bd77",
-  "#b0be6e",
-  "#d4c86a",
+  "#b0ce6e",
+  "#d4d56a",
   "#f5ce62",
   "#f3c563",
   "#e6ad61",
@@ -80,8 +80,9 @@ const YourQuotePage: React.FC<PageProps> = props => {
   results = props.location.state || results
 
   const getUsageRow = (arr: Array<number>) => {
-    const sorted = [...arr].sort()
-    console.log({ arr, sorted })
+    // console.log({ arr, sorted })
+    const sorted = [...arr].sort((a, b) => a - b)
+
     return arr.map((n: number) => {
       const color = colorScale[sorted.indexOf(n)]
       return (

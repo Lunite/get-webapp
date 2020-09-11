@@ -29,6 +29,25 @@
   width: 100% !important;
 }
 
+.arrowmap-tip {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 5px;
+  background-color: $light-grey;
+  border-radius: 0 0 5px 5px;
+  img {
+    height: 100%;
+    margin-right: 10px;
+  }
+  p {
+    flex-grow: 2;
+    font-size: 0.8em;
+    text-align: left;
+  }
+}
+
 @media ($mobile) {
   canvas {
     pointer-events: none;

@@ -41,7 +41,7 @@
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-delay: 0.25s;
-  animation: fade $slow-transition;
+  animation: fade $fast-transition;
 }
 
 @keyframes scrollin {
@@ -60,7 +60,7 @@
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-timing-function: $transition-timing-function;
-  animation: scrollin $slow-transition;
+  animation: scrollin $fast-transition;
 }
 
 @keyframes scrollout {
@@ -79,7 +79,7 @@
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-timing-function: $transition-timing-function;
-  animation: scrollout $slow-transition;
+  animation: scrollout $fast-transition;
 }
 
 .firstpageImage {

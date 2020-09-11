@@ -397,10 +397,21 @@ const QuotePage: React.FC<PageProps> = props => {
           <>
             <div className="row">
               <Col6>
-                <Heading level={3}>
-                  Which direction does your roof face?
-                </Heading>
+                <ArrowMap
+                  location={location}
+                  setAzimuth={azimuth => {
+                    setFormValues({
+                      ...formValues,
+                      roof: { ...formValues.roof, azimuth },
+                    })
+                  }}
+                />
+              </Col6>
+              <Col6>
                 <Block className="hide-mob">
+                  <Heading level={3} underlined>
+                    Generating your quote
+                  </Heading>
                   <p>
                     At Green Energy Together we love efficient processes. The
                     following information will allow us to generate an
@@ -414,22 +425,6 @@ const QuotePage: React.FC<PageProps> = props => {
                     <em>100% transparency. 100% efficiency. 0% hassle.</em>
                   </p>
                 </Block>
-              </Col6>
-              <Col6>
-                <ArrowMap
-                  location={location}
-                  setAzimuth={azimuth => {
-                    setFormValues({
-                      ...formValues,
-                      roof: { ...formValues.roof, azimuth },
-                    })
-                  }}
-                />
-                <br />
-                <Heading level={5}>
-                  Rotate the arrow so that it points away from the roof where
-                  the panels will be installed
-                </Heading>
               </Col6>
             </div>
             <div className="form__actions">
