@@ -158,14 +158,14 @@ const QuotePage: React.FC<PageProps> = props => {
           },
           body: JSON.stringify(formValues),
         }
-        // let quote = await fetch(
-        //   "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-        //   req
-        // ) // post form values
-        // // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
-        // quote = await quote.json()
+        let quote = await fetch(
+          "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+          req
+        ) // post form values
+        // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
+        quote = await quote.json()
 
-        // return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
+        return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
       setAnim("fade-in")
       setStatus("loading")
@@ -240,21 +240,20 @@ const QuotePage: React.FC<PageProps> = props => {
 
   const updatePostcode = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Special case for initial postcode box - updates coordinates based on postcode
-    setFormValues({ ...formValues, postcode: e.target.value.toUpperCase() })
-    if (e.target.value.match(postcodeRegex)) {
-      fromAddress(e.target.value).then(async res => {
+    let pc = e.target.value.toUpperCase()
+    setFormValues({ ...formValues, postcode: pc })
+    if (new RegExp(postcodeRegex).test(pc)) {
+      fromAddress(pc).then(async res => {
         setLocation(res as { lat: number; lng: number })
         const address = await fromLatLong(res.lat, res.lng)
         const newFv = {
           ...formValues,
+          postcode: pc,
           houseNumber: "",
           street: address.find(element => element.types.includes("route"))
             .long_name,
           town: address.find(element => element.types.includes("postal_town"))
             .long_name,
-          postcode: address.find(element =>
-            element.types.includes("postal_code")
-          ).long_name,
         }
         setFormValues(newFv)
       })
@@ -813,7 +812,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <Heading level={3}>
                     Please wait while we generate your quote...
                   </Heading>
-                  <ProgressBar duration={10000} color="#3c96c5" />
+                  <ProgressBar duration={50000} color="#3c96c5" />
                 </div>
               )}
             </form>

@@ -203,6 +203,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
             max={Math.PI}
           />
         </div>
+        <div className="am-range-lines" />
         <div className="box-minmax show-mob am-box-minmax">
           <span>-180&#176;</span>
           <span>180&#176;</span>
