@@ -108,7 +108,22 @@ const QuotePage: React.FC<PageProps> = props => {
     ...values,
     ...props.location.state,
   })
-  const [page, setPage] = useState(0)
+  const [page, _setPage] = useState(0)
+  const setPage = num => {
+    if (num > page) {
+      setAnim("next-scroll-out")
+      setTimeout(() => {
+        setAnim("next-scroll-in")
+        _setPage(num)
+      }, 150)
+    } else {
+      setAnim("prev-scroll-out")
+      setTimeout(() => {
+        setAnim("prev-scroll-in")
+        _setPage(num)
+      }, 50)
+    }
+  }
   const [location, setLocation] = useState<{ lat: number; lng: number }>({
     lat: 0,
     lng: 0,
@@ -146,7 +161,6 @@ const QuotePage: React.FC<PageProps> = props => {
     // handles form submission - will either go to the next page or submit formValues
     e.preventDefault()
     if (page !== pages - 1) {
-      setAnim("scroll-in")
       setPage(page + 1)
     } else {
       const postFormValues = async () => {
@@ -174,7 +188,6 @@ const QuotePage: React.FC<PageProps> = props => {
   }
 
   const prevPage = () => {
-    setAnim("scroll-out")
     setPage(page - 1)
   }
 
@@ -565,7 +578,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={100}
+              min={0}
               max={200}
               average={18}
               value={formValues.ppw}
@@ -802,7 +815,7 @@ const QuotePage: React.FC<PageProps> = props => {
             <form
               name="quote-form"
               onSubmit={handleSubmit}
-              className={`form form--full-width ${anim}`}
+              className={`form form--full-width .anim-scroll ${anim}`}
               key={page.toString()}
             >
               {status === "form" ? (

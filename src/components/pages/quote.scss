@@ -37,14 +37,25 @@
 }
 
 .fade-in {
-  transition: $slow-transition;
+  transition: $transition;
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-delay: 0.25s;
-  animation: fade $fast-transition;
+  animation: fade $transition;
 }
 
-@keyframes scrollin {
+@keyframes next-scroll-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes next-scroll-in {
   from {
     transform: translateY(1000px);
     opacity: 0;
@@ -55,15 +66,7 @@
   }
 }
 
-.scroll-in {
-  transition: $slow-transition;
-  transform-origin: top left;
-  transition-property: opacity, transform;
-  transition-timing-function: $transition-timing-function;
-  animation: scrollin $fast-transition;
-}
-
-@keyframes scrollout {
+@keyframes prev-scroll-in {
   from {
     transform: translateY(-1000px);
     opacity: 0;
@@ -74,12 +77,39 @@
   }
 }
 
-.scroll-out {
-  transition: $slow-transition;
+@keyframes prev-scroll-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+.anim-scroll {
+  transition: $transition;
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-timing-function: $transition-timing-function;
-  animation: scrollout $fast-transition;
+  animation: next-scroll-out $transition;
+}
+
+.next-scroll-in {
+  animation: next-scroll-in $transition;
+}
+
+.next-scroll-out {
+  animation: next-scroll-out $transition;
+}
+
+.prev-scroll-in {
+  animation: prev-scroll-in $transition;
+}
+
+.prev-scroll-out {
+  animation: prev-scroll-out $transition;
 }
 
 .firstpageImage {
