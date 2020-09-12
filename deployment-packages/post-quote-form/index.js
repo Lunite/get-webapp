@@ -1,10 +1,12 @@
 const { calculateQuote } = require("./quote")
 const { PubSub } = require("@google-cloud/pubsub")
 
-const publishEmailMessage = async results => {
+const publishEmailMessage = async (inputs, results) => {
   const psClient = new PubSub()
   const topicName = "send-email"
-  const messageId = await psClient.topic(topicName).publishJSON(results)
+  const messageId = await psClient
+    .topic(topicName)
+    .publishJSON({ inputs, results })
   return messageId
 }
 
@@ -35,7 +37,7 @@ exports.handler = async (req, res) => {
     console.log("Got Result", result)
     time = new Date().getTime() - time
     // publish results to email function to continue quoting process
-    await publishEmailMessage(result)
+    await publishEmailMessage(formValues, result)
     console.log("Function Execution Time:", time / 1000, "seconds")
     res.json(result)
   }

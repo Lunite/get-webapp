@@ -26,7 +26,8 @@ const makeBody = (to, from, subject, message) => {
   return encodedMail;
 };
 
-module.exports.sendEmail = (auth, results) => {
+module.exports.sendEmail = (auth, message) => {
+  const { inputs, results } = message;
   let raw = makeBody(
     results.email,
     'admin@get-uk.com',
@@ -48,7 +49,7 @@ module.exports.sendEmail = (auth, results) => {
     'admin@get-uk.com',
     'admin@get-uk.com',
     'Your Quote',
-    getEmailHTML(results, `Results JSON: ${results}`),
+    getEmailHTML(results, `Form Values JSON: ${inputs}`),
   );
   gmail.users.messages.send(
     {
