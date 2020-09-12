@@ -19,6 +19,7 @@ import SlideQuestion from "../configurable/SlideInput"
 import FormSelect from "../olc-framework/FormSelect"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import ProgressBar from "../configurable/ProgressBar"
+import info from "~/vectors/info.svg"
 
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
@@ -469,7 +470,16 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Enter your available roof space"
+              title="How big is your roof?"
+              subtitle={
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
+                  <em>
+                    To find the available area, multiply the length of your roof
+                    by its width.
+                  </em>
+                </span>
+              }
               min={10}
               max={200}
               average={100}

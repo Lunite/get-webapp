@@ -6,7 +6,8 @@ import BlockCTA from "../BlockCTA"
 import Animate from "../../olc-framework/Animate"
 
 interface SlideInputProps {
-  title: string
+  title: React.ReactNode
+  subtitle?: React.ReactNode
   min: number
   max: number
   inputAdornments?: {
@@ -33,7 +34,13 @@ const SlideInput: React.FC<SlideInputProps> = props => {
 
   return (
     <div className="slide-container">
-      <Heading level={3}>{props.title}</Heading>
+      <div className="slider-head">
+        <Heading level={3}>{props.title}</Heading>
+        {props.subtitle && (
+          <div className="slide-subtitle">{props.subtitle}</div>
+        )}
+      </div>
+
       <div className="range-slider">
         <span
           className="rs-label"
@@ -60,6 +67,13 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           type="range"
           ref={ref}
           value={props.value}
+          style={{
+            background: `linear-gradient(to right, #70b33b 0%, #70b33b ${
+              ((props.value - props.min) / (props.max - props.min)) * 100
+            }%, #051c3f ${
+              ((props.value - props.min) / (props.max - props.min)) * 100
+            }%, #051c3f 0%)`,
+          }}
           onChange={props.onChange}
           min={props.min}
           max={props.max}

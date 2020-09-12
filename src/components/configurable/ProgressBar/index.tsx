@@ -56,13 +56,6 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
             : `${Math.floor(completed)}%`
         }`}</span>
       </div>
-      <button
-        onClick={() => {
-          setCompleted(0)
-        }}
-      >
-        reset
-      </button>
     </div>
   )
 }
