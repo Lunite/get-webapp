@@ -18,7 +18,9 @@ const ContactUsPage = ({ location }) => {
   const { state = {} } = location
 
   const logFormSubmitEvent = () => {
-    window.dataLayer = window.dataLayer || []
+    if (window) {
+      window.dataLayer = window.dataLayer || []
+    }
 
     const eventData = {
       category: "Form",

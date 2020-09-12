@@ -21,9 +21,18 @@ const Quote: FunctionComponent<any> = ({
   const handleSubmit = event => {
     event.preventDefault()
 
-    // trackCustomEvent(eventData)   oops may have deleted the eventData object, I'll address that if its important
+    const eventData = {
+      category: "Form",
+      action: "Submit",
+      label: "ShortQuote",
+      // value: 0 // optional
+    }
 
-    window.dataLayer = window.dataLayer || []
+    trackCustomEvent(eventData)
+
+    if (window) {
+      window.dataLayer = window?.dataLayer || []
+    }
 
     return navigate("/quote", {
       state: formState,
