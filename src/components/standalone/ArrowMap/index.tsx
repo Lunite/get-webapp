@@ -206,6 +206,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         <div className="am-range-lines" />
         <div className="box-minmax show-mob am-box-minmax">
           <span>-180&#176;</span>
+          <div className="spacer" />
           <span>180&#176;</span>
         </div>
       </div>
