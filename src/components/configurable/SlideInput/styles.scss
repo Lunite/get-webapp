@@ -52,12 +52,12 @@
     height: 30px;
     width: 30px;
     border-radius: 22px;
-    background: $green;
+    background: $light-blue;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -11px;
     &:hover {
-      background: lighten($green, 5%);
+      background: lighten($light-blue, 5%);
     }
   }
   &::-moz-range-thumb {
@@ -67,12 +67,12 @@
     height: 30px;
     width: 30px;
     border-radius: 22px;
-    background: $green;
+    background: $light-blue;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -11px;
     &:hover {
-      background: lighten($green, 5%);
+      background: lighten($light-blue, 5%);
     }
   }
   &::-moz-range-progress {
@@ -89,6 +89,9 @@
     border: 0;
   }
 }
+
+// Chrome slider track styling
+
 .rs-label {
   position: relative;
   transform-origin: center center;
@@ -117,5 +120,17 @@
   background: darken($light-grey, 5);
   &:hover {
     background: darken($light-grey, 15);
+  }
+}
+
+@media ($mobile) {
+  .box-minmax {
+    width: 90%;
+  }
+  .range-slider {
+    width: 90%;
+  }
+  .rs-range {
+    width: 90%;
   }
 }

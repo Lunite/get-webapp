@@ -1,6 +1,7 @@
 import React from "react"
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react"
 import "./styles.scss"
+import info from "~/vectors/info.svg"
 
 interface InteractiveMapProps {
   google: any // injected auth object
@@ -34,33 +35,42 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
   }
 
   return (
-    <Map
-      google={props.google}
-      center={props.location}
-      initialCenter={props.location}
-      // @ts-ignore
-      zoom={19}
-      onReady={(mapProps, map) => {
-        map.setOptions(mapOptions)
-        map.setOptions({
-          draggableCursor:
-            "url(https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png) 13 40, auto",
-        })
-      }}
-      containerStyle={{
-        position: "relative",
-        height: "min(550px, 100vw)",
-        width: "100%",
-      }}
-      onClick={onClickHandler}
-    >
-      <Marker
+    <>
+      <Map
+        google={props.google}
+        center={props.location}
+        initialCenter={props.location}
         // @ts-ignore
-        name={"Your property"}
-        position={props.location}
-        animation={props.google.maps.Animation.DROP}
-      />
-    </Map>
+        zoom={19}
+        onReady={(mapProps, map) => {
+          map.setOptions(mapOptions)
+          map.setOptions({
+            draggableCursor:
+              "url(https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png) 13 40, auto",
+          })
+        }}
+        containerStyle={{
+          position: "relative",
+          height: "min(550px, 100vw)",
+          width: "100%",
+        }}
+        onClick={onClickHandler}
+      >
+        <Marker
+          // @ts-ignore
+          name={"Your property"}
+          position={props.location}
+          animation={props.google.maps.Animation.DROP}
+        />
+      </Map>
+      <div className="arrowmap-tip">
+        <img src={info} alt="Hint:" />
+        <p className="help-text">
+          Enter your house number, then make sure your roof is selected on the
+          map
+        </p>
+      </div>
+    </>
   )
 }
 

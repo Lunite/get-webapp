@@ -93,7 +93,9 @@
   .firstpage {
     padding: 15px;
   }
-  .shoutout__text {
-    padding-left: 0;
+  .quote-container {
+    .shoutout__text {
+      padding-left: 0;
+    }
   }
 }

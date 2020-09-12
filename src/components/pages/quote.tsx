@@ -95,7 +95,7 @@ const propertyOptions = {
 }
 
 const homeOptions = {
-  ownsHouse: "I own my house (outright or mortgaged)",
+  ownsHouse: "I own my home",
   flat: "I live in a flat",
 }
 
@@ -332,8 +332,10 @@ const QuotePage: React.FC<PageProps> = props => {
               />
             </Col6>
             <Col6>
-              <Heading level={3}>Find your property</Heading>
-              <Heading level={5}> Please select your roof on the map</Heading>
+              <Heading level={3} underlined>
+                Find your property
+              </Heading>
+              <br />
               <div>
                 <FormInput
                   name="houseNumber"
@@ -630,7 +632,9 @@ const QuotePage: React.FC<PageProps> = props => {
               </Col6>
               <Col6>
                 <Block className="hide-mob">
-                  <Heading level={4}>Why we need this information</Heading>
+                  <Heading level={3} underlined>
+                    Why we need this information
+                  </Heading>
                   <p>
                     Our usage-based model means that our designs are truly cost
                     effective and based around your consumption, lifestyle and
