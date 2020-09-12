@@ -121,7 +121,7 @@ const QuotePage: React.FC<PageProps> = props => {
       setTimeout(() => {
         setAnim("prev-scroll-in")
         _setPage(num)
-      }, 50)
+      }, 150)
     }
   }
   const [location, setLocation] = useState<{ lat: number; lng: number }>({

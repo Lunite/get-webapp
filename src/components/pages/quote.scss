@@ -93,7 +93,6 @@
   transform-origin: top left;
   transition-property: opacity, transform;
   transition-timing-function: $transition-timing-function;
-  animation: next-scroll-out $transition;
 }
 
 .next-scroll-in {
