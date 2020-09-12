@@ -32,8 +32,8 @@
 .rs-range {
   margin-top: 29px;
   width: 70%;
-  -webkit-appearance: none;
   border-radius: 25px;
+  -webkit-appearance: none;
   &:focus {
     outline: none;
   }
@@ -84,6 +84,16 @@
     &:hover {
       background: lighten($green, 5%);
     }
+  }
+  &::-moz-range-progress {
+    background-color: $green;
+    height: 10px;
+    border-radius: 50px;
+  }
+  &::-ms-fill-lower {
+    background-color: $green;
+    height: 10px;
+    border-radius: 50px;
   }
   &::-moz-focus-outer {
     border: 0;
