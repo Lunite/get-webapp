@@ -99,3 +99,14 @@
     }
   }
 }
+
+.btn-unsure {
+  margin-right: 10px;
+  color: $black-paragraph;
+  background: darken($light-grey, 5);
+  border-color: darken($light-grey, 5);
+  &:hover {
+    background: darken($light-grey, 15);
+    border-color: darken($light-grey, 15);
+  }
+}

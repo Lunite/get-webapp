@@ -79,6 +79,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           max={props.max}
         />
       </div>
+      <div className="range-lines" />
       <div className="box-minmax">
         <span>
           {props.type === "money" ? (
@@ -103,16 +104,6 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           )}
         </span>
       </div>
-      {/* <button
-        onClick={() => {
-          // @ts-ignore
-          props.onChange({ target: { value: props.average.toString() } })
-        }}
-        type="submit"
-        className="btn-unsure"
-      >
-        I Don't Know
-      </button> */}
     </div>
   )
 }

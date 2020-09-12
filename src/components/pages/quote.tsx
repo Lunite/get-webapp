@@ -513,7 +513,15 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Enter your annual electric consumption"
+              title="How much electricity do you use each year?"
+              subtitle={
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
+                  <em>
+                    You should be able to find this on your electricity bill.
+                  </em>
+                </span>
+              }
               min={1000}
               max={8000}
               average={-1}
@@ -531,6 +539,17 @@ const QuotePage: React.FC<PageProps> = props => {
               <BlockCTA large submit right>
                 Next
               </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                large
+                right
+                action={() => {
+                  setFormValues({ ...formValues, eac: -1 })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
+              </BlockCTA>
             </div>
           </>
         )
@@ -538,7 +557,15 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Price per kWh of electricity"
+              title="What do you pay per kWh of electricity?"
+              subtitle={
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
+                  <em>
+                    You should be able to find this on your electricity bill.
+                  </em>
+                </span>
+              }
               min={0}
               max={200}
               average={18}
@@ -559,6 +586,17 @@ const QuotePage: React.FC<PageProps> = props => {
               <BlockCTA large submit right>
                 Next
               </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                large
+                right
+                action={() => {
+                  setFormValues({ ...formValues, ppw: 18 })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
+              </BlockCTA>
             </div>
           </>
         )
@@ -566,7 +604,15 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <SlideQuestion
-              title="Standing Charge"
+              title="What do you pay as a standing charge?"
+              subtitle={
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
+                  <em>
+                    You should be able to find this on your electricity bill.
+                  </em>
+                </span>
+              }
               min={0}
               max={200}
               average={22}
@@ -586,6 +632,17 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA large submit right>
                 Next
+              </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                large
+                right
+                action={() => {
+                  setFormValues({ ...formValues, standingCharge: 22 })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
               </BlockCTA>
             </div>
           </>

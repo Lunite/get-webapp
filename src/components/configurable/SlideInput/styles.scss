@@ -18,7 +18,6 @@
 }
 
 .box-minmax {
-  margin-top: 30px;
   width: 75%;
   display: flex;
   justify-content: space-between;
@@ -100,7 +99,14 @@
   }
 }
 
-// Chrome slider track styling
+.range-lines {
+  box-sizing: border-box;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding: 10px 0;
+  width: 70%;
+  margin-left: 0.5%;
+}
 
 .rs-label {
   position: relative;
@@ -124,15 +130,6 @@
   font-size: 1em;
 }
 
-.btn-unsure {
-  border: none;
-  padding: 10px 25px;
-  background: darken($light-grey, 5);
-  &:hover {
-    background: darken($light-grey, 15);
-  }
-}
-
 @media ($mobile) {
   .slide-container {
     margin-bottom: 30px;
@@ -141,12 +138,15 @@
     margin: 30px;
   }
   .box-minmax {
-    width: 90%;
+    width: 95%;
   }
   .range-slider {
     width: 90%;
   }
   .rs-range {
     width: 90%;
+  }
+  .range-lines {
+    width: 89%;
   }
 }
