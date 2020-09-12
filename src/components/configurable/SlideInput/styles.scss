@@ -18,12 +18,17 @@
 }
 
 .box-minmax {
-  width: 75%;
+  width: 74%;
+  margin-left: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 1em;
-  color: #000000;
-  margin-left: 3%;
+  color: $black-paragraph;
+  .spacer {
+    flex: 1 1 0;
+    flex-grow: 1;
+    margin: 0 10px;
+  }
 }
 .range-slider {
   width: 70%;
@@ -101,8 +106,8 @@
 
 .range-lines {
   box-sizing: border-box;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-left: 2px solid $black-paragraph;
+  border-right: 2px solid $black-paragraph;
   padding: 10px 0;
   width: 70%;
   margin-left: 0.5%;
@@ -123,7 +128,7 @@
   border: 2px solid $dark-blue;
   margin-top: 20px;
   margin-left: -38px;
-  color: $dark-blue;
+  color: $black-paragraph;
   font-style: normal;
   font-weight: normal;
   line-height: normal;

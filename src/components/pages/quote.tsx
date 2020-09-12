@@ -565,7 +565,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={0}
+              min={100}
               max={200}
               average={18}
               value={formValues.ppw}

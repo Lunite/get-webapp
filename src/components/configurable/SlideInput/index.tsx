@@ -83,7 +83,16 @@ const SlideInput: React.FC<SlideInputProps> = props => {
       <div className="box-minmax">
         <span>
           {props.type === "money" ? (
-            <>{props.min > 99 ? <>£{props.min / 100}</> : <>{props.min}p</>}</>
+            <>
+              {props.min > 99 ? (
+                <>£{props.min / 100}</>
+              ) : (
+                <>
+                  {props.min}
+                  <>p</>
+                </>
+              )}
+            </>
           ) : (
             <>
               {props?.inputAdornments.start}
@@ -92,6 +101,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
             </>
           )}
         </span>
+        <span className="spacer" />
         <span>
           {props.type === "money" ? (
             <>{props.max > 99 ? <>£{props.max / 100}</> : <>{props.max}p</>}</>
