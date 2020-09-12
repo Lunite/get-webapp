@@ -4,6 +4,33 @@ const rnd = (num) =>
   (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2);
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
+const colorScale = [
+  '#57bb8a',
+  '#73b87e',
+  '#94bd77',
+  '#b0ce6e',
+  '#d4d56a',
+  '#f5ce62',
+  '#f3c563',
+  '#e6ad61',
+  '#e9a268',
+  '#e5926b',
+  '#e0816d',
+  '#dd776e',
+];
+
+const getUsageRow = (arr) => {
+  // console.log({ arr, sorted })
+  const sorted = [...arr].sort((a, b) => a - b);
+
+  return arr.map((n) => {
+    const color = colorScale[sorted.indexOf(n)];
+    return `<td style="background-color: ${color};">
+        ${rnd(n)}
+      </td>`;
+  });
+};
+
 module.exports.getEmailHTML = (results, extra = '') => `
 <!DOCTYPE html>
 <html>
@@ -169,82 +196,27 @@ module.exports.getEmailHTML = (results, extra = '') => `
         </tr>
         <tr>
           <td class="text-left">Grid Usage</td>
-          <td>${rnd(results.firstYearUse.demand[0])}</td>
-          <td>${rnd(results.firstYearUse.demand[1])}</td>
-          <td>${rnd(results.firstYearUse.demand[2])}</td>
-          <td>${rnd(results.firstYearUse.demand[3])}</td>
-          <td>${rnd(results.firstYearUse.demand[4])}</td>
-          <td>${rnd(results.firstYearUse.demand[5])}</td>
-          <td>${rnd(results.firstYearUse.demand[6])}</td>
-          <td>${rnd(results.firstYearUse.demand[7])}</td>
-          <td>${rnd(results.firstYearUse.demand[8])}</td>
-          <td>${rnd(results.firstYearUse.demand[9])}</td>
-          <td>${rnd(results.firstYearUse.demand[10])}</td>
-          <td>${rnd(results.firstYearUse.demand[11])}</td>
+          ${getUsageRow(results.firstYearUse.demand).join('')}
           <td>${rnd(sum(results.firstYearUse.demand))}</td>
         </tr>
         <tr>
           <td class="text-left">Solar Generation</td>
-          <td>${rnd(results.firstYearUse.solar[1])}</td>
-          <td>${rnd(results.firstYearUse.solar[0])}</td>
-          <td>${rnd(results.firstYearUse.solar[2])}</td>
-          <td>${rnd(results.firstYearUse.solar[3])}</td>
-          <td>${rnd(results.firstYearUse.solar[4])}</td>
-          <td>${rnd(results.firstYearUse.solar[5])}</td>
-          <td>${rnd(results.firstYearUse.solar[6])}</td>
-          <td>${rnd(results.firstYearUse.solar[7])}</td>
-          <td>${rnd(results.firstYearUse.solar[8])}</td>
-          <td>${rnd(results.firstYearUse.solar[9])}</td>
-          <td>${rnd(results.firstYearUse.solar[10])}</td>
-          <td>${rnd(results.firstYearUse.solar[11])}</td>
+          ${getUsageRow(results.firstYearUse.solar).join('')}
           <td>${rnd(sum(results.firstYearUse.solar))}</td>
         </tr>
         <tr>
           <td class="text-left">Solar Exported to Grid</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[0])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[2])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[1])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[3])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[4])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[5])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[6])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[7])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[8])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[9])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[10])}</td>
-          <td>${rnd(results.firstYearUse.exportAfterBattery[11])}</td>
+          ${getUsageRow(results.firstYearUse.exportAfterBattery).join('')}
           <td>${rnd(sum(results.firstYearUse.exportAfterBattery))}</td>
         </tr>
         <tr>
           <td class="text-left">Solar Used at Home</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[0])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[1])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[4])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[2])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[5])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[3])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[6])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[7])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[8])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[9])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[10])}</td>
-          <td>${rnd(results.firstYearUse.selfConsumptionTotal[11])}</td>
+          ${getUsageRow(results.firstYearUse.selfConsumptionTotal).join('')}
           <td>${rnd(sum(results.firstYearUse.selfConsumptionTotal))}</td>
         </tr>
         <tr>
           <td class="text-left">Grid Usage with Solar</td>
-          <td>${rnd(results.firstYearUse.demandTotal[0])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[1])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[3])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[2])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[4])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[5])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[6])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[7])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[8])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[9])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[10])}</td>
-          <td>${rnd(results.firstYearUse.demandTotal[11])}</td>
+          ${getUsageRow(results.firstYearUse.demandTotal).join('')}
           <td>${rnd(sum(results.firstYearUse.demandTotal))}</td>
         </tr>
       </table>
