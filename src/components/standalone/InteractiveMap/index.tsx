@@ -66,8 +66,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
       <div className="arrowmap-tip">
         <img src={info} alt="Hint:" />
         <p className="help-text">
-          Enter your house number, then make sure your roof is selected on the
-          map
+          Enter your house number and make sure your roof is selected on the map
         </p>
       </div>
     </>

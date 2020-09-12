@@ -157,14 +157,14 @@ const QuotePage: React.FC<PageProps> = props => {
           },
           body: JSON.stringify(formValues),
         }
-        let quote = await fetch(
-          "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-          req
-        ) // post form values
-        // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
-        quote = await quote.json()
+        // let quote = await fetch(
+        //   "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+        //   req
+        // ) // post form values
+        // // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
+        // quote = await quote.json()
 
-        return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
+        // return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
       }
       setAnim("fade-in")
       setStatus("loading")
@@ -746,7 +746,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <Heading level={3}>
                     Please wait while we generate your quote...
                   </Heading>
-                  <ProgressBar duration={50000} color="#3c96c5" />
+                  <ProgressBar duration={10000} color="#3c96c5" />
                 </div>
               )}
             </form>

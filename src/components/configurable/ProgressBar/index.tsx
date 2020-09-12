@@ -13,6 +13,7 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
     const intervalDuration = props.duration / 100
     intervalRef.current = setInterval(() => {
       setCompleted(completed + 1)
+      console.log("Setting")
     }, intervalDuration)
     return () => clearInterval(intervalRef.current)
   })
@@ -30,8 +31,8 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
     width: `${completed}%`,
     backgroundColor: props.color,
     borderRadius: "inherit",
-    textAlign: completed >= 10 ? "center" : "right",
-    transition: "width 1s ease-in-out",
+    textAlign: "center",
+    transition: `width ${props.duration / 100}ms ease-in-out`,
   }
 
   const labelStyles: CSSProperties = {
@@ -41,7 +42,7 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
   }
 
   useEffect(() => {
-    if (completed >= 101) {
+    if (completed >= 100) {
       window.clearInterval(intervalRef.current)
     }
   }, [completed])
@@ -52,9 +53,16 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
         <span style={labelStyles}>{`${
           Math.floor(completed) >= 100
             ? "Please Wait..."
-            : Math.floor(completed)
-        }%`}</span>
+            : `${Math.floor(completed)}%`
+        }`}</span>
       </div>
+      <button
+        onClick={() => {
+          setCompleted(0)
+        }}
+      >
+        reset
+      </button>
     </div>
   )
 }
