@@ -1,9 +1,6 @@
 import "./styles.scss"
 import React, { useState, useRef, useEffect, useMemo } from "react"
 import Heading from "../Heading"
-import Col9 from "../../grid/Col9"
-import BlockCTA from "../BlockCTA"
-import Animate from "../../olc-framework/Animate"
 
 interface SlideInputProps {
   title: React.ReactNode

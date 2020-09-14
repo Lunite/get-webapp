@@ -3,6 +3,12 @@ const lookup = require("./lookupTables")
 const savings = require("./useageAndSavings")
 const ex = require("exceljs")
 
+const sum = arr => {
+  return arr.reduce((a, b) => {
+    return a + b
+  }, 0)
+}
+
 module.exports.calculateQuote = async formValues => {
   const workbook = new ex.Workbook()
   await workbook.xlsx.readFile("./spreadsheet.xlsx")
@@ -17,7 +23,6 @@ module.exports.calculateQuote = async formValues => {
   let proms = quantities.map(async quantity => {
     let localResults = []
     let ps = [0, 2.5, 5, 7.5, 10].map(async size => {
-      console.log({ panelQuantity: quantity, storageSize: size })
       const localInput = {
         ...lookup.getInputs(formValues, workbook, quantity, size),
       } // deep copy to avoid referencing outside of async code
@@ -26,6 +31,18 @@ module.exports.calculateQuote = async formValues => {
       tResult.totalCost = cost
       tResult.vat = vat
       tResult = savings.getUseAndSavings(localInput, tResult, workbook)
+      console.log({
+        panelQuantity: quantity,
+        storageSize: size,
+        roi: tResult.twentyYearOutlook[19].roi,
+        consumtion: `${
+          100 *
+          (
+            sum(tResult.firstYearUse.selfConsumptionTotal) /
+            sum(tResult.firstYearUse.solar)
+          ).toFixed(2)
+        }%`,
+      })
       localResults.push(tResult)
     })
     await Promise.all(ps)
@@ -50,9 +67,9 @@ module.exports.calculateQuote = async formValues => {
   })
   await Promise.all(proms)
   results.sort(
-    (a, b) => b.twentyYearOutlook[19].roi - a.twentyYearOutlook[19].roi
+    (a, b) => a.twentyYearOutlook[19].roi - b.twentyYearOutlook[19].roi
   )
-  return results[0]
+  return results[results.length - 1]
 }
 
 // calculates total cost of installation
