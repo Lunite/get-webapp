@@ -19,9 +19,7 @@ module.exports.calculateQuote = async formValues => {
     let ps = [0, 2.5, 5, 7.5, 10].map(async size => {
       console.log({ panelQuantity: quantity, storageSize: size })
       const localInput = {
-        ...inputs,
-        storageSize: size,
-        panelQuantity: quantity,
+        ...lookup.getInputs(formValues, workbook, quantity, size),
       } // deep copy to avoid referencing outside of async code
       let tResult = lookup.getResultsTemplate(localInput)
       const [cost, vat] = getTotalCost(localInput)

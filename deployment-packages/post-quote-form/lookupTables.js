@@ -441,7 +441,12 @@ module.exports.getResultsTemplate = inputs => {
 }
 
 // Gets spreadsheet inputs from formvalues (some cannot be derived, the "average" or default has been assumed)
-module.exports.getInputs = (formValues, workbook) => {
+module.exports.getInputs = (
+  formValues,
+  workbook,
+  panelQuantity,
+  storageSize
+) => {
   const getDateSerial = date => {
     let returnDateTime =
       25569.0 +
@@ -472,7 +477,7 @@ module.exports.getInputs = (formValues, workbook) => {
     ppw: formValues.ppw / 100,
     standingCharge: formValues.standingCharge / 100,
     annualCost: 0,
-    panelQuantity: calculatePanelNumber(formValues.roof.area),
+    panelQuantity: panelQuantity || calculatePanelNumber(formValues.roof.area),
     panelManufacturer: "Phonosolar",
     panelWattage: 275,
     systemSize: 0,
@@ -484,7 +489,7 @@ module.exports.getInputs = (formValues, workbook) => {
     roofType: "Concrete",
     panels: "Blue",
     scaffold: "No",
-    storageSize: 5,
+    storageSize: storageSize || 5,
     postcodeShort: "",
     title: "Mr/s.",
     name: formValues.name,
@@ -495,7 +500,7 @@ module.exports.getInputs = (formValues, workbook) => {
     phone: formValues.phone,
     email: formValues.email,
     additionalItems: [],
-    margin: 0.33, // 33%
+    margin: 0.325, // 32.5%
     vat: 0.05, // 5%
     discount: formValues.discount, // special price thing
   }
