@@ -379,6 +379,10 @@ module.exports.getIrradienceZone = postcode => {
     return [irradienceLookup[code], code]
   }
   code = postcode.substr(0, 2)
+  if (codes.includes(code)) {
+    return [irradienceLookup[code], code]
+  }
+  code = postcode.substr(0, 1)
   return [irradienceLookup[code], code]
 }
 module.exports.getSpecificYield = (zone, pitch, azimuth, workbook) => {
