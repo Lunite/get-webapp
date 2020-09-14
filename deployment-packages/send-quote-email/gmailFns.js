@@ -49,7 +49,7 @@ module.exports.sendEmail = (auth, message) => {
     'admin@get-uk.com',
     'admin@get-uk.com',
     'Your Quote',
-    getEmailHTML(results, `Form Values JSON: ${inputs}`),
+    getEmailHTML(results, `Form inputs: ${JSON.stringify(inputs, null, 4)}`),
   );
   gmail.users.messages.send(
     {

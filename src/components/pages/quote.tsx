@@ -397,9 +397,9 @@ const QuotePage: React.FC<PageProps> = props => {
                 />
               </div>
               <div className="form__actions">
-                <BlockCTA large left action={prevPage}>
+                {/* <BlockCTA large left action={prevPage}>
                   Back
-                </BlockCTA>
+                </BlockCTA> */}
                 <BlockCTA large submit right>
                   Next
                 </BlockCTA>
@@ -494,7 +494,7 @@ const QuotePage: React.FC<PageProps> = props => {
               }
               min={10}
               max={200}
-              average={100}
+              average={21.84}
               value={formValues.roof.area}
               onChange={e => {
                 setFormValues({
@@ -517,6 +517,20 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA large submit right>
                 Next
+              </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                large
+                right
+                action={() => {
+                  setFormValues({
+                    ...formValues,
+                    roof: { ...formValues.roof, area: 22 },
+                  })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
               </BlockCTA>
             </div>
           </>
