@@ -844,7 +844,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <Heading level={3}>
                     Please wait while we generate your quote...
                   </Heading>
-                  <ProgressBar duration={50000} color="#3c96c5" />
+                  <ProgressBar duration={10000} color="#3c96c5" />
                 </div>
               )}
             </form>
