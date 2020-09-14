@@ -494,7 +494,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <em>
                     For reference, 1m<sup>2</sup> is about as big as a bath
                     towel, 10m<sup>2</sup> is about as big as a parking space
-                    and 250m<sup>2</sup> is about as big as a tennis court.{" "}
+                    and 250m<sup>2</sup> is about as big as a tennis court.
                     <br />
                     Don't worry if you're not sure of the exact size - we only
                     need an estimate.
@@ -558,7 +558,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 </span>
               }
               min={1000}
-              max={8000}
+              max={25000}
               average={-1}
               value={formValues.eac}
               onChange={e => {
