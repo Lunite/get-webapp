@@ -169,8 +169,8 @@ const QuotePage: React.FC<PageProps> = props => {
         }
         try {
           let quote = await fetch(
-            // "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-            "http://localhost:8080",
+            "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+            // "http://localhost:8080",
             req
           ) // post form values
           quote = await quote.json()
