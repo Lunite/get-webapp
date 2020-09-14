@@ -13,7 +13,6 @@ const ProgressBar: React.FC<ProgressBarProps> = props => {
     const intervalDuration = props.duration / 100
     intervalRef.current = setInterval(() => {
       setCompleted(completed + 1)
-      console.log("Setting")
     }, intervalDuration)
     return () => clearInterval(intervalRef.current)
   })

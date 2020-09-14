@@ -195,7 +195,6 @@ const QuotePage: React.FC<PageProps> = props => {
   const updateLocation = async (coords: { lat: number; lng: number }) => {
     setLocation(coords)
     const address = await fromLatLong(coords.lat, coords.lng)
-    console.log("Address", address)
     if (address) {
       const houseNumber =
         formValues.houseNumber === ""

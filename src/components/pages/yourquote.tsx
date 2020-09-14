@@ -80,7 +80,6 @@ const YourQuotePage: React.FC<PageProps> = props => {
   results = props.location.state || results
 
   const getUsageRow = (arr: Array<number>) => {
-    // console.log({ arr, sorted })
     const sorted = [...arr].sort((a, b) => a - b)
 
     return arr.map((n: number) => {
