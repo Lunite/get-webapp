@@ -62,7 +62,7 @@ const values: IQuoteFormValues = {
   roof: {
     azimuth: 0.03,
     inclination: 1,
-    area: 100,
+    area: 21.84,
   },
   property: {
     bedrooms: 0,
@@ -73,8 +73,8 @@ const values: IQuoteFormValues = {
     flat: false,
   },
   eac: 3500,
-  ppw: 20,
-  standingCharge: 20,
+  ppw: 18,
+  standingCharge: 22,
   discount: false,
 }
 
