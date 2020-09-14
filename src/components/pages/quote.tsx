@@ -597,7 +597,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={0}
+              min={1}
               max={200}
               average={18}
               value={formValues.ppw}
@@ -644,7 +644,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={0}
+              min={1}
               max={200}
               average={22}
               value={formValues.standingCharge}
@@ -844,7 +844,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <Heading level={3}>
                     Please wait while we generate your quote...
                   </Heading>
-                  <ProgressBar duration={10000} color="#3c96c5" />
+                  <ProgressBar duration={9000} color="#3c96c5" />
                 </div>
               )}
             </form>
