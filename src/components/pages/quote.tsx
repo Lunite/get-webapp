@@ -173,7 +173,8 @@ const QuotePage: React.FC<PageProps> = props => {
           body: JSON.stringify(formValues),
         }
         let quote = await fetch(
-          "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+          // "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+          "http://localhost:8080",
           req
         ) // post form values
         // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
@@ -487,8 +488,12 @@ const QuotePage: React.FC<PageProps> = props => {
                 <span style={{ display: "flex", alignItems: "center" }}>
                   <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
                   <em>
-                    To find the available area, multiply the length of your roof
-                    by its width.
+                    For reference, 1m<sup>2</sup> is about as big as a bath
+                    towel, 10m<sup>2</sup> is about as big as a parking space
+                    and 250m<sup>2</sup> is about as big as a tennis court.{" "}
+                    <br />
+                    Don't worry if you're not sure of the exact size - we only
+                    need an estimate.
                   </em>
                 </span>
               }

@@ -381,13 +381,8 @@ module.exports.getIrradienceZone = postcode => {
   code = postcode.substr(0, 2)
   return [irradienceLookup[code], code]
 }
-
-const ex = require("exceljs")
-
-module.exports.getSpecificYield = async (zone, pitch, azimuth) => {
+module.exports.getSpecificYield = (zone, pitch, azimuth, workbook) => {
   // gets specific yield from spreadsheet
-  const workbook = new ex.Workbook()
-  await workbook.xlsx.readFile("./spreadsheet.xlsx")
   const table = workbook.getWorksheet("MCS Irradiation Zones")
   let irradienceIdx
   let pitchIdx
@@ -446,7 +441,7 @@ module.exports.getResultsTemplate = inputs => {
 }
 
 // Gets spreadsheet inputs from formvalues (some cannot be derived, the "average" or default has been assumed)
-module.exports.getInputs = async formValues => {
+module.exports.getInputs = (formValues, workbook) => {
   const getDateSerial = date => {
     let returnDateTime =
       25569.0 +
@@ -512,10 +507,11 @@ module.exports.getInputs = async formValues => {
   )
   inputs.postcodeShort = shortPc
   inputs.irradienceZone = irradience
-  inputs.specificYield = await module.exports.getSpecificYield(
+  inputs.specificYield = module.exports.getSpecificYield(
     irradience,
     inputs.roofPitch,
-    inputs.azimuth
+    inputs.azimuth,
+    workbook
   )
   inputs.annualYield = inputs.specificYield * inputs.systemSize
   inputs.additionalItems = this.getAdditionalCosts(inputs.systemSize)

@@ -15,8 +15,8 @@ const monthIndexToDays = {
   11: 31,
 }
 
-module.exports.getUseAndSavings = async (inputs, result) => {
-  const firstYearUse = await energyUseCalculation(inputs)
+module.exports.getUseAndSavings = (inputs, result, workbook) => {
+  const firstYearUse = energyUseCalculation(inputs, workbook)
   const sum = arr => {
     return arr.reduce((a, b) => {
       return a + b
@@ -64,7 +64,7 @@ module.exports.getUseAndSavings = async (inputs, result) => {
   return result
 }
 
-const energyUseCalculation = async inputs => {
+const energyUseCalculation = (inputs, workbook) => {
   const yearlyCalcs = {
     // each array length 12 -> i=month
     demand: [],
@@ -76,8 +76,6 @@ const energyUseCalculation = async inputs => {
     selfConsumptionTotal: [],
     demandTotal: [],
   }
-  const workbook = new ex.Workbook()
-  await workbook.xlsx.readFile("./spreadsheet.xlsx")
   const profile = workbook.getWorksheet("Profile")
   const solarCoef = profile.getColumn("E").values.slice(2)
   const consumptionCoef = profile.getColumn("F").values.slice(2)

@@ -184,9 +184,13 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
       </div>
       <div className="arrowmap-tip">
         <img src={info} alt="Hint:" />
-        <p className="help-text">
+        <p className="help-text hide-mob">
           Rotate the arrow until it faces away from the roof where the panels
           will be installed
+        </p>
+        <p className="help-text hide-lg">
+          Use the slider to rotate the arrow until it faces away from the roof
+          where the panels will be installed
         </p>
       </div>
       <div className="slide-container show-mob">

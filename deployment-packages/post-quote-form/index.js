@@ -37,7 +37,7 @@ exports.handler = async (req, res) => {
     console.log("Got Result", result)
     time = new Date().getTime() - time
     // publish results to email function to continue quoting process
-    await publishEmailMessage(formValues, result)
+    // await publishEmailMessage(formValues, result)
     console.log("Function Execution Time:", time / 1000, "seconds")
     res.json(result)
   }
