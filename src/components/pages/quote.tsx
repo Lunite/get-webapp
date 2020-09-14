@@ -174,11 +174,10 @@ const QuotePage: React.FC<PageProps> = props => {
         }
         try {
           let quote = await fetch(
-            "https://europe-west2-get-uk.cloudfunctions.net/get-quot",
+            "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
             // "http://localhost:8080",
             req
           ) // post form values
-          // window.localStorage.removeItem(SPECIAL_PRICE_KEY) // clears discount as quote has been requested. (not doing this)
           quote = await quote.json()
 
           return navigate("/yourquote", { state: quote }) // Navigates to show quote page with the returned values
