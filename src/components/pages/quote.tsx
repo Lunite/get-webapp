@@ -42,8 +42,8 @@ interface IQuoteFormValues {
     eCar: boolean
     pool: boolean
     heater: boolean
-    ownsHouse: boolean
-    flat: boolean
+    ownsHouse: string
+    flat: string
   }
   eac: number
   ppw: number
@@ -69,8 +69,8 @@ const values: IQuoteFormValues = {
     eCar: false,
     pool: false,
     heater: false,
-    ownsHouse: false,
-    flat: false,
+    ownsHouse: "",
+    flat: "",
   },
   eac: 3500,
   ppw: 18,
@@ -93,11 +93,6 @@ const propertyOptions = {
   eCar: "Electric Car",
   heater: "Air Source Heating", // check this
   pool: "Swimming Pool",
-}
-
-const homeOptions = {
-  ownsHouse: "I own my home",
-  flat: "I live in a flat",
 }
 
 const SPECIAL_PRICE_KEY = "utm_campaign"
@@ -692,7 +687,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <FormSelect
                     required
                     name="beds"
-                    label="Number of beds*"
+                    label="How many beds do you have?*"
                     options={["2", "3", "4", "5", "6+"]}
                     onChange={e => {
                       setFormValues({
@@ -705,25 +700,47 @@ const QuotePage: React.FC<PageProps> = props => {
                     }}
                   />
                   <br />
+
+                  <FormSelect
+                    required
+                    name="ownsHome"
+                    label="Do you own your home?*"
+                    options={["Yes", "No"]}
+                    value={formValues.property.ownsHouse}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        property: {
+                          ...formValues.property,
+                          ownsHouse: e.target.value,
+                        },
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormSelect
+                    required
+                    name="flat"
+                    label="Do you live in a flat?*"
+                    options={["Yes", "No"]}
+                    value={formValues.property.flat}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        property: {
+                          ...formValues.property,
+                          flat: e.target.value,
+                        },
+                      })
+                    }}
+                  />
+                  <br />
                   <FormCheckbox
                     name="own"
                     label="Do you own any of the following?"
                     options={Object.keys(propertyOptions)}
                     getOptionLabel={option => {
                       return propertyOptions[option]
-                    }}
-                    onChange={e => {
-                      toggleProperty(e.target.value)
-                    }}
-                    value={formValues.property}
-                  />
-                  <br />
-                  <FormCheckbox
-                    name="housing"
-                    label="Tick all that apply*"
-                    options={Object.keys(homeOptions)}
-                    getOptionLabel={option => {
-                      return homeOptions[option]
                     }}
                     onChange={e => {
                       toggleProperty(e.target.value)
