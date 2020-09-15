@@ -598,7 +598,7 @@ const QuotePage: React.FC<PageProps> = props => {
               }
               min={1}
               max={200}
-              average={18}
+              average={17.56}
               value={formValues.ppw}
               onChange={e => {
                 setFormValues({
@@ -645,7 +645,7 @@ const QuotePage: React.FC<PageProps> = props => {
               }
               min={1}
               max={200}
-              average={22}
+              average={22.26}
               value={formValues.standingCharge}
               onChange={e => {
                 setFormValues({
