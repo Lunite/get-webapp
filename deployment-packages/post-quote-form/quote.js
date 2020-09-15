@@ -69,7 +69,13 @@ module.exports.calculateQuote = async formValues => {
   results.sort(
     (a, b) => a.twentyYearOutlook[19].roi - b.twentyYearOutlook[19].roi
   )
-  return results[results.length - 1]
+  const bestInputs = lookup.getInputs(
+    formValues,
+    workbook,
+    results.panelQuantity,
+    results.storageSize
+  )
+  return [results[results.length - 1], bestInputs]
 }
 
 // calculates total cost of installation
