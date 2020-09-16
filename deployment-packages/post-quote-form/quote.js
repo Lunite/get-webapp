@@ -59,10 +59,13 @@ module.exports.calculateQuote = async formValues => {
     result.twentyYearOutlook.forEach((y, i) => {
       result.co2Savings = result.co2Savings + (0.517 * y.solarGeneration) / 1000
       if (!set && y.roi > 0) {
-        result.yearsToPayback = i + 1
+        result.yearsToPayback = i
         set = true
       }
     })
+    if (!set) {
+      result.yearsToPayback = "20+"
+    }
     results.push(result)
   })
   await Promise.all(proms)
