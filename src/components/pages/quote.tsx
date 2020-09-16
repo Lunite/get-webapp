@@ -73,8 +73,8 @@ const values: IQuoteFormValues = {
     flat: "",
   },
   eac: 3500,
-  ppw: 18,
-  standingCharge: 22,
+  ppw: 17.56,
+  standingCharge: 22.26,
   discount: false,
 }
 
