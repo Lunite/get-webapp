@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
@@ -9,8 +9,16 @@ import "./projects.scss"
 import { Link } from "gatsby"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
-const ProjectsPage = ({ pageContext: { projects } }) => {
-  const { customerType } = useContext(CustomerTypeContext)
+const ProjectsPage = ({ location, pageContext: { projects } }) => {
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+
+  useEffect(() => {
+    if (location?.search) {
+      let cType = location?.search.split("customerType=")[1]
+      cType = cType.split("&")[0]
+      setCustomerType(cType)
+    }
+  }, [location])
 
   const commercialProjects = projects.filter(
     ({ frontmatter }) => frontmatter.category === "commercial"

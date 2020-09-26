@@ -139,12 +139,17 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   useEffect(() => {
     setMarkdownNodes(allMarkdownRemark.nodes)
-    setImageNodes(allImageSharp?.nodes)
+  }, [allMarkdownRemark])
 
+  useEffect(() => {
+    setImageNodes(allImageSharp?.nodes)
+  }, [allImageSharp])
+
+  useEffect(() => {
     if (context) {
       setSeoData(getSeoData())
     }
-  }, [allMarkdownRemark, allImageSharp, context])
+  }, [context])
 
   return (
     <>
