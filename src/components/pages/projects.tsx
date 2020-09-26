@@ -1,16 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import Col9 from "~/components/grid/Col9"
-import { useCustomerType } from "~/hooks/useCustomerType"
 import Grid from "../configurable/Grid"
 
 import "./projects.scss"
 import { Link } from "gatsby"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const ProjectsPage = ({ pageContext: { projects } }) => {
-  const { customerType } = useCustomerType()
+  const { customerType } = useContext(CustomerTypeContext)
 
   const commercialProjects = projects.filter(
     ({ frontmatter }) => frontmatter.category === "commercial"

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "~/components/configurable/Heading"
 import Block from "../configurable/Block"
@@ -11,19 +11,19 @@ import Col2 from "../grid/Col2"
 import Image from "../configurable/Image"
 import Shoutout from "../configurable/Shoutout"
 import StatsBlock from "../standalone/StatsBlock"
-import { useCustomerType } from "~/hooks/useCustomerType"
 
 import "./for-your-business.scss"
 import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const HomepageB2b = ({ markdownNodes }) => {
-  const { changeCustomerType } = useCustomerType()
+  const { setCustomerType } = useContext(CustomerTypeContext)
 
   useEffect(() => {
-    changeCustomerType("commercial")
+    setCustomerType("commercial")
   }, [])
 
   return (
