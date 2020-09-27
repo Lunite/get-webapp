@@ -15,6 +15,7 @@ interface SlideInputProps {
   value: number
   average: number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  step?: number
 }
 
 const SlideInput: React.FC<SlideInputProps> = props => {
@@ -74,6 +75,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           onChange={props.onChange}
           min={props.min}
           max={props.max}
+          step={props.step || 1}
         />
       </div>
       <div className="range-lines" />

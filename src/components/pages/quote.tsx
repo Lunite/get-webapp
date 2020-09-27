@@ -569,7 +569,8 @@ const QuotePage: React.FC<PageProps> = props => {
                 </span>
               }
               min={1000}
-              max={25000}
+              max={12500}
+              step={5}
               average={-1}
               value={formValues.eac}
               onChange={e => {
@@ -661,8 +662,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={1}
-              max={200}
+              min={0}
+              max={60}
               average={22.26}
               value={formValues.standingCharge}
               onChange={e => {
