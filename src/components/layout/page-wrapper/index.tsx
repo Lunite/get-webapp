@@ -6,6 +6,7 @@ import Certificates from "~/components/standalone/Certificates"
 
 import "./styles.scss"
 import { useStaticQuery, graphql } from "gatsby"
+import { CustomerTypeProvider } from "~/providers/CustomerTypeProvider"
 
 interface PageWrapperProps {
   context: any
@@ -138,26 +139,33 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   useEffect(() => {
     setMarkdownNodes(allMarkdownRemark.nodes)
-    setImageNodes(allImageSharp?.nodes)
+  }, [allMarkdownRemark])
 
+  useEffect(() => {
+    setImageNodes(allImageSharp?.nodes)
+  }, [allImageSharp])
+
+  useEffect(() => {
     if (context) {
       setSeoData(getSeoData())
     }
-  }, [allMarkdownRemark, allImageSharp, context])
+  }, [context])
 
   return (
     <>
       <SEO {...seoData} />
       {markdownNodes.length ? (
         <div className="page-wrapper">
-          <Navigation />
-          <main>
-            {React.Children.toArray(children).map(child =>
-              React.cloneElement(child, { markdownNodes, imageNodes })
-            )}
-            <Certificates imageNodes={imageNodes} />
-          </main>
-          <Footer />
+          <CustomerTypeProvider>
+            <Navigation />
+            <main>
+              {React.Children.toArray(children).map(child =>
+                React.cloneElement(child, { markdownNodes, imageNodes })
+              )}
+              <Certificates imageNodes={imageNodes} />
+            </main>
+            <Footer />
+          </CustomerTypeProvider>
         </div>
       ) : (
         <></>

@@ -1,16 +1,27 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
 import Col9 from "~/components/grid/Col9"
-import { useCustomerType } from "~/hooks/useCustomerType"
 import Grid from "../configurable/Grid"
 
 import "./projects.scss"
 import { Link } from "gatsby"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
-const ProjectsPage = ({ pageContext: { projects } }) => {
-  const { customerType } = useCustomerType()
+const ProjectsPage = ({ location, pageContext: { projects } }) => {
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+
+  useEffect(() => {
+    if (location?.search) {
+      let cType = location?.search.split("customerType=")[1]
+      cType = cType.split("&")[0]
+
+      if (cType === "domestic" || cType === "commercial") {
+        setCustomerType(cType)
+      }
+    }
+  }, [location])
 
   const commercialProjects = projects.filter(
     ({ frontmatter }) => frontmatter.category === "commercial"

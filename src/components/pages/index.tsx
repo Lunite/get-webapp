@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Hero from "~/components/configurable/Hero"
@@ -14,20 +14,20 @@ import Banner from "../configurable/Banner"
 import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlock"
 
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
-import { useCustomerType } from "~/hooks/useCustomerType"
 import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import BlockCTA from "../configurable/BlockCTA"
 import TickList from "../configurable/TickList"
 import { imageNodesFilter } from "~/utils"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const Homepage = ({ markdownNodes, imageNodes }) => {
   const [heroImage, setHeroImage] = useState(undefined)
   const [loading, setLoading] = useState(true)
-  const { changeCustomerType } = useCustomerType()
+  const { setCustomerType } = useContext(CustomerTypeContext)
 
   useEffect(() => {
-    changeCustomerType("domestic")
+    setCustomerType("domestic")
 
     setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
 
