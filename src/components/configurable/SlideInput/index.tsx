@@ -16,6 +16,7 @@ interface SlideInputProps {
   average: number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   step?: number
+  inputBox?: boolean
 }
 
 const SlideInput: React.FC<SlideInputProps> = props => {
@@ -28,7 +29,14 @@ const SlideInput: React.FC<SlideInputProps> = props => {
     }
   }, [ref])
 
-  const position = (props.value - props.min) / (props.max - props.min) // position along the slider
+  const position =
+    ((props.value > props.min
+      ? props.value < props.max
+        ? props.value
+        : props.max
+      : props.min) -
+      props.min) /
+    (props.max - props.min) // position along the slider
 
   return (
     <div className="slide-container">
@@ -113,6 +121,25 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           )}
         </span>
       </div>
+      {props.inputBox && (
+        <div style={{ width: "10%" }}>
+          <label className="form-input__label">Enter Manually</label>
+          <input
+            type="number"
+            className="form-input__field"
+            value={props.value}
+            style={{
+              width: "100%",
+              padding: "5px 10px",
+              fontSize: "1em",
+            }}
+            onChange={props.onChange}
+            step={props.step || 1}
+            min={props.min}
+            max={props.max}
+          />
+        </div>
+      )}
     </div>
   )
 }

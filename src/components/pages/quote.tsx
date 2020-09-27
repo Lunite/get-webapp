@@ -587,6 +587,7 @@ const QuotePage: React.FC<PageProps> = props => {
               }}
               inputAdornments={{ end: "kWh" }}
               key={"eac"}
+              inputBox
             />
             <div className="form__actions">
               <BlockCTA large left action={prevPage}>
