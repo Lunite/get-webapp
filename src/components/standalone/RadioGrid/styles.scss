@@ -23,7 +23,7 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
   transition: 0.3s;
   user-select: none;
-  height: 170px;
+  height: 150px;
   &:hover {
     background: darken($light-grey, 10%);
     color: darken($dark-blue, 10%);
@@ -34,11 +34,6 @@
     transform: translateY(2px);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2),
       inset 0px -1px 0 rgba(0, 0, 0, 0.22);
-  }
-  @media ($mobile) {
-    padding: 30px;
-    margin: -10px 0;
-    height: 100px;
   }
 }
 
@@ -53,5 +48,23 @@
   &:hover {
     background: lighten($green, 5%);
     color: darken($dark-blue, 5%);
+  }
+}
+
+.lower-margin {
+  margin-top: 10px !important;
+}
+
+@media ($mobile) {
+  .hide-mob {
+    display: none;
+  }
+  .lower-margin {
+    margin-top: 0 !important;
+  }
+  .button-label {
+    padding: 30px;
+    margin: -10px 0;
+    height: 100px;
   }
 }

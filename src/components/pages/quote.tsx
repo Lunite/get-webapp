@@ -475,6 +475,21 @@ const QuotePage: React.FC<PageProps> = props => {
               <BlockCTA large right action={validateRadioGrid}>
                 Next
               </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                title="Don't worry, we will use the national average."
+                large
+                right
+                action={() => {
+                  setFormValues({
+                    ...formValues,
+                    roof: { ...formValues.roof, inclination: 35 },
+                  })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
+              </BlockCTA>
             </div>
           </>
         )
@@ -496,8 +511,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   </em>
                 </span>
               }
-              min={10}
-              max={200}
+              min={5}
+              max={80}
               average={21.84}
               value={formValues.roof.area}
               onChange={e => {
@@ -524,6 +539,7 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA
                 className="btn-unsure"
+                title="Don't worry, we will use the national average."
                 large
                 right
                 action={() => {
@@ -571,6 +587,7 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA
                 className="btn-unsure"
+                title="Don't worry, we will use the national average."
                 large
                 right
                 action={() => {
@@ -618,6 +635,7 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA
                 className="btn-unsure"
+                title="Don't worry, we will use the national average."
                 large
                 right
                 action={() => {
@@ -665,6 +683,7 @@ const QuotePage: React.FC<PageProps> = props => {
               </BlockCTA>
               <BlockCTA
                 className="btn-unsure"
+                title="Don't worry, we will use the national average."
                 large
                 right
                 action={() => {
