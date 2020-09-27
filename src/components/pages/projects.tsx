@@ -16,7 +16,10 @@ const ProjectsPage = ({ location, pageContext: { projects } }) => {
     if (location?.search) {
       let cType = location?.search.split("customerType=")[1]
       cType = cType.split("&")[0]
-      setCustomerType(cType)
+
+      if (cType === "domestic" || cType === "commercial") {
+        setCustomerType(cType)
+      }
     }
   }, [location])
 

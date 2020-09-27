@@ -1,6 +1,14 @@
-import React, { useState } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 
-export const CustomerTypeContext = React.createContext({})
+type ICustomerTypeContext = {
+  customerType: String
+  setCustomerType: Dispatch<SetStateAction<string>>
+}
+
+export const CustomerTypeContext = React.createContext({
+  customerType: "",
+  setCustomerType: () => {},
+} as ICustomerTypeContext)
 
 export const CustomerTypeProvider = ({ children }: { children: any }) => {
   const [customerType, setCustomerType] = useState("domestic")
