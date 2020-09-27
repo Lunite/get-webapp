@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export const CustomerTypeContext = React.createContext(undefined)
+export const CustomerTypeContext = React.createContext({})
 
 export const CustomerTypeProvider = ({ children }: { children: any }) => {
   const [customerType, setCustomerType] = useState("domestic")
