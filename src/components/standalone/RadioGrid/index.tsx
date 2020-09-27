@@ -69,12 +69,20 @@ const RadioGrid: React.FC<{
           />
           <label className="button-label" htmlFor="incl-avrg">
             <img className="label-image" src="/images/med-slope.png" />
-            <div className="arrowmap-tip">
-              <img src={info} alt="Hint:" />
-              <p className="help-text">Most British homes have this slope</p>
-            </div>
           </label>
           <div className="input-label-text">(30&#176; to 40&#176;)</div>
+          <div
+            className="arrowmap-tip"
+            style={{
+              background: "none",
+              justifyContent: "center",
+            }}
+          >
+            <img src={info} alt="Hint:" />
+            <p className="help-text" style={{ flexGrow: 0 }}>
+              Most British homes have this slope
+            </p>
+          </div>
         </Col4>
         <Col4 />
       </div>

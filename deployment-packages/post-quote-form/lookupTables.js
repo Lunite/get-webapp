@@ -483,7 +483,7 @@ module.exports.getInputs = (
     annualCost: 0,
     panelQuantity: panelQuantity || calculatePanelNumber(formValues.roof.area),
     panelManufacturer: "Phonosolar",
-    panelWattage: 275,
+    panelWattage: 310,
     systemSize: 0,
     specificYield: 0,
     annualYield: 0,

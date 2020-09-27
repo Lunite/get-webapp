@@ -42,6 +42,7 @@ interface IQuoteFormValues {
     eCar: boolean
     pool: boolean
     heater: boolean
+    storageHeater: boolean
     ownsHouse: string
     flat: string
   }
@@ -49,6 +50,7 @@ interface IQuoteFormValues {
   ppw: number
   standingCharge: number
   discount: boolean
+  worksFromHome: string
 }
 
 const values: IQuoteFormValues = {
@@ -69,6 +71,7 @@ const values: IQuoteFormValues = {
     eCar: false,
     pool: false,
     heater: false,
+    storageHeater: false,
     ownsHouse: "",
     flat: "",
   },
@@ -76,6 +79,7 @@ const values: IQuoteFormValues = {
   ppw: 17.56,
   standingCharge: 22.26,
   discount: false,
+  worksFromHome: "",
 }
 
 const awaitForLocalStorageNastyHack = () => {
@@ -93,6 +97,7 @@ const propertyOptions = {
   eCar: "Electric Car",
   heater: "Air Source Heating", // check this
   pool: "Swimming Pool",
+  storageHeater: "Storage Heating",
 }
 
 const SPECIAL_PRICE_KEY = "utm_campaign"
@@ -500,14 +505,18 @@ const QuotePage: React.FC<PageProps> = props => {
               title="How big is your roof?"
               subtitle={
                 <span style={{ display: "flex", alignItems: "center" }}>
-                  <img src={info} alt="Tip:" style={{ marginRight: "5px" }} />
-                  <em>
+                  <img src={info} alt="Tip:" style={{ marginRight: "20px" }} />
+                  <em style={{ fontSize: "0.85em" }}>
                     For reference, 1m<sup>2</sup> is about as big as a bath
                     towel, 10m<sup>2</sup> is about as big as a parking space
                     and 250m<sup>2</sup> is about as big as a tennis court.
                     <br />
                     Don't worry if you're not sure of the exact size - we only
                     need an estimate.
+                    <br />
+                    If your roof is bigger than 80m<sup>2</sup> further
+                    information might be necessary to refine your quote. An
+                    advisor will be in touch to assist you.
                   </em>
                 </span>
               }
@@ -742,7 +751,11 @@ const QuotePage: React.FC<PageProps> = props => {
                     required
                     name="flat"
                     label="Do you live in a flat?*"
-                    options={["Yes", "No"]}
+                    options={[
+                      "Yes, on the top floor",
+                      "Yes, but NOT on the top floor",
+                      "I do not live in a flat",
+                    ]}
                     value={formValues.property.flat}
                     onChange={e => {
                       setFormValues({
@@ -751,6 +764,20 @@ const QuotePage: React.FC<PageProps> = props => {
                           ...formValues.property,
                           flat: e.target.value,
                         },
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormSelect
+                    required
+                    name="workFromHome"
+                    label="Do you work from home?*"
+                    options={["Yes, permanently", "Yes, temporarily", "No"]}
+                    value={formValues.worksFromHome}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        worksFromHome: e.target.value,
                       })
                     }}
                   />
