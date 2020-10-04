@@ -9,6 +9,11 @@ const sum = arr => {
   }, 0)
 }
 
+const getOnSiteConsumption = results =>
+  100 *
+  (sum(results.firstYearUse.selfConsumptionTotal) /
+    sum(results.firstYearUse.solar))
+
 module.exports.calculateQuote = async formValues => {
   const workbook = new ex.Workbook()
   await workbook.xlsx.readFile("./spreadsheet.xlsx")
@@ -47,11 +52,11 @@ module.exports.calculateQuote = async formValues => {
     })
     await Promise.all(ps)
 
-    let bestRoi = localResults[0].twentyYearOutlook[19].roi
+    let bestRoi = getOnSiteConsumption(localResults[0])
     let result = localResults[0]
     localResults.forEach(r => {
-      if (r.twentyYearOutlook[19].roi > bestRoi) {
-        bestRoi = r.twentyYearOutlook[19].roi
+      if (getOnSiteConsumption(r) > bestRoi) {
+        bestRoi = getOnSiteConsumption(r)
         result = r
       }
     })
@@ -69,9 +74,7 @@ module.exports.calculateQuote = async formValues => {
     results.push(result)
   })
   await Promise.all(proms)
-  results.sort(
-    (a, b) => a.twentyYearOutlook[19].roi - b.twentyYearOutlook[19].roi
-  )
+  results.sort((a, b) => getOnSiteConsumption(a) - getOnSiteConsumption(b))
   const bestInputs = lookup.getInputs(
     formValues,
     workbook,
