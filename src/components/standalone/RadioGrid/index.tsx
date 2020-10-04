@@ -47,7 +47,7 @@ const RadioGrid: React.FC<{
             checked={props.selectedValue === 15}
           />
           <label className="button-label" htmlFor="incl-low">
-            <img className="label-image" src="/images/low-slope.png" />
+            <img className="label-image" src="/images/vlow.png" />
           </label>
           <div className="input-label-text">(1&#176; to 15&#176;)</div>
         </Col4>
@@ -68,7 +68,7 @@ const RadioGrid: React.FC<{
             checked={props.selectedValue === 35}
           />
           <label className="button-label" htmlFor="incl-avrg">
-            <img className="label-image" src="/images/med-slope.png" />
+            <img className="label-image" src="/images/mid.png" />
           </label>
           <div className="input-label-text">(30&#176; to 40&#176;)</div>
           <div
@@ -101,7 +101,7 @@ const RadioGrid: React.FC<{
             checked={props.selectedValue === 20}
           />
           <label className="button-label" htmlFor="incl-med">
-            <img className="label-image" src="/images/med-slope.png" />
+            <img className="label-image" src="/images/low.png" />
           </label>
           <div className="input-label-text">(15&#176; to 20&#176;)</div>
         </Col4>
@@ -120,7 +120,7 @@ const RadioGrid: React.FC<{
             }}
           />
           <label className="button-label" htmlFor="incl-high">
-            <img className="label-image" src="/images/high-slope.png" />
+            <img className="label-image" src="/images/high.png" />
           </label>
           <div className="input-label-text">(40&#176;+)</div>
         </Col4>

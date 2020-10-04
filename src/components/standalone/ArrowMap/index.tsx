@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react"
 import { Map, GoogleApiWrapper } from "google-maps-react"
 import "./styles.scss"
-import Arrow from "./Arrow"
 import info from "~/vectors/info.svg"
+
+const ARROW_LENGTH_DIVISOR = 4
 
 interface ArrowMapProps {
   google: any
@@ -59,7 +60,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
     if (canvasRef.current) {
       const canvas = canvasRef.current
       const center = { x: canvas.width / 2, y: canvas.height / 2 }
-      const r = canvas.height / 3.4
+      const r = canvas.height / ARROW_LENGTH_DIVISOR
       let theta = angle
       theta = -theta + Math.PI
       props.setAzimuth(theta * (180 / Math.PI) - 180)
@@ -81,7 +82,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
         x: canvas.clientWidth / 2,
         y: canvas.clientHeight / 2,
       }
-      const r = canvas.height / 3.4
+      const r = canvas.height / ARROW_LENGTH_DIVISOR
       let theta = Math.atan2(
         mouseState.x - clientCenter.x,
         mouseState.y - clientCenter.y
@@ -173,7 +174,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
             width: "100%",
           }}
         />
-        <Arrow angle={angle} className="arrowsvg" />
+        <div className="arrowsvg" />
         <canvas
           className="map-overlay"
           ref={canvasRef}
