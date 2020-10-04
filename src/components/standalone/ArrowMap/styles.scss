@@ -15,9 +15,12 @@
   grid-row: 1;
   grid-column: 1;
   z-index: 1;
+  border: 1px solid red;
   height: 100%;
-  width: 500px;
-  margin: auto;
+  width: 100%;
+  background-image: url("/images/mapring.png");
+  background-position: center;
+  background-size: 110%;
 }
 
 .am-box-minmax {
