@@ -2,9 +2,12 @@ import React, { FunctionComponent, useState } from "react"
 import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
-import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { trackCustomEvent } from "gatsby-plugin-google-analytics" 
+import { window } from 'global';
 
-import "./styles.scss"
+import "./styles.scss";
+
+const HERT_PAGE = 'hert_collective';
 
 const Quote: FunctionComponent<any> = ({
   title = "Get a quote today.",
@@ -12,8 +15,15 @@ const Quote: FunctionComponent<any> = ({
   ctaText = "Request Quote",
   compact = false,
 }) => {
-  const [submitted, setSubmitted] = useState(false)
-  const formState = {}
+  const [submitted, setSubmitted] = useState(false);
+
+  const path = window?.location?.pathname.replace(/\//g, '');
+
+  const formState = {
+    // If this the `/hert_collective` could have queryParams change this to includes
+    isHert:path === HERT_PAGE ? 'yes' : 'no',
+    isShortQuote: 'yes',
+  }
 
   const handleInputChange = event => {
     formState[event.target.name] = event.target.value
@@ -39,8 +49,10 @@ const Quote: FunctionComponent<any> = ({
       setSubmitted(true)
     }
 
-    const form = event.target
-    const data = new FormData(form)
+    const form = event.target;
+    const data:any = new FormData(form);
+    data.isHert = formState.isHert;
+    data.isShortQuote = formState.isShortQuote;
     const xhr = new XMLHttpRequest()
     xhr.open(form.method, form.action)
     xhr.setRequestHeader("Accept", "application/json")
@@ -95,6 +107,11 @@ const Quote: FunctionComponent<any> = ({
               name="phone"
               onChange={handleInputChange}
             />
+            <input style={{opacity: 0}} name='isHert' onChange={() => {}} />
+
+            <input style={{opacity: 0}} name='isShortQuote' value='yes' onChange={() => {}} />
+
+
           </div>
           <div className="form__actions">
             <BlockCTA submit inline>
