@@ -97,7 +97,6 @@ const propertyOptions = {
   eCar: "Electric Car",
   heater: "Air Source Heating", // check this
   pool: "Swimming Pool",
-  storageHeater: "Storage Heating",
 }
 
 const SPECIAL_PRICE_KEY = "utm_campaign"
@@ -769,7 +768,7 @@ const QuotePage: React.FC<PageProps> = props => {
                     }}
                   />
                   <br />
-                  <FormSelect
+                  {/* <FormSelect
                     required
                     name="workFromHome"
                     label="Do you work from home?*"
@@ -782,7 +781,7 @@ const QuotePage: React.FC<PageProps> = props => {
                       })
                     }}
                   />
-                  <br />
+                  <br /> */}
                   <FormCheckbox
                     name="own"
                     label="Do you own any of the following?"
