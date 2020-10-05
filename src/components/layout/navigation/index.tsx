@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useContext } from "react"
 import { Link } from "gatsby"
 import { SitemapItem } from "~/hooks/useSitemap"
 import BurgerMenu from "~/components/configurable/BurgerMenu"
@@ -9,11 +9,11 @@ import Phone from "~/vectors/phone.inline.svg"
 
 import "./styles.scss"
 import "./navigation-item.scss"
-import { useCustomerType } from "~/hooks/useCustomerType"
 import Icon from "~/components/olc-framework/Icon"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const Navigation: FunctionComponent<any> = () => {
-  const { customerType, changeCustomerType } = useCustomerType()
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
 
   const navItems = (
     <>
@@ -108,7 +108,7 @@ const Navigation: FunctionComponent<any> = () => {
               }`}
               to="/"
               onClick={() => {
-                changeCustomerType("domestic")
+                setCustomerType("domestic")
               }}
             >
               For your Home
@@ -120,7 +120,7 @@ const Navigation: FunctionComponent<any> = () => {
               }`}
               to="/for-your-business"
               onClick={() => {
-                changeCustomerType("commercial")
+                setCustomerType("commercial")
               }}
             >
               For your Business
