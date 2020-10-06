@@ -104,7 +104,7 @@ const ContactUsPage = ({ location }) => {
                 />
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
-                    Request Quote
+                    Send
                   </BlockCTA>
                 </div>
               </form>

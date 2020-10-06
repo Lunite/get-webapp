@@ -17,6 +17,7 @@ interface BlockCTAProps {
   large?: boolean
   fullWidth?: boolean
   className?: string
+  title?: string
 }
 
 const BlockCTA: FunctionComponent<BlockCTAProps> = ({
@@ -33,6 +34,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
   large,
   fullWidth,
   className,
+  title,
 }) => {
   if (!url && !submit && !action) {
     return null
@@ -74,7 +76,11 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
 
   if (submit) {
     return (
-      <button className={`block-cta ${extraClasses()}`} type="submit">
+      <button
+        className={`block-cta ${extraClasses()}`}
+        type="submit"
+        title={title}
+      >
         {children}
       </button>
     )
@@ -88,6 +94,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
           onClick={() => {
             action()
           }}
+          title={title}
         >
           {children}
         </span>

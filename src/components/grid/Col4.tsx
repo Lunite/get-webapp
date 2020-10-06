@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react"
 import Col from "./Col"
 
-const Col4: FunctionComponent<any> = ({ indent, children }) => {
+const Col4: FunctionComponent<any> = ({ indent, children, className }) => {
   return (
-    <Col columns={4} indent={indent}>
+    <Col columns={4} indent={indent} className={className}>
       {children}
     </Col>
   )

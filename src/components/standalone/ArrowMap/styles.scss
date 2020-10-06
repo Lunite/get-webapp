@@ -1,0 +1,76 @@
+@import "~/styles/_variables.scss";
+
+.map-container {
+  display: grid;
+}
+
+.map-overlay {
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 2;
+  cursor: col-resize;
+}
+
+.arrowsvg {
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-image: url("/images/mapring.png");
+  background-position: center;
+  background-position-y: 45%;
+  background-size: 105%;
+}
+
+.am-box-minmax {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+.am-range-slider {
+  width: 90% !important;
+}
+
+.am-rs-range {
+  background-color: $dark-blue;
+}
+
+.am-range-lines {
+  box-sizing: border-box;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding: 10px 0;
+  width: 88%;
+}
+
+.arrowmap-tip {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 5px;
+  background-color: $light-grey;
+  border-radius: 0 0 5px 5px;
+  img {
+    height: 100%;
+    margin-right: 10px;
+  }
+  p {
+    flex-grow: 2;
+    font-size: 0.8em;
+    text-align: left;
+  }
+}
+
+@media ($mobile) {
+  canvas {
+    pointer-events: none;
+  }
+}
+
+@media ($phablet) {
+  .show-mob {
+    display: none !important;
+  }
+}

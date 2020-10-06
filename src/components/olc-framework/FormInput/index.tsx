@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, HTMLProps } from "react"
 
 import "./styles.scss"
 
@@ -9,33 +9,20 @@ interface FormInputProps {
   type?: string
   placeholder?: string
   value?: string
-  required?: boolean;
-  style?: React.CSSProperties;
+  required?: boolean
+  pattern?: string
+  title?: string
+  style?: React.CSSProperties
 }
 
-const FormInput: FunctionComponent<FormInputProps> = ({
-  label,
-  name,
-  className = "",
-  type = "text", 
-  placeholder = "",
-  value = "",
-  required = false,
-  children,
-  style,
-}) => {
+const FormInput: FunctionComponent<HTMLProps<HTMLInputElement>> = props => {
   return (
-    <div className={`form-input ${className}`} style={style}>
-      <label className="form-input__label">{label}</label>
-      <input
-        className="form-input__field"
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        defaultValue={value}
-        required={required}
-      />
-      {children && <div className="form-input__appendix">{children}</div>}
+    <div className={`form-input ${props.className}`} style={props.style}>
+      <label className="form-input__label">{props.label}</label>
+      <input {...props} style={{}} className="form-input__field" />
+      {props.children && (
+        <div className="form-input__appendix">{props.children}</div>
+      )}
     </div>
   )
 }

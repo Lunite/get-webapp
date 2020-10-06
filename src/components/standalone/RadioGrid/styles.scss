@@ -1,0 +1,71 @@
+@import "~/styles/_variables.scss";
+
+.hidden {
+  display: none;
+}
+
+.label-image {
+  max-width: 45%;
+  height: auto;
+}
+
+.button-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  // padding: 70px 0;
+  cursor: pointer;
+  border-radius: 0.25em;
+  color: $dark-blue;
+  background: $light-grey;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+  transition: 0.3s;
+  user-select: none;
+  height: 150px;
+  &:hover {
+    background: darken($light-grey, 10%);
+    color: darken($dark-blue, 10%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.32);
+  }
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2),
+      inset 0px -1px 0 rgba(0, 0, 0, 0.22);
+  }
+}
+
+.input-label-text {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.radio-label:checked + .button-label {
+  background: $green;
+  color: $dark-blue;
+  &:hover {
+    background: lighten($green, 5%);
+    color: darken($dark-blue, 5%);
+  }
+}
+
+.lower-margin {
+  margin-top: 10px !important;
+}
+
+@media ($mobile) {
+  .hide-mob {
+    display: none;
+  }
+  .lower-margin {
+    margin-top: 0 !important;
+  }
+  .button-label {
+    padding: 30px;
+    margin: -10px 0;
+    height: 100px;
+  }
+}

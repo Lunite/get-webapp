@@ -5,6 +5,7 @@ interface ColProps {
   indent?: boolean
   squidge?: boolean
   style?: object
+  className: string
 }
 
 const Col: FunctionComponent<ColProps> = ({
@@ -13,12 +14,13 @@ const Col: FunctionComponent<ColProps> = ({
   squidge,
   style,
   children,
+  className,
 }) => {
   return (
     <div
       className={`col-${columns} ${indent ? "u-layout--indent" : ""} ${
         squidge ? "u-layout--squidge" : ""
-      }`}
+      } ${className || ""}`}
       style={style}
     >
       {children}

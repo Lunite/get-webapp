@@ -9,9 +9,7 @@ const Vector = props => {
         .then(svg => {
           SVG = svg.ReactComponent
         })
-        .catch(e => {
-          // console.log(e)
-        })
+        .catch(e => {})
     })()
   }, [])
 

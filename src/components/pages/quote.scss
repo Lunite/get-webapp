@@ -1,0 +1,140 @@
+@import "~/styles/_variables.scss";
+
+.form-input {
+  margin-bottom: 25px;
+}
+
+.quote-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .shoutout__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 115px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotate(0.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.fade-in {
+  transition: $transition;
+  transform-origin: top left;
+  transition-property: opacity, transform;
+  animation: fade $transition;
+}
+
+@keyframes next-scroll-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-500px);
+    opacity: 0;
+  }
+}
+
+@keyframes next-scroll-in {
+  from {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes prev-scroll-in {
+  from {
+    transform: translateY(-500px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes prev-scroll-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+}
+
+.anim-scroll {
+  transition: $transition;
+  transform-origin: top left;
+  transition-property: opacity, transform;
+  transition-timing-function: $transition-timing-function;
+}
+
+.next-scroll-in {
+  animation: next-scroll-in $transition;
+}
+
+.next-scroll-out {
+  animation: next-scroll-out $transition;
+}
+
+.prev-scroll-in {
+  animation: prev-scroll-in $transition;
+}
+
+.prev-scroll-out {
+  animation: prev-scroll-out $transition;
+}
+
+.firstpageImage {
+  padding: 0 15px;
+}
+
+@media ($mobile) {
+  .hide-mob {
+    display: none;
+  }
+  .firstpage {
+    padding: 15px;
+  }
+  .quote-container {
+    .shoutout__text {
+      padding-left: 0;
+    }
+  }
+}
+
+.btn-unsure {
+  margin-right: 10px;
+  color: $black-paragraph;
+  background: darken($light-grey, 5);
+  border-color: darken($light-grey, 5);
+  &:hover {
+    background: darken($light-grey, 15);
+    border-color: darken($light-grey, 15);
+  }
+}

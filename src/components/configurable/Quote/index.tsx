@@ -12,7 +12,6 @@ const Quote: FunctionComponent<any> = ({
   ctaText = "Request Quote",
   compact = false,
 }) => {
-  const [submitted, setSubmitted] = useState(false)
   const formState = {}
 
   const handleInputChange = event => {
@@ -35,27 +34,9 @@ const Quote: FunctionComponent<any> = ({
       window.dataLayer = window?.dataLayer || []
     }
 
-    if (compact) {
-      setSubmitted(true)
-    }
-
-    const form = event.target
-    const data = new FormData(form)
-    const xhr = new XMLHttpRequest()
-    xhr.open(form.method, form.action)
-    xhr.setRequestHeader("Accept", "application/json")
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return
-      }
-    }
-    xhr.send(data)
-
-    if (!compact) {
-      return navigate("/quote", {
-        state: formState,
-      })
-    }
+    return navigate("/quote", {
+      state: formState,
+    })
   }
 
   return (
@@ -64,15 +45,10 @@ const Quote: FunctionComponent<any> = ({
       <p>{description}</p>
       <form
         className="form form--horizontal"
-        action="https://formspree.io/mbjzlwgw"
-        method="POST"
         name="quote-block"
         onSubmit={handleSubmit}
       >
-        <div
-          className="form__inner"
-          style={{ filter: submitted ? "blur(40px)" : "blur(0px)" }}
-        >
+        <div className="form__inner">
           <div className="form__fields">
             <input
               className="form__text-input"
@@ -80,6 +56,7 @@ const Quote: FunctionComponent<any> = ({
               placeholder="Full name"
               name="name"
               onChange={handleInputChange}
+              required
             />
             <input
               className="form__text-input"
@@ -87,6 +64,7 @@ const Quote: FunctionComponent<any> = ({
               placeholder="Email"
               name="email"
               onChange={handleInputChange}
+              required
             />
             <input
               className="form__text-input"
@@ -94,6 +72,7 @@ const Quote: FunctionComponent<any> = ({
               placeholder="Phone"
               name="phone"
               onChange={handleInputChange}
+              required
             />
           </div>
           <div className="form__actions">
@@ -101,16 +80,6 @@ const Quote: FunctionComponent<any> = ({
               {ctaText}
             </BlockCTA>
           </div>
-        </div>
-        <div
-          className="form__submitted-text"
-          style={
-            submitted
-              ? { opacity: 1, pointerEvents: "all" }
-              : { opacity: 0, pointerEvents: "none" }
-          }
-        >
-          <Heading level={5}>Thank you. We will be in touch</Heading>
         </div>
       </form>
     </div>
