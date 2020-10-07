@@ -24,6 +24,14 @@ import info from "~/vectors/info.svg"
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
 
+const googleCampaignQueryKeys = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+];
+
 interface IQuoteFormValues {
   name: string
   email: string
@@ -133,23 +141,31 @@ const QuotePage: React.FC<PageProps> = props => {
 
   // Check for discount query string params on component mount
   useEffect(() => {
+    const urlParams = new URLSearchParams(props.location.search); 
+
+    const campaignValues = googleCampaignQueryKeys.reduce((obj, key) => {
+      obj[key] = urlParams.get(key) || null;
+      return obj;
+    }, {});
+
+    setFormValues({...formValues, ...campaignValues});
+
     const checkForDiscount = async () => {
       await awaitForLocalStorageNastyHack() // awaits local storage
-      const storedSpecialVal = window.localStorage.getItem(SPECIAL_PRICE_KEY)
+      const storedSpecialVal = window.localStorage.getItem(SPECIAL_PRICE_KEY);
+      let discount = false;
       if (storedSpecialVal === SPECIAL_PRICE_VALUE) {
         // if value exists, set discounted to true
-        setFormValues({ ...formValues, discount: true })
-      } else {
-        const urlParams = new URLSearchParams(props.location.search) // if value doesn't exist, instead check query string params
-        if (urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE) {
-          // if query string params exist, update local storage + set discount true
-          window.localStorage.setItem(SPECIAL_PRICE_KEY, SPECIAL_PRICE_VALUE)
-          setFormValues({ ...formValues, discount: true })
-        }
+        discount = true;
+      } else if (urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE) {
+        // if query string params exist, update local storage + set discount true
+        window.localStorage.setItem(SPECIAL_PRICE_KEY, SPECIAL_PRICE_VALUE);
+        discount = true;
       }
+      setFormValues({ ...formValues, discount });
     }
-    checkForDiscount()
-  }, [])
+    checkForDiscount();
+  }, []);
 
   useEffect(() => {
     page !== 0 && scrollRef.current && scrollRef.current.scrollIntoView(true)
