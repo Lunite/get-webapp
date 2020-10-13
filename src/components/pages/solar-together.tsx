@@ -63,7 +63,7 @@ const SolarTogether = ({ markdownNodes }) => {
             <Col11>
               <Heading level={2}>A new partnership</Heading>
               <p>
-              Green Energy Together is proud and excited to announce our new partnership with Solar Together, a group-buying programme that brings together households and local authorities accross the country to get high quality solar panels at highly competitive prices. 
+              Green Energy Together is proud and excited to announce our new partnership with Solar Together, a group-buying programme that brings together households and local authorities across the country to get high quality solar panels at highly competitive prices. 
               </p>
               <p>
               The scheme is now open to all Devon residents who own their own house or have permission from the landlord to install a solar PV, enabling them to install solar technology on their homes at an affordable price.
@@ -232,7 +232,7 @@ const SolarTogether = ({ markdownNodes }) => {
               </Col9>
               <Col11>
                   <p>
-                      To find out more about this exciting opportunity <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to read Solar Together Frequesntly Asked Questions page, or check out the video below. 
+                      To find out more about this exciting opportunity <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to read Solar Together Frequently Asked Questions page, or check out the video below. 
                   </p>
               </Col11>
           </div>
