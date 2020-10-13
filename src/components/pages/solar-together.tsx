@@ -197,19 +197,16 @@ const SolarTogether = ({ markdownNodes }) => {
 
           <Block>
               <div className="row" style={{ marginTop: '-100px' }}>
-                  <div id='CenterWrapper' style={{display: 'flex',
-    flex: "1 1 0%",
-    width: "100%"}}>
-                      <Col5 style={centerstyle}>
+
+                      <Col5 >
                           <Image
                             src={jinko}
                             title="title"
                           />
                       </Col5>
-                      <Col7 style={{height: "100%",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  flexDirection: "column"}} >
+                      <Col7 
+
+                                   >
                           <Heading level={3}>PV system components</Heading>
                           <p>
                           Your solar system will include a combination of the following:
@@ -223,7 +220,7 @@ const SolarTogether = ({ markdownNodes }) => {
                           </TickList>
                       </Col7>
                   </div>
-              </div>
+              
           </Block>
 
           <div className="row" >
