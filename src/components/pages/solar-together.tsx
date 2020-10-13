@@ -25,6 +25,8 @@ import "./solar-together.scss"
 
 const logo = require('../../images/solar-together-logo.png');
 const placeholder = require('../../images/placeholder.png');
+const install1 = require('../../images/install1.jpg');
+const jinko = require('../../images/jinko.png');
 
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -61,16 +63,10 @@ const SolarTogether = ({ markdownNodes }) => {
             <Col11>
               <Heading level={2}>A new partnership</Heading>
               <p>
-                We believe in the solar future.  We believe the future of energy
-                is green, renewable, ethical and fair-priced and our transparent
-                approach places us well to deliver the future, now.
+              Green Energy Together is proud and excited to announce our new partnership with Solar Together, a group-buying programme that brings together households and local authorities accross the country to get high quality solar panels at highly competitive prices. 
               </p>
               <p>
-                As one of the largest commercial installers in the country, with
-                over 400 million watts of solar generated in the last decade
-                including landmarks like King's College Hospital and Paddington
-                Train Station, we get great deals directly from the
-                manufacturers and we pride ourselves on our fair market pricing.
+              The scheme is now open to all Devon residents who own their own house or have permission from the landlord to install a solar PV, enabling them to install solar technology on their homes at an affordable price.
               </p>
 
             </Col11>
@@ -87,22 +83,14 @@ const SolarTogether = ({ markdownNodes }) => {
                 paddingTop: 52,
               }}
             >
-              <Heading level={3}>Peace of mind</Heading>
+              <Heading level={3}>About us</Heading>
               <p>
-                Every step of the process and scope of the work is clearly
-                outlined and explained. We pride ourselves on ensuring that you
-                understand everything clearly before making the decision to go
-                green. Our service includes the offer of a detailed
-                commissioning review. A qualified engineer will review the
-                documentation, undertake any necessary registrations for the
-                property and issue them on your behalf.
+              For more than a decade, our team has designed, engineered, installed and maintained tens of thousands of domestic rooftops and commercial solar power systems across the UK. Our experience covers all facets of solar - from large-scale ground mount to bespoke designs and a number of historic British landmarks, such as King's College Hospital and Paddington Train Station.
               </p>
               <Icon alias="power" style={{ fontSize: 90 }} />
-              <Heading level={4}>Performance optimisation</Heading>
+              <Heading level={4}>Our history</Heading>
               <p>
-                Operations &amp; Maintenance plans are essential for the
-                majority of solar installations. At Green Energy Together, for 2
-                years after your install we'll look after you and
+              It all began as a family solar panel business in 2009 in Hertfordshire, England. Over the years, the business has grown considerably, both fuelling and sustaining the increasing awareness and adoption of renewable energy sources. Today, Green Energy Together is a leading British solar energy company with over 400MW of solar installed. 
 
 
               </p>
@@ -111,21 +99,20 @@ const SolarTogether = ({ markdownNodes }) => {
             </Col8>
             <Col4>
               <HighlightBlock
-                title="Warranty Data"
+                title="Get in touch"
                 action={goToProducts}
-                actionText="Jump to products area"
+                actionText="Call now"
               >
                 <li>
-                  <Icon alias="battery-charging" />
-                  5+ years warranty on inverters
+                  <Icon alias="email" />
+                  Fill out our <a href="/contact-us" style={{color:"white", fontWeight:"bold"}}>Contact Form</a>
                 </li>
                 <li>
-                  <Icon alias="worker" />2 years workmanship warranty
+                  <Icon alias="at" />Email <a href="mail:support@get-uk.com" style={{color:"white", fontWeight:"bold"}}>support@get-uk.com</a>
                 </li>
                 <li>
-                  <Icon alias="sun" />
-                  25+ years performance warranty and 10+ years product warranty
-                  on panels
+                  <Icon alias="phone" /> Phone 
+                  <a href="tel:02039954422" style={{color:"white", fontWeight:"bold"}}> 020 3995 4422</a>
                 </li>
               </HighlightBlock>
             </Col4>
@@ -137,11 +124,22 @@ const SolarTogether = ({ markdownNodes }) => {
 
             <div className="container">
               <Col8 >
-                <Heading level={3}>The process</Heading>
-                <p>Every step of the process and scope of the work is clearly
-                outlined and explained. We pride ourselves on ensuring that you
-                understand everything cl</p>
+                <Heading level={3}>How does it work?</Heading>
+                <p>Solar panels are not complex, but buying a solar system can be daunting. Solar Together makes getting the best deal easy, keeping you informed at every stage of the way.</p>
                 <div className="service__highlights">
+
+                  <div className="highlight">
+                    <div className="highlight__icon">
+                      <Icon alias="solar-energy" />
+
+                    </div>
+                    <div className="highlight__contents">
+                      <h4>
+                        Register
+                  </h4>
+                      <p>If you haven't done it yet, <a href="https://www.solartogether.co.uk/landing" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to choose your local area, and receive your personal recommendation for your home from Solar Together.</p>
+                    </div>
+                  </div>
 
                   <div className="highlight">
                     <div className="highlight__icon">
@@ -150,41 +148,22 @@ const SolarTogether = ({ markdownNodes }) => {
                     </div>
                     <div className="highlight__contents">
                       <h4>
-                        After analysing a number of k
+                      Book Your Survey
                   </h4>
-                      <p>Maintenance plans are essential for the
-                      majority of solar installations. At Green Energy Together, for 2
-                years after your install we'll look after you and</p>
+                      <p>We will go through your recommendation with you over the phone, and book in a site survey to take a look at your roof. Call us on <a href="tel:02039954422" style={{color:"#70b33b", fontWeight:"bold"}}>020 3995 4422</a> to book now.</p>
                     </div>
                   </div>
 
                   <div className="highlight">
                     <div className="highlight__icon">
-                      <Icon alias="energy-transform" />
+                      <Icon alias="worker" />
 
                     </div>
                     <div className="highlight__contents">
                       <h4>
-                        After analysing a number of k
+                      Arrange Your Install
                   </h4>
-                      <p> After analysing a number of key factors, including your
-                      location, building and roof orientation and inclination, we
-                    use state-of-the-art </p>
-                    </div>
-                  </div>
-
-                  <div className="highlight">
-                    <div className="highlight__icon">
-                      <Icon alias="energy-transform" />
-
-                    </div>
-                    <div className="highlight__contents">
-                      <h4>
-                        After analysing a number of k
-                  </h4>
-                      <p> After analysing a number of key factors, including your
-                      location, building and roof orientation and inclination, we
-                    use state-of-the-art </p>
+                      <p> Once your survey has taken place and you are happy with your quote. Arrange your install date with our team and start generating free, renewable electricity! </p>
                     </div>
                   </div>
 
@@ -194,15 +173,15 @@ const SolarTogether = ({ markdownNodes }) => {
               <Col3>
 
                 <Image
-                  src={placeholder}
-                  title="title"
-                  caption="x"
+                  src={logo}
+                  title="Solar Together Logo"
+                  caption="​"
                 />
 
                 <Image
-                  src={placeholder}
-                  title="title"
-                  caption="x"
+                  src={install1}
+                  title="Green Energy Together installers"
+                  caption="​"
                 />
               </Col3>
 
@@ -218,31 +197,34 @@ const SolarTogether = ({ markdownNodes }) => {
 
           <Block>
               <div className="row" style={{ marginTop: '-100px' }}>
-                  <div id='CenterWrapper' style={{display: 'flex', flex: 1}}>
+                  <div id='CenterWrapper' style={{display: 'flex',
+    flex: "1 1 0%",
+    width: "100%"}}>
                       <Col5 style={centerstyle}>
                           <Image
-                            src={placeholder}
+                            src={jinko}
                             title="title"
                           />
                       </Col5>
-                      <Col7>
-                          <Heading level={3}>Components</Heading>
+                      <Col7 style={{height: "100%",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  flexDirection: "column"}} >
+                          <Heading level={3}>PV system components</Heading>
                           <p>
-                              We believe sustainable options should be available and affordable
-                              for everyone — affordability shouldn't cost your peace of mind. options should be available and affordable
-                              for everyone — affordability shouldn't cost your peace of mind.
+                          Your solar system will include a combination of the following:
                           </p>
                           <TickList>
-                              <li>As one of the largest installers in the country,</li>
-                              <li>As one of the largest installers in the country,</li>
-                              <li>As one of the largest installers in the country,</li>
-                              <li>As one of the largest installers in the country,</li>
+                              <li>Panels: Jinko Tiger all black Mono Facial 340-360w</li>
+                              <li>Inverter: FoxESS F SERIES Dual MPPT or S Series Single Phase</li>
+                              <li>Battery: FoxESS ultra AC coupled or single phased </li>
+                              <li>Guard: Enviroguard solar panel bird exclusion system</li>
+                              <li>Power Controller: Immersun automatic</li>
                           </TickList>
                       </Col7>
                   </div>
               </div>
           </Block>
-
 
           <div className="row" >
               <Col9>
@@ -250,9 +232,7 @@ const SolarTogether = ({ markdownNodes }) => {
               </Col9>
               <Col11>
                   <p>
-                      Our usage-based model makes our designs really cost effective.
-                      Our team will only recommend the system that works best for you,
-                      based on the amount of energy you use
+                      To find out more about this exciting opportunity <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to read Solar Together Frequesntly Asked Questions page, or check out the video below. 
                   </p>
               </Col11>
           </div>
