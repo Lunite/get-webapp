@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react"
 
-interface ColProps {
-  columns: number
+export interface ColProps {
+  columns?: number
   indent?: boolean
   squidge?: boolean
   style?: object
-  className: string
+  className?: string
 }
 
 const Col: FunctionComponent<ColProps> = ({

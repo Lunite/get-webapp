@@ -92,8 +92,8 @@ const HomepageB2b = ({ markdownNodes }) => {
                 </li>
               </TickList>
 
-              <BlockCTA secondary url="/products-warranties" arrow="right">
-                Explore Packages
+              <BlockCTA secondary url="/service/industrial-commercial-solutions" arrow="right">
+                Find out more
               </BlockCTA>
             </Col10>
             <Col2>
@@ -122,7 +122,7 @@ const HomepageB2b = ({ markdownNodes }) => {
                 and asset services, making sure your set-up performs optimally.
               </p>
               <TickList>
-                <li>
+                <li> 
                   We offer preventative maintenance scheduling, full system
                   monitoring and control, as well as fault rectification.
                 </li>
@@ -132,7 +132,7 @@ const HomepageB2b = ({ markdownNodes }) => {
                   software.
                 </li>
               </TickList>
-              <BlockCTA secondary url="/products-warranties" arrow="right">
+              <BlockCTA secondary url="/service/operation-maintenance" arrow="right">
                 Find out more
               </BlockCTA>
             </Col10>
@@ -173,9 +173,9 @@ const HomepageB2b = ({ markdownNodes }) => {
                   causes of underperformance.
                 </li>
               </TickList>
-              {/* <BlockCTA secondary url="/service/asset-management" arrow="right">
+               <BlockCTA secondary url="/service/asset-management" arrow="right">
                 Find out more
-              </BlockCTA> */}
+              </BlockCTA> 
             </Col10>
             <Col2>
               <Image
@@ -213,9 +213,9 @@ const HomepageB2b = ({ markdownNodes }) => {
                   run smoothly and efficiently.
                 </li>
               </TickList>
-              {/* <BlockCTA secondary url="/service/asset-management" arrow="right">
+              <BlockCTA secondary url="/service/technical-design" arrow="right">
                 Find out more
-              </BlockCTA> */}
+              </BlockCTA>
             </Col10>
           </div>
         </Section>
