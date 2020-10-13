@@ -385,6 +385,15 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "All of the solar panels Green Energy Together supplies come with a minimum 10 year product warranty and a 25 year linear performance warranty.",
       },
+      {
+        slug: "solar-together",
+        seo_title:
+          "Solar Together | Green Energy Together | Solar Panel Installer",
+        title: "Solar Together",
+        keywords: "",
+        description:
+          "Solar Together",
+      },
     ]),
   ])
 }

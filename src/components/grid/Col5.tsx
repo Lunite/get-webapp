@@ -1,12 +1,11 @@
-import React, { FunctionComponent } from "react"
-import Col from "./Col"
+import React from "react"
+import Col, { ColProps } from "./Col"
 
-const Col5: FunctionComponent<any> = ({ indent, children }) => {
-  return (
-    <Col columns={5} indent={indent}>
-      {children}
-    </Col>
-  )
-}
+const Col5: React.FC<ColProps> = (props) => <Col {
+    ...{
+      ...props,
+      columns: 5,
+    }} 
+/>;
 
 export default Col5

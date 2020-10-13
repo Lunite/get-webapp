@@ -14,7 +14,7 @@ For more than a decade, our team has designed, engineered, installed and maintai
 ### Our history 
 
 It all began as a family solar panel business in 2009 in Hertfordshire, England. Over the years, the business has grown considerably, both fuelling and sustaining the increasing awareness and adoption of renewable energy sources.
-Today, Green Energy Together is a leading British solar energy company with over 320MW of solar installed. Our team has many years of experience in the renewable industry across a variety of technologies, including solar PV, solar thermal, energy storage and air source. 
+Today, Green Energy Together is a leading British solar energy company with over 400MW of solar installed. Our team has many years of experience in the renewable industry across a variety of technologies, including solar PV, solar thermal, energy storage and air source. 
 
 ### Disrupting the domestic solar market 
 
