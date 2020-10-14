@@ -29,7 +29,7 @@ const placeholder = require('../../images/placeholder.png');
 const install1 = require('../../images/install1.jpg');
 const jinko = require('../../images/jinko.png');
 const image2 = require('../../images/blackpanels2.jpg');
-const image1 = require('../../images/staff.jpg');
+const image1 = require('../../images/tshirt.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
