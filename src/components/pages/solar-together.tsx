@@ -27,6 +27,7 @@ const logo = require('../../images/solar-together-logo.png');
 const placeholder = require('../../images/placeholder.png');
 const install1 = require('../../images/install1.jpg');
 const jinko = require('../../images/jinko.png');
+const blackpanels = require('../../images/blackpanels2.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -105,10 +106,10 @@ const SolarTogether = ({ markdownNodes }) => {
               >
                 <li>
                   <Icon alias="email" />
-                  Fill out our <a href="/contact-us" style={{color:"white", fontWeight:"bold"}}>Contact Form</a>
+                  Fill out our <a href="/contact-us" style={{color:"white", fontWeight:"bold"}} target="_blank">Contact Form</a>
                 </li>
                 <li>
-                  <Icon alias="at" />Email <a href="mail:support@get-uk.com" style={{color:"white", fontWeight:"bold"}}>support@get-uk.com</a>
+                  <Icon alias="at" />Email <a href="mailto:support@get-uk.com" style={{color:"white", fontWeight:"bold"}}>support@get-uk.com</a>
                 </li>
                 <li>
                   <Icon alias="phone" /> Phone 
@@ -137,7 +138,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                         Register
                   </h4>
-                      <p>If you haven't done it yet, <a href="https://www.solartogether.co.uk/landing" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to choose your local area, and receive your personal recommendation for your home from Solar Together.</p>
+                      <p>If you haven't done it yet, <a href="https://www.solartogether.co.uk/landing" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a> to choose your local area, and receive your personal recommendation for your home from Solar Together.</p>
                     </div>
                   </div>
 
@@ -150,7 +151,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                       Book Your Survey
                   </h4>
-                      <p>We will go through your recommendation with you over the phone, and book in a site survey to take a look at your roof. Call us on <a href="tel:02039954422" style={{color:"#70b33b", fontWeight:"bold"}}>020 3995 4422</a> to book now.</p>
+                      <p>We will go through your recommendation with you over the phone, and book in a site survey to take a look at your roof. Call us on <a href="tel:02039954422" style={{color:"#70b33b", fontWeight:"bold"}}>020 3995 4422</a> or email <a href="mailto:support@get-uk.com" style={{color:"#70b33b", fontWeight:"bold"}}>support@get-uk.com</a> to book now.</p>
                     </div>
                   </div>
 
@@ -179,7 +180,7 @@ const SolarTogether = ({ markdownNodes }) => {
                 />
 
                 <Image
-                  src={install1}
+                  src={blackpanels}
                   title="Green Energy Together installers"
                   caption="​"
                 />
@@ -229,7 +230,7 @@ const SolarTogether = ({ markdownNodes }) => {
               </Col9>
               <Col11>
                   <p>
-                      To find out more about this exciting opportunity <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}}>click here</a> to read Solar Together Frequently Asked Questions page, or check out the video below. 
+                      To find out more about this exciting opportunity <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a> to read Solar Together Frequently Asked Questions page, or check out the video below. 
                   </p>
               </Col11>
           </div>
