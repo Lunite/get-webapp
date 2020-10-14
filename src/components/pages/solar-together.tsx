@@ -24,10 +24,12 @@ import BlockCTA from "../configurable/BlockCTA"
 import "./solar-together.scss"
 
 const logo = require('../../images/solar-together-logo.png');
+const bothlogos = require('../../images/bothlogos.png');
 const placeholder = require('../../images/placeholder.png');
 const install1 = require('../../images/install1.jpg');
 const jinko = require('../../images/jinko.png');
-const blackpanels = require('../../images/blackpanels2.jpg');
+const image2 = require('../../images/blackpanels2.jpg');
+const image1 = require('../../images/staff.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -60,9 +62,23 @@ const SolarTogether = ({ markdownNodes }) => {
       </Hero>
       <Block>
         <div className="container u-layout--indent">
+          <div className="row" style={{paddingBottom:"70px"}} >
+          <Col11 style={centerstyle}>
+                <Image 
+                  src={bothlogos}
+                  title="Solar Together Logo"
+                  caption="​"
+                 
+                />
+          </Col11>
+        </div>
+        </div>
+
+        <div className="container u-layout--indent">
+
           <div className="row">
             <Col11>
-              <Heading level={2}>A new partnership</Heading>
+
               <p>
               Green Energy Together is proud and excited to announce our new partnership with Solar Together, a group-buying programme that brings together households and local authorities across the country to get high quality solar panels at highly competitive prices. 
               </p>
@@ -109,11 +125,11 @@ const SolarTogether = ({ markdownNodes }) => {
                   Fill out our <a href="/contact-us" style={{color:"white", fontWeight:"bold"}} target="_blank">Contact Form</a>
                 </li>
                 <li>
-                  <Icon alias="at" />Email <a href="mailto:support@get-uk.com" style={{color:"white", fontWeight:"bold"}}>support@get-uk.com</a>
+                  <Icon alias="at" />Email <a href="mailto:devon@get-uk.com" style={{color:"white", fontWeight:"bold"}}>devon@get-uk.com</a>
                 </li>
                 <li>
                   <Icon alias="phone" /> Phone 
-                  <a href="tel:02039954422" style={{color:"white", fontWeight:"bold"}}> 020 3995 4422</a>
+                  <a href="tel:02037703494" style={{color:"white", fontWeight:"bold"}}> 0203 770 3494</a>
                 </li>
               </HighlightBlock>
             </Col4>
@@ -151,7 +167,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                       Book Your Survey
                   </h4>
-                      <p>We will go through your recommendation with you over the phone, and book in a site survey to take a look at your roof. Call us on <a href="tel:02039954422" style={{color:"#70b33b", fontWeight:"bold"}}>020 3995 4422</a> or email <a href="mailto:support@get-uk.com" style={{color:"#70b33b", fontWeight:"bold"}}>support@get-uk.com</a> to book now.</p>
+                      <p>Once you have registered with Solar Together and your initial recommendation has been agreed we will reach out to you to book your survey. If you have any questions don't hesitate to contact us on <a href="tel:02037703494" style={{color:"#70b33b", fontWeight:"bold"}}>0203 770 3494</a> or email us at <a href="mailto:devon@get-uk.com" style={{color:"#70b33b", fontWeight:"bold"}}>devon@get-uk.com</a>.</p>
                     </div>
                   </div>
 
@@ -164,7 +180,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                       Arrange Your Install
                   </h4>
-                      <p> Once your survey has taken place and you are happy with your quote. Arrange your install date with our team and start generating free, renewable electricity! </p>
+                      <p> After your survey has taken place and you confirm you're happy with your refined quote our team will be in touch you to arrange your installation, so you can start generating green, renewable electricity! </p>
                     </div>
                   </div>
 
@@ -174,13 +190,13 @@ const SolarTogether = ({ markdownNodes }) => {
               <Col3>
 
                 <Image
-                  src={logo}
+                  src={image1}
                   title="Solar Together Logo"
                   caption="​"
                 />
 
                 <Image
-                  src={blackpanels}
+                  src={image2}
                   title="Green Energy Together installers"
                   caption="​"
                 />

@@ -12,9 +12,10 @@ import "./navigation-item.scss"
 import Icon from "~/components/olc-framework/Icon"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
-const Navigation: FunctionComponent<any> = () => {
+const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
-
+  console.log(isSolarTogether)
+  
   const navItems = (
     <>
       <div className="navigation-item">
@@ -139,6 +140,8 @@ const Navigation: FunctionComponent<any> = () => {
         </div>
       </div>
 
+      {!isSolarTogether && (
+        <>
       <div className="navigation__main hidden-xs">
         <div className="container">
           <Link className="logo__anchor" to="/">
@@ -163,6 +166,7 @@ const Navigation: FunctionComponent<any> = () => {
           </div>
         </div>
       </div>
+      </>)}
     </header>
   )
 }

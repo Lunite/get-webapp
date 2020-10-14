@@ -19,6 +19,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   const [markdownNodes, setMarkdownNodes] = useState([])
   const [imageNodes, setImageNodes] = useState([])
   const [seoData, setSeoData] = useState({})
+  const [isSolarTogether, setIsSolarTogether] = useState(false)
 
   const {
     allSitePage,
@@ -148,6 +149,9 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   useEffect(() => {
     if (context) {
       setSeoData(getSeoData())
+
+      setIsSolarTogether(context.slug === 'solar-together')
+
     }
   }, [context])
 
@@ -157,7 +161,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
       {markdownNodes.length ? (
         <div className="page-wrapper">
           <CustomerTypeProvider>
-            <Navigation />
+            <Navigation isSolarTogether={isSolarTogether} />
             <main>
               {React.Children.toArray(children).map(child =>
                 React.cloneElement(child, { markdownNodes, imageNodes })
