@@ -55,7 +55,7 @@ const Certificates = ({ imageNodes }) => {
           src="/images/certificates-mobile.jpg"
           alt="Certificate Logos"
         /> */}
-        <div
+        {/* <div
           style={{
             paddingTop: "20px",
             color: "grey",
@@ -70,7 +70,7 @@ const Certificates = ({ imageNodes }) => {
             under Solarplicity Smart Systems registration NAPIT 30902 and MCS
             NAP30902.
           </p>
-        </div>
+        </div> */}
       </div>
     </Block>
   )

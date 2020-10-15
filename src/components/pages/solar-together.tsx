@@ -230,7 +230,7 @@ const SolarTogether = ({ markdownNodes }) => {
                           </p>
                           <TickList>
                               <li>Panels: Jinko Tiger all black Mono Facial 340-360w</li>
-                              <li>Inverter: FoxESS F SERIES Dual MPPT or S Series Single Phase</li>
+                              <li>Inverter: FoxESS F Series Dual MPPT or S Series Single Phase</li>
                               <li>Battery: FoxESS ultra AC coupled or single phased </li>
                               <li>Guard: Enviroguard solar panel bird exclusion system</li>
                               <li>Power Controller: Immersun automatic</li>
