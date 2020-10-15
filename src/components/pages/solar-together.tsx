@@ -29,7 +29,7 @@ const placeholder = require('../../images/placeholder.png');
 const install1 = require('../../images/install1.jpg');
 const jinko = require('../../images/jinko.png');
 const image2 = require('../../images/blackpanels2.jpg');
-const image1 = require('../../images/staff.jpg');
+const image1 = require('../../images/tshirt.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -230,7 +230,7 @@ const SolarTogether = ({ markdownNodes }) => {
                           </p>
                           <TickList>
                               <li>Panels: Jinko Tiger all black Mono Facial 340-360w</li>
-                              <li>Inverter: FoxESS F SERIES Dual MPPT or S Series Single Phase</li>
+                              <li>Inverter: FoxESS F Series Dual MPPT or S Series Single Phase</li>
                               <li>Battery: FoxESS ultra AC coupled or single phased </li>
                               <li>Guard: Enviroguard solar panel bird exclusion system</li>
                               <li>Power Controller: Immersun automatic</li>
