@@ -102,6 +102,12 @@ const QuotePage = ({ location }) => {
                   </p>
                 </Block>
                 <FormSelect
+                  name="ownhome"
+                  label="Are you a homeowner?"
+                  options={["yes","no"]}
+                  required
+                />
+                <FormSelect
                   name="beds"
                   label="Number of beds"
                   options={["1", "2", "3", "4", "5", "6+"]}
