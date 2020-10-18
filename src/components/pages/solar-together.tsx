@@ -180,7 +180,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                       Arrange Your Install
                   </h4>
-                      <p> After your survey has taken place and you confirm you're happy with your refined quote our team will be in touch you to arrange your installation, so you can start generating green, renewable electricity! </p>
+                      <p> After your survey has taken place and you confirm you're happy with your refined quote our team will be in touch with you to arrange your installation, so you can start generating green, renewable electricity! </p>
                     </div>
                   </div>
 
