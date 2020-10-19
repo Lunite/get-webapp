@@ -1,5 +1,5 @@
 ---
 title: Renusol VS+ Mounting System
-image: german-solar-giant-1.png
+image: renusol-mounting-system.png
 pdf: get-renusol-vs-.pdf
 ---
