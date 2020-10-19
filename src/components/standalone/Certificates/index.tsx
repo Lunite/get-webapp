@@ -11,7 +11,7 @@ const Certificates = ({ imageNodes }) => {
   const [desktopImage, setDesktopImage] = useState(undefined)
 
   useEffect(() => {
-    setMobileImage(imageNodesFilter(imageNodes, "certificates-mobile.jpg"))
+    setMobileImage(imageNodesFilter(imageNodes, "certificates-mobile.png"))
     setDesktopImage(imageNodesFilter(imageNodes, "certificates.png"))
   }, [imageNodes])
 
