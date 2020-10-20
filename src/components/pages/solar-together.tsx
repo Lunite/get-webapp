@@ -229,11 +229,30 @@ const SolarTogether = ({ markdownNodes }) => {
                           Your solar system will include a combination of the following:
                           </p>
                           <TickList>
-                              <li>Panels: Jinko Tiger all black Mono Facial 340-360w</li>
-                              <li>Inverter: FoxESS F Series Dual MPPT or S Series Single Phase</li>
-                              <li>Battery: FoxESS ultra AC coupled or single phased </li>
-                              <li>Guard: Enviroguard solar panel bird exclusion system</li>
-                              <li>Power Controller: Immersun automatic</li>
+                              <li><span >Panels:</span> 
+                                <a target="_blank" href="https://www.get-uk.com/static/0cc6ba67381f58a5168e6b26b6485f8f/get-tr-jkm340-360m-6tl3-b-a1c1-en-jinko-340w.pdf"style={{color:"#3c96c5", fontWeight:"normal"}} > Jinko Mono Perc All Black</a></li>                              
+                              <li>Inverter:  
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/59c3b59f0a100e75c86ee650c8dd72c5/get-single-phase-f-series.pdf"> F Series Dual MPPT Inverter</a> or 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/a6f12873ad3ceddf721e2cb561c16ab1/get-ess-s-series-inverter.pdf"> S Series Single MPPT Inverter</a>, 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/52f4549de4db8bb0bdd05019857cce91/get-solar-edge-inverter.pdf"> Solar Edge Optimised option </a>
+                              </li>
+                              <li>Battery: 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/7fe21c9666df1bc913c929d94cea437f/get-ultra-sp-ac-battery.pdf"> FoxESS Single Phase  </a> or 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/a0523e0c86e10fb97b1e03e9f290a57c/get-ultra-sp-hybrid-battery.pdf"> Hybrid Battery Storage  </a> 
+                              </li>
+                              <li>Optimized Option:
+                                <a target="_blank" href="https://www.get-uk.com/static/d0b3497e2a74da2c6b50130db4fa3da8/get-solar-edge-power-optimizer.pdf" style={{color:"#3c96c5", fontWeight:"normal"}}> Solar Edge Panel Power Optimisers </a> 
+                              </li>                            
+                              <li>Power Controller:  
+                                <a target="_blank" href="https://www.get-uk.com/static/32e544b3601896dfb39de61a9527fdc5/get-immersun-automatic-power-controller.pdf" style={{color:"#3c96c5", fontWeight:"normal"}}> Immersun automatic</a>
+                              </li>
+                              <li>Optional Extra: 
+                                <a target="_blank" href="https://www.get-uk.com/static/0cd052464a39734397a8a012e5909e9a/get-enviroguard-solar-panel-bird-exclusion-system-product-spec-sheet.pdf" style={{color:"#3c96c5", fontWeight:"normal"}}>  Envirogaurd Panel Bird Exclusion </a>,
+                                <a target="_blank" href="https://www.get-uk.com/static/88e32f77bb85a4d68d644bbdfb3ec370/get-brostrend_wi-fi_range_extender_signal_booster_manual_e1_v1_v2.pdf" style={{color:"#3c96c5", fontWeight:"normal"}}> BrosTrend AC1200 WiFi Booster</a> and 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/727e1b70b592aea705519f9e8e6ef7e5/get-renusol-vs-.pdf"> Renusol Mounting System</a>
+                              </li>
+
+
                           </TickList>
                       </Col7>
                   </div>
