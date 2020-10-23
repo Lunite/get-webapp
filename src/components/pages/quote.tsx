@@ -50,14 +50,14 @@ const QuotePage = ({ location }) => {
               >
                 <FormInput
                   name="full-name"
-                  label="Full name"
+                  label="Full name*"
                   placeholder="Type your full name"
                   value={state?.name}
                   required
                 />
                 <FormInput
                   name="email"
-                  label="Email"
+                  label="Email*"
                   type="email"
                   placeholder="Type your email"
                   value={state?.email}
@@ -65,10 +65,16 @@ const QuotePage = ({ location }) => {
                 />
                 <FormInput
                   name="phone-number"
-                  label="Phone number"
+                  label="Phone number*"
                   type="tel"
                   placeholder="Type your phone number"
                   value={state?.phone}
+                  required
+                />
+                <FormSelect
+                  name="Homeowner"
+                  label="Do you own your property?*"
+                  options={["yes", "no"]}
                   required
                 />
                 <FormInput
