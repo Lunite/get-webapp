@@ -129,7 +129,7 @@ const SolarTogether = ({ markdownNodes }) => {
                 </li>
                 <li>
                   <Icon alias="phone" /> Phone 
-                  <a href="tel:02037703494" style={{color:"white", fontWeight:"bold"}}> 0203 770 3494</a>
+                  <a href="tel:02038669896" style={{color:"white", fontWeight:"bold"}}> 020 3866 9896</a>
                 </li>
               </HighlightBlock>
             </Col4>
@@ -167,7 +167,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                       Book Your Survey
                   </h4>
-                      <p>Once you have registered with Solar Together and your initial recommendation has been agreed we will reach out to you to book your survey. If you have any questions don't hesitate to contact us on <a href="tel:02037703494" style={{color:"#70b33b", fontWeight:"bold"}}>0203 770 3494</a> or email us at <a href="mailto:devon@get-uk.com" style={{color:"#70b33b", fontWeight:"bold"}}>devon@get-uk.com</a>.</p>
+                      <p>Once you have registered with Solar Together and your initial recommendation has been agreed we will reach out to you to book your survey. If you have any questions don't hesitate to contact us on <a href="tel:02038669896" style={{color:"#70b33b", fontWeight:"bold"}}>020 3866 9896</a> or email us at <a href="mailto:devon@get-uk.com" style={{color:"#70b33b", fontWeight:"bold"}}>devon@get-uk.com</a>.</p>
                     </div>
                   </div>
 
