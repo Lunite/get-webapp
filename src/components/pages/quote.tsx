@@ -8,11 +8,49 @@ import BlockCTA from "~/components/configurable/BlockCTA"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import Col6 from "~/components/grid/Col6"
 import Image from "../configurable/Image"
+import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
+const SPECIAL_PRICE_KEY = 'utm_campaign';
+const SPECIAL_PRICE_VALUE = 'special_price';
+
+const STORAGE_KEY = 'IS_SPECIAL';
+
+const awaitForLocalStorageNastyHack = () => {
+  return new Promise((resolve) => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
+    }
+    return resolve();
+  });
+} 
+
 const QuotePage = ({ location }) => {
-  const { state = {} } = location
+  const { state = {} } = location;
+
+  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
+
+  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
+  console.log('SPECIAL VALUE', specialValue);
+
+  const setValueFromStorage = async() => {
+    await awaitForLocalStorageNastyHack();
+   
+    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
+
+    if (!storedSpecialValue) {
+      window.localStorage.setItem(STORAGE_KEY, specialValue);
+    } else {
+      specialValue = storedSpecialValue;
+      setIsSpecial(storedSpecialValue);
+    }
+  }
+
+  console.log(state);
+
+  // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
+  setValueFromStorage();
 
   return (
     <div className="quote-page">
@@ -34,11 +72,19 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
-                onSubmit={() => {
-                  window.dataLayer = window.dataLayer || []
+                onSubmit={(e) => {
+                  window.dataLayer = window.dataLayer || [];
 
+                  // TODO: This index is set to the hidden input field
+                  // if you add fields or remove fields, change the index
+                  e.target[12].value = isSpecial;                  
+                  e.target[13].value = state.isHert || 'no';                  
+                  e.target[14].value = state.isShortQuote || 'no';              
+
+                  window.localStorage.removeItem(STORAGE_KEY);
+                  
                   const eventData = {
-                    category: "Form",
+                   category: "Form",
                     action: "Submit",
                     label: "LongQuote",
                     // value: 0 // optional
@@ -50,14 +96,14 @@ const QuotePage = ({ location }) => {
               >
                 <FormInput
                   name="full-name"
-                  label="Full name*"
+                  label="Full name"
                   placeholder="Type your full name"
                   value={state?.name}
                   required
                 />
                 <FormInput
                   name="email"
-                  label="Email*"
+                  label="Email"
                   type="email"
                   placeholder="Type your email"
                   value={state?.email}
@@ -65,16 +111,10 @@ const QuotePage = ({ location }) => {
                 />
                 <FormInput
                   name="phone-number"
-                  label="Phone number*"
+                  label="Phone number"
                   type="tel"
                   placeholder="Type your phone number"
                   value={state?.phone}
-                  required
-                />
-                <FormSelect
-                  name="Homeowner"
-                  label="Do you own your property?*"
-                  options={["yes", "no"]}
                   required
                 />
                 <FormInput
@@ -93,7 +133,7 @@ const QuotePage = ({ location }) => {
                   placeholder="Type unit rate"
                 />
                 <FormInput
-                  name="standing-charge"
+                  name="standing-charge" 
                   label="Standing Charge"
                   placeholder="Type standing charge"
                 />
@@ -122,14 +162,36 @@ const QuotePage = ({ location }) => {
                     "Electric Storage Heating",
                   ]}
                 />
+                <FormInput
+                  name="DWMPrice"
+                  label="DWMPrice"
+                  placeholder="We should not see this"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={isSpecial}
+                />
+                <FormInput
+                  name="Hert"
+                  label="Hert"
+                  placeholder="We should not see this, extra discout from he"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={state.isHert}
+                />
+                <FormInput
+                  name="AlreadySubmittedShortQuote"
+                  label="AlreadySubmittedShortQuote"
+                  placeholder="We should not see this, indicates the person filled the short quote lready"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={state.isShortQuote}
+                />
+
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
-                    Request Quote
+                    Request Quote 
                   </BlockCTA>
                 </div>
               </form>
             </Col6>
-            <Col6>
+            <Col6> 
               <Image src="/images/quote-24.jpg" title="Fast Response" />
             </Col6>
           </div>
