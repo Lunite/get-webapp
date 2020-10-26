@@ -31,6 +31,7 @@
     "gatsby-source-graphql": "2.5.0",
     "gatsby-transformer-remark": "2.8.10",
     "gatsby-transformer-sharp": "2.5.2",
+    "global": "^4.4.0",
     "google-maps-react": "^2.0.6",
     "graphql-hooks": "4.4.4",
     "graphql-tag": "2.10.3",

@@ -8,11 +8,45 @@ import BlockCTA from "~/components/configurable/BlockCTA"
 import FormCheckbox from "../olc-framework/FormCheckbox"
 import Col6 from "~/components/grid/Col6"
 import Image from "../configurable/Image"
+import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
+export const SPECIAL_PRICE_KEY = 'utm_campaign';
+export const SPECIAL_PRICE_VALUE = 'special_price';
+
+const googleCampaignQueryKeys = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+];
+
 const QuotePage = ({ location }) => {
-  const { state = {} } = location
+  const { state = {} } = location;
+
+  const urlParams = new URLSearchParams(location.search); 
+
+  let specialValue = urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE ? 'Yes' : 'No';
+
+  const isSpecial = state?.isSpecialPrice == 'Yes' ? 'Yes' : specialValue;
+
+  console.log('isSpecial', isSpecial)
+
+  const [form, setForm] = React.useState<Record<string, string>>({
+    'full-name': state?.name,
+    'email': state?.email,
+    'phone-number': state?.phone,
+    'isSpecialPrice': isSpecial,
+  });
+
+  const setFormValue = (key, value) => {
+    setForm({
+      ...form,
+      [key]: value
+    });
+  }
 
   return (
     <div className="quote-page">
@@ -34,11 +68,13 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
-                onSubmit={() => {
-                  window.dataLayer = window.dataLayer || []
+                onSubmit={(e) => {
+                  window.dataLayer = window.dataLayer || [];                
 
+                  window.localStorage.clear();
+                  
                   const eventData = {
-                    category: "Form",
+                   category: "Form",
                     action: "Submit",
                     label: "LongQuote",
                     // value: 0 // optional
@@ -52,50 +88,62 @@ const QuotePage = ({ location }) => {
                   name="full-name"
                   label="Full name*"
                   placeholder="Type your full name"
-                  value={state?.name}
+                  value={form['full-name']}
                   required
+                  onChange={(evt) => setFormValue('full-name', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="email"
                   label="Email*"
                   type="email"
                   placeholder="Type your email"
-                  value={state?.email}
+                  value={form['email']}
                   required
+                  onChange={(evt) => setFormValue('email', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="phone-number"
                   label="Phone number*"
                   type="tel"
                   placeholder="Type your phone number"
-                  value={state?.phone}
+                  value={form['phone-number']}
                   required
+                  onChange={(evt) => setFormValue('phone-number', evt.currentTarget.value)}
                 />
                 <FormSelect
                   name="Homeowner"
                   label="Do you own your property?*"
                   options={["yes", "no"]}
+                  value={form['Homeowner']}
                   required
+                  onChange={(evt) => setFormValue('Homeowner', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="address"
                   label="Address"
                   placeholder="Type your full address"
+                  onChange={(evt) => setFormValue('address', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="annual-electricity-usage"
                   label="Annual Electricity Usage"
                   placeholder="Type your annual electricity usage"
+                  value={form['annual-electricity-usage']}
+                  onChange={(evt) => setFormValue('annual-electricity-usage', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="unit-rate"
                   label="Unit Rate"
                   placeholder="Type unit rate"
+                  value={form['unit-rate']}
+                  onChange={(evt) => setFormValue('unit-rate', evt.currentTarget.value)}
                 />
                 <FormInput
-                  name="standing-charge"
+                  name="standing-charge" 
                   label="Standing Charge"
                   placeholder="Type standing charge"
+                  value={form['standing-charge']}
+                  onChange={(evt) => setFormValue('standing-charge', evt.currentTarget.value)}
                 />
                 <Block>
                   <Heading level={4}>Why we need this information</Heading>
@@ -111,6 +159,8 @@ const QuotePage = ({ location }) => {
                   name="beds"
                   label="Number of beds"
                   options={["1", "2", "3", "4", "5", "6+"]}
+                  value={form['beds']}
+                  onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
                 />
                 <FormCheckbox
                   name="own"
@@ -121,15 +171,51 @@ const QuotePage = ({ location }) => {
                     "Swimming Pool",
                     "Electric Storage Heating",
                   ]}
+                  value={form['own']}
+                  onChange={(evt) => setFormValue('own', evt.currentTarget.value)}
                 />
+                <FormInput
+                  name="isSpecialPrice"
+                  label="isSpecialPrice"
+                  placeholder="We should not see this"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={isSpecial}
+                />
+                <FormInput
+                  name="Hert"
+                  label="Hert"
+                  placeholder="We should not see this, extra discout from he"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={state?.isHert || 'no'}
+                />
+                <FormInput
+                  name="AlreadySubmittedShortQuote"
+                  label="AlreadySubmittedShortQuote"
+                  placeholder="We should not see this, indicates the person filled the short quote lready"
+                  style={{maxHeight:0, opacity: 0}}
+                  value={state?.isShortQuote || 'no'}
+                />
+                {
+                  googleCampaignQueryKeys.map(key => (
+                    <FormInput
+                        key={key}
+                        name={key}
+                        label={key}
+                        placeholder="We should not see this, indicates the person filled the short quote lready"
+                        style={{maxHeight:0, opacity: 0}}
+                        value={urlParams.get(key) || 'null'}
+                    />
+                  ))
+                }
+
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>
-                    Request Quote
+                    Request Quote 
                   </BlockCTA>
                 </div>
               </form>
             </Col6>
-            <Col6>
+            <Col6> 
               <Image src="/images/quote-24.jpg" title="Fast Response" />
             </Col6>
           </div>
