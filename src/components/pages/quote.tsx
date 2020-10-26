@@ -12,45 +12,41 @@ import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
-const SPECIAL_PRICE_KEY = 'utm_campaign';
-const SPECIAL_PRICE_VALUE = 'special_price';
+export const SPECIAL_PRICE_KEY = 'utm_campaign';
+export const SPECIAL_PRICE_VALUE = 'special_price';
 
-const STORAGE_KEY = 'IS_SPECIAL';
-
-const awaitForLocalStorageNastyHack = () => {
-  return new Promise((resolve) => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      setTimeout(() => resolve(awaitForLocalStorageNastyHack), 333);
-    }
-    return resolve();
-  });
-} 
+const googleCampaignQueryKeys = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+];
 
 const QuotePage = ({ location }) => {
   const { state = {} } = location;
 
-  let specialValue = location.search.includes(`${SPECIAL_PRICE_KEY}=${SPECIAL_PRICE_VALUE}`) ? 'Yes' : 'No';
+  const urlParams = new URLSearchParams(location.search); 
 
-  const [isSpecial, setIsSpecial] = React.useState<string>(specialValue);
-  console.log('SPECIAL VALUE', specialValue);
+  let specialValue = urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE ? 'Yes' : 'No';
 
-  const setValueFromStorage = async() => {
-    await awaitForLocalStorageNastyHack();
-   
-    const storedSpecialValue = window.localStorage.getItem(STORAGE_KEY);
+  const isSpecial = state?.isSpecialPrice == 'Yes' ? 'Yes' : specialValue;
 
-    if (!storedSpecialValue) {
-      window.localStorage.setItem(STORAGE_KEY, specialValue);
-    } else {
-      specialValue = storedSpecialValue;
-      setIsSpecial(storedSpecialValue);
-    }
+  console.log('isSpecial', isSpecial)
+
+  const [form, setForm] = React.useState<Record<string, string>>({
+    'full-name': state?.name,
+    'email': state?.email,
+    'phone-number': state?.phone,
+    'isSpecialPrice': isSpecial,
+  });
+
+  const setFormValue = (key, value) => {
+    setForm({
+      ...form,
+      [key]: value
+    });
   }
-
-  console.log(state);
-
-  // TODO: There's probably a better way to achieve this but I ain't got time to deal with it
-  setValueFromStorage();
 
   return (
     <div className="quote-page">
@@ -73,15 +69,9 @@ const QuotePage = ({ location }) => {
                 method="POST"
                 name="quote-page"
                 onSubmit={(e) => {
-                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer = window.dataLayer || [];                
 
-                  // TODO: This index is set to the hidden input field
-                  // if you add fields or remove fields, change the index
-                  e.target[12].value = isSpecial;                  
-                  e.target[13].value = state.isHert || 'no';                  
-                  e.target[14].value = state.isShortQuote || 'no';              
-
-                  window.localStorage.removeItem(STORAGE_KEY);
+                  window.localStorage.clear();
                   
                   const eventData = {
                    category: "Form",
@@ -96,46 +86,64 @@ const QuotePage = ({ location }) => {
               >
                 <FormInput
                   name="full-name"
-                  label="Full name"
+                  label="Full name*"
                   placeholder="Type your full name"
-                  value={state?.name}
+                  value={form['full-name']}
                   required
+                  onChange={(evt) => setFormValue('full-name', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="email"
-                  label="Email"
+                  label="Email*"
                   type="email"
                   placeholder="Type your email"
-                  value={state?.email}
+                  value={form['email']}
                   required
+                  onChange={(evt) => setFormValue('email', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="phone-number"
-                  label="Phone number"
+                  label="Phone number*"
                   type="tel"
                   placeholder="Type your phone number"
-                  value={state?.phone}
+                  value={form['phone-number']}
                   required
+                  onChange={(evt) => setFormValue('phone-number', evt.currentTarget.value)}
+                />
+                <FormSelect
+                  name="Homeowner"
+                  label="Do you own your property?*"
+                  options={["yes", "no"]}
+                  value={form['Homeowner']}
+                  required
+                  onChange={(evt) => setFormValue('Homeowner', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="address"
                   label="Address"
                   placeholder="Type your full address"
+                  onChange={(evt) => setFormValue('address', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="annual-electricity-usage"
                   label="Annual Electricity Usage"
                   placeholder="Type your annual electricity usage"
+                  value={form['annual-electricity-usage']}
+                  onChange={(evt) => setFormValue('annual-electricity-usage', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="unit-rate"
                   label="Unit Rate"
                   placeholder="Type unit rate"
+                  value={form['unit-rate']}
+                  onChange={(evt) => setFormValue('unit-rate', evt.currentTarget.value)}
                 />
                 <FormInput
                   name="standing-charge" 
                   label="Standing Charge"
                   placeholder="Type standing charge"
+                  value={form['standing-charge']}
+                  onChange={(evt) => setFormValue('standing-charge', evt.currentTarget.value)}
                 />
                 <Block>
                   <Heading level={4}>Why we need this information</Heading>
@@ -151,6 +159,8 @@ const QuotePage = ({ location }) => {
                   name="beds"
                   label="Number of beds"
                   options={["1", "2", "3", "4", "5", "6+"]}
+                  value={form['beds']}
+                  onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
                 />
                 <FormCheckbox
                   name="own"
@@ -161,10 +171,12 @@ const QuotePage = ({ location }) => {
                     "Swimming Pool",
                     "Electric Storage Heating",
                   ]}
+                  value={form['own']}
+                  onChange={(evt) => setFormValue('own', evt.currentTarget.value)}
                 />
                 <FormInput
-                  name="DWMPrice"
-                  label="DWMPrice"
+                  name="isSpecialPrice"
+                  label="isSpecialPrice"
                   placeholder="We should not see this"
                   style={{maxHeight:0, opacity: 0}}
                   value={isSpecial}
@@ -174,15 +186,27 @@ const QuotePage = ({ location }) => {
                   label="Hert"
                   placeholder="We should not see this, extra discout from he"
                   style={{maxHeight:0, opacity: 0}}
-                  value={state.isHert}
+                  value={state?.isHert || 'no'}
                 />
                 <FormInput
                   name="AlreadySubmittedShortQuote"
                   label="AlreadySubmittedShortQuote"
                   placeholder="We should not see this, indicates the person filled the short quote lready"
                   style={{maxHeight:0, opacity: 0}}
-                  value={state.isShortQuote}
+                  value={state?.isShortQuote || 'no'}
                 />
+                {
+                  googleCampaignQueryKeys.map(key => (
+                    <FormInput
+                        key={key}
+                        name={key}
+                        label={key}
+                        placeholder="We should not see this, indicates the person filled the short quote lready"
+                        style={{maxHeight:0, opacity: 0}}
+                        value={urlParams.get(key) || 'null'}
+                    />
+                  ))
+                }
 
                 <div className="form__actions">
                   <BlockCTA fullWidth large submit>

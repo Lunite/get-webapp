@@ -3,8 +3,13 @@ import { navigate } from "gatsby"
 import Heading from "~/components/configurable/Heading"
 import BlockCTA from "~/components/configurable/BlockCTA"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { window } from 'global';
 
 import "./styles.scss"
+import { SPECIAL_PRICE_KEY, SPECIAL_PRICE_VALUE } from "~/components/pages/quote"
+
+
+const HERT_PAGE = 'hert_collective';
 
 const Quote: FunctionComponent<any> = ({
   title = "Get a quote today.",
@@ -12,7 +17,17 @@ const Quote: FunctionComponent<any> = ({
   ctaText = "Request Quote",
   compact = false,
 }) => {
-  const formState = {}
+
+  const path = window?.location?.pathname.replace(/\//g, '');
+
+  const urlParams = new URLSearchParams(window?.location?.search || ''); 
+
+  const formState = {
+    // If this the `/hert_collective` could have queryParams change this to includes
+    isHert:path === HERT_PAGE ? 'Yes' : 'No',
+    isShortQuote: 'Yes',
+    isSpecialPrice: urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE ? 'Yes' : 'No'
+  }
 
   const handleInputChange = event => {
     formState[event.target.name] = event.target.value
@@ -27,6 +42,7 @@ const Quote: FunctionComponent<any> = ({
       label: "ShortQuote",
       // value: 0 // optional
     }
+    
 
     trackCustomEvent(eventData)
 
