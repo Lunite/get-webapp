@@ -16,11 +16,11 @@ Green Energy Together would like to make you a special offer — a complete sola
 
 ## The package
 
-Get a 2.75kw system with 10 PV panels and 2.5kw battery fully installed at an unbeatable price of £4,200 inc. VAT, no hidden charges!
+Get a 2.75kw system with 10 PV panels and 2.5kw battery fully installed at an unbeatable price, no hidden charges!
 
 ### Need more storage?
 
-We have you covered. Our £4,999 inc. VAT deal gets you all the above plus an extra 2.5kw capacity on your battery. It’s never been a better time to go solar. 
+We have you covered. Upgrade to the next tier and get all the above plus an extra 2.5kw capacity on your battery. It’s never been a better time to go solar. 
 
 ### It's the perfect time to switch to solar
 

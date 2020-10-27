@@ -55,7 +55,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           }
         >
           <Heading level={1}>
-            Get a 2.75kw system with a 5kw battery for £4,999.99 inc VAT
+            Get a 2.75kw system with a 5kw battery at an unbeatable price
           </Heading>
           <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
           <BlockCTA url="/promo">Find Out More</BlockCTA>
