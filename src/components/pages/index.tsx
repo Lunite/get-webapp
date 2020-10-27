@@ -55,10 +55,10 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           }
         >
           <Heading level={1}>
-            Get a 2.75kw system with a 5kw battery at an unbeatable price
+            Because not all solar <br/> is the same
           </Heading>
-          <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
-          <BlockCTA url="/promo">Find Out More</BlockCTA>
+          {/* <p style={{ fontSize: "25px" }}>Because not all solar is the same</p>
+          <BlockCTA url="/promo">Find Out More</BlockCTA> */}
         </Hero>
       )}
       <Block className="visible-xs">

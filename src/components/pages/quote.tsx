@@ -111,7 +111,7 @@ const QuotePage = ({ location }) => {
                   onChange={(evt) => setFormValue('phone-number', evt.currentTarget.value)}
                 />
                 <FormSelect
-                  name="Homeowner"
+                  name="homeowner"
                   label="Do you own your property?*"
                   options={["yes", "no"]}
                   value={form['Homeowner']}
@@ -124,6 +124,24 @@ const QuotePage = ({ location }) => {
                   placeholder="Type your full address"
                   onChange={(evt) => setFormValue('address', evt.currentTarget.value)}
                 />
+                <FormSelect
+                  name="sourceindicatedbycostumer"
+                  label="How did you hear about us?"
+                  options={["Internet search", "Recommendation", "Don't Waste Money referral", "Social Media", "Other"]}
+                  value={form['beds']}
+                  onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
+                />
+
+                <Block>
+                  <Heading level={4}>Further details - Why do we need this information?</Heading>
+                  <p>
+                    Our usage-based model means that our designs are truly cost
+                    effective and based around your consumption, lifestyle and
+                    needs. This is in order to design a system that generates
+                    the optimum amount of energy, minimising surplus export to
+                    the grid and reducing payback time.
+                  </p>
+                </Block>
                 <FormInput
                   name="annual-electricity-usage"
                   label="Annual Electricity Usage"
@@ -145,16 +163,6 @@ const QuotePage = ({ location }) => {
                   value={form['standing-charge']}
                   onChange={(evt) => setFormValue('standing-charge', evt.currentTarget.value)}
                 />
-                <Block>
-                  <Heading level={4}>Why we need this information</Heading>
-                  <p>
-                    Our usage-based model means that our designs are truly cost
-                    effective and based around your consumption, lifestyle and
-                    needs. This is in order to design a system that generates
-                    the optimum amount of energy, minimising surplus export to
-                    the grid and reducing payback time.
-                  </p>
-                </Block>
                 <FormSelect
                   name="beds"
                   label="Number of beds"
@@ -174,25 +182,25 @@ const QuotePage = ({ location }) => {
                   value={form['own']}
                   onChange={(evt) => setFormValue('own', evt.currentTarget.value)}
                 />
-                <FormInput
+                <FormInput 
                   name="isSpecialPrice"
                   label="isSpecialPrice"
                   placeholder="We should not see this"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{maxHeight:0, opacity: 0, display: "none"}}
                   value={isSpecial}
                 />
-                <FormInput
+                <FormInput 
                   name="Hert"
                   label="Hert"
                   placeholder="We should not see this, extra discout from he"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{maxHeight:0, opacity: 0, display: "none"}}
                   value={state?.isHert || 'no'}
                 />
                 <FormInput
                   name="AlreadySubmittedShortQuote"
                   label="AlreadySubmittedShortQuote"
                   placeholder="We should not see this, indicates the person filled the short quote lready"
-                  style={{maxHeight:0, opacity: 0}}
+                  style={{maxHeight:0, opacity: 0, display: "none"}}
                   value={state?.isShortQuote || 'no'}
                 />
                 {
@@ -202,7 +210,7 @@ const QuotePage = ({ location }) => {
                         name={key}
                         label={key}
                         placeholder="We should not see this, indicates the person filled the short quote lready"
-                        style={{maxHeight:0, opacity: 0}}
+                        style={{maxHeight:0, opacity: 0, display: "none"}}
                         value={urlParams.get(key) || 'null'}
                     />
                   ))
