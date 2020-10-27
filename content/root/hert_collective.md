@@ -1,5 +1,5 @@
 ---
-image_hero: Artboard62.jpg
+image_hero: people2.png
 hero_title: Hertfordshire Collective
 hero_subtitle: ⠀
 title: Hertfordshire Collective
@@ -19,7 +19,7 @@ We're excited to announce the launch of the programme's first round, which will 
 For every 50 sign ups we will begin a round of installations at 25% discount.   
 
 
-![solar panels](/img/Artboard4.png "Solar Panels")
+![solar panels](/img/process.svg "Solar Panels")
 
 ## Want to participate?
 
@@ -27,5 +27,5 @@ Any home or business owner can sign up individually to join the collective. Just
 
 So far 33 homeowners have signed up. Help us get to 50 so we can start the first round of installations. 
 
-![solar panels](/img/chart.png "Solar Panels")
+![solar panels](/img/chart.svg "Solar Panels")
 
