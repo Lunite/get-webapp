@@ -1,8 +1,8 @@
 ---
-image_hero: round.jpg
-hero_title: It’s time to save more
+image_hero: net.png
+hero_title: Ready to go solar?
 hero_subtitle: ⠀
-title: Special offer
+title: Don't waste money!
 date: 
 show_quote_block: true
 seo:
@@ -10,9 +10,9 @@ seo:
   description: Promotion
   keywords: Promotion
 ---
-Green Energy Together would like to make you a special offer — a complete solar package for your home at a discount price exclusive for Don't Waste Money referrals.
+Green Energy Together in partnership with Don't Waste Money would like to make you a special offer — a complete solar package for your home at a discount price exclusive for Don't Waste Money referrals.
 
-![solar panels](/img/net.jpg "Solar Panels")
+![solar panels](/img/DWM.png "Solar Panels")
 
 ## The package
 
