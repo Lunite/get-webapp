@@ -154,7 +154,7 @@ const SolarTogether = ({ markdownNodes }) => {
                       <h4>
                         Register
                   </h4>
-                      <p>If you haven't done it yet, <a href="https://www.solartogether.co.uk/landing" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a> to choose your local area, and receive your personal recommendation for your home from Solar Together.</p>
+                      <p>If you haven't done it yet, <a href="https://www.solartogether.co.uk/devon/home" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a> to choose your local area, and receive your personal recommendation for your home from Solar Together.</p>
                     </div>
                   </div>
 
