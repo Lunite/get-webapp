@@ -22,7 +22,9 @@ There’s no better time to switch your home to solar power. With us spending mo
 
 Use Halloween as the perfect time to go green and save money in one go with Green Energy Together. Find out more about our comprehensive warranties and aftercare packages and join the solar revolution.
 
-![Halloween houses](/img/halloweenhouses.svg "Halloween houses")
+![Halloween houses](/img/DWM.png "Halloween houses 2")
+
+![Halloween houses 2](/img/halloweenhouses.png "Halloween houses 2")
 
 ###It all starts with a Spooktacular quote!
 
