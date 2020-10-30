@@ -1,6 +1,6 @@
 ---
 image_hero: halloween.jpg
-hero_title: Scaringly good deals
+hero_title: Scary good deals
 hero_subtitle: ⠀
 title: Halloween weekend sale
 date: 
@@ -14,7 +14,7 @@ BOO! We are offering you some scary good offers this Halloween weekend, only ava
 
 ###Frighteningly Good Packages
 
-Treat yourself to a 3kw solar system and a 5kw battery fully installed at an unbeatable price of £4,500 inc. VAT, no hidden charges! Don’t fancy the 5kw battery? No problem, we can offer you the 3kw solar system alone for £2,500 inc. VAT. 
+Treat yourself to a 3kw solar system and a 5kw battery fully installed at an unbeatable price of £4,500 inc. VAT, no hidden charges! Don’t fancy the battery? No problem, we can offer you the 3kw solar system alone for £2,500 inc. VAT. 
 
 ###Don’t miss out on switching to solar, it will haunt you
 
