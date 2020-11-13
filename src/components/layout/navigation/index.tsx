@@ -24,14 +24,14 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
+          <Link className="navigation-item__child-link" to="/">
+            Residential Services
+          </Link>
           <Link
             className="navigation-item__child-link"
             to="/service/industrial-commercial-solutions/"
           >
             Industrial &amp; Commercial Solutions
-          </Link>
-          <Link className="navigation-item__child-link" to="/">
-            Residential Services
           </Link>
           <Link
             className="navigation-item__child-link"
@@ -68,26 +68,26 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
-          <Link className="navigation-item__child-link" to="/about-us/">
-            About Us
-          </Link>
-          <Link className="navigation-item__child-link" to="/privacy">
-            Privacy Policy
-          </Link>
-          <Link className="navigation-item__child-link" to="/faq">
-            Support and FAQ
-          </Link>
           <Link
             className="navigation-item__child-link"
             to="/products-warranties"
           >
             Products &amp; Warranties
           </Link>
+          <Link className="navigation-item__child-link" to="/about-us/">
+            About Us
+          </Link>
+          <Link className="navigation-item__child-link" to="/faq">
+            Support and FAQs
+          </Link>
+          <Link className="navigation-item__child-link" to="/blog">
+            Blog
+          </Link>
         </div>
       </div>
       <div className="navigation-item">
-        <Link className="navigation-item__link" to="/blog" data-title="Blog">
-          Blog
+        <Link className="navigation-item__link" to="/solar-together" data-title="Solar Together">
+          Solar Together
         </Link>
       </div>
       <div className="navigation-item navigation-item--shout">
@@ -132,10 +132,18 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
               <Icon alias="at" />
               Contact us
             </Link>
-            <a className="contact-details__link" href="tel:02039954422">
-              <Icon alias="phone" />
-              020 3995 4422
-            </a>
+            {isSolarTogether && (
+              <a className="contact-details__link" href="tel:02038669896">
+                <Icon alias="phone" />
+                020 3866 9896
+              </a>
+            )}
+            {!isSolarTogether && (
+              <a className="contact-details__link" href="tel:02039954422">
+                <Icon alias="phone" />
+                020 3995 4422
+              </a>
+            )}  
           </div>
         </div>
       </div>

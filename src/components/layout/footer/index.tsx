@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useContext } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Col3 from "~/components/grid/Col3"
@@ -12,12 +12,17 @@ import { Link } from "gatsby"
 import "./styles.scss"
 import Icon from "~/components/olc-framework/Icon"
 
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
+
 interface FooterProps {
-  sitemap: SitemapItem[]
+  sitemap: SitemapItem[];
+  isSolarTogether: any; 
 }
 
-const Footer: FunctionComponent<FooterProps> = () => {
-  // buildColumn()
+const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
+   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+
+ // buildColumn()
 
   return (
     <footer className="footer">
@@ -41,7 +46,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
               <Heading className="footer__column-heading">GET UK</Heading>
               <div className="footer__item">
                 <span>
-                  Green Energy Together
+                  
                   <span style={{ position: "relative", paddingLeft: "34px" }}>
                     <Icon alias="pin" />
                     8 Peerglow Center,
@@ -56,17 +61,32 @@ const Footer: FunctionComponent<FooterProps> = () => {
                   </span>
                 </span>
                 <span>
-                  <a
-                    href="tel:02039954422"
-                    style={{
-                      position: "relative",
-                      paddingLeft: "34px",
-                      display: "block",
-                    }}
-                  >
-                    <Icon alias="phone" />
-                    020 3995 4422
-                  </a>
+                  {isSolarTogether && (
+                    <a
+                      href="tel:02038669896"
+                      style={{
+                        position: "relative",
+                        paddingLeft: "34px",
+                        display: "block",
+                      }}
+                    >
+                      <Icon alias="phone" />
+                      020 3866 9896
+                    </a>
+                  )}
+                  {!isSolarTogether && (
+                    <a
+                      href="tel:02039954422"
+                      style={{
+                        position: "relative",
+                        paddingLeft: "34px",
+                        display: "block",
+                      }}
+                    >
+                      <Icon alias="phone" />
+                      020 3995 4422
+                    </a>
+                  )}
                 </span>
               </div>
             </Col3>
@@ -118,10 +138,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
             <Col3>
               <Heading className="footer__column-heading">Company</Heading>
               <Link className="footer__item" to="/about-us/">
-                About
-              </Link>
-              <Link className="footer__item" to="/blog/">
-                Blog
+                About Us
               </Link>
               <Link className="footer__item" to="/contact-us">
                 Contact Us
@@ -129,9 +146,12 @@ const Footer: FunctionComponent<FooterProps> = () => {
               <Link className="footer__item" to="/privacy">
                 Privacy Policy
               </Link>
-              <Link className="footer__item" to="/faq">
-                Support and FAQ
+              <Link className="footer__item" to="/products-warranties">
+                Products &amp; Warranties
               </Link>
+              <Link className="footer__item" to="/solar-together">
+                Solar Together
+              </Link>              
             </Col3>
           </div>
         </div>

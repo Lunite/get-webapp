@@ -168,7 +168,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
               )}
               <Certificates imageNodes={imageNodes} />
             </main>
-            <Footer />
+            <Footer isSolarTogether={isSolarTogether} />
           </CustomerTypeProvider>
         </div>
       ) : (
