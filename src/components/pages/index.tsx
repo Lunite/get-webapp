@@ -31,7 +31,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   useEffect(() => {
     setCustomerType("domestic")
 
-    setHeroImage(imageNodesFilter(imageNodes, "halloween.jpg"))
+    setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
 
     setLoading(false)
   }, [imageNodes])
@@ -44,25 +44,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
       <Banner className="banner--covid-19">
         <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
       </Banner>
-      {IS_HALLOWEEN && !!heroImage && (
-        <Hero
-          className="homepage__hero"
-          image={<Img fluid={heroImage.fluid} alt="For your home" />}
-          overlapBlock={
-            <div className="hidden-xs">
-              <Quote />
-            </div>
-          }
-        >
-          <Heading level={1}>
-          Halloween <br/> weekend sale
-          </Heading>
-           <p style={{ fontSize: "25px" }}>Full installations from £2,500, <br/>
-           get a free quote to secure this deal</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA> 
-        </Hero>
-      )}
-      {!IS_HALLOWEEN && !!heroImage && (
+      {!!heroImage && (
         <Hero
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
@@ -77,8 +59,8 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Heading level={1}>
             Because not all solar <br/> is the same
           </Heading>
-           <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA> 
+           {/* <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
+          <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
         </Hero>
       )}
       <Block className="visible-xs">
