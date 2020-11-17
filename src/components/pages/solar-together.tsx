@@ -265,7 +265,7 @@ const SolarTogether = ({ markdownNodes }) => {
               </Col9>
               <Col11>
                   <p>
-                  To find out more about this exciting opportunity check out the video below. To read Solar Together Frequently Asked Questions page <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a>, or find out more about the registration process at <a href="https://www.youtube.com/watch?v=0qP93bnbm08" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">Solar Together Youtube channel.</a>
+                  To find out more about this exciting opportunity check out the video below. To read Solar Together Frequently Asked Questions page <a href="https://www.solartogether.co.uk/info/5-most-frequently-asked-questions" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">click here</a>, or find out more about the registration process at <a href="https://www.youtube.com/watch?v=0qP93bnbm08" style={{color:"#70b33b", fontWeight:"bold"}} target="_blank">Solar Together Youtube </a> channel.
                   </p>
               </Col11>
           </div>
