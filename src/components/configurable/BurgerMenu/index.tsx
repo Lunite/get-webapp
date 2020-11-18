@@ -79,14 +79,29 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
             Case Studies
           </Link>
         </div>
+        <div className="navigation-item">          
+          <Link
+            data-title="Solar Together"
+            className="navigation-item__link"
+            to="/solar-together"
+          >
+            Solar Together
+          </Link>
+        </div>
         <div className="navigation-item navigation-item--has-children">
           <div className="navigation-item__link" data-title="Company">
             Company
             <span className="icon icon-fat-arrow navigation-item__arrow"></span>
           </div>
           <div className="navigation-item__children">
-            <Link className="navigation-item__child-link" to="/contact-us">
-              Contact Us
+            <Link
+              className="navigation-item__child-link"
+              to="/products-warranties"
+            >
+              Products &amp; Warranties
+            </Link>
+            <Link className="navigation-item__child-link" to="/about-us/">
+              About Us
             </Link>
             <Link
               aria-current="page"
@@ -95,29 +110,11 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
             >
               Support and FAQ
             </Link>
-            <Link
-              className="navigation-item__child-link"
-              to="/for-your-business"
-            >
-              For Your Business
+            <Link className="navigation-item__child-link" to="/blog">
+              Blog
             </Link>
-            <Link className="navigation-item__child-link" to="/quote">
-              Get a Quote
-            </Link>
-            <Link
-              className="navigation-item__child-link"
-              to="/products-warranties"
-            >
-              Products &amp; Warranties
-            </Link>
-            <Link className="navigation-item__child-link" to="/projects">
-              Case Studies
-            </Link>
-            <Link className="navigation-item__child-link" to="/about-us/">
-              About Us
-            </Link>
-            <Link className="navigation-item__child-link" to="/privacy">
-              Privacy
+            <Link className="navigation-item__child-link" to="/contact-us">
+              Contact Us
             </Link>
           </div>
         </div>
