@@ -86,9 +86,23 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
         </div>
       </div>
       <div className="navigation-item">
-        <Link className="navigation-item__link" to="/solar-together" data-title="Solar Together">
-          Solar Together
-        </Link>
+        <div className="navigation-item__link" data-title="Solar Together">
+        Solar Together
+          <Icon className="navigation-item__arrow" alias="fat-arrow" />
+        </div>
+        <div className="navigation-item__children">
+          <Link
+            className="navigation-item__child-link"
+            to="/solar-together"
+          >
+            How does it work?
+          </Link>
+          <Link  
+            className="navigation-item__child-link" 
+            to="/solar-together-faq">
+            Solar Together FAQs
+          </Link>
+        </div>
       </div>
       <div className="navigation-item navigation-item--shout">
         <Link className="navigation-item__link" to="/quote">

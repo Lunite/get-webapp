@@ -150,7 +150,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
     if (context) {
       setSeoData(getSeoData())
 
-      setIsSolarTogether(context.slug === 'solar-together')
+      setIsSolarTogether(context.slug === 'solar-together' || context.slug === 'solar-together-faq' )
 
     }
   }, [context])

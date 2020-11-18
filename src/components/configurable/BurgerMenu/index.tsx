@@ -79,15 +79,6 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
             Case Studies
           </Link>
         </div>
-        <div className="navigation-item">          
-          <Link
-            data-title="Solar Together"
-            className="navigation-item__link"
-            to="/solar-together"
-          >
-            Solar Together
-          </Link>
-        </div>
         <div className="navigation-item navigation-item--has-children">
           <div className="navigation-item__link" data-title="Company">
             Company
@@ -115,6 +106,20 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
             </Link>
             <Link className="navigation-item__child-link" to="/contact-us">
               Contact Us
+            </Link>
+          </div>
+        </div>
+        <div className="navigation-item navigation-item--has-children">
+          <div className="navigation-item__link" data-title="Solar Together">
+            Solar Together
+            <span className="icon icon-fat-arrow navigation-item__arrow"></span>
+          </div>
+          <div className="navigation-item__children">
+            <Link className="navigation-item__child-link" to="/solar-together">
+              How does it work
+            </Link>
+            <Link className="navigation-item__child-link" to="/solar-together-faq">
+              Solar Together FAQs
             </Link>
           </div>
         </div>
