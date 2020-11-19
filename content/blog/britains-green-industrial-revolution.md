@@ -1,5 +1,5 @@
 ---
-image_hero: 10-point-plan-icons-all-twitter.png
+image_hero: web_number-10_shutterstock_1193635258.png
 hero_title: UK prime minister Boris Johnson announces Green 10-point plan
 list:
   intro: On November 19th UK prime minister Boris Johnson set out a 10-point plan
