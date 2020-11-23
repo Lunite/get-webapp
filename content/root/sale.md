@@ -1,17 +1,17 @@
 ---
-image_hero: net.png
+image_hero: greenfriday2.png
 hero_title: Its finally here!
 hero_subtitle: ⠀
-title: Blackfriday weekend sale
+title: Green Friday Weekend Sale
 date: 
 show_quote_block: true
 seo:
-  title: Blackfriday Promotion
-  description: Blackfriday Promotion
-  keywords: Blackfriday Promotion
+  title: Green Friday Promotion
+  description: Green Friday Promotion
+  keywords: Green Friday Promotion
 ---
 
-Our Black Friday Sale has started, we have some amazing deals for offer, available all weekend through to Cyber Monday!
+Our Green Friday Sale has started, we have some amazing deals for offer, available all weekend through to Cyber Monday!
 
 ## Check out the offer
 

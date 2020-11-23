@@ -10,7 +10,7 @@ import Col6 from "../grid/Col6"
 import Col4 from "../grid/Col4"
 import Expandable from "../configurable/Expandable"
 import Quote from "../configurable/Quote"
-import Banner from "../configurable/Banner"
+import Banner from "../configurable/Banner" 
 import ProductsAndWarrantiesBlock from "../configurable/ProductsAndWarrantiesBlock"
 
 import * as HouseIllustration from "~/vectors/house-illustration.inline.svg"
@@ -31,7 +31,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   useEffect(() => {
     setCustomerType("domestic")
 
-    setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
+    setHeroImage(imageNodesFilter(imageNodes, "greenfriday3.png"))
 
     setLoading(false)
   }, [imageNodes])
@@ -44,7 +44,25 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
       <Banner className="banner--covid-19">
         <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
       </Banner>
-      {!!heroImage && (
+      {IS_HALLOWEEN && !!heroImage && (
+        <Hero	
+        className="homepage__hero"	
+        image={<Img fluid={heroImage.fluid} alt="For your home" />}	
+        overlapBlock={	
+          <div className="hidden-xs">	
+            <Quote />	
+          </div>	
+        }	
+      >	
+        <Heading level={1}>	
+        Green Friday <br/> Weekend Sale	
+        </Heading>	
+         <p style={{ fontSize: "25px" }}>Full installations from £2,500, <br/>	
+         get a free quote to secure this deal</p>	
+        <BlockCTA url="/sale">Find Out More</BlockCTA> 	
+      </Hero>	
+    )}	
+    {!IS_HALLOWEEN && !!heroImage && (
         <Hero
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
@@ -59,8 +77,8 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Heading level={1}>
             Because not all solar <br/> is the same
           </Heading>
-           {/* <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
+           <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
+          <BlockCTA url="/halloween">Find Out More</BlockCTA> 
         </Hero>
       )}
       <Block className="visible-xs">
