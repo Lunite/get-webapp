@@ -31,7 +31,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   useEffect(() => {
     setCustomerType("domestic")
 
-    setHeroImage(imageNodesFilter(imageNodes, "greenfriday3.png"))
+    setHeroImage(imageNodesFilter(imageNodes, "xmashero2.jpg"))
 
     setLoading(false)
   }, [imageNodes])
@@ -55,11 +55,11 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
         }	
       >	
         <Heading level={1}>	
-        Green Friday <br/> Weekend Sale	
+        Tis the season  <br/> to go Solar! 	
         </Heading>	
-         <p style={{ fontSize: "25px" }}>Full installations from £2,500, <br/>	
-         get a free quote to secure this deal</p>	
-        <BlockCTA url="/sale">Find Out More</BlockCTA> 	
+         <p style={{ fontSize: "25px" }}>Merry Christmas from all of us <br/>	
+         at Green Energy Together</p>	
+        {/* <BlockCTA url="/sale">Find Out More</BlockCTA> 	 */}
       </Hero>	
     )}	
     {!IS_HALLOWEEN && !!heroImage && (
