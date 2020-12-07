@@ -160,14 +160,12 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
             )}
             {!isSolarTogether && (
               <div>
-                <a className="contact-details__link" href="tel:02039954422">
-                  <Icon alias="phone" />
-                  UK- 020 3995 4422
-                </a>                
-                <a className="contact-details__link" href="tel:02038669896">
-                  <Icon alias="phone" />
-                  Devon - 020 3866 9896
-                </a>
+            <Link className="contact-details__link" to="/contact-us">
+              <Icon alias="at" />
+              Contact us
+            </Link> 
+
+
               </div>
             )}  
           </div>
