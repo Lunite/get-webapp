@@ -75,17 +75,30 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
                     </a>
                   )}
                   {!isSolarTogether && (
-                    <a
-                      href="tel:02039954422"
-                      style={{
-                        position: "relative",
-                        paddingLeft: "34px",
-                        display: "block",
-                      }}
-                    >
-                      <Icon alias="phone" />
-                      020 3995 4422
-                    </a>
+                    <div>
+                      <a
+                        href="tel:02039954422"
+                        style={{
+                          position: "relative",
+                          paddingLeft: "34px",
+                          display: "block",
+                        }}
+                      >
+                        <Icon alias="phone" />
+                        UK - 020 3995 4422
+                      </a>                    
+                      <a
+                        href="tel:02038669896"
+                        style={{
+                          position: "relative",
+                          paddingLeft: "34px",
+                          display: "block",
+                        }}
+                      >
+                        <Icon alias="phone" />
+                        Devon - 020 3866 9896
+                      </a>
+                    </div>
                   )}
                 </span>
               </div>
