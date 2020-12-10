@@ -131,7 +131,12 @@ const QuotePage = ({ location }) => {
                   value={form['beds']}
                   onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
                 />
-
+                <FormInput
+                  name="comments"
+                  label="Comments"
+                  placeholder="Type any comments you may have"
+                  onChange={(evt) => setFormValue('comments', evt.currentTarget.value)}
+                />
                 <Block>
                   <Heading level={4}>Further details - Why do we need this information?</Heading>
                   <p>

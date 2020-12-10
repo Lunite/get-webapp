@@ -1,27 +1,27 @@
 ---
-image_hero: greenfriday2.png
-hero_title: Its finally here!
+image_hero: HERO_SALE_XMAS.png
+hero_title: Tis the season 
 hero_subtitle: ⠀
-title: Green Friday Weekend Sale
+title: Sleigh your Christmas list with our Solar Deals
 date: 
 show_quote_block: true
 seo:
-  title: Green Friday Promotion
-  description: Green Friday Promotion
-  keywords: Green Friday Promotion
+  title: Solar PV Christmas Sale
+  description: Solar PV Christmas Sale
+  keywords: Solar PV Christmas Sale
 ---
 
-Our Green Friday Sale has started, we have some amazing deals for offer, available all weekend through to Cyber Monday!
+Our Christmas Sale has started, we have some amazing deals for offer, available all throughout December!
 
 ## Check out the offer
 
 We are offering you a 3KW Solar System and a 5KW battery fully installed at an unbeatable price of £4,500 inc. VAT, no hidden charges! Don’t fancy the 5KW battery? No problem, we can offer you the 3KW solar system alone for £2,500 inc. VAT. 
 
-### No better time to switch your home to solar
+### Give your Home a gift that's not just for Christmas! 
 
 This Christmas, we will all be spending more time inside.. so why not start energy saving now? Not only will you be doing your bit for the environment you can also cut down on your energy bills. This can amount to around £500 a year, and you may even be able to make extra by schemes to sell unused solar energy to the National Grid.  
 
-Treat yourself to a sustainable gift before christmas, go green and save money in one go with Green Energy Together. Find out more about our comprehensive [**warranties and aftercare**](https://www.get-uk.com/products-warranties) packages here.  
+Treat yourself to a sustainable gift, go green and save money in one go with Green Energy Together. Find out more about our comprehensive [**warranties and aftercare**](https://www.get-uk.com/products-warranties) packages here.  
 
 ### All you need is a quote...
 
