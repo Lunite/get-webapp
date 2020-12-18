@@ -13,7 +13,7 @@ const ProductsAndWarrantiesBlock = ({ imageNodes }) => {
   const [image, setImage] = useState(undefined)
 
   useEffect(() => {
-    setImage(imageNodesFilter(imageNodes, "homepage-p-w.jpg"))
+    setImage(imageNodesFilter(imageNodes, "chest1x1.jpg"))
   }, [imageNodes])
 
   return (
@@ -23,7 +23,7 @@ const ProductsAndWarrantiesBlock = ({ imageNodes }) => {
           {!!image && (
             <Img
               alt="Bay Solar Farm"
-              fluid={{ ...image.fluid, aspectRatio: "1.5" }}
+              fluid={{ ...image.fluid, aspectRatio: "1" }}
             />
           )}
         </Col5>

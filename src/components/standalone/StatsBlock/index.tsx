@@ -9,43 +9,24 @@ import BusinessStatsDesktop from "~/vectors/stats-business-desktop.inline.svg"
 import BusinessStatsMobile from "~/vectors/stats-business-mobile.inline.svg"
 
 const StatsBlock = ({ device, business = false }) => {
-  return (
-    <div className="stats">
-      {
-        (() => {
-          if (!business) {
-            return (
-              <>
-                {device === "desktop" && (
-                  <div className="hidden-xs">
-                    <StatsDesktop />
-                  </div>
-                )}
-                {device === "mobile" && (
-                  <div className="visible-xs">
-                    <StatsMobile />
-                  </div>
-                )}
-              </>
-            )
-          }
 
-          return (
-            <>
-              {device === "desktop" && (
-                <div className="hidden-xs">
-                  <BusinessStatsDesktop />
-                </div>
-              )}
-              {device === "mobile" && (
-                <div className="visible-xs">
-                  <BusinessStatsMobile />
-                </div>
-              )}
-            </>
-          )
-        })() // only run once
-      }
+  const businessStats = React.useMemo(() => {
+    return device === "desktop" ? <BusinessStatsDesktop /> : <BusinessStatsMobile />;
+  }, [device]);
+
+  const domesticStats = React.useMemo(() => {
+    return device === "desktop" ? <StatsDesktop /> :  <StatsMobile />;
+  }, [device]);
+
+  const stats = React.useMemo(() => {
+    return business ? businessStats : domesticStats;
+  }, [business, businessStats, domesticStats]);
+
+  const className = React.useMemo(() => device === "desktop" ? "hidden-xs" : "visible-xs", [device]);
+
+  return (
+    <div className="stats" className={className}>
+      {stats}
     </div>
   )
 }
