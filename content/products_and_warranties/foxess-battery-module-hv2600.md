@@ -1,5 +1,5 @@
 ---
 title: FOXESS BATTERY MODULE - HV2600
-image: hv2600-datasheet.jpg
+image: foxess.jpg
 pdf: get-foxess-battery-module-hv2600.pdf
 ---
