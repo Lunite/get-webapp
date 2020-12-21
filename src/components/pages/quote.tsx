@@ -11,6 +11,7 @@ import Image from "../configurable/Image"
 import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { CookieService } from "~/utils/cookies"
 
 export const SPECIAL_PRICE_KEY = 'utm_campaign';
 export const SPECIAL_PRICE_VALUE = 'special_price';
@@ -23,23 +24,27 @@ const googleCampaignQueryKeys = [
   'utm_content',
 ];
 
+const getCookiesState = () => 
+  CookieService.getCookies().reduce((qp, {key, value}) => {
+    return {
+      ...qp,
+      [CookieService.getRawKey(key)]: value
+    }
+  }, {});
+
 const QuotePage = ({ location }) => {
   const { state = {} } = location;
 
-  const urlParams = new URLSearchParams(location.search); 
-
-  let specialValue = urlParams.get(SPECIAL_PRICE_KEY) === SPECIAL_PRICE_VALUE ? 'Yes' : 'No';
-
-  const isSpecial = state?.isSpecialPrice == 'Yes' ? 'Yes' : specialValue;
-
-  console.log('isSpecial', isSpecial)
+  const cookieState = React.useMemo(() => getCookiesState(), []);
 
   const [form, setForm] = React.useState<Record<string, string>>({
     'full-name': state?.name,
     'email': state?.email,
     'phone-number': state?.phone,
-    'isSpecialPrice': isSpecial,
+    ...cookieState,
   });
+
+  console.log('formState', form);
 
   const setFormValue = (key, value) => {
     setForm({
@@ -47,6 +52,23 @@ const QuotePage = ({ location }) => {
       [key]: value
     });
   }
+
+  const onSubmitForm = React.useCallback(() => {
+    window.dataLayer = window.dataLayer || [];                
+
+    window.localStorage.clear();
+
+    CookieService.deleteCookies();
+    
+    const eventData = {
+     category: "Form",
+      action: "Submit",
+      label: "LongQuote",
+      // value: 0 // optional
+    }
+
+    trackCustomEvent(eventData)
+  }, []);
 
   return (
     <div className="quote-page">
@@ -68,20 +90,7 @@ const QuotePage = ({ location }) => {
                 action="https://formspree.io/mbjzlwgw"
                 method="POST"
                 name="quote-page"
-                onSubmit={(e) => {
-                  window.dataLayer = window.dataLayer || [];                
-
-                  window.localStorage.clear();
-                  
-                  const eventData = {
-                   category: "Form",
-                    action: "Submit",
-                    label: "LongQuote",
-                    // value: 0 // optional
-                  }
-
-                  trackCustomEvent(eventData)
-                }}
+                onSubmit={onSubmitForm}
                 // data-netlify="true" -- to use netlify forms
               >
                 <FormInput
@@ -192,7 +201,7 @@ const QuotePage = ({ location }) => {
                   label="isSpecialPrice"
                   placeholder="We should not see this"
                   style={{maxHeight:0, opacity: 0, display: "none"}}
-                  value={isSpecial}
+                  value={form['special_price']}
                 />
                 <FormInput 
                   name="Hert"
@@ -209,14 +218,14 @@ const QuotePage = ({ location }) => {
                   value={state?.isShortQuote || 'no'}
                 />
                 {
-                  googleCampaignQueryKeys.map(key => (
+                  Object.keys(cookieState).map(key => (
                     <FormInput
                         key={key}
                         name={key}
                         label={key}
                         placeholder="We should not see this, indicates the person filled the short quote lready"
                         style={{maxHeight:0, opacity: 0, display: "none"}}
-                        value={urlParams.get(key) || 'null'}
+                        value={cookieState[key] || 'null'}
                     />
                   ))
                 }
