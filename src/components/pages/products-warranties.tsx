@@ -65,7 +65,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 your lifestyle needs. Throughout the process, your home and
                 investment are in safe hands.
               </p>
-              <Image src="/images/staff2.jpg" title="Help achieve" />
+              <Image src="/images/hold.jpg" title="Help achieve" />
               <p>
                 Quality of products, equipment, system design and effective
                 installation techniques will affect the performance and

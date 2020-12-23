@@ -20,6 +20,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   const [imageNodes, setImageNodes] = useState([])
   const [seoData, setSeoData] = useState({})
   const [isSolarTogether, setIsSolarTogether] = useState(false)
+  const [isBusiness, setIsBusiness] = useState(false)
 
   const {
     allSitePage,
@@ -153,6 +154,12 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
       setIsSolarTogether(context.slug === 'solar-together' || context.slug === 'solar-together-faq' )
 
     }
+    if (context) {
+      setSeoData(getSeoData())
+
+      setIsBusiness(context.slug === 'for-your-business')
+
+    }    
   }, [context])
 
   return (

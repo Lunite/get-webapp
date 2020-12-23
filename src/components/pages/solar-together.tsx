@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -21,6 +21,7 @@ import TickList from "../configurable/TickList"
 import BlockCTA from "../configurable/BlockCTA"
 import "./faq.scss"
 import Collapsible from "../configurable/Collapsible"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 import "./solar-together.scss"
 
@@ -33,6 +34,14 @@ const image2 = require('../../images/blackpanels2.jpg');
 const image1 = require('../../images/tshirt.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
+  const { setCustomerType } = useContext(CustomerTypeContext)
+
+  useEffect(() => {
+    setCustomerType("solartogether")
+  }, [])
+
+
+
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
 
   const productsWarranties = markdownNodesFilter(
@@ -53,6 +62,8 @@ const SolarTogether = ({ markdownNodes }) => {
     justifyContent: 'center',
     height: '100%',
   };
+
+
 
   const blockaction = () => {"https://get-uk.com/"};
 
@@ -244,6 +255,10 @@ const SolarTogether = ({ markdownNodes }) => {
           {/* END from service template */}
 
           <Block>
+
+            {/* start system components */}
+
+
               <div className="row" style={{ marginTop: '-100px' }}>
 
                       <Col5 >
@@ -287,6 +302,39 @@ const SolarTogether = ({ markdownNodes }) => {
                           </TickList>
                       </Col7>
                   </div>
+
+
+                  {/* end system components */}
+
+
+
+                  {/* start HIP */}
+
+                  <div className="p-and-w" style={{marginTop:"70px"}}>
+                    <div className="row">
+
+                      <Col7>
+                      <Heading level={3}>Security at the highest level </Heading>
+                        <p>
+                        In addition to the warranty offered by the manufacturer we offer a 2 year warranty over our workmanship, and as a <a href="https://www.hip.insure/customers/find-approved-supplier/" target="blank" style={{color:"#3c96c5", fontWeight:"normal"}}>Home Improvement Protection Accredited Trader</a> your home is protected against any eventuality.
+                        </p>
+                        <Heading level={4}>Deposit Protection & Guarantee Insurance</Heading>
+                        <p>
+                        Authorised by the <a href="https://www.fca.org.uk/" target="blank" style={{color:"#3c96c5", fontWeight:"normal"}}>Financial Conduct Authority</a> and guaranteed for up to 10 years, the Home Improvement Protection’s scheme provide the best levels of insurance-backed warranty. So whatever happens, HIP is set out to honour the terms of the guarantee originally issued.
+                        </p>
+                        <BlockCTA secondary left external arrow="right" url="https://www.fca.org.uk/">
+                          Find out more
+                        </BlockCTA>
+                      </Col7>
+                      <Col5>
+                          <Image src="/images/HIP.png" title="Help achieve" />
+                      </Col5>
+                    </div>
+                  </div>
+
+                  {/* end HIP */}
+
+
               
           </Block>
 

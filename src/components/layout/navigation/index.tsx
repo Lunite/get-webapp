@@ -140,6 +140,18 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
             >
               For your Business
             </Link>
+            <span className="customer-switcher__link-separator" />            
+            <Link
+              className={`customer-switcher__link${
+                customerType === "solartogether" ? " link--active" : ""
+              }`}
+              to="/solar-together"
+              onClick={() => {
+                setCustomerType("solartogether")
+              }}
+            >
+              Solar Together
+            </Link>
           </div>
           <div className="navigation__contact-details contact-details">
             {/* <Link className="contact-details__link" to="/contact-us">

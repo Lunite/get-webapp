@@ -164,7 +164,10 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
               </Link>
               <Link className="footer__item" to="/solar-together">
                 Solar Together
-              </Link>              
+              </Link>
+              <Link className="footer__item" to="/covid-19">
+              COVID-19 Plan
+              </Link>                   
             </Col3>
           </div>
         </div>
