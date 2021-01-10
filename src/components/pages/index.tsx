@@ -31,7 +31,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   useEffect(() => {
     setCustomerType("domestic")
 
-    setHeroImage(imageNodesFilter(imageNodes, "xmashero2.jpg"))
+    setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
 
     setLoading(false)
   }, [imageNodes])
@@ -40,29 +40,11 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
     <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
       <Banner className="visible-xs">
         <Link to="/for-your-business">Go to Business Site</Link>
-      </Banner>   
-      <Banner className="visible-xs banner--solar-together">
-        <Link to="/solar-together">Solar Together</Link>
       </Banner>
-      {IS_HALLOWEEN && !!heroImage && (
-        <Hero	
-        className="homepage__hero"	
-        image={<Img fluid={heroImage.fluid} alt="For your home" />}	
-        overlapBlock={	
-          <div className="hidden-xs">	
-            <Quote />	
-          </div>	
-        }	
-      >	
-        <Heading level={1}>	
-        Tis the season  <br/> to go Solar! 	
-        </Heading>	
-         <p style={{ fontSize: "25px" }}>Merry Christmas from all of us <br/>	
-         at Green Energy Together</p>	
-        {/* <BlockCTA url="/sale">Find Out More</BlockCTA> 	 */}
-      </Hero>	
-    )}	
-    {!IS_HALLOWEEN && !!heroImage && (
+      <Banner className="banner--covid-19">
+        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
+      </Banner>
+    {!!heroImage && (
         <Hero
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
@@ -72,7 +54,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
             <div className="hidden-xs">
               <Quote />
             </div>
-          }
+            }
         >
           <Heading level={1}>
             Because not all solar <br/> is the same

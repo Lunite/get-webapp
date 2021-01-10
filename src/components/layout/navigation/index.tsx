@@ -4,6 +4,7 @@ import { SitemapItem } from "~/hooks/useSitemap"
 import BurgerMenu from "~/components/configurable/BurgerMenu"
 
 import Logo from "~/vectors/logo.inline.svg"
+import LogoColor from "~/vectors/logo-color.inline.svg"
 import LogoSmall from "~/vectors/logo-small.inline.svg"
 import Phone from "~/vectors/phone.inline.svg"
 
@@ -12,14 +13,63 @@ import "./navigation-item.scss"
 import Icon from "~/components/olc-framework/Icon"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
-const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
+const Navigation: FunctionComponent<any> = ({isSolarTogether, isBusiness}) => {
   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
   console.log(isSolarTogether)
-  
+  isBusiness = customerType === "commercial"; 
+  console.log('isBusiness', isBusiness);
+
+  const customerStyle = React.useMemo(() => {
+    const style: any = {};
+    if (isBusiness) {
+      style.backgroundColor =  '#3c96c5';
+    } else if (isSolarTogether) {
+      style.backgroundColor =  'white';
+      style.color = '#051c3f';
+    }
+    return style;
+  }, [isBusiness, isSolarTogether]);
+
+  const businessButtonStyle = React.useMemo(() => {
+    const style: any = {};
+    if (isBusiness) {
+      style.backgroundColor =  '#051c3f';
+    }
+    return style;
+  }, [isBusiness]); 
+
+  const topNavigationStyle = React.useMemo(() => {
+    const style: any = {};
+    if (isBusiness || isSolarTogether) {
+      style.backgroundColor =  '#051c3f';
+      style.color = "white";
+    } 
+    return style;
+  }, [isBusiness, isSolarTogether]);
+
+  const contactDetails = React.useMemo(() => {
+    return (
+      <div className="navigation__contact-details contact-details">
+                  <Link className="contact-details__link" to="/contact-us">
+                    <Icon alias="at" style={isBusiness ? {color: '#3c96c5'} : {}} />
+                    Contact us
+                  </Link>            
+                  <a className="contact-details__link" href="tel:02038669896" style={{
+                    display: isSolarTogether ? 'initial' : 'none'
+                  }}>
+                    <Icon alias="phone" />
+                    020 3866 9896
+                  </a>
+                </div>
+    )
+  }, [isSolarTogether, isBusiness]);
+
+
+
   const navItems = (
     <>
       <div className="navigation-item">
-        <div className="navigation-item__link" data-title="Services">
+        <div className="navigation-item__link business" data-title="Services">
           Services
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
@@ -62,6 +112,8 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
           Case Studies
         </Link>
       </div>
+
+      
       <div className="navigation-item">
         <div className="navigation-item__link" data-title="Company">
           Company
@@ -104,7 +156,7 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
           </Link>
         </div>
       </div>
-      <div className="navigation-item navigation-item--shout">
+      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/quote">
           Get a Quote
         </Link>
@@ -113,104 +165,89 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether}) => {
   )
 
   return (
-    <header className="navigation">
+    <header className="navigation" >
       <div className="navigation__top">
-        <div className="container">
-          <div className="navigation__customer-switcher customer-switcher">
-            <Link
-              className={`customer-switcher__link${
-                customerType === "domestic" ? " link--active" : ""
-              }`}
-              to="/"
-              onClick={() => {
-                setCustomerType("domestic")
-              }}
-            >
-              For your Home
-            </Link>
-            <span className="customer-switcher__link-separator" />
-            <Link
-              className={`customer-switcher__link${
-                customerType === "commercial" ? " link--active" : ""
-              }`}
-              to="/for-your-business"
-              onClick={() => {
-                setCustomerType("commercial")
-              }}
-            >
-              For your Business
-            </Link>
-            <span className="customer-switcher__link-separator" />            
-            <Link
-              className={`customer-switcher__link${
-                customerType === "solartogether" ? " link--active" : ""
-              }`}
-              to="/solar-together"
-              onClick={() => {
-                setCustomerType("solartogether")
-              }}
-            >
-              Solar Together
-            </Link>
-          </div>
-          <div className="navigation__contact-details contact-details">
-            {/* <Link className="contact-details__link" to="/contact-us">
-              <Icon alias="at" />
-              Contact us
-            </Link> */}
-            {isSolarTogether && (
-              <div>
-                <Link className="contact-details__link" to="/contact-us">
-                  <Icon alias="at" />
-                  Contact us
-                </Link>            
-                <a className="contact-details__link" href="tel:02038669896">
-                  <Icon alias="phone" />
-                  020 3866 9896
-                </a>
-              </div>
-            )}
-            {!isSolarTogether && (
-              <div>
-            <Link className="contact-details__link" to="/contact-us">
-              <Icon alias="at" />
-              Contact us
-            </Link> 
-
-
-              </div>
-            )}  
-          </div>
+        <div className="container" >
+          
+            <div className="navigation__customer-switcher customer-switcher" >
+              <Link
+                className={`customer-switcher__link${
+                  customerType === "domestic" ? " link--active" : ""
+                }`}
+                to="/"
+                onClick={() => {
+                  setCustomerType("domestic")
+                }}
+              >
+                For your Home
+              </Link>
+              <span className="customer-switcher__link-separator" style = {topNavigationStyle}/>
+              <Link
+                className={`customer-switcher__link${
+                  customerType === "commercial" ? " link--activeblue" : ""
+                }`}
+                to="/for-your-business"
+                onClick={() => {
+                  setCustomerType("commercial")
+                }}
+              >
+                For your Business
+              </Link>
+              <span className="customer-switcher__link-separator" />            
+              <Link
+                className={`customer-switcher__link${
+                  customerType === "solartogether" ? " link--active" : ""
+                }`}
+                to="/solar-together"
+                onClick={() => {
+                  setCustomerType("solartogether")
+                }}
+              >
+                Solar Together
+              </Link>
+            </div>
+            {contactDetails}
         </div>
       </div>
 
-      {!isSolarTogether && (
-        <>
-      <div className="navigation__main hidden-xs">
-        <div className="container">
-          <Link className="logo__anchor" to="/">
-            <Logo className="hidden-xs" />
-          </Link>
-          <div className="navigation__items right">{navItems}</div>
-        </div>
-      </div>
+      
+      <>
+        
+        {/* Logo desktop */}
+        
+          <div className="navigation__main hidden-xs" style={customerStyle}>
+            <div className="container">
+              <Link className="logo__anchor" to="/">
+                {
+                  isSolarTogether ? 
+                    <LogoColor className="hidden-xs" />
+                  :
+                    <Logo className="hidden-xs" />
+                }
+              </Link>
+              <div className="navigation__items right">{navItems}</div>
+            </div>
+          </div>
 
-      <div className="navigation__main visible-xs">
-        <div className="container">
-          <BurgerMenu className="navigation__burger-menu">
-            {navItems}
-          </BurgerMenu>
-          <Link className="logo__anchor" to="/">
-            <LogoSmall />
-          </Link>
-          <div className="navigation__mobile-contact">
-            <a href="tel:02039954422">
-              <Phone />
-            </a>
+        {/* End logo desktop         */}
+
+        <div className="navigation__main visible-xs">
+          <div className="container">
+            <BurgerMenu className="navigation__burger-menu">
+              {navItems}
+            </BurgerMenu>
+            <Link className="logo__anchor" to="/">
+              <LogoSmall />
+            </Link>
+            <div className="navigation__mobile-contact">
+              <a href="tel:02039954422">
+                <Phone />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      </>)}
+      </>
+      
     </header>
   )
 }

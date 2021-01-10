@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { useContext, FunctionComponent, useEffect, useState } from "react"
 import Footer from "~/components/layout/footer"
 import Navigation from "~/components/layout/navigation"
 import SEO from "~/components/util/SEO"
@@ -6,7 +6,7 @@ import Certificates from "~/components/standalone/Certificates"
 
 import "./styles.scss"
 import { useStaticQuery, graphql } from "gatsby"
-import { CustomerTypeProvider } from "~/providers/CustomerTypeProvider"
+import { CustomerTypeProvider, CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 interface PageWrapperProps {
   context: any
@@ -21,6 +21,8 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   const [seoData, setSeoData] = useState({})
   const [isSolarTogether, setIsSolarTogether] = useState(false)
   const [isBusiness, setIsBusiness] = useState(false)
+  const [isDomestic, setIsDomestic] = useState(false)
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
 
   const {
     allSitePage,
@@ -153,13 +155,32 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
       setIsSolarTogether(context.slug === 'solar-together' || context.slug === 'solar-together-faq' )
 
-    }
-    if (context) {
-      setSeoData(getSeoData())
+      setIsBusiness(context.slug === 'for-your-business' )
 
-      setIsBusiness(context.slug === 'for-your-business')
+      setIsDomestic(context.slug === 'index' )
 
+      console.log("messageeeeee")
+
+      console.log(context)
+
+      if (context.slug === "index") {
+        console.log("this home page")
+      } else if (context.slug === "solar-together") {
+        console.log("this is solar together page")
+      } else if (context.slug === "for-your-business") {
+        console.log("this is business page")
+      }
     }    
+
+    if (context?.search) {
+      let cType = context?.search.split("customerType=")[1]
+      cType = cType.split("&")[0]
+
+      if (cType === "domestic" || cType === "commercial") {
+        setCustomerType(cType)
+      }
+    }
+
   }, [context])
 
   return (

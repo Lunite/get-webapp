@@ -11,7 +11,7 @@ const getRawKey = (cookieKey: string): string => cookieKey.replace(COOKIE_PREFIX
 
 const getCookieKey = (rawKey: string): string => `${COOKIE_PREFIX}${rawKey}`;
 
-const getCookiesList = (): string[] => document.cookie.split(';');
+const getCookiesList = (): string[] => document?.cookie.split(';') || [];
 
 const getGETCookiesList = (): string[] => {
   return getCookiesList().filter(cookie => cookie.includes(COOKIE_PREFIX));
@@ -20,12 +20,13 @@ const getGETCookiesList = (): string[] => {
 // @TODO: Add expire date param, take number of days for it to last (expire = today + number of days)
 const createCookie = (rawKey: string, value: any): void => {
   const today = new Date();
-
-  document.cookie= `${getCookieKey(rawKey)}=${value}`;
+  if (document)
+    document.cookie= `${getCookieKey(rawKey)}=${value}`;
 }
 
 const deleteCookie = (cookie: Cookie) => {
-  document.cookie= `${cookie.key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+  if (document)
+    document.cookie= `${cookie.key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
 }
 
 const getCookies = (): Cookie[] => 
