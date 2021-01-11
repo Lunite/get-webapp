@@ -10,8 +10,19 @@ export const CustomerTypeContext = React.createContext({
   setCustomerType: () => {},
 } as ICustomerTypeContext)
 
-export const CustomerTypeProvider = ({ children }: { children: any }) => {
-  const [customerType, setCustomerType] = useState("domestic")
+interface CustomerTypeProviderProps {
+  children: any;
+  defaultCustomerType?: string;
+}
+
+
+export const CustomerTypeProvider = ({ 
+  children,
+  defaultCustomerType = "domestic" 
+}: CustomerTypeProviderProps) => {
+  const [customerType, setCustomerType] = useState(defaultCustomerType);
+
+  console.log('CustomerTypeProvider:customerType', customerType);
 
   return (
     <CustomerTypeContext.Provider value={{ customerType, setCustomerType }}>
