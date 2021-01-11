@@ -20,6 +20,7 @@ import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
 
+const willThisWork = require('../../images/pw1.jpg');
 
 const ProductsAndWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -76,6 +77,8 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
             <Col4>
 
               <div>
+                <Image src="/images/climb-mountain.jpg" title="Help achieve" />
+                <Image src={willThisWork} title="Help achieve2" />
                 <Image src="/images/pw1.jpg" title="Help achieve" />
               </div>
                 
