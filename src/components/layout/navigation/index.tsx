@@ -170,7 +170,7 @@ const Navigation: React.FC = () => {
           Case Studies
         </Link>
       </div> 
-      {/* <div className="navigation-item">
+      <div className="navigation-item">
         <Link
           data-title="Products"
           className="navigation-item__link business__link"
@@ -187,7 +187,7 @@ const Navigation: React.FC = () => {
         >
           Warranties
         </Link>
-      </div>  */}
+      </div> 
       <div className="navigation-item">
         <div className="navigation-item__link business__link" data-title="Company">
           Company

@@ -20,12 +20,13 @@ import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
 
-const image1 = require('../../images/pw1.jpg');
-const image2 = require('../../images/hold.jpg');
+const image1 = require('../../images/broadoak_1x1.jpg.jpg');
+const image2 = require('../../images/paddington_rec.jpg');
 const image3 = require('../../images/chestdrill.jpg');
 const image4 = require('../../images/HIP.png');
 
-const ProductsAndWarranties = ({ markdownNodes }) => {
+
+const CommercialWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
 
   const productsWarranties = markdownNodesFilter(
@@ -44,7 +45,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
     <div className="products-and-warranties content-page">
       <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
         <Heading level={1} underlined>
-          Products &amp; Warranties
+          Commercial Warranties
         </Heading>
       </Hero>
       <Block >
@@ -78,8 +79,9 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
               </p>
             </Col8>
             <Col4>
-              <div>                
-                <Image src={image1} title="Help achieve2" />                
+
+              <div>
+                <Image src={image1} title="Help achieve" />
               </div>
                 
                 
@@ -128,7 +130,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
             
             <Col4>
             <div style={{marginBottom:"30px"}}>
-              <Image src={image3} title="Help achieve" />
+              <Image src="/images/pw1.jpg" title="Help achieve" />
             </div>
             <div>
                 <HighlightBlock
@@ -156,7 +158,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
           <div className="p-and-w" style={{marginTop:"70px"}}>
             <div className="row">
               <Col5>
-                  <Image src={image4} title="Help achieve" />
+                  <Image src="/images/HIP.png" title="Help achieve" />
               </Col5>
               <Col7>
               <Heading level={3}>Security at the highest level </Heading>
@@ -229,79 +231,9 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
           </div>
         </div>
       </Block>
-      {!!productsWarranties?.length && (
-        <Block>
-          <div className="container"  style={{ paddingTop: "0px", marginTop:"-100px" }}>
-            <div
-              className="row"
-              style={{
-                marginTop: 78,
-                borderTop: "1px solid #d1d1d1",
-                paddingTop: 52,
-              }}
-              ref={productsBlockRef}
-            >
-              <Heading level={3}>Products:</Heading>
-              <p>
-                Here's the collection of technical specifications for all our
-                products, including performance, technical characteristics and
-                warranty. For further information, get in touch with one of our
-                advisors.
-              </p>
-              <Grid>
-                {productsWarranties.map(item => {
-                  const pwItem = item.frontmatter
-
-                  return (
-                    <li key={item.fields.slug}>
-                      {pwItem.image?.childImageSharp && (
-                        <Img
-                          fluid={pwItem.image.childImageSharp.fluid}
-                          alt={pwItem.title}
-                        />
-                      )}
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "top",
-                          marginTop: 24,
-                        }}
-                      >
-                        <p className="grid-item__title">{pwItem.title}</p>
-                        {pwItem.pdf?.publicURL && (
-                          <>
-                            <a
-                              href={pwItem.pdf.publicURL}
-                              target="_blank"
-                              style={{
-                                display: "block",
-                                marginTop: 0,
-                                marginLeft: 24,
-                              }}
-                            >
-                              <div
-                                className="icon__circle-wrapper"
-                                style={{ fontSize: 32, color: "#70b33b" }}
-                              >
-                                <Icon
-                                  alias="pdf"
-                                  className="grid__icon u-styling--box-shadow"
-                                />
-                              </div>
-                            </a>
-                          </>
-                        )}
-                      </div>
-                    </li>
-                  )
-                })}
-              </Grid>
-            </div>
-          </div>
-        </Block>
-      )}
+      
     </div>
   )
 }
 
-export default ProductsAndWarranties
+export default CommercialWarranties
