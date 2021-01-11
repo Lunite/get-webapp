@@ -20,7 +20,10 @@ import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
 
-const willThisWork = require('../../images/pw1.jpg');
+const image1 = require('../../images/pw1.jpg');
+const image2 = require('../../images/hold.jpg');
+const image3 = require('../../images/folder1.jpg');
+const image4 = require('../../images/HIP.png');
 
 const ProductsAndWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
@@ -66,7 +69,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 your lifestyle needs. Throughout the process, your home and
                 investment are in safe hands.
               </p>
-              <Image src="/images/climb-mountain.jpg" title="Help achieve" />
+              <Image src={image2} title="Help achieve" />
               <p>
                 Quality of products, equipment, system design and effective
                 installation techniques will affect the performance and
@@ -75,11 +78,8 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
               </p>
             </Col8>
             <Col4>
-
-              <div>
-                <Image src="/images/climb-mountain.jpg" title="Help achieve" />
-                <Image src={willThisWork} title="Help achieve2" />
-                <Image src="/images/pw1.jpg" title="Help achieve" />
+              <div>                
+                <Image src={image1} title="Help achieve2" />                
               </div>
                 
                 
@@ -128,7 +128,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
             
             <Col4>
             <div style={{marginBottom:"30px"}}>
-              <Image src="/images/folder1.jpg" title="Help achieve" />
+              <Image src={image3} title="Help achieve" />
             </div>
             <div>
                 <HighlightBlock
@@ -156,7 +156,7 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
           <div className="p-and-w" style={{marginTop:"70px"}}>
             <div className="row">
               <Col5>
-                  <Image src="/images/HIP.png" title="Help achieve" />
+                  <Image src={image4} title="Help achieve" />
               </Col5>
               <Col7>
               <Heading level={3}>Security at the highest level </Heading>
