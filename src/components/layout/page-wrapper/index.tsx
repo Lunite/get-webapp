@@ -104,7 +104,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   if (!allMarkdownRemark?.nodes?.length || !allSitePage?.nodes?.length) {
     return null
   }
-
+ 
   /**
    * seoData
    * This method returns the required SEO data that is then passed to the SEO component below
