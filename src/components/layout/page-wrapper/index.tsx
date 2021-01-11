@@ -8,6 +8,24 @@ import "./styles.scss"
 import { useStaticQuery, graphql } from "gatsby"
 import { CustomerTypeProvider, CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
+//@TODO: change customerType to use this enum instead of string
+export enum CustomerType {
+  DOMESTIC = "DOMESTIC",
+  BUSINESS = "BUSINESS",
+  SOLAR_TOGETHER = "SOLAR TOGETHER",
+}
+
+const customerTypeSlugResolvers: Record<string, (slug: string) => boolean> = {
+  "domestic": (slug: string) => {
+    return slug === "products-warranties";
+  },
+  "business": () => false,
+  "solartogether": (slug: string) => {
+    return slug === 'solar-together' || slug === 'solar-together-faq';
+  }
+}
+
+
 interface PageWrapperProps {
   context: any
 }
@@ -16,13 +34,9 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   context,
   children,
 }) => {
-  const [markdownNodes, setMarkdownNodes] = useState([])
-  const [imageNodes, setImageNodes] = useState([])
-  const [seoData, setSeoData] = useState({})
-  const [isSolarTogether, setIsSolarTogether] = useState(false)
-  const [isBusiness, setIsBusiness] = useState(false)
-  const [isDomestic, setIsDomestic] = useState(false)
-  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+  const [markdownNodes, setMarkdownNodes] = useState([]);
+  const [imageNodes, setImageNodes] = useState([]);
+  const [seoData, setSeoData] = useState({});
 
   const {
     allSitePage,
@@ -147,39 +161,35 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
 
   useEffect(() => {
     setImageNodes(allImageSharp?.nodes)
-  }, [allImageSharp])
+  }, [allImageSharp]);
 
+  const customerTypeFromSlug = React.useMemo(() => {
+    const customerTypeResolverKeys = Object.keys(customerTypeSlugResolvers);
+    for (let i = 0; i < customerTypeResolverKeys.length ;i++) {
+      const key = customerTypeResolverKeys[i];
+      const resolver = customerTypeSlugResolvers[key];
+      if (resolver(context.slug)) {
+       return key;
+      }
+    } 
+    return undefined;
+  }, []);
+ 
   useEffect(() => {
     if (context) {
       setSeoData(getSeoData())
-
-      setIsSolarTogether(context.slug === 'solar-together' || context.slug === 'solar-together-faq' )
-
-      setIsBusiness(context.slug === 'for-your-business' )
-
-      setIsDomestic(context.slug === 'index' )
-
-      console.log("messageeeeee")
-
-      console.log(context)
-
-      if (context.slug === "index") {
-        console.log("this home page")
-      } else if (context.slug === "solar-together") {
-        console.log("this is solar together page")
-      } else if (context.slug === "for-your-business") {
-        console.log("this is business page")
-      }
     }    
 
-    if (context?.search) {
-      let cType = context?.search.split("customerType=")[1]
-      cType = cType.split("&")[0]
+    //@TODO: not sure what this is suppose to do exactly
+    // if (context?.search) {
+    //   let cType = context?.search.split("customerType=")[1]
+    //   cType = cType.split("&")[0]
 
-      if (cType === "domestic" || cType === "commercial") {
-        setCustomerType(cType)
-      }
-    }
+    //   if (cType === "domestic" || cType === "commercial") {
+    //     setCustomerType(cType)
+    //   }
+    //   console.log('am i here?')
+    // }
 
   }, [context])
 
@@ -188,15 +198,15 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
       <SEO {...seoData} />
       {markdownNodes.length ? (
         <div className="page-wrapper">
-          <CustomerTypeProvider>
-            <Navigation isSolarTogether={isSolarTogether} />
+          <CustomerTypeProvider defaultCustomerType={customerTypeFromSlug}>
+            <Navigation />
             <main>
               {React.Children.toArray(children).map(child =>
                 React.cloneElement(child, { markdownNodes, imageNodes })
               )}
               <Certificates imageNodes={imageNodes} />
             </main>
-            <Footer isSolarTogether={isSolarTogether} />
+            <Footer />
           </CustomerTypeProvider>
         </div>
       ) : (

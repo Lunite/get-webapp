@@ -28,12 +28,12 @@ const HomepageB2b = ({ markdownNodes }) => {
 
   return (
     <div className="homepage-b2b">
-      <Banner className="visible-xs">
+      {/* <Banner className="visible-xs">
         <Link to="/">Go to Domestic Site</Link>
       </Banner>   
       <Banner className="visible-xs banner--solar-together">
         <Link to="/solar-together">Solar Together</Link>
-      </Banner>
+      </Banner> */}
       <Hero
         className="homepage__hero"
         imageUrl="/images/b2b-video.jpg"

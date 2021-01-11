@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react"
+import React, { useContext } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Col3 from "~/components/grid/Col3"
@@ -19,10 +19,10 @@ interface FooterProps {
   isSolarTogether: any; 
 }
 
-const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
-   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+const Footer: React.FC = () => {
+   const { customerType } = useContext(CustomerTypeContext);
 
- // buildColumn()
+   const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
 
   return (
     <footer className="footer">

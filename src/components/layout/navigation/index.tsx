@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import { SitemapItem } from "~/hooks/useSitemap"
 import BurgerMenu from "~/components/configurable/BurgerMenu"
@@ -13,12 +13,20 @@ import "./navigation-item.scss"
 import Icon from "~/components/olc-framework/Icon"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
-const Navigation: FunctionComponent<any> = ({isSolarTogether, isBusiness}) => {
-  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
-  console.log(isSolarTogether)
-  isBusiness = customerType === "commercial"; 
-  console.log('isBusiness', isBusiness);
+//@TODO: split the navigation bars into different components
+const Navigation: React.FC = () => {
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext);
 
+  console.log('Navigation:customerType', customerType);
+
+  const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+  const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+  const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+
+  console.log('isBusiness', isBusiness);
+  console.log('isDomestic', isDomestic);
+  console.log('isSolarTogether', isSolarTogether);
+  
   const customerStyle = React.useMemo(() => {
     const style: any = {};
     if (isBusiness) {
@@ -68,15 +76,65 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether, isBusiness}) => {
 
   const navItems = (
     <>
+    {/*Start DESKTOP menu*/}
+
+    {/*Start Domestic menu*/}
+    {isDomestic && (
+    <>
       <div className="navigation-item">
-        <div className="navigation-item__link business" data-title="Services">
+        <Link
+          data-title="Case Studies"
+          className="navigation-item__link"
+          to="/projects"
+        >
+          Case Studies
+        </Link>
+      </div> 
+      <div className="navigation-item">
+        <Link
+          data-title="Products & Warranties"
+          className="navigation-item__link"
+          to="/products-warranties"
+        >
+          Products &amp; Warranties
+        </Link>
+      </div> 
+
+      <div className="navigation-item">
+        <div className="navigation-item__link" data-title="Company">
+          Company
+          <Icon className="navigation-item__arrow" alias="fat-arrow" />
+        </div>
+        <div className="navigation-item__children">
+          <Link className="navigation-item__child-link" to="/about-us/">
+            About Us
+          </Link>
+          <Link className="navigation-item__child-link" to="/faq">
+            Support and FAQs
+          </Link>
+          <Link className="navigation-item__child-link" to="/blog">
+            Blog
+          </Link>
+        </div>
+      </div>
+      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
+        <Link className="navigation-item__link" to="/quote">
+          Get a Quote
+        </Link>
+      </div>
+    </>
+    )}
+    {/* End Domestic menu */}
+
+    {/*Start Commercial menu*/}
+    {isBusiness && (
+    <>
+      <div className="navigation-item">
+        <div className="navigation-item__link business__link" data-title="Services">
           Services
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
-          <Link className="navigation-item__child-link" to="/">
-            Residential Services
-          </Link>
           <Link
             className="navigation-item__child-link"
             to="/service/industrial-commercial-solutions/"
@@ -106,26 +164,36 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether, isBusiness}) => {
       <div className="navigation-item">
         <Link
           data-title="Case Studies"
-          className="navigation-item__link"
+          className="navigation-item__link business__link"
           to="/projects"
         >
           Case Studies
         </Link>
-      </div>
-
-      
+      </div> 
       <div className="navigation-item">
-        <div className="navigation-item__link" data-title="Company">
+        <Link
+          data-title="Products"
+          className="navigation-item__link business__link"
+          to="/commercial-products"
+        >
+          Products
+        </Link>
+      </div> 
+      <div className="navigation-item">
+        <Link
+          data-title="Warranties"
+          className="navigation-item__link business__link"
+          to="/commercial-warranties"
+        >
+          Warranties
+        </Link>
+      </div> 
+      <div className="navigation-item">
+        <div className="navigation-item__link business__link" data-title="Company">
           Company
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
-          <Link
-            className="navigation-item__child-link"
-            to="/products-warranties"
-          >
-            Products &amp; Warranties
-          </Link>
           <Link className="navigation-item__child-link" to="/about-us/">
             About Us
           </Link>
@@ -137,30 +205,56 @@ const Navigation: FunctionComponent<any> = ({isSolarTogether, isBusiness}) => {
           </Link>
         </div>
       </div>
-      <div className="navigation-item">
-        <div className="navigation-item__link" data-title="Solar Together">
-        Solar Together
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-          <Link
-            className="navigation-item__child-link"
-            to="/solar-together"
-          >
-            How does it work?
-          </Link>
-          <Link  
-            className="navigation-item__child-link" 
-            to="/solar-together-faq">
-            Solar Together FAQs
-          </Link>
-        </div>
-      </div>
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/quote">
           Get a Quote
         </Link>
       </div>
+    </>
+    )}
+    {/*End Commercial menu*/}
+
+    {/*Start Solar Together menu */}
+    {isSolarTogether && (
+    <>    
+      <div className="navigation-item">
+        <Link
+          data-title="How does it work?"
+          className="navigation-item__link solartogether__link"
+          to="/solar-together"
+        >
+          How does it work?
+        </Link>
+      </div> 
+      <div className="navigation-item">
+        <Link
+          data-title="Solar Together FAQs"
+          className="navigation-item__link solartogether__link"
+          to="/solar-together-faq"
+        >
+          Solar Together FAQs
+        </Link>
+      </div> 
+      <div className="navigation-item">
+        <Link
+          data-title="About Us"
+          className="navigation-item__link solartogether__link"
+          to="/about-us"
+        >
+          About Us
+        </Link>
+      </div> 
+      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
+        <Link className="navigation-item__link" to="/quote">
+          Get a Quote
+        </Link>
+      </div>
+    </>
+    )}
+    {/*End Solar Together menu*/}
+
+    {/* End DESKTOP menu */}
+    
     </>
   )
 
