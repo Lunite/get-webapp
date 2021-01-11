@@ -1,0 +1,7 @@
+[build]
+publish = "public/"
+command = "yarn build"
+
+[[redirects]]
+from = "images/*"
+to = "images/:splat"
