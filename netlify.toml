@@ -3,6 +3,12 @@ publish = "public/"
 command = "yarn build"
 
 [[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
+
+[[redirects]]
 from = "/images/*"
 to = "/images/:splat"
 force = true
