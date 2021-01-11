@@ -63,8 +63,33 @@
           }
         }
       }
+
+      .link--activeblue {
+        color: $light-blue;
+        font-family: $bold-family;
+        border-color: $light-blue;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-20px);
+          background-color: $light-blue;
+          height: 5px;
+          width: 100%;
+        }
+
+        @media ($tablet) {
+          &::before {
+            height: 0.4vw;
+            transform: translateY(-1.667vw);
+          }
+        }
+      }
+
     }
 
+    
     .contact-details {
       &__link {
         display: inline-block;
@@ -153,5 +178,10 @@
   &__mobile-contact {
     display: block;
     height: 25px;
+  }
+
+  .business:active {
+    color: $dark-blue !important;
+    background-color: $light-blue !important;
   }
 }
