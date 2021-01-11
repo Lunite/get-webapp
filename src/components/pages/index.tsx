@@ -29,6 +29,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   const { setCustomerType } = useContext(CustomerTypeContext)
 
   useEffect(() => {
+    console.log("Homepage")
     setCustomerType("domestic")
 
     setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
@@ -38,31 +39,13 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
 
   return (
     <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
-      <Banner className="visible-xs">
+      {/* <Banner className="visible-xs">
         <Link to="/for-your-business">Go to Business Site</Link>
-      </Banner>
-      <Banner className="banner--covid-19">
+      </Banner> */}
+      {/* <Banner className="banner--covid-19">
         <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
-      </Banner>
-      {!!heroImage && (
-        <Hero	
-        className="homepage__hero"	
-        image={<Img fluid={heroImage.fluid} alt="For your home" />}	
-        overlapBlock={	
-          <div className="hidden-xs">	
-            <Quote />	
-          </div>	
-        }	
-      >	
-        <Heading level={1}>	
-        Because not all solar <br/> is the same	
-        </Heading>	
-         {/* <p style={{ fontSize: "25px" }}>Merry Christmas from all of us <br/>	
-         at Green Energy Together</p>	 */}
-        {/* <BlockCTA url="/sale">Find Out More</BlockCTA> 	 */}
-      </Hero>	
-    )}	
-    {/* {!IS_HALLOWEEN && !!heroImage && (
+      </Banner> */}
+    {!!heroImage && (
         <Hero
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
@@ -77,10 +60,10 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Heading level={1}>
             Because not all solar <br/> is the same
           </Heading>
-           <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA> 
+           {/* <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
+          <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
         </Hero>
-      )} */}
+      )}
       <Block className="visible-xs">
         <div className="container container--column">
           <Quote />
