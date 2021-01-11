@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react"
+import React, { useContext } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Col3 from "~/components/grid/Col3"
@@ -19,10 +19,10 @@ interface FooterProps {
   isSolarTogether: any; 
 }
 
-const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
-   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+const Footer: React.FC = () => {
+   const { customerType } = useContext(CustomerTypeContext);
 
- // buildColumn()
+   const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
 
   return (
     <footer className="footer">
@@ -164,7 +164,10 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
               </Link>
               <Link className="footer__item" to="/solar-together">
                 Solar Together
-              </Link>              
+              </Link>
+              <Link className="footer__item" to="/covid-19">
+              COVID-19 Plan
+              </Link>                   
             </Col3>
           </div>
         </div>
