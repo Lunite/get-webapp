@@ -50,7 +50,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
           // imageUrl="/images/homepage-video.jpg"
-          video="https://vimeo.com/418983793"
+          video="https://vimeo.com/499399762"
           overlapBlock={
             <div className="hidden-xs">
               <Quote />
@@ -60,8 +60,8 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Heading level={1}>
             Because not all solar <br/> is the same
           </Heading>
-           {/* <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
+           <p style={{ fontSize: "25px" }}>Welcome to the future of energy</p>
+          {/* <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
         </Hero>
       )}
       <Block className="visible-xs">
