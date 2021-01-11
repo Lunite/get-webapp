@@ -22,7 +22,7 @@ import "../configurable/BlockCTA/styles.scss"
 
 const image1 = require('../../images/pw1.jpg');
 const image2 = require('../../images/hold.jpg');
-const image3 = require('../../images/chestdrill.jpg');
+const image3 = require('../../images/folder1.jpg');
 const image4 = require('../../images/HIP.png');
 
 const ProductsAndWarranties = ({ markdownNodes }) => {

@@ -23,7 +23,7 @@ const ProductsAndWarrantiesBlock = ({ imageNodes }) => {
           {!!image && (
             <Img
               alt="Bay Solar Farm"
-              fluid={{ ...image.fluid, aspectRatio: "1.5" }}
+              fluid={{ ...image.fluid, aspectRatio: "1" }}
             />
           )}
         </Col5>

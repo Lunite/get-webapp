@@ -171,29 +171,17 @@ const Navigation: React.FC = () => {
         </Link>
       </div> 
       <div className="navigation-item">
-        <Link
-          data-title="Products"
-          className="navigation-item__link business__link"
-          to="/commercial-products"
-        >
-          Products
-        </Link>
-      </div> 
-      <div className="navigation-item">
-        <Link
-          data-title="Warranties"
-          className="navigation-item__link business__link"
-          to="/commercial-warranties"
-        >
-          Warranties
-        </Link>
-      </div> 
-      <div className="navigation-item">
         <div className="navigation-item__link business__link" data-title="Company">
           Company
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
+          <Link className="navigation-item__child-link" to="/products/">
+            Products
+          </Link>
+          <Link className="navigation-item__child-link" to="/warranties">
+            Warranties
+          </Link>
           <Link className="navigation-item__child-link" to="/about-us/">
             About Us
           </Link>

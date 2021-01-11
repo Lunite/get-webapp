@@ -403,24 +403,24 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Solar Together",
       },
-      // {
-      //   slug: "commercial-products",
-      //   seo_title:
-      //     "Commercial Products | Green Energy Together | Solar Panel Installer",
-      //   title: "Commercial Products",
-      //   keywords: "",
-      //   description:
-      //     "Commercial Products",
-      // },
-      // {
-      //   slug: "commercial-warranties",
-      //   seo_title:
-      //     "Commercial Warranties | Green Energy Together | Solar Panel Installer",
-      //   title: "Commercial Warranties",
-      //   keywords: "",
-      //   description:
-      //     "Commercial Warranties",
-      // },
+      {
+        slug: "commercial-products",
+        seo_title:
+          "Commercial Products | Green Energy Together | Solar Panel Installer",
+        title: "Commercial Products",
+        keywords: "",
+        description:
+          "Commercial Products",
+      },
+      {
+        slug: "commercial-warranties",
+        seo_title:
+          "Commercial Warranties | Green Energy Together | Solar Panel Installer",
+        title: "Commercial Warranties",
+        keywords: "",
+        description:
+          "Commercial Warranties",
+      },
     ]),
   ])
 }

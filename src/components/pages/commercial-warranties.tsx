@@ -20,7 +20,7 @@ import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
 
-const image1 = require('../../images/broadoak_1x1.jpg.jpg');
+const image1 = require('../../images/broadoak_1x1.jpg');
 const image2 = require('../../images/paddington_rec.jpg');
 const image3 = require('../../images/chestdrill.jpg');
 const image4 = require('../../images/HIP.png');
