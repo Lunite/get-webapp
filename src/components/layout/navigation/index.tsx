@@ -176,10 +176,10 @@ const Navigation: React.FC = () => {
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
-          <Link className="navigation-item__child-link" to="/products/">
+          <Link className="navigation-item__child-link" to="/commercial-products/">
             Products
           </Link>
-          <Link className="navigation-item__child-link" to="/warranties">
+          <Link className="navigation-item__child-link" to="/commercial-warranties">
             Warranties
           </Link>
           <Link className="navigation-item__child-link" to="/about-us/">
