@@ -25,6 +25,8 @@ import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
+const imagewar = require('../../images/hold.jpg');
+
 const HomepageB2b = ({ markdownNodes }) => {
   const { setCustomerType } = useContext(CustomerTypeContext)
 
@@ -148,7 +150,7 @@ const HomepageB2b = ({ markdownNodes }) => {
           </div>
         </Section>
         <Shoutout
-          image={<Image src="/images/hold.jpg" title="Products" />}
+          image={<Image src={imagewar} title="Products" />}
           text={
             <>
               <Heading underlined>Products &amp; Warranties</Heading>
