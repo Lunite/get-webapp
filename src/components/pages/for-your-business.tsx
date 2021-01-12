@@ -68,7 +68,7 @@ const HomepageB2b = ({ markdownNodes }) => {
             compact
           />
         </Section>
-        <Section className="homepage-content-wrapper">
+        <Section className="business-content-wrapper">
           <Heading underlined>A Strong Foundation</Heading>
           <p>
             For more than a decade, Green Energy Together has designed,
