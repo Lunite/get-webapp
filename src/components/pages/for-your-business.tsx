@@ -85,7 +85,7 @@ const HomepageB2b = ({ markdownNodes }) => {
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col8>
+            <Col9>
               <Heading underlined>Industrial Commercial Solutions</Heading>
               <p>
                 We offer a one-stop service for all your needs, from consulting
@@ -106,27 +106,27 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/industrial-commercial-solutions" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col8>
-            <Col4>
+            </Col9>
+            <Col3>
               <Image
                 src="/images/paddington-station.jpg"
                 title="Commercial Installation at Paddington Station, London UK"
                 caption="Paddington Station, London UK"
               />
-            </Col4>
+            </Col3>
           </div>
         </Section>
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col4>
+            <Col3>
               <Image
                 src="/images/no-idea.jpg"
                 title="Commercial Installation at Kelly Solar Farm"
                 caption="Kelly Solar Farm"
               />
-            </Col4>
-            <Col8>
+            </Col3>
+            <Col9>
               <Heading underlined>Operation &amp; Maintenance</Heading>
               <p>
                 Our dedicated Operation &amp; Maintenance team provides O&amp;M
@@ -146,7 +146,7 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/operation-maintenance" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col8>
+            </Col9>
           </div>
         </Section>
         <Shoutout
@@ -167,7 +167,7 @@ const HomepageB2b = ({ markdownNodes }) => {
         />
         <Section>
           <div className="row">
-            <Col8>
+            <Col9>
               <Heading underlined>Asset Management</Heading>
               <p>
                 We provide a full range of Asset Management Services, as a
@@ -187,27 +187,27 @@ const HomepageB2b = ({ markdownNodes }) => {
                <BlockCTA secondary url="/service/asset-management" arrow="right">
                 Find out more
               </BlockCTA> 
-            </Col8>
-            <Col4>
+            </Col9>
+            <Col3>
               <Image
                 src="/images/newnham-solar-farm.jpg"
                 title="Technical design at Newnham Solar Farm"
                 caption="Newnham Solar Farm"
               />
-            </Col4>
+            </Col3>
           </div>
         </Section>
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col4>
+            <Col3>
               <Image
                 src="/images/bay-solar-farm.jpg"
                 title="Asset Management at Bay Solar Farm"
                 caption="Bay Solar Farm"
               />
-            </Col4>
-            <Col8>
+            </Col3>
+            <Col9>
               <Heading underlined>Technical Design</Heading>
               <p>
                 Green Energy Together offers expert technical consultancy across
@@ -227,7 +227,7 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/technical-design" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col8>
+            </Col9>
           </div>
         </Section>
         <Section>
