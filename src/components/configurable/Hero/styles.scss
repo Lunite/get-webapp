@@ -184,6 +184,19 @@
   transform: translate(-50%, 50%);
 }
 
-.container.container--column.illustrated-house-block {
-  transform: translateY(10%);
+.homepage-content-wrapper {
+  padding-top: 25vh;
+
+  @media (min-width: 769px) {
+    padding-top: 35vh;
+  }
+
+  @media ($mobile) {
+    padding-top: 0
+  }
+
+}
+
+.stats-container {
+  justify-content: center;
 }

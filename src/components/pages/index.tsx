@@ -69,7 +69,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Quote />
         </div>
       </Block>
-      <Block>
+      <Block className="homepage-content-wrapper">
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
@@ -102,7 +102,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
                   <>
                     <div className="visible-xs" style={{ height: 40 }} />
                     <div className="row">
-                      <Col6 className="u-layout--centered">
+                      <Col6 className="u-layout">
                         <div
                           className="icon__circle-wrapper"
                           style={{ marginBottom: 40, fontSize: 40 }}
@@ -119,7 +119,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
                           home, saving you money.
                         </p>
                       </Col6>
-                      <Col6 className="u-layout--centered">
+                      <Col6 className="u-layout">
                         <div
                           className="icon__circle-wrapper"
                           style={{ marginBottom: 40, fontSize: 40 }}
@@ -153,7 +153,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           </div>
         </div>
       </Block>
-      <div className="container">
+      <div className="container stats-container">
         <StatsBlock device="desktop" />
         <StatsBlock device="mobile" />
       </div>

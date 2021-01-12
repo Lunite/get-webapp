@@ -20,10 +20,10 @@
     border-bottom: 3px solid $dark-blue;
     padding: 18px 26px;
 
-    @media ($phablet) {
-      max-width: 340px;
-      min-width: 260px;
-    }
+    // @media ($phablet) {
+    //   max-width: 340px;
+    //   min-width: 260px;
+    // }
 
     &:focus {
       outline: none;
