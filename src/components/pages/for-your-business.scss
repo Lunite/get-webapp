@@ -9,3 +9,16 @@
     padding-bottom: 0;
   }
 }
+
+.homepage-content-wrapper {
+  padding-top: 15vh;
+
+  @media (min-width: 769px) {
+    padding-top: 15vh;
+  }
+
+  @media ($mobile) {
+    padding-top: 0
+  }
+
+}
