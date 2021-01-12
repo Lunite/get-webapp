@@ -10,7 +10,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: $low-grey;
-  overflow: hidden;
 
   &:before {
     content: "";
@@ -159,6 +158,9 @@
   border-top-right-radius: 24px;
   width: 100%;
 
+  margin: 0;
+  bottom: -100px;
+
   svg {
     display: block;
   }
@@ -175,4 +177,13 @@
   .quote {
     padding: $space;
   }
+}
+
+.hero-overlap-block__container.container {
+  margin: 0;
+  transform: translate(-50%, 50%);
+}
+
+.container.container--column.illustrated-house-block {
+  transform: translateY(10%);
 }
