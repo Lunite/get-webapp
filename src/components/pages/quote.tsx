@@ -110,32 +110,11 @@ const QuotePage = ({ location }) => {
                   required
                   onChange={(evt) => setFormValue('phone-number', evt.currentTarget.value)}
                 />
-                <FormSelect
-                  name="homeowner"
-                  label="Do you own your property?*"
-                  options={["yes", "no"]}
-                  value={form['Homeowner']}
-                  required
-                  onChange={(evt) => setFormValue('Homeowner', evt.currentTarget.value)}
-                />
                 <FormInput
                   name="address"
                   label="Address"
                   placeholder="Type your full address"
                   onChange={(evt) => setFormValue('address', evt.currentTarget.value)}
-                />
-                <FormSelect
-                  name="sourceindicatedbycostumer"
-                  label="How did you hear about us?"
-                  options={["Internet search", "Recommendation", "Don't Waste Money referral", "Social Media", "Other"]}
-                  value={form['beds']}
-                  onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
-                />
-                <FormInput
-                  name="comments"
-                  label="Comments"
-                  placeholder="Type any comments you may have"
-                  onChange={(evt) => setFormValue('comments', evt.currentTarget.value)}
                 />
                 <Block>
                   <Heading level={4}>Further details - Why do we need this information?</Heading>
@@ -161,31 +140,12 @@ const QuotePage = ({ location }) => {
                   value={form['unit-rate']}
                   onChange={(evt) => setFormValue('unit-rate', evt.currentTarget.value)}
                 />
-                <FormInput
-                  name="standing-charge" 
-                  label="Standing Charge"
-                  placeholder="Type standing charge"
-                  value={form['standing-charge']}
-                  onChange={(evt) => setFormValue('standing-charge', evt.currentTarget.value)}
-                />
                 <FormSelect
                   name="beds"
                   label="Number of beds"
                   options={["1", "2", "3", "4", "5", "6+"]}
                   value={form['beds']}
                   onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
-                />
-                <FormCheckbox
-                  name="own"
-                  label="And if you own:"
-                  options={[
-                    "Electric Car",
-                    "Air Source Heating",
-                    "Swimming Pool",
-                    "Electric Storage Heating",
-                  ]}
-                  value={form['own']}
-                  onChange={(evt) => setFormValue('own', evt.currentTarget.value)}
                 />
                 <FormInput 
                   name="isSpecialPrice"

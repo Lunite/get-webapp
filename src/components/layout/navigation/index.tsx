@@ -194,7 +194,7 @@ const Navigation: React.FC = () => {
         </div>
       </div>
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
-        <Link className="navigation-item__link" to="/quote">
+        <Link className="navigation-item__link" to="/quote-commercial">
           Get a Quote
         </Link>
       </div>
