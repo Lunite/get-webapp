@@ -261,7 +261,7 @@ const SolarTogether = ({ markdownNodes }) => {
                           </p>
                           <TickList>
                               <li><span >Panels:</span> 
-                                <a target="_blank" href="https://www.get-uk.com/static/0cc6ba67381f58a5168e6b26b6485f8f/get-tr-jkm340-360m-6tl3-b-a1c1-en-jinko-340w.pdf"style={{color:"#3c96c5", fontWeight:"normal"}} > Jinko Mono Perc All Black</a></li>                              
+                                <a target="_blank" href="https://www.get-uk.com/static/597e182d52d47ede766c1023225e376e/get-135-335w-trinasolar-honeybacl-mono-module.pdf"style={{color:"#3c96c5", fontWeight:"normal"}} > Trinasolar HoneyBlack Mono Module</a></li>                              
                               <li>Inverter:  
                                 <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/59c3b59f0a100e75c86ee650c8dd72c5/get-single-phase-f-series.pdf"> F Series Dual MPPT Inverter</a> or 
                                 <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/a6f12873ad3ceddf721e2cb561c16ab1/get-ess-s-series-inverter.pdf"> S Series Single MPPT Inverter</a>, 
