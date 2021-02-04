@@ -109,7 +109,7 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
                 className="footer__item"
                 to="/service/industrial-commercial-solutions"
               >
-                Industrial &amp; Commercial
+                Industrial and Commercial
               </Link>
               <Link className="footer__item" to="/">
                 Residential Services
