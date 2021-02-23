@@ -40,6 +40,4 @@ If your solar panels are producing more electricity than you need, it doesn't ha
 
 The amount you'll get for this varies immensely, depending on your energy supplier. Figures range from 0.5p to 5.5p per kWh, so you'll need to consult your present supplier to find out what they offer — and maybe switch to a more generous company.
 
-The saving from taking up our offer of a 2.75kw system, with a 5kw battery, for £4,999.99 including VAT, could be in the region of £600 a year, depending on your usage. In some cases, this could be enough be enough to take you off the grid for much of the day. 
-
 The best way to find out exactly how much you could save is to contact us, and we can give you an estimate of what this offer could mean for you.
