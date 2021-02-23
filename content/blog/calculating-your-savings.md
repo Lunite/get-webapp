@@ -16,9 +16,7 @@ seo:
   description: How Much Could You Save from a Solar Panel System?
   keywords: calculate solar panels savings
 ---
-Why do people invest in solar power for their homes? Well, besides the obvious benefit to their carbon footprint, helping to combat climate change, the biggest reason is the money they save.
-
-It's even more attractive than ever now to go over to solar, while we're offering an unmissable deal — a 2.75kw system, with a 5kw battery, for £4,999.99 including VAT, with no deposit required. So how much could this system save you?
+Why do people invest in solar power for their homes? Well, besides the obvious benefit to their carbon footprint, helping to combat climate change, the biggest reason is the money they save. But just how much could getting solar save you?
 
 It depends on a number of factors.
 
