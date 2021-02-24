@@ -18,7 +18,7 @@ info_strip:
   location: London, UK
   dc_peak: 25,250 KW
   inverters: Samil Power 12000TL
-  map_url: https://goo.gl/maps/PmfTVQqfMQLWNiL28
+  map_url: https://goo.gl/maps/yw5g5KPCxYmju3YA6
 seo:
   description: Our team was honoured to be trusted with the installation of the
     whole King's College Hospital PV system and all labour required.
