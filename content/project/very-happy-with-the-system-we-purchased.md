@@ -7,7 +7,7 @@ description: >-
   the communication was excellent." - Mr. Gilder
 
 
-  This installation was part of a project for Raven Housing Trust, a social business based in Redhill, Surrey which owns or manages more than 6,000 homes. 
+  This installation was part of a project for Raven Housing Trust, a social business based in Redhill, Surrey which included installations for over 4,000 homes. 
 
 
   Green Energy Together is one of the leading partners to the UK social housing market. Working with private owners and third party funders we have installed over 40,000 domestic size solar pv systems in British homes.
