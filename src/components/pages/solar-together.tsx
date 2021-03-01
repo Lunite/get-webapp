@@ -233,12 +233,10 @@ const SolarTogether = ({ markdownNodes }) => {
                               <li><span >Panels:</span> 
                                 <a target="_blank" href="https://www.get-uk.com/static/597e182d52d47ede766c1023225e376e/get-135-335w-trinasolar-honeybacl-mono-module.pdf"style={{color:"#3c96c5", fontWeight:"normal"}} > Trinasolar HoneyBlack Mono Module</a></li>                              
                               <li>Inverter:  
-                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/59c3b59f0a100e75c86ee650c8dd72c5/get-single-phase-f-series.pdf"> F Series Dual MPPT Inverter</a> or 
-                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/a6f12873ad3ceddf721e2cb561c16ab1/get-ess-s-series-inverter.pdf"> S Series Single MPPT Inverter</a>, 
+                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/45425ba5bb0580e452f321fe08581adc/get-sp-hybrid.pdf"> FoxESS Single-Phase Hybrid Inverter  </a>,
                                 <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/52f4549de4db8bb0bdd05019857cce91/get-solar-edge-inverter.pdf"> Solar Edge Optimised option </a>
                               </li>
-                              <li>Battery: 
-                                <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/45425ba5bb0580e452f321fe08581adc/get-sp-hybrid.pdf"> Single-Phase Hybrid Inverter  </a> or 
+                              <li>Battery:                                  
                                 <a target="_blank" style={{color:"#3c96c5", fontWeight:"normal"}} href="https://www.get-uk.com/static/14b01f2937f5e8117b25cbe3e14cd8c2/get-foxess-battery-module-hv2600.pdf"> FoxESS HV2600 Battery Module </a> 
                               </li>
                               <li>Optimized Option:
