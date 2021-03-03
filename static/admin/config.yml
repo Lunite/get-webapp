@@ -476,6 +476,7 @@
               "name": "pdf",
               "widget": "file",
             },
+            { "label": "Category", "name": "category", "widget": "string" },
           ],
         "folder": "content/products_and_warranties",
         "label": "Products and Warranties",
