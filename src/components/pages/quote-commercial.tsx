@@ -23,7 +23,7 @@ const googleCampaignQueryKeys = [
   'utm_content',
 ];
 
-const QuotePage = ({ location }) => {
+const QuotePageCommercial = ({ location }) => {
   const { state = {} } = location;
 
   const urlParams = new URLSearchParams(location.search); 
@@ -52,7 +52,7 @@ const QuotePage = ({ location }) => {
     <div className="quote-page">
       <Hero imageUrl="/images/quote-banner.jpg" compact>
         <Heading level={1} underlined>
-          Get a Quote
+          Business Quote
         </Heading>
       </Hero>
       <Block>
@@ -111,41 +111,17 @@ const QuotePage = ({ location }) => {
                   onChange={(evt) => setFormValue('phone-number', evt.currentTarget.value)}
                 />
                 <FormInput
+                  name="company"
+                  label="Company*"
+                  placeholder="Type the name of your company or organisation"
+                  value={form['company']}
+                  onChange={(evt) => setFormValue('company', evt.currentTarget.value)}
+                />
+                <FormInput
                   name="address"
                   label="Address"
                   placeholder="Type your full address"
                   onChange={(evt) => setFormValue('address', evt.currentTarget.value)}
-                />
-                <Block>
-                  <Heading level={4}>Further details - Why do we need this information?</Heading>
-                  <p>
-                    Our usage-based model means that our designs are truly cost
-                    effective and based around your consumption, lifestyle and
-                    needs. This is in order to design a system that generates
-                    the optimum amount of energy, minimising surplus export to
-                    the grid and reducing payback time.
-                  </p>
-                </Block>
-                <FormInput
-                  name="annual-electricity-usage"
-                  label="Annual Electricity Usage"
-                  placeholder="Type your annual electricity usage"
-                  value={form['annual-electricity-usage']}
-                  onChange={(evt) => setFormValue('annual-electricity-usage', evt.currentTarget.value)}
-                />
-                <FormInput
-                  name="unit-rate"
-                  label="Unit Rate"
-                  placeholder="Type unit rate"
-                  value={form['unit-rate']}
-                  onChange={(evt) => setFormValue('unit-rate', evt.currentTarget.value)}
-                />
-                <FormSelect
-                  name="beds"
-                  label="Number of beds"
-                  options={["1", "2", "3", "4", "5", "6+"]}
-                  value={form['beds']}
-                  onChange={(evt) => setFormValue('beds', evt.currentTarget.value)}
                 />
                 <FormInput 
                   name="isSpecialPrice"
@@ -198,4 +174,4 @@ const QuotePage = ({ location }) => {
   )
 }
 
-export default QuotePage
+export default QuotePageCommercial

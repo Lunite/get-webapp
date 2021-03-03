@@ -369,6 +369,15 @@ exports.createPages = async ({ graphql, actions }) => {
           "Just simply fill out a few details to receive a free no-obligation quote and survey from us here at Green Energy Together.",
       },
       {
+        slug: "quote-commercial",
+        seo_title:
+          "Business Quote | Green Energy Together | Solar Panel Installer",
+        title: "Business Quote",
+        keywords: "",
+        description:
+          "Just simply fill out a few details to receive a free no-obligation consultation for your business.",
+      },     
+      {
         slug: "yourquote",
         seo_title: "Your Quote | Green Energy Together | Solar Panel Installer",
         title: "Your Quote",
@@ -402,6 +411,24 @@ exports.createPages = async ({ graphql, actions }) => {
         keywords: "",
         description:
           "Solar Together",
+      },
+      {
+        slug: "commercial-products",
+        seo_title:
+          "Commercial Products | Green Energy Together | Solar Panel Installer",
+        title: "Commercial Products",
+        keywords: "",
+        description:
+          "Commercial Products",
+      },
+      {
+        slug: "commercial-warranties",
+        seo_title:
+          "Commercial Warranties | Green Energy Together | Solar Panel Installer",
+        title: "Commercial Warranties",
+        keywords: "",
+        description:
+          "Commercial Warranties",
       },
     ]),
   ])

@@ -5,6 +5,38 @@
   cursor: default;
   position: relative;
 
+  .business__link {
+    &::before {
+      content: attr(data-title);
+      display: block;
+      position: absolute;
+
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity #{$transition};
+      color: $dark-blue;
+      font-family: $bold-family;
+      background-color: $light-blue;
+    }
+  }
+
+  .solartogether__link {
+    &::before {
+      content: attr(data-title);
+      display: block;
+      position: absolute;
+
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity #{$transition};
+      color: $dark-blue;
+      font-family: $bold-family;
+      background-color: white;
+    }
+  }
+
   &__link {
     position: relative;
 

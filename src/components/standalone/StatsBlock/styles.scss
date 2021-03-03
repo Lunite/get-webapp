@@ -2,9 +2,4 @@
 
 .stats {
   overflow: hidden;
-
-  @media ($mobile) {
-    max-width: 325px;
-    margin: 0 auto 65px;
-  }
 }
