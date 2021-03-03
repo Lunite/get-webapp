@@ -55,7 +55,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
         }	
       >	
         <Heading level={1}>	
-        Because not all solar <br/> is the same	
+        Because not all solar is<br/> the same	
         </Heading>	
          {/* <p style={{ fontSize: "25px" }}>Merry Christmas from all of us <br/>	
          at Green Energy Together</p>	 */}
