@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Hero from "~/components/configurable/Hero"
 import FormInput from "~/components/olc-framework/FormInput"
 import Block from "~/components/configurable/Block"
@@ -11,9 +11,12 @@ import Image from "../configurable/Image"
 import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 export const SPECIAL_PRICE_KEY = 'utm_campaign';
 export const SPECIAL_PRICE_VALUE = 'special_price';
+
+
 
 const googleCampaignQueryKeys = [
   'utm_source',
@@ -22,8 +25,24 @@ const googleCampaignQueryKeys = [
   'utm_term',
   'utm_content',
 ];
+    
 
 const QuotePage = ({ location }) => {
+
+      //this makes it so the customer type is set always as what it needs to be on that page
+
+      const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+      const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+      const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+      const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+      
+        React.useEffect(() => {
+          setCustomerType('domestic');
+        }, []);
+    
+    //END this makes it so the customer type is set always as what it needs to be on that page
+
   const { state = {} } = location;
 
   const urlParams = new URLSearchParams(location.search); 

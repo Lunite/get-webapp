@@ -38,13 +38,19 @@ const image1 = require('../../images/tshirt.jpg');
 const SolarTogether = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>;
 
+  //this makes it so the customer type is set always as what it needs to be on that page
+
   const { customerType, setCustomerType } = useContext(CustomerTypeContext);
 
-//this makes it so the customer type is set always as what it needs to be on that page
+  const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+  const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+  const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+  
+    React.useEffect(() => {
+      setCustomerType('solartogether');
+    }, []);
 
-  React.useEffect(() => {
-    setCustomerType('solartogether');
-  }, []);
+//END this makes it so the customer type is set always as what it needs to be on that page
 
   const productsWarranties = markdownNodesFilter(
     markdownNodes,

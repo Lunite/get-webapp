@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -19,6 +19,7 @@ import TickList from "../configurable/TickList"
 import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const image1 = require('../../images/install1x1.jpg');
 const image2 = require('../../images/hold.jpg');
@@ -40,6 +41,19 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
     })
   }
 
+      //this makes it so the customer type is set always as what it needs to be on that page
+
+      const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+      const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+      const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+      const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+      
+        React.useEffect(() => {
+          setCustomerType('domestic');
+        }, []);
+    
+    //END this makes it so the customer type is set always as what it needs to be on that page
   return (
     <div className="products-and-warranties content-page">
       <Hero imageUrl="/images/products-warranties-banner.jpg" compact>

@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import { PageProps } from "gatsby"
 import "./yourquote.scss"
 import Heading from "../configurable/Heading"
 import Hero from "../configurable/Hero"
 import Col12 from "../grid/Col12"
 import Block from "../configurable/Block"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 let results: any = {
   // for testing purposes - replace with props.window.state
@@ -60,6 +61,20 @@ const sum = (arr: Array<number>) => {
     return a + b
   }, 0)
 }
+
+  //this makes it so the customer type is set always as what it needs to be on that page
+
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+  const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+  const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+  const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+  
+    React.useEffect(() => {
+      setCustomerType('commercial');
+    }, []);
+
+//END this makes it so the customer type is set always as what it needs to be on that page
 
 const colorScale = [
   "#57bb8a",

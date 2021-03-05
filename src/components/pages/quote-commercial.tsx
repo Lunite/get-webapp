@@ -29,7 +29,19 @@ const googleCampaignQueryKeys = [
 
 const QuotePageCommercial = ({ location }) => {
 
+    //this makes it so the customer type is set always as what it needs to be on that page
 
+    const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+    const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+    const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+    const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+    
+      React.useEffect(() => {
+        setCustomerType('commercial');
+      }, []);
+  
+  //END this makes it so the customer type is set always as what it needs to be on that page
 
   const { state = {} } = location;
 

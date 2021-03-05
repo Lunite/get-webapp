@@ -76,7 +76,7 @@ const ProjectsPage = ({ location, pageContext: { projects } }) => {
               </li>
             )
           })}
-          <li className="project" >
+          {/* <li className="project" >
                 <Link
                   to={`/index`}
                   style={{
@@ -99,7 +99,7 @@ const ProjectsPage = ({ location, pageContext: { projects } }) => {
                   </p>
                 </Link>
                 
-              </li>
+              </li> */}
         </Grid>
       </div>
     </>

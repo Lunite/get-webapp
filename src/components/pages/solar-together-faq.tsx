@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Markdown from "react-markdown"
 import Hero from "~/components/configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -10,8 +10,23 @@ import Col11 from "../grid/Col11"
 
 import "./faq.scss"
 import { useStaticQuery, graphql } from "gatsby"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 const SolarTogetherFAQ = ({  }) => {
+
+    //this makes it so the customer type is set always as what it needs to be on that page
+
+    const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+    const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+    const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+    const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+    
+      React.useEffect(() => {
+        setCustomerType('solartogether');
+      }, []);
+  
+  //END this makes it so the customer type is set always as what it needs to be on that page
 
   return (
     <div className="faq-page">
