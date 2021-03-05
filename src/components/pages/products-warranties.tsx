@@ -20,6 +20,7 @@ import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
+import FormSelect from "../olc-framework/FormSelect"
 
 const image1 = require('../../images/install1x1.jpg');
 const image2 = require('../../images/hold.jpg');
@@ -28,6 +29,8 @@ const image4 = require('../../images/HIP.png');
 
 const ProductsAndWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
+
+  const [filter, setFilter] = React.useState<string>('');
 
   const productsWarranties = markdownNodesFilter(
     markdownNodes,
@@ -40,6 +43,20 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
       block: "start",
     })
   }
+
+  const filteredProducts = React.useMemo(() => {
+    if (filter === '') {
+      return productsWarranties;
+    }
+    return productsWarranties.filter((product) => {
+      return product.frontmatter.category === filter;
+    });
+  }, [productsWarranties, filter]);
+
+  const onFilterChange = React.useCallback((evt) => {
+    setFilter(evt.target.value);
+  }, []);
+
 
       //this makes it so the customer type is set always as what it needs to be on that page
 
@@ -262,8 +279,19 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 warranty. For further information, get in touch with one of our
                 advisors.
               </p>
+              <div style={{width: '500px'}}>
+                <FormSelect 
+                  name="category"
+                  label="Filter by category"
+                  options={["Inverters", "Panels", "Batteries", "EV Charger", "Other"]}
+                  value={filter}
+                  onChange={onFilterChange}
+                />
+                </div>
+              
+
               <Grid>
-                {productsWarranties.map(item => {
+                {filteredProducts.map(item => {
                   const pwItem = item.frontmatter
 
                   return (
