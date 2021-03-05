@@ -53,7 +53,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
           // imageUrl="/images/homepage-video.jpg"
-          video="https://vimeo.com/499399762"
+          video="https://vimeo.com/418983793"
           overlapBlock={
             <div className="hidden-xs">
               <Quote />
