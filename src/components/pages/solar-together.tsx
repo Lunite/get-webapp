@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -23,6 +23,9 @@ import "./faq.scss"
 import Collapsible from "../configurable/Collapsible"
 
 import "./solar-together.scss"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
+import Banner from "../configurable/Banner"
+import { Link } from "gatsby"
 
 const logo = require('../../images/solar-together-logo.png');
 const bothlogos = require('../../images/bothlogos.png');
@@ -33,7 +36,15 @@ const image2 = require('../../images/blackpanels2.jpg');
 const image1 = require('../../images/tshirt.jpg');
 
 const SolarTogether = ({ markdownNodes }) => {
-  const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
+  const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>;
+
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+//this makes it so the customer type is set always as what it needs to be on that page
+
+  React.useEffect(() => {
+    setCustomerType('solartogether');
+  }, []);
 
   const productsWarranties = markdownNodesFilter(
     markdownNodes,
@@ -56,6 +67,13 @@ const SolarTogether = ({ markdownNodes }) => {
 
   return (
     <div className="products-and-warranties content-page">
+      {/* <Banner className="visible-xs" >
+        <Link to="/for-your-business" >Go to Business Site</Link>
+      </Banner> 
+       <Banner className="banner2">
+        <Link to="/covid-19">Go to Solar Together</Link>
+      </Banner>  */}
+
       <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
         <Heading level={1} underlined>
           Solar Together

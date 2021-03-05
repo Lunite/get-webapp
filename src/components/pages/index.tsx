@@ -39,12 +39,15 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
 
   return (
     <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
-      {/* <Banner className="visible-xs">
-        <Link to="/for-your-business">Go to Business Site</Link>
-      </Banner> */}
-      {/* <Banner className="banner--covid-19">
-        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
-      </Banner> */}
+       <Banner className="visible-xs" >
+        <Link to="/for-your-business" >Go to Business Site</Link>
+      </Banner> 
+       {/*<Banner className="banner2 visible-xs">
+        <Link to="/covid-19">Go to Solar Together</Link>
+      </Banner>  */}
+
+
+
     {!!heroImage && (
         <Hero
           className="homepage__hero"

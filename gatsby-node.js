@@ -335,6 +335,14 @@ exports.createPages = async ({ graphql, actions }) => {
           "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
       },
       {
+        slug: "commercial-contact-us",
+        seo_title: "Contact | Green Energy Together | Solar Panel Installer Business",
+        title: "Contact",
+        keywords: "",
+        description:
+          "Green Energy Together is based in Hertfordshire, England. Contact us today to discuss your individual requirements or any questions you may have for us.",
+      },
+      {
         slug: "faq",
         title: "Support and FAQ",
         seo_title:
@@ -429,6 +437,15 @@ exports.createPages = async ({ graphql, actions }) => {
         keywords: "",
         description:
           "Commercial Warranties",
+      },
+      {
+        slug: "test-page",
+        seo_title:
+          "Test Page | Green Energy Together | Solar Panel Installer",
+        title: "Test Page",
+        keywords: "",
+        description:
+          "Test Page",
       },
     ]),
   ])

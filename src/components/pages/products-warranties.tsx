@@ -140,9 +140,9 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                     <Icon alias="battery-charging" />
                     5+ years warranty on inverters
                   </li>
-                  <li>
+                  {/* <li>
                     <Icon alias="worker" />2 years workmanship warranty
-                  </li>
+                  </li> */}
                   <li>
                     <Icon alias="sun" />
                     25+ years performance warranty and 10+ years product warranty

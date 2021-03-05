@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
@@ -19,15 +19,35 @@ import TickList from "../configurable/TickList"
 import BlockCTA from "../configurable/BlockCTA"
 import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
 import "../configurable/BlockCTA/styles.scss"
+import FormInput from "../olc-framework/FormInput"
+import Col12 from "../grid/Col12"
+import FormSelect from "../olc-framework/FormSelect"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 
 const CommercialProducts = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
 
+  const [filter, setFilter] = React.useState<string>('');
+
   const productsWarranties = markdownNodesFilter(
     markdownNodes,
     "products_and_warranties"
   )
+
+//this makes it so the customer type is set always as what it needs to be on that page
+
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+  const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+  const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+  const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+  
+    React.useEffect(() => {
+      setCustomerType('commercial');
+    }, []);
+
+//END this makes it so the customer type is set always as what it needs to be on that page
 
   const goToProducts = () => {
     productsBlockRef.current.scrollIntoView({
@@ -36,6 +56,19 @@ const CommercialProducts = ({ markdownNodes }) => {
     })
   }
 
+  const filteredProducts = React.useMemo(() => {
+    if (filter === '') {
+      return productsWarranties;
+    }
+    return productsWarranties.filter((product) => {
+      return product.frontmatter.category === filter;
+    });
+  }, [productsWarranties, filter]);
+
+  const onFilterChange = React.useCallback((evt) => {
+    setFilter(evt.target.value);
+  }, []);
+
   return (
     <div className="products-and-warranties content-page">
       <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
@@ -43,6 +76,8 @@ const CommercialProducts = ({ markdownNodes }) => {
           Commercial Products
         </Heading>
       </Hero>
+
+
       {!!productsWarranties?.length && (
         <Block>
           <div className="container"  style={{ paddingTop: "0px", marginTop:"-100px" }}>
@@ -62,8 +97,27 @@ const CommercialProducts = ({ markdownNodes }) => {
                 warranty. For further information, get in touch with one of our
                 advisors.
               </p>
+
+              <div style={{width: '500px'}}>
+                <FormSelect 
+                  name="category"
+                  label="Filter by category"
+                  options={["Inverters", "Panels", "Batteries", "EV Charger", "Other"]}
+                  value={filter}
+                  onChange={onFilterChange}
+                />
+                </div>
+              
+
+              
+
+
+
               <Grid>
-                {productsWarranties.map(item => {
+              <div className="row">
+
+              </div>
+                {filteredProducts.map(item => {
                   const pwItem = item.frontmatter
 
                   return (

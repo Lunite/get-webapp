@@ -15,3 +15,19 @@
     border-top: 1px solid rgba(255, 255, 255, 0.4);
   }
 }
+
+.banner2 {
+  width: 100%;
+  font-size: 12px;
+  color: $white;
+  background-color: $dark-blue;
+  line-height: 1;
+  padding: 9px;
+  text-align: center;
+  text-decoration: underline;
+
+  &--solar-together {
+    background-color: $green;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}

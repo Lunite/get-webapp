@@ -9,6 +9,8 @@ import "./projects.scss"
 import { Link } from "gatsby"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
+const randomimage = require('../../images/HIP.png');
+
 const ProjectsPage = ({ location, pageContext: { projects } }) => {
   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
 
@@ -70,9 +72,34 @@ const ProjectsPage = ({ location, pageContext: { projects } }) => {
                     {frontmatter.info_strip.location}
                   </p>
                 </Link>
+                
               </li>
             )
           })}
+          <li className="project" >
+                <Link
+                  to={`/index`}
+                  style={{
+                    backgroundImage: `url(${randomimage})` ,
+                  }}
+                >
+                  <p className="project__title hidden-xs">
+                    title
+                  </p>
+                  <p className="project__location hidden-xs">
+                    location
+                  </p>
+                </Link>
+                <Link className="visible-xs" to={`/index`}>
+                  <p className="project__title visible-xs">
+                    titlesmall
+                  </p>
+                  <p className="project__location visible-xs">
+                    locationsmall
+                  </p>
+                </Link>
+                
+              </li>
         </Grid>
       </div>
     </>

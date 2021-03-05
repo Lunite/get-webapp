@@ -27,6 +27,8 @@ const Navigation: React.FC = () => {
   console.log('isDomestic', isDomestic);
   console.log('isSolarTogether', isSolarTogether);
   
+  
+
   const customerStyle = React.useMemo(() => {
     const style: any = {};
     if (isBusiness) {
@@ -56,18 +58,31 @@ const Navigation: React.FC = () => {
   }, [isBusiness, isSolarTogether]);
 
   const contactDetails = React.useMemo(() => {
+
     return (
       <div className="navigation__contact-details contact-details">
-                  <Link className="contact-details__link" to="/contact-us">
-                    <Icon alias="at" style={isBusiness ? {color: '#3c96c5'} : {}} />
+
+
+
+
+                  <Link className="contact-details__link" to="/contact-us" style={{display: isSolarTogether || isBusiness ? 'none' : 'initial'}}>
+                  <Icon alias="at"  />
                     Contact us
-                  </Link>            
+                  </Link>
+                  
+                  <Link className="contact-details__link" to="/commercial-contact-us" style={{display: isSolarTogether || isDomestic ? 'none' : 'initial'}}>
+                  <Icon alias="at" style={isBusiness ? {color: '#3c96c5'} : {}} />
+                    Contact us
+                  </Link>
+
+                  
                   <a className="contact-details__link" href="tel:02038669896" style={{
                     display: isSolarTogether ? 'initial' : 'none'
                   }}>
                     <Icon alias="phone" />
                     020 3866 9896
                   </a>
+
                 </div>
     )
   }, [isSolarTogether, isBusiness]);
@@ -81,15 +96,7 @@ const Navigation: React.FC = () => {
     {/*Start Domestic menu*/}
     {isDomestic && (
     <>
-      <div className="navigation-item">
-        <Link
-          data-title="Case Studies"
-          className="navigation-item__link"
-          to="/projects"
-        >
-          Case Studies
-        </Link>
-      </div> 
+
       <div className="navigation-item">
         <Link
           data-title="Products & Warranties"
@@ -117,6 +124,15 @@ const Navigation: React.FC = () => {
           </Link>
         </div>
       </div>
+      <div className="navigation-item">
+        <Link
+          data-title="Case Studies"
+          className="navigation-item__link"
+          to="/projects"
+        >
+          Case Studies
+        </Link>
+      </div> 
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/quote">
           Get a Quote
@@ -162,15 +178,6 @@ const Navigation: React.FC = () => {
         </div>
       </div>
       <div className="navigation-item">
-        <Link
-          data-title="Case Studies"
-          className="navigation-item__link business__link"
-          to="/projects"
-        >
-          Case Studies
-        </Link>
-      </div> 
-      <div className="navigation-item">
         <div className="navigation-item__link business__link" data-title="Company">
           Company
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
@@ -179,9 +186,9 @@ const Navigation: React.FC = () => {
           <Link className="navigation-item__child-link" to="/commercial-products/">
             Products
           </Link>
-          <Link className="navigation-item__child-link" to="/commercial-warranties">
+          {/* <Link className="navigation-item__child-link" to="/commercial-warranties">
             Warranties
-          </Link>
+          </Link> */}
           <Link className="navigation-item__child-link" to="/about-us/">
             About Us
           </Link>
@@ -193,6 +200,15 @@ const Navigation: React.FC = () => {
           </Link>
         </div>
       </div>
+      <div className="navigation-item">
+        <Link
+          data-title="Case Studies"
+          className="navigation-item__link business__link"
+          to="/projects"
+        >
+          Case Studies
+        </Link>
+      </div> 
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/quote-commercial">
           Get a Quote
@@ -233,8 +249,8 @@ const Navigation: React.FC = () => {
         </Link>
       </div> 
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
-        <Link className="navigation-item__link" to="/quote">
-          Get a Quote
+        <Link className="navigation-item__link" to="/contact-us">
+          Contact us
         </Link>
       </div>
     </>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Hero from "~/components/configurable/Hero"
 import FormInput from "~/components/olc-framework/FormInput"
 import Block from "~/components/configurable/Block"
@@ -11,6 +11,7 @@ import Image from "../configurable/Image"
 import { window } from 'global';
 
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 export const SPECIAL_PRICE_KEY = 'utm_campaign';
 export const SPECIAL_PRICE_VALUE = 'special_price';
@@ -23,7 +24,13 @@ const googleCampaignQueryKeys = [
   'utm_content',
 ];
 
+
+
+
 const QuotePageCommercial = ({ location }) => {
+
+
+
   const { state = {} } = location;
 
   const urlParams = new URLSearchParams(location.search); 
@@ -58,8 +65,11 @@ const QuotePageCommercial = ({ location }) => {
       <Block>
         <div className="container u-layout--indent container--column">
           <p className="u-font--body-large">
-            If you have a bill to hand, please input the following details which
-            will help us refine your quote.
+          Is solar right for you? How much could you save? We’re here to help you get answers to all your questions about solar. <br/>No pressure, no sales pitch – just honest advice.
+
+Your free quote will include: a roof assessment, customized system design, system yield, Net Present Value (NPV) analysis and a calculation of your return on investment.
+
+Simply fill out the form and we’ll get started!
           </p>
           <div className="row">
             <Col6>
