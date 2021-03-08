@@ -29,6 +29,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
   const { setCustomerType } = useContext(CustomerTypeContext)
 
   useEffect(() => {
+    console.log("Homepage")
     setCustomerType("domestic")
 
     setHeroImage(imageNodesFilter(imageNodes, "homepage-video.jpg"))
@@ -38,31 +39,16 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
 
   return (
     <div className="homepage" style={{ opacity: loading ? 0 : 1 }}>
-      <Banner className="visible-xs">
-        <Link to="/for-your-business">Go to Business Site</Link>
-      </Banner>
-      <Banner className="banner--covid-19">
-        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
-      </Banner>
-      {!!heroImage && (
-        <Hero	
-        className="homepage__hero"	
-        image={<Img fluid={heroImage.fluid} alt="For your home" />}	
-        overlapBlock={	
-          <div className="hidden-xs">	
-            <Quote />	
-          </div>	
-        }	
-      >	
-        <Heading level={1}>	
-        Because not all solar <br/>is the same	
-        </Heading>	
-         {/* <p style={{ fontSize: "25px" }}>Merry Christmas from all of us <br/>	
-         at Green Energy Together</p>	 */}
-        {/* <BlockCTA url="/sale">Find Out More</BlockCTA> 	 */}
-      </Hero>	
-    )}	
-    {/* {!IS_HALLOWEEN && !!heroImage && (
+       <Banner className="visible-xs" >
+        <Link to="/for-your-business" >Go to Business Site</Link>
+      </Banner> 
+       {/*<Banner className="banner2 visible-xs">
+        <Link to="/covid-19">Go to Solar Together</Link>
+      </Banner>  */}
+
+
+
+    {!!heroImage && (
         <Hero
           className="homepage__hero"
           image={<Img fluid={heroImage.fluid} alt="For your home" />}
@@ -77,16 +63,16 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           <Heading level={1}>
             Because not all solar <br/> is the same
           </Heading>
-           <p style={{ fontSize: "25px" }}>frighteningly good deals for Halloween</p>
-          <BlockCTA url="/halloween">Find Out More</BlockCTA> 
+           <p style={{ fontSize: "25px" }}>Welcome to the future of energy</p>
+          {/* <BlockCTA url="/halloween">Find Out More</BlockCTA>  */}
         </Hero>
-      )} */}
+      )}
       <Block className="visible-xs">
         <div className="container container--column">
           <Quote />
         </div>
       </Block>
-      <Block>
+      <Block className="homepage-content-wrapper">
         <div className="container container--column illustrated-house-block">
           <Heading underlined>A complete solar PV system for your home</Heading>
           <p>
@@ -119,7 +105,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
                   <>
                     <div className="visible-xs" style={{ height: 40 }} />
                     <div className="row">
-                      <Col6 className="u-layout--centered">
+                      <Col6 className="u-layout">
                         <div
                           className="icon__circle-wrapper"
                           style={{ marginBottom: 40, fontSize: 40 }}
@@ -136,7 +122,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
                           home, saving you money.
                         </p>
                       </Col6>
-                      <Col6 className="u-layout--centered">
+                      <Col6 className="u-layout">
                         <div
                           className="icon__circle-wrapper"
                           style={{ marginBottom: 40, fontSize: 40 }}
@@ -170,7 +156,7 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
           </div>
         </div>
       </Block>
-      <div className="container">
+      <div className="container stats-container">
         <StatsBlock device="desktop" />
         <StatsBlock device="mobile" />
       </div>

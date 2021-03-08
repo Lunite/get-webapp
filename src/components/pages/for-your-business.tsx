@@ -8,6 +8,12 @@ import TickList from "../configurable/TickList"
 import BlockCTA from "../configurable/BlockCTA"
 import Col10 from "../grid/Col10"
 import Col2 from "../grid/Col2"
+import Col9 from "../grid/Col9"
+import Col3 from "../grid/Col3"
+import Col8 from "../grid/Col8"
+import Col4 from "../grid/Col4"
+import Col7 from "../grid/Col7"
+import Col5 from "../grid/Col5"
 import Image from "../configurable/Image"
 import Shoutout from "../configurable/Shoutout"
 import StatsBlock from "../standalone/StatsBlock"
@@ -19,6 +25,8 @@ import CaseStudiesMap from "../configurable/CaseStudiesMap"
 import Icon from "../olc-framework/Icon"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
+const imagewar = require('../../images/hold.jpg');
+
 const HomepageB2b = ({ markdownNodes }) => {
   const { setCustomerType } = useContext(CustomerTypeContext)
 
@@ -28,9 +36,12 @@ const HomepageB2b = ({ markdownNodes }) => {
 
   return (
     <div className="homepage-b2b">
-      <Banner className="banner--covid-19">
-        <Link to="/covid-19">Click here to read our COVID-19 plan</Link>
-      </Banner>
+      <Banner className="visible-xs">
+        <Link to="/">Go to Domestic Site</Link>
+      </Banner>   
+      {/* <Banner className="visible-xs banner--solar-together">
+        <Link to="/solar-together">Solar Together</Link>
+      </Banner> */}
       <Hero
         className="homepage__hero"
         imageUrl="/images/b2b-video.jpg"
@@ -50,7 +61,7 @@ const HomepageB2b = ({ markdownNodes }) => {
         <p>We are here to help you grow</p>
         {/* <BlockCTA url="/projects">Find Out More</BlockCTA> */}
       </Hero>
-      <Block>
+      <Block  >
         <Section className="visible-xs">
           <Quote
             title="Let us produce a solar business case for you"
@@ -59,7 +70,7 @@ const HomepageB2b = ({ markdownNodes }) => {
             compact
           />
         </Section>
-        <Section>
+        <Section className="business-content-wrapper">
           <Heading underlined>A Strong Foundation</Heading>
           <p>
             For more than a decade, Green Energy Together has designed,
@@ -74,7 +85,7 @@ const HomepageB2b = ({ markdownNodes }) => {
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col10>
+            <Col9>
               <Heading underlined>Industrial Commercial Solutions</Heading>
               <p>
                 We offer a one-stop service for all your needs, from consulting
@@ -95,27 +106,27 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/industrial-commercial-solutions" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col10>
-            <Col2>
+            </Col9>
+            <Col3>
               <Image
                 src="/images/paddington-station.jpg"
                 title="Commercial Installation at Paddington Station, London UK"
                 caption="Paddington Station, London UK"
               />
-            </Col2>
+            </Col3>
           </div>
         </Section>
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col2>
+            <Col3>
               <Image
                 src="/images/no-idea.jpg"
                 title="Commercial Installation at Kelly Solar Farm"
                 caption="Kelly Solar Farm"
               />
-            </Col2>
-            <Col10>
+            </Col3>
+            <Col9>
               <Heading underlined>Operation &amp; Maintenance</Heading>
               <p>
                 Our dedicated Operation &amp; Maintenance team provides O&amp;M
@@ -135,11 +146,11 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/operation-maintenance" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col10>
+            </Col9>
           </div>
         </Section>
         <Shoutout
-          image={<Image src="/images/products-bulb.jpg" title="Products" />}
+          image={<Image src={imagewar} title="Products" />}
           text={
             <>
               <Heading underlined>Products &amp; Warranties</Heading>
@@ -156,7 +167,7 @@ const HomepageB2b = ({ markdownNodes }) => {
         />
         <Section>
           <div className="row">
-            <Col10>
+            <Col9>
               <Heading underlined>Asset Management</Heading>
               <p>
                 We provide a full range of Asset Management Services, as a
@@ -176,27 +187,27 @@ const HomepageB2b = ({ markdownNodes }) => {
                <BlockCTA secondary url="/service/asset-management" arrow="right">
                 Find out more
               </BlockCTA> 
-            </Col10>
-            <Col2>
+            </Col9>
+            <Col3>
               <Image
                 src="/images/newnham-solar-farm.jpg"
                 title="Technical design at Newnham Solar Farm"
                 caption="Newnham Solar Farm"
               />
-            </Col2>
+            </Col3>
           </div>
         </Section>
         <div className="divider" />
         <Section>
           <div className="row">
-            <Col2>
+            <Col3>
               <Image
                 src="/images/bay-solar-farm.jpg"
                 title="Asset Management at Bay Solar Farm"
                 caption="Bay Solar Farm"
               />
-            </Col2>
-            <Col10>
+            </Col3>
+            <Col9>
               <Heading underlined>Technical Design</Heading>
               <p>
                 Green Energy Together offers expert technical consultancy across
@@ -216,7 +227,7 @@ const HomepageB2b = ({ markdownNodes }) => {
               <BlockCTA secondary url="/service/technical-design" arrow="right">
                 Find out more
               </BlockCTA>
-            </Col10>
+            </Col9>
           </div>
         </Section>
         <Section>

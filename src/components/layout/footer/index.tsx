@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from "react"
+import React, { useContext } from "react"
 
 import BlockCTA from "~/components/configurable/BlockCTA"
 import Col3 from "~/components/grid/Col3"
@@ -19,10 +19,10 @@ interface FooterProps {
   isSolarTogether: any; 
 }
 
-const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
-   const { customerType, setCustomerType } = useContext(CustomerTypeContext)
+const Footer: React.FC = () => {
+   const { customerType } = useContext(CustomerTypeContext);
 
- // buildColumn()
+   const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
 
   return (
     <footer className="footer">
@@ -53,9 +53,7 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
                     <br />
                     Marsh Lane Ware,
                     <br />
-                    Hertfordshire
-                    <br />
-                    SG12 9QL
+                    Herts. SG12 9QL
                     <br />
                     VAT 292 7158 75
                   </span>
@@ -109,7 +107,7 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
                 className="footer__item"
                 to="/service/industrial-commercial-solutions"
               >
-                Industrial and Commercial
+                Industrial &amp; Commercial
               </Link>
               <Link className="footer__item" to="/">
                 Residential Services
@@ -127,34 +125,34 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
                 Asset Management
               </Link>
             </Col3>
+
+
             <Col3>
-              <Heading className="footer__column-heading">Case studies</Heading>
-              <Link className="footer__item" to="/projects">
-                All case studies
+              <Heading className="footer__column-heading">Get in touch</Heading>
+
+              <div className="footer__item">        
+              <a href="https://www.facebook.com/greenenergytogether">Facebook</a>
+              </div>
+              <div className="footer__item">
+              <a href="https://www.instagram.com/green.energy.together">Instagram</a>
+              </div>
+              <div className="footer__item">
+              <a href="https://twitter.com/get_uk_solar">Twitter</a>
+              </div >
+              <div className="footer__item">
+                <a href="https://www.linkedin.com/company/get-uk">LinkedIn</a>
+              </div>
+              <Link className="footer__item" to="/contact-us">
+                Contact Us
               </Link>
-              <Link className="footer__item" to="/project/paddington-station">
-                Paddington
-              </Link>
-              <Link
-                className="footer__item"
-                to="/project/kings-college-hospital"
-              >
-                King's College Hospital
-              </Link>
-              <Link
-                className="footer__item"
-                to="/project/smooth-nice-and-fast/"
-              >
-                Brighton
-              </Link>
+
             </Col3>
+              
+
             <Col3>
               <Heading className="footer__column-heading">Company</Heading>
               <Link className="footer__item" to="/about-us/">
                 About Us
-              </Link>
-              <Link className="footer__item" to="/contact-us">
-                Contact Us
               </Link>
               <Link className="footer__item" to="/privacy">
                 Privacy Policy
@@ -164,7 +162,10 @@ const Footer: FunctionComponent<FooterProps> = ({isSolarTogether}) => {
               </Link>
               <Link className="footer__item" to="/solar-together">
                 Solar Together
-              </Link>              
+              </Link>
+              <Link className="footer__item" to="/covid-19">
+              COVID-19 Plan
+              </Link>                   
             </Col3>
           </div>
         </div>

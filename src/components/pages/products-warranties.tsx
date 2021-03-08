@@ -1,21 +1,36 @@
-import React from "react"
+import React, { useContext } from "react"
 import Img from "gatsby-image"
 import Hero from "../configurable/Hero"
 import Heading from "../configurable/Heading"
 import Block from "../configurable/Block"
-import Col9 from "../grid/Col9"
-import Col4 from "../grid/Col4"
-import Col8 from "../grid/Col8"
 import Image from "../configurable/Image"
 import Icon from "../olc-framework/Icon"
-import Col11 from "../grid/Col11"
-import Col6 from "../grid/Col6"
 import HighlightBlock from "../configurable/HighlightBlock"
 import Grid from "../configurable/Grid"
 import { markdownNodesFilter } from "~/utils"
+import Col9 from "../grid/Col9"
+import Col4 from "../grid/Col4"
+import Col8 from "../grid/Col8"
+import Col11 from "../grid/Col11"
+import Col6 from "../grid/Col6"
+import Col7 from "../grid/Col7"
+import Col5 from "../grid/Col5"
+import TickList from "../configurable/TickList"
+import BlockCTA from "../configurable/BlockCTA"
+import "../configurable/ProductsAndWarrantiesBlock/styles.scss"
+import "../configurable/BlockCTA/styles.scss"
+import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
+import FormSelect from "../olc-framework/FormSelect"
+
+const image1 = require('../../images/install1x1.jpg');
+const image2 = require('../../images/hold.jpg');
+const image3 = require('../../images/folder1.jpg');
+const image4 = require('../../images/HIP.png');
 
 const ProductsAndWarranties = ({ markdownNodes }) => {
   const productsBlockRef = React.createRef() as React.RefObject<HTMLElement>
+
+  const [filter, setFilter] = React.useState<string>('');
 
   const productsWarranties = markdownNodesFilter(
     markdownNodes,
@@ -29,6 +44,33 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
     })
   }
 
+  const filteredProducts = React.useMemo(() => {
+    if (filter === '') {
+      return productsWarranties;
+    }
+    return productsWarranties.filter((product) => {
+      return product.frontmatter.category === filter;
+    });
+  }, [productsWarranties, filter]);
+
+  const onFilterChange = React.useCallback((evt) => {
+    setFilter(evt.target.value);
+  }, []);
+
+
+      //this makes it so the customer type is set always as what it needs to be on that page
+
+      const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+
+      const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
+      const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
+      const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+      
+        React.useEffect(() => {
+          setCustomerType('domestic');
+        }, []);
+    
+    //END this makes it so the customer type is set always as what it needs to be on that page
   return (
     <div className="products-and-warranties content-page">
       <Hero imageUrl="/images/products-warranties-banner.jpg" compact>
@@ -36,10 +78,10 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
           Products &amp; Warranties
         </Heading>
       </Hero>
-      <Block>
+      <Block >
         <div className="container u-layout--indent">
           <div className="row">
-            <Col9>
+            <Col8>
               <Heading level={3}>Redefining solar</Heading>
               <p>
                 We believe in the solar future.  We believe the future of energy
@@ -58,14 +100,21 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 your lifestyle needs. Throughout the process, your home and
                 investment are in safe hands.
               </p>
-              <Image src="/images/climb-mountain.jpg" title="Help achieve" />
+              <Image src={image2} title="Help achieve" />
               <p>
                 Quality of products, equipment, system design and effective
                 installation techniques will affect the performance and
                 longevity of your solar system, so it's crucial to have both
                 effective and reasonably priced solutions.
               </p>
-            </Col9>
+            </Col8>
+            <Col4>
+              <div>                
+                <Image src={image1} title="Help achieve2" />                
+              </div>
+                
+                
+            </Col4>
           </div>
           <div
             className="row"
@@ -84,55 +133,82 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 Every step of the process and scope of the work is clearly
                 outlined and explained. We pride ourselves on ensuring that you
                 understand everything clearly before making the decision to go
-                green. Our service includes the offer of a detailed
+                green. 
+              </p>
+              
+              <Icon alias="solar-fitting" style={{ fontSize: 90, color:"#051c3f", minWidth:"70px", marginBottom:"15px", marginTop:"15px" }} />
+              <Heading level={4}>End to end service</Heading>
+              <p>
+                Our service includes the offer of a detailed
                 commissioning review. A qualified engineer will review the
                 documentation, undertake any necessary registrations for the
                 property and issue them on your behalf.
               </p>
-              <Icon alias="power" style={{ fontSize: 90 }} />
+              
+              <Icon alias="solar-energy" style={{ fontSize: 90, color:"#051c3f", minWidth:"70px", marginBottom:"15px", marginTop:"15px" }} />
               <Heading level={4}>Performance optimisation</Heading>
               <p>
-                Operations &amp; Maintenance plans are essential for the
-                majority of solar installations. At Green Energy Together, for 2
-                years after your install we'll look after you and your system in
+                We'll look after you and your system in
                 line with the data we receive from your remote monitoring
                 solution, while our Customer Care team will be available to
-                answer your questions, all for free for 2 years. We can then
-                offer you a maintenance package that suits your needs, when you
-                are ready.
+                answer your questions, all for free for 2 years. 
               </p>
-              <Icon alias="solar-panel" style={{ fontSize: 90 }} />
-              <Heading level={4}>Warranties</Heading>
-              <p>
-                All of the solar panels we supply come with a 10 year product
-                warranty (materials warranty) and a 25 year linear performance
-                warranty. All of the inverters we supply come with at least a 5
-                year warranty as standard. In addition, we offer a 2 years
-                warranty over our workmanship. Full details of specific
-                components can be found below in the products section
-              </p>
+              
+
             </Col8>
+            
             <Col4>
-              <HighlightBlock
-                title="Warranty Data"
-                action={goToProducts}
-                actionText="Jump to products area"
-              >
-                <li>
-                  <Icon alias="battery-charging" />
-                  5+ years warranty on inverters
-                </li>
-                <li>
-                  <Icon alias="worker" />2 years workmanship warranty
-                </li>
-                <li>
-                  <Icon alias="sun" />
-                  25+ years performance warranty and 10+ years product warranty
-                  on panels
-                </li>
-              </HighlightBlock>
+            <div style={{marginBottom:"30px"}}>
+              <Image src={image3} title="Help achieve" />
+            </div>
+            <div>
+                <HighlightBlock
+                  title="Warranty Data"
+                  action={goToProducts}
+                  actionText="Jump to products area"
+                >
+                  <li>
+                    <Icon alias="battery-charging" />
+                    5+ years warranty on inverters
+                  </li>
+                  {/* <li>
+                    <Icon alias="worker" />2 years workmanship warranty
+                  </li> */}
+                  <li>
+                    <Icon alias="sun" />
+                    25+ years performance warranty and 10+ years product warranty
+                    on panels
+                  </li>
+                </HighlightBlock>
+              </div>
             </Col4>
           </div>
+
+          <div className="p-and-w" style={{marginTop:"70px"}}>
+            <div className="row">
+              <Col5>
+                  <Image src={image4} title="Help achieve" />
+              </Col5>
+              <Col7>
+              <Heading level={3}>Security at the highest level </Heading>
+                <p>
+                In addition to the warranty offered by the manufacturer we offer a 2 year warranty over our workmanship, and as a <a href="https://www.hip.insure/customers/find-approved-supplier/" target="blank" style={{color:"#3c96c5", fontWeight:"normal"}}>Home Improvement Protection Accredited Trader</a> your home is protected against any eventuality.
+                </p>
+                <Heading level={4}>Deposit Protection & Guarantee Insurance</Heading>
+                <p>
+                Authorised by the <a href="https://www.fca.org.uk/" target="blank" style={{color:"#3c96c5", fontWeight:"normal"}}>Financial Conduct Authority</a> and guaranteed for up to 10 years, the Home Improvement Protection’s scheme provide the best levels of insurance-backed warranty. So whatever happens, HIP is set out to honour the terms of the guarantee originally issued.
+                </p>
+                <BlockCTA secondary right external arrow="right" url="https://www.fca.org.uk/">
+                  Find out more
+                </BlockCTA>
+                
+
+
+              </Col7>
+            </div>
+          </div>
+
+
           <div className="row" style={{ marginTop: 60 }}>
             <Col9>
               <Heading level={2}>Superior system design</Heading>
@@ -185,8 +261,8 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
         </div>
       </Block>
       {!!productsWarranties?.length && (
-        <Block style={{ paddingTop: 0 }}>
-          <div className="container">
+        <Block>
+          <div className="container"  style={{ paddingTop: "0px", marginTop:"-100px" }}>
             <div
               className="row"
               style={{
@@ -203,8 +279,19 @@ const ProductsAndWarranties = ({ markdownNodes }) => {
                 warranty. For further information, get in touch with one of our
                 advisors.
               </p>
+              <div style={{width: '500px'}}>
+                <FormSelect 
+                  name="category"
+                  label="Filter by category"
+                  options={["Inverters", "Panels", "Batteries", "EV Charger", "Other"]}
+                  value={filter}
+                  onChange={onFilterChange}
+                />
+                </div>
+              
+
               <Grid>
-                {productsWarranties.map(item => {
+                {filteredProducts.map(item => {
                   const pwItem = item.frontmatter
 
                   return (
