@@ -13,7 +13,7 @@ block_1:
 
     Community led energy projects make locally generated renewable energy and all its benefits accessible to properties which otherwise would be unlikely to install solar.
   highlight_2: >-
-    ###How does it work? 
+    ### How does it work? 
 
 
     Solar technology is provided at no cost to tenants, landlords or the housing association. A percentage of the energy generated is used to power tenants’ homes and communal areas, while the remaining is sold to a license energy supplier or the national grid for use off-site.
