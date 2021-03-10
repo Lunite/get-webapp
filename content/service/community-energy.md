@@ -8,12 +8,12 @@ block_1:
     organisations, and governmental programs to bring renewable technology to
     their communities while generating revenue for the organisation.
   highlight_1: >-
-    \###Power for your community 
+    ### Power for your community 
 
 
     Community led energy projects make locally generated renewable energy and all its benefits accessible to properties which otherwise would be unlikely to install solar.
   highlight_2: >-
-    \###How does it work? 
+    ###How does it work? 
 
 
     Solar technology is provided at no cost to tenants, landlords or the housing association. A percentage of the energy generated is used to power tenants’ homes and communal areas, while the remaining is sold to a license energy supplier or the national grid for use off-site.
@@ -28,12 +28,12 @@ block_2:
     sustainable for all stakeholders, including local governments and investors,
     and they must include the poor.
   highlight_1: >-
-    \###The green future now
+    ### The green future now
 
 
     Through viable business models that remove the privilege from sustainability the green future can be achieved, and there is ample support for local communities to join that future.
   highlight_2: >-
-    \###What are the benefits? 
+    ### What are the benefits? 
 
 
     Benefits include cutting carbon emissions significantly, produce cheaper electricity for tenants and direct payments to the housing association or council for every installation. Get in touch and learn how community energy can benefit your organisation.
