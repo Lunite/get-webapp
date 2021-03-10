@@ -48,7 +48,7 @@ block_2:
 
     If you decide to go with us, Green Energy Together takes care of the entire project, including grid connect application, council approval, notifying your retailer, and arranging an engineering certification if required. Not all solar installers offer this level of service: however, it is a critical part of the process that ensures a safe and trouble-free installation. Finally, we offer a full guarantee over the installation and technical assistance from dedicated customer care team for 2 years afterwards. This is in addition to the guarantee offered by the manufacturer.
   image_1: moss1.png
-  image_2: kings-college-london.jpg
+  image_2: ""
 seo:
   title: Industrial & Commercial | Green Energy Together | Solar Panel Installer
   description: Our experience covers landfill, brownfield, greenfield, commercial
