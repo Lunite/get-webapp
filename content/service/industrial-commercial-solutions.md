@@ -19,7 +19,7 @@ block_1:
     As one of the largest solar development groups in the country, we trade significantly larger volumes than the competition. In combination with our specialist teams, this allows us to provide some of the most competitive prices and service packages in the market, without compromising in service, quality and aftercare.
   image_1: broadoak5.jpg
   image_2: solar-panels-on-day-surgerythumb.png
-display_image: breadcrumb20.png
+display_image: breadcrumb17.jpg
 display_image_caption: |-
   ### Bay Solar Farm Design
 
