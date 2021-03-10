@@ -12,7 +12,7 @@ seo:
 ---
 Green Energy Together are thrilled to announce a new opportunity for homeowners and business owners. Besides being your local solar and battery storage business based in Hertfordshire, we've now launched The Hertfordshire Solar Collective. This is a small group, comprising homeowners with the shared interest of leveraging their group buying power to obtain better prices for solar PV and battery storage systems. Members of the collective will enjoy discounts of up to 25%. 
 
-We're excited to announce the launch of the programme's first round, which will run from September 2020 in Hertfordshire
+We're excited to announce the launch of the programme's first round, which will run from March 2021 in Hertfordshire
 
 ## How does it work?
 

@@ -75,13 +75,14 @@ const Navigation: React.FC = () => {
                     Contact us
                   </Link>
 
+
                   
-                  <a className="contact-details__link" href="tel:02038669896" style={{
+                  {/* <a className="contact-details__link" href="tel:02038669896" style={{
                     display: isSolarTogether ? 'initial' : 'none'
                   }}>
                     <Icon alias="phone" />
                     020 3866 9896
-                  </a>
+                  </a> */}
 
                 </div>
     )
@@ -225,18 +226,9 @@ const Navigation: React.FC = () => {
         <Link
           data-title="How does it work?"
           className="navigation-item__link solartogether__link"
-          to="/solar-together"
+          to="/for-your-community"
         >
-          How does it work?
-        </Link>
-      </div> 
-      <div className="navigation-item">
-        <Link
-          data-title="Solar Together FAQs"
-          className="navigation-item__link solartogether__link"
-          to="/solar-together-faq"
-        >
-          Solar Together FAQs
+          Community Energy
         </Link>
       </div> 
       <div className="navigation-item">
@@ -248,6 +240,26 @@ const Navigation: React.FC = () => {
           About Us
         </Link>
       </div> 
+      <div className="navigation-item">
+        <div className="navigation-item__link business__link" data-title="Solar Together">
+          Solar Together
+          <Icon className="navigation-item__arrow" alias="fat-arrow" />
+        </div>
+        <div className="navigation-item__children">
+          <Link
+            className="navigation-item__child-link"
+            to="/solar-together-faq"
+          >
+            How does it work?
+          </Link>
+          <Link
+            className="navigation-item__child-link"
+            to="/solar-together-faq"
+          >
+            Solar Together FAQs
+          </Link>
+        </div>
+      </div>
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/contact-us">
           Contact us
@@ -296,12 +308,12 @@ const Navigation: React.FC = () => {
                 className={`customer-switcher__link${
                   customerType === "solartogether" ? " link--active" : ""
                 }`}
-                to="/solar-together"
+                to="/for-your-community"
                 onClick={() => {
                   setCustomerType("solartogether")
                 }}
               >
-                Solar Together
+                For your Community
               </Link>
             </div>
             {contactDetails}

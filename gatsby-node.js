@@ -447,6 +447,15 @@ exports.createPages = async ({ graphql, actions }) => {
         description:
           "Test Page",
       },
+      {
+        slug: "for-your-community",
+        seo_title:
+          "Community Energy | Green Energy Together | Solar Panel Installer",
+        title: "Community Energy",
+        keywords: "",
+        description:
+          "Solar for your community",
+      },
     ]),
   ])
 }
