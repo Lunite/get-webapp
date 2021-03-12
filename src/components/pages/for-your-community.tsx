@@ -101,7 +101,7 @@ const HomepageCommunity = ({ markdownNodes }) => {
         </div>
       </Block>
       
-        <Block className="wide-image" style={{maxWidth:"1000px"}}>
+        <Block className="wide-image">
 
          
         <Image
@@ -109,7 +109,6 @@ const HomepageCommunity = ({ markdownNodes }) => {
               src={separator}
               title="Green Energy Together installers"
               caption="​"
-              
             />
         
         </Block>
