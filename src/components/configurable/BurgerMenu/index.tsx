@@ -228,23 +228,16 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
       {/*Start Solar Together menu*/}
       {isSolarTogether && (
       <div className="burger-menu__items">  
-        <div className="navigation-item">
-          <Link
-            data-title="How does it work"
-            className="navigation-item__link"
-            to="/solar-together"
-          >
-            How does it work
-          </Link>
-        </div>
+          
+
 
         <div className="navigation-item">
           <Link
-            data-title="Solar Together FAQs"
+            data-title="Community Energy"
             className="navigation-item__link"
-            to="/solar-together-faq"
+            to="/for-your-community"
           >
-            Solar Together FAQs
+            Community Energy
           </Link>
         </div>
 
@@ -257,6 +250,31 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = ({
             About us
           </Link>
         </div>
+
+        <div className="navigation-item navigation-item--has-children">
+          <div className="navigation-item__link" data-title="Solar Together">
+            Solar Together
+            <span className="icon icon-fat-arrow navigation-item__arrow"></span>
+          </div>
+
+          <div className="navigation-item__children">
+            <Link
+              className="navigation-item__child-link"
+              to="/solar-together"
+            >
+              How does it work
+            </Link>
+            <Link
+              className="navigation-item__child-link"
+              to="/solar-together-faq"
+            >
+              Solar Together FAQs
+            </Link>
+            
+
+          </div>
+        </div>
+
         <div className="navigation-item navigation-item--shout">
           <Link className="navigation-item__link" to="/contact-us">
             Contact us

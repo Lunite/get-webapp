@@ -224,7 +224,7 @@ const Navigation: React.FC = () => {
     <>    
       <div className="navigation-item">
         <Link
-          data-title="How does it work?"
+          data-title="Community Energy"
           className="navigation-item__link solartogether__link"
           to="/for-your-community"
         >
@@ -241,7 +241,7 @@ const Navigation: React.FC = () => {
         </Link>
       </div> 
       <div className="navigation-item">
-        <div className="navigation-item__link business__link" data-title="Solar Together">
+        <div className="navigation-item__link solartogether__link" data-title="Solar Together" >
           Solar Together
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>

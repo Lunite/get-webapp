@@ -39,9 +39,9 @@ const HomepageB2b = ({ markdownNodes }) => {
       <Banner className="visible-xs">
         <Link to="/">Go to Domestic Site</Link>
       </Banner>   
-      {/* <Banner className="visible-xs banner--solar-together">
-        <Link to="/solar-together">Solar Together</Link>
-      </Banner> */}
+      <Banner className="banner2 visible-xs">
+        <Link to="/for-your-community">Go to Community Energy Site</Link>
+      </Banner> 
       <Hero
         className="homepage__hero"
         imageUrl="/images/b2b-video.jpg"

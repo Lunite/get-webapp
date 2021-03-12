@@ -14,6 +14,8 @@ import Image from "../configurable/Image"
 import "./for-your-community.scss"
 import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 import BlockCTA from "../configurable/BlockCTA"
+import Banner from "../configurable/Banner"
+import { Link } from "gatsby"
 
 
 const image1 = require('../../images/raven.jpg');
@@ -31,11 +33,18 @@ const HomepageCommunity = ({ markdownNodes }) => {
 
   return (
     <div className="service">
+             <Banner className="visible-xs" >
+        <Link to="/for-your-business" >Go to Business Site</Link>
+      </Banner> 
+       <Banner className="banner2 visible-xs">
+        <Link to="/">Go to Domestic Site</Link>
+      </Banner> 
       <Hero imageUrl="/images/breadcrumb6.png" compact>
         <Heading level={1} underlined>
           Community Energy
         </Heading>
       </Hero>
+      
       <Block className="service__block-1">
         <div className="container">
           <Col9 squidge>
@@ -48,7 +57,7 @@ const HomepageCommunity = ({ markdownNodes }) => {
                     <Icon alias="solar-house" />
                   </div>
                   <div className="highlight__contents">
-                    <h3>Councils and housing associations</h3>
+                    <h3>Fully funded PV - Solar PPA</h3>
                     <p>Social or community energy can take many forms. In some cases solar technology is provided at no cost to tenants, landlords or the housing association. A percentage of the energy generated is used to power tenants’ homes and communal areas, while the remaining is sold to a licensed supplier or the national grid for use off-site. The council or association receives a payment for every installation.</p>
                   </div>
                 </div>
@@ -92,14 +101,15 @@ const HomepageCommunity = ({ markdownNodes }) => {
         </div>
       </Block>
       
-        <Block className="wide-image">
+        <Block className="wide-image" >
 
          
         <Image
-              className="wide-image__img"
+              
               src={separator}
               title="Green Energy Together installers"
               caption="​"
+              
             />
         
         </Block>
