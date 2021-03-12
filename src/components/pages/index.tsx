@@ -42,9 +42,9 @@ const Homepage = ({ markdownNodes, imageNodes }) => {
        <Banner className="visible-xs" >
         <Link to="/for-your-business" >Go to Business Site</Link>
       </Banner> 
-       {/*<Banner className="banner2 visible-xs">
-        <Link to="/covid-19">Go to Solar Together</Link>
-      </Banner>  */}
+       <Banner className="banner2 visible-xs">
+        <Link to="/for-your-community">Go to Community Energy Site</Link>
+      </Banner> 
 
 
 

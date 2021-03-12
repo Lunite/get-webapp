@@ -131,16 +131,16 @@ const Footer: React.FC = () => {
               <Heading className="footer__column-heading">Get in touch</Heading>
 
               <div className="footer__item">        
-              <a href="https://www.facebook.com/greenenergytogether">Facebook</a>
+              <a href="https://www.facebook.com/greenenergytogether" target="_blank">Facebook</a>
               </div>
               <div className="footer__item">
-              <a href="https://www.instagram.com/green.energy.together">Instagram</a>
+              <a href="https://www.instagram.com/green.energy.together" target="_blank">Instagram</a>
               </div>
               <div className="footer__item">
-              <a href="https://twitter.com/get_uk_solar">Twitter</a>
+              <a href="https://twitter.com/get_uk_solar" target="_blank">Twitter</a>
               </div >
               <div className="footer__item">
-                <a href="https://www.linkedin.com/company/get-uk">LinkedIn</a>
+                <a href="https://www.linkedin.com/company/get-uk" target="_blank">LinkedIn</a>
               </div>
               <Link className="footer__item" to="/contact-us">
                 Contact Us
