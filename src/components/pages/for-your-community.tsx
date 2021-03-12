@@ -101,11 +101,11 @@ const HomepageCommunity = ({ markdownNodes }) => {
         </div>
       </Block>
       
-        <Block className="wide-image" >
+        <Block className="wide-image" style={{maxWidth:"1000px"}}>
 
          
         <Image
-              
+              className="wide-image__img"
               src={separator}
               title="Green Energy Together installers"
               caption="​"
