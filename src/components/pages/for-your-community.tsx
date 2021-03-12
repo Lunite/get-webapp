@@ -36,9 +36,9 @@ const HomepageCommunity = ({ markdownNodes }) => {
              <Banner className="visible-xs" >
         <Link to="/for-your-business" >Go to Business Site</Link>
       </Banner> 
-       <Banner className="banner2 visible-xs">
+       {/* <Banner className="banner2 visible-xs">
         <Link to="/">Go to Domestic Site</Link>
-      </Banner> 
+      </Banner>  */}
       <Hero imageUrl="/images/breadcrumb6.png" compact>
         <Heading level={1} underlined>
           Community Energy
