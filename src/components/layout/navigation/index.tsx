@@ -248,7 +248,7 @@ const Navigation: React.FC = () => {
         <div className="navigation-item__children">
           <Link
             className="navigation-item__child-link"
-            to="/solar-together-faq"
+            to="/solar-together"
           >
             How does it work?
           </Link>
