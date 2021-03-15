@@ -103,7 +103,7 @@ const HomepageCommunity = ({ markdownNodes }) => {
       
         <Block className="wide-image">
 
-          <img src={separator}  className="wide-image__img" />
+          {/* <img src={separator}  className="wide-image__img" /> */}
          
         </Block>
     
