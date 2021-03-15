@@ -18,7 +18,7 @@ import Banner from "../configurable/Banner"
 import { Link } from "gatsby"
 
 
-const image1 = require('../../images/raven.jpg');
+// const image1 = require('../../images/raven.jpg');
 // const image2 = require('../../images/southcambridge.jpg');
 // const separator = require('../../images/commmid.jpg');
 
@@ -77,11 +77,11 @@ const HomepageCommunity = ({ markdownNodes }) => {
           
           <Col3>
           <div style={{marginBottom:"40px"}}>
-            <Image
+            {/* <Image
               src={image1}
               title="Solar Together Logo"
               caption="​"
-            />
+            /> */}
             
                           <BlockCTA secondary url="/project/very-happy-with-the-system-we-purchased/" arrow="right">
                 See case study
