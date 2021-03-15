@@ -71,6 +71,10 @@
     max-height: 510px;
     min-height: 290px;
 
+    @media ($mobile) {
+      min-height: auto !important;
+    }
+
     &::after {
       content: "";
       display: block;
