@@ -104,12 +104,12 @@ const HomepageCommunity = ({ markdownNodes }) => {
         <Block className="wide-image">
 
          
-        <Image
+        {/* <Image
               className="wide-image__img"
               src={separator}
               title="Green Energy Together installers"
               caption="​"
-            />
+            /> */}
         
         </Block>
     
