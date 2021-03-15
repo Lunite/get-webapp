@@ -103,8 +103,14 @@ const HomepageCommunity = ({ markdownNodes }) => {
       
         <Block className="wide-image">
 
-          {/* <img src={separator}  className="wide-image__img" /> */}
          
+        {/* <Image
+              className="wide-image__img"
+              src={separator}
+              title="Green Energy Together installers"
+              caption="​"
+            /> */}
+        
         </Block>
     
         <>
