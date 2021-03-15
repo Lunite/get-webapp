@@ -77,21 +77,21 @@ const HomepageCommunity = ({ markdownNodes }) => {
           
           <Col3>
           <div style={{marginBottom:"40px"}}>
-            <Image
+            {/* <Image
               src={image1}
               title="Solar Together Logo"
               caption="​"
-            />
+            /> */}
             
                           <BlockCTA secondary url="/project/very-happy-with-the-system-we-purchased/" arrow="right">
                 See case study
               </BlockCTA></div>
             <div>
-            <Image
+            {/* <Image
               src={image2}
               title="Green Energy Together installers"
               caption="​"
-            />
+            /> */}
                           <BlockCTA secondary url="/project/south-cambridgeshire-district-council/" arrow="right">
                           See case study
               </BlockCTA>
