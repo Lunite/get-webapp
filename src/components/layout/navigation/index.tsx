@@ -98,15 +98,7 @@ const Navigation: React.FC = () => {
     {isDomestic && (
     <>
 
-      <div className="navigation-item">
-        <Link
-          data-title="Products & Warranties"
-          className="navigation-item__link"
-          to="/products-warranties"
-        >
-          Products &amp; Warranties
-        </Link>
-      </div> 
+
 
       <div className="navigation-item">
         <div className="navigation-item__link" data-title="Company">
@@ -114,6 +106,9 @@ const Navigation: React.FC = () => {
           <Icon className="navigation-item__arrow" alias="fat-arrow" />
         </div>
         <div className="navigation-item__children">
+        <Link className="navigation-item__child-link" to="/products-warranties/">
+          Products &amp; Warranties
+          </Link>          
           <Link className="navigation-item__child-link" to="/about-us/">
             About Us
           </Link>
@@ -134,6 +129,26 @@ const Navigation: React.FC = () => {
           Case Studies
         </Link>
       </div> 
+      <div className="navigation-item">
+        <div className="navigation-item__link" data-title="Solar Together" >
+          Solar Together
+          <Icon className="navigation-item__arrow" alias="fat-arrow" />
+        </div>
+        <div className="navigation-item__children">
+          <Link
+            className="navigation-item__child-link"
+            to="/solar-together"
+          >
+            How does it work?
+          </Link>
+          <Link
+            className="navigation-item__child-link"
+            to="/solar-together-faq"
+          >
+            Solar Together FAQs
+          </Link>
+        </div>
+      </div>
       <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
         <Link className="navigation-item__link" to="/quote">
           Get a Quote
