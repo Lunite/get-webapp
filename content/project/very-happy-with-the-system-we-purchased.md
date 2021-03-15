@@ -4,7 +4,7 @@ category: commercial
 description: >-
   "Very happy with the system we purchased from Green Energy Together. Their
   work was beyond my expectation. Michael was very efficient to deal with and
-  the communication was excellent." - Mr. Gilder
+  the communication was excellent." - Mr. Gilder.
 
 
   This installation was part of a project for Raven Housing Trust, a social business based in Redhill, Surrey which included installations for over 4,000 homes. 
