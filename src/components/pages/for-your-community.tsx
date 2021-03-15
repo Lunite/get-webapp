@@ -20,7 +20,9 @@ import { Link } from "gatsby"
 
 // const image1 = require('../../images/raven.jpg');
 // const image2 = require('../../images/southcambridge.jpg');
+
 // const separator = require('../../images/commmid.jpg');
+const imagewar = require('../../images/hold.jpg');
 
 
 const HomepageCommunity = ({ markdownNodes }) => {
