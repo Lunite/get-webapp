@@ -71,7 +71,7 @@ const Image: FunctionComponent<ImageProps> = ({
         <a className="image__container" href={url}>
           {image}
           {getShoutout()}
-          {getHoverContent()}
+          {getHoverContent()} 
         </a>
       )}
       {!url && (
