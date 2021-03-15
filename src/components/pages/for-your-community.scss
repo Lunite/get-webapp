@@ -71,6 +71,7 @@
     max-height: 510px;
     min-height: 290px;
 
+
     &::after {
       content: "";
       display: block;
@@ -84,7 +85,7 @@
 
   @media ($mobile) {
     img {
-      border-radius: 0;
+      min-height: auto !important;
     }
   }
 }
