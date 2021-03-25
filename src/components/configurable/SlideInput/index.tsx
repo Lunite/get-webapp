@@ -55,7 +55,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
           {props.type === "money" ? (
             <>
               {props.value > 99 ? (
-                <>£{props.value / 100}</>
+                <>£{(props.value / 100).toFixed(2)}</>
               ) : (
                 <>{props.value}p</>
               )}
@@ -80,6 +80,7 @@ const SlideInput: React.FC<SlideInputProps> = props => {
               ((props.value - props.min) / (props.max - props.min)) * 100
             }%, #051c3f 0%)`,
           }}
+          
           onChange={props.onChange}
           min={props.min}
           max={props.max}

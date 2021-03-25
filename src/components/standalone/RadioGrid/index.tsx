@@ -63,14 +63,14 @@ const RadioGrid: React.FC<{
             id="incl-avrg"
             value="35"
             onChange={() => {
-              handleOptionChange(35)
+              handleOptionChange(30)
             }}
-            checked={props.selectedValue === 35}
+            checked={props.selectedValue === 30}
           />
           <label className="button-label" htmlFor="incl-avrg">
             <img className="label-image" src="/images/mid.png" />
           </label>
-          <div className="input-label-text">(30&#176; to 40&#176;)</div>
+          <div className="input-label-text">(20&#176; to 40&#176;)</div>
           <div
             className="arrowmap-tip"
             style={{

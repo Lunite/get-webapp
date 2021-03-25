@@ -19,6 +19,8 @@ interface InteractiveMapProps {
 
 const InteractiveMap: React.FC<InteractiveMapProps> = props => {
   const onClickHandler = (mapProps, map, clickEvent) => {
+    console.log(clickEvent);
+    
     const location = {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
@@ -66,7 +68,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
       <div className="arrowmap-tip">
         <img src={info} alt="Hint:" />
         <p className="help-text">
-          Enter your house number and make sure your roof is selected on the map
+          Enter your house number or use the map make sure your roof is selected and address is correct. 
         </p>
       </div>
     </>

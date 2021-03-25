@@ -37,7 +37,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   // State Hooks
-  const [angle, setAngle] = useState(0) // for mobile
+  const [angle, setAngle] = useState(360) // for mobile
   const [mouseState, _setMouseState] = useState<{
     x: number
     y: number
@@ -70,7 +70,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
 
   useEffect(() => {
     setTimeout(() => {
-      setAngle(1)
+      setAngle(0)
     }, 10)
   }, [])
 
