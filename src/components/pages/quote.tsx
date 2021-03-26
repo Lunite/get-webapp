@@ -61,6 +61,10 @@ interface IQuoteFormValues {
   standingCharge: number
   discount: boolean
   worksFromHome: string
+  sales :{
+    timescale: "3 Months"| "6 Months" |"12 Months",
+    paymentMethod: "Own Funds" | "Pay Monthly" | "Both"
+  }
 }
 
 const values: IQuoteFormValues = {
@@ -519,8 +523,9 @@ const QuotePage: React.FC<PageProps> = props => {
         return (
           <>
             <Heading level={3}>
-              Give us some information about your property
+              Please tell us about your property
             </Heading>
+            <br />
             <div className="row lower-margin">
               <Col3>
                 <input
@@ -532,7 +537,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   value="0"
                   checked={formValues.roof.area === 0}
                   onChange={e => {
-                    alert("Im sorry we cannot install a panel in a flat")
+                    alert("I'm sorry we cannot install a panel in a flat")
                   }}
                 />
                 <label className="button-label" htmlFor="flat">
@@ -617,6 +622,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 <div className="input-label-text">Detached House</div>
               </Col3>
             </div>
+            <br />
             <FormSelect
               required
               name="listed"
@@ -848,6 +854,44 @@ const QuotePage: React.FC<PageProps> = props => {
                           ...formValues.property,
                           flat: e.target.value,
                         },
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormSelect
+                    required
+                    name="salesTimescale"
+                    label="How many months until want to make the purchase?*"
+                    options={[
+                      "3 Months","6 Months","12 Months"
+                    ]}
+                    value={formValues.property.flat}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        sales: {
+                          ...formValues.sales,
+                          timescale: e.target.value as "3 Months"| "6 Months" |"12 Months"
+                        }
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormSelect
+                    required
+                    name="salesPaymentMethod"
+                    label="How would you be making the purchase?*"
+                    options={[
+                      "Own Funds", "Pay Monthly", "Both"
+                    ]}
+                    value={formValues.property.flat}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        sales: {
+                          ...formValues.sales,
+                          paymentMethod: e.target.value as "Own Funds"| "Pay Monthly" |"Both"
+                        }
                       })
                     }}
                   />
