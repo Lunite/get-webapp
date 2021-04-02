@@ -22,7 +22,7 @@ import ProgressBar from "../configurable/ProgressBar"
 import info from "~/vectors/info.svg"
 import Col3 from "../grid/Col3"
 import { Alert } from "@material-ui/lab"
-
+import { useQueryParam, getSearchParams } from "gatsby-query-params"
 const postcodeRegex =
   "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})"
 
@@ -34,6 +34,8 @@ const googleCampaignQueryKeys = [
   "utm_content",
 ]
 
+const quoteTypes = { COMMERCIAL: "commercial", DOMESTIC: "domestic" }
+
 interface IQuoteFormValues {
   name: string
   email: string
@@ -42,10 +44,12 @@ interface IQuoteFormValues {
   street: string
   town: string
   postcode: string
+  companyName: string
   roof: {
     azimuth: number
     inclination: number
     area: number
+    roofMaterial: string
   }
   property: {
     bedrooms: number
@@ -55,15 +59,27 @@ interface IQuoteFormValues {
     storageHeater: boolean
     ownsHouse: string
     flat: string
+    buildingType: string
   }
+  commercialUsage: {
+    numberOfEmployees: string,
+    numberOfCarParkingSpaces: string,
+    numberOfOffices: string,
+    additionalItems: {
+      batteryStorage: boolean,
+      evChargers: boolean,
+      solarHeat: boolean
+    }
+    furtherDiscussionRequired: boolean
+  },
   eac: number
   ppw: number
   standingCharge: number
   discount: boolean
   worksFromHome: string
-  sales :{
-    timescale: "3 Months"| "6 Months" |"12 Months",
-    paymentMethod: "Own Funds" | "Pay Monthly" | "Both"
+  sales: {
+    timescale: "3 Months" | "6 Months" | "12 Months" | ""
+    paymentMethod: "Own Funds" | "Pay Monthly" | "Both" | ""
   }
 }
 
@@ -75,10 +91,23 @@ const values: IQuoteFormValues = {
   street: "",
   town: "",
   postcode: "",
+  companyName: null,
   roof: {
     azimuth: 0,
     inclination: 1,
     area: 21.84,
+    roofMaterial: "",
+  },
+  commercialUsage: {
+    numberOfEmployees: "",
+    numberOfCarParkingSpaces: "",
+    numberOfOffices: "",
+    furtherDiscussionRequired: false,
+    additionalItems: {
+      batteryStorage: false,
+      evChargers: false,
+      solarHeat: false
+    }
   },
   property: {
     bedrooms: 0,
@@ -88,12 +117,17 @@ const values: IQuoteFormValues = {
     storageHeater: false,
     ownsHouse: "",
     flat: "",
+    buildingType: "",
   },
   eac: 3500,
   ppw: 17.56,
   standingCharge: 22.26,
   discount: false,
   worksFromHome: "",
+  sales: {
+    timescale: "",
+    paymentMethod: "",
+  },
 }
 
 const awaitForLocalStorageNastyHack = () => {
@@ -116,6 +150,12 @@ const propertyOptions = {
   eHeating: "Electric Heating",
 }
 
+const commercialOptions = {
+  batteryStorage: "Battery Storage",
+  evChargers: "EV Chargers",
+  solarHeat: "Solar heat"
+}
+
 const SPECIAL_PRICE_KEY = "utm_campaign"
 const SPECIAL_PRICE_VALUE = "special_price"
 
@@ -124,7 +164,7 @@ const QuotePage: React.FC<PageProps> = props => {
     ...values,
     ...props.location.state,
   })
-  const [listed, setListed] = useState<string>()
+  const [listed, setListed] = useState<string>("yes")
   const [page, _setPage] = useState(0)
   const setPage = num => {
     if (num > page) {
@@ -148,7 +188,7 @@ const QuotePage: React.FC<PageProps> = props => {
   const [status, setStatus] = useState<"form" | "loading">("form") // status for when values are posted
   const scrollRef = useRef<HTMLDivElement>(null)
   const [anim, setAnim] = useState<string>("fade-in")
-
+  const quoteType = useQueryParam("type", quoteTypes.DOMESTIC)
   // Check for discount query string params on component mount
   useEffect(() => {
     const urlParams = new URLSearchParams(props.location.search)
@@ -254,9 +294,9 @@ const QuotePage: React.FC<PageProps> = props => {
 
   const propagateAddress = () => {
     const address = `${formValues.houseNumber}, ${formValues.street}, ${formValues.town}`
-    fromAddress(address).then(coords =>
-      setLocation(coords as { lat: number; lng: number })
-    )
+    // fromAddress(address).then(coords =>
+    //   setLocation(coords as { lat: number; lng: number })
+    // )
   }
 
   const propagateLocation = async (loc: { lat: number; lng: number }) => {
@@ -332,12 +372,23 @@ const QuotePage: React.FC<PageProps> = props => {
             text={
               <div className="firstpage">
                 <div>
-                  <Heading underlined level={1}>
-                    Get a Quote
-                  </Heading>
-                  <Heading level={3}>
-                    Enter your postcode to get started
-                  </Heading>
+                  {quoteType?.toLowerCase() !== quoteTypes.COMMERCIAL ? (
+                    <>
+                      <Heading underlined level={1}>
+                        Get your instant quote in minutes
+                      </Heading>
+                      <Heading level={3}>No sales visit required</Heading>
+                    </>
+                  ) : (
+                    <>
+                      <Heading underlined level={1}>
+                        Get a Quote
+                      </Heading>
+                      <Heading level={3}>
+                        Enter your postcode to get started
+                      </Heading>
+                    </>
+                  )}
                 </div>
                 <FormInput
                   name="postcode"
@@ -376,6 +427,18 @@ const QuotePage: React.FC<PageProps> = props => {
               </Heading>
               <br />
               <div>
+                {quoteType?.toLowerCase() === quoteTypes.COMMERCIAL && (
+                  <FormInput
+                    name="companyName"
+                    id="companyName"
+                    label="Company name*"
+                    placeholder="Enter company name..."
+                    type="text"
+                    required
+                    value={formValues.companyName}
+                    onChange={updateTextValue}
+                  />
+                )}
                 <FormInput
                   name="houseNumber"
                   id="houseNumber"
@@ -485,7 +548,78 @@ const QuotePage: React.FC<PageProps> = props => {
           </>
         )
       case 3:
-        return (
+        return quoteType.toLowerCase() === quoteTypes.COMMERCIAL ? (
+          <>
+            <Heading>Tell us about your roof*</Heading>
+            <FormSelect
+              required
+              name="roofMaterial"
+              label="What is your property made from?*"
+              options={[
+                "Concrete",
+                "Slate",
+                "Flat Roof",
+                "Dekra",
+                "Groundmounted",
+                "Trapezoidal",
+                "In-roof",
+                "Unsure",
+              ]}
+              value={formValues.roof.roofMaterial}
+              onChange={e => {
+                setFormValues({
+                  ...formValues,
+                  roof: {
+                    ...formValues.roof,
+                    roofMaterial: e.target.value,
+                  },
+                })
+              }}
+            />
+            <FormSelect
+              required
+              name="buildingType"
+              label="Select your building type*"
+              options={[
+                "School or University",
+                "Warehouse",
+                "Farm",
+                "Commercial building",
+                "Offices",
+                "Hospital or care",
+                "Other",
+              ]}
+              value={formValues.property.buildingType}
+              onChange={e => {
+                setFormValues({
+                  ...formValues,
+                  property: {
+                    ...formValues.property,
+                    buildingType: e.target.value,
+                  },
+                })
+              }}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA
+                large
+                right
+                submit
+                action={() => {
+                  setFormValues({
+                    ...formValues,
+                    roof: { ...formValues.roof, inclination: 35 },
+                  })
+                }}
+              >
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        ) : (
           <>
             <Heading level={3}>
               Choose the angle that best matches your roof*
@@ -520,11 +654,74 @@ const QuotePage: React.FC<PageProps> = props => {
           </>
         )
       case 4:
-        return (
+        return quoteType.toLowerCase() === quoteTypes.COMMERCIAL ? (
           <>
-            <Heading level={3}>
-              Please tell us about your property
-            </Heading>
+            <SlideQuestion
+              title="How big is your roof?"
+              subtitle={
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <img src={info} alt="Tip:" style={{ marginRight: "20px" }} />
+                  <em style={{ fontSize: "0.85em" }}>
+                    For reference, 1m<sup>2</sup> is about as big as a bath
+                    towel, 10m<sup>2</sup> is about as big as a parking space
+                    and 250m<sup>2</sup> is about as big as a tennis court.
+                    <br />
+                    Don't worry if you're not sure of the exact size - we only
+                    need an estimate.
+                    <br />
+                    If your roof is bigger than 80m<sup>2</sup> further
+                    information might be necessary to refine your quote. An
+                    advisor will be in touch to assist you.
+                  </em>
+                </span>
+              }
+              min={5}
+              max={1000000}
+              average={21.84}
+              value={formValues.roof.area}
+              onChange={e => {
+                setFormValues({
+                  ...formValues,
+                  roof: { ...formValues.roof, area: Number(e.target.value) },
+                })
+              }}
+              inputBox
+              inputAdornments={{
+                end: (
+                  <span>
+                    m<sup>2</sup>
+                  </span>
+                ),
+              }}
+              key={"roof"}
+            />
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large submit right>
+                Next
+              </BlockCTA>
+              <BlockCTA
+                className="btn-unsure"
+                title="Don't worry, we will use the national average."
+                large
+                right
+                action={() => {
+                  setFormValues({
+                    ...formValues,
+                    roof: { ...formValues.roof, area: 22 },
+                  })
+                  setPage(page + 1)
+                }}
+              >
+                Unsure
+              </BlockCTA>
+            </div>
+          </>
+        ) : (
+          <>
+            <Heading level={3}>Please tell us about your property</Heading>
             <br />
             <div className="row lower-margin">
               <Col3>
@@ -691,8 +888,13 @@ const QuotePage: React.FC<PageProps> = props => {
                 large
                 right
                 action={() => {
-                  setFormValues({ ...formValues, eac: -1 })
-                  setPage(page + 1)
+                  setFormValues({
+                    ...formValues,
+                    eac: -1,
+                    ppw: 18,
+                    standingCharge: 22,
+                  })
+                  setPage(page + 3)
                 }}
               >
                 Unsure
@@ -797,7 +999,119 @@ const QuotePage: React.FC<PageProps> = props => {
           </>
         )
       case 8:
-        return (
+        return quoteType.toLowerCase() === quoteTypes.COMMERCIAL ? (
+          <>
+            <div className="row">
+              <Col6>
+                <Heading level={3}> Commercial Usage</Heading>
+                <div>
+                  <FormSelect
+                    name="numberOfEmployees"
+                    label="Number of employees"
+                    options={["1-10", "10-100", "100+"]}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        commercialUsage: {
+                          ...formValues.commercialUsage,
+                          numberOfEmployees: e.target.value,
+                        },
+                      })
+                    }}
+                  />
+                  <br />
+
+                  <FormSelect
+                    name="parkingSpaces"
+                    label="Number of car parking spaces"
+                    options={["1-10", "10-100", "100+"]}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        commercialUsage: {
+                          ...formValues.commercialUsage,
+                          numberOfCarParkingSpaces: e.target.value,
+                        },
+                      })
+                    }}
+                  />
+                  <br />
+                  <FormSelect
+                    name="numberOfOffices"
+                    label="Number of offices/buildings"
+                    options={["1-10", "10-100", "100+"]}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        commercialUsage: {
+                          ...formValues.commercialUsage,
+                          numberOfOffices: e.target.value,
+                        },
+                      })
+                    }}
+                  />
+                  <br/>
+                  <FormCheckbox
+                    name="additionalItems"
+                    label="Do you require any of the following additional items?"
+                    options={Object.keys(commercialOptions)}
+                    getOptionLabel={(e) => 
+                      commercialOptions[e]
+                    }
+                    onChange={e => {
+                      const additionalItems = { ...formValues.commercialUsage.additionalItems }
+                      additionalItems[e.target.value] = !additionalItems[e.target.value]
+                      console.log(additionalItems)
+                      setFormValues({ ...formValues, commercialUsage: {...formValues.commercialUsage, additionalItems} })
+                    }}
+                    value={formValues.commercialUsage}
+                  />
+                   <br />
+                  <FormSelect
+                    name="discussFunding"
+                    label="Would you like to discuss funding options?"
+                    options={["yes", "no"]}
+                    required
+                    value={formValues.commercialUsage.furtherDiscussionRequired ?"yes": "no"}
+                    onChange={e => {
+                      setFormValues({
+                        ...formValues,
+                        commercialUsage: {
+                          ...formValues.commercialUsage,
+                          furtherDiscussionRequired: e.target.value === "yes" ? true : false,
+                        },
+                      })
+                    }}
+                  />
+                </div>
+              </Col6>
+              <Col6>
+                <Block className="hide-mob">
+                  <Heading level={3} underlined>
+                    Why we need this information
+                  </Heading>
+                  <p>
+                    Our usage-based model means that our designs are truly cost
+                    effective and based around your consumption, lifestyle and
+                    needs. This is in order to design a system that generates
+                    the optimum amount of energy, minimising surplus export to
+                    the grid and reducing payback time.
+                  </p>
+                </Block>
+              </Col6>
+            </div>
+            <div className="form__actions">
+              <BlockCTA large left action={prevPage}>
+                Back
+              </BlockCTA>
+              <BlockCTA large right submit action={()=>{
+                console.log(formValues)
+              }}>
+                Next
+              </BlockCTA>
+            </div>
+          </>
+        ) : (
           <>
             <div className="row">
               <Col6>
@@ -861,18 +1175,19 @@ const QuotePage: React.FC<PageProps> = props => {
                   <FormSelect
                     required
                     name="salesTimescale"
-                    label="How many months until want to make the purchase?*"
-                    options={[
-                      "3 Months","6 Months","12 Months"
-                    ]}
-                    value={formValues.property.flat}
+                    label="How many months until want you to make the purchase?*"
+                    options={["3 Months", "6 Months", "12 Months"]}
+                    value={formValues.sales.timescale}
                     onChange={e => {
                       setFormValues({
                         ...formValues,
                         sales: {
                           ...formValues.sales,
-                          timescale: e.target.value as "3 Months"| "6 Months" |"12 Months"
-                        }
+                          timescale: e.target.value as
+                            | "3 Months"
+                            | "6 Months"
+                            | "12 Months",
+                        },
                       })
                     }}
                   />
@@ -881,17 +1196,18 @@ const QuotePage: React.FC<PageProps> = props => {
                     required
                     name="salesPaymentMethod"
                     label="How would you be making the purchase?*"
-                    options={[
-                      "Own Funds", "Pay Monthly", "Both"
-                    ]}
-                    value={formValues.property.flat}
+                    options={["Own Funds", "Pay Monthly", "Both"]}
+                    value={formValues.sales.paymentMethod}
                     onChange={e => {
                       setFormValues({
                         ...formValues,
                         sales: {
                           ...formValues.sales,
-                          paymentMethod: e.target.value as "Own Funds"| "Pay Monthly" |"Both"
-                        }
+                          paymentMethod: e.target.value as
+                            | "Own Funds"
+                            | "Pay Monthly"
+                            | "Both",
+                        },
                       })
                     }}
                   />

@@ -79,6 +79,7 @@ const BlockCTA: FunctionComponent<BlockCTAProps> = ({
       <button
         className={`block-cta ${extraClasses()}`}
         type="submit"
+        onClick={action ? () => {action()}:  () => {}}
         title={title}
       >
         {children}

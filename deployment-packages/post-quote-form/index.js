@@ -33,7 +33,8 @@ exports.handler = async (req, res) => {
     // for 2nd req
     const formValues = await req.body
     console.log("Calling Function With", formValues)
-    const [result, inputs] = await calculateQuote(formValues)
+    const [result, inputs] = await calc
+    ulateQuote(formValues)
     console.log("Got Result", result)
     time = new Date().getTime() - time
     // publish results to email function to continue quoting process
