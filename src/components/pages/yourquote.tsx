@@ -140,7 +140,7 @@ const YourQuotePage: React.FC<PageProps> = props => {
             </h2>
             {status === null &&
             <><h3>
-            Please leave a rating and comment bellow to let us know how our
+            Please leave a rating and comment below to let us know how our
             quote service can be improved
           </h3>
           <br />
