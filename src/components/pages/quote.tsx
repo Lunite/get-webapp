@@ -239,8 +239,8 @@ const QuotePage: React.FC<PageProps> = props => {
         }
         try {
           let quote = await fetch(
-            "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
-            // "http://localhost:8080",
+            // "https://europe-west2-get-uk.cloudfunctions.net/get-quote",
+            "https://enjfl9p7t8b746.m.pipedream.net/",
             req
           ) // post form values
           quote = await quote.json()
@@ -1070,7 +1070,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   <FormSelect
                     name="discussFunding"
                     label="Would you like to discuss funding options?"
-                    options={["yes", "no"]}
+                    options={["Yes", "No"]}
                     required
                     value={formValues.commercialUsage.furtherDiscussionRequired ?"yes": "no"}
                     onChange={e => {
@@ -1078,7 +1078,7 @@ const QuotePage: React.FC<PageProps> = props => {
                         ...formValues,
                         commercialUsage: {
                           ...formValues.commercialUsage,
-                          furtherDiscussionRequired: e.target.value === "yes" ? true : false,
+                          furtherDiscussionRequired: e.target.value === "Yes" ? true : false,
                         },
                       })
                     }}
