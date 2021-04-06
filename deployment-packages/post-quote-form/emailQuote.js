@@ -34,7 +34,7 @@ const buildPDF = async formData => {
 
 module.exports.emailQuote = async data => {
   const customerAddr = data.inputs.email
-  const agentAddr = "admin@lunite.co.uk" // TODO change email addr
+  const agentAddr ="bensinclair@lunite.co.uk" // TODO change email addr
   const fromAddr = "quotes@lunite.co.uk" // TODO change email addr
   const subject = "Green Energy Together Solar Quote" // TODO Get preferred subject
   const customerText = "We've attached your Solar quotation" // TODO Get preferred wording and use dynamic template
