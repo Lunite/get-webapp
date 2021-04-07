@@ -1,21 +1,21 @@
-const calculateCostOfSystem = (
-  solarKw,
-  roofType,
-  scaffoldRequired,
-  batterySize,
-  panelQuantity,
-  panelType,
-  margin,
-  vatRate,
-  isCommercial
+export const calculateCostOfSystem = (
+  solarKw: number,
+  roofType: any,
+  scaffoldRequired: boolean,
+  batterySize: any,
+  panelQuantity: any,
+  panelType: any,
+  margin: number,
+  vatRate: number,
+  isCommercial: boolean
 ) => {
-  const runningTotal = 0
+  let runningTotal = 0
   // cost of the roof type
   runningTotal = +calculateRoofCost(solarKw, roofType, panelQuantity)
   // cost of ancillary materials
-  runningTotal = +calculateAncillaryMaterialsCost(solarKw)
+  runningTotal = +calculateAncillaryMaterialsCost(solarKw, isCommercial)
   // cost of solar module color
-  runningTotal = +calculateSolarModuleColorCost(panelType)
+  runningTotal = +calculateSolarModuleColorCost(panelType, solarKw)
   // cost of inverter
   runningTotal = +calculateInverterCost(solarKw, isCommercial)
   // cost of metering equipment
@@ -25,7 +25,7 @@ const calculateCostOfSystem = (
   // labor cost
   runningTotal = +calculateLabourCost(solarKw, isCommercial)
   // scaffold cost
-  runningTotal = +scaffoldRequired ? 500 : 0
+  runningTotal = + scaffoldRequired ? calculateScaffolding(isCommercial, solarKw) : 0
   // H&S and proj management cost
   runningTotal = +isCommercial ? 50 : 0
   // Commissioning
@@ -38,10 +38,10 @@ const calculateCostOfSystem = (
   runningTotal = +isCommercial ? 205 : 169
 
   // Calculate Margin
-  const margin = runningTotal * margin
-  // Calculate Total Sale
+  const marginCost = runningTotal * margin
 
-  const totalSale = runningTotal + margin
+  // Calculate Total Sale
+  const totalSale = runningTotal + marginCost
 
   // Calculate Pence / W
   const pencePerWatt = totalSale / (solarKw * 1000)
@@ -58,11 +58,11 @@ const calculateCostOfSystem = (
     totalSaleIncVAT,
     vat,
     pencePerWatt,
-    margin,
+    marginCost,
   }
 }
 
-const calculateRoofCost = (solarKW, roofType, panelQuantity) => {
+const calculateRoofCost = (solarKW: number, roofType: string | number, panelQuantity: number): number => {
   const roofTypeCostPerKW = {
     concreteRoof: 75.59 * solarKW,
     slateRoof: 90.59 * solarKW,
@@ -76,12 +76,12 @@ const calculateRoofCost = (solarKW, roofType, panelQuantity) => {
   return roofTypeCostPerKW[roofType]
 }
 
-const calculateAncillaryMaterialsCost = solarKW => {
-  const costPerKW = 30
+const calculateAncillaryMaterialsCost = (solarKW: number, isCommercial: boolean): number => {
+  const costPerKW = isCommercial ? 30 : 40
   return solarKW * costPerKW
 }
 
-const calculateSolarModuleColorCost = color => {
+const calculateSolarModuleColorCost = (color: string | number, solarKW: number): number => {
   const moduleColorPerKW = {
     black: 210 * solarKW,
     blue: 240 * solarKW,
@@ -89,12 +89,12 @@ const calculateSolarModuleColorCost = color => {
   return moduleColorPerKW[color]
 }
 
-const calculateInverterCost = (solarKW, isCommercial) => {
+const calculateInverterCost = (solarKW: number, isCommercial: boolean): number => {
   const costPerKW = isCommercial ? 45 : 92
   return solarKW * costPerKW
 }
 
-const calculateBatteryCost = size => {
+const calculateBatteryCost = (size: string | number): number => {
   const batteryCostBySize = {
     "3KW": 850,
     "5KW": 1330,
@@ -106,7 +106,12 @@ const calculateBatteryCost = size => {
   return batteryCostBySize[size]
 }
 
-const calculateLabourCost = (solarKW, isCommercial) => {
+const calculateLabourCost = (solarKW: number, isCommercial: boolean): number => {
   const costPerKW = isCommercial ? 90 : 160
   return solarKW * costPerKW
 }
+
+const calculateScaffolding = (isCommercial: boolean, solarKw: number) => {
+  return isCommercial ? 40 * solarKw : 500
+}
+// git add git stas
