@@ -612,7 +612,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 action={() => {
                   setFormValues({
                     ...formValues,
-                    roof: { ...formValues.roof, inclination: 35 },
+                    roof: { ...formValues.roof, inclination: -1 },
                   })
                 }}
               >
@@ -644,7 +644,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 action={() => {
                   setFormValues({
                     ...formValues,
-                    roof: { ...formValues.roof, inclination: 35 },
+                    roof: { ...formValues.roof, inclination: -1 },
                   })
                   setPage(page + 1)
                 }}
@@ -892,8 +892,8 @@ const QuotePage: React.FC<PageProps> = props => {
                   setFormValues({
                     ...formValues,
                     eac: -1,
-                    ppw: 18,
-                    standingCharge: 22,
+                    ppw: -1,
+                    standingCharge: -1,
                   })
                   setPage(page + 3)
                 }}
@@ -942,7 +942,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 large
                 right
                 action={() => {
-                  setFormValues({ ...formValues, ppw: 18 })
+                  setFormValues({ ...formValues, ppw: -1 })
                   setPage(page + 1)
                 }}
               >
@@ -990,7 +990,7 @@ const QuotePage: React.FC<PageProps> = props => {
                 large
                 right
                 action={() => {
-                  setFormValues({ ...formValues, standingCharge: 22 })
+                  setFormValues({ ...formValues, standingCharge: -1 })
                   setPage(page + 1)
                 }}
               >

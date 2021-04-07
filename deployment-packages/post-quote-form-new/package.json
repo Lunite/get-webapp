@@ -7,13 +7,16 @@
     "test": "node test.js",
     "start": "functions-framework --target=handler"
   },
-  "author": "",
+  "author": "Kilian Seifert Leitch",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/functions-framework": "^1.7.1",
+    "@google-cloud/pubsub": "^2.5.0",
     "@sendgrid/mail": "^7.4.2",
-    "eslint": "^7.23.0",
-    "exceljs": "^4.2.1",
-    "tsc": "^1.20150623.0"
+    "exceljs": "^4.1.1",
+    "pdf-lib": "^1.16.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
   }
 }
