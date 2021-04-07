@@ -13,6 +13,7 @@
     "@google-cloud/functions-framework": "^1.7.1",
     "@sendgrid/mail": "^7.4.2",
     "eslint": "^7.23.0",
+    "exceljs": "^4.2.1",
     "tsc": "^1.20150623.0"
   }
 }

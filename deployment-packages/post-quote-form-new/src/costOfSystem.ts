@@ -114,4 +114,3 @@ const calculateLabourCost = (solarKW: number, isCommercial: boolean): number => 
 const calculateScaffolding = (isCommercial: boolean, solarKw: number) => {
   return isCommercial ? 40 * solarKw : 500
 }
-// git add git stas
