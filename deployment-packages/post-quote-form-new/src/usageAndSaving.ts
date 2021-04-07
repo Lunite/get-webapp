@@ -15,26 +15,36 @@ const monthIndexToDays = {
   11: 31,
 }
 
-
 const calculateUsageAndSaving = async () => {
   // cost including vat
   const costIncVat = -6271.08 // need to make cost negative
   //   const {
   //     pricePerKwh,
-  //     panelsQuantity,
   //     shading,
-  //     pannelWattage,
   //     specificYield,
+  // systemSize,
+  //eac ,
+  //annualYield ,
+  //storageSize,
   //   } = inputs
 
   let pricePerKwh = 0.17556
-  let annualYieldCalc = 2615.53
+  let shading = 1
+  let specificYield = 927
+  let systemSize = 2.97
+  let eac = 4000
+  let annualYield = 2615.53
+  let storageSize = 5
 
-  // get value from crazy work thing
+  const electricityKwhFromSolar = await energyUseCalculation({
+    eac,
+    annualYield,
+    storageSize,
+  })
 
-const electricityKwhFromSolar = await energyUseCalculation({eac: 4000, annualYield: 2615.53, storageSize: 5 })
-  
-// values that incrememt per year
+  const sumOfSelfConsumption = electricityKwhFromSolar.selfConsumptionTotal.reduce((a, b) => a + b, 0)
+
+  // values that incrememt per year
   let predictedUnitCost = pricePerKwh
   const assumedAnnualEnergyInflation = 0.07 // 7%
 
@@ -43,24 +53,23 @@ const electricityKwhFromSolar = await energyUseCalculation({eac: 4000, annualYie
   let exportedRevenue = 0.055
   const RPI = 0.03
 
+  // build the return obj
   let results = []
   let newPrice = costIncVat
   let accumlativeTotal = 0
   let i = 0
-
-  
-  
   do {
     i = i + 1
     accumlativeTotal += await workoutSaving(
+      systemSize,
+      shading,
+      specificYield,
       predictedUnitCost,
       collectorEfficiency,
       exportedRevenue,
-      electricityKwhFromSolar,
-      annualYieldCalc
+      sumOfSelfConsumption
     )
-    predictedUnitCost =
-      predictedUnitCost + predictedUnitCost * assumedAnnualEnergyInflation
+    predictedUnitCost = predictedUnitCost + predictedUnitCost * assumedAnnualEnergyInflation
     collectorEfficiency = collectorEfficiency - 0.005
     exportedRevenue = exportedRevenue + exportedRevenue * RPI
 
@@ -76,20 +85,27 @@ const electricityKwhFromSolar = await energyUseCalculation({eac: 4000, annualYie
 }
 
 const workoutSaving = async (
+  systemSize,
+  shading,
+  specificYield,
   predictedUnitCost,
   collectorEfficiency,
   exportedRevenue,
-  electricityKwhFromSolar,
-  annualYieldCalc
+  sumOfSelfConsumption
 ) => {
-
-  const savingFromSolar = electricityKwhFromSolar * predictedUnitCost
+  const savingFromSolar = sumOfSelfConsumption * predictedUnitCost
   //console.log("solar saving", savingFromSolar) //384
+
+  const shadingFactor = shading - 0.05
+  //console.log("shading", shadingFactor)
+
+  const annualYieldCalc = specificYield * systemSize * shadingFactor
+  //console.log("annual yield", annualYieldCalc) // 2615.53
 
   const generation = annualYieldCalc * collectorEfficiency
   //console.log("generation", generation) // 2615.53
 
-  const elecUsedOnSite = electricityKwhFromSolar
+  const elecUsedOnSite = sumOfSelfConsumption
 
   const exportedPower = generation - elecUsedOnSite
   //console.log("export power", exportedPower) // 427.89
@@ -103,45 +119,11 @@ const workoutSaving = async (
   return totalForTheYear
 }
 
-// left side of accumlative total equation
-
-// Electricity Used on Site (kWh) from Solar & Storage = (=Calculation!$KY$9) - some random number on the calculation page = £2,187.64
-// Predicted Unit Cost Plus Inflation = (=Input!D6 = price of electricity per kWh) for first year ----- second year is (Predicted Unit Cost Plus Inflation + (Predicted Unit Cost Plus Inflation * Assumed Annual Energy Inflation(7%) ))
-// Saving from Energy Used From Solar Consumed following Solar & Storage = (Electricity Used on Site (kWh) from Solar & Storage * Predicted Unit Cost Plus Inflation )
-
-// above outputs Saving from Energy Used From Solar Consumed following Solar & Storage
-
-// ***********************************************************************************************************
-
-// right side of accumlative total equation
-
-// shading factor = 100% - MCS shading check (5% i think)
-
-// System Size/Calculated kW dc = (panels number * pannel wattage)/1000
-
-// Annual yield calculation = (specific yield/Annual kWh per KW (input from ui) * System Size/Calculated kW dc) * shading factor)
-
-// Collector Efficiency of Solar System = 100% first year then (Collector Efficiency of Solar System - 0.005)
-// Estimated Generation (kWh) Of Solar System = (=Input!$D$15 (Annual yield calculation) * Collector Efficiency of Solar System)
-
-// Electricity Used on Site (kWh) from Solar & Storage = (=Calculation!$KY$9) - some random number on the calculation page = £2,187.64
-
-// Exported Power (kWh) = (Estimated Generation (kWh) Of Solar System - Electricity Used on Site (kWh) from Solar & Storage)
-
-// ***********************************************************************************************************
-
-// Exported Revenue Rate Per Year = for first year = 0.055 incrememnted per year with (Exported Revenue Rate Per Year + (Exported Revenue Rate Per Year * Assumed Annual Inflation (RPI) (3%)  ))
-// Revenue from Exported Power = (Exported Power (kWh) * Exported Revenue Rate Per Year)
-
-// ***********************************************************************************************************
-
-// accumlative total = (Saving from Energy Used From Solar Consumed following Solar & Storage + Revenue from Exported Power)
-
-
-export const energyUseCalculation = async ( inputs: {
-  eac, annualYield, storageSize
-  }) => {
-
+export const energyUseCalculation = async (inputs: {
+  eac
+  annualYield
+  storageSize
+}) => {
   const workbook = new ex.Workbook()
   await workbook.xlsx.readFile("./new-spreadsheet.xlsx")
   const yearlyCalcs = {
@@ -158,7 +140,7 @@ export const energyUseCalculation = async ( inputs: {
   const profile = workbook.getWorksheet("Profile")
   const solarCoef = profile.getColumn("E").values.slice(2)
   const consumptionCoef = profile.getColumn("F").values.slice(2)
-  
+
   let yearConVals = []
   let yearSolVals = []
   let yearBatteryUse = []
@@ -250,4 +232,38 @@ export const energyUseCalculation = async ( inputs: {
   return yearlyCalcs
 }
 
-calculateUsageAndSaving()
+calculateUsageAndSaving() // used to run the file locally
+
+// left side of accumlative total equation
+
+// Electricity Used on Site (kWh) from Solar & Storage = (=Calculation!$KY$9) - some random number on the calculation page = £2,187.64
+// Predicted Unit Cost Plus Inflation = (=Input!D6 = price of electricity per kWh) for first year ----- second year is (Predicted Unit Cost Plus Inflation + (Predicted Unit Cost Plus Inflation * Assumed Annual Energy Inflation(7%) ))
+// Saving from Energy Used From Solar Consumed following Solar & Storage = (Electricity Used on Site (kWh) from Solar & Storage * Predicted Unit Cost Plus Inflation )
+
+// above outputs Saving from Energy Used From Solar Consumed following Solar & Storage
+
+// ***********************************************************************************************************
+
+// right side of accumlative total equation
+
+// shading factor = 100% - MCS shading check (5% i think)
+
+// System Size/Calculated kW dc = (panels number * pannel wattage)/1000
+
+// Annual yield calculation = (specific yield/Annual kWh per KW (input from ui) * System Size/Calculated kW dc) * shading factor)
+
+// Collector Efficiency of Solar System = 100% first year then (Collector Efficiency of Solar System - 0.005)
+// Estimated Generation (kWh) Of Solar System = (=Input!$D$15 (Annual yield calculation) * Collector Efficiency of Solar System)
+
+// Electricity Used on Site (kWh) from Solar & Storage = (=Calculation!$KY$9) - some random number on the calculation page = £2,187.64
+
+// Exported Power (kWh) = (Estimated Generation (kWh) Of Solar System - Electricity Used on Site (kWh) from Solar & Storage)
+
+// ***********************************************************************************************************
+
+// Exported Revenue Rate Per Year = for first year = 0.055 incrememnted per year with (Exported Revenue Rate Per Year + (Exported Revenue Rate Per Year * Assumed Annual Inflation (RPI) (3%)  ))
+// Revenue from Exported Power = (Exported Power (kWh) * Exported Revenue Rate Per Year)
+
+// ***********************************************************************************************************
+
+// accumlative total = (Saving from Energy Used From Solar Consumed following Solar & Storage + Revenue from Exported Power)
