@@ -28,13 +28,13 @@ const calculateUsageAndSaving = async () => {
   //storageSize,
   //   } = inputs
 
-  let pricePerKwh = 0.17556
-  let shading = 1
-  let specificYield = 927
-  let systemSize = 2.97
-  let eac = 4000
-  let annualYield = 2615.53
-  let storageSize = 5
+  let pricePerKwh: number = 0.17556
+  let shading: number = 1
+  let specificYield: number = 927
+  let systemSize: number = 2.97
+  let eac: number = 4000
+  let annualYield: number = 2615.53
+  let storageSize: number = 5
 
   const electricityKwhFromSolar = await energyUseCalculation({
     eac,
@@ -42,22 +42,22 @@ const calculateUsageAndSaving = async () => {
     storageSize,
   })
 
-  const sumOfSelfConsumption = electricityKwhFromSolar.selfConsumptionTotal.reduce((a, b) => a + b, 0)
+  const sumOfSelfConsumption: number = electricityKwhFromSolar.selfConsumptionTotal.reduce((a, b) => a + b, 0)
 
   // values that incrememt per year
-  let predictedUnitCost = pricePerKwh
-  const assumedAnnualEnergyInflation = 0.07 // 7%
+  let predictedUnitCost: number = pricePerKwh
+  const assumedAnnualEnergyInflation: number = 0.07 // 7%
 
-  let collectorEfficiency = 1 // 100%
+  let collectorEfficiency: number = 1 // 100%
 
-  let exportedRevenue = 0.055
-  const RPI = 0.03
+  let exportedRevenue: number = 0.055
+  const RPI: number = 0.03
 
   // build the return obj
   let results = []
-  let newPrice = costIncVat
-  let accumlativeTotal = 0
-  let i = 0
+  let newPrice: number = costIncVat
+  let accumlativeTotal: number = 0
+  let i: number = 0
   do {
     i = i + 1
     accumlativeTotal += await workoutSaving(
@@ -85,44 +85,44 @@ const calculateUsageAndSaving = async () => {
 }
 
 const workoutSaving = async (
-  systemSize,
-  shading,
-  specificYield,
-  predictedUnitCost,
-  collectorEfficiency,
-  exportedRevenue,
-  sumOfSelfConsumption
-) => {
-  const savingFromSolar = sumOfSelfConsumption * predictedUnitCost
+  systemSize: number,
+  shading: number,
+  specificYield: number,
+  predictedUnitCost: number,
+  collectorEfficiency: number,
+  exportedRevenue: number,
+  sumOfSelfConsumption: number
+): Promise<number> => {
+  const savingFromSolar: number = sumOfSelfConsumption * predictedUnitCost
   //console.log("solar saving", savingFromSolar) //384
 
-  const shadingFactor = shading - 0.05
+  const shadingFactor: number = shading - 0.05
   //console.log("shading", shadingFactor)
 
-  const annualYieldCalc = specificYield * systemSize * shadingFactor
+  const annualYieldCalc: number = specificYield * systemSize * shadingFactor
   //console.log("annual yield", annualYieldCalc) // 2615.53
 
-  const generation = annualYieldCalc * collectorEfficiency
+  const generation: number = annualYieldCalc * collectorEfficiency
   //console.log("generation", generation) // 2615.53
 
-  const elecUsedOnSite = sumOfSelfConsumption
+  const elecUsedOnSite: number = sumOfSelfConsumption
 
-  const exportedPower = generation - elecUsedOnSite
+  const exportedPower: number = generation - elecUsedOnSite
   //console.log("export power", exportedPower) // 427.89
 
-  const revenueFromPower = exportedPower * exportedRevenue
+  const revenueFromPower: number = exportedPower * exportedRevenue
   //console.log("revenueFrom power", revenueFromPower) // 23.52
 
-  const totalForTheYear = savingFromSolar + revenueFromPower
+  const totalForTheYear: number = savingFromSolar + revenueFromPower
   //console.log("total", totalForTheYear)
 
   return totalForTheYear
 }
 
 export const energyUseCalculation = async (inputs: {
-  eac
-  annualYield
-  storageSize
+  eac: number
+  annualYield: number
+  storageSize: number
 }) => {
   const workbook = new ex.Workbook()
   await workbook.xlsx.readFile("./new-spreadsheet.xlsx")
@@ -195,15 +195,15 @@ export const energyUseCalculation = async (inputs: {
     yearConVals[month] = monthConVals
     yearSolVals[month] = monthSolVals
   }
-  const sumArray = arr => {
-    return arr.map(mArr => {
+  const sumArray = (arr: any[]) => {
+    return arr.map((mArr: any[]) => {
       return mArr
-        .map(dArr => {
-          return dArr.reduce((val, acc) => {
+        .map((dArr: any[]) => {
+          return dArr.reduce((val: any, acc: any) => {
             return val + acc
           }, 0)
         })
-        .reduce((val, acc) => {
+        .reduce((val: any, acc: any) => {
           return val + acc
         }, 0)
     })
@@ -217,7 +217,7 @@ export const energyUseCalculation = async (inputs: {
   )
   yearlyCalcs.demandAfterSolar = sumArray(yearlyCalcs.demandAfterSolar)
   yearlyCalcs.exportAfterBattery = yearBatteryUse.map(mArr => {
-    return mArr.reduce((a, b) => {
+    return mArr.reduce((a: any, b: any) => {
       return a + b
     }, 0)
   })
