@@ -64,14 +64,15 @@ exports.handler = async (req, res) => {
     const formValues: ReqBody = await req.body
     console.log("Calling Function With", formValues)
     // Here we should generate all the values by doing any look ups we need, e.g. estimated annual consumption.
-    const inputs = await generateInputs(formValues, 3)
+    const inputs = await generateInputs(formValues, 5, true)
     console.log(inputs)
 
     // then we should run the generate cost for system that i have started writing,
-    const cost = calculateCostOfSystem(inputs.priceOfElectricity, inputs.roofType, inputs.scaffoldRequired, inputs.storageSize, inputs.quantityOfPanels, inputs.panelManufacturer, inputs.finalMargin, inputs.VATLevel, false)
+    const cost = calculateCostOfSystem(inputs.systemSize, inputs.roofType, inputs.scaffoldRequired, inputs.storageSize, inputs.quantityOfPanels, inputs.panels, inputs.finalMargin, inputs.VATLevel, true)
     // then we should work out the usage and savings
-    const usageAndSaving = await calculateUsageAndSaving(cost.totalSaleIncVAT, inputs.priceOfElectricity, inputs.shadingFactor, inputs.specificYield, inputs.systemSize, inputs.electricityDemand, inputs.annualYield, inputs.storageSize, false)
+    const usageAndSaving = await calculateUsageAndSaving(cost.totalSaleIncVAT, inputs.priceOfElectricity, inputs.shadingFactor, inputs.specificYield, inputs.systemSize, inputs.electricityDemand, inputs.annualYield, inputs.storageSize, true)
     // then we should send of the email
     console.log(cost, usageAndSaving)
+    res.status(200).send("")
   }
 }

@@ -26,14 +26,20 @@ export const calculateUsageAndSaving = async (
   storageSize: number,
   isCommercial: boolean) => {
 
+
+  const quotedPriceIncVAT = -Math.abs(costIncVAT) // makes number negative
   const electricityKwhFromSolar = await energyUseCalculation({
     eac,
     annualYield,
     storageSize,
   })
 
+  console.log(electricityKwhFromSolar);
+  
+
   const sumOfSelfConsumption: number = electricityKwhFromSolar.selfConsumptionTotal.reduce((a, b) => a + b, 0)
 
+  console.log(sumOfSelfConsumption)
   // values that incrememt per year
   let predictedUnitCost: number = pricePerKwh
   const assumedAnnualEnergyInflation: number = isCommercial ? 0.04 : 0.07 // 7%
@@ -45,7 +51,7 @@ export const calculateUsageAndSaving = async (
 
   // build the return obj
   let results = []
-  let newPrice: number = costIncVAT
+  let newPrice: number = quotedPriceIncVAT
   let accumlativeTotal: number = 0
   let i: number = 0
   do {
@@ -66,12 +72,11 @@ export const calculateUsageAndSaving = async (
 
     results.push({
       year: i,
-      quotedPrice: costIncVAT,
+      quotedPrice: quotedPriceIncVAT,
       profits: newPrice + accumlativeTotal,
       accumlativeTotal,
     })
   } while (i < 20)
-  console.log(results)
   return results
 }
 
@@ -96,7 +101,7 @@ const workoutSaving = (
 
 const revenueFromPowerCal = (shading: number, specificYield: number, systemSize: number, collectorEfficiency: number, sumOfSelfConsumption: number, exportedRevenue: number): number => {
 
-  const shadingFactor: number = shading - 0.05
+  const shadingFactor: number = shading
   //console.log("shading", shadingFactor)
   
   const annualYieldCalc: number = specificYield * systemSize * shadingFactor

@@ -11,34 +11,46 @@ export const calculateCostOfSystem = (
 ) => {
   let runningTotal = 0
   // cost of the roof type
-  runningTotal = +calculateRoofCost(solarKw, roofType, panelQuantity)
-  // cost of ancillary materials
-  runningTotal = +calculateAncillaryMaterialsCost(solarKw, isCommercial)
-  // cost of solar module color
-  runningTotal = +calculateSolarModuleColorCost(panelType, solarKw)
-  // cost of inverter
-  runningTotal = +calculateInverterCost(solarKw, isCommercial)
-  // cost of metering equipment
-  runningTotal = +120
-  // cost of battery equipment
-  runningTotal = +calculateBatteryCost(batterySize)
-  // labor cost
-  runningTotal = +calculateLabourCost(solarKw, isCommercial)
-  // scaffold cost
-  runningTotal = + scaffoldRequired ? calculateScaffolding(isCommercial, solarKw) : 0
-  // H&S and proj management cost
-  runningTotal = +isCommercial ? 50 : 0
-  // Commissioning
-  runningTotal = +isCommercial ? 50 : 0
-  // Packaging and Delivery
-  runningTotal = +150
-  // Administration / Lead Fees
-  runningTotal = +isCommercial ? 250 : 137.93
-  // Registrations
-  runningTotal = +isCommercial ? 205 : 169
+  runningTotal += calculateRoofCost(solarKw, roofType, panelQuantity)
+  
+  
+  // // cost of ancillary materials
+  runningTotal += calculateAncillaryMaterialsCost(solarKw, isCommercial)
+  
+  // // // cost of solar module color
+  runningTotal +=calculateSolarModuleColorCost(panelType, solarKw)
+  
+  // // cost of inverter
+  runningTotal +=calculateInverterCost(solarKw, isCommercial)
+  
+  // // cost of metering equipment
+  runningTotal +=120.5
+  // // cost of battery equipment
+  runningTotal +=calculateBatteryCost(batterySize)
 
+  // // labor cost
+  runningTotal +=calculateLabourCost(solarKw, isCommercial)
+  
+
+  // scaffold cost
+  runningTotal += scaffoldRequired ? calculateScaffolding(isCommercial, solarKw) : 0
+  // H&S and proj management cost
+  runningTotal += (isCommercial ? 50 : 0)
+  // // Commissioning
+  runningTotal += (isCommercial ? 50 : 0)
+
+  
+  // Packaging and Delivery
+  runningTotal += 150
+  // Administration / Lead Fees
+  runningTotal += (isCommercial ? 250 : 137.93)
+  // // Registrations
+  runningTotal += (isCommercial ? 105 : 169)
+  console.log(runningTotal)
   // Calculate Margin
   const marginCost = runningTotal * margin
+  
+
 
   // Calculate Total Sale
   const totalSale = runningTotal + marginCost
@@ -83,8 +95,8 @@ const calculateAncillaryMaterialsCost = (solarKW: number, isCommercial: boolean)
 
 const calculateSolarModuleColorCost = (color: string | number, solarKW: number): number => {
   const moduleColorPerKW = {
-    black: 210 * solarKW,
-    blue: 240 * solarKW,
+    black: 240 * solarKW,
+    blue: 210 * solarKW,
   }
   return moduleColorPerKW[color]
 }
@@ -94,7 +106,7 @@ const calculateInverterCost = (solarKW: number, isCommercial: boolean): number =
   return solarKW * costPerKW
 }
 
-const calculateBatteryCost = (size: string | number): number => {
+const calculateBatteryCost = (size: string ): number => {
   const batteryCostBySize = {
     "3KW": 850,
     "5KW": 1330,
@@ -103,7 +115,7 @@ const calculateBatteryCost = (size: string | number): number => {
     "15KW": 3220,
     "20KW": 4130,
   }
-  return batteryCostBySize[size]
+  return batteryCostBySize[size +"KW"]
 }
 
 const calculateLabourCost = (solarKW: number, isCommercial: boolean): number => {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
-    "start": "functions-framework --target=handler"
+    "start": "functions-framework --source=dist --target=handler "
   },
   "author": "Kilian Seifert Leitch",
   "license": "ISC",

@@ -28,18 +28,19 @@ interface Inputs {
   additionalItems: { [k: string]: number }[]
 }
 
-export const generateInputs = async (body: ReqBody, storageSize?: number): Promise<Inputs> => {
+export const generateInputs = async (body: ReqBody, storageSize?: number, isCommercial: boolean): Promise<Inputs> => {
   const electricityDemand: number =
     body.eac === -1 ? calculateEAC(body) : body.eac
   const quantityOfPanels: number = calculatePanelNumber(body.roof.area)
-  const panelWattage: number = 310
+  const panelWattage: number = 330
   const [irradienceZone, postcodeShort] = getIrradienceZone(body.postcode)
+  const  mainMargin =  isCommercial ? 0.25 : 0.5
   const inputs: Inputs = {
     electricityDemand,
-    priceOfElectricity: body.ppw === -1 ? 0.1756 : body.ppw,
-    standingCharge: body.standingCharge === -1 ? 0.2226 : body.standingCharge,
+    priceOfElectricity: body.ppw === -1 ? 0.1756 : body.ppw/100,
+    standingCharge: body.standingCharge === -1 ? 0.2226 : body.standingCharge/100,
     annualCostOfElectricity:
-      electricityDemand * body.ppw + body.standingCharge * 365,
+      electricityDemand * body.ppw/100 + body.standingCharge/100 * 365,
     quantityOfPanels,
     panelManufacturer: "Phonosolar", // Taken from old code as hard coded default
     panelWattage, // Taken from old code as hard coded default
@@ -51,13 +52,13 @@ export const generateInputs = async (body: ReqBody, storageSize?: number): Promi
     roofPitch: body.roof.inclination,
     azimuth: Math.abs(Math.round(body.roof.azimuth / 5) * 5),
     roofType: body.roof.roofMaterial,
-    panels: "Blue",
+    panels: "black",
     scaffoldRequired: false, //Hard Coded
     storageSize: storageSize || 5, 
     postcodeShort,
-    mainMargin: 0.325, // 32.5%
-    VATLevel: 0.05, // 5%
-    finalMargin: 0.325 + 0.05,
+    mainMargin,
+    VATLevel: isCommercial ? 0.2 : 0.05, 
+    finalMargin: mainMargin - (body.discount || 0 ),
     salesmanDiscount: body.discount || 0,
     additionalItems: [],
   }
@@ -66,7 +67,7 @@ export const generateInputs = async (body: ReqBody, storageSize?: number): Promi
     inputs.roofPitch,
     inputs.azimuth
   )
-  inputs.annualYield = inputs.specificYield * inputs.systemSize
+  inputs.annualYield = (inputs.specificYield * inputs.systemSize)  * (isCommercial ? 1 : inputs.shadingFactor)
   inputs.additionalItems = getAdditionalCosts(inputs.systemSize)
   return inputs
 }
