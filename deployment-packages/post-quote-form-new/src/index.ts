@@ -1,4 +1,7 @@
 import { generateInputs } from "./generateInputs"
+import { calculateCostOfSystem } from "./costOfSystem"
+import { calculateUsageAndSaving } from "./usageAndSaving"
+
 
 // JUST MAKE SURE TO KEEP THIS ALIGNED WITH THE UI AND WE WILL BE OKAY
 export interface ReqBody {
@@ -64,10 +67,11 @@ exports.handler = async (req, res) => {
     const inputs = await generateInputs(formValues, 3)
     console.log(inputs)
 
-    // then we should tun the generate cost for system that i have started writing,
-
+    // then we should run the generate cost for system that i have started writing,
+    const cost = calculateCostOfSystem(inputs.priceOfElectricity, inputs.roofType, inputs.scaffoldRequired, inputs.storageSize, inputs.quantityOfPanels, inputs.panelManufacturer, inputs.finalMargin, inputs.VATLevel, false)
     // then we should work out the usage and savings
-
+    const usageAndSaving = await calculateUsageAndSaving(cost.totalSaleIncVAT, inputs.priceOfElectricity, inputs.shadingFactor, inputs.specificYield, inputs.systemSize, inputs.electricityDemand, inputs.annualYield, inputs.storageSize, false)
     // then we should send of the email
+    console.log(cost, usageAndSaving)
   }
 }

@@ -15,26 +15,16 @@ const monthIndexToDays = {
   11: 31,
 }
 
-const calculateUsageAndSaving = async () => {
-  // cost including vat
-  const costIncVat = -6271.08 // need to make cost negative
-  //   const {
-  //     pricePerKwh,
-  //     shading,
-  //     specificYield,
-  // systemSize,
-  //eac ,
-  //annualYield ,
-  //storageSize,
-  //   } = inputs
-
-  let pricePerKwh: number = 0.17556
-  let shading: number = 1
-  let specificYield: number = 927
-  let systemSize: number = 2.97
-  let eac: number = 4000
-  let annualYield: number = 2615.53
-  let storageSize: number = 5
+export const calculateUsageAndSaving = async (
+  costIncVAT: number,
+  pricePerKwh: number,
+  shading: number,
+  specificYield: number,
+  systemSize: number,
+  eac: number,
+  annualYield: number,
+  storageSize: number,
+  isCommercial: boolean) => {
 
   const electricityKwhFromSolar = await energyUseCalculation({
     eac,
@@ -46,7 +36,7 @@ const calculateUsageAndSaving = async () => {
 
   // values that incrememt per year
   let predictedUnitCost: number = pricePerKwh
-  const assumedAnnualEnergyInflation: number = 0.07 // 7%
+  const assumedAnnualEnergyInflation: number = isCommercial ? 0.04 : 0.07 // 7%
 
   let collectorEfficiency: number = 1 // 100%
 
@@ -55,19 +45,20 @@ const calculateUsageAndSaving = async () => {
 
   // build the return obj
   let results = []
-  let newPrice: number = costIncVat
+  let newPrice: number = costIncVAT
   let accumlativeTotal: number = 0
   let i: number = 0
   do {
     i = i + 1
-    accumlativeTotal += await workoutSaving(
+    accumlativeTotal += workoutSaving(
       systemSize,
       shading,
       specificYield,
       predictedUnitCost,
       collectorEfficiency,
       exportedRevenue,
-      sumOfSelfConsumption
+      sumOfSelfConsumption,
+      isCommercial
     )
     predictedUnitCost = predictedUnitCost + predictedUnitCost * assumedAnnualEnergyInflation
     collectorEfficiency = collectorEfficiency - 0.005
@@ -75,7 +66,7 @@ const calculateUsageAndSaving = async () => {
 
     results.push({
       year: i,
-      quotedPrice: costIncVat,
+      quotedPrice: costIncVAT,
       profits: newPrice + accumlativeTotal,
       accumlativeTotal,
     })
@@ -84,21 +75,30 @@ const calculateUsageAndSaving = async () => {
   return results
 }
 
-const workoutSaving = async (
+const workoutSaving = (
   systemSize: number,
   shading: number,
   specificYield: number,
   predictedUnitCost: number,
   collectorEfficiency: number,
   exportedRevenue: number,
-  sumOfSelfConsumption: number
-): Promise<number> => {
-  const savingFromSolar: number = sumOfSelfConsumption * predictedUnitCost
-  //console.log("solar saving", savingFromSolar) //384
+  sumOfSelfConsumption: number,
+  isCommercial: boolean
+): number => {
+  const savingFromSolar = savingFromSolarCalc(sumOfSelfConsumption, predictedUnitCost)
+  if (isCommercial) {
+    return savingFromSolar
+  } else {
+    const revenueFromPower = revenueFromPowerCal(shading, specificYield, systemSize, collectorEfficiency, sumOfSelfConsumption, exportedRevenue)
+    return savingFromSolar + revenueFromPower
+  }
+}
+
+const revenueFromPowerCal = (shading: number, specificYield: number, systemSize: number, collectorEfficiency: number, sumOfSelfConsumption: number, exportedRevenue: number): number => {
 
   const shadingFactor: number = shading - 0.05
   //console.log("shading", shadingFactor)
-
+  
   const annualYieldCalc: number = specificYield * systemSize * shadingFactor
   //console.log("annual yield", annualYieldCalc) // 2615.53
 
@@ -113,13 +113,17 @@ const workoutSaving = async (
   const revenueFromPower: number = exportedPower * exportedRevenue
   //console.log("revenueFrom power", revenueFromPower) // 23.52
 
-  const totalForTheYear: number = savingFromSolar + revenueFromPower
-  //console.log("total", totalForTheYear)
-
-  return totalForTheYear
+  return revenueFromPower
 }
 
-export const energyUseCalculation = async (inputs: {
+const savingFromSolarCalc = (sumOfSelfConsumption: number, predictedUnitCost: number): number => {
+  const savingFromSolar: number = sumOfSelfConsumption * predictedUnitCost
+  //console.log("solar saving", savingFromSolar) //384
+
+  return savingFromSolar
+}
+
+const energyUseCalculation = async (inputs: {
   eac: number
   annualYield: number
   storageSize: number
@@ -232,7 +236,7 @@ export const energyUseCalculation = async (inputs: {
   return yearlyCalcs
 }
 
-calculateUsageAndSaving() // used to run the file locally
+//calculateUsageAndSaving() // used to run the file locally
 
 // left side of accumlative total equation
 
