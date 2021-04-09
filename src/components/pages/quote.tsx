@@ -156,6 +156,18 @@ const commercialOptions = {
   solarHeat: "Solar heat"
 }
 
+
+const roofTypes = {
+  ['Concrete']: "concreteRoof",
+  ['Slate']: "slateRoof",
+  ['Rosemary']: "rosemary",
+  ['Flat roof']: "flatRoof",
+  ['Trapezoidal']: "trapezoidal",
+  ['Ground mounted']: "groundMounted",
+  ['In roof']: "inRoof",
+  ['Dekra']: "dekra",
+}
+
 const SPECIAL_PRICE_KEY = "utm_campaign"
 const SPECIAL_PRICE_VALUE = "special_price"
 
@@ -235,7 +247,7 @@ const QuotePage: React.FC<PageProps> = props => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formValues),
+          body: JSON.stringify({...formValues, roof: { ...formValues.roof, roofMaterial: roofTypes[formValues.roof.roofMaterial]}}), // I know, i know
         }
         try {
           let quote = await fetch(
@@ -550,22 +562,14 @@ const QuotePage: React.FC<PageProps> = props => {
         )
       case 3:
         return quoteType.toLowerCase() === quoteTypes.COMMERCIAL ? (
+          
           <>
             <Heading>Tell us about your roof*</Heading>
             <FormSelect
               required
               name="roofMaterial"
               label="What is your property made from?*"
-              options={[
-                "Concrete",
-                "Slate",
-                "Flat Roof",
-                "Dekra",
-                "Groundmounted",
-                "Trapezoidal",
-                "In-roof",
-                "Unsure",
-              ]}
+              options={Object.keys(roofTypes)}
               value={formValues.roof.roofMaterial}
               onChange={e => {
                 setFormValues({
