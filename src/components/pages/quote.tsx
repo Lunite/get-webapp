@@ -807,8 +807,6 @@ const QuotePage: React.FC<PageProps> = props => {
                   id="detached"
                   value="21.84"
                   onChange={e => {
-                    console.log(e)
-
                     setFormValues({
                       ...formValues,
                       roof: {
