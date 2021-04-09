@@ -23,7 +23,9 @@ export interface ReqBody {
     eCar: boolean
     pool: boolean
     heater: boolean
-    storageHeater: boolean
+    eHeater: boolean
+    pump: boolean
+    hotTub: boolean
     ownsHouse: string
     flat: string
     buildingType: string

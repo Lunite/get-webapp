@@ -56,7 +56,9 @@ interface IQuoteFormValues {
     eCar: boolean
     pool: boolean
     heater: boolean
-    storageHeater: boolean
+    eHeater: boolean
+    pump: boolean
+    hotTub: boolean
     ownsHouse: string
     flat: string
     buildingType: string
@@ -114,7 +116,6 @@ const values: IQuoteFormValues = {
     eCar: false,
     pool: false,
     heater: false,
-    storageHeater: false,
     ownsHouse: "",
     flat: "",
     buildingType: "",
@@ -743,7 +744,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   }}
                 />
                 <label className="button-label" htmlFor="flat">
-                  <img className="label-image" src="/images/flat.png" />
+                  <img className="house-type label-image " src="/images/flats-type.png" />
                 </label>
                 <div className="input-label-text">Flat/Apartment</div>
               </Col3>
@@ -768,7 +769,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   }}
                 />
                 <label className="button-label" htmlFor="terraced">
-                  <img className="label-image" src="/images/flat.png" />
+                  <img className=" house-type label-image" src="/images/terraced-type.png" />
                 </label>
                 <div className="input-label-text">Terraced House</div>
               </Col3>
@@ -793,7 +794,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   }}
                 />
                 <label className="button-label" htmlFor="semi-detached">
-                  <img className="label-image" src="/images/flat.png" />
+                  <img className="house-type label-image" src="/images/semi-detached-type.png" />
                 </label>
                 <div className="input-label-text">Semi-detached House</div>
               </Col3>
@@ -819,7 +820,7 @@ const QuotePage: React.FC<PageProps> = props => {
                   checked={formValues.roof.area === 21.84}
                 />
                 <label className="button-label" htmlFor="detached">
-                  <img className="label-image" src="/images/flat.png" />
+                  <img className="house-type label-image" src="/images/detached-type.png" />
                 </label>
                 <div className="input-label-text">Detached House</div>
               </Col3>

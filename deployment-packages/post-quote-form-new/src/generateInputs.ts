@@ -76,8 +76,15 @@ export const calculateMaxPanelNumber = roofArea =>
   Math.min(Math.ceil(roofArea / 1.5) - 1, 20)
 
 const calculateEAC = (body: ReqBody) => {
-  const runningTotal = bedsToEAC[body.property.bedrooms].std
+  let runningTotal = bedsToEAC[body.property.bedrooms]?.std || 0
   // TODO add any additional items in here
+  runningTotal += body.property.eCar ? 2500 : 0
+  runningTotal += body.property.eHeater ? 3000 : 0
+  runningTotal += body.property.heater ? 3000 : 0
+  runningTotal += body.property.hotTub ? 3000 : 0
+  runningTotal += body.property.pool ? 3500 : 0
+  runningTotal += body.property.pump ? 3000 : 0
+  
   return runningTotal
 }
 
