@@ -15,6 +15,13 @@ const monthIndexToDays = {
   11: 31,
 }
 
+export interface UsageAndSaving {
+    year: number,
+    quotedPrice: number,
+    profits: number,
+    accumlativeTotal: number,
+}
+
 export const calculateUsageAndSaving = async (
   costIncVAT: number,
   pricePerKwh: number,
@@ -24,7 +31,7 @@ export const calculateUsageAndSaving = async (
   eac: number,
   annualYield: number,
   storageSize: number,
-  isCommercial: boolean) => {
+  isCommercial: boolean): Promise<UsageAndSaving[]> => {
 
 
   const quotedPriceIncVAT = -Math.abs(costIncVAT) // makes number negative
@@ -32,14 +39,11 @@ export const calculateUsageAndSaving = async (
     eac,
     annualYield,
     storageSize,
-  })
-
-  console.log(electricityKwhFromSolar);
-  
+  })  
 
   const sumOfSelfConsumption: number = electricityKwhFromSolar.selfConsumptionTotal.reduce((a, b) => a + b, 0)
-
   console.log(sumOfSelfConsumption)
+
   // values that incrememt per year
   let predictedUnitCost: number = pricePerKwh
   const assumedAnnualEnergyInflation: number = isCommercial ? 0.04 : 0.07 // 7%
@@ -50,7 +54,7 @@ export const calculateUsageAndSaving = async (
   const RPI: number = 0.03
 
   // build the return obj
-  let results = []
+  let results: UsageAndSaving[] = []
   let newPrice: number = quotedPriceIncVAT
   let accumlativeTotal: number = 0
   let i: number = 0

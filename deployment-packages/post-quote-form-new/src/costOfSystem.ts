@@ -1,4 +1,12 @@
-export const calculateCostOfSystem = (
+export interface CostOfSystem {
+  totalSale: number,
+  totalSaleIncVAT: number,
+  vat: number,
+  pencePerWatt: number
+  marginCost: number
+}
+
+export const calculateCostOfSystem  = (
   solarKw: number,
   roofType: any,
   scaffoldRequired: boolean,
@@ -8,7 +16,7 @@ export const calculateCostOfSystem = (
   margin: number,
   vatRate: number,
   isCommercial: boolean
-) => {
+) : CostOfSystem => {
   let runningTotal = 0
   // cost of the roof type
   runningTotal += calculateRoofCost(solarKw, roofType, panelQuantity)
@@ -46,7 +54,6 @@ export const calculateCostOfSystem = (
   runningTotal += (isCommercial ? 250 : 137.93)
   // // Registrations
   runningTotal += (isCommercial ? 105 : 169)
-  console.log(runningTotal)
   // Calculate Margin
   const marginCost = runningTotal * margin
   
@@ -108,7 +115,7 @@ const calculateInverterCost = (solarKW: number, isCommercial: boolean): number =
 
 const calculateBatteryCost = (size: string ): number => {
   const batteryCostBySize = {
-    "3KW": 850,
+    "2.5KW": 850,
     "5KW": 1330,
     "7.5KW": 1850,
     "10kw": 2330,

@@ -1,7 +1,7 @@
 import { ReqBody } from "."
 const ex = require("exceljs")
 
-interface Inputs {
+export interface Inputs {
   electricityDemand: number
   priceOfElectricity: number
   standingCharge: number
@@ -28,10 +28,10 @@ interface Inputs {
   additionalItems: { [k: string]: number }[]
 }
 
-export const generateInputs = async (body: ReqBody, storageSize?: number, isCommercial: boolean): Promise<Inputs> => {
+export const generateInputs = async (body: ReqBody, storageSize: number, panelQuantity: number, isCommercial: boolean): Promise<Inputs> => {
   const electricityDemand: number =
     body.eac === -1 ? calculateEAC(body) : body.eac
-  const quantityOfPanels: number = calculatePanelNumber(body.roof.area)
+  const quantityOfPanels: number = panelQuantity;
   const panelWattage: number = 330
   const [irradienceZone, postcodeShort] = getIrradienceZone(body.postcode)
   const  mainMargin =  isCommercial ? 0.25 : 0.5
@@ -51,7 +51,7 @@ export const generateInputs = async (body: ReqBody, storageSize?: number, isComm
     irradienceZone,
     roofPitch: body.roof.inclination,
     azimuth: Math.abs(Math.round(body.roof.azimuth / 5) * 5),
-    roofType: body.roof.roofMaterial,
+    roofType: body.roof.roofMaterial || "concreteRoof",
     panels: "black",
     scaffoldRequired: false, //Hard Coded
     storageSize: storageSize || 5, 
@@ -72,7 +72,7 @@ export const generateInputs = async (body: ReqBody, storageSize?: number, isComm
   return inputs
 }
 
-const calculatePanelNumber = roofArea =>
+export const calculateMaxPanelNumber = roofArea =>
   Math.min(Math.ceil(roofArea / 1.5) - 1, 20)
 
 const calculateEAC = (body: ReqBody) => {
