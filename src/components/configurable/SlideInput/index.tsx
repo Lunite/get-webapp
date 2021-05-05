@@ -54,17 +54,19 @@ const SlideInput: React.FC<SlideInputProps> = props => {
         >
           {props.type === "money" ? (
             <>
-              {props.value > 99 ? (
-                <>£{props.value / 100}</>
+              {props.value < 0 ? (
+                "Unknown"
+              ) : props.value > 99 ? (
+                <>£{(props.value / 100).toFixed(2)}</>
               ) : (
                 <>{props.value}p</>
               )}
             </>
           ) : (
             <>
-              {props?.inputAdornments.start}
-              {props.value}
-              {props?.inputAdornments.end}
+              {props.value >= 0 && props?.inputAdornments.start}
+              {props.value < 0 ? "Unknown" : props.value}
+              {props.value >= 0 && props?.inputAdornments.end}
             </>
           )}
         </span>
@@ -123,21 +125,26 @@ const SlideInput: React.FC<SlideInputProps> = props => {
       </div>
       {props.inputBox && (
         <div style={{ width: "10%" }}>
-          <label className="form-input__label">Enter Manually</label>
-          <input
-            type="number"
-            className="form-input__field"
-            value={props.value}
-            style={{
-              width: "100%",
-              padding: "5px 10px",
-              fontSize: "1em",
-            }}
-            onChange={props.onChange}
-            step={props.step || 1}
-            min={props.min}
-            max={props.max}
-          />
+          {props.value >= 0 && (
+            <>
+              <label className="form-input__label">Enter Manually</label>
+
+              <input
+                type="number"
+                className="form-input__field"
+                value={props.value}
+                style={{
+                  width: "100%",
+                  padding: "5px 10px",
+                  fontSize: "1em",
+                }}
+                onChange={props.onChange}
+                step={props.step || 1}
+                min={props.min}
+                max={props.max}
+              />
+            </>
+          )}
         </div>
       )}
     </div>

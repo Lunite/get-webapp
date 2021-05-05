@@ -19,6 +19,8 @@ interface InteractiveMapProps {
 
 const InteractiveMap: React.FC<InteractiveMapProps> = props => {
   const onClickHandler = (mapProps, map, clickEvent) => {
+    console.log(clickEvent);
+    
     const location = {
       lat: clickEvent.latLng.lat(),
       lng: clickEvent.latLng.lng(),
@@ -36,6 +38,14 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
 
   return (
     <>
+      <div className="arrowmap-tip">
+        <img src={info} alt="Hint:" />
+        <p className="help-text">
+        Please move and select your property on the map.
+        Enter your house number.
+        Confirm the address is correct.
+        </p>
+      </div>
       <Map
         google={props.google}
         center={props.location}
@@ -63,16 +73,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = props => {
           animation={props.google.maps.Animation.DROP}
         />
       </Map>
-      <div className="arrowmap-tip">
-        <img src={info} alt="Hint:" />
-        <p className="help-text">
-          Enter your house number and make sure your roof is selected on the map
-        </p>
-      </div>
     </>
   )
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyCIxU03Aoq29qJ5-KQT9F_v763fpJf0B3c",
+  apiKey: "AIzaSyBn24oGCV6hDozLK0VfXyhMOAcCKEYeoyQ",
 })(InteractiveMap)

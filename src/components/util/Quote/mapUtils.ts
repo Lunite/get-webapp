@@ -1,6 +1,6 @@
 import Geocode from "react-geocode"
 
-Geocode.setApiKey("AIzaSyCIxU03Aoq29qJ5-KQT9F_v763fpJf0B3c")
+Geocode.setApiKey("AIzaSyBn24oGCV6hDozLK0VfXyhMOAcCKEYeoyQ")
 Geocode.setLanguage("en")
 Geocode.setRegion("uk")
 

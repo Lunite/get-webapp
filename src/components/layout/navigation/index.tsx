@@ -15,344 +15,370 @@ import { CustomerTypeContext } from "~/providers/CustomerTypeProvider"
 
 //@TODO: split the navigation bars into different components
 const Navigation: React.FC = () => {
-  const { customerType, setCustomerType } = useContext(CustomerTypeContext);
+  const { customerType, setCustomerType } = useContext(CustomerTypeContext)
 
-  console.log('Navigation:customerType', customerType);
+  console.log("Navigation:customerType", customerType)
 
-  const isBusiness = React.useMemo(() => customerType === "commercial", [customerType]);
-  const isDomestic = React.useMemo(() => customerType === "domestic", [customerType]);
-  const isSolarTogether = React.useMemo(() => customerType === "solartogether", [customerType]);
+  const isBusiness = React.useMemo(() => customerType === "commercial", [
+    customerType,
+  ])
+  const isDomestic = React.useMemo(() => customerType === "domestic", [
+    customerType,
+  ])
+  const isSolarTogether = React.useMemo(
+    () => customerType === "solartogether",
+    [customerType]
+  )
 
-  console.log('isBusiness', isBusiness);
-  console.log('isDomestic', isDomestic);
-  console.log('isSolarTogether', isSolarTogether);
-  
-  
+  console.log("isBusiness", isBusiness)
+  console.log("isDomestic", isDomestic)
+  console.log("isSolarTogether", isSolarTogether)
 
   const customerStyle = React.useMemo(() => {
-    const style: any = {};
+    const style: any = {}
     if (isBusiness) {
-      style.backgroundColor =  '#3c96c5';
+      style.backgroundColor = "#3c96c5"
     } else if (isSolarTogether) {
-      style.backgroundColor =  'white';
-      style.color = '#051c3f';
+      style.backgroundColor = "white"
+      style.color = "#051c3f"
     }
-    return style;
-  }, [isBusiness, isSolarTogether]);
+    return style
+  }, [isBusiness, isSolarTogether])
 
   const businessButtonStyle = React.useMemo(() => {
-    const style: any = {};
+    const style: any = {}
     if (isBusiness) {
-      style.backgroundColor =  '#051c3f';
+      style.backgroundColor = "#051c3f"
     }
-    return style;
-  }, [isBusiness]); 
+    return style
+  }, [isBusiness])
 
   const topNavigationStyle = React.useMemo(() => {
-    const style: any = {};
+    const style: any = {}
     if (isBusiness || isSolarTogether) {
-      style.backgroundColor =  '#051c3f';
-      style.color = "white";
-    } 
-    return style;
-  }, [isBusiness, isSolarTogether]);
+      style.backgroundColor = "#051c3f"
+      style.color = "white"
+    }
+    return style
+  }, [isBusiness, isSolarTogether])
 
   const contactDetails = React.useMemo(() => {
-
     return (
       <div className="navigation__contact-details contact-details">
+        <Link
+          className="contact-details__link"
+          to="/contact-us"
+          style={{
+            display: isSolarTogether || isBusiness ? "none" : "initial",
+          }}
+        >
+          <Icon alias="at" />
+          Contact us
+        </Link>
 
+        <Link
+          className="contact-details__link"
+          to="/commercial-contact-us"
+          style={{
+            display: isSolarTogether || isDomestic ? "none" : "initial",
+          }}
+        >
+          <Icon alias="at" style={isBusiness ? { color: "#3c96c5" } : {}} />
+          Contact us
+        </Link>
 
-
-
-                  <Link className="contact-details__link" to="/contact-us" style={{display: isSolarTogether || isBusiness ? 'none' : 'initial'}}>
-                  <Icon alias="at"  />
-                    Contact us
-                  </Link>
-                  
-                  <Link className="contact-details__link" to="/commercial-contact-us" style={{display: isSolarTogether || isDomestic ? 'none' : 'initial'}}>
-                  <Icon alias="at" style={isBusiness ? {color: '#3c96c5'} : {}} />
-                    Contact us
-                  </Link>
-
-
-                  
-                  {/* <a className="contact-details__link" href="tel:02038669896" style={{
+        {/* <a className="contact-details__link" href="tel:02038669896" style={{
                     display: isSolarTogether ? 'initial' : 'none'
                   }}>
                     <Icon alias="phone" />
                     020 3866 9896
                   </a> */}
-
-                </div>
+      </div>
     )
-  }, [isSolarTogether, isBusiness]);
-
-
+  }, [isSolarTogether, isBusiness])
 
   const navItems = (
     <>
-    {/*Start DESKTOP menu*/}
+      {/*Start DESKTOP menu*/}
 
-    {/*Start Domestic menu*/}
-    {isDomestic && (
-    <>
+      {/*Start Domestic menu*/}
+      {isDomestic && (
+        <>
+          <div className="navigation-item">
+            <div className="navigation-item__link" data-title="Company">
+              Company
+              <Icon className="navigation-item__arrow" alias="fat-arrow" />
+            </div>
+            <div className="navigation-item__children">
+              <Link
+                className="navigation-item__child-link"
+                to="/products-warranties/"
+              >
+                Products &amp; Warranties
+              </Link>
+              <Link className="navigation-item__child-link" to="/about-us/">
+                About Us
+              </Link>
+              <Link className="navigation-item__child-link" to="/faq">
+                Support and FAQs
+              </Link>
+              <Link className="navigation-item__child-link" to="/blog">
+                Blog
+              </Link>
+            </div>
+          </div>
+          <div className="navigation-item">
+            <Link
+              data-title="Case Studies"
+              className="navigation-item__link"
+              to="/projects"
+            >
+              Case Studies
+            </Link>
+          </div>
+          <div className="navigation-item">
+            <div className="navigation-item__link" data-title="Solar Together">
+              Solar Together
+              <Icon className="navigation-item__arrow" alias="fat-arrow" />
+            </div>
+            <div className="navigation-item__children">
+              <Link
+                className="navigation-item__child-link"
+                to="/solar-together"
+              >
+                How does it work?
+              </Link>
+              <Link
+                className="navigation-item__child-link"
+                to="/solar-together-faq"
+              >
+                Solar Together FAQs
+              </Link>
+            </div>
+          </div>
+          <div
+            className="navigation-item navigation-item--shout"
+            style={businessButtonStyle}
+          >
+            <Link className="navigation-item__link" to="/quote">
+              Get a Quote
+            </Link>
+          </div>
+        </>
+      )}
+      {/* End Domestic menu */}
 
-
-
-      <div className="navigation-item">
-        <div className="navigation-item__link" data-title="Company">
-          Company
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-        <Link className="navigation-item__child-link" to="/products-warranties/">
-          Products &amp; Warranties
-          </Link>          
-          <Link className="navigation-item__child-link" to="/about-us/">
-            About Us
-          </Link>
-          <Link className="navigation-item__child-link" to="/faq">
-            Support and FAQs
-          </Link>
-          <Link className="navigation-item__child-link" to="/blog">
-            Blog
-          </Link>
-        </div>
-      </div>
-      <div className="navigation-item">
-        <Link
-          data-title="Case Studies"
-          className="navigation-item__link"
-          to="/projects"
-        >
-          Case Studies
-        </Link>
-      </div> 
-      <div className="navigation-item">
-        <div className="navigation-item__link" data-title="Solar Together" >
-          Solar Together
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-          <Link
-            className="navigation-item__child-link"
-            to="/solar-together"
-          >
-            How does it work?
-          </Link>
-          <Link
-            className="navigation-item__child-link"
-            to="/solar-together-faq"
-          >
-            Solar Together FAQs
-          </Link>
-        </div>
-      </div>
-      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
-        <Link className="navigation-item__link" to="/quote">
-          Get a Quote
-        </Link>
-      </div>
-    </>
-    )}
-    {/* End Domestic menu */}
-
-    {/*Start Commercial menu*/}
-    {isBusiness && (
-    <>
-      <div className="navigation-item">
-        <div className="navigation-item__link business__link" data-title="Services">
-          Services
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-          <Link
-            className="navigation-item__child-link"
-            to="/service/industrial-commercial-solutions/"
-          >
-            Industrial &amp; Commercial Solutions
-          </Link>
-          <Link
-            className="navigation-item__child-link"
-            to="/service/technical-design/"
-          >
-            Technical design
-          </Link>
-          <Link
-            className="navigation-item__child-link"
-            to="/service/operation-maintenance/"
-          >
-            Operation &amp; Maintenance
-          </Link>
-          <Link
-            className="navigation-item__child-link"
-            to="/service/asset-management/"
-          >
-            Asset Management
-          </Link>
-        </div>
-      </div>
-      <div className="navigation-item">
-        <div className="navigation-item__link business__link" data-title="Company">
-          Company
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-          <Link className="navigation-item__child-link" to="/commercial-products/">
-            Products
-          </Link>
-          {/* <Link className="navigation-item__child-link" to="/commercial-warranties">
+      {/*Start Commercial menu*/}
+      {isBusiness && (
+        <>
+          <div className="navigation-item">
+            <div
+              className="navigation-item__link business__link"
+              data-title="Services"
+            >
+              Services
+              <Icon className="navigation-item__arrow" alias="fat-arrow" />
+            </div>
+            <div className="navigation-item__children">
+              <Link
+                className="navigation-item__child-link"
+                to="/service/industrial-commercial-solutions/"
+              >
+                Industrial &amp; Commercial Solutions
+              </Link>
+              <Link
+                className="navigation-item__child-link"
+                to="/service/technical-design/"
+              >
+                Technical design
+              </Link>
+              <Link
+                className="navigation-item__child-link"
+                to="/service/operation-maintenance/"
+              >
+                Operation &amp; Maintenance
+              </Link>
+              <Link
+                className="navigation-item__child-link"
+                to="/service/asset-management/"
+              >
+                Asset Management
+              </Link>
+            </div>
+          </div>
+          <div className="navigation-item">
+            <div
+              className="navigation-item__link business__link"
+              data-title="Company"
+            >
+              Company
+              <Icon className="navigation-item__arrow" alias="fat-arrow" />
+            </div>
+            <div className="navigation-item__children">
+              <Link
+                className="navigation-item__child-link"
+                to="/commercial-products/"
+              >
+                Products
+              </Link>
+              {/* <Link className="navigation-item__child-link" to="/commercial-warranties">
             Warranties
           </Link> */}
-          <Link className="navigation-item__child-link" to="/about-us/">
-            About Us
-          </Link>
-          <Link className="navigation-item__child-link" to="/faq">
-            Support and FAQs
-          </Link>
-          <Link className="navigation-item__child-link" to="/blog">
-            Blog
-          </Link>
-        </div>
-      </div>
-      <div className="navigation-item">
-        <Link
-          data-title="Case Studies"
-          className="navigation-item__link business__link"
-          to="/projects"
-        >
-          Case Studies
-        </Link>
-      </div> 
-      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
-        <Link className="navigation-item__link" to="/quote-commercial">
-          Get a Quote
-        </Link>
-      </div>
-    </>
-    )}
-    {/*End Commercial menu*/}
-
-    {/*Start Solar Together menu */}
-    {isSolarTogether && (
-    <>    
-      <div className="navigation-item">
-        <Link
-          data-title="Community Energy"
-          className="navigation-item__link solartogether__link"
-          to="/for-your-community"
-        >
-          Community Energy
-        </Link>
-      </div> 
-      <div className="navigation-item">
-        <Link
-          data-title="About Us"
-          className="navigation-item__link solartogether__link"
-          to="/about-us"
-        >
-          About Us
-        </Link>
-      </div> 
-      <div className="navigation-item">
-        <div className="navigation-item__link solartogether__link" data-title="Solar Together" >
-          Solar Together
-          <Icon className="navigation-item__arrow" alias="fat-arrow" />
-        </div>
-        <div className="navigation-item__children">
-          <Link
-            className="navigation-item__child-link"
-            to="/solar-together"
+              <Link className="navigation-item__child-link" to="/about-us/">
+                About Us
+              </Link>
+              <Link className="navigation-item__child-link" to="/faq">
+                Support and FAQs
+              </Link>
+              <Link className="navigation-item__child-link" to="/blog">
+                Blog
+              </Link>
+            </div>
+          </div>
+          <div className="navigation-item">
+            <Link
+              data-title="Case Studies"
+              className="navigation-item__link business__link"
+              to="/projects"
+            >
+              Case Studies
+            </Link>
+          </div>
+          <div
+            className="navigation-item navigation-item--shout"
+            style={businessButtonStyle}
           >
-            How does it work?
-          </Link>
-          <Link
-            className="navigation-item__child-link"
-            to="/solar-together-faq"
-          >
-            Solar Together FAQs
-          </Link>
-        </div>
-      </div>
-      <div className="navigation-item navigation-item--shout" style= {businessButtonStyle}>
-        <Link className="navigation-item__link" to="/contact-us">
-          Contact us
-        </Link>
-      </div>
-    </>
-    )}
-    {/*End Solar Together menu*/}
+            <Link className="navigation-item__link" to="/quote-commercial">
+              Get a Quote
+            </Link>
+          </div>
+        </>
+      )}
+      {/*End Commercial menu*/}
 
-    {/* End DESKTOP menu */}
-    
+      {/*Start Solar Together menu */}
+      {isSolarTogether && (
+        <>
+          <div className="navigation-item">
+            <Link
+              data-title="Community Energy"
+              className="navigation-item__link solartogether__link"
+              to="/for-your-community"
+            >
+              Community Energy
+            </Link>
+          </div>
+          <div className="navigation-item">
+            <Link
+              data-title="About Us"
+              className="navigation-item__link solartogether__link"
+              to="/about-us"
+            >
+              About Us
+            </Link>
+          </div>
+          <div className="navigation-item">
+            <div
+              className="navigation-item__link solartogether__link"
+              data-title="Solar Together"
+            >
+              Solar Together
+              <Icon className="navigation-item__arrow" alias="fat-arrow" />
+            </div>
+            <div className="navigation-item__children">
+              <Link
+                className="navigation-item__child-link"
+                to="/solar-together"
+              >
+                How does it work?
+              </Link>
+              <Link
+                className="navigation-item__child-link"
+                to="/solar-together-faq"
+              >
+                Solar Together FAQs
+              </Link>
+            </div>
+          </div>
+          <div
+            className="navigation-item navigation-item--shout"
+            style={businessButtonStyle}
+          >
+            <Link className="navigation-item__link" to="/contact-us">
+              Contact us
+            </Link>
+          </div>
+        </>
+      )}
+      {/*End Solar Together menu*/}
+
+      {/* End DESKTOP menu */}
     </>
   )
 
   return (
-    <header className="navigation" >
+    <header className="navigation">
       <div className="navigation__top">
-        <div className="container" >
-          
-            <div className="navigation__customer-switcher customer-switcher" >
-              <Link
-                className={`customer-switcher__link${
-                  customerType === "domestic" ? " link--active" : ""
-                }`}
-                to="/"
-                onClick={() => {
-                  setCustomerType("domestic")
-                }}
-              >
-                For your Home
-              </Link>
-              <span className="customer-switcher__link-separator" style = {topNavigationStyle}/>
-              <Link
-                className={`customer-switcher__link${
-                  customerType === "commercial" ? " link--activeblue" : ""
-                }`}
-                to="/for-your-business"
-                onClick={() => {
-                  setCustomerType("commercial")
-                }}
-              >
-                For your Business
-              </Link>
-              <span className="customer-switcher__link-separator" />            
-              <Link
-                className={`customer-switcher__link${
-                  customerType === "solartogether" ? " link--active" : ""
-                }`}
-                to="/for-your-community"
-                onClick={() => {
-                  setCustomerType("solartogether")
-                }}
-              >
-                For your Community
-              </Link>
-            </div>
-            {contactDetails}
+        <div className="container">
+          <div className="navigation__customer-switcher customer-switcher">
+            <Link
+              className={`customer-switcher__link${
+                customerType === "domestic" ? " link--active" : ""
+              }`}
+              to="/"
+              onClick={() => {
+                setCustomerType("domestic")
+              }}
+            >
+              For your Home
+            </Link>
+            <span
+              className="customer-switcher__link-separator"
+              style={topNavigationStyle}
+            />
+            <Link
+              className={`customer-switcher__link${
+                customerType === "commercial" ? " link--activeblue" : ""
+              }`}
+              to="/for-your-business"
+              onClick={() => {
+                setCustomerType("commercial")
+              }}
+            >
+              For your Business
+            </Link>
+            <span className="customer-switcher__link-separator" />
+            <Link
+              className={`customer-switcher__link${
+                customerType === "solartogether" ? " link--active" : ""
+              }`}
+              to="/for-your-community"
+              onClick={() => {
+                setCustomerType("solartogether")
+              }}
+            >
+              For your Community
+            </Link>
+          </div>
+          {contactDetails}
         </div>
       </div>
 
-      
       <>
-        
         {/* Logo desktop */}
-        
-          <div className="navigation__main hidden-xs" style={customerStyle}>
-            <div className="container">
-              <Link className="logo__anchor" to="/">
-                {
-                  isSolarTogether ? 
-                    <LogoColor className="hidden-xs" />
-                  :
-                    <Logo className="hidden-xs" />
-                }
-              </Link>
-              <div className="navigation__items right">{navItems}</div>
-            </div>
+
+        <div className="navigation__main hidden-xs" style={customerStyle}>
+          <div className="container">
+            <Link className="logo__anchor" to="/">
+              {isSolarTogether ? (
+                <LogoColor className="hidden-xs" />
+              ) : (
+                <Logo className="hidden-xs" />
+              )}
+            </Link>
+            <div className="navigation__items right">{navItems}</div>
           </div>
+        </div>
 
         {/* End logo desktop         */}
 
@@ -372,7 +398,6 @@ const Navigation: React.FC = () => {
           </div>
         </div>
       </>
-      
     </header>
   )
 }

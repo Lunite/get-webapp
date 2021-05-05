@@ -37,7 +37,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
   }
 
   // State Hooks
-  const [angle, setAngle] = useState(0) // for mobile
+  const [angle, setAngle] = useState(360) // for mobile
   const [mouseState, _setMouseState] = useState<{
     x: number
     y: number
@@ -70,7 +70,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
 
   useEffect(() => {
     setTimeout(() => {
-      setAngle(1)
+      setAngle(0)
     }, 10)
   }, [])
 
@@ -89,7 +89,7 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
       )
       theta = -theta + Math.PI
       props.setAzimuth(theta * (180 / Math.PI) - 180)
-      drawArrowFromAngle(center.x, center.y, r, theta - Math.PI / 2)
+      // drawArrowFromAngle(center.x, center.y, r, theta - Math.PI / 2)
     }
   }, [mouseState.x, mouseState.y])
 
@@ -183,43 +183,11 @@ const ArrowMap: React.FC<ArrowMapProps> = props => {
           width={canvasRef?.current?.clientWidth}
         />
       </div>
-      <div className="arrowmap-tip">
-        <img src={info} alt="Hint:" />
-        <p className="help-text hide-mob">
-          Rotate the arrow until it faces away from the roof where the panels
-          will be installed
-        </p>
-        <p className="help-text hide-lg">
-          Use the slider to rotate the arrow until it faces away from the roof
-          where the panels will be installed
-        </p>
-      </div>
-      <div className="slide-container show-mob">
-        <div className="range-slider am-range-slider">
-          <input
-            className="rs-range am-rs-range"
-            step={0.001}
-            type="range"
-            value={angle}
-            onChange={e => {
-              setAngle(Number(e.target.value))
-            }}
-            min={-Math.PI}
-            max={Math.PI}
-          />
-        </div>
-        <div className="am-range-lines" />
-        <div className="box-minmax show-mob am-box-minmax">
-          <span>-180&#176;</span>
-          <div className="spacer" />
-          <span>180&#176;</span>
-        </div>
-      </div>
     </>
   )
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyCIxU03Aoq29qJ5-KQT9F_v763fpJf0B3c",
+  apiKey: "AIzaSyBn24oGCV6hDozLK0VfXyhMOAcCKEYeoyQ",
   version: "3",
 })(ArrowMap)

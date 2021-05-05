@@ -10,7 +10,10 @@
   "author": "Kilian Seifert Leitch",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/functions-framework": "^1.7.1",
     "@google-cloud/pubsub": "^2.5.0",
-    "exceljs": "^4.1.1"
+    "@sendgrid/mail": "^7.4.2",
+    "exceljs": "^4.1.1",
+    "pdf-lib": "^1.16.0"
   }
 }

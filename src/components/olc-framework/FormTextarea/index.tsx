@@ -35,4 +35,32 @@ const FormTextarea: FunctionComponent<FormTextareaProps> = ({
   )
 }
 
+
+const ControlledFormTextarea: FunctionComponent<FormTextareaProps & {onChange: (e: any) => void}>  = ({
+  label,
+  name,
+  className = "",
+  placeholder = "",
+  value = "",
+  required = false,
+  children,
+  onChange
+}) => {
+  return (
+    <div className={`form-textarea ${className}`}>
+      <label className="form-textarea__label">{label}</label>
+      <textarea
+        name={name}
+        className="form-textarea__field"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+      />
+      {children && <div className="form-textarea__appendix">{children}</div>}
+    </div>
+  )
+}
+
 export default FormTextarea
+export {ControlledFormTextarea}
